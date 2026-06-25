@@ -1,0 +1,10 @@
+.DS_Store
+**/.DS_Store
+
+# Local editor / agent settings
+.claude/settings.local.json
+**/*.local
+
+# Temporary working files
+tmp_erd/
+assets/.!*

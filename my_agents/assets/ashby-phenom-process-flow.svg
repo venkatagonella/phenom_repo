@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 3200" width="1400" height="3200">
+  <defs>
+    <style>
+      .title { font: bold 28px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #111827; }
+      .subtitle { font: 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #4b5563; }
+      .step-title { font: bold 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #1e3a5f; }
+      .entity { font: 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #111827; }
+      .legend { font: 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #374151; }
+      .arrow { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .box-ok { fill: #ecfdf5; stroke: #10b981; stroke-width: 2; }
+      .box-partial { fill: #fffbeb; stroke: #f59e0b; stroke-width: 2; }
+      .box-missing { fill: #fef2f2; stroke: #ef4444; stroke-width: 2; }
+      .group { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 12; }
+      .status-ok { fill: #059669; font-weight: bold; }
+      .status-partial { fill: #d97706; font-weight: bold; }
+      .status-missing { fill: #dc2626; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="700" y="45" text-anchor="middle" class="title">Ashby Recruiter Process to Phenom Entity Mapping</text>
+  <text x="700" y="72" text-anchor="middle" class="subtitle">End-to-end flow from docs.ashbyhq.com/getting-started-for-recruiters vs job-domain-v8 ERD</text>
+
+  <!-- Legend -->
+  <rect x="80" y="95" width="1240" height="52" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="110" y="118" class="legend">Legend:</text>
+  <rect x="180" y="102" width="18" height="18" class="box-ok"/>
+  <text x="205" y="116" class="legend"> Exists in Phenom</text>
+  <rect x="360" y="102" width="18" height="18" class="box-partial"/>
+  <text x="385" y="116" class="legend">� Partial / modeled differently</text>
+  <rect x="620" y="102" width="18" height="18" class="box-missing"/>
+  <text x="645" y="116" class="legend">L Not in Phenom ERD</text>
+
+  <!-- Step 0 -->
+  <rect x="80" y="175" width="1240" height="170" class="group"/>
+  <text x="100" y="200" class="step-title">Step 0: Authentication &amp; Personal Setup</text>
+  <rect x="120" y="220" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="247" class="entity">User </text>
+  <rect x="370" y="220" width="300" height="44" rx="8" class="box-missing"/>
+  <text x="385" y="247" class="entity">Personal Notification Settings L</text>
+  <rect x="700" y="220" width="240" height="44" rx="8" class="box-partial"/>
+  <text x="715" y="247" class="entity">EmailTemplate �</text>
+  <rect x="970" y="220" width="220" height="44" rx="8" class="box-partial"/>
+  <text x="985" y="247" class="entity">Integration / SSO �</text>
+
+  <!-- Step 1 -->
+  <rect x="80" y="375" width="1240" height="150" class="group"/>
+  <text x="100" y="400" class="step-title">Step 1: Home Dashboard &amp; Tasks</text>
+  <rect x="120" y="420" width="200" height="44" rx="8" class="box-partial"/>
+  <text x="135" y="447" class="entity">Task �</text>
+  <rect x="350" y="420" width="280" height="44" rx="8" class="box-partial"/>
+  <text x="365" y="447" class="entity">Interview Briefing �</text>
+  <rect x="660" y="420" width="340" height="44" rx="8" class="box-ok"/>
+  <text x="675" y="447" class="entity">Job + JobHiringTeamMember </text>
+
+  <!-- Step 2 -->
+  <rect x="80" y="555" width="1240" height="170" class="group"/>
+  <text x="100" y="580" class="step-title">Step 2: Referrals</text>
+  <rect x="120" y="600" width="220" height="44" rx="8" class="box-partial"/>
+  <text x="135" y="627" class="entity">Direct Referral �</text>
+  <rect x="370" y="600" width="200" height="44" rx="8" class="box-missing"/>
+  <text x="385" y="627" class="entity">ReferralLink L</text>
+  <rect x="600" y="600" width="280" height="44" rx="8" class="box-partial"/>
+  <text x="615" y="627" class="entity">Application + Source �</text>
+  <rect x="910" y="600" width="280" height="44" rx="8" class="box-missing"/>
+  <text x="925" y="627" class="entity">ReferralSettings / Filter L</text>
+
+  <!-- Step 3-4 -->
+  <rect x="80" y="755" width="1240" height="220" class="group"/>
+  <text x="100" y="780" class="step-title">Step 34: Create Job, Open &amp; Publish Posting</text>
+  <rect x="120" y="800" width="140" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="827" class="entity">Job </text>
+  <rect x="290" y="800" width="260" height="44" rx="8" class="box-ok"/>
+  <text x="305" y="827" class="entity">JobHiringTeamMember </text>
+  <rect x="580" y="800" width="240" height="44" rx="8" class="box-ok"/>
+  <text x="595" y="827" class="entity">JobInterviewPlan </text>
+  <rect x="850" y="800" width="160" height="44" rx="8" class="box-ok"/>
+  <text x="865" y="827" class="entity">JobPost </text>
+  <rect x="1040" y="800" width="240" height="44" rx="8" class="box-ok"/>
+  <text x="1055" y="827" class="entity">JobPostQuestion </text>
+  <rect x="120" y="860" width="180" height="44" rx="8" class="box-missing"/>
+  <text x="135" y="887" class="entity">JobBoard L</text>
+  <rect x="330" y="860" width="260" height="44" rx="8" class="box-partial"/>
+  <text x="345" y="887" class="entity">Integration (boards) �</text>
+
+  <!-- Step 5 -->
+  <rect x="80" y="1005" width="1240" height="170" class="group"/>
+  <text x="100" y="1030" class="step-title">Step 5: Add Candidates to Pipeline</text>
+  <rect x="120" y="1050" width="180" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="1077" class="entity">Candidate </text>
+  <rect x="330" y="1050" width="180" height="44" rx="8" class="box-ok"/>
+  <text x="345" y="1077" class="entity">Application </text>
+  <rect x="540" y="1050" width="300" height="44" rx="8" class="box-ok"/>
+  <text x="555" y="1077" class="entity">ApplicationQuestionResponse </text>
+  <rect x="870" y="1050" width="280" height="44" rx="8" class="box-missing"/>
+  <text x="885" y="1077" class="entity">CandidateImportBatch L</text>
+
+  <!-- Step 6 -->
+  <rect x="80" y="1205" width="1240" height="220" class="group"/>
+  <text x="100" y="1230" class="step-title">Step 6: Application Review</text>
+  <rect x="120" y="1250" width="240" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="1277" class="entity">ApplicationReview </text>
+  <rect x="390" y="1250" width="300" height="44" rx="8" class="box-ok"/>
+  <text x="405" y="1277" class="entity">ApplicationStatusHistory </text>
+  <rect x="720" y="1250" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="735" y="1277" class="entity">RejectionReason </text>
+  <rect x="970" y="1250" width="240" height="44" rx="8" class="box-ok"/>
+  <text x="985" y="1277" class="entity">ScorecardTemplate </text>
+  <rect x="120" y="1310" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="1337" class="entity">ApplicationTag + Note </text>
+  <rect x="370" y="1310" width="260" height="44" rx="8" class="box-missing"/>
+  <text x="385" y="1337" class="entity">ApplicationRequest L</text>
+
+  <!-- Step 7 -->
+  <rect x="80" y="1455" width="1240" height="280" class="group"/>
+  <text x="100" y="1480" class="step-title">Step 7: Interview Scheduling</text>
+  <rect x="120" y="1500" width="160" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="1527" class="entity">Interview </text>
+  <rect x="310" y="1500" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="325" y="1527" class="entity">InterviewSchedule </text>
+  <rect x="560" y="1500" width="200" height="44" rx="8" class="box-ok"/>
+  <text x="575" y="1527" class="entity">InterviewPanelist </text>
+  <rect x="790" y="1500" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="805" y="1527" class="entity">InterviewFeedback </text>
+  <rect x="1040" y="1500" width="200" height="44" rx="8" class="box-ok"/>
+  <text x="1055" y="1527" class="entity">CalendarEvent </text>
+  <rect x="120" y="1560" width="300" height="44" rx="8" class="box-missing"/>
+  <text x="135" y="1587" class="entity">ScheduleInterviewActivity L</text>
+  <rect x="450" y="1560" width="220" height="44" rx="8" class="box-missing"/>
+  <text x="465" y="1587" class="entity">DirectBookingLink L</text>
+  <rect x="700" y="1560" width="280" height="44" rx="8" class="box-missing"/>
+  <text x="715" y="1587" class="entity">CandidateAvailability L</text>
+  <rect x="120" y="1620" width="200" height="44" rx="8" class="box-missing"/>
+  <text x="135" y="1647" class="entity">SharedCalendar L</text>
+  <rect x="350" y="1620" width="200" height="44" rx="8" class="box-missing"/>
+  <text x="365" y="1647" class="entity">MeetingHours L</text>
+  <rect x="580" y="1620" width="260" height="44" rx="8" class="box-missing"/>
+  <text x="595" y="1647" class="entity">GroupedInterviewPlan L</text>
+
+  <!-- Step 8 -->
+  <rect x="80" y="1765" width="1240" height="220" class="group"/>
+  <text x="100" y="1790" class="step-title">Step 8: Offer Generation</text>
+  <rect x="120" y="1810" width="140" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="1837" class="entity">Offer </text>
+  <rect x="290" y="1810" width="180" height="44" rx="8" class="box-ok"/>
+  <text x="305" y="1837" class="entity">OfferDetail </text>
+  <rect x="500" y="1810" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="515" y="1837" class="entity">OfferApproval </text>
+  <rect x="750" y="1810" width="220" height="44" rx="8" class="box-ok"/>
+  <text x="765" y="1837" class="entity">OfferCustomField </text>
+  <rect x="120" y="1870" width="260" height="44" rx="8" class="box-missing"/>
+  <text x="135" y="1897" class="entity">OfferLetterTemplate L</text>
+  <rect x="410" y="1870" width="220" height="44" rx="8" class="box-missing"/>
+  <text x="425" y="1897" class="entity">ESignatureOffer L</text>
+  <rect x="660" y="1870" width="160" height="44" rx="8" class="box-missing"/>
+  <text x="675" y="1897" class="entity">Opening L</text>
+
+  <!-- Step 9 -->
+  <rect x="80" y="2015" width="1240" height="150" class="group"/>
+  <text x="100" y="2040" class="step-title">Step 9: Hire &amp; HRIS Push</text>
+  <rect x="120" y="2060" width="280" height="44" rx="8" class="box-ok"/>
+  <text x="135" y="2087" class="entity">Application.status = Hired </text>
+  <rect x="430" y="2060" width="180" height="44" rx="8" class="box-missing"/>
+  <text x="445" y="2087" class="entity">Employee L</text>
+  <rect x="640" y="2060" width="240" height="44" rx="8" class="box-partial"/>
+  <text x="655" y="2087" class="entity">Integration (HRIS) �</text>
+
+  <!-- Vertical flow arrows between steps -->
+  <line x1="700" y1="345" x2="700" y2="375" class="arrow"/>
+  <line x1="700" y1="525" x2="700" y2="555" class="arrow"/>
+  <line x1="700" y1="725" x2="700" y2="755" class="arrow"/>
+  <line x1="700" y1="975" x2="700" y2="1005" class="arrow"/>
+  <line x1="700" y1="1175" x2="700" y2="1205" class="arrow"/>
+  <line x1="700" y1="1425" x2="700" y2="1455" class="arrow"/>
+  <line x1="700" y1="1735" x2="700" y2="1765" class="arrow"/>
+  <line x1="700" y1="1985" x2="700" y2="2015" class="arrow"/>
+
+  <!-- Core spine summary -->
+  <rect x="80" y="2200" width="1240" height="120" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="700" y="2235" text-anchor="middle" class="step-title">Phenom Core Spine (well covered)</text>
+  <text x="700" y="2265" text-anchor="middle" class="subtitle">Job � JobPost � Candidate � Application � Interview � Offer � Hired</text>
+  <text x="700" y="2295" text-anchor="middle" class="subtitle">+ JobHiringTeamMember, JobInterviewPlan, Scorecards, Approvals, CustomFields</text>
+
+  <!-- Gaps summary -->
+  <rect x="80" y="2360" width="1240" height="780" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="100" y="2395" class="step-title">Ashby entities NOT in Phenom ERD (17 gaps)</text>
+  <text x="120" y="2430" class="legend">1. ReferralLink</text>
+  <text x="120" y="2455" class="legend">2. ReferralSettings / ReferralFilter</text>
+  <text x="120" y="2480" class="legend">3. JobBoard</text>
+  <text x="120" y="2505" class="legend">4. JobConsideration (distinct wrapper)</text>
+  <text x="120" y="2530" class="legend">5. ApplicationRequest</text>
+  <text x="120" y="2555" class="legend">6. ScheduleInterviewActivity</text>
+  <text x="120" y="2580" class="legend">7. DirectBookingLink</text>
+  <text x="120" y="2605" class="legend">8. CandidateAvailabilityLink</text>
+  <text x="500" y="2430" class="legend">9. SharedCalendar</text>
+  <text x="500" y="2455" class="legend">10. MeetingHours</text>
+  <text x="500" y="2480" class="legend">11. GroupedInterviewPlan</text>
+  <text x="500" y="2505" class="legend">12. OfferLetterTemplate</text>
+  <text x="500" y="2530" class="legend">13. ESignatureOffer</text>
+  <text x="500" y="2555" class="legend">14. Opening (Openings Management)</text>
+  <text x="500" y="2580" class="legend">15. Employee (HRIS record)</text>
+  <text x="500" y="2605" class="legend">16. PersonalNotificationSettings</text>
+  <text x="500" y="2630" class="legend">17. CandidateImportBatch</text>
+
+  <text x="100" y="2680" class="subtitle">Source: https://docs.ashbyhq.com/getting-started-for-recruiters | Phenom: job-domain-v8 ERD</text>
+</svg>
