@@ -3,7 +3,3 @@
 
 # Excluded from GitHub upload
 product-copilot-beta/
-
-# Nested, independently-tracked git repositories
-NorthStarCheck/
-SampleCode/

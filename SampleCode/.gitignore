@@ -1,0 +1,8 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Angular / Node (job-status-demo)
+job-status-demo/node_modules/
+job-status-demo/dist/
+job-status-demo/.angular/

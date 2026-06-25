@@ -1,0 +1,22 @@
+<section class="job-pipeline">
+  <header class="job-pipeline__header">
+    <h1 class="job-pipeline__title">{{ jobTitle }}</h1>
+    <button type="button" class="job-pipeline__status-btn">
+      {{ jobStatus }}
+      <span aria-hidden="true">▾</span>
+    </button>
+  </header>
+
+  <div class="job-pipeline__selector">
+    <px-viewgroup
+      variant="pipeline"
+      [views]="pipelineViews"
+      [selectedViewId]="selectedStageId"
+      [showArrows]="true"
+      [arrowBeforeIds]="['application-review', 'active', 'pending-offer', 'hired']"
+      [showAddButton]="false"
+      [showSettingsButton]="false"
+      (viewClick)="onStageSelected($event)"
+    />
+  </div>
+</section>

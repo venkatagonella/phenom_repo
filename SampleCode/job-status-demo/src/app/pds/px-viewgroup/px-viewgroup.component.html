@@ -1,0 +1,51 @@
+<div class="px-viewgroup" [class.px-viewgroup--pipeline]="variant === 'pipeline'">
+  <div class="px-viewgroup__views">
+    @for (view of visibleViews; track view.id; let index = $index) {
+      <px-view
+        [label]="view.label"
+        [type]="view.type"
+        [badgeNumber]="view.badgeNumber"
+        [subtitle]="view.subtitle"
+        [icon]="view.icon"
+        [menuItems]="view.menuItems ?? []"
+        [disabled]="view.disabled ?? false"
+        [selected]="isSelected(view)"
+        [variant]="variant === 'pipeline' ? 'pipeline' : 'default'"
+        (viewClick)="onViewClick(view)"
+        (menuShow)="onMenuShow(view)"
+        (menuHide)="onMenuHide(view)"
+        (menuItemClick)="onMenuItemClick(view, $event)"
+      />
+
+      @if (shouldShowArrowAfter(view, index)) {
+        <span class="px-viewgroup__arrow" aria-hidden="true">→</span>
+      }
+    }
+
+    @if (overflowViews.length) {
+      <button type="button" class="px-viewgroup__more">
+        {{ moreViewLabel.replace('{}', overflowViews.length.toString()) }}
+      </button>
+    }
+  </div>
+
+  @if (showAddButton || showSettingsButton) {
+    <div class="px-viewgroup__actions">
+      @if (showAddButton) {
+        <button type="button" class="px-viewgroup__action-btn" (click)="addClick.emit()">
+          + Add view
+        </button>
+      }
+      @if (showSettingsButton) {
+        <button
+          type="button"
+          class="px-viewgroup__action-btn"
+          aria-label="View settings"
+          (click)="settingsClick.emit()"
+        >
+          ⚙
+        </button>
+      }
+    </div>
+  }
+</div>

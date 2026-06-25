@@ -1,0 +1,142 @@
+:host {
+  display: inline-flex;
+}
+
+.px-view {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #d8dde6;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #353b46;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  padding: 10px 14px;
+  min-height: 44px;
+  text-align: left;
+}
+
+.px-view:hover:not(.px-view--disabled) {
+  border-color: #b8c0cc;
+  background: #f8fafc;
+}
+
+.px-view--selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+  background: #f8fbff;
+}
+
+.px-view--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.px-view--pipeline {
+  min-width: 148px;
+  padding: 12px 14px;
+  min-height: 68px;
+  align-items: flex-start;
+}
+
+.px-view__icon {
+  font-size: 18px;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.px-view__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.px-view__label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.px-view__label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #27282c;
+}
+
+.px-view--selected .px-view__label {
+  color: #1d4ed8;
+}
+
+.px-view__subtitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7a818c;
+}
+
+.px-view__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: #464f5e;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.px-view--selected .px-view__badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.px-view__menu-trigger {
+  margin-left: auto;
+  color: #7a818c;
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+.px-view__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 10;
+  min-width: 140px;
+  padding: 6px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.px-view__menu-item {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #353b46;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.px-view__menu-item:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.px-view__menu-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

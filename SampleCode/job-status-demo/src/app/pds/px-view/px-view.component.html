@@ -1,0 +1,57 @@
+<button
+  type="button"
+  class="px-view"
+  [class.px-view--selected]="selected"
+  [class.px-view--disabled]="disabled"
+  [class.px-view--pipeline]="variant === 'pipeline'"
+  [class.px-view--standard]="type === 'standard'"
+  [class.px-view--custom]="type === 'custom'"
+  [disabled]="disabled"
+  (click)="onViewClick()"
+>
+  @if (variant === 'pipeline' && icon) {
+    <span class="px-view__icon" aria-hidden="true">{{ icon }}</span>
+  }
+
+  <span class="px-view__content">
+    <span class="px-view__label-row">
+      <span class="px-view__label">{{ label }}</span>
+      @if (variant === 'default' && badgeNumber !== undefined) {
+        <span class="px-view__badge">{{ badgeNumber }}</span>
+      }
+    </span>
+
+    @if (variant === 'pipeline' && subtitle) {
+      <span class="px-view__subtitle">{{ subtitle }}</span>
+    }
+  </span>
+
+  @if (menuItems.length) {
+    <span
+      class="px-view__menu-trigger"
+      role="button"
+      tabindex="0"
+      aria-label="View actions"
+      (click)="toggleMenu($event)"
+      (keydown.enter)="toggleMenu($event)"
+    >
+      ⋯
+    </span>
+
+    @if (showMenu) {
+      <div class="px-view__menu" role="menu">
+        @for (item of menuItems; track item.label) {
+          <button
+            type="button"
+            class="px-view__menu-item"
+            role="menuitem"
+            [disabled]="item.disabled"
+            (click)="onMenuItemClick(item, $event)"
+          >
+            {{ item.label }}
+          </button>
+        }
+      </div>
+    }
+  }
+</button>

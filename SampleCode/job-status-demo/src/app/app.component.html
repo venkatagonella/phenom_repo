@@ -1,0 +1,9 @@
+<main class="demo-shell">
+  <app-job-candidate-pipeline
+    [jobTitle]="jobTitle"
+    [jobStatus]="jobStatus"
+    [stages]="stages"
+    [selectedStageId]="selectedStageId"
+    (stageChange)="onStageChange($event)"
+  />
+</main>

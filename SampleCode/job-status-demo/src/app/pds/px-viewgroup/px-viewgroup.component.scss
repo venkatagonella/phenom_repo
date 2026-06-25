@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+.px-viewgroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.px-viewgroup__views {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.px-viewgroup--pipeline .px-viewgroup__views {
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.px-viewgroup__arrow {
+  color: #94a3b8;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 2px;
+  user-select: none;
+}
+
+.px-viewgroup__more,
+.px-viewgroup__action-btn {
+  border: 1px solid #d8dde6;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #464f5e;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.px-viewgroup__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.px-viewgroup__action-btn:hover,
+.px-viewgroup__more:hover {
+  background: #f1f5f9;
+}

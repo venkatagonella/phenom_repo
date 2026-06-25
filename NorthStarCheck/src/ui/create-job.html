@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create New Job — Real-time CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/ui/pds.css" />
+</head>
+<body>
+  <div class="crm-app">
+    <header class="crm-topnav">
+      <div class="crm-topnav__brand">
+        <div class="crm-topnav__logo" aria-hidden="true">P</div>
+        <div>
+          <div class="crm-topnav__title">Real-time CRM</div>
+          <div class="crm-topnav__subtitle">Recruiter Hub</div>
+        </div>
+      </div>
+      <div class="crm-topnav__actions">
+        <button class="pds-icon-btn" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="pds-icon-btn" type="button" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        </button>
+        <button class="pds-icon-btn" type="button" aria-label="Profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="crm-body">
+      <aside class="crm-sidebar" aria-label="Main navigation">
+        <div class="crm-nav-section">Recruiting</div>
+        <button class="crm-nav-item" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Candidates
+        </button>
+        <button class="crm-nav-item crm-nav-item--active" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Jobs
+        </button>
+        <button class="crm-nav-item" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Pipeline
+        </button>
+        <div class="crm-nav-section">Settings</div>
+        <button class="crm-nav-item" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          Automation
+        </button>
+      </aside>
+
+      <main class="crm-main">
+        <div class="crm-page">
+          <nav class="crm-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Jobs</a>
+            <span class="crm-breadcrumb__sep">/</span>
+            <span id="breadcrumb-current">Create New Job</span>
+          </nav>
+
+          <div class="crm-page-header">
+            <div>
+              <h1 id="page-title">Create New Job</h1>
+              <p id="page-subtitle">Choose how to create a requisition and configure job details.</p>
+            </div>
+            <div class="crm-page-header__actions">
+              <span id="job-status-badge" class="pds-badge pds-badge--open is-hidden">
+                <span class="pds-badge__dot"></span>
+                Open
+              </span>
+              <span id="role-badge" class="pds-badge pds-badge--role is-hidden">
+                <span class="pds-badge__dot"></span>
+                <span id="role-badge-text">—</span>
+              </span>
+              <button id="close-btn" class="pds-btn pds-btn--secondary is-hidden" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+                Close Job
+              </button>
+              <button id="delete-btn" class="pds-btn pds-btn--danger is-hidden" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                Delete Job
+              </button>
+            </div>
+          </div>
+
+          <!-- Create flow (no jobId) -->
+          <section id="create-flow">
+            <div class="create-options" role="radiogroup" aria-label="Job creation method">
+              <button class="create-option create-option--selected" type="button" data-source="template" aria-pressed="true">
+                <div class="create-option__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>From Template</h3>
+                <p>Start from an approved job template with pre-filled fields.</p>
+              </button>
+              <button class="create-option" type="button" data-source="blank" aria-pressed="false">
+                <div class="create-option__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </div>
+                <h3>Blank Job</h3>
+                <p>Create a new requisition from scratch.</p>
+              </button>
+              <button class="create-option" type="button" data-source="clone" aria-pressed="false">
+                <div class="create-option__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </div>
+                <h3>Clone Existing</h3>
+                <p>Duplicate an existing job and edit as needed.</p>
+              </button>
+            </div>
+
+            <div class="pds-widget" style="margin-top: 24px;">
+              <div class="pds-widget__header">
+                <h2 class="pds-widget__title">Job Details</h2>
+                <span class="pds-widget__hint">Required fields marked *</span>
+              </div>
+              <div class="pds-form-grid">
+                <div class="pds-field pds-field--full">
+                  <label class="pds-label" for="job-title">Job Title *</label>
+                  <input class="pds-input" id="job-title" type="text" placeholder="e.g. Senior Software Engineer" />
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label" for="department">Department</label>
+                  <select class="pds-select" id="department">
+                    <option>Engineering</option>
+                    <option>Product</option>
+                    <option>Sales</option>
+                    <option>Operations</option>
+                  </select>
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label" for="location">Location</label>
+                  <input class="pds-input" id="location" type="text" placeholder="City, Country or Remote" />
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label" for="employment-type">Employment Type</label>
+                  <select class="pds-select" id="employment-type">
+                    <option>Full-time</option>
+                    <option>Part-time</option>
+                    <option>Contract</option>
+                  </select>
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label" for="openings">Openings</label>
+                  <input class="pds-input" id="openings" type="number" value="1" min="1" />
+                </div>
+              </div>
+            </div>
+
+            <div class="pds-widget">
+              <div class="pds-widget__header">
+                <h2 class="pds-widget__title">Hiring Team</h2>
+                <span class="pds-widget__hint">Your role determines available actions</span>
+              </div>
+              <div class="hiring-team-list">
+                <div class="hiring-team-member">
+                  <div class="hiring-team-member__info">
+                    <div class="hiring-team-member__avatar" id="user-avatar">SR</div>
+                    <div>
+                      <div class="hiring-team-member__name" id="user-display-name">Recruiter</div>
+                      <div class="hiring-team-member__email" id="user-display-email">recruiter@demo.phenom.com</div>
+                    </div>
+                  </div>
+                  <span class="pds-badge pds-badge--role" id="hiring-team-role-badge">
+                    <span class="pds-badge__dot"></span>
+                    <span id="hiring-team-role-text">—</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Existing job view (jobId in URL) -->
+          <section id="job-detail" class="is-hidden">
+            <div class="pds-widget">
+              <div class="pds-widget__header">
+                <h2 class="pds-widget__title">Requisition Summary</h2>
+              </div>
+              <div class="pds-form-grid">
+                <div class="pds-field">
+                  <label class="pds-label">Job ID</label>
+                  <input class="pds-input" id="job-id-display" type="text" readonly />
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label">Created By</label>
+                  <input class="pds-input" id="job-created-by" type="text" readonly />
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label">Source</label>
+                  <input class="pds-input" id="job-source" type="text" readonly />
+                </div>
+                <div class="pds-field">
+                  <label class="pds-label">Status</label>
+                  <input class="pds-input" id="job-status" type="text" readonly />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <footer class="crm-footer">
+          <div class="crm-footer__hint" id="footer-hint">
+            Secondary Recruiters can create jobs but cannot close or delete requisitions.
+          </div>
+          <div class="crm-footer__actions">
+            <button class="pds-btn pds-btn--secondary" type="button" id="cancel-btn">Cancel</button>
+            <button class="pds-btn pds-btn--primary" type="button" id="create-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Create Job
+            </button>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="pds-toast" role="status" aria-live="polite"></div>
+  <script src="/ui/create-job.js"></script>
+</body>
+</html>
