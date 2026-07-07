@@ -1,0 +1,42 @@
+---
+inclusion: always
+---
+
+<!-- Generated self-contained SDD bundle — do not edit here; regenerate from the SDD kit. -->
+
+# How to author and edit SDD specs, steering, and EARS requirements
+
+# Authoring rules for specs & steering
+
+These apply whenever editing files under `northstar/specs/` or `northstar/steering/`.
+
+## Front-matter is a contract
+- Keep `spec_id` equal to the folder name.
+- Set `touches:` to accurate code globs — Phase-0 discovery on future changes depends on it.
+- When a change modifies earlier behavior, set `amends:` (the prior `spec_id`) and
+  `supersedes_reqs:` (specific `spec_id:REQ-ID`). Do NOT rewrite the prior spec.
+- Update `last_validated_at` whenever you confirm the spec still matches the code.
+
+## EARS requirements
+- One requirement, one `SHALL`, one observable outcome, one stable `REQ-ID`.
+- Every requirement has an *Acceptance* line that can become a test.
+- Replace vague words with measurable criteria (latency targets, status codes, limits).
+
+## Increment specs are immutable
+- The only routinely-edited section of an `northstar/specs/NNN-slug/` doc is its `## Changelog`.
+- To change behavior, create a NEW increment spec and update the living layer
+  (`northstar/steering/*`).
+
+## Keep `northstar/specs/INDEX.md` current
+- When you add a spec, add a row to `northstar/specs/INDEX.md` (id, type, summary, `touches`, status).
+- This index is what the agent scans to find relevant prior work — a stale index breaks
+  context discovery.
+
+## Context budget (constitution §13 — keep always-on context lean)
+- Steering files (`northstar/steering/*`) stay lean — aim ~300 words each; `northstar_check.py` warns past
+  400 (600 for `structure.md`, the codebase navigation map). Move depth into
+  increment specs that load only when relevant.
+- A skill/subagent `description:` is one "Use when <trigger>" sentence — it's scanned for routing
+  every session, so brevity keeps discovery cheap.
+- Prefer a pointer over inlining: reference the canonical doc (the relevant `ns-*` skill)
+  rather than restating it.

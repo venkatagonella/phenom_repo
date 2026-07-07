@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      { "command": ".cursor/hooks/northstar-bootstrap.sh" }
+    ],
+    "subagentStop": [
+      { "command": ".cursor/hooks/northstar-review-advance.sh", "loop_limit": 3 }
+    ]
+  }
+}
