@@ -1,0 +1,10 @@
+{
+  "decision": "Meaningful export only: non-SAST + (ETA or Client/Client Name or Fix Version)",
+  "generatedAt": "2026-07-31T17:49:44.143149+00:00",
+  "exportedCount": 13080,
+  "expectedTotal": 13080,
+  "coveragePct": 100.0,
+  "jql": "\"Product Experience: Product2\" = \"Recruiter Experience (RX) - CRM - Core\" AND summary !~ \"SAST\" AND (\"ETA\" is not EMPTY OR \"Client\" is not EMPTY OR \"Client Name\" is not EMPTY OR fixVersion is not EMPTY)",
+  "csv": "/Users/venkata.gonella/phenom_repo/Disney/exports/rx-crm-core-RX-CRM-Core-FINAL.csv",
+  "html": "/Users/venkata.gonella/phenom_repo/Disney/exports/rx-crm-core-RX-CRM-Core-FINAL.html"
+}

@@ -1,0 +1,24 @@
+{
+  "jql": "\"Product Experience: Product2\" = \"Recruiter Experience (RX) - CRM - Core\" AND summary !~ \"SAST\" AND created >= \"2026-01-01\" AND project != CHAM AND statusCategory != Done AND status not in (\"QA Passed\", \"QA In Progress\", \"Post to Community\", \"PM Acceptance Queue\", \"In Development\") AND (fixVersion is EMPTY OR fixVersion not in (Backlog)) AND (\"ETA\" is not EMPTY OR \"Client\" is not EMPTY OR \"Client Name\" is not EMPTY OR fixVersion is not EMPTY) ORDER BY key ASC",
+  "expected": 505,
+  "fetched": 505,
+  "nextPageToken": null,
+  "isComplete": true,
+  "lastPage": 6,
+  "cloudId": "abbe3ee2-54f7-4096-a7a0-62a220d87814",
+  "fields": [
+    "summary",
+    "status",
+    "issuetype",
+    "fixVersions",
+    "project",
+    "customfield_14383",
+    "customfield_15541",
+    "customfield_11213",
+    "customfield_14805",
+    "customfield_14396",
+    "customfield_14523",
+    "customfield_15223"
+  ],
+  "pageCount": 6
+}

@@ -1,0 +1,940 @@
+JIRA ID,ETA,Client,Fix Version,Summary,Status,Issue Type,Project,URL
+ADS-251,,Adobe Systems,,UAT - Ideal Candidate in Projects,Done,Product Story,ADS,https://phenompeople.atlassian.net/browse/ADS-251
+ADTEN-1032,,,,The Salary Job Additional field is not configured in the CRM Advance Search filter section.,Closed,Bug,ADTEN,https://phenompeople.atlassian.net/browse/ADTEN-1032
+ADTEN-1066,,,,CRM preview SUCCESS but CHAPTER tenant missing,Closed,Bug,ADTEN,https://phenompeople.atlassian.net/browse/ADTEN-1066
+ADTEN-1075,,Aspen Dental,,Create jobs are failing in stg environment.,Done,Product Bug,ADTEN,https://phenompeople.atlassian.net/browse/ADTEN-1075
+ADTEN-1101,2026-01-05,"Aspen Dental Management, Inc.",,Unable to view Child tenants in Tenant Info in CRM Settings,Done,Product Bug,ADTEN,https://phenompeople.atlassian.net/browse/ADTEN-1101
+ADTEN-1157,2026-03-04,,,Chapter - Production Departmentalization,QA Passed,Story,ADTEN,https://phenompeople.atlassian.net/browse/ADTEN-1157
+ADTEN-1211,2026-04-01,,,Update Email template changes in Prod CRM,Closed,Story,ADTEN,https://phenompeople.atlassian.net/browse/ADTEN-1211
+AICRMSS-400,,,,Enable Interview Intelligence in STG,Closed,Task,AICRMSS,https://phenompeople.atlassian.net/browse/AICRMSS-400
+AICRMSS-401,,,,Enable Interview Intelligence in PROD,Closed,Task,AICRMSS,https://phenompeople.atlassian.net/browse/AICRMSS-401
+AICRMSS-402,,,,Hiring Pipeline Config,Closed,Story,AICRMSS,https://phenompeople.atlassian.net/browse/AICRMSS-402
+AICRMSS-814,2026-03-12,,,CRM Job Preview is showing Air Arabia links for SAS,Closed,Bug,AICRMSS,https://phenompeople.atlassian.net/browse/AICRMSS-814
+AIR-267,,AirAsia,,AI discovery - Page refresh Enhancement Request,Done,Product Story,AIR,https://phenompeople.atlassian.net/browse/AIR-267
+AMNEAL-457,,Amneal Pharmaceuticals,,CRM - Candidate Application Update Emails,Closed,Bug,AMNEAL,https://phenompeople.atlassian.net/browse/AMNEAL-457
+AMNEAL-542,2025-07-31,Amneal Pharmaceuticals,,PROD CRM few system fields are displaying twice at candidate level fields.,Done,Product Bug,AMNEAL,https://phenompeople.atlassian.net/browse/AMNEAL-542
+AORC-641,2026-02-25,Ascension Health,,MaxSalary and MinSalary is showing 0 for the float number,Done,Product Bug,AORC,https://phenompeople.atlassian.net/browse/AORC-641
+ARDAGH-1295,,,,feature flags not matched in PROD,Closed,Bug,ARDAGH,https://phenompeople.atlassian.net/browse/ARDAGH-1295
+ARPH-397,,,,The Full Job Description is not Displaying in the CRM or Career Site,Closed,Bug,ARPH,https://phenompeople.atlassian.net/browse/ARPH-397
+ASRM-1153,,,,Allianz - Ergonomics testing,Open,Epic,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1153
+ASRM-1257,,,,Allianz - CRM - Hiring Status Labels - Translations,Closed,Product Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1257
+ASRM-1258,,,,Allianz - CRM - Lead Status (=not applicants yet) Labels in Phenom ,Closed,Product Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1258
+ASRM-1261,,,,Allianz - Hiring Manager Messages - translations,Closed,Product Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1261
+ASRM-1262,,,,Allianz - Internal Notifications - translations,Closed,Product Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1262
+ASRM-1366,,,,Fitscore Findings - Row 45 - Change fencing logic to Option 1 - Global visibility,Resolved,Product Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1366
+ASRM-1380,,,,Hypercare E2E -48,Closed,CR,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1380
+ASRM-1384,,,,Fitscore findings - Row 53 - Recruiter from one scope should not see job from other scope,Closed,Bug,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1384
+ASRM-1386,,,,Fitscore findings - Row 55 - Query on lead visibility,Closed,Product Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1386
+ASRM-1387,2025-07-09,Allianz,,Fitscore findings - Row 56 - job level consent not working as expected,Done,Product Bug,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1387
+ASRM-1389,,,,Fitscore findings - Row 58 - lead from JTC not being shown in AI Discovery,Closed,Bug,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1389
+ASRM-1399,,,,Fitscore findings - Row 63 - CRM candidate category not changing to Internal from external,Closed,Task,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1399
+ASRM-1400,,,,"Fitscore findings - Row 64, 65 - Internal candidate applying from external site - AIConsent not getting captured correctly",Closed,Bug,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1400
+ASRM-1470,2025-11-24,Allianz,,“Stay signed in” button in the Session Timeout popup message is not getting translated.,Done,Product Story,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1470
+ASRM-1476,2026-04-30,Allianz,,AI Discovery - Recommendation Emails,Done,Product Story,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1476
+ASRM-1527,2025-10-29,Allianz,,Fields are not translated in Prod (row 41),Done,Product Bug,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1527
+ASRM-1536,2026-05-12,Allianz,,Translate all profile fields and additional fields to respective languages,Done,Product Story,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1536
+ASRM-1542,,Allianz,,CRM translations in Polish are not correct,Done,Product Bug,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1542
+ASRM-1570,2026-09-30,Allianz,,Additional Recruiter Role in CRM,Story Elaboration,Product Story,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1570
+ASRM-1583,2026-03-13,Allianz,,Dependency Work - CRM - Core: Fitscore findings - Row 54 - Ai Discovery email for suggested candidates is not as per permissions,Cancelled,Product Story,ASRM,https://phenompeople.atlassian.net/browse/ASRM-1583
+ATGCXRX-3,2026-04-14,Alliance Technical Group,,[Provisioning Bug] Duplicate CRM instance on Stage,Done,Product Bug,ATGCXRX,https://phenompeople.atlassian.net/browse/ATGCXRX-3
+AUCRM-166,,Ageas,,UAT - Description tab in CRM is not popultaing correctly,Closed,Bug,AUCRM,https://phenompeople.atlassian.net/browse/AUCRM-166
+AUCRM-179,,Ageas,,UAT - CV Parsing from the Talent Community Form to CRM is not accurate,Done,Product Bug,AUCRM,https://phenompeople.atlassian.net/browse/AUCRM-179
+BCBD-309,,Bell Canada Enterprises,,Hypercare TWI-  Video Interview Expired Hiring Status,Closed,CR,BCBD,https://phenompeople.atlassian.net/browse/BCBD-309
+BCBD-311,,,,"In all the pipelines, there should be no movements possible to or from the 'Background Checks Requested' step.",Closed,CR,BCBD,https://phenompeople.atlassian.net/browse/BCBD-311
+BCBD-312,,,,Duplicate Status in Grad Pipeline,Closed,CR,BCBD,https://phenompeople.atlassian.net/browse/BCBD-312
+BPHT-111,2026-08-10,Banfield Pet Hospital,,Unable to move additional fields to PROD from STAGE in the CRM Ui.,QA In Progress,Product Bug,BPHT,https://phenompeople.atlassian.net/browse/BPHT-111
+BSWTMS-385,,,,Updates to Employee Feed file,Closed,Story,BSWTMS,https://phenompeople.atlassian.net/browse/BSWTMS-385
+BTTM-1028,,,,Move CRM Configs from stage to Prod ,Closed,Story,BTTM,https://phenompeople.atlassian.net/browse/BTTM-1028
+BTTM-1074,,,,job pull - job preview is not availble in CRM PROD,Closed,Bug,BTTM,https://phenompeople.atlassian.net/browse/BTTM-1074
+BTTM-1217,2025-09-08,Bouygues Group,,UX ISSUES -SORTING,Done,Product Bug,BTTM,https://phenompeople.atlassian.net/browse/BTTM-1217
+BTTM-1286,2025-09-16,Bouygues Group,,EX - Parsing / Skills extract & Translations issue,Done,Product Bug,BTTM,https://phenompeople.atlassian.net/browse/BTTM-1286
+BTTM-1373,,,,EX - Internal candidate shown as external,Closed,Bug,BTTM,https://phenompeople.atlassian.net/browse/BTTM-1373
+BTTM-329,2025-08-11,Bouygues Group,,CRM feature flag to only allow recruiters to edit jobs they associated with,Done,Product Story,BTTM,https://phenompeople.atlassian.net/browse/BTTM-329
+BTTM-801,,,,UAT - BYSA1 7877 shown as published to external site not available to Bouygues,Closed,Task,BTTM,https://phenompeople.atlassian.net/browse/BTTM-801
+BTTM-818,,Bouygues Group,,UAT - Job Requisition integration loading higher data than expected,Closed,Bug,BTTM,https://phenompeople.atlassian.net/browse/BTTM-818
+BTTM-847,,Bouygues Group,,"UAT: CRM all locales - UX ""Next & Previous"" candidate",Closed,CR,BTTM,https://phenompeople.atlassian.net/browse/BTTM-847
+CAPG-1135,2025-12-19,Capgemeni,,The job description text is going outside the white box in the CRM UI.,Done,Product Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-1135
+CAPG-298,2024-11-15,Capgemeni,,SAP SF Bi-directional Enhancement with Multi Stage,Done,Product Story,CAPG,https://phenompeople.atlassian.net/browse/CAPG-298
+CAPG-598,2025-08-29,Capgemeni,,"""View more""dynamic link in the job alert email template is not working as expected if the customer uses ""jobs"" instead of ""job"" in the url",Done,Product Story,CAPG,https://phenompeople.atlassian.net/browse/CAPG-598
+CAPG-664,,Capgemini,,Job Description is not available on any job in CRM,Done,Product Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-664
+CAPG-687,,Capgemeni,,CRM Filter issue,Done,Product Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-687
+CAPG-692,,Capgemeni,,Job Tab Number of Applicants in Job list is showing incorrectly,Done,Product Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-692
+CAPG-710,,Capgemeni,,Retrofit_Country of residence showing twice in Candidate Tab,Done,Product Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-710
+CAPG-742,,Capgemeni,,Retrofit_No option to edit skills,Done,Product Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-742
+CAPG-909,2026-03-16,Capgemini,,Hiring Manager Review Note - job requisition ID is missing,Done,Product Story,CAPG,https://phenompeople.atlassian.net/browse/CAPG-909
+CAPG-970,,,,How do you identify field value is not displaying as expected  in CRM STG,Closed,Bug,CAPG,https://phenompeople.atlassian.net/browse/CAPG-970
+CHAM-1035,,,25.05,CRM Core release deployment of 25.05,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1035
+CHAM-1069,,,OffCycle-2025,Manulife CRM Config,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1069
+CHAM-1082,,,OffCycle-2025,"Tags, Jobs Association and candidates api patch ",Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1082
+CHAM-1092,,,OffCycle-2024,"enable debizium, create iceberg snapshots of mongodb in prod-us/ca/ir regions",Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1092
+CHAM-111,,,OffCycle-2025,UI Date fixes in summary section,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-111
+CHAM-1154,,,OffCycle-2025,Manulife CRM Unmerge,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1154
+CHAM-1290,,,25.06,CRM Core release deployment of 25.06,Cancelled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1290
+CHAM-1325,,,OffCycle-2025,CRM-Utility-service deployement,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1325
+CHAM-134,,,OffCycle-2025,Patch deployment for projects-workflows,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-134
+CHAM-1344,,,OffCycle-2025,CRM Mongo instance upgrade in PRODMB,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1344
+CHAM-1380,,,OffCycle-2025,Allianz facets deployment,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-1380
+CHAM-144,,,OffCycle-2025,User Management - Patch Deployment,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-144
+CHAM-190,,,OffCycle-2025,Core Service builds for Release 25.01 Prod Deployment,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-190
+CHAM-197,,,OffCycle-2025,CRM UI Deployment in prod,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-197
+CHAM-199,,,OffCycle-2025,CRM UI patch deployment request,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-199
+CHAM-250,,,OffCycle-2025,UI Build Patch deployment,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-250
+CHAM-252,,,OffCycle-2025,Need to upgrade redis as we are seeing slowness for services ,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-252
+CHAM-299,,,25.02,Core - 25.02 Release STG & Prod,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-299
+CHAM-3467,,,OffCycle-2025,Roper St. Francis (BSMH) - Phase 2a,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3467
+CHAM-3477,,,25.09,25.09 Prod Deployment - Core ,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3477
+CHAM-3549,,,24.10,Restart for CRM workflows in Prod us,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3549
+CHAM-3567,,,25.09,Patch fixes - STG & PROD,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3567
+CHAM-3630,,,25.10,dashboard ui issue & Linkedin sync now issue fix ,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3630
+CHAM-3696,,,OffCycle-2025,Deploy crm-workflows to STG ALL,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3696
+CHAM-3730,,,OffCycle-2025,Candidate Experience (CX)(Estimation MSR) Displaying preferred Candidate name,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3730
+CHAM-3743,,,OffCycle-2025,Move crm-workflows to PROD ALL,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3743
+CHAM-3776,,,25.11,High S3 Storage Costs- CRM,To Do,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3776
+CHAM-3782,,,24.10,Setup for new MFE - Project module (crm-projects-ui),Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3782
+CHAM-3858,,,25.10,Notes service - stg & prod deployment,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3858
+CHAM-3871,,,25.10,Spotlight service ,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3871
+CHAM-3889,,,25.10,Jobs UI - patch changes ,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3889
+CHAM-3947,,,25.10,Job locale site issue,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-3947
+CHAM-4001,,,25.09,Spotlights personalisation stage deployment,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4001
+CHAM-4237,,,25.10,Restart for CRM workflows to Prod ALL,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4237
+CHAM-4263,,DAMAC Properties,OffCycle-2025,Approval for 2 way HSI Prod deployment for DAMAC tenant,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4263
+CHAM-4265,,Givaudan,OffCycle-2025,Givaudan RIA deployment to Prod,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4265
+CHAM-4318,,,25.10,25.10 STG Deployment - CORE ,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4318
+CHAM-4369,,,25.10,25.10 PROD Deployment - CORE ,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4369
+CHAM-4379,,,24.10,BSMH X+Screening Go Live,Scheduled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-4379
+CHAM-468,,,OffCycle-2025,25.03 - Core Prod release deployment,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-468
+CHAM-474,,,OffCycle-2025,Create crm workflows in PROD ALL,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-474
+CHAM-543,,,OffCycle-2025,"CRM : Support ticket fix , deployment to stage and prod",Cancelled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-543
+CHAM-679,,,OffCycle-2025,Ui patch release for CRM UI,Cancelled,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-679
+CHAM-730,,,25.04,CORE : 25.04 Prod release Deployment,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-730
+CHAM-761,,,OffCycle-2025,Jobs mfe change deployment in prod,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-761
+CHAM-812,,,OffCycle-2025,crm hub restart,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-812
+CHAM-832,,,OffCycle-2025,restarting of services in prod ,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-832
+CHAM-868,,,OffCycle-2025,Restart crm-workflows in prod,Director Approval,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-868
+CHAM-886,,,OffCycle-2025,Migrate Onephenom Nodegrp to CRMNode for cpu intensive workload,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-886
+CHAM-894,,,OffCycle-2025,Deployment of jobs-api for the fix SPAR-873,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-894
+CHAM-937,,,OffCycle-2025,"Restart Crm-Settings-service, crm-hub in PROD (ir, ca, in, cr)",Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-937
+CHAM-942,,,OffCycle-2025,Spartenburg hyperpersonalization changes prod deployment,Done,Change Ticket,CHAM,https://phenompeople.atlassian.net/browse/CHAM-942
+CIS-1063,,,,Cisco | Custom Roles - PROD ,Closed,CR,CIS,https://phenompeople.atlassian.net/browse/CIS-1063
+CIS-1200,2025-12-10,Cisco,,Update to List created by?,Resolved,CR,CIS,https://phenompeople.atlassian.net/browse/CIS-1200
+CIS-1218,2025-11-24,Cisco,,"Deletion of ""Recently Viewed Jobs""",Closed,CR,CIS,https://phenompeople.atlassian.net/browse/CIS-1218
+CIS-1219,2025-11-27,Cisco,,Unable to see Candidate Assessment Status as a field for spotlights,Closed,CR,CIS,https://phenompeople.atlassian.net/browse/CIS-1219
+CIS-1293,2026-03-06,,,CRM :  Enable Incomplete Apply Reminders for French Canada Locale,Closed,Task,CIS,https://phenompeople.atlassian.net/browse/CIS-1293
+CIS-737,,,,Please change SMS to Single Opt In for Campaigns,Closed,CR,CIS,https://phenompeople.atlassian.net/browse/CIS-737
+CIS-751,,,,Can you please delete the unmapped statuses from the CRM ,Awaiting Information,CR,CIS,https://phenompeople.atlassian.net/browse/CIS-751
+CIS-757,,Cisco,,Error while Submitting the evolution ,Done,Product Bug,CIS,https://phenompeople.atlassian.net/browse/CIS-757
+CIS-761,,,,Matching Criteria Not Extracting from Job Descriptions in CRM are ,Closed,Task,CIS,https://phenompeople.atlassian.net/browse/CIS-761
+CNFLNT-325,,,,Configure and Test SSO,Closed,Story,CNFLNT,https://phenompeople.atlassian.net/browse/CNFLNT-325
+CNFLNT-381,2026-05-04,None,,Enable Omni-channel Inbox in PROD,Closed,Product Task,CNFLNT,https://phenompeople.atlassian.net/browse/CNFLNT-381
+CRMC-359,,Cheyenne Regional Medical Center,,UAT - Remove Department Field,Closed,CR,CRMC,https://phenompeople.atlassian.net/browse/CRMC-359
+CRMC-360,,Cheyenne Regional Medical Center,,UAT - Disposition Steps,Closed,Bug,CRMC,https://phenompeople.atlassian.net/browse/CRMC-360
+CRMC-363,,Cheyenne Regional Medical Center,,Recruiter Edit Job Access,Closed,Task,CRMC,https://phenompeople.atlassian.net/browse/CRMC-363
+CRMC-364,,Cheyenne Regional Medical Center,,UAT - Offer Process Start,Closed,Bug,CRMC,https://phenompeople.atlassian.net/browse/CRMC-364
+CRMC-365,,Cheyenne Regional Medical Center,,UAT - Disposition Steps,Closed,CR,CRMC,https://phenompeople.atlassian.net/browse/CRMC-365
+CRMC-367,,Cheyenne Regional Medical Center,,UAT- Templates - Social media ,Closed,CR,CRMC,https://phenompeople.atlassian.net/browse/CRMC-367
+CRMC-368,2025-12-12,Cheyenne Regional Medical Center,,UAT - Submitting Approval,Closed,CR,CRMC,https://phenompeople.atlassian.net/browse/CRMC-368
+CSTMZTN-10261,,,,Q-09639-TD Synnex (Formerly Tech Data) - Recruiter Experience (RX),Done,Epic,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-10261
+CSTMZTN-10327,,Cigna,,(Q-3842)Cigna - Recruiter Experience (RX),Done,Epic,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-10327
+CSTMZTN-12523,,Phenom Training Account,,Recruiter Experience (RX) : CRM Profile Merge Logic Update.,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12523
+CSTMZTN-12570,,"Mondelez International, Inc.",,Recruiter Experience (RX)(Estimation MSR) New Source Type: US Market Mapping,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12570
+CSTMZTN-12571,,"Mondelez International, Inc.",,Recruiter Experience (RX)(Estimation MSR) Workflow Status - Rename Status and Historical update,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12571
+CSTMZTN-12572,,Conagra Brands,,Recruiter Experience (RX)(Estimation MSR) Hiring data analytics,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12572
+CSTMZTN-12573,,McAfee,,Recruiter Experience (RX)(Estimation MSR) Hiring team - Interviewer (Phenom) and Interview Team (WD) sync,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12573
+CSTMZTN-12576,,NBA,,Recruiter Experience (RX)(Estimation MSR) Mapping Hire Status,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12576
+CSTMZTN-12584,,MolsonCoors,,Recruiter Experience (RX)(Estimation MSR) Pull Salary Expectations field into the CRM,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12584
+CSTMZTN-12590,,Michaels Stores,,Recruiter Experience (RX)(Estimation MSR) RX Analytics,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12590
+CSTMZTN-12596,,US Fitness Holdings,,Recruiter Experience (RX)(Estimation MSR) We are unable to distinguish multiple locations that are in the same city and state in the CRM/HRM. We would like to add the location name as it appears on our Careers Site.,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12596
+CSTMZTN-12598,,Philip Morris International,,Recruiter Experience (RX)(Estimation MSR) Prep/feedback time option in AI Interview Scheduler,Expired,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12598
+CSTMZTN-12599,,Octapharma,,Recruiter Experience (RX)(Estimation MSR) Time to Fill Report,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12599
+CSTMZTN-12604,,DHL Group,,Recruiter Experience (RX)(Estimation MSR) Create a DSC Recruiter marketer role that only will grant access to recruiters to send email campaigns,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12604
+CSTMZTN-12605,,"Mondelez International, Inc.",,Recruiter Experience (RX)(Estimation MSR) Rename Hiring Status Lead - Screening,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12605
+CSTMZTN-12608,,KPMG Switzerland,,Recruiter Experience (RX) : CRM Profile Merge Logic Update.(Estimation MSR) Inactivity Mail,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12608
+CSTMZTN-12610,,KPMG Switzerland,,Recruiter Experience (RX)(Estimation MSR) Inactivity Mail,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12610
+CSTMZTN-12621,,FOX Rehabilitation,,Recruiter Experience (RX)(Estimation MSR) Phone Screen Mapping to Candidate profile custom field,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12621
+CSTMZTN-12623,,Arrow Electronics,,Recruiter Experience (RX)(Estimation MSR) Phenom Analytics: Automated Report,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12623
+CSTMZTN-12632,,US Fitness Holdings,,Recruiter Experience (RX)(Estimation MSR) Update text to apply number already provided,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12632
+CSTMZTN-12638,,MolsonCoors,,Recruiter Experience (RX)(Estimation MSR)  multilocation postings,Expired,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12638
+CSTMZTN-12640,,PwC US,,Recruiter Experience (RX)(Estimation MSR) Remove 3 candidate profile fields integrated from Workday from view in PwC US tenant,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12640
+CSTMZTN-12644,,"Corewell Health, formerly Spectrum Health",,Recruiter Experience (RX)(Estimation MSR) Cross-entity search for candidate search in CRM,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12644
+CSTMZTN-12668,,Arrow Electronics,,Recruiter Experience (RX)(Estimation MSR)  Phenom Integration with SEEK in Arrow Electronics,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12668
+CSTMZTN-12672,,Proximus,,Recruiter Experience (RX)(Estimation MSR) Add affiliate BICS in job posting EX,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12672
+CSTMZTN-12688,,Herbert Smith Freehills Kramer LLP,,Recruiter Experience (RX)(Estimation MSR) CRM messaging,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12688
+CSTMZTN-12691,,Texas Roadhouse,,Recruiter Experience (RX)(Estimation MSR) Add all open jobs to job pull,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12691
+CSTMZTN-12697,,Philip Morris International,,Recruiter Experience (RX)(Estimation MSR) Pre-screening questions mapped to application level additional field,Expired,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12697
+CSTMZTN-12698,,Richards Building Supply Co.,,Recruiter Experience (RX)(Estimation MSR) Talroo access to staging environment,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12698
+CSTMZTN-12700,,Duke University Health System,,Recruiter Experience (RX)(Estimation MSR) Talent Network Historical Merge,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12700
+CSTMZTN-12705,,Pentair,,Recruiter Experience (RX)(Estimation MSR) Creating New Candidate Flow in ATS with new Hiring Statuses,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12705
+CSTMZTN-12710,,DHL Group,,"Recruiter Experience (RX)(Estimation MSR) Request to Update ""Move to HRMS"" Status Handling in Two-Way Hiring Status Integration for Lumesse LATAM",Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12710
+CSTMZTN-12717,,Capgemeni,,Recruiter Experience (RX)(Estimation MSR) Relabel of “Hiring manager Input” to 'Skillset' in to align with GetTalent field name,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12717
+CSTMZTN-12718,,Capgemeni,,"Recruiter Experience (RX)(Estimation MSR) Unable to move candidate in GT+ From ""Hiring manager review"" bucket to ""Tagged to another job requisition"" bucket",Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-12718
+CSTMZTN-13475,,Phenom GCC,,Recruiter Experience (RX) : CRM Profile Merge Logic Update.,Expired,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13475
+CSTMZTN-13480,,Camping World,,Recruiter Experience (RX)(Estimation MSR) BPD Sync - Disposition Reasons - week of 10/6,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13480
+CSTMZTN-13481,,PwC Acceleration Centers,,Recruiter Experience (RX)(Estimation MSR) Including Reschedule Data into the Scheduling Report in Analytics,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13481
+CSTMZTN-13482,,Redfin,,Recruiter Experience (RX) : Create custom user role.,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13482
+CSTMZTN-13485,,Redfin,,Recruiter Experience (RX) : CRM Profile Merge Logic Update.,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13485
+CSTMZTN-13492,,DHL Group,,Recruiter Experience (RX) : Create custom user role.,Expired,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13492
+CSTMZTN-13498,,Bon Secours Mercy Health,,Recruiter Experience (RX)(Estimation MSR) Evergreen Movement within the CRM,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13498
+CSTMZTN-13509,,ABB,,Recruiter Experience (RX)(Estimation MSR) Re arrange options in filter section,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13509
+CSTMZTN-13516,,Capgemini,,Recruiter Experience (RX)(Estimation MSR) Application field removal and Inline apply fields,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13516
+CSTMZTN-13520,,Newmont Mining Corporation,,Candidate Experience (CX)(Estimation MSR) Recruiter Initiated Apply,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13520
+CSTMZTN-13526,,Toyota,,Recruiter Experience (RX)(Estimation MSR) We would like to have Interviewer_Preferred_Name for all Interviewer Communication Templates,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13526
+CSTMZTN-13542,,ABB,,Recruiter Experience (RX)(Estimation MSR) Change filter options from unspecified to to other details,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13542
+CSTMZTN-13545,,Toyota,,Recruiter Experience (RX) : Create custom user role.,Done,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13545
+CSTMZTN-13553,,PwC Acceleration Centers,,Recruiter Experience (RX)(Estimation MSR) Including applied filters on data exports from Phenom,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13553
+CSTMZTN-13561,,Manulife Financial,,Recruiter Experience (RX)(Estimation MSR) Staging Environment Refresh to Mirror Production (Excluding Candidate Contact Configurations),Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13561
+CSTMZTN-13578,,Thales,,Recruiter Experience (RX)(Estimation MSR) Need to upload New Email Addresses from an Acquisition for AI Interview Scheduling.,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13578
+CSTMZTN-13580,,Parker's Kitchen,,Recruiter Experience (RX)(Estimation MSR) Additional Placeholder,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13580
+CSTMZTN-13586,,US Fitness Holdings,,Recruiter Experience (RX)(Estimation MSR) We don't have Recruiter Intiiated Apply,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13586
+CSTMZTN-13599,,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,Recruiter Experience (RX)(Estimation MSR) We would like to implement the following feature: AI agents:  1. Voice screening 2. Intake Agent 3. Fraud prevention,Rejected,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13599
+CSTMZTN-13600,,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,Recruiter Experience (RX)(Estimation MSR) Reporting and fields to be created,Client Cancelled,Story,CSTMZTN,https://phenompeople.atlassian.net/browse/CSTMZTN-13600
+CUSP-5216,,CVS Health Corporation,,"Projects - allow for additional job fields (Hiring Manager, Recruiter) available in Candidate export",Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5216
+CUSP-5218,,Mastercard Worldwide,,Is there a way to identify recently activated Matching Criteria on reqs?,Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5218
+CUSP-5225,,Quest Global,,Ability to expand the Field columns on UI in CRM.,Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5225
+CUSP-5233,,Serco,,Save interview address in CRM,Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5233
+CUSP-5235,,Yale University,,Search JSQ from Phenom CRM,Invalid Product Feedback,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5235
+CUSP-5243,,"Mondelez International, Inc.",,"solution that enables recruiters to quickly and easily distinguish between reviewed and unreviewed candidate profiles within a job requisition, streamlining the",Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5243
+CUSP-5302,,Capgemini,,Access to Change Default Scorecard restrict to Admins,Reviewed - Not in Roadmap,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5302
+CUSP-5304,,BMO Financial Group,,Proxy View of CRM,Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5304
+CUSP-5309,,CVS Health Corporation,,"Tag Administration - need ""Select All"" (to delete in bulk)",Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5309
+CUSP-5330,,Merck KGaA,,Admin to manage system spotlights,Potential Future Enhancement,Product Feedback,CUSP,https://phenompeople.atlassian.net/browse/CUSP-5330
+CVSOAK-313,2026-04-06,,,Email white labeling configuration to the Preview environment for CVS Health (Ref: CVSCHLUS).,Closed,Story,CVSOAK,https://phenompeople.atlassian.net/browse/CVSOAK-313
+CVSOAK-314,2026-04-06,CVS Health Corporation,,SMS configuration to the Preview environment for CVS Health (Ref: CVSCHLUS).,Open,Story,CVSOAK,https://phenompeople.atlassian.net/browse/CVSOAK-314
+DEAC-323,2026-05-13,,,Enable SMS module in CRM,Closed,Story,DEAC,https://phenompeople.atlassian.net/browse/DEAC-323
+DEVOPS2-24424,,,,CLONE - CLONE - Need Bitbucket Repository having names: notes-service,Completed,Task,DEVOPS2,https://phenompeople.atlassian.net/browse/DEVOPS2-24424
+DRL-169,,Dr. Reddy's Laboratories,,Hide/Remove External Posting Option,Done,Product Story,DRL,https://phenompeople.atlassian.net/browse/DRL-169
+DRL-175,,Dr. Reddy's Laboratories,,Populate Department Field Options,Done,Product Story,DRL,https://phenompeople.atlassian.net/browse/DRL-175
+DSCAPTWH-433,2026-06-22,,,Issues on the CRM description page,Closed,Bug,DSCAPTWH,https://phenompeople.atlassian.net/browse/DSCAPTWH-433
+DTF-378,2025-04-07,Other,,"For an external only posted job, while editing in published on field it is showing both external and internal",Closed,Task,DTF,https://phenompeople.atlassian.net/browse/DTF-378
+DTF-537,2026-03-16,Din Tai Fung North America,,CRM-created Jobs that are located in NYC do not have correct city location,Done,Product Bug,DTF,https://phenompeople.atlassian.net/browse/DTF-537
+DTF-543,2026-05-29,Din Tai Fung North America,,Integration for Dynamically Updating Additional Fields from UKG,Cancelled,Product Story,DTF,https://phenompeople.atlassian.net/browse/DTF-543
+ECUH-444,,,,Candidates Appearing as Leads in CRM instead of Applicants ,Closed,Task,ECUH,https://phenompeople.atlassian.net/browse/ECUH-444
+ECUH-541,2026-03-24,ECU Health,,Correction to Candidate Hiring Status,Closed,Story,ECUH,https://phenompeople.atlassian.net/browse/ECUH-541
+ECUH-546,2026-01-30,ECU Health,,Recruiter Insights Dashboard,Resolved,Story,ECUH,https://phenompeople.atlassian.net/browse/ECUH-546
+ECUH-550,2026-02-04,ECU Health,,Edit Hiring Status,Closed,CR,ECUH,https://phenompeople.atlassian.net/browse/ECUH-550
+ECUH-552,2026-02-03,ECU Health,,Privacy - Not processing,Closed,Task,ECUH,https://phenompeople.atlassian.net/browse/ECUH-552
+ECUH-572,2026-03-02,ECU Health,,Recruiter Dashboard - Show More Button,Closed,CR,ECUH,https://phenompeople.atlassian.net/browse/ECUH-572
+ECUH-621,2026-04-14,,,Move CRM Configurations - PROD ,Closed,Story,ECUH,https://phenompeople.atlassian.net/browse/ECUH-621
+ECUH-670,2026-04-23,,,Change to Template Names Impacting Prod Go Live ,Closed,Story,ECUH,https://phenompeople.atlassian.net/browse/ECUH-670
+ECUH-674,2026-04-27,ECU Health,,Candidates Not Displayed Under the AI Discovery Tab for Multiple Roles,Done,Product Story,ECUH,https://phenompeople.atlassian.net/browse/ECUH-674
+ENBW-1001,2026-04-16,,,Workers council role can see way too much profiles that they are not allowed to see,Awaiting Information,CR,ENBW,https://phenompeople.atlassian.net/browse/ENBW-1001
+ENBW-1006,2026-05-04,Energie Baden-Wurttemberg,,"Weird System behavior when trying to go to ""Dashboard""",Done,Product Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-1006
+ENBW-611,2026-02-12,Energie Baden-Wurttemberg,,Default Template Option in Settings not Available,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-611
+ENBW-628,2026-02-13,,,Translation für Hiring Status missing,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-628
+ENBW-633,2026-02-19,,,Search Bar not working properly,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-633
+ENBW-637,2026-02-26,,,"Radius of location per default on ""irrelevant"" (Nicht relevant)",Closed,CR,ENBW,https://phenompeople.atlassian.net/browse/ENBW-637
+ENBW-638,2026-02-05,,,"Translation change for ""Hiring Manager""",Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-638
+ENBW-641,2026-02-13,,,Templates to be imported to the CRM + Formatting,Closed,CR,ENBW,https://phenompeople.atlassian.net/browse/ENBW-641
+ENBW-643,2026-09-08,Energie Baden-Wurttemberg,,Feature to view/upload documents in Jobs (Phenom),Story Ready,Product Story,ENBW,https://phenompeople.atlassian.net/browse/ENBW-643
+ENBW-644,2026-02-05,,,Share Button that leads to internal/external careers page missing,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-644
+ENBW-645,2026-02-13,,,Processing candidate fields,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-645
+ENBW-672,2026-02-13,,,"Translation misleading/wrong ""Clear all Skills"" -> "" Schließe alle Fähigkeiten""",Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-672
+ENBW-673,2026-02-13,,,Post apply Workflow: Further transition statuses,Closed,Task,ENBW,https://phenompeople.atlassian.net/browse/ENBW-673
+ENBW-809,2026-03-04,Energie Baden-Wurttemberg,,No possibility to change HM or Recruiter in Job,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-809
+ENBW-828,2026-03-19,,,"Adjustments to Works Council User Role (Topbar, Sidebar, Permissions & Visibility)",QA Passed,Product Task,ENBW,https://phenompeople.atlassian.net/browse/ENBW-828
+ENBW-900,2026-03-12,Energie Baden-Wurttemberg,,Jan Czaykowski (internal employee + tester) cant see some features even with master admin role,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-900
+ENBW-901,2026-03-11,Energie Baden-Wurttemberg,,Automated site opening on Applicants instead of leads,Closed,Bug,ENBW,https://phenompeople.atlassian.net/browse/ENBW-901
+ENBW-969,2026-03-31,,,Fitscore activating only for Recruiters NOT for hiring manager in Prod,Closed,Task,ENBW,https://phenompeople.atlassian.net/browse/ENBW-969
+FATRC-536,2026-01-23,,,Prod Move: Move CRM Configuration from Stage to Prod,Closed,Story,FATRC,https://phenompeople.atlassian.net/browse/FATRC-536
+GCCE-1380,2026-04-20,,,Config Viewer - Report for Messaging and other CRM important configs,Done,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1380
+GCCE-1390,2026-03-19,,,GCC AI- Client Configurtions Module,PM Acceptance Queue,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1390
+GCCE-1398,2026-04-20,,,"Tool - Job Status validation between ATS, CRM and Sync",PM Acceptance Queue,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1398
+GCCE-1400,2026-03-17,,,Tool - DELETE Draft Phenom Jobs,Done,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1400
+GCCE-1415,2026-03-22,,,Tool - Create Custom Role,PM Acceptance Queue,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1415
+GCCE-1416,2026-04-30,,,[EPIC] Configuration Viewer Tool,Development,Epic,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1416
+GCCE-1419,2026-05-31,,,[Epic] Global Features Enablement Tool,Done,Epic,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1419
+GCCE-1473,2026-04-24,,,Config Viewer - Excel-to-Doc conversion using n8n - Implementation,Development,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1473
+GCCE-1580,2026-05-15,,,Config Viewer - Add Ai Bot for the config viewer,Done,Story,GCCE,https://phenompeople.atlassian.net/browse/GCCE-1580
+GIV-1066,2025-04-09,Givaudan,,How the leads are created?,Closed,Task,GIV,https://phenompeople.atlassian.net/browse/GIV-1066
+GIV-1346,2025-06-14,Givaudan,,AI - similar job titles,Done,Product Story,GIV,https://phenompeople.atlassian.net/browse/GIV-1346
+GIV-1348,2026-02-02,Givaudan,,CRM screen scrolling issue,Done,Product Bug,GIV,https://phenompeople.atlassian.net/browse/GIV-1348
+GIV-1556,2025-06-26,Givaudan,,Fencing - issues,Done,Product Bug,GIV,https://phenompeople.atlassian.net/browse/GIV-1556
+GIV-1817,2025-10-06,Givaudan,," In the Leads Sections, Applications are showing STG CRM",Done,Product Bug,GIV,https://phenompeople.atlassian.net/browse/GIV-1817
+GIV-1872,,,,Add users to the whitelisted emails in CRM staging,Closed,Task,GIV,https://phenompeople.atlassian.net/browse/GIV-1872
+GIV-607,2025-09-08,Givaudan,,"""Open Days"" logic in CRM - How can it be changed?",Done,Product Story,GIV,https://phenompeople.atlassian.net/browse/GIV-607
+GIV-987,2025-04-07,Givaudan,,Applicant added in SF not showing in CRM,Closed,Bug,GIV,https://phenompeople.atlassian.net/browse/GIV-987
+GODCR-916,2026-06-16,,,Configure Custom Job Status ,*In Development,Story,GODCR,https://phenompeople.atlassian.net/browse/GODCR-916
+GPS-63,,Genentech,,Dealer Requirements in CRM,Done,Product Story,GPS,https://phenompeople.atlassian.net/browse/GPS-63
+GSK-403,2026-01-13,GSK,,"The CRM job preview link currently redirects to the Internal career site, despite the job being available on both the Internal and External career sites.",Closed,Story,GSK,https://phenompeople.atlassian.net/browse/GSK-403
+GSK-423,2026-01-28,GSK,,Remove 'Time Type' Field and other default fields not being used,Done,Product Story,GSK,https://phenompeople.atlassian.net/browse/GSK-423
+GSK-450,2026-01-23,GSK,,"Using the same CV, the parsing worked differently for 2 separate candidates.",Closed,Bug,GSK,https://phenompeople.atlassian.net/browse/GSK-450
+GSK-518,2026-02-09,GSK,,Candidate activity entries are duplicated,Closed,Bug,GSK,https://phenompeople.atlassian.net/browse/GSK-518
+GSK-589,2026-02-26,,,Filters to setup spotlights CS0302960,Closed,CR,GSK,https://phenompeople.atlassian.net/browse/GSK-589
+GSK-619,2026-03-11,GSK,,UAT: Partial Merge in Phenom – Duplicate Records Remain After Manual Merge CS0305010,Closed,CR,GSK,https://phenompeople.atlassian.net/browse/GSK-619
+GSK-656,2026-03-12,,,"UAT: Map Candidate Tags, Previous worker fields in HSI (CS0306221 and CS0306218)",Closed,CR,GSK,https://phenompeople.atlassian.net/browse/GSK-656
+GSK-658,2026-03-20,,,"UAT: Not able to filter (in spotlight) on Assessment scores by using criteria like above, below, between, etc. CS0306794",Closed,CR,GSK,https://phenompeople.atlassian.net/browse/GSK-658
+HFEXEP-377,2026-06-01,Health First,,Job/Req audit history log on UI,Done,Product Story,HFEXEP,https://phenompeople.atlassian.net/browse/HFEXEP-377
+HFEXEP-386,,Health First,,In production IM the job summary is showing the stored value for Full Time Part time instead of the display value,Done,Product Bug,HFEXEP,https://phenompeople.atlassian.net/browse/HFEXEP-386
+HPE-173,,HP Enterprise,,Create CRM Account CRM API Access - HP Enterprise - CTC Integration,Done,Product Story,HPE,https://phenompeople.atlassian.net/browse/HPE-173
+I7BPH-429,2026-02-20,,,7Brew Move RX configurations to IQA ,Closed,Task,I7BPH,https://phenompeople.atlassian.net/browse/I7BPH-429
+I7BPH-448,2026-04-16,Phenom People,,candidates issue,Confirm Resolution,Product Bug,I7BPH,https://phenompeople.atlassian.net/browse/I7BPH-448
+IAFCR-429,,,,CS0280867  - Error message when viewing candidates,Closed,Story,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-429
+IAFCR-439,,,,Not able to forward candidates to colleagues,Closed,Task,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-439
+IAFCR-444,,,,CS0281341 - Not able to create lead profile & new candidate profile,Closed,Task,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-444
+IAFCR-446,,,,"CS0282018 - Not able to :- hide the ""Created Date"" column",Closed,Task,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-446
+IAFCR-641,2026-02-11,Arla Foods,,Hogan Asessment development: RX,Done,Product Story,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-641
+IAFCR-727,2026-04-13,Arla Foods,,Issue with languages,Closed,Bug,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-727
+IAFCR-728,2026-04-13,Arla Foods,,Recruiter can't attach documents to interview template,Closed,Bug,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-728
+IAFCR-731,2026-04-23,,,CS0317276: Interview invitation not sent to candidate,Closed,Task,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-731
+IAFCR-732,2026-04-23,Arla Foods,,CS0316974 : Hogan integration - HDS missing,Resolved,Story,IAFCR,https://phenompeople.atlassian.net/browse/IAFCR-732
+IAGR-293,2026-03-13,Agnico Eagle Mines Limited,,"Flag Enable LinkedIn Apply Connect Widget, not there in prod ca for other tenants also.",Done,Product Bug,IAGR,https://phenompeople.atlassian.net/browse/IAGR-293
+IAGR-322,2026-06-01,Agnico Eagle Mines Limited,,Certifications are not appearing in UI,Done,Product Bug,IAGR,https://phenompeople.atlassian.net/browse/IAGR-322
+IAKRCPH-1039,2026-06-02,ABS Kids,,SFTP feed for jobs is sending codes vs. Values (On Behalf of Collin),Done,Product Bug,IAKRCPH,https://phenompeople.atlassian.net/browse/IAKRCPH-1039
+IAKRCPH-1052,2026-06-01,ABS Kids,,Jobs not closing when offers are accepted,Done,Product Bug,IAKRCPH,https://phenompeople.atlassian.net/browse/IAKRCPH-1052
+IAKRCPH-1067,2026-06-08,ABS Kids,,LinkedIn Integration - Recommendations Not working in Projects,Done,Product Bug,IAKRCPH,https://phenompeople.atlassian.net/browse/IAKRCPH-1067
+IAKRCPH-1100,2026-07-09,ABS Kids,,Incorrect job categories/ missing custom fields,Closed,CR,IAKRCPH,https://phenompeople.atlassian.net/browse/IAKRCPH-1100
+IAKRCPH-1135,2026-08-11,ABS Kids,,Jobs are duplicating as draft and we're not creating them,Done,Product Bug,IAKRCPH,https://phenompeople.atlassian.net/browse/IAKRCPH-1135
+IAKRCPH-352,2025-09-08,Other,,Alignment issue in CRM -  screening questionnaire,Done,Product Bug,IAKRCPH,https://phenompeople.atlassian.net/browse/IAKRCPH-352
+IANSFZPMG-304,2026-06-09,,,"Set up Parent Child CRM - Activision (Parent), ZeniMax (Child)",QA Passed,Story,IANSFZPMG,https://phenompeople.atlassian.net/browse/IANSFZPMG-304
+IANSFZPMG-311,2026-06-30,ZeniMax Media,,Newly pulled jobs are having delay on showing in CRM,Confirm Resolution,Product Bug,IANSFZPMG,https://phenompeople.atlassian.net/browse/IANSFZPMG-311
+IARSOT-377,2026-04-13,ABB Robotics,,Job Location Input not recognized,Done,Product Bug,IARSOT,https://phenompeople.atlassian.net/browse/IARSOT-377
+IARSOT-392,2026-04-20,ABB Robotics,,Drop down values hidden under search field for second and above values,Done,Product Bug,IARSOT,https://phenompeople.atlassian.net/browse/IARSOT-392
+IARSOT-455,2026-05-15,ABB Robotics,,User permissions for gretchen.teetzel@us.abb.com (part of ABB tenant),REOPEN,Task,IARSOT,https://phenompeople.atlassian.net/browse/IARSOT-455
+IARSOT-456,2026-04-22,ABB,,search issue for multi-select field ,Done,Product Bug,IARSOT,https://phenompeople.atlassian.net/browse/IARSOT-456
+IARSOT-457,2026-04-23,ABB Robotics,,Special Characters in CRM Job Form,Closed,Bug,IARSOT,https://phenompeople.atlassian.net/browse/IARSOT-457
+IATMP-507,2026-01-22,Abbott,,All communications for the TM & L&D team,REOPEN,CR,IATMP,https://phenompeople.atlassian.net/browse/IATMP-507
+IATNBEE-403,2026-05-12,,,Employee Feed - Load New Test File for remaining UAT Testers,Closed,Story,IATNBEE,https://phenompeople.atlassian.net/browse/IATNBEE-403
+IAWIE-1132,,,,Job Fit and locations,Closed,CR,IAWIE,https://phenompeople.atlassian.net/browse/IAWIE-1132
+IAWIE-1136,,AGCO Corporation,,CRM location matching issue,Closed,Bug,IAWIE,https://phenompeople.atlassian.net/browse/IAWIE-1136
+IAWIE-1294,2026-04-24,AGCO Corporation,,Submitted referral candidate is not displaying for AGCO in CRM Staging environment,Done,Product Bug,IAWIE,https://phenompeople.atlassian.net/browse/IAWIE-1294
+IBC2-350,2026-06-12,Phenom People,,Employee Feed: Education and Experience integration not pulling the data in STAGE,Resolved,Story_ML,IBC2,https://phenompeople.atlassian.net/browse/IBC2-350
+IBHEYO-295,2026-06-08,Borealis AG,,Applicants count is not displayed under the job header,Done,Product Bug,IBHEYO,https://phenompeople.atlassian.net/browse/IBHEYO-295
+IBHR-308,2026-01-26,,,Enable X+ Screening in stage and Prod,Closed,Story,IBHR,https://phenompeople.atlassian.net/browse/IBHR-308
+IBHR-352,2026-04-09,,,Enable CRM feature flags in STG,Closed,Story,IBHR,https://phenompeople.atlassian.net/browse/IBHR-352
+IBHR-371,2026-04-16,,,Validate CRM feature flags in STG,QA Passed,Story,IBHR,https://phenompeople.atlassian.net/browse/IBHR-371
+IBHR-430,2026-08-10,Phenom Internal Support Tickets,,Unable to move additional fields from STG to PROD in CRM,QA In Progress,Product Bug,IBHR,https://phenompeople.atlassian.net/browse/IBHR-430
+IBT-437,2025-11-10,,,CRM IM: enable AI Consent flags ,Closed,CR,IBT,https://phenompeople.atlassian.net/browse/IBT-437
+IBT-440,2025-10-30,,,Enable fields in the Job - Details tab,Closed,CR,IBT,https://phenompeople.atlassian.net/browse/IBT-440
+IBT-444,2025-10-31,,,CRM - System email templates to be updated with default footer,Closed,CR,IBT,https://phenompeople.atlassian.net/browse/IBT-444
+IBT-462,2025-11-28,,,ERM  dashboard - Use Country and City format instead of City REGION Country (remove Region and set Country first),Resolved,CR,IBT,https://phenompeople.atlassian.net/browse/IBT-462
+IBT-470,2025-11-05,,,CRM - Jobs - Job details,Resolved,CR,IBT,https://phenompeople.atlassian.net/browse/IBT-470
+IBT-472,2025-11-07,,,Employee Feed: when an employee is terminated in SAP SF - it has to be deleted,Closed,Bug,IBT,https://phenompeople.atlassian.net/browse/IBT-472
+IBT-478,2025-11-07,,,CRM - System email templates,Closed,CR,IBT,https://phenompeople.atlassian.net/browse/IBT-478
+IBT-503,2025-11-12,,,CV Uploaded in IM is not visible in CRM,Closed,Bug,IBT,https://phenompeople.atlassian.net/browse/IBT-503
+IBUR-432,,"BAE SYSTEMS, Inc.",,Phenom Issue Submission 10/16 Event Booth,Closed,Bug,IBUR,https://phenompeople.atlassian.net/browse/IBUR-432
+ICCSD-347,2026-09-03,Calgary Catholic School District,,Automate Posting of the CRM JOB,Story Elaboration,Product Story,ICCSD,https://phenompeople.atlassian.net/browse/ICCSD-347
+ICCSD-361,2026-04-03,Calgary Catholic School District,,Hiring managers can post jobs thru requisition without approval,Awaiting Information,Bug,ICCSD,https://phenompeople.atlassian.net/browse/ICCSD-361
+ICCSD-366,2026-04-02,Calgary Catholic School District,,Hiring managers can post jobs thru requisition without approval,Closed,Bug,ICCSD,https://phenompeople.atlassian.net/browse/ICCSD-366
+ICCSD-477,2026-06-08,Calgary Catholic School District,,Not able to activate job P-100043 remains in DRAFT P-100045 is not active,Waiting for other info,Product Bug,ICCSD,https://phenompeople.atlassian.net/browse/ICCSD-477
+ICDECS-387,2026-03-17,,,Enable Employee RaaS Integration in Cisco Exec Tenant ,QA Passed,Task,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-387
+ICDECS-411,2026-03-06,,,Implement Departmentalization Scope for Cisco Tenant ,QA Passed,Task,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-411
+ICDECS-415,2026-05-13,Cisco,,Confidential Security is not honored for Projects,Done,Product Story,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-415
+ICDECS-417,2026-04-13,Cisco,,Update Error Message when adding attachment in Project,Done,Product Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-417
+ICDECS-424,2026-06-13,Cisco,,Missing Mandatory Fields | Projects | Cisco Exec Environment,Done,Product Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-424
+ICDECS-427,2026-07-13,Cisco,,Forward Function doesn't Work for Projects | Cisco Exec Environment,Done,Product Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-427
+ICDECS-428,2026-04-13,Cisco,,Projects | Documents' Download and Forward icons misaligned | Cisco Exec Environment,Done,Product Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-428
+ICDECS-497,2026-03-18,,,Job Category and Job Family values wrongly pulled in CRM,Closed,Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-497
+ICDECS-501,2026-03-27,,,Candidates Not Receiving Email ,Closed,Story,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-501
+ICDECS-502,2026-04-30,Cisco,,Misaligned Scope & View,Done,Product Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-502
+ICDECS-503,2026-03-26,,,Cannot See Reqs Associated with Exec Scope ,Closed,Story,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-503
+ICDECS-504,2026-03-26,,,Email Error,Closed,Story,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-504
+ICDECS-553,2026-04-28,,,Updated sources for candidate import aren't there,Resolved,CR,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-553
+ICDECS-563,2026-05-01,Cisco,,Internal Candidates are showing up as multiple profiles,Closed,Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-563
+ICDECS-580,2026-06-23,,,Production User Scope Assignment ,Closed,Story,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-580
+ICDECS-585,2026-05-28,,,Run Production Migration Script,Closed,Story,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-585
+ICDECS-603,2026-06-23,Cisco,,Departmentalization : Client reported few issues in PROD,Closed,Bug,ICDECS,https://phenompeople.atlassian.net/browse/ICDECS-603
+ICHRTOPHR-420,2026-06-15,CVS Health Corporation,,Candidate Availability Form Displays Raw System Values with Underscores,Done,Product Bug,ICHRTOPHR,https://phenompeople.atlassian.net/browse/ICHRTOPHR-420
+ICHRTOPHR-426,2026-06-01,CVS Health Corporation,,Dependency Work: CRM - Core Dependency Work: Automation Engine - Core Job Req creation from Phenom -> Workday  ,Done,Product Story,ICHRTOPHR,https://phenompeople.atlassian.net/browse/ICHRTOPHR-426
+ICHRTOPHR-656,2026-07-02,CVS Health Corporation,,"Candidate Creation Failed in WD, Req flowing in accurately",To Do,Product Bug,ICHRTOPHR,https://phenompeople.atlassian.net/browse/ICHRTOPHR-656
+IDCAC-443,2026-02-10,Phenom People,,Phenom Value Team not being able to create public spotlights - Please check permissions,Done,Product Bug,IDCAC,https://phenompeople.atlassian.net/browse/IDCAC-443
+IDECAS-1180,,,,"Please disable ""Create Jobs"" functionality from CRM for Qnity",Closed,CR,IDECAS,https://phenompeople.atlassian.net/browse/IDECAS-1180
+IDECAS-1231,2025-10-31,Dupont Electronics,,Not able to see Check boxes for Apply with LinkedIn in CRM ,Closed,Bug,IDECAS,https://phenompeople.atlassian.net/browse/IDECAS-1231
+IDECAS-1236,,Dupont Electronics,,New External Profiles feature appears not enabled?,Done,Product Story,IDECAS,https://phenompeople.atlassian.net/browse/IDECAS-1236
+IDECAS-1293,2025-12-09,,,Update Sytem Email templates footer with updated copyright for Qnity,Closed,CR,IDECAS,https://phenompeople.atlassian.net/browse/IDECAS-1293
+IDECAS-894,2025-08-06,,,Copy production Dupont SMS templates to Dupont electronics Staging and Production,Closed,Task,IDECAS,https://phenompeople.atlassian.net/browse/IDECAS-894
+IDFCB-236,,IDFC First Bank,,Additional filters missing in CRM,Done,Product Story,IDFCB,https://phenompeople.atlassian.net/browse/IDFCB-236
+IDFCB-258,,IDFC First Bank,,IDFC - Candidate Photo to be consumed,Done,Product Story,IDFCB,https://phenompeople.atlassian.net/browse/IDFCB-258
+IDHISETS-343,2026-07-20,Duke University Health System,,Some jobs not populating Status Set ID field,Done,Product Bug,IDHISETS,https://phenompeople.atlassian.net/browse/IDHISETS-343
+IDPMV-1018,2026-07-08,The Walt Disney Company,,Job creation and edit performance,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1018
+IDPMV-1051,2026-01-09,The Walt Disney Company,,Primary Job Title being replaced with Language Job Title,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1051
+IDPMV-1066,2025-11-11,The Walt Disney Company,,“Create Job” button disabled when creating a job from an existing job,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1066
+IDPMV-1114,2025-11-10,The Walt Disney Company,,Spotlight couldn't find any value in Segment,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1114
+IDPMV-1131,2025-12-31,The Walt Disney Company,,Analytics - Ingest Job Status Change events in Report Builder,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1131
+IDPMV-1232,2025-12-19,The Walt Disney Company,,We are unable to post the jobs in multiple Variants,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1232
+IDPMV-1257,2025-11-22,The Walt Disney Company,,Issue with Job Posting Location field when copying a job,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1257
+IDPMV-1263,2025-11-12,The Walt Disney Company,,DF-4458 - Duplicate Filter Fields,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1263
+IDPMV-1301,2025-12-01,The Walt Disney Company,,Move Application - Move to Job search not functioning in a variety of use cases,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1301
+IDPMV-1309,2025-11-24,Phenom People,,Tenant name is not displayed in CRM IQA environment.,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1309
+IDPMV-1333,2025-11-21,The Walt Disney Company,,DF-4538 - Job Category field does not permit commas - Workaround,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1333
+IDPMV-1334,2025-12-25,The Walt Disney Company,,DF-4541 - Unable to highlight Req ID from Job Listing screen (to copy into clipboard),Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1334
+IDPMV-1365,2025-12-02,The Walt Disney Company,,DF-4556 - Dropdowns With Search - Allow Configuration of Search Placeholder Text,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1365
+IDPMV-1368,2025-11-19,The Walt Disney Company,,"Update ""Recruitment Area"" job field value list",Closed,CR,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1368
+IDPMV-1393,2025-12-11,The Walt Disney Company,,"DF-4504 - ""Total Openings"" field on job requisition does not work properly",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1393
+IDPMV-1406,2025-11-28,The Walt Disney Company,,Invalid time type values have returned.,Closed,CR,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1406
+IDPMV-1427,2025-11-28,,,Uniform Date Formats,Resolved,Sub-task_ML,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1427
+IDPMV-1469,2025-11-21,The Walt Disney Company,,DF-4538 - Job Category field does not permit commas - Enhancement,ON Hold,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1469
+IDPMV-1470,2025-11-28,The Walt Disney Company,,P-101569 - job is not posting in the staging CRM,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1470
+IDPMV-1538,2026-01-13,The Walt Disney Company,,"Fields with unexpected Chinese values in lists - Worker Sub-Type, Job Family Group, Management Level",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1538
+IDPMV-1689,2025-12-24,,,Map Employee Type & Fixed Term Flag from Excel to Job Requisitions for Onboarding Validation,Closed,Task,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1689
+IDPMV-1790,2026-05-28,The Walt Disney Company,,User is unable to edit a job requisition when using Safari on Mac,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1790
+IDPMV-1847,2026-01-23,The Walt Disney Company,,Department field is displayed in Requisition Template creation even when it is disabled in Job Fields and cannot be selected,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1847
+IDPMV-1849,2026-07-27,The Walt Disney Company,,No validation is shown when Language is deselected while editing a published job,Reporter Reviewer,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1849
+IDPMV-1850,2026-01-23,The Walt Disney Company,,Publish option and career site selections are not retained correctly when editing a job; external site persists despite deselection,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1850
+IDPMV-1861,2026-01-23,The Walt Disney Company,,Posting locale not retained when editing a job,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1861
+IDPMV-1869,2026-01-19,The Walt Disney Company,,Header incorrectly displays “Create New Job” when editing an existing job,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1869
+IDPMV-1870,2026-07-13,The Walt Disney Company,,UI distortion occurs when clicking on Career Sites in Job Listing view,Reporter Reviewer,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1870
+IDPMV-1871,2026-01-23,The Walt Disney Company,,Job title reverts to primary job title when navigating to Description tab,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1871
+IDPMV-1872,2026-01-23,The Walt Disney Company,,Primary Job Title and Hiring Manager column headers are not translated based on user’s CRM language,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1872
+IDPMV-1873,2026-01-23,The Walt Disney Company,,Search keyword highlighting is incorrectly applied to Primary Job Title instead of Job Title,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1873
+IDPMV-1886,2026-03-27,The Walt Disney Company,,Worker Sub-Type values are not translated to Chinese when CRM language is set to Chinese,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1886
+IDPMV-1887,2026-01-23,The Walt Disney Company,,Some Job Categories are not translated to Chinese when CRM language is changed,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1887
+IDPMV-1948,2026-02-04,The Walt Disney Company,,Incorrect job URL generated when selecting hkdisneyland site with en-APAC language.,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1948
+IDPMV-1950,2026-02-04,The Walt Disney Company,,Job title is not displayed after publishing job to external site with multiple locales,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1950
+IDPMV-1951,2026-02-06,The Walt Disney Company,,"Job title is not displayed when searching by Job ID, and the ""Share → Copy Link"" option is missing from the Actions menu.",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1951
+IDPMV-197,2025-10-31,,,Email White-labeling,Closed,Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-197
+IDPMV-1981,2026-05-01,The Walt Disney Company,,Purged Non-US candidate still appears as a stale entry in Dashboard “Recently Viewed” tab,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-1981
+IDPMV-2083,2026-03-16,The Walt Disney Company,,Automation recipe executed successfully but candidate job tag was not updated when the offer status criteria is met,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2083
+IDPMV-2107,2026-04-28,The Walt Disney Company,,Job Not Unposted After Expiry Date Despite Successful Automation Execution,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2107
+IDPMV-2122,2026-06-17,The Walt Disney Company,,Duplicate values are again showing in the CRM,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2122
+IDPMV-2155,2026-04-13,The Walt Disney Company,,Issue with Add Additional Field import in List file ,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2155
+IDPMV-2205,2026-03-27,The Walt Disney Company,,pre qualification values are not being displayed in  the candidates tab.,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2205
+IDPMV-2224,2026-03-25,The Walt Disney Company,,There is an issue with the Job Category field while creating a job in the CRM.,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2224
+IDPMV-2226,2026-04-15,The Walt Disney Company,,Same Job ID Appearing Twice with Different Titles in CRM,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2226
+IDPMV-2228,2026-04-15,The Walt Disney Company,,Delay of job details populating after initial post,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2228
+IDPMV-2279,2026-04-02,The Walt Disney Company,,System allows job creation and posting without filling in mandatory Availability Tracker fields,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2279
+IDPMV-2355,2026-04-06,The Walt Disney Company,,"""Worker Sub-Type"" dropdown values are not displayed while creating a blank job or a requisition template, even though the field is mandatory and the Dropdown with search is enabled on job fields.",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2355
+IDPMV-2393,2026-04-07,The Walt Disney Company,,"""Actions"" , ""add candidates"", ""manage columns"" pop-up's in CRM Jobs tab cannot be dismissed without a manual page refresh.",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2393
+IDPMV-2407,2026-04-16,The Walt Disney Company,,DF-5211 - Job Req Filter - Seeing Duplicate Values,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2407
+IDPMV-2408,2026-04-09,The Walt Disney Company,,DF-5210 - Requisition 'Actions' menu does not hide/go away,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2408
+IDPMV-2416,2026-04-13,The Walt Disney Company,,New / Edited fields are not populating in IF conditions,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2416
+IDPMV-2419,2026-04-08,,,DF-5222 - Language Inconsistency,Closed,CR,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2419
+IDPMV-2445,2026-03-27,The Walt Disney Company,,Unable to create job by copying an existing job(external ATS jobs) (error message displayed),Resolved,Task,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2445
+IDPMV-2452,2026-04-17,The Walt Disney Company,,DF-5270 - Issue with self-assigning recruiter,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2452
+IDPMV-2504,2026-08-06,The Walt Disney Company,,Availability - Require availability on Public holidays - displaying yes/no on req does not make sense,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2504
+IDPMV-2513,2026-04-30,The Walt Disney Company,,DF-5341,Confirm Resolution,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2513
+IDPMV-2522,2026-05-25,The Walt Disney Company,,Career site locations do not appear correct,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2522
+IDPMV-2536,2026-06-30,The Walt Disney Company,,Availability fields not enforced as mandatory when creating job from requisition template,Confirm Resolution,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2536
+IDPMV-2599,2026-06-10,The Walt Disney Company,,DF-5590 - Job Posting Business missing scroll bar,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2599
+IDPMV-2601,2026-06-06,The Walt Disney Company,,DF-5588 - Incorrect Watermark Text,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2601
+IDPMV-2620,2026-06-04,The Walt Disney Company,,If the job is  in the draft status when we try to change the job status we are seeing [object object] error mesage.  ,To Do,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2620
+IDPMV-2631,2026-05-22,The Walt Disney Company,,DF-5729 - 'Germany' is not a Language,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2631
+IDPMV-2668,2026-06-01,The Walt Disney Company,,DF-5751: Field on Job Req blank when editing req,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2668
+IDPMV-2678,2026-07-23,The Walt Disney Company,,Closed and Frozen job is still visible on the Career Site,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2678
+IDPMV-2686,2026-06-24,The Walt Disney Company,,Disabling values in the Recruitment Area (or other drowpdown with search fields) does not work,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2686
+IDPMV-2729,2026-06-27,The Walt Disney Company,,Previously Selected Job Category Not Available in Category Search Dropdown,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2729
+IDPMV-2756,2026-08-10,The Walt Disney Company,,Error message being received in the CRM,Code Review,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2756
+IDPMV-2791,2026-07-27,The Walt Disney Company,,Can't reorder new options for dropdowns until saving and reopening,Reporter Reviewer,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2791
+IDPMV-2792,2026-08-10,The Walt Disney Company,,Phenom Errors - P-102631,To Do,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2792
+IDPMV-2803,2026-07-28,,,"When duplicating questionnaires, copied version does not properly retain follow-up questionnaire config",Open,Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2803
+IDPMV-2814,2026-07-24,The Walt Disney Company,,PROF - DF-6285 Missing various fields in 'details' tab of req in Phenom,Closed,CR,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2814
+IDPMV-2821,2026-08-04,The Walt Disney Company,,PROF - Please update list associated to 4 fields - custom hiring role fields,Development,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-2821
+IDPMV-372,2026-01-12,The Walt Disney Company,,Job fields mapped to CX display values for each language,Cancelled,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-372
+IDPMV-419,2025-11-21,The Walt Disney Company,,Job Status: Reserved for BrassRing Offer vs Active,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-419
+IDPMV-442,2025-11-20,The Walt Disney Company,,Support Decimal/Float Values for Number Field Type in Additional Field Creation,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-442
+IDPMV-447,2026-06-05,The Walt Disney Company,,Job Change Activity Logs,PM Acceptance Queue,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-447
+IDPMV-489,2025-10-13,The Walt Disney Company,,"Add ""Move"" Option to Recruiter Initiated Apply",Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-489
+IDPMV-532,2026-05-22,The Walt Disney Company,,DEP: IX: Job Requisition Foundation Data Files via SFTP - CRM Core,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-532
+IDPMV-592,2025-11-03,The Walt Disney Company,,Issue with Mandatory Field Validation on Job Creation on CRM,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-592
+IDPMV-620,2025-11-22,The Walt Disney Company,,The Multi select drop down functionality is not working as expected,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-620
+IDPMV-659,2025-10-01,The Walt Disney Company,,Values Clearing Too Quickly While Typing ,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-659
+IDPMV-682,,,,Change the Data Type of Job Field - Job Family Group and Job Family,Closed,Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-682
+IDPMV-692,,The Walt Disney Company,,Non-descript error when attempting to save templates with identical names,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-692
+IDPMV-701,,The Walt Disney Company,,Unable to Search Values in Compensation Grade Field,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-701
+IDPMV-710,,The Walt Disney Company,,Req Management - Job category removes when changing to APAC EN,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-710
+IDPMV-711,,The Walt Disney Company,,Career Site - JD Landing Page is showing the incorrect posted date,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-711
+IDPMV-713,,The Walt Disney Company,,CRM UI: Inconsistent visuals on job details page for hiring team,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-713
+IDPMV-715,,,,CRM - Unable to search for interviewers when creating an interview,Closed,Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-715
+IDPMV-716,,,,Value of Job Field Region is not retaining while job creation/edit,Closed,Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-716
+IDPMV-721,,The Walt Disney Company,,The Placement Reqs:- The Earliest Hire Date values are mismatched from the ATS to CRM ,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-721
+IDPMV-722,2025-10-17,The Walt Disney Company,,Some Placements Reqs Additional fields are showing duplicates in the Filter Section,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-722
+IDPMV-723,2025-10-17,The Walt Disney Company,,Some Placements Reqs Additional fields Filter functionality is not working in the CRM,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-723
+IDPMV-727,,The Walt Disney Company,,Some placement reqs additional fields are not showing in the CRM,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-727
+IDPMV-728,,The Walt Disney Company,,"Some Placements Reqs Additional fields are configured in the job pull end, but not in the additional fields sheet",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-728
+IDPMV-742,2025-11-24,The Walt Disney Company,,The Job creation form Mandatory identification functionality not working,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-742
+IDPMV-750,2025-11-28,The Walt Disney Company,,Platform UX - Dropdown items display Display Text and store RefID,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-750
+IDPMV-765,2026-02-02,The Walt Disney Company,,Job Creation View - dropdown type ahead additional fixes,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-765
+IDPMV-778,2025-10-16,,,UAT Disney Logged - AI and Fit Score Sections,Closed,CR,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-778
+IDPMV-828,2025-10-13,The Walt Disney Company,,Ability to Move Application back to original job ,Done,Product Story,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-828
+IDPMV-830,2025-10-15,The Walt Disney Company,,Requisition fields changed from Dropdown to Text Box,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-830
+IDPMV-831,2025-11-11,The Walt Disney Company,,Cannot create a requisition from a template,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-831
+IDPMV-844,2025-10-21,The Walt Disney Company,,UAT Disney Logged - Job Location on Posting Site is not displayed as expected based on Job Requisition details,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-844
+IDPMV-899,2025-11-03,The Walt Disney Company,,The Location Usage filed data is not updated correctly after the job is created,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-899
+IDPMV-923,2025-10-27,The Walt Disney Company,,Update Start date and visa-related fields are  Mandatory fields in the Offer creation form,Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-923
+IDPMV-933,2025-11-11,The Walt Disney Company,,"Editing a job, the languages are not 'loading' what was originally selected",Done,Product Bug,IDPMV,https://phenompeople.atlassian.net/browse/IDPMV-933
+IDPRP-1022,2026-07-21,The Walt Disney Company,,PROF - Invalid Job Posting Business being displayed in Filter,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1022
+IDPRP-1024,2026-07-24,The Walt Disney Company,,"PROF - Business ""The Walt Disney Company Europe, Middle East, and Africa"" not shown properly in Filter",Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1024
+IDPRP-1025,2026-07-29,The Walt Disney Company,,"PROF - Filters for ""Job Posting Business"" not finding all jobs",Waiting for other info,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1025
+IDPRP-1026,2026-07-22,The Walt Disney Company,,PROF - Req Created in the Future,Closed,Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1026
+IDPRP-1036,2026-07-29,The Walt Disney Company,,CRM Accessibility Report,Done,Product Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1036
+IDPRP-1040,2026-07-28,,,Validate mandatory fields before publishing jobs to prevent HVH flow failures,Closed,Product Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1040
+IDPRP-1042,2026-07-28,The Walt Disney Company,,Update posting status logic per job status,Done,Product Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1042
+IDPRP-1044,2026-07-28,The Walt Disney Company,,PROF - DF-6202 & DF-6224 & DF-6226 - Inconsistencies in Job Posting Experience,Confirm Resolution,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1044
+IDPRP-1045,2026-08-04,The Walt Disney Company,,PROF - DF-6243 - Req status updated to Frozen not reflecting in Phenom,Development,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1045
+IDPRP-1053,2026-07-27,,,Enhance Locations API to contain both Location Types with controlled CRM visibility ,Cancelled,Product Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1053
+IDPRP-1056,2026-07-31,The Walt Disney Company,,Update french translations for search facets on the emea fr site,In QA,Product Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1056
+IDPRP-1070,2026-07-27,,,Change Departmentalization Scopes for Disney STG,Closed,CR,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1070
+IDPRP-1074,2026-07-24,The Walt Disney Company,,Datahub files missing some hiring team IDs,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1074
+IDPRP-1082,2026-07-24,The Walt Disney Company,,"USA Job Created with Recruitment Area ""PROF - UNITED STATES"" Is Not Available on Career Site and Displays ""Sorry, this job is no longer available!""",IN Triage,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1082
+IDPRP-1090,2026-07-23,,,PROF - Please add translations for 4 fields in CRM - please ensure translations are visible in the career site facets,Closed,CR,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1090
+IDPRP-1119,2026-07-26,The Walt Disney Company,,PROF - Departmentalization requirements updates (CC-0021),Closed,CR,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1119
+IDPRP-1124,2026-07-27,The Walt Disney Company,,PROF - DF-6366 - Unable to add Ideal Candidate when editing a job,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1124
+IDPRP-1129,2026-07-28,The Walt Disney Company,,PROF - Issues with Job Visibility,Closed,Product Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1129
+IDPRP-1135,2026-07-30,The Walt Disney Company,,PROF - Employee Feed - Manager Level 1 Name & Email,Closed,Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1135
+IDPRP-1146,2026-08-03,The Walt Disney Company,,Hiring Team role configuration options are inconsistent across Phenom emails for ATS Jobs,To Do,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1146
+IDPRP-1153,2026-07-30,,,PROF - CC-036 - Remove Tags due to Legal feedback,Closed,CR,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1153
+IDPRP-1156,2026-07-30,The Walt Disney Company,,CRM Job Edits are not retaining,QA In Progress,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1156
+IDPRP-1175,2026-08-05,The Walt Disney Company,,SSO - Custom Attributes Impacting Departmentalization,IN Triage,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1175
+IDPRP-1201,2026-07-31,,,Confirm opt in behavior for candidate creation ,Open,Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1201
+IDPRP-1202,2026-07-31,The Walt Disney Company,,PROF - DF-6406 - Multiple demo reel links are not clickable,Open,Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1202
+IDPRP-1203,2026-07-31,The Walt Disney Company,,"PROF - Evergreen job from Workday not displayed in ""All Open Evergreens"" Spotlight",Open,Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-1203
+IDPRP-350,2025-12-30,,,Configure new job fields in staging,Closed,Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-350
+IDPRP-415,2026-06-30,The Walt Disney Company,,Tag Case Not Preserved on Creation but Retained After Edit,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-415
+IDPRP-464,2026-06-15,,,Enable CBAC in staging ,Closed,Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-464
+IDPRP-471,2026-06-17,The Walt Disney Company,,Heading Styles (H1-H6) Dropdown Missing from Text Editor Toolbar,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-471
+IDPRP-533,2026-05-15,The Walt Disney Company,,"PROF - DF-5657 - Unable to search for Bangkok, Thailand",Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-533
+IDPRP-546,2026-07-03,,,PROF - DF-5620: Job Category field options are not in alphabetical order,Closed,Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-546
+IDPRP-554,2026-05-29,The Walt Disney Company,,PROF - Pre Apply Questionnaire - PROF_France Apprenticeship Questionnaire - Can not Save Questions,Done,Product Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-554
+IDPRP-642,2026-08-03,,,Export professional application fields,*In Development,Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-642
+IDPRP-733,2026-06-30,The Walt Disney Company,,Modifying career site posting sites on an ATS integrated job is not tracked in the CRM,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-733
+IDPRP-769,2026-06-30,The Walt Disney Company,,Job Category field is not updated after saving job edits – selected value reverts to previous category,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-769
+IDPRP-775,2026-07-02,The Walt Disney Company,,"Publishing a job as Internal creates duplicate jobs, duplicate jobs are not editable, and saving edits on the original job fails with an error",Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-775
+IDPRP-778,2026-06-30,The Walt Disney Company,,Tagged notes are not visible to the tagged user in CRM,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-778
+IDPRP-780,2026-07-01,The Walt Disney Company,,"""Published On"" field is blank in Job Details after editing and publishing the job externally",Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-780
+IDPRP-802,2026-07-20,The Walt Disney Company,,Job edits not saving on confidential jobs,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-802
+IDPRP-812,2026-07-26,The Walt Disney Company,,PROF - Job Title is changing and not displaying properly,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-812
+IDPRP-827,2026-07-03,The Walt Disney Company,,Unable to manage list values across Requisition & Field Settings for multiple Locales,Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-827
+IDPRP-828,2026-07-03,The Walt Disney Company,,"ATS Created Job – Recruiter Unable to Initiate Screening; ""Assessment Initiate is Failed"" Error Displayed",Done,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-828
+IDPRP-841,2026-07-21,The Walt Disney Company,,When Posting a Job in the CRM and choosing a language - the region english languages need to be removed as options_PROF - DF-5982,Closed,CR,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-841
+IDPRP-864,2026-07-22,,,Close old jobs in CRM,Closed,Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-864
+IDPRP-889,2026-07-28,,,PROF -  City Normalization on filter for Orlando _PROF DF-5980,Closed,CR,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-889
+IDPRP-903,2026-07-27,The Walt Disney Company,,Update error message for job title updates when editing/creating a job,Done,Product Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-903
+IDPRP-955,2026-07-24,,,Confirm if adjustments to Candidate Create widget can be made,Closed,Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-955
+IDPRP-961,2026-07-30,The Walt Disney Company,,PROF - Job Category fix - Horticulture and Landscape does not exist,Development,Product Story,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-961
+IDPRP-962,2026-07-25,The Walt Disney Company,,PROF - Corrupted Jobs,Reopened,Product Bug,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-962
+IDPRP-981,2026-07-27,,,"PROF - DF-6110 Unexpected experience when using ""Don't Publish"" in Edit Job Functionality",Closed,Product Task,IDPRP,https://phenompeople.atlassian.net/browse/IDPRP-981
+IEAT-323,2025-10-21,"Excellus Health Plan, Inc.",,Adding a new child tenant to a parent tenant that already has two existing child tenants.,Done,Product Bug,IEAT,https://phenompeople.atlassian.net/browse/IEAT-323
+IEAT-344,2025-11-25,"Excellus Health Plan, Inc.",,Unable to create a job in CRM Stage environment,Done,Product Bug,IEAT,https://phenompeople.atlassian.net/browse/IEAT-344
+IEAT-364,2026-01-05,"Excellus Health Plan, Inc.",,Unable to view child tenant in tenant Info in CRM Settings,Done,Product Bug,IEAT,https://phenompeople.atlassian.net/browse/IEAT-364
+IEAT-367,2025-11-25,"Excellus Health Plan, Inc.",,Unable to create Events in preview environment,Done,Product Bug,IEAT,https://phenompeople.atlassian.net/browse/IEAT-367
+IECD-348,2026-02-21,Exyte GmbH,,Incorrect values being updated in Jobs Export file ,Done,Product Bug,IECD,https://phenompeople.atlassian.net/browse/IECD-348
+IEWM-45,,Electrolux,,CRM to save only Primary Questionnaire and not to save Secondary Questionnaire for Electrolux - ATS - Workday,Done,Product Story,IEWM,https://phenompeople.atlassian.net/browse/IEWM-45
+IFCR-335,2025-11-21,Other,,Jobs creation and adding category in CRM is showing error message ,Done,Product Bug,IFCR,https://phenompeople.atlassian.net/browse/IFCR-335
+IFCR-364,2025-11-24,Other,,Regarding subscrption campaign data is not showing up and also the spotlight is not deleting in crm ui,Done,Product Bug,IFCR,https://phenompeople.atlassian.net/browse/IFCR-364
+IFDCR-349,2026-03-09,,,Prod Move: Move CRM configs to Prod,Closed,Story,IFDCR,https://phenompeople.atlassian.net/browse/IFDCR-349
+IFDCR-352,2026-04-13,Family Dollar,,Default Tags and Note types are missing in PROD,Done,Product Bug,IFDCR,https://phenompeople.atlassian.net/browse/IFDCR-352
+IFH-314,2025-06-02,Other,,Score card is not updated in job details page in CRM.,Done,Product Bug,IFH,https://phenompeople.atlassian.net/browse/IFH-314
+IFH-478,2025-09-08,Other,,When ever recruiter editing and saving the job in CRM the posting date is getting automatically updated to that date.,Done,Product Bug,IFH,https://phenompeople.atlassian.net/browse/IFH-478
+IFH-486,2025-10-06,Other,,"6.21 - Requisition: Clearance, Certification, Project Name fields ""Other (Free Text) is not working",Done,Product Bug,IFH,https://phenompeople.atlassian.net/browse/IFH-486
+IFH-529,2025-10-06,Fearless,,"6.21 - CRM fields - Requisition: Clearance, Certification, Project Name fields ""Other (Free Text) is not working ",Done,Product Story,IFH,https://phenompeople.atlassian.net/browse/IFH-529
+IFH-535,2025-08-01,Fearless,,"6.79 - Requisition: # of openings defaults to ""0"" when editing",Done,Product Bug,IFH,https://phenompeople.atlassian.net/browse/IFH-535
+IGDNXS-334,2026-04-30,,,CRM job category/sub-category updated but those details are not reflecting in Career Site,Resolved,Task,IGDNXS,https://phenompeople.atlassian.net/browse/IGDNXS-334
+IHHT-438,2025-01-07,,,IHHT: Issue with IQA environment in CRM ,Done,Product Bug,IHHT,https://phenompeople.atlassian.net/browse/IHHT-438
+IHHT-472,2025-02-03,,,Additional field not updated in Redis DB,Done,Product Bug,IHHT,https://phenompeople.atlassian.net/browse/IHHT-472
+IHPHTMWRHM-339,2026-06-15,HIBU,,Requisition Template Error,Confirm Resolution,Product Bug,IHPHTMWRHM,https://phenompeople.atlassian.net/browse/IHPHTMWRHM-339
+IIFL-332,2026-06-18,IIFL (India Infoline Group),,"While enabling screening for a particular job the questionnaires are not visible, only one questionnaire is coming in the dropdown.",Closed,Bug,IIFL,https://phenompeople.atlassian.net/browse/IIFL-332
+IIFL-339,2026-07-15,IIFL (India Infoline Group),,IIFL client is unable setup access policy - MS TEAMS Integration,Resolved,Story_ML,IIFL,https://phenompeople.atlassian.net/browse/IIFL-339
+IIIM-309,2025-10-10,Illinois Tool Works (ITW),,EX ERGs & Events,Closed,Story,IIIM,https://phenompeople.atlassian.net/browse/IIIM-309
+ILC-591,2026-06-02,,,CS0326281: OFR SN 2,Closed,CR,ILC,https://phenompeople.atlassian.net/browse/ILC-591
+IMBC-355,2024-05-28,"Mondelez International, Inc.",,In the candidate tab - when trying to add a group of candidates to - the box with option is only partially visible,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-355
+IMBC-512,2024-06-14,"Mondelez International, Inc.",,Phenom says the fit score is not Unsupported in Portuguese,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-512
+IMBC-561,2024-07-09,"Mondelez International, Inc.",,New job posted matching the criteria for the subscribed job alert but no email was triggered to the lead informing her new of the new job,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-561
+IMBC-567,2024-07-10,,,Subscription count issue in CRM.,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-567
+IMBC-628,2024-07-04,"Mondelez International, Inc.",,Bulk import,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-628
+IMBC-633,2024-07-10,"Mondelez International, Inc.",,Not able to move profile forward in CRM,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-633
+IMBC-636,2024-07-15,"Mondelez International, Inc.",,Visibility of candidate activity by other Recruiters in Activity tab,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-636
+IMBC-846,2024-11-15,"Mondelez International, Inc.",,Hypercare: Part of the CRM are in English when language is changed in Portuguese,Done,Product Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-846
+IMBC-852,2024-11-12,"Mondelez International, Inc.",,"Job req status (Froze, filled) not rflected as per Workday",Closed,Bug,IMBC,https://phenompeople.atlassian.net/browse/IMBC-852
+IMVH-337,2025-12-23,,,Purging of Leads & Applicant data from Analytics and provide reconciliation report,Closed,Task,IMVH,https://phenompeople.atlassian.net/browse/IMVH-337
+INFETAOCP5-474,2026-02-23,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,Job preview is not displaying in CRM,Done,Product Bug,INFETAOCP5,https://phenompeople.atlassian.net/browse/INFETAOCP5-474
+INFETAOCP5-782,2026-06-30,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,Email template redirecting to SF,Done,Product Bug,INFETAOCP5,https://phenompeople.atlassian.net/browse/INFETAOCP5-782
+INHSPHXS-556,2026-02-02,None,,Requisitions filled not registering,Done,Product Bug,INHSPHXS,https://phenompeople.atlassian.net/browse/INHSPHXS-556
+INYPR-372,2026-06-15,New York Presbyterian Hospital,,Job Categories Issue in IQA,Done,Product Bug,INYPR,https://phenompeople.atlassian.net/browse/INYPR-372
+IPAGSS-385,2026-05-04,PwC Acceleration Centers,,PwC Acceleration Centres  - CRM,Cancelled,Product Story,IPAGSS,https://phenompeople.atlassian.net/browse/IPAGSS-385
+IPAGSS-390,2026-02-20,PwC Acceleration Centers,,PWC ACC - Platform QA Testing,Done,Product Story,IPAGSS,https://phenompeople.atlassian.net/browse/IPAGSS-390
+IPAGSS-392,2026-01-08,,,PWC ACC Dependencies: Engineering,Open,Product Task,IPAGSS,https://phenompeople.atlassian.net/browse/IPAGSS-392
+IPAGSS-409,2026-02-05,PwC Acceleration Centers,,Inactive HRIT Australia user linked to ACC is searchable and can be added as interviewer in PWC-ACC in CRM,Waiting for other info,Product Bug,IPAGSS,https://phenompeople.atlassian.net/browse/IPAGSS-409
+IPH2WII-446,2025-10-15,,,Display Job Field and allow them to filter in CRM,Closed,Task,IPH2WII,https://phenompeople.atlassian.net/browse/IPH2WII-446
+IPH2WII-503,2025-10-29,,,"CS0280972 - Email campaigns, whatsapp & sms consents testing - Optin/optout",Closed,Bug,IPH2WII,https://phenompeople.atlassian.net/browse/IPH2WII-503
+IPH2WII-582,2026-02-12,"PPG Industries, Inc.",,Email optin is showing optin in CRM without clicking the checkbox ,Done,Product Bug,IPH2WII,https://phenompeople.atlassian.net/browse/IPH2WII-582
+IPUAC-1568,2025-02-03,PwC US,,Project Notification Feasibility Question,Done,Product Story,IPUAC,https://phenompeople.atlassian.net/browse/IPUAC-1568
+IRCME-392,2026-02-03,,,Load Test Candidates in CRM for Recruiter Bucket Experience – Single Job (RBC),Closed,Task,IRCME,https://phenompeople.atlassian.net/browse/IRCME-392
+IRCME-503,2026-06-05,Royal Bank of Canada,,Spotlights are not showing up in CRM in PROD,Reporter Reviewer,Product Bug,IRCME,https://phenompeople.atlassian.net/browse/IRCME-503
+IRTC-518,2025-04-07,Royal Mail,,Not Posted jobs showing as Posted in CRM,Done,Product Bug,IRTC,https://phenompeople.atlassian.net/browse/IRTC-518
+IS20-321,2025-07-24,Other,,Conflict Due to Similar Names for New Swaasa Tenants,Done,Product Bug,IS20,https://phenompeople.atlassian.net/browse/IS20-321
+IS20-335,2025-08-08,Other,,Persona Settings on Swaasa Doctors Tenant – Create Job,Confirm Resolution,Product Bug,IS20,https://phenompeople.atlassian.net/browse/IS20-335
+ISCDSB-360,2025-09-05,Southwest Airlines,,Southwest Airlines Contract Jobs - Edit Job Posting Status in CRM,Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-360
+ISCDSB-365,2025-11-21,Southwest Airlines,,Southwest Airlines Contract Jobs - Screen question placeholders,Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-365
+ISCDSB-394,2025-10-06,Southwest Airlines,,Southwest Airlines Contract Jobs - Screening Questions as JSQ's in Apply Form,Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-394
+ISCDSB-395,2025-10-01,Southwest Airlines,,Southwest Airlines Contract Jobs - Screen question placeholders,Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-395
+ISCDSB-403,2025-10-06,Southwest Airlines,,Restrict Editable Fields in CRM for Beeline-Ingested Jobs (Southwest),Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-403
+ISCDSB-510,2025-08-14,Southwest Airlines,,CRM Field-Level Edit Restrictions for Beeline-Ingested Jobs (Southwest),Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-510
+ISCDSB-521,2025-10-06,Southwest Airlines,,Configure CRM Hiring Status Pipeline for Contractor Roles ,Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-521
+ISCDSB-605,2025-11-28,Southwest Airlines,,Southwest | Issue with Job Category and Fields for Campus Ambassador 46032-1,Done,Product Bug,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-605
+ISCDSB-608,2025-11-28,Southwest Airlines,,Southwest | Direct Sourcing - Job description goes blank when editing and publishing job,Done,Product Bug,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-608
+ISCDSB-613,2025-12-10,Southwest Airlines,,Southwest | Contract Pay Rate Field,Done,Product Story,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-613
+ISCDSB-619,2025-11-20,Southwest Airlines,,Southwest | Direct Sourcing - Posted Date in the Jobs Tab is inaccurate,Done,Product Bug,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-619
+ISCDSB-661,2026-01-17,Southwest Airlines,,Pay rate is still showing after candidate is pushed to Beeline,Done,Product Bug,ISCDSB,https://phenompeople.atlassian.net/browse/ISCDSB-661
+ISFHCR-442,2026-01-07,None,,Multiple tenants appearing in Prod CRM UI,Done,Product Bug,ISFHCR,https://phenompeople.atlassian.net/browse/ISFHCR-442
+ISH-653,2026-06-13,Sunstates Security,,Long job title overflows and breaks layout in “All Jobs” section of candidate profile in CRM,Reporter Reviewer,Product Bug,ISH,https://phenompeople.atlassian.net/browse/ISH-653
+ISH-663,2026-06-30,Sunstates Security,,Mismatch in Standard Background Check Packages Between Job Edit Page and Job Filter,IN Triage,Product Bug,ISH,https://phenompeople.atlassian.net/browse/ISH-663
+ISHIC1S-444,2026-10-05,Siemens Healthineers,,Allow configuration of internal and external job posting windows independently,Story Elaboration,Product Story,ISHIC1S,https://phenompeople.atlassian.net/browse/ISHIC1S-444
+ISHIC1S-477,2026-07-07,Siemens Healthineers,,"SHS testing - Edit Job Requisition - Posting Options ""Internal only""",Done,Product Bug,ISHIC1S,https://phenompeople.atlassian.net/browse/ISHIC1S-477
+ISHIC1S-605,2026-10-05,Siemens Healthineers,,Allow sharing a confidential requisition,Story Elaboration,Product Story,ISHIC1S,https://phenompeople.atlassian.net/browse/ISHIC1S-605
+ISNB-535,2026-02-11,,, Move Spencer's RX configurations to IQA,Closed,Task,ISNB,https://phenompeople.atlassian.net/browse/ISNB-535
+ISSTD-272,2026-09-08,SSM Health Care Corporation,,"For users with no scope assigned, data from other scopes is being displayed in the List tab.",Development,Product Bug,ISSTD,https://phenompeople.atlassian.net/browse/ISSTD-272
+ITALY-365,,PwC,,Recruiter-Initiated Apply,Done,Product Story,ITALY,https://phenompeople.atlassian.net/browse/ITALY-365
+IUCER-1121,2025-07-31,United Parcel Service,,UPS Departmentalization Design,Done,Product Story,IUCER,https://phenompeople.atlassian.net/browse/IUCER-1121
+IUCER-1141,2025-11-19,United Parcel Service,,Implement UPS Departmentalization Design,Closed,Story,IUCER,https://phenompeople.atlassian.net/browse/IUCER-1141
+IUR-1033,2026-07-03,,,Remove Department Name and Department ID From System - EX and CRM,Closed,CR,IUR,https://phenompeople.atlassian.net/browse/IUR-1033
+IUR-577,2025-12-05,University of Maryland Medical System,,Phenom Hire | Infor | Feature enhancement to retrieve positions data for Job Creation for UMMS,Done,Product Story,IUR,https://phenompeople.atlassian.net/browse/IUR-577
+IUR-736,2026-03-09,University of Maryland Medical System,,Recruiter can edit and delete notes created by another recruiter without Permission,Done,Product Bug,IUR,https://phenompeople.atlassian.net/browse/IUR-736
+IUR-849,2026-04-17,University of Maryland Medical System,,"Candidate signed offer letter, was reverted to applicant (new applicant)",Done,Product Bug,IUR,https://phenompeople.atlassian.net/browse/IUR-849
+IUR-889,2026-04-22,,,Min and Max fixing at integration level ,Closed,CR,IUR,https://phenompeople.atlassian.net/browse/IUR-889
+IUSVI-487,2026-08-27,UAB Medicine Enterprise,,Hiring Status is not updating in CRM. ,To Do,Product Bug,IUSVI,https://phenompeople.atlassian.net/browse/IUSVI-487
+IVCR-634,2026-04-30,Ventia,,Wording cuts for Hiring Statuses in the Candidates Tab for last candidate,Done,Product Story,IVCR,https://phenompeople.atlassian.net/browse/IVCR-634
+IVURA-528,2025-11-28,Verisure,,Missing Associated Jobs on Career Site,Done,Product Bug,IVURA,https://phenompeople.atlassian.net/browse/IVURA-528
+IZCR2-343,2026-03-09,Zelis,,Project End Date Not Displayed After Editing Category and Saving Project,Done,Product Bug,IZCR2,https://phenompeople.atlassian.net/browse/IZCR2-343
+IZCR2-345,2026-07-09,Zelis,,Success Message “Added Attachments Successfully” Displayed When Attachments Are Removed and Project Is Saved,IN Triage,Product Bug,IZCR2,https://phenompeople.atlassian.net/browse/IZCR2-345
+IZCR2-445,2026-04-07,Zelis,,Job URLs in CRM are directing to India Career Site,Closed,Bug,IZCR2,https://phenompeople.atlassian.net/browse/IZCR2-445
+KN-822,,Kuehne and Nagel Inc,,UAT - Kuehne+NAGEL - Number of candidates does not update when applying although candidate is in CRM,Done,Task,KN,https://phenompeople.atlassian.net/browse/KN-822
+KPNCX-96,,,,UAT - Opt In Status Candidates,Closed,Bug,KPNCX,https://phenompeople.atlassian.net/browse/KPNCX-96
+LANXESS-910,2026-02-02,Lanxess AG,,Translations in CRM mixed (CS0286128),Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-910
+LANXESS-923,2026-01-05,Lanxess AG,,Translations Got Mixed Up in CRM Part 2,Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-923
+LANXESS-926,2025-11-24,Lanxess AG,,Translations Got Mixed Up in CRM LinkedIn Integrations,Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-926
+LANXESS-927,2026-02-02,Lanxess AG,,[Lanxess] Translations Update - CRM -part 3 - slide 9,Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-927
+LANXESS-934,2025-11-19,,,Job related fields in Candidate profile need to be shown in respective language,Closed,CR,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-934
+LANXESS-964,2026-02-10,Lanxess AG,,DUTCH - Wrong translation - Typen opmerkingen,Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-964
+LANXESS-966,2026-04-13,Lanxess AG,,"DUTCH - wrong translation - dashboard, jobs page, candidates page",Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-966
+LANXESS-974,2026-02-10,Lanxess AG,,GERMAN - CRM - Wrong translations - Manager feedback,Done,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-974
+LANXESS-980,2026-01-05,Lanxess AG,,GERMAN - CRM - Wrong translations Part 2,Confirm Resolution,Product Bug,LANXESS,https://phenompeople.atlassian.net/browse/LANXESS-980
+MAAD-752,2026-02-13,,,Validating data in Report Entry,Closed,Bug,MAAD,https://phenompeople.atlassian.net/browse/MAAD-752
+MG-2593,2026-02-18,Merck KGaA,,Dependency Work: CRM - Profile for MG-2520,Done,Product Story,MG,https://phenompeople.atlassian.net/browse/MG-2593
+MSC-949,2026-03-09,MSC Cruises,,CRM spotlight section issue on Events tab,Done,Product Bug,MSC,https://phenompeople.atlassian.net/browse/MSC-949
+NTTIRE-404,2026-01-19,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,Job Documents were not getting synced from Mongo DB to Elastic Search DB,Done,Product Bug,NTTIRE,https://phenompeople.atlassian.net/browse/NTTIRE-404
+NTTIRE-419,2026-01-24,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,Job Status Not Updating from JP to CRM,Done,Product Bug,NTTIRE,https://phenompeople.atlassian.net/browse/NTTIRE-419
+OFPH-379,2025-10-08,Other,,Department field is not storing while we are editing a job in CRM,Done,Product Bug,OFPH,https://phenompeople.atlassian.net/browse/OFPH-379
+OGDAMG-4466,2026-01-21,,,Jobs not reflecting in the CRM UI in the Preview Env.,Closed,Product Bug,OGDAMG,https://phenompeople.atlassian.net/browse/OGDAMG-4466
+OGDAMG-4471,2026-01-21,,,Jobs are not Showing in the CRM Preview,Closed,Product Bug,OGDAMG,https://phenompeople.atlassian.net/browse/OGDAMG-4471
+OGOT-214,,Onin Staffing,,Build RIA add to job flow from the Candidate List Page in the CRM,Done,Product Story,OGOT,https://phenompeople.atlassian.net/browse/OGOT-214
+PACIFI-29,2026-07-17,,,CEG - X+Screening Configuration,QA Passed,Story,PACIFI,https://phenompeople.atlassian.net/browse/PACIFI-29
+PAE-11267,2025-06-30,phenom,,CRM QA_Automation,In Progress,Story,PAE,https://phenompeople.atlassian.net/browse/PAE-11267
+PAE-9646,2024-09-26,Ardagh Group,,HIRING STATUS IS NOT GETTING UPDATED IN CRM,Done,Product Bug,PAE,https://phenompeople.atlassian.net/browse/PAE-9646
+PETO-59,2026-07-10,,,Data Requirement for Phenomenal Healthcare Vertical Tenant - PHHEALTHUS,Open,Task,PETO,https://phenompeople.atlassian.net/browse/PETO-59
+PHEM-1001427,2025-12-29,Adobe Inc. (Adobe Systems),OffCycle-2026,Adobe report,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1001427
+PHEM-10588,,,Backlog,Evaluate concurrency support for CSV uploads across clients,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10588
+PHEM-1067174,2025-11-04,ALL,Backlog,"CRM Notes filter returns ""No data available"" for Hiring Manager note types",To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1067174
+PHEM-10705,,,Backlog,Advanced mode page location isn’t clear,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10705
+PHEM-10709,,,Backlog,Advanced mode's Side panel and main area interaction is not clear,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10709
+PHEM-10711,,ALL,Backlog,Advanced Filter - Remember query and columns for future searches (at recruiter level),Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10711
+PHEM-10712,,,Backlog,The Advanced mode summary does not match the basic filter design,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10712
+PHEM-10713,,,Backlog,"Advanced mode ""Add condition (AND)"" button is ambiguous",Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10713
+PHEM-10714,,,Backlog,Advanced mode side panel width to large,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10714
+PHEM-10761,,,Backlog,Advanced mode spacing and alignment between components,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10761
+PHEM-10762,,,Backlog,Advanced mode Validation errors need to be more helpful for the user,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10762
+PHEM-10765,,,Backlog,Advanced mode Field behavior is not suitable for the specific type of field,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10765
+PHEM-10768,,,Backlog,Advanced mode date field flexible behavior,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10768
+PHEM-10770,,,Backlog,"Field's ""clear/remove"" button location and appearance in advanced mode",Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10770
+PHEM-10778,,,22.06,Filter button does not indicate Advanced mode filter are sets,Done,Issues,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10778
+PHEM-10788,,,Backlog,Advanced mode logic radio button functionality,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10788
+PHEM-10871,,,Backlog,CRM MongoDB upgrade to v4.4,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10871
+PHEM-10873,,,Backlog,Use phenom.local domains for internal calls instead of public domains,Story Elaboration,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10873
+PHEM-10886,,,22.06,Search field height is incorrect,Done,Issues,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10886
+PHEM-10887,,,Backlog,Advanced mode fields design not consistent,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-10887
+PHEM-1098002,2025-11-04,ALL,Backlog,Confirm Reporting Accuracy,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1098002
+PHEM-1098016,2025-11-04,ALL,Backlog,(Spike/Investigation) Document Note Type Origins,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1098016
+PHEM-11166,,ALL,Backlog,Assign to Projects - correct inconsistencies - Projects UI/UX,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-11166
+PHEM-11175,,ALL,24.02,List pages - Spotlight Jump While Scrolling,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-11175
+PHEM-12093,,ALL,"22.10, 22.11",CRM - Improved Ability to Close and Re-Open Projects,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12093
+PHEM-12128,,,Backlog,"Fetch id from email, in case ids are not available(hiring manager /interviewer/recruiter) while tagging in notes",To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12128
+PHEM-12211,,,22.05,Broken fields in advanced mode,Done,Issues,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12211
+PHEM-12479,,,Backlog,Personalization-Role and activity selection,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12479
+PHEM-12589,,,"22.03, 22.04",Core team -Miscellaneous,Done,Sub-task,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12589
+PHEM-12767,,,Backlog,Old - Capture DB Feature Flags Information Needed for UI,Story Elaboration,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12767
+PHEM-12895,,,Backlog,CRM Departmentalization - Display user's assigned scope(s) on the My Account page in Settings,Story Grooming,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12895
+PHEM-12989,,,Backlog,Reading DB credentials from Vault,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-12989
+PHEM-13037,,,Backlog,"Departmentalization - Allow multi-scoped users to select the assigned scope on entities they create (Projects, Lists, Templates, etc.)",Story Grooming,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-13037
+PHEM-1311619,2026-02-02,,,Pentest 2025-CRM- Authorization failures Hiring Suggestions,Vulnerable,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1311619
+PHEM-13164,,,Backlog,Review Candidates Updating issue in Dashboard,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-13164
+PHEM-13520,,,Backlog,Migrate kubernetis to production,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-13520
+PHEM-1374812,2026-08-31,,,Pentest 2025- CRM- Lack of Input Validation Leading to Stored XSS Vulnerability in Email Inbox,Vulnerable,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1374812
+PHEM-1374813,2026-08-10,,,Pentest 2025- CRM- Authorization Bypass via Token Substitution Across Tenants,In Staging,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1374813
+PHEM-14003,,,Backlog,OpenJDK docker images changes,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14003
+PHEM-14095,,,,Thermo Fisher -  Request to Enable Evaluation Form,To Do,Task,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14095
+PHEM-14236,,ALL,Backlog,Add “Don’t Overwrite Existing values” in CRM Bulk Import (.csv spreadsheet),Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14236
+PHEM-14237,,ALL,Backlog,During Bulk Candidate or Resume Uploads allow creation of a new Project,Story Grooming,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14237
+PHEM-14241,,,Backlog,"CRM Bulk Import (.csv) - clickable ""Created,"" ""Updated,"" & ""Failed"" groupings in Import History with details",Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14241
+PHEM-14244,,,Backlog,CRM Bulk Import (spreadsheet) - Import History Status hover text enhancement,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14244
+PHEM-14253,,,Backlog,CRM Bulk Import (spreadsheet) - Move Uploading Instructions to a Pop-up,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14253
+PHEM-14273,,,Backlog,CRM Bulk Import - Ability to Assign to Job(s) and/or Project(s) and/or List(s) and/or Event(s),Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14273
+PHEM-14274,,,Backlog,CRM Bulk Import - Add the ability to select Profile Source for imported candidates,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14274
+PHEM-14275,,,Backlog,CRM Bulk Import - Suggested Tags and Revamped Tag Section Design,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14275
+PHEM-14276,,,Backlog,CRM Bulk Import - end of import process for successful or failed import,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-14276
+PHEM-1497771,2026-07-15,,,Pentest 2025- ERM- [CRITICAL] Unauthenticated Access to Sensitive Endpoints,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1497771
+PHEM-1537928,2026-08-10,,,Pentest 2025 - CRM Chrome Extension - Missing Authentication on Sensitive Email Forwarding API,In Staging,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1537928
+PHEM-15759,,,Backlog,CRM User Data & Intelligence,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-15759
+PHEM-16120,,,22.06,Agency & Agency Recruiter support in CRM,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16120
+PHEM-16162,,ALL,"22.04, 22.05, 22.06, 22.07, 22.08, 22.09, 22.10",Translation for CRM Navigation/Interface,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16162
+PHEM-16260,,,"Backlog, 22.07",Self service- Default configurations,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16260
+PHEM-1668615,2026-02-21,,,Pentest Finding: vulnerability with a high severity,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1668615
+PHEM-16697,,,22.10,"CRM - Displaying Jobseeker Data on the Candidate Profile (3rd Party Assessment Results, Evaluations, Apply JSQs, etc.)",Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16697
+PHEM-16701,,,Backlog,CRM Job Tabs Reorganization,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16701
+PHEM-16702,,,22.10,CRM Screening Questionnaire Template Management & Bulk Assignment to Jobs,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16702
+PHEM-16703,,,Backlog,Allow multi-select for Screening Questionnaire job category,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16703
+PHEM-16707,,,Backlog,CRM - Enhanced Role Permission for Screening Questionnaires,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16707
+PHEM-16817,,,"22.08, 22.09, 22.10",CRM Users - Candidate Consent Based Access Control (DPDHL),Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-16817
+PHEM-1697413,2026-05-04,,,Pentest 2025- CRM- Lack of Input Validation Leading to Stored XSS Vulnerability,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1697413
+PHEM-18305,,,Backlog,Signoz integration for CRM services ,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18305
+PHEM-18348,,,Backlog,CRM Job Hiring Team - Custom Roles and Labels,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18348
+PHEM-18508,,,Backlog,Job details and job description tabs,ON Hold,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18508
+PHEM-18510,,ALL,Backlog,Advanced mode right side panel,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18510
+PHEM-18519,,ALL,Backlog,Improved Order/Organization of Fields in Advanced Search,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18519
+PHEM-18522,,ALL,"Backlog, 22.07",Projects & Workflows - Phase 2 epic,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18522
+PHEM-1857582,2026-08-22,,,Pentest 2025- Campus Recruitment (Android) - Session not Expired after Logout [CRITICAL],In QA,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1857582
+PHEM-1857585,2026-08-20,,,Pentest 2025- Campus Recruitment (Android) - User Enumeration [Medium] ,Development,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1857585
+PHEM-18627,,ALL,Backlog,"Consistency in ""Save"" action on Settings",To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18627
+PHEM-18632,,ALL,25.10,Popups are not displaying in center of screen,Done,Issues,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18632
+PHEM-18890,,,Backlog,Clarify candidate language search across all filters,To Do,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-18890
+PHEM-19193,,,24.07,the hovered tooltip for more assigned users is broken,Done,Issues,PHEM,https://phenompeople.atlassian.net/browse/PHEM-19193
+PHEM-1989804,2026-06-09,Allianz,, Stored HTML injection,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1989804
+PHEM-1990079,2026-08-04,Allianz,, Outdated software with known vulnerabilities (iText),In Staging,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1990079
+PHEM-1990653,2026-06-30,Allianz,, Insecure Content Security Policy,In QA,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-1990653
+PHEM-20278,,,22.07,CRM - Manage Columns enhancements,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-20278
+PHEM-20760,,,Backlog,CRM access for Phenom,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-20760
+PHEM-20905,,,,Estimate of server loads,Done,Task,PHEM,https://phenompeople.atlassian.net/browse/PHEM-20905
+PHEM-20947,,ALL,"22.06, 22.07",CRM - Frontend Code Quality and Performance,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-20947
+PHEM-2103629,2026-06-20,Allianz,OffCycle-2026,Insecure CORS policy - CRM,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-2103629
+PHEM-2116260,2026-06-10,Royal Bank of Canada,OffCycle-2026,Unauthenticated Access to Keycloak Metrics Endpoint,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-2116260
+PHEM-2116262,2026-06-10,Royal Bank of Canada,OffCycle-2026,API-Gateway-Version Disclosure via X-Krakend Header,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-2116262
+PHEM-2123327,2026-07-23,Allianz,,Outdated software with known vulnerabilities(JavaScriptlibraries),In Staging,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-2123327
+PHEM-350788,2025-09-08,,,Cross Tenant Access - CRM Lists,Vulnerable,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-350788
+PHEM-369074,2024-10-07,,,Pentest 2024 - CRM - Stored Cross-Site Scripting - Candidate/Employee notes,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-369074
+PHEM-369076,2024-10-07,,,Pentest 2024 - CRM - Stored Cross-Site Scripting - Job notes,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-369076
+PHEM-369084,2024-10-07,,,Pentest 2024 - CRM - Stored Cross-Site Scripting - Project notes,Fixed,Vulnerability,PHEM,https://phenompeople.atlassian.net/browse/PHEM-369084
+PHEM-5607,,,Backlog,Number of leads / Applicants is wrong,To Do,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-5607
+PHEM-5895,,,Backlog,Enhancement: Intake meeting notes in CRM (Package #1),To Do,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-5895
+PHEM-5898,,,Backlog,Pending indication for AI discovery,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-5898
+PHEM-6545,,,Backlog,Integrating CRM with CMS,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-6545
+PHEM-6623,,,"22.05, 22.06",CRM Feature Flags,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-6623
+PHEM-6715,,,"22.06, 22.07",CRM Spotlights Revamp & Enhancements,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-6715
+PHEM-7127,,,Backlog,Old - Miscellaneous Feature Flags Clean-Up,Story Grooming,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-7127
+PHEM-7666,,,Backlog,Usability: Matching Criteria & AI Discovery (Package #1),Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-7666
+PHEM-8994,,,Backlog,Custom query in filters,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-8994
+PHEM-9103,,,,RX: Adoption,In Progress,Initiative,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9103
+PHEM-9243,,,Backlog,Don't delete existing filters after filtering in the advanced mode,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9243
+PHEM-9262,,,Backlog,Advanced mode is not prominent,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9262
+PHEM-9446,,,22.04,CRM Action Menus Redesign,Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9446
+PHEM-9516,,,Backlog,Advanced Mode results data insights in projects,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9516
+PHEM-9527,,,Backlog,General (Usability),Done,Epic,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9527
+PHEM-9546,,,Backlog,Filters categories consistency,Done,Story,PHEM,https://phenompeople.atlassian.net/browse/PHEM-9546
+PWCGREE-349,2025-12-31,PwC,,HRM: Issue with LOGO(forward profile Template),Done,Product Bug,PWCGREE,https://phenompeople.atlassian.net/browse/PWCGREE-349
+RBCCRM-230,2025-05-05,Royal Bank of Canada,,Applicants link in My Jobs not working ,Done,Product Story,RBCCRM,https://phenompeople.atlassian.net/browse/RBCCRM-230
+RUN-450,2025-12-19,None,,Timezone is blank in interview slot and causing escalation,Done,Product Bug,RUN,https://phenompeople.atlassian.net/browse/RUN-450
+SPAR-1052,2026-02-02,Spartanburg Regional Healthcare System,,Job Document is not getting created for multiple siteType,Done,Product Bug,SPAR,https://phenompeople.atlassian.net/browse/SPAR-1052
+SPAR-1106,2026-07-10,Spartanburg Regional Healthcare System,,Issues found during SA Review,QA In Progress,Product Bug,SPAR,https://phenompeople.atlassian.net/browse/SPAR-1106
+SPAR-900,2025-11-24,Spartanburg Regional Healthcare System,,Notes are not easy to read. Filter by HM or Job,Done,Product Story,SPAR,https://phenompeople.atlassian.net/browse/SPAR-900
+SPAR-904,2026-06-15,Spartanburg Regional Healthcare System,,Job/Req audit history log on UI,Done,Product Story,SPAR,https://phenompeople.atlassian.net/browse/SPAR-904
+SPAR-908,2025-11-03,Spartanburg Regional Healthcare System,,Session specific content - Recognize recruiter and pre apply filters,Done,Product Story,SPAR,https://phenompeople.atlassian.net/browse/SPAR-908
+SPAR-909,2025-05-25,Spartanburg Regional Healthcare System,,Add to job - Should show recruiter specific jobs,Done,Product Story,SPAR,https://phenompeople.atlassian.net/browse/SPAR-909
+SPAR-946,2025-06-26,Spartanburg Regional Healthcare System,,Forwarding Profiles to All Hiring Managers on the Hiring Team,Done,Product Story,SPAR,https://phenompeople.atlassian.net/browse/SPAR-946
+SRVR-293,2026-04-01,Servier Monde,,flag missing in stg ir  Enable LinkedIn Apply Connect Widget for all other tenants as well,Done,Product Bug,SRVR,https://phenompeople.atlassian.net/browse/SRVR-293
+SRVR-539,2026-07-31,,,Bulk Hiring Status update in PROD not Enabled,In QA,CR,SRVR,https://phenompeople.atlassian.net/browse/SRVR-539
+SUP-101552,2025-10-06,"CVS Pharmacy, Inc",Backlog,HRM Auto Provisioning Considerations,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-101552
+SUP-101742,2025-11-03,Givaudan,Backlog,Issues in the User Interface,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-101742
+SUP-101885,2025-11-03,Spartanburg Regional Healthcare System,Backlog,Can You Fix My Menu?,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-101885
+SUP-101904,2025-09-08,Bright Horizons Family Solutions,Backlog,SMS: 1 to 1 Messaging Error,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-101904
+SUP-103289,2025-09-18,Verisure,Backlog,Verisure Belgium cannot add tags in Bulk,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-103289
+SUP-103416,2025-09-17,Coles,25.08,Job Detail button not working after viewing Previous/Next Candidate,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-103416
+SUP-103905,2025-10-02,"Mondelez International, Inc.",Backlog,Request to upload translations in event configuration,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-103905
+SUP-104305,2025-10-06,Serco,Backlog,Glitch - Pipeline,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-104305
+SUP-104424,2025-10-18,Philip Morris International,Backlog,No email in tagging,Reporter Review,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-104424
+SUP-104636,2026-02-17,McCain Foods Limited,Backlog,Unable to export profile from Linkedin,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-104636
+SUP-104640,2025-11-03,"Bouygues Group, Serco",Backlog,"""Ascending/ Descending"" icon not working in columns",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-104640
+SUP-104707,2025-11-10,Organon,Backlog,Team is not able to click on a tagged Note under Notifications,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-104707
+SUP-104754,2025-10-14,RSM UK,Backlog,LinkedIn connect,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-104754
+SUP-105131,2025-10-24,Land O'Lakes,Backlog,Renaming a tag,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105131
+SUP-105251,2025-10-21,DNV,OffCycle-2025,Salary information in job details,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105251
+SUP-105267,2025-10-24,DHL Group,Backlog,All Leads Spotlight,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105267
+SUP-105301,2025-10-17,Quest Global,Backlog,Band and Designation field options not populating  on UI in CRM,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105301
+SUP-105604,2025-11-14,FOX Rehabilitation,Backlog,Reporting Issues,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105604
+SUP-105724,2025-10-24,"The MENTOR Network, now Sevita Health",Backlog,Request to Remove Tags Created by Users Leslie Salmi and Bill Malcolm,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105724
+SUP-105814,2025-11-03,BMO Financial Group,Backlog,Export Full Report in Associated Tabs not Working,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105814
+SUP-105873,2025-10-27,UCB,Backlog,Extraction of skills,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105873
+SUP-105901,2025-11-11,Ecolab Inc.,Backlog,LinkedIn Recommendations Error Message,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-105901
+SUP-106041,2026-01-30,Spartanburg Regional Healthcare System,Backlog,Unable to post job P-102362,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106041
+SUP-106051,2025-11-03,University of Missouri Health Care,Backlog,Notes not visible on candidate profile without refresh,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106051
+SUP-106381,2025-11-12,,,CLONE - CRM TEAM -- Stopping all services,Done,Sub-task,SUP,https://phenompeople.atlassian.net/browse/SUP-106381
+SUP-106399,2025-12-04,Capgemini,OffCycle-2025,PROD: Assigned to a Project,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106399
+SUP-106419,2025-10-31,Land O'Lakes,Backlog,Renaming a tag,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106419
+SUP-106450,2025-11-04,"Mondelez International, Inc.",Backlog,Notes Types Question,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106450
+SUP-106452,2025-10-31,Children's Medical Center of Dallas,OffCycle-2025,Linkedin Connection,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106452
+SUP-106469,2025-11-10,Quest Global,OffCycle-2025,Why was this req not closed automatically when no of positions were 0,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106469
+SUP-106504,2025-11-27,DHL Group,Backlog,Notes that should be deleted,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106504
+SUP-106610,2025-12-04,Capgemini,OffCycle-2025,Job Requisition Status not synced in GT & GT+,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106610
+SUP-106644,2026-02-02,VCU Health System,Backlog,Major Field Not Mapped for Bulk Upload,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106644
+SUP-106648,2025-11-04,MV Transportation,OffCycle-2025,Recruiter Tami Brittain appears to have two profiles in the CRM.,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106648
+SUP-106706,2025-12-01,Capgemini,Backlog,Wrong Note type is showing in French language in CRM,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106706
+SUP-106781,2025-10-31,IDFC First Bank,Backlog,"IEF hidden. Unless I evaluate, I could not see the IEF submitted by other panel members for IDFC in Production ",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-106781
+SUP-107217,2025-11-25,ThredUp,Backlog,HVH Jobs No longer showing under open jobs,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-107217
+SUP-107288,2025-10-30,,, Thomson Reuters - CRM TEAM -- Stopping all services,Done,Sub-task,SUP,https://phenompeople.atlassian.net/browse/SUP-107288
+SUP-107307,2025-10-30,,,BULLHORN - CRM TEAM -- Stopping all services,Done,Sub-task,SUP,https://phenompeople.atlassian.net/browse/SUP-107307
+SUP-107418,2025-11-24,Capgemini,Backlog,Apptrail: Tracking User Activity in GT+ CRM via AppTrail (Scorecard & Note Type Changes),Open,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-107418
+SUP-107726,2025-11-21,United Airlines,OffCycle-2025,Screening appears on requisition but not on candidate profile,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-107726
+SUP-107741,2026-03-06,DHL Group,Backlog,Projects Tab new feature,Eng Triage,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-107741
+SUP-107811,2025-11-25,United Airlines,Backlog,Assessment Status Column not populating with the Initiation,Resolved,CR,SUP,https://phenompeople.atlassian.net/browse/SUP-107811
+SUP-107890,2026-01-08,Quest Global,Backlog,Refer icon is missing for this req id P-111786,In Staging,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-107890
+SUP-108479,2026-01-17,Ecolab Inc.,Backlog,LinkedIn Recommendations Error Message--project sync required,Open,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-108479
+SUP-110536,2026-03-16,Philip Morris International,Backlog,No email in note,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-110536
+SUP-110716,2025-10-30,Concentrix CVG Customer Management Group Inc,,CRM TEAM -- Stopping all services,Done,Sub-task,SUP,https://phenompeople.atlassian.net/browse/SUP-110716
+SUP-111004,2026-01-12,Allianz,Backlog,Request for LinkedIn Integration Testing in Staging Environment,Reporter Review,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111004
+SUP-111496,2025-12-11,RaceTrac Petroleum,Backlog,[External] Fw: [External] Downloading Candidates?,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111496
+SUP-111498,2026-02-02,Southwest Airlines,OffCycle-2025,Single Select Dropdown Field Error,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111498
+SUP-111652,2026-01-12,Regions Bank,OffCycle-2026,"Spotlights on Jobs - Unable to Click in ""More""",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111652
+SUP-111715,2026-01-02,BRP,OffCycle-2026,Activate Incomplete Apply,In Staging,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111715
+SUP-111786,2026-02-03,Southwest Airlines,Backlog,Notes in Phenom not visible,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111786
+SUP-111946,2026-01-09,Southwest Airlines,Backlog,API Feed - Job Pull,Open,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-111946
+SUP-112035,2026-01-23,Siemens Healthineers,Backlog,Updated Default template overrode all existing email templates,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-112035
+SUP-112071,2025-12-31,BMO Financial Group,OffCycle-2026,Candidate Fields Edits,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-112071
+SUP-112129,2026-02-02,BASIS International Schools,OffCycle-2025,Error - Spotlights already exists,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-112129
+SUP-112468,2026-01-17,Baylor Scott & White Health,OffCycle-2026,Fast Track process allowed interview scheduling despite disqualifying profile tag.,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-112468
+SUP-113016,2026-02-10,Five Below,OffCycle-2026,Column option changes,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-113016
+SUP-113201,2026-02-16,Five Below,OffCycle-2026,Spotlight Order,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-113201
+SUP-113388,2026-02-12,Bass Pro Shops,Backlog,LinkedIn CRM Connect,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-113388
+SUP-113852,2026-04-25,Southwest Airlines,OffCycle-2026,Assessment Score Tooltip Doesn't Display,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-113852
+SUP-114175,2026-04-13,Spartanburg Regional Healthcare System,Backlog,Note Count Error,Reporter Review,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114175
+SUP-114484,2026-03-16,Allianz,Backlog,Last Name in Phenom spelled incorrectly,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114484
+SUP-114504,2026-02-24,Royal Mail,OffCycle-2026,INC6266497-PHENOM - Filter Issue,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114504
+SUP-114548,2026-03-16,CEP America/MedAmerica/Vituity,Backlog,"""Associate Jobs by ID or Title"" field's Drop Down Menu is not working.",In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114548
+SUP-114755,2026-02-17,University of Virginia,OffCycle-2026,Notes on Job Area Disappeared for New Notes,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114755
+SUP-114786,2026-03-02,Capgemini,Backlog,GT+ Portal Performance Issue Reported on 05/02/2026,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114786
+SUP-114828,2026-04-13,Allianz,OffCycle-2025,High Priority - Users unable to see jobs on the Job board even though the scope is all,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114828
+SUP-114846,2026-04-13,The TJX Companies Inc,Backlog,Additional Field - Functional Area,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114846
+SUP-114934,2026-04-06,Turning Stone Enterprises,Backlog,Published req to career site,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-114934
+SUP-115182,2026-02-24,Bright Horizons Family Solutions,OffCycle-2026,Spotlight changes not saving,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115182
+SUP-115280,2026-02-24,Panera Bread Inc.,OffCycle-2026,"Spotlights - will not update after editing filters, edits not saving",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115280
+SUP-115315,2026-03-16,Five Below,Backlog,Column title,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115315
+SUP-115484,2026-02-24,Verisure,OffCycle-2026,Spotlights changes not working,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115484
+SUP-115706,2026-04-30,IAG,Backlog,"Recruiter, Alexandra Ryan, unable to see all Projects from candidate profile - Add to Project - yet is on those project teams",In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115706
+SUP-115760,2026-04-13,Electrolux,Backlog,Inconsistent default landing tab when accessing jobs,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115760
+SUP-115799,2026-04-13,Five Below,Backlog,In reference to CS0291165,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-115799
+SUP-116122,2026-05-15,CAI,OffCycle-2026,Adding a note to Candidate profile and getting error message,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116122
+SUP-116442,2026-03-16,"Aspen Dental Management, Inc.",OffCycle-2026,Updates to Project Criteria not Syncing to LinkedIn,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116442
+SUP-116454,2026-06-10,University of Missouri Health Care,OffCycle-2026,Intermittent Issue: Hiring Managers Not Receiving CRM Tag Email Notifications,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116454
+SUP-116659,2026-03-16,DAMAC Properties,Backlog,Phenom CRM is not Opening,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116659
+SUP-116720,2026-04-17,Spartanburg Regional Healthcare System,Backlog,Adobe Access,Open,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116720
+SUP-116772,2026-04-13,Ventia,Backlog,Engagement Signals,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116772
+SUP-116813,2026-03-13,DHL Group,Backlog,Production: Delete notes,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116813
+SUP-116931,2026-03-18,Allianz,Backlog,High Priority - Recruiters are able to see interview evaluation feedback for candidates they should not see,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116931
+SUP-116983,2026-05-04,DHL Group,OffCycle-2026,EMEA -“Error loading component”,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-116983
+SUP-117795,2026-06-10,pwc Germany / PricewaterhouseCoopers GmbH,OffCycle-2026,Unable to edit Candidate Field Drop Down options,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-117795
+SUP-118118,2026-06-01,Proximus,Backlog,Candidate Field Bucket,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-118118
+SUP-118215,2026-06-15,Givaudan,OffCycle-2026,"""My activities"" button not working / HRC0376947",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-118215
+SUP-118219,2026-04-13,Regions Bank,Backlog,Leads Tab Defaulting for a Job (from Candidates dashboard),Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-118219
+SUP-118292,2026-06-01,Regions Bank,,"""Next Job"" Navigation: Candidate Display Issue",In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-118292
+SUP-118472,2026-04-15,Southwest Airlines,Backlog,Tags currently not working,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-118472
+SUP-118702,2026-04-21,CVS Health Corporation,OffCycle-2026,Review user activity,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-118702
+SUP-119012,2026-06-01,Zimmer Biomet,Backlog,Hiring Status Pipeline does not update in real time,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-119012
+SUP-119038,2026-06-01,Energie Baden-Wurttemberg,Backlog,Malicious content in email,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-119038
+SUP-119223,2026-05-09,Health First,Backlog,Requisitions Templates have no formatting,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-119223
+SUP-119343,2026-06-09,FOX Rehabilitation,OffCycle-2026,Project workflow stage issue,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-119343
+SUP-119486,2026-04-24,Spartanburg Regional Healthcare System,,CRM Lag Issue ,Waiting,Sub-task,SUP,https://phenompeople.atlassian.net/browse/SUP-119486
+SUP-119712,2026-04-30,Energie Baden-Wurttemberg,Backlog,"German translation for ""Salary Expectations"" (DE: Gehaltswunsch) is missing",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-119712
+SUP-120057,2026-04-30,Arla Foods,Backlog,Mismatch between salary ranges in Phenom and SuccessFactors.,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-120057
+SUP-120371,2026-05-04,Cisco,Backlog,Reqs posted Private + Internal Posting allows referrals to be submitted,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-120371
+SUP-121064,2026-08-10,"KBR Wyle Services, LLC.",Backlog,Jobs Spotlight Not Showing Applicants Correctly,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121064
+SUP-121238,2026-06-01,Spartanburg Regional Healthcare System,Backlog,CRM / Candidates Tab / Column Filter Z-A or A-Z not filtering correctly,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121238
+SUP-121280,2026-08-10,"Corewell Health, formerly Spectrum Health",OffCycle-2026,Engagement status miscalculation,In Staging,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121280
+SUP-121391,2026-06-10,Capgemini,OffCycle-2026,Hiring Manager didnt receive email post tagging,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121391
+SUP-121394,2026-07-31,Calgary Catholic School District,,Recruiter Reassignment Does not Reassign All Cases,In QA,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121394
+SUP-121541,2026-07-13,Serco,OffCycle-2026,Recruiter (who is removed from the hiring team) is still receiving notifications,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121541
+SUP-121570,2026-05-30,Humana,Backlog,Inability for CRM users to view select event registrant profiles - continuation of ongoing issue,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-121570
+SUP-122200,2026-06-01,United Airlines,Backlog,Assessment Grade Column,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-122200
+SUP-122624,2026-07-13,United Parcel Service,Backlog,URGENT - Headers in Prod CRM Show Translation Errors,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-122624
+SUP-123500,2026-07-13,Air Canada,Backlog,Information not properly translated to French on Phenom for recruiter,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-123500
+SUP-123702,2026-07-13,CEP America/MedAmerica/Vituity,OffCycle-2026,Assigned Project not visible on Candidate's Profile,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-123702
+SUP-124500,2026-08-10,QTS Data Centers,Backlog,Unable to create Project Workflows,In QA,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-124500
+SUP-124617,2026-07-20,Cisco,Backlog,Req 2014280: Candidates are not populating,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-124617
+SUP-124654,2026-07-13,DHL Group,OffCycle-2026,Candidates with Do not consent are not viable to see their data,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-124654
+SUP-124880,2026-07-13,DHL Group,OffCycle-2026,New Candidate Consent Feature,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-124880
+SUP-124941,2026-07-24,Jakson Group,Backlog,Job creation date issue,Reporter Review,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-124941
+SUP-125079,2026-08-10,Capgemini,Backlog,Project hiring team is not able to add candidate in Project,Eng Triage,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-125079
+SUP-126254,2026-08-22,CVS Health Corporation,Backlog,Confidential Project,IN Triage,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-126254
+SUP-126256,2026-08-10,Pinnacle Treatment Centers,Backlog,Company's Watchlist Summary,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-126256
+SUP-126577,2026-07-28,Quest Global,Backlog,Req not getting opened post approval,Reporter Review,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-126577
+SUP-47696,2025-10-30,,,CRM TEAM -- Stopping all services,Done,Sub-task,SUP,https://phenompeople.atlassian.net/browse/SUP-47696
+SUP-81869,2024-08-19,Total Quality Logistics,,Search visibility is not displaying correctly,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-81869
+SUP-81992,2024-08-23,Regions Financial Corp,,Notification Headers in Settings - Difficulty Reading,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-81992
+SUP-82187,2024-09-02,Philip Morris International,,Interview Feedback Form did not auto populate in the newly created job as default scorecard,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-82187
+SUP-82707,2024-09-04,Dollar Tree,,CRM Email Campaigns Not Calculating Applies,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-82707
+SUP-82771,2024-10-04,FIS,,"""Campaign Activity Status"" Advanced Filter Not Working",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-82771
+SUP-82953,2024-09-18,Bureau Veritas,,Implement new intergrtion,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-82953
+SUP-83142,2024-09-30,Electrolux,,Enable Incomplete Apply subscription (related to case CS0169215),Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-83142
+SUP-83150,2024-10-04,ABB,,Templates- search issue,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-83150
+SUP-83236,2024-10-04,Procter & Gamble,,Automation Rule -didnt work,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-83236
+SUP-84137,2024-10-11,PwC Acceleration Centers,,Event Organizers unable to edit events posted to Spanish (Global) career site (change event visibility),Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84137
+SUP-84183,2024-10-23,Bank of Montreal,,Missing Phenom Stats - Notes Added,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84183
+SUP-84238,2024-10-28,"Aspen Dental Management, Inc.",,"Aspen Dental Management, Inc. - Phone Numbers Not Exported to PDFs",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84238
+SUP-84375,2024-12-10,RSM UK,,CRM - date format changed,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84375
+SUP-84482,2024-10-10,Baptist Health South Florida,,"Email Campaign Reporting 0 sent, delivered, etc.",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84482
+SUP-84497,2024-10-10,Total Quality Logistics,,How to download all Email Campaigns/Templates into a excel doc w/ details,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84497
+SUP-84711,2024-10-15,pwc Germany / PricewaterhouseCoopers GmbH,,System Template,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84711
+SUP-84868,2024-12-05,Forest County Potawatomi Community d/b/a Potawatomi Bingo Casino and d/b/a Potawatomi Hotel,,Phenom Advanced Search -- Field Value concerns,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-84868
+SUP-85301,2024-10-30,NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited),,update  Instagram link on all System Templates,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-85301
+SUP-85581,2025-02-13,Kuehne and Nagel Inc,24.01,User getting logged out after a few hours even if the 8 hour session did not pass,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-85581
+SUP-85582,2024-11-06,Honeywell,,Jobs closed in CSOD but open in Phenom,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-85582
+SUP-85817,2024-12-02,Children's Hospital of Philadelphia,,Activity tab timing out in a project,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-85817
+SUP-85851,2025-06-05,Coles,,Unable to edit tags,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-85851
+SUP-86521,2025-08-11,Coles,Backlog,Automation/s sent with no tokens,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-86521
+SUP-86565,2025-01-21,Axa Group,,Data migration - employee,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-86565
+SUP-86753,2024-12-18,FOX Rehabilitation,,SMS and Email Campaigns Not Showing as Sent,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-86753
+SUP-86841,2024-12-06,Quest Global,,HRIS data on fields update.,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-86841
+SUP-87026,2025-02-10,Humana,,New Lead (Leads) column on jobs spotlight does not appear to be updating,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87026
+SUP-87174,2024-12-20,Cushman & Wakefield,,Data Extration,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87174
+SUP-87204,2024-12-23,University of Virginia,,Referral Date does not match,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87204
+SUP-87242,2024-12-23,TQL,,Display/selection of Campus Reach Date field,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87242
+SUP-87321,2024-12-23,ABB,,incorrect spelling-settings,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87321
+SUP-87403,2025-02-05,Diagnostic Clinic,,Customer data,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87403
+SUP-87506,2025-01-11,TransUnion,24.01,Project Lead #s not showing,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87506
+SUP-87543,2024-12-27,Genmab,,Tab names are wrong,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-87543
+SUP-90615,2025-03-10,ABB,Backlog,"Field ""Universities"" is not displaying correctly under the jobs.",In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-90615
+SUP-90917,2025-12-02,Opentext,Backlog,"Notes on a Candidate Profile - ""@ Mention"" Defect",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-90917
+SUP-91977,2025-09-08,PwC US,Backlog,3/12/2025 - Assistance Required for Skillbridge Dates Filter Issue,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-91977
+SUP-92016,2025-05-06,Capgemeni,Backlog,Email Notification regarding tagged note does not include sender,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-92016
+SUP-94440,2025-06-02,Quest Global,Backlog,Linkedln sign in feature not available on CRM,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-94440
+SUP-95571,2025-06-02,Coles,Backlog,moving recruiters to different parts of CRM (Unprompted),Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-95571
+SUP-95642,2025-06-02,Royal Mail,Backlog,INC5753839 -Phenom screen flickering with content updating constantly,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-95642
+SUP-95801,2025-06-02,Coles,Backlog,Phenom CRM platform slow/not usable,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-95801
+SUP-96637,2025-07-14,pwc Germany / PricewaterhouseCoopers GmbH,Backlog,"Performance Issues - UI rendering taking time when user click on any screen, jobs, events spotlights etc",Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-96637
+SUP-97312,2025-07-14,Health First,Backlog,Jason Welk is a TA supervisor and the system added him as a recruiter to a bunch of existing reqs,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-97312
+SUP-97665,2025-06-16,Dr. Reddy's Laboratories,Backlog,Removal of questions on Manager information & agreement from Propel,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-97665
+SUP-97856,2025-07-15,"Mondelez International, Inc.",Backlog,Job Req - Analytic Section,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-97856
+SUP-97892,2025-07-14,Spartanburg Regional Healthcare System,Backlog,Available opening count,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-97892
+SUP-98527,2025-07-15,Spartanburg Regional Healthcare System,Backlog,Critical Position setting. What does it do? Why is it not working?,Done,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-98527
+SUP-99411,2025-10-01,Humana,Backlog,One of the User is Unable to See Select Candidates in the CRM,In Development,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-99411
+SUP-99850,2025-08-11,Onin Staffing,Backlog,Some columns are not showing data,In Prod,Issues,SUP,https://phenompeople.atlassian.net/browse/SUP-99850
+TRCR-1752,2026-03-16,Texas Roadhouse,,Duplicate candidate can be selected while adding notes in the Notes tab,Done,Product Bug,TRCR,https://phenompeople.atlassian.net/browse/TRCR-1752
+TSSLV-353,2026-05-25,Tessolve,,Unable to publish job to IM,Done,Product Bug,TSSLV,https://phenompeople.atlassian.net/browse/TSSLV-353
+UAB-471,2025-11-21,UAB Medicine Enterprise,,Spotlights Not Visible in CRM-PROD After Migration & Missing Job Level System Field,Done,Product Bug,UAB,https://phenompeople.atlassian.net/browse/UAB-471
+UAB-501,2025-11-11,UAB Medicine Enterprise,,Few fields are disabled in settings but showing in candidate filters.,Done,Product Bug,UAB,https://phenompeople.atlassian.net/browse/UAB-501
+UAB-513,2025-12-15,UAB Medicine Enterprise,,Preview Job URL is redirecting to pre-prod site instead live site,Done,Product Bug,UAB,https://phenompeople.atlassian.net/browse/UAB-513
+UMH-1576,2025-07-31,,,University of Missouri Health Care requests the capability to search by middle name in both global and secondary search .,Closed,Product Task,UMH,https://phenompeople.atlassian.net/browse/UMH-1576
+UVMC-1705,2026-04-20,University of Virginia,,Parent child configs issue in preview env,Done,Product Bug,UVMC,https://phenompeople.atlassian.net/browse/UVMC-1705
+UVMC-1713,2026-07-09,,,Validate the Production CRM configuration to the Preview environment for tenant University of Virginia (RefNum: UOVUOVUS),Closed,Story,UVMC,https://phenompeople.atlassian.net/browse/UVMC-1713
+UVMC-1739,2026-06-19,,,Copy the Production CRM configuration to the Preview environment for tenant University of Virginia Health System (Ref: UOVUNIUS),Closed,Story,UVMC,https://phenompeople.atlassian.net/browse/UVMC-1739
+VIEG-639,2026-08-03,,,CS0332317 - Job details to be displayed in CRM as in SF,Open,CR,VIEG,https://phenompeople.atlassian.net/browse/VIEG-639
+VTRM-297,2025-07-31,Via HFR,,The updated French Canadian translation feature does not appear to be working in the CRM for Via HFR,ON Hold,Product Story,VTRM,https://phenompeople.atlassian.net/browse/VTRM-297
+WAWA-2074,2025-07-11,Wawa,,Wawa | Duplicate & Merge - Downstream (HVH) ,Done,Product Story,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2074
+WAWA-2099,2025-07-11,Wawa,,Wawa | Duplicate & Merge - Downstream (Referrals),Done,Product Story,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2099
+WAWA-2249,2025-05-30,,,Wawa | Preferred Name Implementation Documentation,Resolved,Product Task,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2249
+WAWA-2316,2026-03-02,Wawa,,Wawa_Preferred Name - Platform QA Testing,Done,Product Story,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2316
+WAWA-2345,2025-09-10,Wawa,,Logo Not Updating Based on Candidate's Preferred Name,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2345
+WAWA-2349,2025-09-10,Wawa,,"Preferred First Name Not Updating in ""Notes"" tab",Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2349
+WAWA-2350,2025-09-15,Wawa,,Preferred First Name Not Displayed When Adding Candidate to Project,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2350
+WAWA-2352,2025-10-01,Wawa,,Preferred First Name Not Overriding the Legal First Name While Adding Candidate list to a Project.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2352
+WAWA-2354,2025-09-15,Wawa,,Preferred name not displayed while adding candidates to job,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2354
+WAWA-2355,2025-09-15,Wawa,,Preferred Name Field Missing in Bulk Import Candidate Upload,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2355
+WAWA-2371,2025-09-10,Wawa,,Preferred name not displayed while adding candidates to job from Lists tab,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2371
+WAWA-2378,2025-09-18,Wawa,,Candidate Initials Not Updating Across All UI Components After Preferred First Name Change,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2378
+WAWA-2382,2025-09-10,Wawa,,System displays legal first name instead of preferred name when adding candidates to a job.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2382
+WAWA-2385,2025-09-10,Wawa,,Preferred First Name Not Displayed When Adding Candidate to Project from Lists Tab,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2385
+WAWA-2386,2025-09-15,Wawa,,Preferred Name Search Not Functioning When Adding Candidate to Job,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2386
+WAWA-2392,2025-09-15,Wawa,,"""Add Evaluation"" screen uses legal name instead of preferred name.",Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2392
+WAWA-2396,2025-09-10,Wawa,,Preferred First Name Not Displayed in Project Activity Section After Adding Candidate,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2396
+WAWA-2402,2025-09-08,Wawa,,Ideal Candidates section shows legal first name instead of preferred name during job creation.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2402
+WAWA-2427,2025-09-01,Wawa,,Unable to view candidates listed under the job in the Assessment tab.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2427
+WAWA-2430,2025-09-08,Wawa,,Candidate Merge: Primary phone number not showing candidate in global search popup,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2430
+WAWA-2431,2025-09-17,Wawa,,Recommendations under the Summary tab are not displayed in the correct chronological order after merging profiles.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2431
+WAWA-2434,2025-09-01,Wawa,, Incorrect compliance information after merge.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2434
+WAWA-2457,2025-09-18,Wawa,,Interview invite fails in both CRM and HRM due to calendar access and unknown errors.,Done,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2457
+WAWA-2520,2025-12-17,phenom,,Ownership details are not added in CRM when a candidate applies through a referral,Waiting for other info,Product Bug,WAWA,https://phenompeople.atlassian.net/browse/WAWA-2520
+XRG-436,2026-03-30,ADNOC Group,,Posted jobs are displaying as unposted in CRM STG,Done,Product Bug,XRG,https://phenompeople.atlassian.net/browse/XRG-436
+YUNB-484,2025-05-05,Yale University,,Private notes are not private,Done,Product Story,YUNB,https://phenompeople.atlassian.net/browse/YUNB-484
+ZBX-1891,2025-12-30,,,English - POD/Job Alert/Similar Job Alert Updates V2,Closed,CR,ZBX,https://phenompeople.atlassian.net/browse/ZBX-1891

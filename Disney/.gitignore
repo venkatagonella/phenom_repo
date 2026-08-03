@@ -1,0 +1,14 @@
+# Intermediate Jira scrape caches (large, regenerable)
+.jira-export-raw/
+exports/meaningful/**
+!exports/meaningful/**/*.py
+exports/slices/
+exports/pages/
+exports/refresh-2026/raw-*.json
+exports/*.log
+exports/eta_page_*.json
+exports/eta_meta.json
+exports/watch.log
+
+# Older large intermediate dumps
+rx-crm-core-jira-export.json

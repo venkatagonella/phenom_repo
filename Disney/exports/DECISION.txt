@@ -1,0 +1,17 @@
+Decision (2026-07-31): Cancel full ~383k scrape.
+
+Rationale:
+- ~383k issues match Product Experience = Recruiter Experience (RX) - CRM - Core
+- Vast majority are automated/SAST tickets with blank ETA, Client, and Fix Version
+- A full dump would be huge, slow via API, and low signal for the requested columns
+
+Canonical export scope:
+- Product Experience: Product2 = Recruiter Experience (RX) - CRM - Core
+- Exclude summary containing SAST
+- Keep only issues with ETA OR Client OR Client Name OR Fix Version populated
+- Expected ~13,080 rows
+
+Deliverables (auto-built as slices complete):
+- rx-crm-core-RX-CRM-Core-FINAL.html
+- rx-crm-core-RX-CRM-Core-FINAL.csv
+- Also mirrored to rx-crm-core-product-experience.html / .csv
