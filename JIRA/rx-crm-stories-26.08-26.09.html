@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RX CRM Work Items — Fix Versions 26.08 &amp; 26.09</title>
+<style>
+  :root {
+    --bg: #f4f6f8; --surface: #ffffff; --ink: #1a2332; --muted: #5b6b7c; --line: #d8dee6;
+    --accent: #0b6e4f; --accent-soft: #e6f4ef; --core: #1f4e79; --profile: #6b3fa0;
+    --done: #0b6e4f; --progress: #b86e00; --todo: #4a5d73;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "IBM Plex Sans", "Segoe UI", sans-serif; color: var(--ink);
+    background: radial-gradient(1200px 500px at 10% -10%, #d9ebe3 0%, transparent 55%),
+      radial-gradient(900px 400px at 100% 0%, #e4e0f2 0%, transparent 50%), var(--bg);
+    line-height: 1.45;
+  }
+  .wrap { max-width: 1480px; margin: 0 auto; padding: 28px 20px 60px; }
+  header { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin-bottom: 20px; }
+  header h1 { margin: 0 0 6px; font-size: 1.55rem; letter-spacing: -0.02em; }
+  header .sub { color: var(--muted); font-size: 0.95rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; align-items: end; }
+  .filter-field { display: flex; flex-direction: column; gap: 4px; }
+  .filter-field label { font-size: 0.75rem; font-weight: 650; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .filters input[type="search"], .filters select { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: #fff; min-height: 40px; }
+  .filters input[type="search"] { min-width: 240px; width: 100%; }
+  #version { min-width: 180px; font-weight: 650; border-color: var(--accent); background: var(--accent-soft); }
+  #issueType { min-width: 200px; font-weight: 650; }
+  .type-filters { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+  .type-filters .chip-label { font-size: 0.75rem; font-weight: 650; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-right: 4px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: #fff; font-size: 0.88rem; cursor: pointer; user-select: none; }
+  .chip:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+  .chip input { margin: 0; }
+  .chip-count { color: var(--muted); font-size: 0.8rem; }
+  .chip-actions { display: flex; gap: 6px; margin-left: 4px; }
+  .chip-actions button { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 0.8rem; cursor: pointer; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .stat .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .value { font-size: 1.6rem; font-weight: 650; margin-top: 4px; }
+  .stat .hint { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+  .toc { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .toc a { text-decoration: none; color: #fff; padding: 8px 12px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; }
+  .toc a.core { background: var(--core); } .toc a.profile { background: var(--profile); }
+  .product-section { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; margin-bottom: 20px; overflow: hidden; }
+  .section-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 16px 18px; border-bottom: 1px solid var(--line); background: linear-gradient(90deg, #f8fafc, #fff); }
+  .section-head h2 { margin: 0; font-size: 1.2rem; }
+  #CRM---Core .section-head h2 { color: var(--core); } #CRM---Profile .section-head h2 { color: var(--profile); }
+  .section-meta { display: flex; gap: 14px; color: var(--muted); font-size: 0.9rem; align-items: center; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: #f7f9fb; color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; position: sticky; top: 0; }
+  tr:hover td { background: #fafcff; }
+  .key a { color: var(--accent); font-weight: 650; text-decoration: none; } .key a:hover { text-decoration: underline; }
+  .summary { max-width: 420px; }
+  .parent { margin-top: 4px; font-size: 0.8rem; color: var(--muted); } .parent a { color: var(--core); text-decoration: none; }
+  .num { color: var(--muted); width: 36px; } .effort, .ver, .eta { white-space: nowrap; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; background: #eef2f6; color: var(--todo); }
+  .pill.done { background: #e6f4ef; color: var(--done); } .pill.progress { background: #fff3df; color: var(--progress); } .pill.todo { background: #eef2f6; color: var(--todo); }
+  .type-pill { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+  .type-epic { background: #efe6fa; color: #6b3fa0; } .type-story { background: #e6f4ef; color: #0b6e4f; }
+  .type-task { background: #e8f0fe; color: #1f4e79; } .type-issues { background: #fff3df; color: #9a5b00; }
+  .type-feedback { background: #fde8f0; color: #9b2c5a; } .type-bug { background: #fdecea; color: #b42318; } .type-other { background: #eef2f6; color: #4a5d73; }
+  footer { margin-top: 10px; color: var(--muted); font-size: 0.85rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  footer code { background: #eef2f6; padding: 1px 5px; border-radius: 4px; font-size: 0.8rem; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Recruiter Experience — CRM Work Items</h1>
+      <div class="sub">Product Experience: Recruiter Experience (RX) · Products: CRM - Core, CRM - Profile · Refreshed 2026-08-04 12:51</div>
+      <div class="filters">
+        <div class="filter-field">
+          <label for="version">Fix version</label>
+          <select id="version" aria-label="Fix version">
+            <option value="">All (26.08 &amp; 26.09)</option>
+            <option value="26.08">26.08</option>
+            <option value="26.09">26.09</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label for="issueType">Issue type</label>
+          <select id="issueType" aria-label="Issue type">
+            <option value="">All types</option>
+            <option value="Epic">Epic (16)</option><option value="Story">Story (42)</option><option value="Task">Task (1)</option><option value="Issues">Issues (65)</option><option value="Product Feedback">Product Feedback (11)</option>
+          </select>
+        </div>
+        <div class="filter-field" style="flex:1; min-width:220px">
+          <label for="q">Search</label>
+          <input id="q" type="search" placeholder="Filter by key, summary, owner…" />
+        </div>
+        <div class="filter-field">
+          <label for="statusCat">Status</label>
+          <select id="statusCat">
+            <option value="">All statuses</option>
+            <option value="new">To Do</option>
+            <option value="indeterminate">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+      </div>
+      <div class="type-filters" id="typeChips">
+        <span class="chip-label">Show types</span>
+        <label class="chip"><input type="checkbox" name="itype" value="Epic" checked /> Epic <span class="chip-count">16</span></label><label class="chip"><input type="checkbox" name="itype" value="Story" checked /> Story <span class="chip-count">42</span></label><label class="chip"><input type="checkbox" name="itype" value="Task" checked /> Task <span class="chip-count">1</span></label><label class="chip"><input type="checkbox" name="itype" value="Issues" checked /> Issues <span class="chip-count">65</span></label><label class="chip"><input type="checkbox" name="itype" value="Product Feedback" checked /> Product Feedback <span class="chip-count">11</span></label>
+        <div class="chip-actions">
+          <button type="button" id="typesAll">All</button>
+          <button type="button" id="typesNone">None</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><div class="label">Total items</div><div class="value" id="stat-total">135</div><div class="hint" id="stat-product-hint">Core 67 · Profile 68</div></div>
+      <div class="stat"><div class="label">Fix version</div><div class="value" id="stat-version">All</div><div class="hint" id="stat-version-hint">26.08: 44 · 26.09: 91</div></div>
+      <div class="stat"><div class="label">Story points</div><div class="value" id="stat-points">53</div><div class="hint" id="stat-points-hint">Core 41 · Profile 12</div></div>
+      <div class="stat"><div class="label">Done</div><div class="value" id="stat-done">5</div><div class="hint" id="stat-done-hint">130 remaining</div></div>
+    </div>
+
+    <div class="toc">
+      <a class="core" href="#CRM---Core" id="toc-core">CRM - Core (67)</a>
+      <a class="profile" href="#CRM---Profile" id="toc-profile">CRM - Profile (68)</a>
+    </div>
+
+    
+    <section class="product-section" id="CRM---Core">
+      <div class="section-head">
+        <h2>CRM - Core</h2>
+        <div class="section-meta">
+          <span><strong id="meta-core-count">67</strong> items</span>
+          <span><strong id="meta-core-points">41</strong> story points (where set)</span>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table data-product="CRM - Core">
+          <thead><tr>
+              <th>#</th><th>Key</th><th>Type</th><th>Summary</th><th>Status</th>
+              <th>Fix Version</th><th>Effort</th><th>PM Owner</th><th>Engineering Owner</th><th>ETA</th>
+          </tr></thead>
+          <tbody><tr data-version="26.08" data-type="Epic" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">1</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2007989" target="_blank" rel="noopener">PHEM-2007989</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">Indeed Integration — Migrate Phenom Hire to Job Sync API and Enable Native Apply Experience</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">2</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2109151" target="_blank" rel="noopener">PHEM-2109151</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">CRM Core: Phase 1 — Recruiter-Family Roles, IX Mapping, Notifications &amp; Filters<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1965641" target="_blank" rel="noopener">PHEM-1965641</a></div></td>
+          <td><span class="pill progress">Epic Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>Gonella Venkata Rama Krishna</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Epic" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">3</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-570279" target="_blank" rel="noopener">PHEM-570279</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">Support Reduction - Communicate Role &amp; FF based restrictions in UI<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-570106" target="_blank" rel="noopener">PHEM-570106</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>Kankipati Venu Hemanth</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">4</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-959101" target="_blank" rel="noopener">PHEM-959101</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">RX Job Activity View 26.07<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1970578" target="_blank" rel="noopener">PHEM-1970578</a></div></td>
+          <td><span class="pill progress">In Progress</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">5 SP</td>
+          <td>Gonella Venkata Rama Krishna</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">5</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2180576" target="_blank" rel="noopener">PHEM-2180576</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">Document viewer for Job attachments</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">6</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2186925" target="_blank" rel="noopener">PHEM-2186925</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">Hire - Schedule posting of a job </td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Nikhil Sharma</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">7</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2199077" target="_blank" rel="noopener">PHEM-2199077</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">Private links for confidential jobs.</td>
+          <td><span class="pill progress">Epic Grooming</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="done" data-product="CRM - Core">
+          <td class="num">8</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2224586" target="_blank" rel="noopener">PHEM-2224586</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">CRM Core : Publish and Unpublish Jobs in CRM</td>
+          <td><span class="pill done">Done</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Gonella Venkata Rama Krishna</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">9</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2247948" target="_blank" rel="noopener">PHEM-2247948</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">User Interface Improvements in CRM - New PDS system</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">10</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2258768" target="_blank" rel="noopener">PHEM-2258768</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">Unpost Workday Job When Phenom applicant is in offer stage</td>
+          <td><span class="pill progress">Epic Grooming</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Gonella Venkata Rama Krishna</td>
+          <td>—</td>
+          <td class="eta">2026-08-18</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">11</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1336158" target="_blank" rel="noopener">PHEM-1336158</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Build Event Capture &amp; Storage for Job Lifecycle Activities<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-959101" target="_blank" rel="noopener">PHEM-959101</a></div></td>
+          <td><span class="pill progress">In QA</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>Katerina Bineva</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">12</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1683004" target="_blank" rel="noopener">PHEM-1683004</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Visibility of &quot;Last Updated&quot; Details in CRM Note Type Settings</td>
+          <td><span class="pill progress">Development</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">1 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">13</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1987586" target="_blank" rel="noopener">PHEM-1987586</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Embed RedDot Job Distribution iframe in CRM<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1987585" target="_blank" rel="noopener">PHEM-1987585</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>Katerina Bineva</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">14</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2014752" target="_blank" rel="noopener">PHEM-2014752</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Job Activity MVP Get APIs<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-959101" target="_blank" rel="noopener">PHEM-959101</a></div></td>
+          <td><span class="pill progress">In QA</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">5 SP</td>
+          <td>Katerina Bineva</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="done" data-product="CRM - Core">
+          <td class="num">15</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2109485" target="_blank" rel="noopener">PHEM-2109485</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Date of creation is getting changed when a draft position is posted.</td>
+          <td><span class="pill done">Done</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">16</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2127657" target="_blank" rel="noopener">PHEM-2127657</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Core: Emit Job-Level CEP Events for Hired Count, Expiry Date, and Job Status Change<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2117038" target="_blank" rel="noopener">PHEM-2117038</a></div></td>
+          <td><span class="pill progress">Reopened</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">17</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2159512" target="_blank" rel="noopener">PHEM-2159512</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Creation of Disclaimer placeholder in Job Creation Flow - Disney Phenom HIRE<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2109133" target="_blank" rel="noopener">PHEM-2109133</a></div></td>
+          <td><span class="pill progress">In QA</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>Gonella Venkata Rama Krishna</td>
+          <td>Karthik  Narahari</td>
+          <td class="eta">2026-07-15</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">18</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163327" target="_blank" rel="noopener">PHEM-2163327</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CORE – BE – Departmentalization FF to prevent recruiter scope inheritance on independent leads<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2163324" target="_blank" rel="noopener">PHEM-2163324</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">19</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163333" target="_blank" rel="noopener">PHEM-2163333</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Platform Architecture - &quot;NA&quot; (Not Applicable) Scope Handling<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2163324" target="_blank" rel="noopener">PHEM-2163324</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">20</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2190578" target="_blank" rel="noopener">PHEM-2190578</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Core: Expiring job based on configured date and time in Job entity<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2117038" target="_blank" rel="noopener">PHEM-2117038</a></div></td>
+          <td><span class="pill progress">Story Ready</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">2 SP</td>
+          <td>—</td>
+          <td>Sangameshwar Puramwar</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">21</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2201265" target="_blank" rel="noopener">PHEM-2201265</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Core: Publishing Job in CRM based on configured date and time<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2117038" target="_blank" rel="noopener">PHEM-2117038</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">22</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2222539" target="_blank" rel="noopener">PHEM-2222539</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Core: Expiring job based on configured date and time in Job entity (Disney &amp; Calgary)<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2117038" target="_blank" rel="noopener">PHEM-2117038</a></div></td>
+          <td><span class="pill progress">UX Queue</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>Sangameshwar Puramwar</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">23</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2246342" target="_blank" rel="noopener">PHEM-2246342</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Phenom Hire: Expiring job based on configured date and time in Job entity<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2117038" target="_blank" rel="noopener">PHEM-2117038</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>Sangameshwar Puramwar</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">24</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2259436" target="_blank" rel="noopener">PHEM-2259436</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">UUID should be generated and passed in the create/edit job payload</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">25</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-887168" target="_blank" rel="noopener">PHEM-887168</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Job Activity View(s) MVP<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-959101" target="_blank" rel="noopener">PHEM-959101</a></div></td>
+          <td><span class="pill progress">In QA</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>Katerina Bineva</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">26</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1167825" target="_blank" rel="noopener">PHEM-1167825</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">No Scope Error 26.05<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1970555" target="_blank" rel="noopener">PHEM-1970555</a></div></td>
+          <td><span class="pill progress">PM Acceptance Queue</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">1 SP</td>
+          <td>Katerina Bineva</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">27</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1357744" target="_blank" rel="noopener">PHEM-1357744</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Core - Configure atsCreatedDate Schema for Open Days Logic</td>
+          <td><span class="pill progress">Story Ready</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">1 SP</td>
+          <td>Katerina Bineva</td>
+          <td>Divya Bhavani Seelam</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">28</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2126810" target="_blank" rel="noopener">PHEM-2126810</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Application Requisition Testing</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">29</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2180141" target="_blank" rel="noopener">PHEM-2180141</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Ability to view the documents on Jobs within CRM<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2180576" target="_blank" rel="noopener">PHEM-2180576</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">30</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2199453" target="_blank" rel="noopener">PHEM-2199453</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Enable Confidential job to have a Private Link in Job Creation UI<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2199077" target="_blank" rel="noopener">PHEM-2199077</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">31</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2228173" target="_blank" rel="noopener">PHEM-2228173</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Phenom Hire: Publishing Job in CRM based on configured date and time<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2117038" target="_blank" rel="noopener">PHEM-2117038</a></div></td>
+          <td><span class="pill progress">Story Elaboration</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.08" data-type="Task" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">32</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1794870" target="_blank" rel="noopener">PHEM-1794870</a></td>
+          <td><span class="type-pill type-task">Task</span></td>
+          <td class="summary">Issue with default column view of CRM users with Events Access</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">33</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1036149" target="_blank" rel="noopener">PHEM-1036149</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Notes from the secondary candidate not visible under the “Notes” tab after profile merge.</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">34</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1366472" target="_blank" rel="noopener">PHEM-1366472</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Spotlights MVP scrolling behavior fix<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1987497" target="_blank" rel="noopener">PHEM-1987497</a></div></td>
+          <td><span class="pill progress">Development</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">2 SP</td>
+          <td>Katerina Bineva</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">35</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1741342" target="_blank" rel="noopener">PHEM-1741342</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">CRMHUB: Default value “1” auto-populated in availability fields during edit when no data exists</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">36</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1991304" target="_blank" rel="noopener">PHEM-1991304</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">If spotlight name is big, the edit and delete icon no roper alignment in manage spotlights</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">37</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2009616" target="_blank" rel="noopener">PHEM-2009616</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">[SECRET] - Detected secret on: crm-messaging-platform:cp_crm-msg-messaging-gateway-service</td>
+          <td><span class="pill progress">In Analysis</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="done" data-product="CRM - Core">
+          <td class="num">38</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2073522" target="_blank" rel="noopener">PHEM-2073522</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">when requisitions.target_hire_date field sent as empty in create req API [Failing continuosly everytime with 424]</td>
+          <td><span class="pill done">Done</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">39</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2191995" target="_blank" rel="noopener">PHEM-2191995</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Newly Created Staff Member is Created with Inactive User Status by Default</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">40</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1285936" target="_blank" rel="noopener">PHEM-1285936</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">while sharing the Job through seek , Job distribution page is not loading in intstg</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">41</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1468015" target="_blank" rel="noopener">PHEM-1468015</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">User is not being populated in a linked tenant while trying to forward profile/Forward video</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">42</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2126631" target="_blank" rel="noopener">PHEM-2126631</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Incase of Invalid request type,current returning 500 should return 405 or 404</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">43</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130875" target="_blank" rel="noopener">PHEM-2130875</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Applications : Invalid type value passed in the requisition_id </td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">44</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130883" target="_blank" rel="noopener">PHEM-2130883</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Create application : invalid pipeline_type enum should return 400 received 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">45</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130884" target="_blank" rel="noopener">PHEM-2130884</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Createapplication : ENUM invalid trigger_type enum should return 400 received 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">46</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130886" target="_blank" rel="noopener">PHEM-2130886</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">CandidateApplication : candidate ats_id at max+1 101 should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">47</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130889" target="_blank" rel="noopener">PHEM-2130889</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : hiring triggered_at malformed date should return 400 got 500</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">48</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130890" target="_blank" rel="noopener">PHEM-2130890</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate Application : traffic captured_at malformed date should return 400 got 500</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">49</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130902" target="_blank" rel="noopener">PHEM-2130902</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : candidate first_name.last_name at max+1 151 should return 400</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">50</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130904" target="_blank" rel="noopener">PHEM-2130904</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Phn number : Invalid and phone_number at max+1 31 should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">51</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131102" target="_blank" rel="noopener">PHEM-2131102</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate appliation : invalid application_type enum should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">52</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131106" target="_blank" rel="noopener">PHEM-2131106</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidateapplication : invalid application_status enum should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">53</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131107" target="_blank" rel="noopener">PHEM-2131107</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : invalid nationality_code USA should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">54</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131110" target="_blank" rel="noopener">PHEM-2131110</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : invalid primary_language_code english should return 400 received 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">55</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131112" target="_blank" rel="noopener">PHEM-2131112</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candiadte application : invalid career_level enum should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">56</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131396" target="_blank" rel="noopener">PHEM-2131396</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidateapplication : invalid career_level enum should return 400 received 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">57</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131419" target="_blank" rel="noopener">PHEM-2131419</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : invalid candidate_type enum should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">58</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2131421" target="_blank" rel="noopener">PHEM-2131421</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : invalid honors enum should return 400 received 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">59</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2136631" target="_blank" rel="noopener">PHEM-2136631</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Getting 400 bad request for applications POST API</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">60</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2137931" target="_blank" rel="noopener">PHEM-2137931</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">CandidateApplication : DV_CAND-NOTICE-INV negative notice_period should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">61</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2137985" target="_blank" rel="noopener">PHEM-2137985</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate application : DV_CAND-PREFIX-MAXP1 candidate prefix at max+1 21 should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">62</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2137986" target="_blank" rel="noopener">PHEM-2137986</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">POST application API : DV_LG-NAME-MAXP1 language at max+1 101 should return 400</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">63</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2138948" target="_blank" rel="noopener">PHEM-2138948</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Fields available in POST APPLICATION but not returned in GET APPLICATIONS Response</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Core">
+          <td class="num">64</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2148151" target="_blank" rel="noopener">PHEM-2148151</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Bulk recruiter assignment is throwing 500 error</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">65</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-543502" target="_blank" rel="noopener">PHEM-543502</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Incorrect date value shown in Job Details after job creation<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-415110" target="_blank" rel="noopener">PHEM-415110</a></div></td>
+          <td><span class="pill progress">Development</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">1d</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.08" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">66</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-2105" target="_blank" rel="noopener">CUSP-2105</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Integrate the CRM with Reddot</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>Nikhil Sharma</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.08" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Core">
+          <td class="num">67</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-5947" target="_blank" rel="noopener">CUSP-5947</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Additional Recruiter Role in CRM</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>Nikhil Sharma</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr></tbody>
+        </table>
+      </div>
+    </section>
+    
+    <section class="product-section" id="CRM---Profile">
+      <div class="section-head">
+        <h2>CRM - Profile</h2>
+        <div class="section-meta">
+          <span><strong id="meta-profile-count">68</strong> items</span>
+          <span><strong id="meta-profile-points">12</strong> story points (where set)</span>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table data-product="CRM - Profile">
+          <thead><tr>
+              <th>#</th><th>Key</th><th>Type</th><th>Summary</th><th>Status</th>
+              <th>Fix Version</th><th>Effort</th><th>PM Owner</th><th>Engineering Owner</th><th>ETA</th>
+          </tr></thead>
+          <tbody><tr data-version="26.08" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">1</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2179623" target="_blank" rel="noopener">PHEM-2179623</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">[CRM Profile] Preferred Language (Region) — create, edit &amp; AE payload</td>
+          <td><span class="pill progress">In Progress</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">2</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1939860" target="_blank" rel="noopener">PHEM-1939860</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">[i18n] HS &amp; Hiring Step — tenant translation APIs, 13 languages &amp; CRM surface propagation</td>
+          <td><span class="pill progress">Epic Ready</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">3</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1939890" target="_blank" rel="noopener">PHEM-1939890</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">[CRM Profile] Disposition reasons — rejected/declined, Phenom Hire vs ATS/IX</td>
+          <td><span class="pill progress">Epic Ready</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">4</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2179627" target="_blank" rel="noopener">PHEM-2179627</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">[CRM Profile] Job document association — upload UI, job surfaces &amp; document type</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">5</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2180346" target="_blank" rel="noopener">PHEM-2180346</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">[CRM Profile] Push to ATS — Activity tab, Job detail column &amp; filters</td>
+          <td><span class="pill progress">Epic Ready</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Epic" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">6</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2180353" target="_blank" rel="noopener">PHEM-2180353</a></td>
+          <td><span class="type-pill type-epic">Epic</span></td>
+          <td class="summary">[CRM Profile] Navigation permissions — hide Candidates and Employees tabs</td>
+          <td><span class="pill progress">Epic Ready</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">7</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1053561" target="_blank" rel="noopener">PHEM-1053561</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">[Platform Improvement] Move Application Gaps<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2180365" target="_blank" rel="noopener">PHEM-2180365</a></div></td>
+          <td><span class="pill progress">Story Ready</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">1 SP</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">8</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1342359" target="_blank" rel="noopener">PHEM-1342359</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">[CRM Move] Confidential jobs — hide identifiers in Move application history<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1939858" target="_blank" rel="noopener">PHEM-1939858</a></div></td>
+          <td><span class="pill progress">Story Elaboration</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">9</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1939861" target="_blank" rel="noopener">PHEM-1939861</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">[i18n] FE — Tenant translation APIs for Hiring Status &amp; Hiring Step (13 languages)<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1939860" target="_blank" rel="noopener">PHEM-1939860</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">1w</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">10</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2069917" target="_blank" rel="noopener">PHEM-2069917</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM – Expose candidate locale (in Get candidate), candidate create event, and delete action for AE<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1697787" target="_blank" rel="noopener">PHEM-1697787</a></div></td>
+          <td><span class="pill progress">PM Acceptance Queue</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">2 SP</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">11</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2070934" target="_blank" rel="noopener">PHEM-2070934</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM – Show Push to ATS status in candidate Activity tab<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2180346" target="_blank" rel="noopener">PHEM-2180346</a></div></td>
+          <td><span class="pill progress">Development</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">2 SP</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">12</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2073547" target="_blank" rel="noopener">PHEM-2073547</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">PROF – FE – Add Push to ATS status column on Job detail page candidate list<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2180346" target="_blank" rel="noopener">PHEM-2180346</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">4d</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">13</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2097330" target="_blank" rel="noopener">PHEM-2097330</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Update all upload documents pop-up UI (as per new designs)<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2179627" target="_blank" rel="noopener">PHEM-2179627</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">2d</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">14</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2097342" target="_blank" rel="noopener">PHEM-2097342</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">PROF – FE – Align job detail view and candidate quick view with job document association<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2179627" target="_blank" rel="noopener">PHEM-2179627</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="done" data-product="CRM - Profile">
+          <td class="num">15</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2119448" target="_blank" rel="noopener">PHEM-2119448</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Backend: Support document type on uploading document from document section<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2179627" target="_blank" rel="noopener">PHEM-2179627</a></div></td>
+          <td><span class="pill done">Done</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">4 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">16</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2130523" target="_blank" rel="noopener">PHEM-2130523</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">PROF – FE – Clarify job navigation labels on candidate profile<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2126461" target="_blank" rel="noopener">PHEM-2126461</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="done" data-product="CRM - Profile">
+          <td class="num">17</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2180354" target="_blank" rel="noopener">PHEM-2180354</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Profile – BE/FE – Role permissions to hide Candidates and Employees navigation tabs<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2180353" target="_blank" rel="noopener">PHEM-2180353</a></div></td>
+          <td><span class="pill done">Done</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">3 SP</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">18</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2199386" target="_blank" rel="noopener">PHEM-2199386</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Non-Executive Candidate Share Exposes Executive Email Activity and Displays Blank Job Entry in Job Selection Dropdown</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.08" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">19</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2204900" target="_blank" rel="noopener">PHEM-2204900</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Profile Bug reduction - 26.08</td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">20</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1939894" target="_blank" rel="noopener">PHEM-1939894</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">[Disposition] Build disposition reasons UI configuration<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1939890" target="_blank" rel="noopener">PHEM-1939890</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">21</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1939895" target="_blank" rel="noopener">PHEM-1939895</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">[Disposition] Disposition reason UI updates<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1939890" target="_blank" rel="noopener">PHEM-1939890</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">22</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-1945039" target="_blank" rel="noopener">PHEM-1945039</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">[Disposition] Show disposition reason on Job widget — CRM profile<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-1939890" target="_blank" rel="noopener">PHEM-1939890</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">23</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2124164" target="_blank" rel="noopener">PHEM-2124164</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CBAC User: Candidate profile page &quot;empty&quot; </td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">24</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2204492" target="_blank" rel="noopener">PHEM-2204492</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Application Meta Data implementation</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">25</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2209971" target="_blank" rel="noopener">PHEM-2209971</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">CRM Profile – FE – Candidate Summary tab formatting, consent labels &amp; editable fields [P1]</td>
+          <td><span class="pill progress">UX Queue</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">26</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2210253" target="_blank" rel="noopener">PHEM-2210253</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">PROF – FE – Add Active Applicants filter on Profile Jobs widget<div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2210283" target="_blank" rel="noopener">PHEM-2210283</a></div></td>
+          <td><span class="pill progress">Story Grooming</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Story" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">27</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2260350" target="_blank" rel="noopener">PHEM-2260350</a></td>
+          <td><span class="type-pill type-story">Story</span></td>
+          <td class="summary">Backend: Push to ATS <div class="parent">Epic: <a href="https://phenompeople.atlassian.net/browse/PHEM-2180346" target="_blank" rel="noopener">PHEM-2180346</a></div></td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.08" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">28</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-560769" target="_blank" rel="noopener">PHEM-560769</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Candidate merge -Job activity: After &quot;applied&quot; , &quot;partially completed application&quot; activity is appearing</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.08</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-07 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">29</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2080220" target="_blank" rel="noopener">PHEM-2080220</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">CRM Profile merge failure</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-08-07</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">30</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2139783" target="_blank" rel="noopener">PHEM-2139783</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">DV_CT-NUM-MAXP1 certification_number at max+1 101 should return 400 got 201</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">31</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2151923" target="_blank" rel="noopener">PHEM-2151923</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Confirm CSV : CONFIRM_CSV_HEALTH_006_NULL  null/remove requisition_infos.0.requisition_posting_code should return expected status</td>
+          <td><span class="pill progress">IN Triage</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">32</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2152163" target="_blank" rel="noopener">PHEM-2152163</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Confirm CSV : DOMAIN_SERVICE_UNAVAILABLE error</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">33</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2159476" target="_blank" rel="noopener">PHEM-2159476</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">application haven&#x27;t got created after apply submit</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">34</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2159673" target="_blank" rel="noopener">PHEM-2159673</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">CSV upload : Only headers and without headers use-case giving 200 status</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">35</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163516" target="_blank" rel="noopener">PHEM-2163516</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Work Experience Array Not Saved</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">36</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163517" target="_blank" rel="noopener">PHEM-2163517</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary"> Education Dates Default to Epoch (1970)</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">37</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163518" target="_blank" rel="noopener">PHEM-2163518</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Phone Number Data Lost</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">38</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163519" target="_blank" rel="noopener">PHEM-2163519</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Resume/Application Attachment Lost</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">39</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163520" target="_blank" rel="noopener">PHEM-2163520</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Consent Record Not Mapped</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">40</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163521" target="_blank" rel="noopener">PHEM-2163521</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Application Source Mismatch</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">41</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2163522" target="_blank" rel="noopener">PHEM-2163522</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">State and Country Missing from Address</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">42</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164486" target="_blank" rel="noopener">PHEM-2164486</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply integration : Phn number given during application in career site not available in get application response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">43</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164488" target="_blank" rel="noopener">PHEM-2164488</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : Candidate provided work experience are not available in get application response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">44</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164489" target="_blank" rel="noopener">PHEM-2164489</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : Resume provided during apply is not available in get application respose</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">45</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164490" target="_blank" rel="noopener">PHEM-2164490</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : Candidate submitted State and country values are not available in get application response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">46</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164491" target="_blank" rel="noopener">PHEM-2164491</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : All 6 jobSpecificAdditionalFields questions answers are not available in get application response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">47</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164493" target="_blank" rel="noopener">PHEM-2164493</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : Traffic source values are null</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">48</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164494" target="_blank" rel="noopener">PHEM-2164494</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : jobCategory info is not availble in get application response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">49</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164495" target="_blank" rel="noopener">PHEM-2164495</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : The value candidate submitted via apply is different from Candidate degree value in get API response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">50</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2164497" target="_blank" rel="noopener">PHEM-2164497</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Apply Integration : Candidate education start date and end date info  is not available in get API response</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">51</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2176805" target="_blank" rel="noopener">PHEM-2176805</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">upload-bulk-resumes : Incase of empty zip file we are returning 200 status code</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">52</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189514" target="_blank" rel="noopener">PHEM-2189514</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">prefferred_name field details not matching with crm schema</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">53</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189517" target="_blank" rel="noopener">PHEM-2189517</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">phenone_widget field details not matching with crm schema</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">54</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189519" target="_blank" rel="noopener">PHEM-2189519</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">address line1 ,address line 2  field details not matching with crm schema</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">55</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189536" target="_blank" rel="noopener">PHEM-2189536</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">city and zipcod  fields details not matching with crm schema</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">56</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189541" target="_blank" rel="noopener">PHEM-2189541</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Few forms fields details not available with crm schema</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">57</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189552" target="_blank" rel="noopener">PHEM-2189552</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Addtional fields details not available with crm schema</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="new" data-product="CRM - Profile">
+          <td class="num">58</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-2189554" target="_blank" rel="noopener">PHEM-2189554</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Not getting the application id from TDP api</td>
+          <td><span class="pill todo">To Do</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Issues" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">59</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/PHEM-482860" target="_blank" rel="noopener">PHEM-482860</a></td>
+          <td><span class="type-pill type-issues">Issues</span></td>
+          <td class="summary">Profile merge failure</td>
+          <td><span class="pill progress">QA In Progress</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">4h</td>
+          <td>—</td>
+          <td>—</td>
+          <td class="eta">2026-09-08 (release)</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">60</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-168" target="_blank" rel="noopener">CUSP-168</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">[External] Regions Bank: Phenom Product Enhancement Submission - Use CTRL + F in Attachment View</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">61</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-1963" target="_blank" rel="noopener">CUSP-1963</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Specify which Candidate Documents are Associated with What Application</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">62</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-412" target="_blank" rel="noopener">CUSP-412</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Documents widget on Candidate profile is missing timestamp and partially source, which is required to identify relevant documents e.g. for forwarding to Hiring</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">63</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-4953" target="_blank" rel="noopener">CUSP-4953</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Make Tasks optionally tied to the Candidate Profile</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">64</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-5906" target="_blank" rel="noopener">CUSP-5906</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Localized Hiring Statuses</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">65</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-6108" target="_blank" rel="noopener">CUSP-6108</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Ability to rename documents on candidate profile</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">66</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-6949" target="_blank" rel="noopener">CUSP-6949</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Candidate Resume Upload/Documentation</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">67</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-7019" target="_blank" rel="noopener">CUSP-7019</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Structuring Documents</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr><tr data-version="26.09" data-type="Product Feedback" data-status-cat="indeterminate" data-product="CRM - Profile">
+          <td class="num">68</td>
+          <td class="key"><a href="https://phenompeople.atlassian.net/browse/CUSP-7059" target="_blank" rel="noopener">CUSP-7059</a></td>
+          <td><span class="type-pill type-feedback">Product Feedback</span></td>
+          <td class="summary">Improve CV and cover letter visibility during screening</td>
+          <td><span class="pill progress">Prioritise to Backlog</span></td>
+          <td class="ver">26.09</td>
+          <td class="effort">—</td>
+          <td>Mahendra Manohar Kamate</td>
+          <td>—</td>
+          <td class="eta">—</td>
+        </tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>Generated:</strong> 2026-08-04 12:51 · <strong>Total:</strong> 135 items</div>
+      <div style="margin-top:6px"><strong>Issue types in scope:</strong> Epic (16), Story (42), Task (1), Issues (65), Product Feedback (11)</div>
+      <div style="margin-top:6px"><strong>JQL:</strong> <code>fixVersion in ("26.08", "26.09") AND cf[15667] in ("Recruiter Experience (RX) - CRM - Core", "Recruiter Experience (RX) - CRM - Profile")</code></div>
+      <div style="margin-top:6px"><strong>Fields:</strong> Effort = Story Points (fallback Original Estimate) · PM Owner = <code>customfield_15223</code> · Engineering Owner = DEV Owner <code>customfield_15225</code> · ETA = DEV ETA <code>customfield_15541</code> (fallback Due Date, then fix-version release date marked “(release)”)</div>
+    </footer>
+  </div>
+  <script>
+    const q = document.getElementById('q');
+    const version = document.getElementById('version');
+    const issueType = document.getElementById('issueType');
+    const statusCat = document.getElementById('statusCat');
+    const typeChecks = () => [...document.querySelectorAll('input[name="itype"]')];
+    function parsePoints(text) {
+      const m = String(text || '').match(/^([\d.]+)\s*SP$/i);
+      return m ? Number(m[1]) : 0;
+    }
+    function selectedTypes() {
+      if (issueType.value) return new Set([issueType.value]);
+      return new Set(typeChecks().filter(c => c.checked).map(c => c.value));
+    }
+    function syncChipsFromDropdown() {
+      const single = issueType.value;
+      typeChecks().forEach(c => { c.checked = !single || c.value === single; c.disabled = Boolean(single); });
+    }
+    function apply() {
+      const term = q.value.trim().toLowerCase();
+      const ver = version.value;
+      const cat = statusCat.value;
+      const types = selectedTypes();
+      const rows = [...document.querySelectorAll('tbody tr')];
+      let total = 0, doneCount = 0, points = 0, core = 0, profile = 0, corePts = 0, profilePts = 0, v08 = 0, v09 = 0;
+      const typeVisible = {};
+      rows.forEach(tr => {
+        const text = tr.innerText.toLowerCase();
+        const rowVer = (tr.dataset.version || '').trim();
+        const rowType = tr.dataset.type || '';
+        const rowCat = tr.dataset.statusCat || '';
+        const product = tr.dataset.product || '';
+        const verOk = !ver || rowVer.split(',').map(s => s.trim()).includes(ver) || rowVer === ver;
+        const typeOk = types.has(rowType);
+        const catOk = !cat || rowCat === cat;
+        const show = (!term || text.includes(term)) && verOk && typeOk && catOk;
+        tr.classList.toggle('hidden', !show);
+        if (!show) return;
+        total += 1;
+        const pts = parsePoints(tr.querySelector('.effort')?.textContent);
+        points += pts;
+        if (rowCat === 'done') doneCount += 1;
+        if (rowVer.includes('26.08')) v08 += 1;
+        if (rowVer.includes('26.09')) v09 += 1;
+        typeVisible[rowType] = (typeVisible[rowType] || 0) + 1;
+        if (product === 'CRM - Core') { core += 1; corePts += pts; }
+        if (product === 'CRM - Profile') { profile += 1; profilePts += pts; }
+      });
+      document.querySelectorAll('table[data-product]').forEach(table => {
+        let n = 0;
+        table.querySelectorAll('tbody tr').forEach(tr => {
+          if (tr.classList.contains('hidden')) return;
+          n += 1;
+          const num = tr.querySelector('.num');
+          if (num) num.textContent = n;
+        });
+      });
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-product-hint').textContent = `Core ${core} · Profile ${profile}`;
+      document.getElementById('stat-version').textContent = ver || 'All';
+      document.getElementById('stat-version-hint').textContent = ver ? `${total} items in ${ver}` : `26.08: ${v08} · 26.09: ${v09}`;
+      document.getElementById('stat-points').textContent = String(points);
+      document.getElementById('stat-points-hint').textContent = `Core ${corePts} · Profile ${profilePts}`;
+      document.getElementById('stat-done').textContent = doneCount;
+      document.getElementById('stat-done-hint').textContent = `${total - doneCount} remaining`;
+      document.getElementById('meta-core-count').textContent = core;
+      document.getElementById('meta-core-points').textContent = corePts;
+      document.getElementById('meta-profile-count').textContent = profile;
+      document.getElementById('meta-profile-points').textContent = profilePts;
+      document.getElementById('toc-core').textContent = `CRM - Core (${core})`;
+      document.getElementById('toc-profile').textContent = `CRM - Profile (${profile})`;
+      document.getElementById('CRM---Core').classList.toggle('hidden', core === 0);
+      document.getElementById('CRM---Profile').classList.toggle('hidden', profile === 0);
+      typeChecks().forEach(c => {
+        const span = c.parentElement.querySelector('.chip-count');
+        if (span) span.textContent = typeVisible[c.value] || 0;
+      });
+    }
+    q.addEventListener('input', apply);
+    version.addEventListener('change', apply);
+    statusCat.addEventListener('change', apply);
+    issueType.addEventListener('change', () => { syncChipsFromDropdown(); apply(); });
+    typeChecks().forEach(c => c.addEventListener('change', apply));
+    document.getElementById('typesAll').addEventListener('click', () => {
+      issueType.value = '';
+      typeChecks().forEach(c => { c.disabled = false; c.checked = true; });
+      apply();
+    });
+    document.getElementById('typesNone').addEventListener('click', () => {
+      issueType.value = '';
+      typeChecks().forEach(c => { c.disabled = false; c.checked = false; });
+      apply();
+    });
+    apply();
+  </script>
+</body>
+</html>
