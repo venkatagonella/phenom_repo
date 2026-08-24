@@ -1,0 +1,117 @@
+/* ============================================================================
+   Phenom Slide Creator — Design Tokens
+   Extracted 1:1 from the canonical Google Slides template
+   ("Product - Slide Bank for Cursor"). Do not invent colors — use these.
+   Edit this file to evolve the template; every deck inherits the change.
+   ============================================================================ */
+
+:root {
+  /* ---- Type ------------------------------------------------------------- */
+  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Stage is authored at 1280×720 (16:9); everything scales from --u. */
+  --stage-w: 1280px;
+  --stage-h: 720px;
+  --u: calc(var(--stage-w) / 1280); /* unit multiplier when scaled */
+
+  /* Type scale (px on the 1280×720 stage) */
+  --fs-cover-title: 76px;
+  --fs-cover-sub: 26px;
+  --fs-divider-title: 52px;
+  --fs-title: 40px;     /* bracketed slide title */
+  --fs-kicker: 15px;    /* [Section] label */
+  --fs-metric: 52px;    /* big numbers */
+  --fs-subhead: 18px;
+  --fs-body: 15px;
+  --fs-small: 13px;
+  --fs-footnote: 11px;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ---- Neutrals --------------------------------------------------------- */
+  --ink: #1a1c2e;        /* primary text (near-black navy) */
+  --ink-2: #434343;      /* secondary text */
+  --ink-3: #6b6b73;      /* tertiary text */
+  --paper: #ffffff;      /* slide background */
+  --tile: #f2f2f3;       /* metric / takeaway gray tile */
+  --rule: #e4e4e8;       /* hairline divider under headers */
+  --on-dark: #ffffff;
+
+  /* ---- Brand navy (cover + dark slides) --------------------------------- */
+  --navy: #131a4a;       /* cover background */
+  --navy-deep: #0a0d37;  /* Midnight Lilac */
+
+  /* ---- Phenom Mint ------------------------------------------------------ */
+  --mint-50: #daf3f2;    /* Misty */
+  --mint-100: #bde5e3;   /* Ocean */
+  --mint-200: #9addd6;   /* Soft */
+  --mint-300: #6ad5ca;   /* Fresh */
+  --mint-500: #64a39c;   /* Sage */
+  --mint-700: #426c68;   /* Forest */
+  --mint-900: #203634;   /* Charcoal */
+
+  /* ---- Phenom Peach ----------------------------------------------------- */
+  --peach-50: #f6e2d5;   /* Ivory */
+  --peach-100: #edc3ab;  /* Sandy */
+  --peach-200: #e7a683;  /* Coral */
+  --peach-400: #ff8045;  /* Spicy */
+  --peach-500: #d36238;  /* Rustic */
+  --peach-700: #8c4222;  /* Mahogany */
+  --peach-900: #46210c;  /* Earthy */
+
+  /* ---- Phenom Honey ----------------------------------------------------- */
+  --honey-50: #faedd7;   /* Vanilla */
+  --honey-100: #f4ddb0;  /* Warm */
+  --honey-200: #f7ce82;  /* Butter */
+  --honey-400: #faba45;  /* Golden */
+  --honey-500: #dda04a;  /* Amber */
+  --honey-700: #936931;  /* Walnut */
+  --honey-900: #493614;  /* Espresso */
+
+  /* ---- Phenom Lilac ----------------------------------------------------- */
+  --lilac-50: #e9e6f9;   /* Pearl */
+  --lilac-100: #c9c2f2;  /* Periwinkle */
+  --lilac-300: #7172da;  /* Sapphire */
+  --lilac-500: #4543d9;  /* Royal */
+  --lilac-700: #142aac;  /* Deep */
+  --lilac-800: #171b71;  /* Dusk */
+  --lilac-900: #0a0d37;  /* Midnight */
+
+  /* ---- Active family (set per section; default = Mint) ------------------
+     A section sets data-family="mint|peach|honey|lilac" on .slide and these
+     resolve so every component picks up the section's color automatically. */
+  --family-50: var(--mint-50);
+  --family-100: var(--mint-100);
+  --family-200: var(--mint-200);
+  --family-strong: var(--mint-500);
+  --family-ink: var(--mint-900);
+
+  /* ---- Geometry --------------------------------------------------------- */
+  --pad-x: 56px;         /* slide left/right padding */
+  --pad-y: 44px;         /* slide top/bottom padding */
+  --radius-card: 18px;
+  --radius-pill: 999px;
+  --gap: 24px;
+}
+
+/* Per-section color family. Set data-family on the .slide element (whole slide)
+   or on any element (e.g. a single .icon-card) to override locally. */
+[data-family="mint"] {
+  --family-50: var(--mint-50);  --family-100: var(--mint-100);
+  --family-200: var(--mint-200); --family-strong: var(--mint-500); --family-ink: var(--mint-900);
+}
+[data-family="peach"] {
+  --family-50: var(--peach-50);  --family-100: var(--peach-100);
+  --family-200: var(--peach-200); --family-strong: var(--peach-500); --family-ink: var(--peach-900);
+}
+[data-family="honey"] {
+  --family-50: var(--honey-50);  --family-100: var(--honey-100);
+  --family-200: var(--honey-200); --family-strong: var(--honey-500); --family-ink: var(--honey-900);
+}
+[data-family="lilac"] {
+  --family-50: var(--lilac-50);  --family-100: var(--lilac-100);
+  --family-200: var(--lilac-300); --family-strong: var(--lilac-500); --family-ink: var(--lilac-900);
+}

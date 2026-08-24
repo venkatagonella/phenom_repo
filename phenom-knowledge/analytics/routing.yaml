@@ -1,0 +1,171 @@
+# =============================================================================
+# Phenom Knowledge Framework — ROUTING file
+# Area: Analytics (Recruiter Dashboard widgets + Job Analytics KPIs)
+# =============================================================================
+# See ../INDEX.md for framework + grounding contract.
+# provenance: verified (read this session) | report (sub-agent read pass).
+# SCOPE: 3 repos cloned. The Snowflake analytics-pro backend (KPI source for
+# job-analytics) and analytics-helm-charts/custom-report-builder are NOT cloned.
+# =============================================================================
+
+area: analytics
+version: 1
+generated: 2026-07-13
+clone_root: /Users/venkata.gonella/phenom_repo/MyLocalCRM/repos
+
+repos:
+  crm-dashboard-service:
+    language: Java (Spring Boot)
+    role: >
+      Recruiter dashboard BACKEND. Serves dashboard widgets: overview, new leads,
+      new applicants, my jobs, recent activity, discover, widget ordering/done.
+      Aggregates from Elasticsearch (multi-index) + Mongo (userPreference) +
+      upstream list-service & email-facade-service. No direct Snowflake/SQL.
+    base_package: com.phenompeople.crmdashboardservice
+
+  crm-recruiter-dashboard:
+    language: Angular
+    role: Recruiter dashboard UI (MFE remote). DashboardService mirrors crm-dashboard-service 1:1.
+    mfe: {type: remote, name: recruiter-dashboard, exposes: "./RecruiterDashboard (RecruiterDashboardPageComponent)", verified: report}
+
+  crm-job-analytics:
+    language: Angular
+    role: >
+      Job analytics UI (MFE remote). Calls a SEPARATE Snowflake analytics-pro
+      backend for KPIs (GET) plus CRM Hub facets2/ & ecampaign/ (POST). Does NOT
+      call crm-dashboard-service.
+    mfe: {type: remote, name: job-analytics, exposes: "./JobAnalyticsPageComponent", verified: report}
+
+# -----------------------------------------------------------------------------
+# BACKEND: crm-dashboard-service controllers/endpoints
+# base_url used by UI: {crmHub}/dashboard-service/
+# provenance: verified
+# -----------------------------------------------------------------------------
+endpoints:
+  base_path_prefix_from_ui: "/dashboard-service/"
+  controllers:
+    OverviewController:
+      file: crm-dashboard-service/src/main/java/com/phenompeople/crmdashboardservice/controllers/OverviewController.java
+      routes:
+        - {method: GET, path: "/overview", line: 50, does: dashboard overview metrics}
+        - {method: GET, path: "/account-level", line: 71, does: account-level metrics}
+    NewLeadsController:
+      file: .../controllers/NewLeadsController.java
+      routes:
+        - {method: GET, path: "/new-leads/data", line: 41}
+    NewApplicantsController:
+      file: .../controllers/NewApplicantsController.java
+      routes:
+        - {method: GET, path: "/new-applicants/data", line: 42}
+    MyJobsWidgetController:
+      file: .../controllers/MyJobsWidgetController.java
+      routes:
+        - {method: POST, path: "/myJobs", line: 28}
+    RecentActivityController:
+      file: .../controllers/RecentActivityController.java
+      routes:
+        - {method: GET, path: "/dashboard/recent-activity/{userId}", line: 46}
+    DiscoverWidgetController:
+      file: .../controllers/DiscoverWidgetController.java
+      routes:
+        - {method: POST, path: "/discover", line: 41}
+    WidgetOrderingController:
+      file: .../controllers/WidgetOrderingController.java
+      routes:
+        - {method: GET, path: "/persona", line: 38}
+        - {method: GET, path: "/widget-order/{recruiterUserId}", line: 52}
+    WidgetDoneRequestController:
+      file: .../controllers/WidgetDoneRequestController.java
+      routes:
+        - {method: POST, path: "/{widgetType}/done", line: 33}
+    StatusController:
+      file: .../controllers/StatusController.java
+      routes:
+        - {method: GET, path: "/_", line: 27}
+        - {method: GET, path: "/_currentBuild", line: 37}
+
+# -----------------------------------------------------------------------------
+# UI service bridges
+# provenance: report
+# -----------------------------------------------------------------------------
+ui_services:
+  crm-recruiter-dashboard:
+    DashboardService:
+      file: crm-recruiter-dashboard/src/app/modules/core/services/dashboard.service.ts:12
+      base: "{crmHub}/dashboard-service/"
+      note: "1:1 bridge to the 9 crm-dashboard-service business endpoints (get/post at lines 26-91)."
+    other_services:
+      - {service: CandidateService, backend: "{crmHub}/candidates-api"}
+      - {service: JobsService, backend: "{crmHub}/jobs-api"}
+  crm-job-analytics:
+    JobAnalyticsService:
+      backend_1: "Snowflake analytics-pro (qa-snowflake-analyticspro.phenompro.com) — GET KPI endpoints"
+      backend_2: "{crmHub}/facets2/ + {crmHub}/ecampaign/ — POST candidate/campaign data"
+      note: "does NOT call crm-dashboard-service"
+      provenance: report
+
+# -----------------------------------------------------------------------------
+# DATA SOURCES (backend)
+# -----------------------------------------------------------------------------
+data_sources:
+  crm-dashboard-service:
+    - {store: elasticsearch, note: "multi-index; primary analytics source"}
+    - {store: mongodb, db: userPreference, note: "widget ordering / persona / preferences"}
+    - {upstream_http: list-service, note: "lists data"}
+    - {upstream_http: email-facade-service, note: "email/campaign data (Messaging area)"}
+  kafka:
+    - {topic: "crm.recent.activity.topic", role: consume, repo: crm-dashboard-service, provenance: report}
+  job-analytics_kpis:
+    - {store: snowflake, via: "analytics-pro backend (NOT cloned)", grounded: false}
+
+# -----------------------------------------------------------------------------
+# INTENTS
+# -----------------------------------------------------------------------------
+intents:
+  - match: ["dashboard overview", "recruiter dashboard metrics", "account level metrics"]
+    capability: Dashboard overview
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/src/main/java/com/phenompeople/crmdashboardservice/controllers/OverviewController.java:50", provenance: verified}
+      - {repo: crm-recruiter-dashboard, at: "crm-recruiter-dashboard/src/app/modules/core/services/dashboard.service.ts:12", provenance: report}
+  - match: ["new leads widget", "new leads data"]
+    capability: New leads widget
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/.../controllers/NewLeadsController.java:41", provenance: verified}
+  - match: ["new applicants widget"]
+    capability: New applicants widget
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/.../controllers/NewApplicantsController.java:42", provenance: verified}
+  - match: ["my jobs widget", "recruiter jobs dashboard"]
+    capability: My jobs widget
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/.../controllers/MyJobsWidgetController.java:28", provenance: verified}
+  - match: ["recent activity", "activity feed"]
+    capability: Recent activity
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/.../controllers/RecentActivityController.java:46", provenance: verified}
+  - match: ["discover widget", "recommendations widget"]
+    capability: Discover widget
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/.../controllers/DiscoverWidgetController.java:41", provenance: verified}
+  - match: ["widget order", "customize dashboard widgets", "persona widgets"]
+    capability: Widget ordering / persona
+    candidates:
+      - {repo: crm-dashboard-service, at: "crm-dashboard-service/.../controllers/WidgetOrderingController.java:38", provenance: verified}
+  - match: ["job analytics", "job kpis", "job performance metrics", "funnel"]
+    capability: Job analytics KPIs
+    candidates:
+      - {repo: crm-job-analytics, at: "crm-job-analytics (JobAnalyticsService -> Snowflake analytics-pro + facets2/ecampaign)", provenance: report}
+      - {note: "KPI computation backend (Snowflake analytics-pro) is NOT cloned; do not assert its internals.", grounded: false}
+
+# -----------------------------------------------------------------------------
+# CROSS-AREA
+# -----------------------------------------------------------------------------
+cross_area:
+  messaging: {note: "dashboard-service pulls from email-facade-service; job-analytics calls ecampaign/ (Messaging area)."}
+  automations: {note: "Automation ROI/time-saved analytics live in crm-automation-service AnalyticsController, NOT here (see ../automations)."}
+
+not_covered:
+  grounded: false
+  items:
+    - "Snowflake analytics-pro backend (job-analytics KPI source) - analytics-pro-ui-webpack / analytics-spring-boot-services not accessible."
+    - "custom-report-builder, analytics-helm-charts - not accessible."

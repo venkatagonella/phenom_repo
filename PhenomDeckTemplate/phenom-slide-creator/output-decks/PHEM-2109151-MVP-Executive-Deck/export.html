@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recruiter-Family Roles — MVP (Phase 1)</title>
+
+<!-- Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<!-- reveal.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+
+<!-- Phenom design system -->
+<link rel="stylesheet" href="phenom-tokens.css" />
+<link rel="stylesheet" href="phenom-deck.css" />
+
+<style>
+  /* reveal shell: center each fixed 1280×720 slide and scale to viewport. */
+  html, body { width: 100%; height: 100% !important; margin: 0 !important; }
+  .reveal { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .reveal .slides { text-align: left; }
+  .reveal .slides section { padding: 0; }
+
+  /* ---- Deck-specific components (token-driven, on-brand) ------------------ */
+  .lead-in {
+    font-size: var(--fs-subhead);
+    color: var(--ink-2);
+    line-height: 1.5;
+    max-width: 94%;
+    margin-bottom: 20px;
+  }
+  .two-col {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-content: center;
+  }
+  .panel {
+    background: var(--tile);
+    border-radius: 14px;
+    padding: 26px 30px;
+  }
+  .panel--accent { background: var(--family-50); }
+  .panel .p-ttl {
+    font-size: var(--fs-subhead);
+    font-weight: var(--fw-bold);
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .panel .p-item {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--fs-body);
+    color: var(--ink-2);
+    line-height: 1.45;
+    margin-bottom: 13px;
+  }
+  .panel .p-item:last-child { margin-bottom: 0; }
+  .panel .p-item::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: 7px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--family-strong);
+  }
+  .panel .p-item strong { color: var(--ink); font-weight: var(--fw-semibold); }
+
+  /* Compact card variant so 4 cards + a lead-in fit cleanly */
+  .cards-row.compact .icon-card { min-height: 264px; padding: 26px 24px; }
+  .cards-row.cols-3.compact .icon-card { min-height: 300px; }
+  .icon-card .tag {
+    font-size: var(--fs-footnote);
+    font-weight: var(--fw-bold);
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    color: var(--family-strong);
+    margin-bottom: 8px;
+  }
+
+  .note-strip {
+    margin-top: 18px;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    padding-left: 2px;
+  }
+  .note-strip strong { color: var(--ink-2); font-weight: var(--fw-semibold); }
+
+  .tl-caption {
+    position: absolute;
+    left: var(--pad-x); bottom: 40px;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+  .tl-stop .year.tbd { background: var(--tile); color: var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ================= SLIDE 1 — BUSINESS PROBLEM & ASK ================= -->
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">The Business Challenge</div>
+          <div class="s-title">Every recruiter on a job looks the same to the system — and it's costing teams time</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="lead-in">
+          Enterprise talent teams staff a job with several kinds of recruiters — a lead recruiter, supporting recruiters,
+          sourcers, and coordinators. Today the platform collapses them all into one "Recruiter" role, so notifications,
+          workspace views, and ATS sync can't tell them apart.
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <div class="p-ttl">The problem today</div>
+            <div class="p-item"><strong>Notification fatigue &amp; duplicates</strong> — everyone gets every alert, and a person holding two roles on a job is notified twice.</div>
+            <div class="p-item"><strong>Undifferentiated "My Jobs"</strong> — jobs where a user only supports clutter the same view as the jobs they actually lead.</div>
+            <div class="p-item"><strong>Lost ATS fidelity</strong> — the ATS already distinguishes sourcers and secondary recruiters, but the platform flattens them into "Recruiter."</div>
+          </div>
+          <div class="panel panel--accent">
+            <div class="p-ttl">What the business is asking for</div>
+            <div class="p-item">Recognise distinct recruiter-family roles on the hiring team.</div>
+            <div class="p-item">Route notifications by role and send exactly one alert per event.</div>
+            <div class="p-item">Focus "My Jobs" and filters on the role that matters to each user.</div>
+            <div class="p-item">Preserve the ATS's granular roles when a job is pulled in.</div>
+          </div>
+        </div>
+        <div class="pagenum">1</div>
+      </div>
+      <aside class="notes">Frame the pain in the customer's language: one flat "Recruiter" role drives notification noise, cluttered work views, and loss of ATS role fidelity. The ask is role-awareness across notifications, filters, and integration.</aside>
+    </section>
+
+    <!-- ================= SLIDE 2 — ROLES WE'RE CREATING ================= -->
+    <section>
+      <div class="slide" data-family="peach">
+        <div class="s-head">
+          <div class="s-kicker">MVP · Roles</div>
+          <div class="s-title">New recruiter-family roles</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="lead-in">
+          Phase 1 adds recruiter-family roles, each switched on per tenant by admin configuration. <strong>Sourcer</strong> and
+          <strong>Recruiting Coordinator</strong> become new top-level roles; <strong>Secondary Recruiter</strong> sits under Recruiter.
+        </div>
+        <div class="cards-row compact">
+          <div class="icon-card" data-family="peach">
+            <span class="ic"><i class="ph ph-user-focus"></i></span>
+            <div class="tag">Leading</div>
+            <div class="ttl">Primary Recruiter</div>
+            <div class="desc">Today's Recruiter. Owns the job — "My Jobs" keeps showing only where the user is Primary Recruiter.</div>
+          </div>
+          <div class="icon-card" data-family="honey">
+            <span class="ic"><i class="ph ph-users-three"></i></span>
+            <div class="tag">Supporting</div>
+            <div class="ttl">Secondary Recruiter</div>
+            <div class="desc">A child role under Recruiter for additional recruiters on the same requisition.</div>
+          </div>
+          <div class="icon-card" data-family="lilac">
+            <span class="ic"><i class="ph ph-magnifying-glass"></i></span>
+            <div class="tag">Supporting</div>
+            <div class="ttl">Sourcer</div>
+            <div class="desc">New top-level role for sourcing specialists, with its own job spotlight.</div>
+          </div>
+          <div class="icon-card" data-family="mint">
+            <span class="ic"><i class="ph ph-calendar-check"></i></span>
+            <div class="tag">Supporting</div>
+            <div class="ttl">Recruiting Coordinator</div>
+            <div class="desc">New top-level role for scheduling and coordination on the job.</div>
+          </div>
+        </div>
+        <div class="pagenum">2</div>
+      </div>
+      <aside class="notes">Sourcer and Recruiting Coordinator are new parent-level roles; Secondary Recruiter is modelled as a child of Recruiter. All are config-gated per tenant, and each gets its own spotlight.</aside>
+    </section>
+
+    <!-- ================= SLIDE 3 — CONFIGURATION & CRM EXPERIENCE ============ -->
+    <section>
+      <div class="slide" data-family="honey">
+        <div class="s-head">
+          <div class="s-kicker">MVP · Configuration &amp; CRM</div>
+          <div class="s-title">Admin-controlled, role-aware CRM</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="two-col">
+          <div class="panel panel--accent">
+            <div class="p-ttl">Configuration &amp; assignment</div>
+            <div class="p-item">Each role is enabled or disabled <strong>per tenant by an admin</strong> — separately for Secondary Recruiter, Sourcer and Coordinator.</div>
+            <div class="p-item">Roles can be associated to a job <strong>before it is published</strong>.</div>
+            <div class="p-item">Only the <strong>Primary Recruiter</strong> adds users to these roles; assignments stay editable after publish.</div>
+          </div>
+          <div class="panel">
+            <div class="p-ttl">Views, spotlights &amp; ATS</div>
+            <div class="p-item">Each enabled role gets its own spotlight — "Sourcer Jobs", "Secondary Recruiter Jobs", "Coordinator Jobs"; "My Jobs" still lists Recruiter jobs.</div>
+            <div class="p-item">Existing filters and advanced filters work <strong>as-is</strong> for the new roles.</div>
+            <div class="p-item">Roles configured in the ATS create <strong>placeholders</strong> in CRM — filled manually by admins / Primary Recruiter in MVP.</div>
+          </div>
+        </div>
+        <div class="note-strip"><strong>Guardrail:</strong> once a job has a user assigned to one of these roles, that role's setting can no longer be turned off.</div>
+        <div class="pagenum">3</div>
+      </div>
+      <aside class="notes">Admins gate each role per tenant; only Primary Recruiter assigns users. Role spotlights and existing filters carry the experience. ATS-configured roles create placeholders filled manually in MVP, and the setting locks once a role is in use.</aside>
+    </section>
+
+    <!-- ================= SLIDE 4 — NOTIFICATIONS ================= -->
+    <section>
+      <div class="slide" data-family="lilac">
+        <div class="s-head">
+          <div class="s-kicker">MVP · Notifications</div>
+          <div class="s-title">One person, one notification</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="cards-row cols-3 compact">
+          <div class="icon-card" data-family="lilac">
+            <span class="ic"><i class="ph ph-envelope-simple"></i></span>
+            <div class="ttl">Exactly one email</div>
+            <div class="desc">Even when a user holds multiple roles on the same job, only one email notification is sent per event.</div>
+          </div>
+          <div class="icon-card" data-family="peach">
+            <span class="ic"><i class="ph ph-user-switch"></i></span>
+            <div class="ttl">Last-held-role context</div>
+            <div class="desc">Notifications reflect the most recent role — a Recruiter later made Sourcer receives Sourcer notifications, not Recruiter.</div>
+          </div>
+          <div class="icon-card" data-family="honey">
+            <span class="ic"><i class="ph ph-sliders-horizontal"></i></span>
+            <div class="ttl">Inherited settings</div>
+            <div class="desc">Notification preferences are inherited directly from recruiter-level settings.</div>
+          </div>
+        </div>
+        <div class="note-strip"><strong>Not in MVP:</strong> SMS / WhatsApp delivery and per-role personalization.</div>
+        <div class="pagenum">4</div>
+      </div>
+      <aside class="notes">The headline outcome: de-duplicated notifications. Context follows the last-held role, and settings inherit from the recruiter level. SMS/WhatsApp and per-role personalization are explicitly out of MVP.</aside>
+    </section>
+
+    <!-- ================= SLIDE 5 — REPORTS & ANALYTICS ================= -->
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">MVP · Reports &amp; Analytics</div>
+          <div class="s-title">Visibility into every role's contribution</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="two-col">
+          <div class="panel panel--accent">
+            <div class="p-ttl">What's planned</div>
+            <div class="p-item">Reporting is enabled per the roles a user holds on jobs, so their activity can be <strong>analysed by role</strong>.</div>
+            <div class="p-item">Primary Recruiter reporting capabilities are <strong>cloned</strong> for Secondary Recruiter, Sourcer and Coordinator.</div>
+          </div>
+          <div class="panel">
+            <div class="p-ttl">In practice</div>
+            <div class="p-item">A user who is both Secondary Recruiter and Sourcer can be reported on <strong>separately for each role</strong>.</div>
+            <div class="p-item">Leaders gain a clear view of each role's contribution to a requisition.</div>
+          </div>
+        </div>
+        <div class="pagenum">5</div>
+      </div>
+      <aside class="notes">Reporting becomes role-aware: activity is analysable by the role a user held, with Primary Recruiter reporting capabilities cloned to the new roles so a multi-role user can be measured per role.</aside>
+    </section>
+
+    <!-- ================= SLIDE 6 — DELIVERY TIMELINE (LANDING MESSAGE) ======== -->
+    <section>
+      <div class="slide" data-family="honey">
+        <div class="s-head">
+          <div class="s-kicker">MVP · Delivery</div>
+          <div class="s-title">When Phenom can deliver the MVP</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="timeline">
+          <div class="axis"></div>
+          <div class="stops">
+            <div class="tl-stop down" data-family="honey">
+              <span class="year">Now</span>
+              <div class="evt"><span class="et">Grooming &amp; Design</span>Scope, UX and cross-team effort being finalised.</div>
+            </div>
+            <div class="tl-stop up" data-family="peach">
+              <span class="year tbd">Date TBD</span>
+              <div class="evt"><span class="et">Build</span>Engineering across CRM, Integration &amp; Messaging.</div>
+            </div>
+            <div class="tl-stop down" data-family="lilac">
+              <span class="year tbd">Date TBD</span>
+              <div class="evt"><span class="et">UAT — Staging</span>Customer validation on the agreed rollout tenants.</div>
+            </div>
+            <div class="tl-stop up" data-family="mint">
+              <span class="year tbd">Date TBD</span>
+              <div class="evt"><span class="et">Go-Live — Production</span>Enabled per tenant after ATS role mapping is validated.</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-caption">Dates to be confirmed — the epic is currently in grooming.</div>
+        <div class="pagenum">6</div>
+      </div>
+      <aside class="notes">The landing message: the sequence to MVP delivery. Dates are placeholders pending confirmation; enablement is per tenant after ATS role mapping is validated.</aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    controls: false,
+    progress: false,
+    hash: true,
+    transition: "none",
+  });
+</script>
+</body>
+</html>

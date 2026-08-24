@@ -1,0 +1,180 @@
+# =============================================================================
+# Phenom Knowledge Framework — ROUTING file
+# Area: Screening (On-Demand Video Assessment / ODVA lifecycle)
+# =============================================================================
+# See ../INDEX.md for framework + grounding contract.
+# provenance: verified (read this session) | report (sub-agent read pass).
+# SCOPE WARNING: only ONE screening repo is accessible (crm-video-assessment).
+# It owns the ODVA STATUS/lifecycle + recruiter notifications. Video capture,
+# AI evaluation/scoring, X+ Screening, Fitscore, Questionnaires, Screening Agent
+# are NOT in this repo and NOT cloned — see `not_covered` below.
+# =============================================================================
+
+area: screening
+version: 1
+generated: 2026-07-13
+clone_root: /Users/venkata.gonella/phenom_repo/MyLocalCRM/repos
+
+repos:
+  crm-video-assessment:
+    language: Java (Spring Boot + Kafka Streams)
+    role: >
+      On-Demand Video Assessment (ODVA) lifecycle service: config enable/count,
+      status transitions, candidate screening context, and recruiter
+      notifications on invite-failed / pending-evaluation / evaluated / disqualified.
+    main: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/VideoAssessmentApplication.java:27
+    base_package: com.phenompeople.videoassessment
+
+# -----------------------------------------------------------------------------
+# CONTROLLERS / ENDPOINTS  (root-mapped; no base @RequestMapping)
+# provenance: verified
+# -----------------------------------------------------------------------------
+endpoints:
+  ApplicationStatusController:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/ApplicationStatusController.java
+    routes:
+      - {method: GET, path: "/", handler: hello, line: 51}
+      - {method: GET, path: "/status", handler: getStatus, line: 60}
+      - {method: GET, path: "/currentBuild", handler: getCurrentBuild, line: 72}
+  CandidateContextController:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/CandidateContextController.java
+    routes:
+      - {method: POST, path: "/CandidateContext", handler: getCandidateContext, line: 43, does: per-candidate screening context}
+  VideoAssessmentConfigController:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/VideoAssessmentConfigController.java
+    routes:
+      - {method: POST, path: "/VideoAssessmentConfig", handler: setVAConfig, line: 31, does: enable ODVA + set count on job/event}
+  VideoAssessmentStatusController:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/VideoAssessmentStatusController.java
+    routes:
+      - {method: POST, path: "/VideoAssessment/status", handler: setVAConfig, line: 50, does: status update (e.g. video delete)}
+      - {method: POST, path: "/VideoAssessment/updateEntityStatus", handler: updateEntityStatus, line: 67, does: update screening status on entity}
+      - {method: POST, path: "/VideoAssessment/updateEntityStatus/dataFix", handler: vaStatusVix, line: 91, does: data-fix path}
+
+# -----------------------------------------------------------------------------
+# SERVICES
+# provenance: report (sub-agent read; re-open to confirm exact line)
+# -----------------------------------------------------------------------------
+services:
+  VideoAssessmentStatusServiceImpl:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/VideoAssessmentStatusServiceImpl.java
+    methods:
+      - {name: updateEntityStatus, line: 126, does: "upsert onDemandInterviewScreening sub-doc + ES; notify on invite-failed/pending/evaluated/disqualified"}
+      - {name: vaStatusFix, line: 243, does: data-fix variant}
+      - {name: deleteVideoAssessment, line: 458, does: "set 'video deleted'; fire videoAssessmentStatus automation trigger"}
+      - {name: getNotifyServiceFromCurrentStatus, line: 310, does: pick notify sub-service by status}
+  VideoAssessmentConfigServiceImpl:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/VideoAssessmentConfigServiceImpl.java
+    methods:
+      - {name: setVideoAssessmentConfig, line: 101, does: "toggle videoAssessmentEnabled/count on JobsList or EventsSchedule + ES"}
+      - {name: updateCheckList, line: 171, does: "PUT crm-events OWI checklist"}
+  CandidateContextServiceImpl:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/CandidateContextServiceImpl.java
+    methods:
+      - {name: getCandidateContext, line: 49, does: "screening context from JobSeekerActivity/EventRegistrations + CandidatesList"}
+  VANotifyService:
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/VANotifyService.java
+    role: abstract base for recruiter notification dispatch
+    methods:
+      - {name: sendNotificationsToRecruiters, line: 112}
+      - {name: raiseKafkaEvent, line: 526, does: "POST LightSaber -> cp_automation_notification"}
+    subclasses:
+      - {class: VASubmittedNotifyService, file: "service/VASubmittedNotifyService.java:26", status: "pending evaluation"}
+      - {class: VAEvaluatedNotifyService, file: "service/VAEvaluatedNotifyService.java", status: "evaluated"}
+      - {class: VAFailedNotifyService, file: "service/VAFailedNotifyService.java:25", status: "invite failed"}
+      - {class: VADisqualifiedNotifyService, file: "service/VADisqualifiedNotifyService.java:28", status: "disqualified"}
+
+# -----------------------------------------------------------------------------
+# KAFKA (Streams topology + LightSaber HTTP producers)
+# provenance: report
+# -----------------------------------------------------------------------------
+events:
+  processor:
+    class: InterviewProcessor
+    file: crm-video-assessment/src/main/java/com/phenompeople/videoassessment/topology/InterviewProcessor.java:55
+    build: {method: buildPipeline, line: 82}
+    process: {method: processEvent, line: 119}
+  consume:
+    - {topic: MCS_VIDEO_SCREEN, at: "InterviewProcessor.java:85", note: "default; from MCS/video hub"}
+    - {topic: candidate_initiated_screening, at: "InterviewProcessor.java:86"}
+  produce_via_lightsaber:
+    - {topic: cp_automation_notification, at: "VANotifyService.java:566"}
+    - {topic: cp_automation_online_trigger, at: "KafkaProducer.java:183"}
+    - {topic: cp_automation_trigger, at: "KafkaProducer.java:181"}
+    - {topic: cp_automation_tql_trigger, at: "KafkaProducer.java:185", note: "refNum TQL1US"}
+  skipped_events: [interview_screen_evaluated, interview_video_submit, interview_screen_disqualified]
+
+# -----------------------------------------------------------------------------
+# DOMAIN MODELS
+# -----------------------------------------------------------------------------
+models:
+  - {class: ODVIEntity, file: "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/model/common/ODVIEntity.java:18"}
+  - {class: VAUpdateEntityStatusRequest, file: "model/request/VAUpdateEntityStatusRequest.java:14", fields: "currentStatus, videoScreenId, overallEvaluation, interviewAvgRating, assessmentScore"}
+  - {class: VideoAssessmentConfigRequest, file: "model/request/VideoAssessmentConfigRequest.java:11", fields: "videoAssessmentEnabled, videoAssessmentCount"}
+  - {class: CandidateContextRequest, file: "model/request/CandidateContextRequest.java"}
+  - {class: InterviewNotificationDto, file: "dto/InterviewNotificationDto.java:16"}
+  - {class: InterviewNotificationKafkaEventDTO, file: "dto/InterviewNotificationKafkaEventDTO.java"}
+
+# -----------------------------------------------------------------------------
+# EXTERNAL SYSTEMS  (config-key driven)
+# -----------------------------------------------------------------------------
+external_systems:
+  - {name: LightSaber (kafka gateway), at: "VANotifyService.java:537", config: phenom_track_api_url}
+  - {name: Email service (interview schedule), at: "VANotifyService.java:410", config: "email.service + ondemand.video.interview.email.endpoint (/crm/interviewSchedule)"}
+  - {name: VX / MCS campaign-execution-admin, at: "VANotifyService.java:275", config: video-assessment-url, does: email substitutions}
+  - {name: crm-events, at: "VideoAssessmentConfigServiceImpl.java:176", config: crm.events.base.url, does: OWI checklist}
+  - {name: Slack, at: "SlackAlertService.java:65", config: odva.slack.url}
+  - {name: Elasticsearch, at: "ESClientUtil.java:90"}
+
+data_stores:
+  mongo:
+    db_pattern: "{refNum}_candidates"
+    collections: [OnDemandInterviewScreenings, JobSeekerActivity, EventRegistrations, JobsList, EventsSchedule, CandidatesList, OndemandInterviewRawEvent, TenantConfigurations, RecruiterActivities]
+  redis: {manager: "crm-video-assessment CRMRedisManager.java:31", dbs: "tenantsList(1), recruiterSettings(7), recruiters(13), tenantConfig(14), general(15)"}
+  elasticsearch: {at: "crm-video-assessment ESClientUtil.java:47", note: "index = parentRefNum (lowercased), type = entity collection"}
+
+# -----------------------------------------------------------------------------
+# INTENTS
+# -----------------------------------------------------------------------------
+intents:
+  - match: ["enable video assessment", "turn on ODVA for a job/event", "set assessment count"]
+    capability: ODVA config
+    candidates:
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../controller/VideoAssessmentConfigController.java:31", provenance: verified}
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../service/VideoAssessmentConfigServiceImpl.java:101", provenance: report}
+  - match: ["video assessment status", "candidate evaluated/disqualified", "screening status update"]
+    capability: ODVA status lifecycle
+    candidates:
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../controller/VideoAssessmentStatusController.java:67", provenance: verified}
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../service/VideoAssessmentStatusServiceImpl.java:126", provenance: report}
+  - match: ["screening context for candidate", "candidate ODVA context"]
+    capability: Candidate screening context
+    candidates:
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../controller/CandidateContextController.java:43", provenance: verified}
+  - match: ["notify recruiter about assessment", "video assessment notification"]
+    capability: Recruiter notification
+    candidates:
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../service/VANotifyService.java:112", provenance: report}
+  - match: ["how does a video screen event get processed", "MCS video screen"]
+    capability: Screening event ingestion
+    candidates:
+      - {repo: crm-video-assessment, at: "crm-video-assessment/.../topology/InterviewProcessor.java:119", provenance: report}
+
+# -----------------------------------------------------------------------------
+# CROSS-AREA
+# -----------------------------------------------------------------------------
+cross_area:
+  automations:
+    note: "Automation actions INITIATE_SCREENING / SEND_ODVA / FORWARD_VIDEO_ASSESSMENT... interact with ODVA. See ../automations."
+  messaging:
+    note: "Notifications go out via email/LightSaber (Messaging area)."
+
+# -----------------------------------------------------------------------------
+# NOT COVERED (no accessible repo — do NOT answer from guesses)
+# -----------------------------------------------------------------------------
+not_covered:
+  grounded: false
+  items:
+    - "Video capture / recording UI and the actual video evaluation/AI scoring (MCS_VIDEO_SCREEN is produced by MCS/video hub, not cloned)."
+    - "X+ Screening, Fitscore, Questionnaires, Screening Agent — repos not accessible with current key."
+  guidance: "If asked about these, say the source is not available in the cloned Screening repos."

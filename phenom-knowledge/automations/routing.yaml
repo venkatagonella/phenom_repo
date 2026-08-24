@@ -1,0 +1,535 @@
+# =============================================================================
+# Phenom Knowledge Framework — ROUTING file
+# Area: Automations (CRM Automations / Recipes)
+# =============================================================================
+# PURPOSE
+#   Maps a natural-language question/intent to the EXACT place in code
+#   (repo -> file -> symbol -> line) so answers can be given from real code,
+#   not guesses. Every `at:` reference is <repo>/<path>:<line> and was read
+#   from the cloned source under MyLocalCRM/repos/.
+#
+# HOW TO USE
+#   1. Match the user question to an `intents[].match` entry (or a capability).
+#   2. Open the `at:` target(s) to read the real method/procedure.
+#   3. If several repos can satisfy the intent, ALL are listed under
+#      `candidates:` — answer per repo-area path, do not pick silently.
+#
+# PROVENANCE
+#   verified: line read directly this session (grep/Read).
+#   report:   from a code-reading sub-agent pass (read, but line not re-verified here).
+#   Anything not in code is marked `grounded: false` and must not be asserted.
+# =============================================================================
+
+area: automations
+version: 1
+generated: 2026-07-13
+clone_root: /Users/venkata.gonella/phenom_repo/MyLocalCRM/repos
+
+# -----------------------------------------------------------------------------
+# REPOS in this area
+# -----------------------------------------------------------------------------
+repos:
+  crm-automations-ui:
+    language: TypeScript (Angular 16)
+    role: >
+      Front-end recipe builder MFE. Where recruiters create/edit automation
+      recipes (trigger + conditions + actions), browse templates, view run
+      history and analytics.
+    mfe:
+      type: module-federation remote
+      remote_name: crmAutomations
+      exposes: "./automations -> AutomationsModule"
+      at: crm-automations-ui/webpack.config.js:3
+    entrypoint: crm-automations-ui/src/app/app-routing.module.ts:17
+
+  crm-automation-service:
+    language: Java (Spring Boot, Maven)
+    role: >
+      Core automation backend. Recipe CRUD, templates, analytics, user
+      settings, metadata (trigger/action config), migration, internal jobs,
+      and a set of Temporal ACTION activities (forward to HM, video
+      assessment, initiate screening, ODVA, invite for interview,
+      notification, audit log).
+    entrypoint: crm-automation-service/src/main/java/com/phenom (controllers/*)
+
+  automation-search-service:
+    language: Java (Spring Boot, Maven)
+    role: >
+      Trigger-to-recipe MATCHING engine. On a trigger event, uses a Lucene
+      "projected filter" index + Elasticsearch to find which recipes match,
+      validates filter conditions, and records results. This decides WHICH
+      recipes fire.
+    entrypoint: automation-search-service/src/main/java/com/phenom/AutomationSearchService.java:23
+
+  candidate-automation:
+    language: Java (Apache Storm topology, Maven)
+    role: >
+      The ACTION EXECUTION engine (Storm). Consumes trigger events, runs
+      Trigger -> Filter -> Action bolts, and executes the concrete action via
+      an ActionFactory dispatch to 24 action implementations (send email/sms,
+      add tag, assign to job/project, change status/stage, screening, ODVA...).
+    entrypoint: candidate-automation/src/main/java/com/phenompeople/topology/CPAutomationTopology.java
+
+  crm-workflows:
+    language: Java (Spring Boot, Maven)
+    role: >
+      LinkedIn CRM Connect integration microservice (NOT a general automations
+      engine despite the name). Consumes CRM entity-change Kafka events and
+      drives LinkedIn API sync (resume upload, interactions, project/candidate
+      sync) via the Phenom internal workflow broker.
+    naming_note: >
+      Name is misleading; functionally this is `crm-linkedin-integration`.
+    entrypoint: crm-workflows/src/main/java/com/phenom/crmworkflows/CrmWorkflowsApplication.java:41
+
+  crm-automation:
+    language: Python / Robot Framework / Playwright
+    role: >
+      QA TEST automation (Playwright, Robot Framework RF_*, API perf, Kafka
+      event validator). NOT product code. Excluded from the functional graph.
+    product_code: false
+    at: crm-automation/README.md:1
+
+# -----------------------------------------------------------------------------
+# END-TO-END RUNTIME FLOW  (how an automation actually fires)
+# Use this to answer "what happens when ... " questions.
+# -----------------------------------------------------------------------------
+runtime_flow:
+  steps:
+  - step: 1_author
+    what: Recruiter builds/saves a recipe in the UI.
+    at: crm-automations-ui/src/app/modules/automation-create/edit-automation/edit-automation.component.ts:1
+    calls: crm-automations-ui/src/app/services/automations.service.ts:65   # createRecipe
+  - step: 2_persist
+    what: Backend creates/updates recipe, persists to Mongo RecipeList and builds MergedFilters.
+    at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:104  # /recipe/create
+    also: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:264 # /recipe/update
+  - step: 3_trigger_event
+    what: A CRM entity change publishes a trigger event onto Kafka.
+    topics: [cp_automation_online_trigger, cp_automation_trigger, cp_temporal_automation_online_trigger, cp_temporal_automation_trigger]
+  - step: 4_match
+    what: Search service finds which recipes match the trigger (Lucene projected filter + ES + validate).
+    at: automation-search-service/src/main/java/com/phenom/kafka/KafkaConsumer.java:58   # onlineTrigger
+    then: automation-search-service/src/main/java/com/phenom/service/ValidatorService.java:67  # validateFilters
+  - step: 5_execute_storm
+    what: Storm topology executes matched actions (Trigger->Filter->Action bolts -> ActionFactory).
+    at: candidate-automation/src/main/java/com/phenompeople/action/factory/ActionFactory.java:24
+  - step: 5_execute_temporal
+    what: >
+      A subset of actions execute as Temporal activities in the backend
+      service instead of Storm (forward-to-HM, video assessment, initiate
+      screening, ODVA, invite for interview, notification, audit).
+    at: crm-automation-service/src/main/java/com/phenom/temporal/TemporalWorker.java:65
+  - step: 6_downstream
+    what: Action impls call downstream services (email/sms campaign, lists, tags, jobs, projects, screening...).
+    at: candidate-automation/src/main/java/com/phenompeople/action/impl   # per-action classes
+  ambiguity_note: >-
+    Two action-execution engines coexist: Storm (candidate-automation, 24
+    actions) and Temporal (crm-automation-service, ~9 activities). Which path a
+    given action takes is data/feature-flag driven (e.g. `automationBatchWorkflow`
+    checked in automation-search-service KafkaConsumer). When answering "how is
+    action X executed", check BOTH engines and say which implements it.
+
+# -----------------------------------------------------------------------------
+# INTENTS  (question -> where to look)
+# -----------------------------------------------------------------------------
+intents:
+
+  # ---- Recipe authoring / CRUD (backend) ----
+  - match: ["create a recipe", "save automation", "new automation recipe"]
+    capability: Recipe create/update
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:104  # POST /recipe/create
+        symbol: AutomationController (createRecipe)
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:264  # POST /recipe/update
+        symbol: AutomationController (saveRecipe)
+        provenance: verified
+      - repo: crm-automations-ui
+        at: crm-automations-ui/src/app/services/automations.service.ts:65   # createRecipe
+        provenance: report
+        note: UI caller; hits crm-automation-service /recipe/create.
+
+  - match: ["validate recipe name", "recipe title exists"]
+    capability: Recipe name validation
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:451  # /validateRecipeTitle
+        provenance: verified
+
+  - match: ["preview a recipe", "recipe preview"]
+    capability: Recipe preview
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:135  # /recipe/preview
+        provenance: verified
+
+  - match: ["enable disable delete recipe", "recipe set action", "turn off automation"]
+    capability: Recipe enable/disable/delete
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:224  # /recipe/setAction
+        provenance: verified
+
+  - match: ["recipe detail", "get a recipe by id"]
+    capability: Recipe detail fetch
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:312  # /recipeDetail
+        provenance: verified
+
+  - match: ["search recipes", "list recipes", "recipes by criteria"]
+    capability: Recipe search/list
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:356  # /searchRecipesByCriteria
+        provenance: verified
+
+  - match: ["recipe history", "audit history", "who changed recipe"]
+    capability: Recipe/audit history
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:324  # /searchRecipeHistory
+        provenance: verified
+
+  - match: ["system recipe", "internal recipe"]
+    capability: System recipe management
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:484  # /i/systemRecipe
+        provenance: verified
+
+  - match: ["trigger frequency", "how often recipe runs"]
+    capability: Recipe trigger frequency
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java:647  # /trigger-frequency/{recipeId}
+        provenance: verified
+
+  # ---- Templates ----
+  - match: ["automation templates", "template gallery", "recipe templates"]
+    capability: Template list/detail/favourite/category/active
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/TemplateController.java:45   # /template/list
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/TemplateController.java:108  # /template/{refNum}/{locale}/{templateId}
+        provenance: verified
+      - repo: crm-automations-ui
+        at: crm-automations-ui/src/app/modules/automations/automation-template-gallery/automation-template-gallery.component.ts:46
+        provenance: report
+
+  # ---- Analytics / ROI ----
+  - match: ["automation analytics", "time saved", "recipe metrics", "hourly rate"]
+    capability: Automation analytics / ROI widgets
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AnalyticsController.java:34   # /analytics
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AnalyticsController.java:39   # /setHourlyRate
+        provenance: verified
+      - repo: crm-automations-ui
+        at: crm-automations-ui/src/app/modules/analytics/automation-analytics/automation-analytics.component.ts:29
+        provenance: report
+
+  # ---- Metadata (available triggers/actions config) ----
+  - match: ["available triggers", "available actions", "action config", "trigger config", "what fields can trigger"]
+    capability: Trigger/Action metadata & config
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/MetadataController.java:41   # /i/v2/metadata
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/MetadataController.java:52   # /i/get-action-config
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/MetadataController.java:62   # /i/get-trigger-config
+        provenance: verified
+
+  # ---- Internal jobs / scheduling of automation work ----
+  - match: ["candidate automation job", "delay job", "expired recipe cleanup", "invite recommendations job"]
+    capability: Internal automation jobs
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationJobController.java:53   # /i/CandidateAutomationJob
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationJobController.java:86   # /i/AutomationDelayJob
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/controllers/AutomationJobController.java:137  # /i/removeExpiredRecipe
+        provenance: verified
+
+  # ---- Trigger -> recipe MATCHING (which recipes fire) ----
+  - match: ["which recipes match", "recipe matching", "does a trigger fire a recipe", "filter matching"]
+    capability: Trigger-to-recipe matching / filter evaluation
+    candidates:
+      - repo: automation-search-service
+        at: automation-search-service/src/main/java/com/phenom/kafka/KafkaConsumer.java:58   # onlineTrigger
+        provenance: report
+      - repo: automation-search-service
+        at: automation-search-service/src/main/java/com/phenom/service/ValidatorService.java:67  # validateFilters
+        provenance: report
+      - repo: automation-search-service
+        at: automation-search-service/src/main/java/com/phenom/service/DataProviderService.java:78  # getEntitiesData (ES fetch)
+        provenance: report
+
+  - match: ["projected filter index", "lucene index for recipes", "how filters are indexed"]
+    capability: Lucene projected-filter index build/update/search
+    candidates:
+      - repo: automation-search-service
+        at: automation-search-service/src/main/java/com/phenom/lucene/LuceneService.java:72   # createProjectedFilterIndex
+        provenance: report
+      - repo: automation-search-service
+        at: automation-search-service/src/main/java/com/phenom/lucene/LuceneSearchService.java:93  # getProjectedFields
+        provenance: report
+
+  # ---- Action EXECUTION (Storm) ----
+  - match: ["how is an action executed", "action factory", "run an automation action"]
+    capability: Action dispatch (Storm)
+    candidates:
+      - repo: candidate-automation
+        at: candidate-automation/src/main/java/com/phenompeople/action/factory/ActionFactory.java:24  # getInstance(actionId)
+        provenance: verified
+      - repo: candidate-automation
+        at: candidate-automation/src/main/java/com/phenompeople/bolt/AutomationActionExecutorBolt.java  # executes action
+        provenance: report
+
+  # ---- Action EXECUTION (Temporal, subset) ----
+  - match: ["temporal automation activity", "forward to hiring manager execution", "initiate screening execution", "send odva execution", "invite for interview execution"]
+    capability: Action execution via Temporal activities
+    candidates:
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/temporal/TemporalWorker.java:65   # activity registration map
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/temporal/activity/InitiateScreeningActionActivityImpl.java
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/temporal/activity/SendODVAActivity.java
+        provenance: verified
+      - repo: crm-automation-service
+        at: crm-automation-service/src/main/java/com/phenom/temporal/activity/InviteForInterviewActivity.java
+        provenance: verified
+
+  # ---- LinkedIn integration ----
+  - match: ["linkedin sync", "linkedin crm connect", "resume sync to linkedin", "sync interactions to linkedin"]
+    capability: LinkedIn CRM Connect integration
+    candidates:
+      - repo: crm-workflows
+        at: crm-workflows/src/main/java/com/phenom/crmworkflows/linkedin/LKConsumer.java:31   # kafka fan-in dispatcher
+        provenance: report
+      - repo: crm-workflows
+        at: crm-workflows/src/main/java/com/phenom/crmworkflows/linkedin/resumesync/activity/UploadResumeActivity.java:45  # resume upload
+        provenance: report
+
+# -----------------------------------------------------------------------------
+# ACTION CATALOG  (candidate-automation Storm engine)
+# actionId (literal) -> implementation class. Dispatch is ActionFactory switch.
+# All action classes live in:
+#   candidate-automation/src/main/java/com/phenompeople/action/impl/<Class>.java
+# and implement Action (prepareRequestObject + process):
+#   candidate-automation/src/main/java/com/phenompeople/action/Action.java:15
+# actionId literals defined in:
+#   candidate-automation/src/main/java/com/phenompeople/action/ActionIdConstant.java
+# provenance: verified (factory switch + impl file list + constants read this session)
+# -----------------------------------------------------------------------------
+action_catalog:
+  registry_at: candidate-automation/src/main/java/com/phenompeople/action/factory/ActionFactory.java:24
+  actions:
+    - id: ADD_TAG
+      impl: AddCandidateToTag
+      factory_line: 30
+      does: Add a PH tag to the candidate.
+    - id: ADD_NOTE
+      impl: AddCandidateToNote
+      factory_line: 27
+      does: (STUB) registered but unimplemented - prepareRequestObject/process return null; no-ops at runtime.
+      grounded_warning: true
+    - id: ADD_TASK
+      impl: AddTask
+      factory_line: 33
+      does: Create a task/reminder for the candidate.
+    - id: ADD_TO_JTC
+      impl: JTCSubscribe
+      factory_line: 36
+      does: Subscribe candidate to Jobs-That-Change (JTC) job alerts.
+    - id: ADD_TO_LIST
+      impl: AddCandidateToList
+      factory_line: 39
+      does: Add candidate to a CRM list.
+    - id: ASSIGN_TO_JOB
+      impl: AssignToJob
+      factory_line: 42
+      does: Assign/associate candidate to a job.
+    - id: CAMPAIGN_OPT_OUT
+      impl: OptOutOfCampaign
+      factory_line: 45
+      does: Opt candidate out of a campaign.
+    - id: FORWARD_PROFILE
+      impl: ForwardProfile
+      factory_line: 48
+      does: Forward a candidate profile (e.g. to another user).
+    - id: REMOVE_FROM_LIST
+      impl: RemoveFromList
+      factory_line: 51
+      does: Remove candidate from a CRM list.
+    - id: SEND_EMAIL
+      impl: SendEmail
+      factory_line: 54
+      does: Send an email to the candidate (via ecampaign).
+    - id: SEND_SMS
+      impl: SendSMS
+      factory_line: 57
+      does: Send an SMS to the candidate.
+    - id: CHANGE_HIRING_STATUS
+      impl: ChangeHiringStatus
+      factory_line: 60
+      does: Change the candidate hiring status.
+    - id: SIMILAR_JOB_SUBSCRIPTION
+      impl: SimilarJobSubscribe
+      factory_line: 63
+      does: Subscribe candidate to similar-job alerts (shares endpoint w/ JTC, different payload).
+    - id: UPDATE_ADDITIONAL_FIELD
+      impl: UpdateAdditionalField
+      factory_line: 66
+      does: Update a custom/additional field. Multiple in one step are merged before dispatch.
+    - id: ADD_TO_CAMPAIGN
+      impl: AddCandidateToCampaign
+      factory_line: 69
+      does: Add candidate to a campaign.
+    - id: INITIATE_SCREENING
+      impl: InitiateScreening
+      factory_line: 72
+      does: Initiate screening; only action that reads Mongo (customers_info) directly.
+    - id: SEND_ODVA
+      impl: SendODVA
+      factory_line: 75
+      does: Send On-Demand Video Assessment invite.
+    - id: ASSIGN_TO_PROJECT
+      impl: AssignCandidatesToProject
+      factory_line: 78
+      does: Assign candidate(s) to a project.
+    - id: CHANGE_PROJECT_STAGE
+      impl: ChangeProjectStage
+      factory_line: 81
+      does: Move candidate to a different project stage.
+    - id: REMOVE_FROM_PROJECT
+      impl: RemoveFromProject
+      factory_line: 84
+      does: Remove candidate from a project.
+    - id: CONTACT_CANDIDATE
+      impl: ContactCandidate
+      factory_line: 87
+      does: Composite - routes to SendEmail and/or SendSMS by candidate preferredCommunicationMode.
+    - id: FORWARD_CANDIDATE_TO_HIRING_MANAGER
+      impl: ForwardCandidateToHiringManager
+      factory_line: 90
+      does: Forward candidate to hiring manager.
+    - id: DO_NOTHING
+      impl: DoNothing
+      factory_line: 93
+      does: No-op placeholder action.
+    - id: FORWARD_VIDEO_ASSESSMENT_TO_HIRING_MANAGER
+      impl: ForwardVideoAssessmentToHiringManager
+      factory_line: 96
+      does: Forward a completed video assessment to hiring manager.
+
+# -----------------------------------------------------------------------------
+# EVENTS (Kafka topics)  -- literal topic names as constants in code
+# -----------------------------------------------------------------------------
+events:
+  candidate-automation:
+    defined_at: candidate-automation/src/main/java/com/phenompeople/constant/KafkaConstant.java
+    topics:
+      - {name: cp_automation_online_trigger, role: consume, const: ONLINE_TRIGGER_TOPIC}
+      - {name: cp_automation_trigger, role: consume, const: OFFLINE_TRIGGER_TOPIC}
+      - {name: cp_automation_tql_trigger, role: consume, const: OFFLINE_TQL_TRIGGER_TOPIC}
+      - {name: cp_automation_filter, role: internal, const: FILTER_TOPIC}
+      - {name: cp_automation_action, role: internal, const: ACTION_TOPIC}
+      - {name: cp_automation_online_action, role: internal, const: ONLINE_ACTION_TOPIC}
+      - {name: cp_automation_notification, role: produce, const: NOTIFICATION_TOPIC}
+      - {name: cp_automation_followCandidate, role: internal, const: FOLLOW_CANDIDATE_TOPIC}
+      - {name: cp_followCandidate_notification_trigger, role: internal, const: FOLLOW_CANDIDATE_NOTIFICATION_TRIGGER_TOPIC}
+      - {name: cp_audit_log, role: produce, const: CP_AUDIT_LOG_TOPIC, note: uses separate batch Kafka cluster}
+      - {name: cp_service_health_monitor, role: produce, const: SERVICE_HEALTH_MONITOR}
+      - {name: phenom-error-monitoring, role: produce, const: APM_MONITORING}
+  automation-search-service:
+    defined_at: automation-search-service/src/main/java/com/phenom/constant/AppConstant.java
+    topics:
+      - {name: cp_temporal_automation_online_trigger, role: consume, at: "automation-search-service/.../kafka/KafkaConsumer.java:58"}
+      - {name: cp_temporal_automation_trigger, role: consume, at: "automation-search-service/.../kafka/KafkaConsumer.java:95"}
+    redis_pubsub:
+      - {topic: recipe_delta_changes, role: subscribe, listener: "automation-search-service/src/main/java/com/phenom/redis/PupSubListener.java:33"}
+  crm-automation-service:
+    defined_at: crm-automation-service/src/main/java/com/phenom/helpers/AppConstants.java
+    topics:
+      - {name: invite_recommendation_trigger, role: consume, at: "crm-automation-service/.../kafka/AutomationKafkaConsumer.java:48"}
+      - {name: cp_automation_external_trigger, role: consume, at: "crm-automation-service/.../kafka/AutomationKafkaConsumer.java:61"}
+  crm-workflows:
+    topics:
+      - {name: crm.projects.actions, role: consume, at: "crm-workflows/.../linkedin/LKConsumer.java:52"}
+      - {name: crm.candidates.updates, role: consume, at: "crm-workflows/.../linkedin/LKConsumer.java:126"}
+      - {name: crm.candidates.resumes.updates, role: consume, at: "crm-workflows/.../linkedin/LKConsumer.java:134"}
+      - {name: crm_msg_conversation_actions, role: consume, at: "crm-workflows/.../linkedin/LKConsumer.java:144"}
+      - {name: CRM_EMAIL_CANDIDATE_MAPPING, role: consume, at: "crm-workflows/.../linkedin/LKConsumer.java:102"}
+      - {name: crm.external.integrations.ack, role: produce-indirect, note: sent via LightSaber REST}
+
+# -----------------------------------------------------------------------------
+# TEMPORAL ACTIVITIES  (crm-automation-service) — registration map
+# at: crm-automation-service/src/main/java/com/phenom/temporal/TemporalWorker.java:65-81
+# -----------------------------------------------------------------------------
+temporal_activities:
+  worker_at: crm-automation-service/src/main/java/com/phenom/temporal/TemporalWorker.java:65
+  activity_dir: crm-automation-service/src/main/java/com/phenom/temporal/activity
+  registrations:
+    - {queue: FORWARD_CANDIDATE_TO_HIRING_MANAGER, impl: ForwardCandidateToHRMActionActivityImpl, line: 66}
+    - {queue: FORWARD_VIDEO_ASSESSMENT_TO_HIRING_MANAGER, impl: ForwardVideoAssessmentToHRMActivityImpl, line: 68}
+    - {queue: FORWARD_VIDEO_ASSESSMENT_TO_INTERVIEWER, impl: ForwardVideoAssessmentToHRMActivityImpl, line: 70}
+    - {queue: "AUTOMATION_AUDIT_LOG", impl: AuditLogActivity, line: 72}
+    - {queue: INITIATE_SCREENING, impl: InitiateScreeningActionActivityImpl, line: 74}
+    - {queue: SEND_ODVA, impl: SendODVAActivity, line: 75}
+    - {queue: INVITE_FOR_INTERVIEW, impl: InviteForInterviewActivity, line: 76}
+    - {queue: SEND_NOTIFICATION, impl: SendNotification, line: 77}
+    - {queue: "BATCH_AUTOMATION_AUDIT_LOG", impl: BatchAuditLogActivity, line: 78}
+    - {queue: "RAISE_KAFKA_EVENT_AUTOMATION", impl: RaiseKafkaEventActivity, line: 79}
+
+# -----------------------------------------------------------------------------
+# DATA STORES
+# -----------------------------------------------------------------------------
+data_stores:
+  mongo:
+    db: AutomationsDB
+    collections:
+      - {name: RecipeList, used_by: [crm-automation-service, automation-search-service], note: recipe documents}
+      - {name: MergedFilters, used_by: [automation-search-service], note: projected filters for matching}
+      - {name: filterConfig, used_by: [automation-search-service], note: entity/nested/derived filter config}
+  postgres:
+    used_by: [crm-automation-service]
+    note: metrics JPA models (com/phenom/dao/jpa/metrics_model)
+  redis:
+    used_by: [crm-automation-service, automation-search-service]
+    note: locks, pub/sub (recipe_delta_changes), filter result buckets
+  lucene:
+    used_by: [automation-search-service]
+    path: /tmp/crm-automation-projected-filter-index
+  elasticsearch:
+    used_by: [automation-search-service]
+    via: EsHttpClientWrapper (shared lib)
+
+# -----------------------------------------------------------------------------
+# SHARED LIBRARY (not in these repos) — flagged so we never guess its internals
+# -----------------------------------------------------------------------------
+external_shared_lib:
+  name: com.phenompeople.crm / phenompeople-crm-common
+  provides:
+    - TaskQueueConstants (Temporal task-queue key literals)
+    - CRMAutomationUtils.raiseAutomationEvent (trigger matching + recipe fan-out)
+    - TemporalClient, MongoDbUtils, Redis pub/sub plumbing
+  grounded: false
+  note: >
+    Referenced by crm-automation-service & automation-search-service but source
+    is NOT cloned. Do not assert its internal behavior; flag as pending-clone.
