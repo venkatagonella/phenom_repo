@@ -12,42 +12,77 @@
   <style>
     .page-shell { grid-template-columns: 260px 1fr; }
     .pds-main { max-width: 1100px; }
-    .step-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .step {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 12px;
+    .workflow {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0 0 12px;
+    }
+    .wf-step {
+      background: var(--pds-surface);
+      border: 1px solid var(--pds-border);
+      border-radius: var(--pds-radius-md);
       padding: 12px 14px;
-      background: var(--pds-surface);
-      border: 1px solid var(--pds-border);
-      border-radius: var(--pds-radius-md);
     }
-    .step-num {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
+    .wf-step.keep {
+      border-color: var(--pds-brand);
       background: var(--bg-brand-primary-subtle, #eeedf9);
-      color: var(--pds-brand);
-      font-weight: 600;
-      font-size: 13px;
-      border-radius: var(--pds-radius-md);
     }
-    .step h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600; }
-    .step p { margin: 0; font-size: 13px; color: var(--pds-text-muted); line-height: 1.5; }
-    .funnel { display: grid; gap: 8px; }
-    .funnel-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 10px 14px;
+    .wf-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--pds-text-muted);
+      margin-bottom: 6px;
+    }
+    .wf-step h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600; }
+    .wf-step > p { margin: 0; font-size: 12px; color: var(--pds-text-muted); line-height: 1.45; }
+    .wf-drop {
+      margin-top: 10px;
+      border-top: 1px solid var(--pds-border);
+      padding-top: 8px;
+    }
+    .wf-drop + .wf-drop { margin-top: 8px; border-top: 0; padding-top: 0; }
+    .wf-drop > summary {
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--pds-text);
+      list-style: none;
+    }
+    .wf-drop > summary::-webkit-details-marker { display: none; }
+    .wf-drop > summary::marker { content: none; }
+    .wf-drop > summary::before {
+      content: "";
+      display: inline-block;
+      width: 0.35em;
+      height: 0.35em;
+      margin-right: 8px;
+      border-right: 2px solid var(--pds-text-muted);
+      border-bottom: 2px solid var(--pds-text-muted);
+      transform: rotate(-45deg);
+      vertical-align: 2px;
+    }
+    .wf-drop[open] > summary::before { transform: rotate(45deg); }
+    .wf-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .wf-names span {
+      font-size: 12px;
+      line-height: 1.3;
+      padding: 3px 8px;
+      background: var(--pds-surface-muted);
       border: 1px solid var(--pds-border);
-      border-radius: var(--pds-radius-md);
+      border-radius: 999px;
+    }
+    .wf-step.keep .wf-names span {
       background: var(--pds-surface);
     }
-    .funnel-row.keep { border-color: var(--pds-brand); background: var(--bg-brand-primary-subtle, #eeedf9); }
-    .funnel-row .lbl { font-size: 13px; font-weight: 500; }
-    .funnel-row .sub { font-size: 12px; color: var(--pds-text-muted); margin-top: 2px; }
-    .funnel-row .n { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .sum-h { font-size: 15px; font-weight: 600; margin: 8px 0 10px; }
     .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
     .kpi { background: var(--pds-surface); border: 1px solid var(--pds-border); border-radius: var(--pds-radius-md); padding: 14px 16px; }
     .kpi .v { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
@@ -184,6 +219,13 @@
     .pct-tag.unit { background: #e8f5e9; color: #1b5e20; }
     .pct-tag.acquired { background: #fff4e5; color: #b54708; }
     .pct-tag.hire_rate { background: #e8f1fb; color: #1849a9; }
+
+    .acv-bars { display: flex; flex-direction: column; gap: 8px; margin: 0 0 20px; }
+    .acv-row { display: grid; grid-template-columns: minmax(140px, 220px) 1fr 72px; gap: 10px; align-items: center; }
+    .acv-lab { font-size: 12px; line-height: 1.3; color: var(--pds-text); }
+    .acv-track { height: 10px; background: var(--pds-surface-muted, #eeedf9); border-radius: 6px; overflow: hidden; }
+    .acv-fill { height: 100%; background: var(--pds-brand, #5b4cdb); border-radius: 6px; }
+    .acv-amt { font-size: 12px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
     @media (max-width: 900px) {
       .insight-grid { grid-template-columns: 1fr; }
     }
@@ -201,11 +243,12 @@
       <p class="toc-kicker">Read in this order</p>
       <nav class="pds-nav" aria-label="Report sections">
         <a href="#approach" aria-current="page">1. Approach</a>
-        <a href="#funnel">2. Filters applied</a>
-        <a href="#snapshot">3. Region snapshot</a>
-        <a href="#accounts">4. Account list</a>
-        <a href="#reports">5. Annual reports</a>
-        <a href="#whitespaces">6. Whitespaces</a>
+        <a href="#job-profiles">2. Job profiles and expected ACV</a>
+        <a href="#summary">3. Hiring geos and Phenom</a>
+        <a href="#snapshot">4. Region snapshot</a>
+        <a href="#accounts">5. Account list</a>
+        <a href="#reports">6. Annual reports</a>
+        <a href="#whitespaces">7. Whitespaces</a>
       </nav>
     </aside>
 
@@ -224,127 +267,230 @@
         </summary>
         <div class="section-body">
         <p class="pds-lead" style="margin-bottom:12px">
-          The list is not “every customer.” It is the subset that is both
-          commercially large enough and close enough to renewal to act on.
+          Shortlist accounts that are large enough to act on and close enough to renewal, then group them.
+          Each step lists the customers removed (or kept) at that stage.
         </p>
-        <ol class="step-list">
-          <li class="step">
-            <div class="step-num">1</div>
-            <div>
-              <h3>Start from account-level rows</h3>
-              <p>Use Sheet2 (701 named accounts). Sheet1 is industry averages and is not used here.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step-num">2</div>
-            <div>
-              <h3>Read the fields by value, not by the shifted header names</h3>
-              <p>
-                Headers from column B onward sit one column to the right of the data.
-                <strong>Region</strong> is North America / INTL / India / RoW
-                (values sit in the column labeled Tier).
-                <strong>Industry</strong> is Healthcare, Retail, and so on
-                (values sit in the column labeled Region).
-                <strong>Swap</strong> is the numeric ACV amount in the column labeled Swap.
-                <strong>Renewal band</strong> is 0–3mo … 25mo+ (values sit in the column labeled Renewal).
-              </p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step-num">3</div>
-            <div>
-              <h3>Keep only material Swap</h3>
-              <p>Drop Swap = 0 and any Swap under $100,000. Also drop non-numeric Swap values.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step-num">4</div>
-            <div>
-              <h3>Keep only dated renewal bands</h3>
-              <p>Keep 0–3mo, 4–9mo, 10–12mo, 13–24mo, and 25mo+. Drop Absent and Past due so the list is a forward renewal book.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step-num">5</div>
-            <div>
-              <h3>Drop the Challenger list</h3>
-              <p>Keep only NA Top 50 and Intl Top 20. Challenger accounts are out of scope for this shortlist.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step-num">6</div>
-            <div>
-              <h3>Segment Region → Industry → renewal band</h3>
-              <p>Within each industry, accounts are ordered soonest band first, then highest Swap.</p>
-            </div>
-          </li>
-        </ol>
+        <div class="workflow" role="list">
+          <div class="wf-step" role="listitem">
+            <div class="wf-num">1 · Source</div>
+            <h3>Sheet2 accounts</h3>
+            <p>701 named rows. Sheet1 averages are not used. The next steps drop from this set.</p>
+          </div>
+          <div class="wf-step" role="listitem">
+            <div class="wf-num">2 · Filter · 701 → 438</div>
+            <h3>Swap ≥ $100k</h3>
+            <p>Drop Swap = $0, Swap under $100,000, and non-numeric Swap. 263 accounts removed.</p>
+            <details class="wf-drop">
+              <summary>Removed Swap = $0 · 154 accounts</summary>
+              <div class="wf-names"><span>180 Medical</span><span>A.C. Moore</span><span>AB InBev</span><span>ASD Healthcare</span><span>AXA Konzern AG</span><span>Advanced Clinical</span><span>Aerotek</span><span>Aetna Inc.</span><span>AirTran Airways</span><span>Alliance Healthcare</span><span>Apoteket Hjärtat</span><span>App Annie</span><span>Arby&#x27;s</span><span>Arkadin</span><span>Aston Carter</span><span>BASKIN-ROBBINS</span><span>BCE Inc</span><span>BMO Harris</span><span>Baker Construction Enterprises</span><span>Bank of Albuquerque</span><span>Beckman Coulter Inc</span><span>Beenox</span><span>BioTelemetry, Inc.</span><span>Blizzard Entertainment</span><span>Boca Raton Regional Hospital</span><span>Borgata Hotel Casino and Spa</span><span>Bouygues Construction</span><span>Buffalo Wild Wings</span><span>C&amp;W Services</span><span>CNN</span><span>CSU - Tzorg</span><span>Cepheid</span><span>Cielo - Internal Cielo</span><span>ClearChoice</span><span>Collins Aerospace</span><span>Colorado State Bank and Trust</span><span>Concentrix - Catalyst</span><span>Cytiva</span><span>Darice</span><span>Demonware</span><span>Diagnostic Clinic</span><span>Dirck3</span><span>Dirk</span><span>Discovery Communications</span><span>Dunkin&#x27; Brands</span><span>Dupont China</span><span>EASI</span><span>Finmeccanica (Leonardo S.p.A.)</span><span>First Coast Service Options</span><span>Floor and Decor Outlets of America, Inc.</span><span>Frazer-Nash Consultancy</span><span>Genentech</span><span>Guy Carpenter</span><span>HBO</span><span>Hartford Hospital</span><span>High Moon Studios</span><span>Hilton Anatole Dallas</span><span>Hilton Garden Inn Atlanta Airport/Millenium Center</span><span>Hilton Hotel and Suites Niagara Falls/Fallsview</span><span>Hobart Food Equipment Service</span><span>Holiday Companies</span><span>Holy Cross Health</span><span>Homewood Suites by Hilton</span><span>Honeywell Intelligrated</span><span>Hyve Solutions</span><span>IRBY</span><span>Infinity Ward</span><span>InsuranceRelief</span><span>Jimmy John&#x27;s</span><span>Just Eat</span><span>King Entertainment</span><span>LED FastStart</span><span>Landsberg Orora</span><span>Lash Group</span><span>Leica Microsystems</span><span>Leonardo UK LTD</span><span>Lourdes Health System</span><span>Love&#x27;s Travel Stops</span><span>Lowell General Hospital</span><span>MAACO FRANCHISING, INC</span><span>MSC Industrial Supply Co.</span><span>MSC Mediterranean Shipping Company AG</span><span>MSD</span><span>MWI Animal Health</span><span>Maidenform</span><span>Maintenance Supply Headquarters</span><span>Major Lindsey Africa</span><span>Marsh</span><span>Mercer</span><span>Micro Focus</span><span>MilliporeSigma</span><span>Morgan Corporation</span><span>Navarro Discount Pharmacy</span><span>Netze BW GmbH</span><span>Neustar</span><span>New Age Electronics</span><span>New York-New York Hotel &amp; Casino</span><span>NorthgateArinso</span><span>Oak Street Health</span><span>OfficeTeam</span><span>Oklahoma City Thunder</span><span>OneSky</span><span>Onlife Health</span><span>Pall Corporation</span><span>Palms Casino Resort</span><span>Patheon by Thermo Fisher Scientific</span><span>Patina Restaurant Group</span><span>PayneWest Insurance</span><span>Pepperidge Farm</span><span>Phenom GCC</span><span>Phenom Internal Support Tickets</span><span>Philip Morris International IT Service Centre Sarl</span><span>Pladis Global</span><span>Pratt &amp; Whitney</span><span>ProHealth Care Inc</span><span>Radiometer</span><span>Randstad Technologies</span><span>Ranger Boats</span><span>Raven Software</span><span>Reuters</span><span>Rockford Health System</span><span>Roper St. Francis Healthcare</span><span>Rural Community Insurance Services</span><span>RustyTaco</span><span>RxRelief</span><span>SCIEX</span><span>SHAW TRANSPORT</span><span>Saint Joseph Mercy Health System</span><span>Servier Pharmaceuticals</span><span>Signify Health LLC</span><span>Sledgehammer Games</span><span>Sonic</span><span>Sperian Protection</span><span>Splunk Inc.</span><span>St. Francis Medical Center</span><span>St. Mary Medical Center</span><span>Stuart Olson</span><span>TEKsystems</span><span>TJX Europe</span><span>Thermo Fisher China</span><span>Toys For Bob</span><span>Treyarch</span><span>UT Southwestern Medical Center</span><span>Vicarious Visions</span><span>Videojet Technologies</span><span>Vueling Airlines</span><span>Waste Connections of Canada</span><span>WebTPA</span><span>WellNow Urgent Care</span><span>Workfront</span><span>WunderLand Group</span><span>ZeniMax Media</span><span>Zurich North America</span><span>eviCore Healthcare, part of Cigna</span></div>
+            </details>
+            <details class="wf-drop">
+              <summary>Removed Swap under $100,000 · 105 accounts</summary>
+              <div class="wf-names"><span>AFL Telecommunications LLC</span><span>ATI Inc.</span><span>ATSG</span><span>Alamo Drafthouse Cinemas</span><span>Allo Communications</span><span>Almo Corporation</span><span>American Equipment</span><span>BASIS International Schools</span><span>BOKF, NA (BOK Financial)</span><span>Bam Group</span><span>Baylor College of Medicine</span><span>Bose Corporation</span><span>CHG Healthcare</span><span>CSU Cleaning Services</span><span>CarGurus</span><span>Cielo - Froedtert Health</span><span>Circle Internet Financial, LLC</span><span>City of Edmonton</span><span>Commonwealth Care Alliance</span><span>Conmed Corporation</span><span>Covenant Living</span><span>Coyote Logistics</span><span>Crossover Health</span><span>Del Monte Foods</span><span>Delhaize Le Lion</span><span>Denny&#x27;s</span><span>Dirk van den Broek fka Detailresult Groep</span><span>Eisai</span><span>Evertrue (formerly Lutheran Senior Services)</span><span>FYidoctors</span><span>Flagstar Bank</span><span>Flexjet</span><span>Four Seasons Produce Inc</span><span>Freddy&#x27;s Frozen Custard</span><span>Frost Bank</span><span>GFT Infrastructure, Inc.</span><span>Goodwill of Colorado</span><span>Grady Health System</span><span>Green Plains</span><span>HairClub</span><span>Hanesbrands Inc.</span><span>Hanger, Inc.</span><span>HelloFresh</span><span>Hendrick Health System</span><span>Hinduja Group Limited</span><span>IIFL (India Infoline Group)</span><span>IMAX Corporation</span><span>Innovaccer Inc</span><span>Jakson Group</span><span>Kainos</span><span>Kalpataru Ltd</span><span>Lion</span><span>MULTIVAC Group USA</span><span>Maurices</span><span>Mister Car Wash</span><span>Morningstar</span><span>New Balance</span><span>New Home Star</span><span>OneStream Software LLC</span><span>PIH Health</span><span>PODS</span><span>Parker&#x27;s Kitchen</span><span>Phenom Training Account</span><span>Pinnacle Treatment Centers</span><span>PwC Canada</span><span>PwC Greece</span><span>PwC Netherlands</span><span>Rally House</span><span>Restaurant Brands International</span><span>Richards Building Supply Co.</span><span>Rosecrance Health Network</span><span>Roush</span><span>Royal Enfield</span><span>Rubicon Research Limited</span><span>RubinBrown</span><span>Runnings</span><span>San Juan Regional Medical Center</span><span>Scopely, Inc.</span><span>Serco North America</span><span>Shutterstock</span><span>Sienna Senior Living</span><span>Signify Netherlands B.V.</span><span>Silverseal</span><span>Spencer&#x27;s</span><span>Spin Master</span><span>St. Charles Health System</span><span>St. Tammany Health System</span><span>TRAC Intermodal</span><span>Tessolve</span><span>The High Companies</span><span>The Howard Hughes Corporation</span><span>The National Academies of Sciences, Engineering, and Medicine</span><span>Thornton Tomasetti</span><span>Town Pump, Inc.</span><span>Valley Asphalt Corporation (Jurgensen Companies)</span><span>Versuni (Previously Philips Domestic Appliances)</span><span>Vivie formerly Knute Nelson</span><span>Vontier</span><span>WelbeHealth</span><span>WinnCompanies</span><span>World Intellectual Property Organization</span><span>Yelp</span><span>beBright</span><span>cnexia</span><span>de Volksbank</span></div>
+            </details>
+            <details class="wf-drop" open>
+              <summary>Removed non-numeric Swap · 4 accounts</summary>
+              <div class="wf-names"><span>Aware</span><span>DHL Consulting Gmbh</span><span>Testing Partner Program</span><span>Virgin Voyages</span></div>
+            </details>
+          </div>
+          <div class="wf-step" role="listitem">
+            <div class="wf-num">3 · Filter · 438 → 433</div>
+            <h3>Dated renewal</h3>
+            <p>Keep 0–3mo through 25mo+. Drop Absent and Past due so the book is forward-looking.</p>
+            <details class="wf-drop" open>
+              <summary>Removed Absent / Past due · 5 accounts</summary>
+              <div class="wf-names"><span>Coles (Past due)</span><span>BRP (Past due)</span><span>First American (Absent)</span><span>Southwest Airlines (Absent)</span><span>International Rescue Committee (Past due)</span></div>
+            </details>
+          </div>
+          <div class="wf-step" role="listitem">
+            <div class="wf-num">4 · Filter · 433 → 67</div>
+            <h3>Drop Challengers</h3>
+            <p>Keep NA Top 50 and Intl Top 20 only. India’s remaining eight were all Challenger, so India drops out.</p>
+            <details class="wf-drop">
+              <summary>Removed Challenger list · 366 accounts</summary>
+              <div class="wf-names"><span>7 Brew Coffee</span><span>ABB Robotics</span><span>ABS Kids</span><span>AMS on behalf of Baker Hughes</span><span>ATCO Group</span><span>Aarons Inc.</span><span>AbbVie</span><span>Abbott</span><span>Abu Dhabi Commercial Bank</span><span>Academy, Ltd. d/b/a Academy Sports + Outdoors</span><span>Activision Publishing Inc (ActivisionBlizzard)</span><span>Adobe Inc. (Adobe Systems)</span><span>Advance Auto Parts</span><span>Advocate Construction</span><span>Aegis Therapies</span><span>Ageas</span><span>Agiliti</span><span>Agnico Eagle Mines Limited</span><span>Air Arabia</span><span>Air Canada</span><span>AirAsia</span><span>Akzo Nobel</span><span>Alight</span><span>Allegis Group</span><span>Alliance Technical Group</span><span>AmeriHealth Caritas</span><span>Amneal Pharmaceuticals</span><span>Anderson Merchandisers</span><span>Ann &amp; Robert H. Lurie Children&#x27;s Hospital of Chicago</span><span>Antech Diagnostics</span><span>Applied Industrial Technologies</span><span>Ardagh Group</span><span>Arla Foods</span><span>Arrow Electronics</span><span>Ascension Health</span><span>Aspen Dental Management, Inc.</span><span>Associa</span><span>Athena Health</span><span>Aubuchon Hardware</span><span>AutoNation Inc</span><span>Automobile Club of Southern California</span><span>Avantor</span><span>BNSF Railway</span><span>Banfield Pet Hospital</span><span>Baptist Health South Florida</span><span>Battelle Memorial Institute</span><span>Belk, Inc.</span><span>Bell Canada Enterprises</span><span>Bird Construction</span><span>Birkenstock</span><span>Bison Transport</span><span>Blackbaud, Inc.</span><span>Blood Cancer United</span><span>Blue Cross Blue Shield of Massachusetts</span><span>BluePearl Veterinary</span><span>Bob&#x27;s Discount Furniture</span><span>Borealis AG</span><span>Boston Consulting Group (BCG)</span><span>Bread Financial (formerly Alliance Data)</span><span>Brevan Howard</span><span>Bright Horizons Family Solutions</span><span>Brooks Running</span><span>Broward Health</span><span>Bureau Veritas</span><span>Butterball, LLC</span><span>CAI</span><span>CEP America/MedAmerica/Vituity</span><span>CSAA Insurance Group</span><span>Cadila Pharmaceuticals Limited</span><span>Calgary Catholic School District</span><span>Caliber Collision Centers</span><span>Campari</span><span>Camping World</span><span>Carilion Clinic</span><span>Catalent Pharma Solutions</span><span>CentraCare Health</span><span>ChenMed</span><span>Chewy</span><span>Cheyenne Regional Medical Center</span><span>Children&#x27;s Healthcare of Atlanta</span><span>Children&#x27;s Hospital of Philadelphia</span><span>Children&#x27;s Hospital of The King&#x27;s Daughters</span><span>Children&#x27;s Medical Center of Dallas</span><span>Children&#x27;s Minnesota</span><span>Cigna</span><span>Cincinnati Children&#x27;s Hospital Medical Center</span><span>Circle Health Group (Formerly BMI Healthcare)</span><span>Circle K</span><span>Clarivate Analytics</span><span>Clemens Food Group</span><span>Comerica Bank</span><span>Commerce Bank</span><span>Community Health Centers</span><span>Community Health Systems, Inc.</span><span>Community Medical Centers</span><span>Conagra Brands</span><span>Conduent</span><span>Cone Health</span><span>Confluent Health</span><span>ConvaTec</span><span>Core Civic</span><span>Corewell Health, formerly Spectrum Health</span><span>Cornell University</span><span>Cosentino&#x27;s Food Stores</span><span>Crowe</span><span>DAMAC Properties</span><span>DNV</span><span>Dallas/Fort Worth International Airport</span><span>Danaher</span><span>Danfoss</span><span>Deaconess Health System</span><span>Demant A/S</span><span>Dental Care Alliance</span><span>Desert Financial Credit Union</span><span>Din Tai Fung North America</span><span>Discovery Global</span><span>Driven Brands</span><span>DuPont</span><span>Duke University Health System</span><span>Ebay Inc.</span><span>Energie Baden-Wurttemberg</span><span>EverCommerce</span><span>Excellus Health Plan, Inc.</span><span>Exyte GmbH</span><span>FINRA</span><span>FIS</span><span>FOX Rehabilitation</span><span>Family Dollar</span><span>Farmers Insurance</span><span>Fearless</span><span>Five Below</span><span>Five Guys Enterprises, LLC</span><span>Fleet Farm</span><span>Floor and Decor</span><span>Forest County Potawatomi Community d/b/a Potawatomi Bingo Casino and d/b/a Potawatomi Hotel</span><span>Fortrea Inc.</span><span>Franciscan Health</span><span>Franklin Templeton</span><span>Freddie Mac</span><span>Freedom Mortgage Corporation</span><span>Fresenius SE &amp; Co</span><span>Froedtert ThedaCare Health, Inc.</span><span>GE Aerospace</span><span>GE Healthcare</span><span>Generac Power Systems, Inc.</span><span>Genmab</span><span>Giant Eagle</span><span>Givaudan</span><span>Godrej Group</span><span>Group 42</span><span>HIBU</span><span>HUB International</span><span>Hanes Brand Australasia</span><span>Healius</span><span>Herbert Smith Freehills Kramer LLP</span><span>Hikma Pharmaceuticals</span><span>Hilton Worldwide</span><span>Hugo Boss</span><span>Humana</span><span>IAG</span><span>ICA</span><span>ICF International</span><span>IDEXX Laboratories, Inc.</span><span>IDFC First Bank</span><span>Illinois Tool Works (ITW)</span><span>Innovative Renal Care</span><span>J.B. Hunt Transport Services</span><span>Jackson Health System</span><span>Jay Nolan Community Services</span><span>Jet Propulsion Laboratory</span><span>Just Eat Takeaway.com</span><span>KBR Wyle Services, LLC.</span><span>KPMG Switzerland</span><span>Kerry Group</span><span>KinderCare</span><span>Kohl&#x27;s Corporation</span><span>Kwik Trip</span><span>LCMC Health</span><span>LPL Financial</span><span>LabCorp</span><span>Land O&#x27;Lakes</span><span>Lanxess AG</span><span>Leonardo-Finmeccanica</span><span>Life Time</span><span>Lineage Logistics</span><span>LivaNova</span><span>Lockton Companies</span><span>Louisiana Economic Development (LED)</span><span>Lowe&#x27;s</span><span>MITER BRANDS</span><span>MITRE</span><span>MSC Cruises</span><span>MV Transportation</span><span>MVB Financial</span><span>Ma&#x27;aden - Saudi Arabian Mining Company</span><span>Mace</span><span>Magellan Health</span><span>Majid Al Futtaim</span><span>Manulife Financial</span><span>Mars</span><span>Marsh McLennan</span><span>Masco Corporation</span><span>Mastercard Foundation</span><span>Mastercard Worldwide</span><span>McAfee</span><span>McCain Foods Limited</span><span>Memorial Healthcare System</span><span>Memorial Hermann Health System</span><span>Merakey</span><span>Merck KGaA</span><span>Merz Aesthetics</span><span>Mid-America Apartment Communities</span><span>Mid-Atlantic Permanente Medical Group</span><span>MolsonCoors</span><span>Momentum Solar</span><span>Mondelez International, Inc.</span><span>Mr Cooper</span><span>NBA</span><span>National Hockey League (NHL)</span><span>Newmont Mining Corporation</span><span>Niagara Bottling</span><span>North American Partners In Anesthesia</span><span>Northbridge Financial Corporation</span><span>OMERS</span><span>Ocean State Job Lot</span><span>Octapharma</span><span>OmniCable</span><span>OpenText</span><span>Orange</span><span>Organon</span><span>Oshkosh Corporation</span><span>P.F. Chang&#x27;s</span><span>PPG Industries, Inc.</span><span>PT Solutions Holding, LLC.</span><span>PVH Corp.</span><span>Pacific Life</span><span>Panera Bread Inc.</span><span>Parsons Corporation</span><span>Penn Medicine</span><span>Pentair</span><span>Petco Health and Wellness Company, Inc</span><span>Philips</span><span>PrideStaff</span><span>Primetals Technologies</span><span>Prisma Health (aka Palmetto Health)</span><span>Probe Group</span><span>Procter &amp; Gamble</span><span>Proximus</span><span>Pruitt Health</span><span>PwC</span><span>PwC Acceleration Centers</span><span>PwC Australia</span><span>PwC CEE</span><span>PwC Italia</span><span>PwC US</span><span>Pye-Barker Fire &amp; Safety</span><span>Pyramid Global Hospitality</span><span>QBE Insurance</span><span>QTS Data Centers</span><span>Qnity Electronics, Inc.</span><span>Qualtrics</span><span>Quest Global</span><span>RSM UK</span><span>RTX Corporation</span><span>Radian</span><span>Raiffeisen Bank International AG</span><span>Red Ventures</span><span>Redfin</span><span>Reinsurance Group of America</span><span>Republic Services</span><span>Restaurant Technologies</span><span>Ricoh UK</span><span>Robert Half</span><span>Royal Mail</span><span>Rutland Regional Medical Center</span><span>SASR Workforce Solutions</span><span>SSM Health Care Corporation</span><span>STERIS Corporation</span><span>Saint Francis Healthcare</span><span>Saks Global</span><span>Sargento Foods Inc.</span><span>Seattle Children&#x27;s Hospital</span><span>Sendik&#x27;s Food Market</span><span>Servier Monde</span><span>Shamrock Foods Company</span><span>Shaw Industries Group, Inc.</span><span>Sleep Number by Select Comfort</span><span>Snowflake Inc.</span><span>Sonesta Hotels</span><span>Sonova Group</span><span>Sopra Steria (of which SSCL is a subsidiary)</span><span>South State Bank</span><span>Spartanburg Regional Healthcare System</span><span>Sprouts Farmers Market</span><span>Stanford Health Care</span><span>Stark Tech</span><span>State Street Corporation</span><span>Straumann</span><span>Summit LLC fka National Express</span><span>Summit Racing Equipment (BLINDED)</span><span>Sunbelt Rentals</span><span>Sunrise Communications AG</span><span>Sunstates Security</span><span>Swagelok Company</span><span>Sweetwater Sound</span><span>Swiss RE</span><span>Synovus</span><span>TD Synnex</span><span>TVS Credit Services Ltd.</span><span>Tate &amp; Lyle</span><span>Technology Innovation Institute</span><span>Temenos</span><span>Temple University Health System</span><span>The Nature Conservancy</span><span>The RealReal</span><span>The TJX Companies Inc</span><span>The Venetian Resort</span><span>The Walt Disney Company</span><span>Thermo Fisher Scientific</span><span>ThredUp</span><span>Titan Company Limited</span><span>Toyota</span><span>Trane Technologies Company LLC</span><span>Truist, formerly BB&amp;T + Suntrust</span><span>Tufts Medicine</span><span>Turning Stone Enterprises</span><span>UAB Medicine Enterprise</span><span>US Fertility</span><span>US Fitness Holdings</span><span>US Foods</span><span>UTHealth Houston</span><span>Union Pacific Railroad</span><span>University of Miami</span><span>University of Michigan Health - Sparrow</span><span>University of Virginia</span><span>Us Bank</span><span>VCA</span><span>VCU Health System</span><span>Vallen</span><span>Varsity Brands Inc</span><span>Ventia</span><span>Veralto</span><span>Veritiv</span><span>Viega</span><span>Viking Cruises</span><span>Virgin Galactic</span><span>Virtusa</span><span>Vistra UK Ltd.</span><span>WEX</span><span>WK Kellogg</span><span>WMC Health</span><span>Walmart</span><span>Warner Brothers</span><span>Waste Connections</span><span>Wawa</span><span>Wellstar Health System, Inc.</span><span>Whataburger Restaurants</span><span>Xoriant</span><span>Yale University</span><span>Yes Bank</span><span>Yuhaaviatam San Manuel Nation</span><span>Zelis</span><span>Zimmer Biomet</span><span>Zurich Insurance Group</span><span>cboe</span><span>pwc Germany / PricewaterhouseCoopers GmbH</span></div>
+            </details>
+          </div>
+          <div class="wf-step keep" role="listitem">
+            <div class="wf-num">5 · Output · 67 kept</div>
+            <h3>Region → Industry → Band</h3>
+            <p>Soonest renewal first, then highest Swap. These 67 accounts are the shortlist used below.</p>
+            <details class="wf-drop" open>
+              <summary>Kept shortlist · 67 accounts</summary>
+              <div class="wf-names"><span>ABB</span><span>ADNOC Group</span><span>AGCO Corporation</span><span>Acadia Healthcare</span><span>Acrisure</span><span>Allianz</span><span>American Honda Motor Company</span><span>Asurion</span><span>BAE SYSTEMS, Inc.</span><span>BMO Financial Group</span><span>Bass Pro Shops</span><span>Baylor Scott &amp; White Health</span><span>Bechtel Corporation</span><span>Blue Yonder, formerly JDA Software</span><span>Bon Secours Mercy Health</span><span>Bouygues Group</span><span>CVS Health Corporation</span><span>Capgemini</span><span>Cencora (AmerisourceBergen)</span><span>Cisco</span><span>Corning</span><span>DHL Group</span><span>DHL Supply Chain</span><span>DaVita Kidney Care</span><span>Dallas College</span><span>Dollar Tree</span><span>Dutch Bros Coffee</span><span>ECU Health</span><span>Ecolab Inc.</span><span>Elara Caring</span><span>Electrolux</span><span>Eli Lilly and Company</span><span>F. Hoffmann La-Roche</span><span>Fiserv</span><span>Four Seasons</span><span>GSK</span><span>HD Supply</span><span>Hartford Healthcare</span><span>Health First</span><span>Hewlett Packard Enterprise</span><span>Kuehne and Nagel Inc</span><span>Merck</span><span>Michaels Stores</span><span>NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited)</span><span>New York Presbyterian Hospital</span><span>O&#x27;Reilly Auto Parts</span><span>PNC Bank, National Association</span><span>Philip Morris International</span><span>PwC UK</span><span>Regions Bank</span><span>Rocket Companies</span><span>Royal Bank of Canada</span><span>Serco</span><span>Siemens Healthineers</span><span>Skechers</span><span>Sutter Health</span><span>Texas Roadhouse</span><span>Thales</span><span>The MENTOR Network, now Sevita Health</span><span>Trinity Health</span><span>U.S. Venture</span><span>UCB</span><span>United Airlines</span><span>United Parcel Service</span><span>University of Maryland Medical System</span><span>University of Missouri Health Care</span><span>Verisure</span></div>
+            </details>
+          </div>
+        </div>
+        <p class="note">
+          Read cells by value, not the shifted header labels: Region sits under “Tier”,
+          Industry under “Region”, Swap under “Swap”, renewal band under “Renewal”.
+        </p>
         </div>
       </details>
 
-      <details class="section section-acc" id="funnel">
+
+
+      <details class="section section-acc" id="job-profiles" open>
         <summary>
-          <h2 class="pds-card-title">2. Filters applied</h2>
+          <h2 class="pds-card-title">2. Job profiles and expected ACV</h2>
         </summary>
         <div class="section-body">
-        <div class="funnel">
-          <div class="funnel-row">
-            <div>
-              <div class="lbl">Sheet2 source accounts</div>
-              <div class="sub">Every named row in the export</div>
-            </div>
-            <div class="n">701</div>
-          </div>
-          <div class="funnel-row">
-            <div>
-              <div class="lbl">Removed Swap = $0</div>
-              <div class="sub">No commercial Swap to act on</div>
-            </div>
-            <div class="n">−154</div>
-          </div>
-          <div class="funnel-row">
-            <div>
-              <div class="lbl">Removed Swap under $100,000</div>
-              <div class="sub">Below the materiality cut you specified</div>
-            </div>
-            <div class="n">−105</div>
-          </div>
-          <div class="funnel-row">
-            <div>
-              <div class="lbl">Removed non-numeric Swap</div>
-              <div class="sub">Blank or “—” values</div>
-            </div>
-            <div class="n">−4</div>
-          </div>
-          <div class="funnel-row">
-            <div>
-              <div class="lbl">Removed Absent and Past due</div>
-              <div class="sub">No usable forward renewal band</div>
-            </div>
-            <div class="n">−5</div>
-          </div>
-          <div class="funnel-row">
-            <div>
-              <div class="lbl">Removed Challenger list</div>
-              <div class="sub">Keep NA Top 50 and Intl Top 20 only</div>
-            </div>
-            <div class="n">−366</div>
-          </div>
-          <div class="funnel-row keep">
-            <div>
-              <div class="lbl">Shortlist used below</div>
-              <div class="sub">North America 49 · INTL 18 · India 0 · NA Top 50 48 · Intl Top 20 19</div>
-            </div>
-            <div class="n">67</div>
-          </div>
+        <p class="pds-lead" style="margin-bottom:12px">
+          Planned job types on the 67-account shortlist, from 2026 filings and company updates.
+          <strong>Expected ACV is account Swap</strong> on every customer whose primary hiring
+          motion matches that profile. Issuers do not publish Swap by job family.
+        </p>
+        <div class="kpi-grid">
+          <div class="kpi"><div class="v">17</div><div class="l">Job profiles</div></div>
+          <div class="kpi"><div class="v">$67.4M</div><div class="l">Expected ACV (shortlist Swap)</div></div>
+          <div class="kpi"><div class="v">$11.8M</div><div class="l">ACV where a hire/add plan is named</div></div>
+          <div class="kpi"><div class="v">13</div><div class="l">Accounts with a named add / unit / hire-rate</div></div>
         </div>
-        <p class="note">India’s eight remaining accounts after the Swap and band cuts were all Challenger, so India drops out. Rest of World never reached the shortlist.</p>
+        <h3 class="sum-h">Expected ACV by job profile</h3>
+        <div class="acv-bars" role="img" aria-label="Expected ACV by job profile">
+          <div class="acv-row">
+          <div class="acv-lab">Clinical and care</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:100%"></div></div>
+          <div class="acv-amt">$17.0M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Tech, AI, and software</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:76%"></div></div>
+          <div class="acv-amt">$13.0M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Logistics, warehouse, and drivers</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:45%"></div></div>
+          <div class="acv-amt">$7.6M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Pharma R&amp;D and manufacturing</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:32%"></div></div>
+          <div class="acv-amt">$5.5M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Banking, wealth, and graduates</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:32%"></div></div>
+          <div class="acv-amt">$5.4M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Industrial manufacturing</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:21%"></div></div>
+          <div class="acv-amt">$3.5M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Shop / restaurant / retail hourly</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:15%"></div></div>
+          <div class="acv-amt">$2.6M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Construction and project delivery</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:14%"></div></div>
+          <div class="acv-amt">$2.3M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Insurance and monitoring field</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:13%"></div></div>
+          <div class="acv-amt">$2.2M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Defence / aerospace engineering</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:11%"></div></div>
+          <div class="acv-amt">$1.8M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Public-service operations</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:10%"></div></div>
+          <div class="acv-amt">$1.7M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Airline crew and hub operations</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:9%"></div></div>
+          <div class="acv-amt">$1.5M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Energy and operations</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:6%"></div></div>
+          <div class="acv-amt">$1.1M</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Commercial / consumer</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:4%"></div></div>
+          <div class="acv-amt">$749,000</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Field sales and service</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:4%"></div></div>
+          <div class="acv-amt">$717,877</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Hospitality</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:4%"></div></div>
+          <div class="acv-amt">$497,600</div>
+        </div><div class="acv-row">
+          <div class="acv-lab">Education</div>
+          <div class="acv-track" aria-hidden="true"><div class="acv-fill" style="width:4%"></div></div>
+          <div class="acv-amt">$206,400</div>
+        </div>
+        </div>
+        <div class="reports-wrap">
+          <table class="pds-table reports-table ws-table">
+            <thead>
+              <tr>
+                <th>Job profile</th>
+                <th>Jobs planned (or still hired to replace)</th>
+                <th>Hiring signal</th>
+                <th>Accounts</th>
+                <th>Expected ACV</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class='acct'>Clinical and care<div class='ws-src'>CVS Health Corporation, Baylor Scott &amp; White Health, Bon Secours Mercy Health, University of Maryland Medical System +11 more</div></td><td>Pharmacists, pharmacy techs, retail, care-delivery; Aetna clinical/ops; Clinicians and nurses (unconfirmed — no statutory table)</td><td>Replacement / mix-shift (FTE down or flat)</td><td>15</td><td>$17.0M</td></tr><tr><td class='acct'>Tech, AI, and software<div class='ws-src'>NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited), Cisco, Capgemini, Hewlett Packard Enterprise +3 more</div></td><td>Data-centre and enterprise ICT (parent). No UK entity hire list published; AI / security engineering; sales and technical-support coverage; acquired-company integration</td><td>Mix of named adds and replacement</td><td>7</td><td>$13.0M</td></tr><tr><td class='acct'>Logistics, warehouse, and drivers<div class='ws-src'>United Parcel Service, DHL Supply Chain, DHL Group, Kuehne and Nagel Inc +3 more</div></td><td>Not net hiring. Remaining: drivers/handlers (peak/replacement) and healthcare-logistics specialists; Contract-logistics IT; healthcare / cool-chain warehouse ops</td><td>Mix of named adds and replacement</td><td>7</td><td>$7.6M</td></tr><tr><td class='acct'>Pharma R&amp;D and manufacturing<div class='ws-src'>Siemens Healthineers, GSK, F. Hoffmann La-Roche, UCB +2 more</div></td><td>R&amp;D: imaging, diagnostics, oncology/Varian, advanced therapies; Oncology / respiratory / hepatology / vaccines R&amp;D scientists; Cambridge scientific talent</td><td>Mix of named adds and replacement</td><td>6</td><td>$5.5M</td></tr><tr><td class='acct'>Banking, wealth, and graduates<div class='ws-src'>Royal Bank of Canada, BMO Financial Group, Regions Bank, PwC UK +3 more</div></td><td>Banking, wealth, and capital-markets talent (specialist adds, no hire quota); US commercial bankers; mass-affluent financial-centre staff; capital-markets partnership roles</td><td>Some accounts name adds; others unpublished</td><td>7</td><td>$5.4M</td></tr><tr><td class='acct'>Industrial manufacturing<div class='ws-src'>Corning, American Honda Motor Company, Electrolux, AGCO Corporation</div></td><td>Production / maintenance; materials-science engineering; Motorcycle / mix-shift manufacturing. Auto FTE not projected to grow</td><td>Replacement / mix-shift (FTE down or flat)</td><td>4</td><td>$3.5M</td></tr><tr><td class='acct'>Shop / restaurant / retail hourly<div class='ws-src'>Michaels Stores, Skechers, Texas Roadhouse, Dollar Tree +3 more</div></td><td>Retail store and DC labour (outlook frozen at FY2024); Restaurant managing partners, market partners, and ~200–250 hourly staff per new restaurant</td><td>Some accounts name adds; others unpublished</td><td>7</td><td>$2.6M</td></tr><tr><td class='acct'>Construction and project delivery<div class='ws-src'>Bouygues Group, Bechtel Corporation</div></td><td>Construction trades / site management; Equans energies &amp; services technicians; 2026 university hires: mechanical, electrical field, construction field engineers; project delivery / EPC professionals; craft on awards</td><td>Mostly unpublished — profile inferred from industry</td><td>2</td><td>$2.3M</td></tr><tr><td class='acct'>Insurance and monitoring field<div class='ws-src'>Allianz, Asurion, Verisure</div></td><td>P&amp;C underwriting, Life/Health, and Asset Management specialists (retain/engage more than volume hire); Alarm monitoring, field installation, and sales (unconfirmed)</td><td>Mostly unpublished — profile inferred from industry</td><td>3</td><td>$2.2M</td></tr><tr><td class='acct'>Defence / aerospace engineering<div class='ws-src'>BAE SYSTEMS, Inc., Thales</div></td><td>Engineers — land, sea, air, cyber, space. US ES / SMS. UK apprentices, graduates, steelwork, software, project roles; Engineering ~40% (software, systems, cyber, AI/data); industrial ~25% (technicians, operators, engineers). France: 1,700 interns + 1,600 apprentices</td><td>Net adds / unit growth named</td><td>2</td><td>$1.8M</td></tr><tr><td class='acct'>Public-service operations<div class='ws-src'>Serco</div></td><td>Defence, justice, health, and transport operations staff</td><td>Mostly unpublished — profile inferred from industry</td><td>1</td><td>$1.7M</td></tr><tr><td class='acct'>Airline crew and hub operations<div class='ws-src'>United Airlines</div></td><td>Pilots, flight attendants, technicians, airport operations, hub and training staff</td><td>Net adds / unit growth named</td><td>1</td><td>$1.5M</td></tr><tr><td class='acct'>Energy and operations<div class='ws-src'>ADNOC Group</div></td><td>Not disclosed in a public people plan (careers portal is live)</td><td>Mostly unpublished — profile inferred from industry</td><td>1</td><td>$1.1M</td></tr><tr><td class='acct'>Commercial / consumer<div class='ws-src'>Philip Morris International</div></td><td>Smoke-free / consumer commercial talent and integration roles</td><td>Mostly unpublished — profile inferred from industry</td><td>1</td><td>$749,000</td></tr><tr><td class='acct'>Field sales and service<div class='ws-src'>Ecolab Inc.</div></td><td>Field sales and service; R&amp;D / engineering / digital experts</td><td>Mostly unpublished — profile inferred from industry</td><td>1</td><td>$717,877</td></tr><tr><td class='acct'>Hospitality<div class='ws-src'>Four Seasons</div></td><td>Hiring plan not published in the 2026 filings.</td><td>Mostly unpublished — profile inferred from industry</td><td>1</td><td>$497,600</td></tr><tr><td class='acct'>Education<div class='ws-src'>Dallas College</div></td><td>Hiring plan not published in the 2026 filings.</td><td>Mostly unpublished — profile inferred from industry</td><td>1</td><td>$206,400</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">
+          Named add / unit / hire-rate is the closest public proxy for jobs being created.
+          Reduction accounts still hire (peak, replacement, mix-shift) but are not a net-create story.
+          Unpublished profiles still carry Swap — the career site and CRM motion is inferred from industry.
+        </p>
+        </div>
+      </details>
+
+      <details class="section section-acc" id="summary" open>
+        <summary>
+          <h2 class="pds-card-title">3. Hiring geos and Phenom</h2>
+        </summary>
+        <div class="section-body">
+        <p class="pds-lead" style="margin-bottom:12px">
+          Same 67 accounts as the job-profile ACV view. Geography is taken from 2026
+          hiring language. <strong>ACV is full account Swap</strong> attributed to that
+          geo — issuers do not split Swap by plant or country. Phenom products match
+          the hiring motion in that geography.
+        </p>
+        <div class="kpi-grid">
+          <div class="kpi"><div class="v">67</div><div class="l">Accounts</div></div>
+          <div class="kpi"><div class="v">$67.4M</div><div class="l">Shortlist Swap (ACV)</div></div>
+          <div class="kpi"><div class="v">$43.1M</div><div class="l">North America Swap · 49 accounts</div></div>
+          <div class="kpi"><div class="v">$24.4M</div><div class="l">INTL Swap · 18 accounts</div></div>
+        </div>
+        <h3 class="sum-h">Geographies where jobs are planned — and ACV on those accounts</h3>
+        <p class="note" style="margin-top:0">
+          Sheet region is the clean ACV cut: North America $43.1M · INTL $24.4M.
+          The table below attributes each account’s full Swap to the geography in its 2026 hiring language.
+        </p>
+        <div class="reports-wrap">
+          <table class="pds-table reports-table ws-table">
+            <thead>
+              <tr>
+                <th>Geography</th>
+                <th>Jobs called out</th>
+                <th>Accounts</th>
+                <th>Swap (ACV)</th>
+                <th>Phenom products at this geo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class='acct'>United States<div class='ws-src'>AGCO Corporation, Acadia Healthcare, Acrisure, American Honda Motor Company +43 more</div></td><td>Plant manufacturing (PA/IN), airline hubs (ORD/DEN), shops/restaurants/stores, US commercial bankers and CA centres, Bechtel project sites, clinical replacement, warehouse/drivers.</td><td>47</td><td>$40.5M</td><td>Career Site by city/hub/plant; CRM communities by market; SMS + email Messaging; Automations; Screening; Scheduling; Job Analytics by location; Hiring Manager experience.</td></tr><tr><td class='acct'>Continental Europe<div class='ws-src'>ABB, Allianz, Bouygues Group, DHL Group +6 more</div></td><td>Thales France-heavy engineering class; Roche CH/US scientific mix; ABB electrification/automation; DHL network (near-flat FTE); Siemens Healthineers DE/US/CN/IN R&D.</td><td>10</td><td>$9.6M</td><td>Career Site by country; CRM; email Messaging (WhatsApp where the market uses it); Screening; Scheduling; multi-country Recruiter Hub.</td></tr><tr><td class='acct'>United Kingdom<div class='ws-src'>GSK, NTT Ltd Group Services United Kingdom Limited (formerly Dimension Data Global Services Limited), PwC UK</div></td><td>GSK Cambridge R&D; PwC UK graduates; NTT Ltd UK entity follows parent data-centre/ICT; BAE early-careers sit on the UK parent even though this row is BAE SYSTEMS, Inc.</td><td>3</td><td>$7.3M</td><td>Career Site (campus + experienced); CRM graduate communities; email Messaging; Screening and Scheduling for assessment centres; Automations.</td></tr><tr><td class='acct'>Multi-country network<div class='ws-src'>DHL Supply Chain, Kuehne and Nagel Inc, Philip Morris International, Serco</div></td><td>Contract logistics, government ops, and smoke-free commercial footprints — hiring follows contracts/markets, not one capital city.</td><td>4</td><td>$4.8M</td><td>Career Site and CRM per country; Messaging mix by market; Automations; Job Analytics across sites.</td></tr><tr><td class='acct'>India / offshore delivery<div class='ws-src'>Capgemini</div></td><td>Capgemini 66% offshore (YTD headcount down after WNS); Thales also named ~450 India engineering hires on the Europe row’s company plan.</td><td>1</td><td>$2.1M</td><td>Career Site; CRM; WhatsApp + SMS Messaging; Automations at volume; Screening; Scheduling.</td></tr><tr><td class='acct'>Canada<div class='ws-src'>Royal Bank of Canada</div></td><td>Banking, wealth, and capital-markets talent (RBC FTE already up YoY).</td><td>1</td><td>$2.0M</td><td>Career Site; CRM; bilingual email/SMS Messaging; Recruiter dashboard; Scheduling.</td></tr><tr><td class='acct'>Middle East<div class='ws-src'>ADNOC Group</div></td><td>ADNOC careers portal — no published 2026 FTE map.</td><td>1</td><td>$1.1M</td><td>Career Site; CRM; Messaging when group reqs are public; Recruiter Hub.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">
+          WhatsApp Messaging is the usual India/ME high-volume channel; SMS is the usual US hourly
+          channel; email is the usual UK/EU experienced and campus channel. Career Site, CRM,
+          Automations, Screening, Scheduling, and Job Analytics apply in every geo where they hire.
+        </p>
         </div>
       </details>
 
       <details class="section section-acc" id="snapshot">
         <summary>
-          <h2 class="pds-card-title">3. Region snapshot</h2>
+          <h2 class="pds-card-title">4. Region snapshot</h2>
         </summary>
         <div class="section-body">
         <p class="pds-lead" style="margin-bottom:12px">
@@ -379,7 +525,7 @@
 
       <details class="section section-acc" id="accounts" open>
         <summary>
-          <h2 class="pds-card-title">4. Account list</h2>
+          <h2 class="pds-card-title">5. Account list</h2>
         </summary>
         <div class="section-body">
         <p class="pds-lead" style="margin-bottom:12px">
@@ -449,7 +595,7 @@
 
       <details class="section section-acc" id="whitespaces" open>
         <summary>
-          <h2 class="pds-card-title">6. Whitespaces — talent growth from latest official updates</h2>
+          <h2 class="pds-card-title">7. Whitespaces — talent growth from latest official updates</h2>
         </summary>
         <div class="section-body">
         <p class="pds-lead" style="margin-bottom:12px">
