@@ -1,0 +1,102 @@
+{
+  "$schema": "phenom-knowledge/graph/v1",
+  "area": "messaging",
+  "generated": "2026-07-13",
+  "clone_root": "/Users/venkata.gonella/phenom_repo/MyLocalCRM/repos",
+  "legend": {
+    "node.kind": ["repo", "module", "component", "endpoint_group", "engine", "event_topic", "datastore", "external_provider"],
+    "edge.type": ["calls_http", "consumes", "produces", "persists", "sends_via", "exposes_mfe", "ingests"],
+    "grounded": "true = code read this session; false = referenced/gateway-config, not code-verified"
+  },
+
+  "nodes": [
+    {"id": "repo:crm-campaigns-ui", "kind": "repo", "lang": "angular", "role": "campaign builder (email/sms/whatsapp) MFE", "at": "crm-campaigns-ui/webpack.config.js:5", "grounded": true},
+    {"id": "repo:crm-templates-ui", "kind": "repo", "lang": "angular", "role": "template editor MFE", "at": "crm-templates-ui/webpack.config.js:5", "grounded": true},
+    {"id": "repo:crm-lists-ui", "kind": "repo", "lang": "angular", "role": "lists + talent communities MFE", "at": "crm-lists-ui/webpack.config.js:5", "grounded": true},
+    {"id": "repo:crm-inbox-fe", "kind": "repo", "lang": "angular", "role": "inbox/conversations + whatsapp + voice MFE", "at": "crm-inbox-fe/webpack.config.js:21", "grounded": true},
+    {"id": "repo:crm-notes-ui", "kind": "repo", "lang": "angular", "role": "notes MFE", "at": "crm-notes-ui/webpack.config.js:8", "grounded": true},
+    {"id": "repo:crm-messaging-platform", "kind": "repo", "lang": "java-spring-multimodule", "role": "messaging backend platform", "grounded": true},
+    {"id": "repo:crm-candidate-lists", "kind": "repo", "lang": "java-play", "role": "lists backend", "grounded": true},
+    {"id": "repo:storm-campaign", "kind": "engine", "lang": "java-storm", "role": "campaign execution engine", "at": "storm-campaign/topology/EmailCampaignsTopology.java:42", "grounded": true},
+
+    {"id": "mod:messaging-gateway-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "MGW: inbox, provider webhooks, voice, templates, analytics", "controllers": 24, "at": "crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller", "grounded": true},
+    {"id": "mod:email-facade-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "email inbox/scheduler/templates/campaigns/suppression", "controllers": 8, "grounded": true},
+    {"id": "mod:email-api-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "candidate + transactional email send", "grounded": true},
+    {"id": "mod:txn-email-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "transactional email send", "grounded": true},
+    {"id": "mod:email-analytics-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "email event webhooks, unsubscribe, reply tracking", "grounded": true},
+    {"id": "mod:text-api-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "SMS send, opt-in, validation", "grounded": true},
+    {"id": "mod:system-campaign-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "system campaigns, status, dry-run count", "grounded": true},
+    {"id": "mod:recruiter-campaign-service", "kind": "module", "in": "repo:crm-messaging-platform", "role": "recruiter campaigns", "grounded": true},
+
+    {"id": "eg:InboxController", "kind": "endpoint_group", "in": "mod:messaging-gateway-service", "at": "crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller/phenomInbox/InboxController.java", "grounded": true},
+    {"id": "eg:VoiceCallController", "kind": "endpoint_group", "in": "mod:messaging-gateway-service", "at": "crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller/phenomInbox/VoiceCallController.java:22", "grounded": true},
+    {"id": "eg:SMSController", "kind": "endpoint_group", "in": "mod:text-api-service", "at": "crm-messaging-platform/text-api-service/src/main/java/com.messaging.text.api.service/controllers/SMSController.java:60", "grounded": true},
+    {"id": "eg:EmailApiCandidate", "kind": "endpoint_group", "in": "mod:email-api-service", "at": "crm-messaging-platform/email-api-service/src/main/java/com/messaging/email/api/controllers/CandidateController.java:78", "grounded": true},
+    {"id": "eg:CampaignController", "kind": "endpoint_group", "in": "mod:email-facade-service", "at": "crm-messaging-platform/email-facade-service/src/main/java/com/messaging/email/facade/controllers/campaign/CampaignController.java:46", "grounded": true},
+    {"id": "eg:SendgridWebhook", "kind": "endpoint_group", "in": "mod:email-analytics-service", "at": "crm-messaging-platform/email-analytics-service/src/main/java/com/messaging/analytics/controllers/SendgridWebhookController.java:38", "grounded": true},
+    {"id": "eg:OneClickUnsub", "kind": "endpoint_group", "in": "mod:email-analytics-service", "at": "crm-messaging-platform/email-analytics-service/src/main/java/com/messaging/analytics/controllers/OneClickUnsubscribeWebhookController.java:32", "grounded": true},
+
+    {"id": "comp:ui.campaign-builder", "kind": "component", "in": "repo:crm-campaigns-ui", "at": "crm-campaigns-ui/src/app/modules/email-manager/campaigns/campaign-page/campaign-page.component.ts:63", "grounded": true},
+    {"id": "comp:ui.template-editor", "kind": "component", "in": "repo:crm-templates-ui", "at": "crm-templates-ui/src/app/modules/templates/template-page/template-page.component.ts:50", "grounded": true},
+    {"id": "comp:ui.inbox", "kind": "component", "in": "repo:crm-inbox-fe", "at": "crm-inbox-fe/src/app/inbox/inbox-page.component.ts:44", "grounded": true},
+    {"id": "comp:ui.whatsapp-svc", "kind": "component", "in": "repo:crm-inbox-fe", "at": "crm-inbox-fe/src/app/core/service/whatsapp-management.service.ts:44", "grounded": true},
+    {"id": "comp:ui.list-svc", "kind": "component", "in": "repo:crm-lists-ui", "at": "crm-lists-ui/src/app/services/list.service.ts:72", "grounded": true},
+    {"id": "comp:ui.notes-svc", "kind": "component", "in": "repo:crm-notes-ui", "at": "crm-notes-ui/src/app/services/notes-service.ts:41", "grounded": true},
+
+    {"id": "comp:storm.sendEmail", "kind": "component", "in": "repo:storm-campaign", "at": "storm-campaign/service/SendEmailServices.java:183", "grounded": true},
+    {"id": "comp:storm.sendSms", "kind": "component", "in": "repo:storm-campaign", "at": "storm-campaign/service/CampaignServices.java:6627", "grounded": true},
+    {"id": "comp:storm.eventBolt", "kind": "component", "in": "repo:storm-campaign", "at": "storm-campaign/bolt/EventProcessers/CampaignEventsProcessorBolt.java:81", "grounded": true},
+
+    {"id": "prov:sendgrid", "kind": "external_provider", "role": "email", "grounded": true},
+    {"id": "prov:awsses", "kind": "external_provider", "role": "email", "grounded": true},
+    {"id": "prov:twilio", "kind": "external_provider", "role": "sms/whatsapp/voice", "grounded": true},
+    {"id": "prov:gupshup", "kind": "external_provider", "role": "whatsapp", "grounded": true},
+    {"id": "prov:imi", "kind": "external_provider", "role": "sms", "grounded": true},
+
+    {"id": "store:mongo.campaigns", "kind": "datastore", "tech": "mongodb", "collections": ["Campaigns", "EmailCampaignTransactions", "EmailTemplates", "SMSCampaignRecipientLog", "EmailUnsubscribers"], "at": "storm-campaign/util/AppConstants.java", "grounded": true},
+    {"id": "store:mongo.lists", "kind": "datastore", "tech": "mongodb", "collections": ["SavedFilter", "StaticLists", "DynamicLists", "JobAlertUnsubscribers"], "in": "repo:crm-candidate-lists", "grounded": true},
+    {"id": "store:redis.msg", "kind": "datastore", "tech": "redis", "grounded": true},
+    {"id": "store:es.msg", "kind": "datastore", "tech": "elasticsearch", "note": "CampaignDataAnalytics; per-tenant StaticLists index", "grounded": true},
+
+    {"id": "topic:campaign-topics", "kind": "event_topic", "note": "35+ property-bound campaign topics consumed by storm-campaign", "at": "storm-campaign/topology/*.java", "grounded": true},
+
+    {"id": "ext:notes-api", "kind": "external_provider", "role": "candidate notes backend (NOT cloned)", "grounded": false}
+  ],
+
+  "edges": [
+    {"from": "comp:ui.campaign-builder", "type": "calls_http", "to": "eg:CampaignController", "note": "via /ecampaign/* gateway prefix (module mapping unverified)", "grounded": false},
+    {"from": "comp:ui.template-editor", "type": "calls_http", "to": "mod:email-facade-service", "note": "/ecampaign/saveTemplate (prefix mapping unverified)", "grounded": false},
+    {"from": "comp:ui.inbox", "type": "calls_http", "to": "eg:InboxController", "note": "/messaging-gateway-service/v1.0/inbox/*", "grounded": true},
+    {"from": "comp:ui.whatsapp-svc", "type": "calls_http", "to": "repo:crm-messaging-platform", "note": "/messaging-campaign-service/v1.0/whatsapp/campaign/* (module unverified)", "grounded": false},
+    {"from": "comp:ui.list-svc", "type": "calls_http", "to": "repo:crm-candidate-lists", "note": "/lists/*", "grounded": true},
+    {"from": "comp:ui.notes-svc", "type": "calls_http", "to": "ext:notes-api", "note": "/notes-api/* (backend not cloned)", "grounded": false},
+
+    {"from": "repo:storm-campaign", "type": "consumes", "to": "topic:campaign-topics", "grounded": true},
+    {"from": "repo:storm-campaign", "type": "sends_via", "to": "prov:sendgrid", "note": "SendEmailServices.java:183", "grounded": true},
+    {"from": "repo:storm-campaign", "type": "sends_via", "to": "prov:awsses", "note": "AWSService.java:424", "grounded": true},
+    {"from": "comp:storm.sendSms", "type": "sends_via", "to": "prov:twilio", "note": "sms.send.baseurl shortcode/send", "grounded": true},
+    {"from": "repo:storm-campaign", "type": "persists", "to": "store:mongo.campaigns", "grounded": true},
+    {"from": "comp:storm.eventBolt", "type": "ingests", "to": "prov:sendgrid", "note": "delivery events", "grounded": true},
+
+    {"from": "prov:twilio", "type": "ingests", "to": "mod:messaging-gateway-service", "note": "TwilioWebhookController:42 inbound", "grounded": true},
+    {"from": "prov:gupshup", "type": "ingests", "to": "mod:messaging-gateway-service", "note": "GupshupWebhookController:40", "grounded": true},
+    {"from": "prov:imi", "type": "ingests", "to": "mod:messaging-gateway-service", "note": "IMISMSWebhookController:41", "grounded": true},
+    {"from": "prov:sendgrid", "type": "ingests", "to": "eg:SendgridWebhook", "note": "email events", "grounded": true},
+
+    {"from": "eg:EmailApiCandidate", "type": "sends_via", "to": "prov:sendgrid", "note": "email send path (impl detail)", "grounded": false},
+    {"from": "eg:SMSController", "type": "sends_via", "to": "prov:twilio", "note": "sms send path (impl detail)", "grounded": false},
+    {"from": "repo:crm-candidate-lists", "type": "persists", "to": "store:mongo.lists", "grounded": true},
+    {"from": "repo:crm-candidate-lists", "type": "produces", "to": "topic:campaign-topics", "note": "cep.ingestion.domain-events (list lifecycle)", "grounded": true}
+  ],
+
+  "cross_area_pointers": {
+    "note": "Automations actions execute against this area's send/campaign capabilities.",
+    "automations": ["SEND_EMAIL", "SEND_SMS", "SEND_WHATSAPP", "ADD_TO_CAMPAIGN", "CAMPAIGN_OPT_OUT"],
+    "scheduling": ["UIs call /scheduling-api-gateway/* (not cloned)"]
+  },
+  "caveats": [
+    "notes-api backend not cloned",
+    "ecampaign/sms-service/messaging-campaign-service gateway-prefix->module mapping unverified",
+    "campaign Kafka topics are mostly property-bound (not literal)"
+  ]
+}

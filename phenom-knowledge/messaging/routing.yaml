@@ -1,0 +1,297 @@
+# =============================================================================
+# Phenom Knowledge Framework — ROUTING file
+# Area: Messaging (Email / SMS / WhatsApp / Voice / Campaigns / Templates /
+#                  Lists / Talent Communities / Inbox-Conversations / Notes)
+# =============================================================================
+# See ../INDEX.md for the framework and grounding contract.
+# Every `at:` = <repo>/<path>:<line>, read from MyLocalCRM/repos/.
+# provenance: verified (read this session) | report (sub-agent read pass).
+# =============================================================================
+
+area: messaging
+version: 1
+generated: 2026-07-13
+clone_root: /Users/venkata.gonella/phenom_repo/MyLocalCRM/repos
+
+# -----------------------------------------------------------------------------
+# REPOS
+# -----------------------------------------------------------------------------
+repos:
+  crm-campaigns-ui:
+    language: Angular
+    role: Email / SMS / WhatsApp campaign builder, subscriptions/autoresponders, campaign reporting.
+    mfe: {type: remote, name: crm-campaigns-ui, exposes: "./CampaignsModule", at: "crm-campaigns-ui/webpack.config.js:5"}
+    entrypoint: crm-campaigns-ui/src/app/app-routing.module.ts:5
+    branch_note: source lives on `development` branch (default branch is empty).
+
+  crm-templates-ui:
+    language: Angular
+    role: Email + SMS template editor / library / history.
+    mfe: {type: remote, name: crm-templates-ui, exposes: "./TemplatesModule + ./SmsTemplatesModule", at: "crm-templates-ui/webpack.config.js:5"}
+    entrypoint: crm-templates-ui/src/app/app-routing.module.ts:4
+    branch_note: source lives on `development` branch.
+
+  crm-lists-ui:
+    language: Angular
+    role: Candidate lists (static/dynamic) + talent communities.
+    mfe: {type: remote, name: crm-lists-ui, exposes: "./ListsModule + ./TalentCommunitiesModule", at: "crm-lists-ui/webpack.config.js:5"}
+    entrypoint: crm-lists-ui/src/app/app-routing.module.ts:4
+
+  crm-inbox-fe:
+    language: Angular
+    role: Inbox / conversations / threads, WhatsApp campaigns, "messaging everywhere" sidebar, Twilio voice.
+    mfe: {type: remote, name: crm-inbox-fe, exposes: "./inbox, ./whatsapp, ./SideBarComponent, ./CandidateContainerComponent, ./VoiceCallBarComponent", at: "crm-inbox-fe/webpack.config.js:21"}
+    entrypoint: crm-inbox-fe/src/app/app-routing.module.ts:8
+
+  crm-notes-ui:
+    language: Angular
+    role: Candidate notes (list, add/edit dialog, feature-embedded notes widget).
+    mfe: {type: remote, name: crm-notes, exposes: "./NotesModule + dialog/components", at: "crm-notes-ui/webpack.config.js:8"}
+    entrypoint: crm-notes-ui/src/app/app-routing.module.ts:4
+
+  crm-messaging-platform:
+    language: Java (Spring Boot, multi-module Maven)
+    role: >
+      The messaging BACKEND platform. Multi-module: gateway (MGW), email facade/api,
+      email analytics/webhooks, text (SMS) api, campaign services, txn email, ops.
+    modules_dir: crm-messaging-platform/<module>
+    note: no single main class; each module is a deployable service.
+
+  crm-candidate-lists:
+    language: Java (Play Framework 2.8 + Guice)
+    role: Lists BACKEND — static/dynamic list CRUD, membership, campaign targeting, opt-in/out.
+    note: Play Framework (routes file), NOT Spring Boot.
+
+  storm-campaign:
+    language: Java (Apache Storm)
+    role: Campaign EXECUTION engine — schedules & sends email/SMS campaign touches (drip, autoresponder, bulk).
+    entrypoint: storm-campaign/topology (EmailCampaignsTopology.java:42 etc.)
+
+# -----------------------------------------------------------------------------
+# BACKEND SERVICE PATH PREFIXES (as called by the UIs) -> backend
+# NOTE: the mapping from these API-gateway prefixes to specific
+# crm-messaging-platform modules is GATEWAY CONFIG, not verified in code.
+# What IS verified: the UI calls these prefixes, and the platform has these modules.
+# -----------------------------------------------------------------------------
+api_prefixes:
+  - {prefix: /ecampaign/, purpose: "email & SMS campaigns + templates (legacy 'ecampaign')", backend_repo: "not cloned by that name; likely crm-messaging-platform email-api/recruiter-campaign OR separate ecampaign service", verified: false}
+  - {prefix: /sms-service/, purpose: "SMS/WhatsApp send + SMS inbox", backend: "crm-messaging-platform text-api-service (SMSController) - PREFIX MAP UNVERIFIED", verified: false}
+  - {prefix: /messaging-gateway-service/v1.0/inbox/, purpose: "unified inbox conversations", backend: "crm-messaging-platform messaging-gateway-service InboxController", verified: true}
+  - {prefix: /messaging-campaign-service/v1.0/whatsapp/campaign/, purpose: "WhatsApp campaigns", backend: "crm-messaging-platform (module mapping UNVERIFIED)", verified: false}
+  - {prefix: /email-facade-service/v1.0/, purpose: "email facade (inbox search, scheduler, templates)", backend: "crm-messaging-platform email-facade-service", verified: true}
+  - {prefix: /email-analytics-service/v1.0/, purpose: "email delivery events, one-click unsubscribe", backend: "crm-messaging-platform email-analytics-service", verified: true}
+  - {prefix: /lists/, purpose: "candidate lists", backend: "crm-candidate-lists", verified: true}
+  - {prefix: /notes-api/, purpose: "candidate notes", backend: "notes-api (NOT cloned)", verified: false}
+  - {prefix: /voice-call-service/, purpose: "Twilio voice token/calls", backend: "crm-messaging-platform messaging-gateway-service VoiceCallController (/voice-call)", verified: true}
+
+# -----------------------------------------------------------------------------
+# CRM-MESSAGING-PLATFORM MODULES + CONTROLLERS (backend navigation)
+# base path is a constant (e.g. WARestConstants.MGW); resolve the constant for the literal.
+# provenance: verified (module list + controller files + @RequestMapping lines read this session)
+# -----------------------------------------------------------------------------
+platform_modules:
+  messaging-gateway-service:
+    controllers_at: crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller
+    key_controllers:
+      - {class: InboxController, file: phenomInbox/InboxController.java, does: unified inbox conversations/threads}
+      - {class: ConversationsController, file: ConversationsController.java, does: conversation management}
+      - {class: VoiceCallController, file: phenomInbox/VoiceCallController.java, base: "/voice-call", line: 22, does: Twilio voice call token}
+      - {class: TwilioController, file: TwilioController.java, does: Twilio send/config}
+      - {class: TwilioWebhookController, file: TwilioWebhookController.java, base: "MGWAnalyticsServiceRestConstants.TWILIO", line: 42, does: Twilio inbound webhooks (SMS/WhatsApp)}
+      - {class: GupshupWebhookController, file: GupshupWebhookController.java, base: "MGWAnalyticsServiceRestConstants.GUPSHUP", line: 40, does: Gupshup WhatsApp webhooks}
+      - {class: IMISMSWebhookController, file: IMISMSWebhookController.java, base: "MGWAnalyticsServiceRestConstants.IMI", line: 41, does: IMI Mobile SMS webhooks}
+      - {class: SendGridWebhookController, file: SendGridWebhookController.java, base: "MGWAnalyticsServiceRestConstants.SENDGRID", line: 29, does: SendGrid email webhooks}
+      - {class: TemplateAPIController, file: TemplateAPIController.java, does: templates via gateway}
+      - {class: AnalyticsController, file: AnalyticsController.java, does: messaging analytics}
+      - {class: SchedulerController, file: SchedulerController.java, does: scheduled messages}
+      - {class: DndApiController, file: DndApiController.java, does: do-not-disturb / compliance}
+      - {class: VendorConfigurationController, file: VendorConfigurationController.java, does: provider/vendor config}
+    total_controllers: 24
+  email-facade-service:
+    controllers_at: crm-messaging-platform/email-facade-service/src/main/java/com/messaging/email/facade/controllers
+    key_controllers:
+      - {class: InboxController, file: InboxController.java, does: email inbox}
+      - {class: EmailSchedulerRestController, file: EmailSchedulerRestController.java, base: "EFSRestConstants.TRANSACTIONAL_EMAIL_CONTROLLER_PREFIX", line: 47, does: schedule/send transactional email}
+      - {class: TemplateController, file: TemplateController.java, does: email templates}
+      - {class: CampaignController, file: campaign/CampaignController.java, base: "EFSRestConstants.CAMPAIGNS_CONTROLLER", line: 46, does: email campaigns}
+      - {class: SuppressionListController, file: SuppressionListController.java, does: suppression/unsubscribe lists}
+      - {class: ActivityController, file: ActivityController.java, does: email activity}
+    total_controllers: 8
+  text-api-service:
+    controllers_at: crm-messaging-platform/text-api-service/src/main/java/com.messaging.text.api.service/controllers
+    key_controllers:
+      - {class: SMSController, file: SMSController.java, base: "TASRestConstants.CANDIDATES_PATH", line: 60, does: send SMS to candidates}
+      - {class: OptInController, file: OptInController.java, base: "TASRestConstants.CANDIDATES_PATH", line: 50, does: SMS opt-in}
+      - {class: SmsValidationController, file: SmsValidationController.java, does: SMS/number validation}
+    total_controllers: 3
+  email-analytics-service:
+    controllers_at: crm-messaging-platform/email-analytics-service/src/main/java/com/messaging
+    key_controllers:
+      - {class: SendgridWebhookController, file: analytics/controllers/SendgridWebhookController.java, base: "WebhookServiceRestConstants.WH_SENDGRID_MODULE", line: 38, does: SendGrid event ingestion}
+      - {class: OneClickUnsubscribeWebhookController, file: analytics/controllers/OneClickUnsubscribeWebhookController.java, base: "WebhookServiceRestConstants.WH_ONECLICKUNSUBSCRIBE_MODULE", line: 32, does: one-click unsubscribe}
+      - {class: EmailReplyController, file: replytracking/controllers/EmailReplyController.java, base: "ReplyTrackingServiceConstants.REPLY_TRACKING", line: 32, does: email reply tracking}
+    total_controllers: 4
+  email-api-service:
+    controllers_at: crm-messaging-platform/email-api-service/src/main/java/com/messaging/email/api/controllers
+    key_controllers:
+      - {class: CandidateController, file: CandidateController.java, base: "EASRestConstants.CANDIDATES_PATH", line: 78, does: candidate email send}
+      - {class: TransactionalController, file: TransactionalController.java, base: "EASRestConstants.TRANSACTIONAL_PATH", line: 50, does: transactional email}
+  system-campaign-service:
+    controllers_at: crm-messaging-platform/system-campaign-service/src/main/java/com/messaging/system/campaign/service/controllers
+    key_controllers:
+      - {class: CampaignsController, file: CampaignsController.java, base: "SCSRestConstants.CAMPAIGNS_CTRL_MODULE", line: 44, does: system campaigns}
+      - {class: CampaignStatusRestController, file: CampaignStatusRestController.java, base: "SCSRestConstants.SCC_CTRL_MODULE", line: 55, does: campaign status}
+      - {class: DryRunCountController, file: DryRunCountController.java, base: "SCSRestConstants.DRYRUN_CTRL_MODULE", line: 49, does: dry-run recipient count}
+  txn-email-service:
+    key_controllers:
+      - {class: TxnEmailServiceRestController, file: "crm-messaging-platform/txn-email-service/src/main/java/com/messaging/txn/email/service/controllers/TxnEmailServiceRestController.java", base: "TxnEmailRestConstants.PATH_TXN_EMAIL", line: 77, does: transactional email send}
+  recruiter-campaign-service:
+    key_controllers:
+      - {class: EventBridgeMigrationController, file: "crm-messaging-platform/recruiter-campaign-service/src/main/java/com.messaging.recruiter.campaign.service/controllers/EventBridgeMigrationController.java", base: "RCSRestConstants.EVENT_BRIDGE_CTRL_MODULE", line: 52}
+
+# -----------------------------------------------------------------------------
+# INTENTS
+# -----------------------------------------------------------------------------
+intents:
+  - match: ["send an email to a candidate", "email send", "transactional email"]
+    capability: Email send
+    candidates:
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/email-api-service/src/main/java/com/messaging/email/api/controllers/CandidateController.java:78", note: candidate email send, provenance: verified}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/txn-email-service/src/main/java/com/messaging/txn/email/service/controllers/TxnEmailServiceRestController.java:77", note: transactional email, provenance: verified}
+      - {repo: crm-inbox-fe, at: "crm-inbox-fe/src/app/core/service/email-management.service.ts:92", note: UI sendEmailToCandidates (/ecampaign), provenance: report}
+
+  - match: ["send sms", "text a candidate", "sms send"]
+    capability: SMS send
+    candidates:
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/text-api-service/src/main/java/com.messaging.text.api.service/controllers/SMSController.java:60", provenance: verified}
+      - {repo: crm-campaigns-ui, at: "crm-campaigns-ui/src/app/services/sms.service.ts:104", note: "UI smsRequestService -> /sms-service/sendSMSToCandidates", provenance: report}
+      - {repo: storm-campaign, at: "storm-campaign/service/CampaignServices.java:6627", note: "sendSmsToCandidate (campaign execution)", provenance: report}
+
+  - match: ["send whatsapp", "whatsapp campaign", "whatsapp template"]
+    capability: WhatsApp send & campaigns
+    candidates:
+      - {repo: crm-inbox-fe, at: "crm-inbox-fe/src/app/core/service/whatsapp-management.service.ts:44", note: "create WhatsApp campaign -> /messaging-campaign-service/v1.0/whatsapp/campaign/save", provenance: report}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller/GupshupWebhookController.java:40", note: "Gupshup WhatsApp provider webhook", provenance: verified}
+      - {repo: crm-campaigns-ui, at: "crm-campaigns-ui/src/app/services/sms.service.ts:114", note: "whatsAppRequestService -> /sms-service/whatsapp/send", provenance: report}
+
+  - match: ["inbox", "conversations", "message thread", "candidate chat"]
+    capability: Inbox / conversations
+    candidates:
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller/phenomInbox/InboxController.java", provenance: verified}
+      - {repo: crm-inbox-fe, at: "crm-inbox-fe/src/app/inbox/services/inbox.service.ts:26", note: "getConversations -> /messaging-gateway-service/v1.0/inbox/getConversations", provenance: report}
+      - {repo: crm-inbox-fe, at: "crm-inbox-fe/src/app/inbox/inbox-page.component.ts:44", note: inbox UI (read/unread/archive), provenance: report}
+
+  - match: ["voice call", "call a candidate", "twilio voice"]
+    capability: Voice call
+    candidates:
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/messaging-gateway-service/src/main/java/com/phenompeople/messaging/controller/phenomInbox/VoiceCallController.java:22", provenance: verified}
+      - {repo: crm-inbox-fe, at: "crm-inbox-fe/src/app/core/service/twilio-voice.service.ts:544", note: "getTokenUrl -> /voice-call-service/api/v1/communication/token", provenance: report}
+
+  - match: ["create a campaign", "email campaign builder", "drip campaign", "autoresponder", "subscription campaign"]
+    capability: Campaign authoring
+    candidates:
+      - {repo: crm-campaigns-ui, at: "crm-campaigns-ui/src/app/modules/email-manager/campaigns/campaign-page/campaign-page.component.ts:63", note: campaign builder UI, provenance: report}
+      - {repo: crm-campaigns-ui, at: "crm-campaigns-ui/src/app/services/email-management.service.ts:363", note: "saveDripCampaign -> /ecampaign/saveOrUpdateDrip", provenance: report}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/email-facade-service/src/main/java/com/messaging/email/facade/controllers/campaign/CampaignController.java:46", provenance: verified}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/system-campaign-service/src/main/java/com/messaging/system/campaign/service/controllers/CampaignsController.java:44", provenance: verified}
+
+  - match: ["campaign execution", "how are campaign emails sent", "drip scheduling", "campaign topology"]
+    capability: Campaign execution engine
+    candidates:
+      - {repo: storm-campaign, at: "storm-campaign/topology/EmailCampaignsTopology.java:42", note: email campaign topology, provenance: report}
+      - {repo: storm-campaign, at: "storm-campaign/topology/SmsCampaignsTopology.java:38", note: SMS campaign topology, provenance: report}
+      - {repo: storm-campaign, at: "storm-campaign/topology/SubscriptionCampaignsTopology.java:46", note: subscription/autoresponder topology, provenance: report}
+      - {repo: storm-campaign, at: "storm-campaign/service/AutomatedCampaignServices.java:90", note: drip step advance, provenance: report}
+
+  - match: ["email template", "sms template", "template editor", "template library"]
+    capability: Templates
+    candidates:
+      - {repo: crm-templates-ui, at: "crm-templates-ui/src/app/modules/templates/template-page/template-page.component.ts:50", note: template editor UI, provenance: report}
+      - {repo: crm-templates-ui, at: "crm-templates-ui/src/app/services/email-management.service.ts:328", note: "saveTemplate -> /ecampaign/saveTemplate", provenance: report}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/email-facade-service/src/main/java/com/messaging/email/facade/controllers/TemplateController.java", provenance: verified}
+
+  - match: ["candidate list", "static list", "dynamic list", "add to list", "talent community"]
+    capability: Lists & talent communities
+    candidates:
+      - {repo: crm-candidate-lists, at: "crm-candidate-lists (FilterService - list CRUD/membership/dynamic query)", note: "6800+ line FilterService; 13 controllers", provenance: report}
+      - {repo: crm-lists-ui, at: "crm-lists-ui/src/app/services/list.service.ts:72", note: "addCandidatesToList -> /lists/V2/addCandidatesToList", provenance: report}
+      - {repo: crm-lists-ui, at: "crm-lists-ui/src/app/modules/lists/list-page/list-page.component.ts:106", note: list detail UI, provenance: report}
+
+  - match: ["opt out", "unsubscribe", "suppression list", "opt in"]
+    capability: Opt-in/out & unsubscribe
+    candidates:
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/email-analytics-service/src/main/java/com/messaging/analytics/controllers/OneClickUnsubscribeWebhookController.java:32", provenance: verified}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/email-facade-service/src/main/java/com/messaging/email/facade/controllers/SuppressionListController.java", provenance: verified}
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/text-api-service/src/main/java/com.messaging.text.api.service/controllers/OptInController.java:50", note: SMS opt-in, provenance: verified}
+      - {repo: crm-candidate-lists, at: "crm-candidate-lists PublicApiService (opt-in/out flows)", provenance: report}
+
+  - match: ["email delivery events", "opens clicks bounces", "campaign analytics", "why didn't email deliver"]
+    capability: Email delivery events / analytics
+    candidates:
+      - {repo: crm-messaging-platform, at: "crm-messaging-platform/email-analytics-service/src/main/java/com/messaging/analytics/controllers/SendgridWebhookController.java:38", provenance: verified}
+      - {repo: storm-campaign, at: "storm-campaign/bolt/EventProcessers/CampaignEventsProcessorBolt.java:81", note: SendGrid/AWS event ingestion bolt, provenance: report}
+
+  - match: ["notes on candidate", "add a note", "candidate notes"]
+    capability: Notes
+    candidates:
+      - {repo: crm-notes-ui, at: "crm-notes-ui/src/app/services/notes-service.ts:41", note: "addFeatureNote -> /notes-api/feature/addNote (notes-api NOT cloned)", provenance: report}
+      - {repo: crm-notes-ui, at: "crm-notes-ui/src/app/modules/notes/notes-page/notes-page.component.ts:43", note: notes list UI, provenance: report}
+
+# -----------------------------------------------------------------------------
+# EXTERNAL PROVIDERS (verified via storm-campaign + gateway webhooks)
+# -----------------------------------------------------------------------------
+providers:
+  email:
+    - {name: SendGrid, at: "storm-campaign/service/SendEmailServices.java:183", url: "https://api.sendgrid.com/v3/mail/send", provenance: report}
+    - {name: AWS SES v2, at: "storm-campaign/service/AWSService.java:424", provenance: report}
+    - {name: MGW (messaging gateway), at: "storm-campaign/service/SendGridService.java:391", url: "{mgw.baseurl}/v1.0/email/send", provenance: report}
+  sms:
+    - {name: Twilio, at: "crm-messaging-platform/messaging-gateway-service/.../TwilioController.java", provenance: verified}
+    - {name: IMI Mobile, at: "crm-messaging-platform/messaging-gateway-service/.../IMISMSWebhookController.java:41", provenance: verified}
+    - {name: "SMS send REST", at: "storm-campaign/service/CampaignServices.java:6863", url: "{sms.send.baseurl}shortcode/send", provenance: report}
+  whatsapp:
+    - {name: Gupshup, at: "crm-messaging-platform/messaging-gateway-service/.../GupshupWebhookController.java:40", provenance: verified}
+    - {name: "Twilio WhatsApp", at: "crm-messaging-platform/messaging-gateway-service (TwilioWebhookController)", provenance: verified}
+  voice:
+    - {name: Twilio Voice, at: "crm-messaging-platform/messaging-gateway-service/.../phenomInbox/VoiceCallController.java:22", provenance: verified}
+
+# -----------------------------------------------------------------------------
+# EVENTS (Kafka) — storm-campaign consumes many campaign topics
+# -----------------------------------------------------------------------------
+events:
+  storm-campaign:
+    defined_at: "storm-campaign/topology/*.java (property-key topic names)"
+    note: >
+      35+ consumer topics across EmailCampaignsTopology, SmsCampaignsTopology,
+      AnalyticsCampaignsTopology, SubscriptionCampaignsTopology. Topic names are
+      property-bound (e.g. recruiter.campaigns.topic); some literal fallbacks exist
+      (e.g. "Phenom_Track_Recruiter_Campaigns_Flow").
+    produce_examples:
+      - {topic: "Phenom_Track_Recruiter_Campaigns_Flow", at: "storm-campaign/service/CampaignServices.java:323", provenance: report}
+  crm-candidate-lists:
+    produce:
+      - {topic: "cep.ingestion.domain-events", note: list lifecycle events, provenance: report}
+
+# -----------------------------------------------------------------------------
+# DATA STORES
+# -----------------------------------------------------------------------------
+data_stores:
+  mongo:
+    storm-campaign_collections: [Campaigns, EmailCampaignTransactions, EmailCampaignsTriggered, EmailTemplates, ClonedEmailTemplates, SMSCampaignRecipientLog, EmailUnsubscribers, TenantConfigurations, "SystemStaticListDrip1-5"]
+    storm-campaign_at: storm-campaign/util/AppConstants.java
+    crm-candidate-lists_collections: [SavedFilter, StaticLists, DynamicLists, Campaigns, JobAlertUnsubscribers, TenantConfigurations]
+  redis:
+    used_by: [storm-campaign, crm-candidate-lists, crm-messaging-platform]
+  elasticsearch:
+    used_by: [storm-campaign, crm-candidate-lists]
+    note: "storm-campaign index type CampaignDataAnalytics; candidate-lists per-tenant StaticLists index"
+
+# -----------------------------------------------------------------------------
+# CROSS-AREA
+# -----------------------------------------------------------------------------
+cross_area:
+  automations_calls_here:
+    note: "Automations actions SEND_EMAIL/SEND_SMS/SEND_WHATSAPP/ADD_TO_CAMPAIGN/CAMPAIGN_OPT_OUT execute against this area."
+    see: ../automations/routing.yaml
+  scheduling:
+    note: "crm-campaigns-ui & others call /scheduling-api-gateway/* (Scheduling area, not cloled)."

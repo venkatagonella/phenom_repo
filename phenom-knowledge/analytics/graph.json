@@ -1,0 +1,71 @@
+{
+  "$schema": "phenom-knowledge/graph/v1",
+  "area": "analytics",
+  "generated": "2026-07-13",
+  "clone_root": "/Users/venkata.gonella/phenom_repo/MyLocalCRM/repos",
+  "legend": {
+    "node.kind": ["repo", "component", "endpoint_group", "datastore", "external_service", "event_topic", "not_covered"],
+    "edge.type": ["calls_http", "reads", "consumes", "persists"],
+    "grounded": "true = code read this session; false = referenced/not cloned"
+  },
+
+  "nodes": [
+    {"id": "repo:crm-dashboard-service", "kind": "repo", "lang": "java-spring", "role": "recruiter dashboard backend", "grounded": true},
+    {"id": "repo:crm-recruiter-dashboard", "kind": "repo", "lang": "angular", "role": "recruiter dashboard UI (MFE remote recruiter-dashboard)", "grounded": true},
+    {"id": "repo:crm-job-analytics", "kind": "repo", "lang": "angular", "role": "job analytics UI (MFE remote job-analytics)", "grounded": true},
+
+    {"id": "eg:Overview", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/src/main/java/com/phenompeople/crmdashboardservice/controllers/OverviewController.java:50", "endpoints": ["/overview:50", "/account-level:71"], "grounded": true},
+    {"id": "eg:NewLeads", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/.../controllers/NewLeadsController.java:41", "grounded": true},
+    {"id": "eg:NewApplicants", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/.../controllers/NewApplicantsController.java:42", "grounded": true},
+    {"id": "eg:MyJobs", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/.../controllers/MyJobsWidgetController.java:28", "grounded": true},
+    {"id": "eg:RecentActivity", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/.../controllers/RecentActivityController.java:46", "grounded": true},
+    {"id": "eg:Discover", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/.../controllers/DiscoverWidgetController.java:41", "grounded": true},
+    {"id": "eg:WidgetOrder", "kind": "endpoint_group", "in": "repo:crm-dashboard-service", "at": "crm-dashboard-service/.../controllers/WidgetOrderingController.java:38", "grounded": true},
+
+    {"id": "comp:DashboardService", "kind": "component", "in": "repo:crm-recruiter-dashboard", "at": "crm-recruiter-dashboard/src/app/modules/core/services/dashboard.service.ts:12", "role": "1:1 bridge to dashboard-service", "grounded": true},
+    {"id": "comp:JobAnalyticsService", "kind": "component", "in": "repo:crm-job-analytics", "role": "calls Snowflake analytics-pro + facets2/ecampaign", "grounded": true},
+
+    {"id": "store:es.dash", "kind": "datastore", "tech": "elasticsearch", "note": "multi-index; primary analytics source", "grounded": true},
+    {"id": "store:mongo.userpref", "kind": "datastore", "tech": "mongodb", "db": "userPreference", "note": "widget order/persona", "grounded": true},
+    {"id": "topic:recent-activity", "kind": "event_topic", "name": "crm.recent.activity.topic", "in": "repo:crm-dashboard-service", "grounded": true},
+
+    {"id": "ext:list-service", "kind": "external_service", "role": "lists data upstream", "grounded": true},
+    {"id": "ext:email-facade", "kind": "external_service", "role": "email/campaign data (Messaging)", "grounded": true},
+    {"id": "ext:candidates-api", "kind": "external_service", "role": "candidate data (recruiter-dashboard)", "grounded": true},
+    {"id": "ext:jobs-api", "kind": "external_service", "role": "jobs data (recruiter-dashboard)", "grounded": true},
+    {"id": "ext:facets2", "kind": "external_service", "role": "candidate search (job-analytics)", "grounded": true},
+    {"id": "ext:ecampaign", "kind": "external_service", "role": "campaign data (job-analytics -> Messaging)", "grounded": true},
+
+    {"id": "nc:snowflake-analyticspro", "kind": "not_covered", "role": "Snowflake analytics-pro KPI backend (job-analytics source) - NOT cloned", "grounded": false}
+  ],
+
+  "edges": [
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "eg:Overview", "note": "{crmHub}/dashboard-service/", "grounded": true},
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "eg:NewLeads", "grounded": true},
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "eg:MyJobs", "grounded": true},
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "eg:RecentActivity", "grounded": true},
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "eg:WidgetOrder", "grounded": true},
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "ext:candidates-api", "grounded": true},
+    {"from": "comp:DashboardService", "type": "calls_http", "to": "ext:jobs-api", "grounded": true},
+
+    {"from": "repo:crm-dashboard-service", "type": "reads", "to": "store:es.dash", "grounded": true},
+    {"from": "repo:crm-dashboard-service", "type": "reads", "to": "store:mongo.userpref", "grounded": true},
+    {"from": "repo:crm-dashboard-service", "type": "consumes", "to": "topic:recent-activity", "grounded": true},
+    {"from": "repo:crm-dashboard-service", "type": "calls_http", "to": "ext:list-service", "grounded": true},
+    {"from": "repo:crm-dashboard-service", "type": "calls_http", "to": "ext:email-facade", "grounded": true},
+
+    {"from": "comp:JobAnalyticsService", "type": "calls_http", "to": "nc:snowflake-analyticspro", "note": "KPI GET endpoints", "grounded": false},
+    {"from": "comp:JobAnalyticsService", "type": "calls_http", "to": "ext:facets2", "grounded": true},
+    {"from": "comp:JobAnalyticsService", "type": "calls_http", "to": "ext:ecampaign", "grounded": true}
+  ],
+
+  "cross_area_pointers": {
+    "messaging": ["dashboard-service <- email-facade-service", "job-analytics -> ecampaign/"],
+    "automations": ["automation ROI/time-saved analytics live in crm-automation-service AnalyticsController, not here"]
+  },
+  "caveats": [
+    "Snowflake analytics-pro (job-analytics KPI backend) not cloned.",
+    "custom-report-builder / analytics-helm-charts not accessible.",
+    "UI service line numbers are 'report' provenance."
+  ]
+}

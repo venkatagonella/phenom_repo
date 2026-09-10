@@ -1,0 +1,67 @@
+{
+  "$schema": "phenom-knowledge/graph/v1",
+  "area": "screening",
+  "generated": "2026-07-13",
+  "clone_root": "/Users/venkata.gonella/phenom_repo/MyLocalCRM/repos",
+  "legend": {
+    "node.kind": ["repo", "component", "endpoint_group", "engine", "event_topic", "datastore", "external_service", "not_covered"],
+    "edge.type": ["consumes", "produces", "calls_http", "persists", "notifies", "updates_status", "sends_via"],
+    "grounded": "true = code read this session; false = referenced/not cloned"
+  },
+
+  "nodes": [
+    {"id": "repo:crm-video-assessment", "kind": "repo", "lang": "java-spring-kstreams", "role": "ODVA lifecycle + notifications", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/VideoAssessmentApplication.java:27", "grounded": true},
+
+    {"id": "eg:VAConfigController", "kind": "endpoint_group", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/VideoAssessmentConfigController.java:31", "role": "enable ODVA + count", "grounded": true},
+    {"id": "eg:VAStatusController", "kind": "endpoint_group", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/VideoAssessmentStatusController.java:67", "role": "status updates", "grounded": true},
+    {"id": "eg:CandidateContextController", "kind": "endpoint_group", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/controller/CandidateContextController.java:43", "role": "screening context", "grounded": true},
+
+    {"id": "comp:StatusServiceImpl", "kind": "component", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/VideoAssessmentStatusServiceImpl.java:126", "role": "updateEntityStatus", "grounded": true},
+    {"id": "comp:ConfigServiceImpl", "kind": "component", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/VideoAssessmentConfigServiceImpl.java:101", "grounded": true},
+    {"id": "comp:VANotifyService", "kind": "component", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/service/VANotifyService.java:112", "role": "recruiter notification dispatch (+4 subclasses)", "grounded": true},
+    {"id": "engine:InterviewProcessor", "kind": "engine", "in": "repo:crm-video-assessment", "at": "crm-video-assessment/src/main/java/com/phenompeople/videoassessment/topology/InterviewProcessor.java:119", "role": "Kafka Streams event processor", "grounded": true},
+
+    {"id": "topic:MCS_VIDEO_SCREEN", "kind": "event_topic", "at": "crm-video-assessment/.../topology/InterviewProcessor.java:85", "grounded": true},
+    {"id": "topic:candidate_initiated_screening", "kind": "event_topic", "at": "crm-video-assessment/.../topology/InterviewProcessor.java:86", "grounded": true},
+    {"id": "topic:cp_automation_notification", "kind": "event_topic", "at": "crm-video-assessment/.../service/VANotifyService.java:566", "grounded": true},
+
+    {"id": "store:mongo.va", "kind": "datastore", "tech": "mongodb", "db": "{refNum}_candidates", "collections": ["OnDemandInterviewScreenings", "JobSeekerActivity", "EventRegistrations", "JobsList", "EventsSchedule", "CandidatesList", "OndemandInterviewRawEvent"], "grounded": true},
+    {"id": "store:redis.va", "kind": "datastore", "tech": "redis", "at": "crm-video-assessment/.../CRMRedisManager.java:31", "grounded": true},
+    {"id": "store:es.va", "kind": "datastore", "tech": "elasticsearch", "at": "crm-video-assessment/.../ESClientUtil.java:47", "grounded": true},
+
+    {"id": "ext:lightsaber", "kind": "external_service", "role": "kafka gateway (config: phenom_track_api_url)", "grounded": true},
+    {"id": "ext:email-service", "kind": "external_service", "role": "interview-schedule email (config: email.service)", "grounded": true},
+    {"id": "ext:mcs-vx", "kind": "external_service", "role": "MCS campaign-execution email substitutions (config: video-assessment-url)", "grounded": true},
+    {"id": "ext:crm-events", "kind": "external_service", "role": "OWI checklist (config: crm.events.base.url)", "grounded": true},
+
+    {"id": "nc:video-capture-scoring", "kind": "not_covered", "role": "video capture + AI evaluation/scoring (MCS/video hub — produces MCS_VIDEO_SCREEN)", "grounded": false},
+    {"id": "nc:xplus-fitscore-questionnaire", "kind": "not_covered", "role": "X+ Screening, Fitscore, Questionnaires, Screening Agent (repos not accessible)", "grounded": false}
+  ],
+
+  "edges": [
+    {"from": "topic:MCS_VIDEO_SCREEN", "type": "consumes", "to": "engine:InterviewProcessor", "grounded": true},
+    {"from": "topic:candidate_initiated_screening", "type": "consumes", "to": "engine:InterviewProcessor", "grounded": true},
+    {"from": "engine:InterviewProcessor", "type": "updates_status", "to": "comp:StatusServiceImpl", "grounded": true},
+    {"from": "comp:StatusServiceImpl", "type": "persists", "to": "store:mongo.va", "grounded": true},
+    {"from": "comp:StatusServiceImpl", "type": "persists", "to": "store:es.va", "grounded": true},
+    {"from": "comp:StatusServiceImpl", "type": "notifies", "to": "comp:VANotifyService", "grounded": true},
+    {"from": "comp:VANotifyService", "type": "produces", "to": "topic:cp_automation_notification", "note": "via LightSaber", "grounded": true},
+    {"from": "comp:VANotifyService", "type": "sends_via", "to": "ext:lightsaber", "grounded": true},
+    {"from": "comp:VANotifyService", "type": "calls_http", "to": "ext:mcs-vx", "note": "email substitutions", "grounded": true},
+    {"from": "comp:VANotifyService", "type": "calls_http", "to": "ext:email-service", "grounded": true},
+    {"from": "eg:VAConfigController", "type": "calls_http", "to": "comp:ConfigServiceImpl", "grounded": true},
+    {"from": "comp:ConfigServiceImpl", "type": "calls_http", "to": "ext:crm-events", "note": "OWI checklist", "grounded": true},
+    {"from": "comp:ConfigServiceImpl", "type": "persists", "to": "store:mongo.va", "grounded": true},
+    {"from": "nc:video-capture-scoring", "type": "produces", "to": "topic:MCS_VIDEO_SCREEN", "note": "upstream, not cloned", "grounded": false}
+  ],
+
+  "cross_area_pointers": {
+    "automations": ["INITIATE_SCREENING", "SEND_ODVA", "FORWARD_VIDEO_ASSESSMENT_TO_HIRING_MANAGER"],
+    "messaging": ["recruiter notifications/emails go through the Messaging stack"]
+  },
+  "caveats": [
+    "Only crm-video-assessment cloned; it is lifecycle+notifications, not video capture/scoring.",
+    "X+ Screening / Fitscore / Questionnaires / Screening Agent repos not accessible.",
+    "Service line numbers are 'report' provenance."
+  ]
+}
