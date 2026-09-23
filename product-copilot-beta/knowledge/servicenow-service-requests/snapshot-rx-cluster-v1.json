@@ -1,0 +1,1660 @@
+{
+  "method": "1) Classify with base phrase rules. 2) TF-IDF MiniBatchKMeans on residual unclassified (base-only). 3) Human/agent derives high-confidence CLUSTER_V1 phrase rules from top clusters mapped to existing themes (or one new how-to theme). 4) Re-classify with base + cluster_v1. Residual stays Unclassified.",
+  "clusters_of_base_unclassified": {
+    "unclassified_under_base_only": 1558,
+    "n_clusters": 25,
+    "clusters": [
+      {
+        "cluster_id": 9,
+        "size": 702,
+        "share_of_unclassified": 45.06,
+        "top_terms": [
+          "candidate",
+          "phenom",
+          "team",
+          "hi",
+          "email",
+          "candidates",
+          "crm",
+          "attached"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293241",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Can we please check if the resume parser for this account is updated to the latest version?"
+          },
+          {
+            "CASE_NUMBER": "CS0293509",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Customer Services as category missing in Questionnaire Builder"
+          },
+          {
+            "CASE_NUMBER": "CS0293575",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Who created this req P-108886"
+          },
+          {
+            "CASE_NUMBER": "CS0293578",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unable to review pre-boarding form"
+          },
+          {
+            "CASE_NUMBER": "CS0293639",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "dispositioning blocked"
+          },
+          {
+            "CASE_NUMBER": "CS0293675",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Recruiters Get Email Notification for Referrals"
+          },
+          {
+            "CASE_NUMBER": "CS0293932",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Clarification on Twilio Management Responsibilities"
+          },
+          {
+            "CASE_NUMBER": "CS0294052",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "MSA and Solution Design Docs for Chrome Extension"
+          }
+        ]
+      },
+      {
+        "cluster_id": 18,
+        "size": 114,
+        "share_of_unclassified": 7.32,
+        "top_terms": [
+          "event",
+          "events",
+          "registration",
+          "event registration",
+          "form",
+          "attendees",
+          "email",
+          "registered"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293637",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Number of Registered Candidates in CRM Events Tab does not match Number in Candidates Tab"
+          },
+          {
+            "CASE_NUMBER": "CS0293786",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Follow-up to case CS0290199"
+          },
+          {
+            "CASE_NUMBER": "CS0293867",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Review of all templates linked to a system automation"
+          },
+          {
+            "CASE_NUMBER": "CS0293901",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Automatic Event Communications"
+          },
+          {
+            "CASE_NUMBER": "CS0294125",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Unable to edit template"
+          },
+          {
+            "CASE_NUMBER": "CS0294752",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Event QR Code in Email Confirmation Not Working"
+          },
+          {
+            "CASE_NUMBER": "CS0295339",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Event Registration Confirmation Emails"
+          },
+          {
+            "CASE_NUMBER": "CS0295364",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Event Lobby Mobile Image Cutoff"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "size": 101,
+        "share_of_unclassified": 6.48,
+        "top_terms": [
+          "email",
+          "com",
+          "address",
+          "email address",
+          "gmail",
+          "gmail com",
+          "profile",
+          "candidate"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294989",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Employee showing as Candidate in CRM"
+          },
+          {
+            "CASE_NUMBER": "CS0295276",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Recruiter Email Issues from Phenom"
+          },
+          {
+            "CASE_NUMBER": "CS0296423",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Remove email from the whitelisted list in UAT"
+          },
+          {
+            "CASE_NUMBER": "CS0298634",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "CRM Profile"
+          },
+          {
+            "CASE_NUMBER": "CS0299234",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "The candidate is not being reflected in Get Talent +"
+          },
+          {
+            "CASE_NUMBER": "CS0299311",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Remove invalid email icon and remove from suppression"
+          },
+          {
+            "CASE_NUMBER": "CS0299498",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Candidate Unable to Receive Communication"
+          },
+          {
+            "CASE_NUMBER": "CS0299565",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Deleting emails in the CRM"
+          }
+        ]
+      },
+      {
+        "cluster_id": 17,
+        "size": 93,
+        "share_of_unclassified": 5.97,
+        "top_terms": [
+          "access",
+          "crm",
+          "unable",
+          "user",
+          "login",
+          "able",
+          "users",
+          "unable access"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293940",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Enable Real-Time CRM Chrome Extension"
+          },
+          {
+            "CASE_NUMBER": "CS0294792",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Kelli Hermes Error at CRM login"
+          },
+          {
+            "CASE_NUMBER": "CS0300363",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "The Apps dropdown within the CRM module is not functioning as expected in the production environment Eventhough users have valid access to m"
+          },
+          {
+            "CASE_NUMBER": "CS0301165",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unable to Access CRM Dashboard"
+          },
+          {
+            "CASE_NUMBER": "CS0301453",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "CRM - error loading content [PROD]"
+          },
+          {
+            "CASE_NUMBER": "CS0304357",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Icon of Dashboard isn't showing"
+          },
+          {
+            "CASE_NUMBER": "CS0304782",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "CRM Access T Norris"
+          },
+          {
+            "CASE_NUMBER": "CS0304974",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Ticketing App access request"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "size": 90,
+        "share_of_unclassified": 5.78,
+        "top_terms": [
+          "job",
+          "field",
+          "fields",
+          "req",
+          "section",
+          "creating",
+          "type",
+          "time"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294853",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Profile and Lead Source overlapping"
+          },
+          {
+            "CASE_NUMBER": "CS0295391",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Remove 'Time Type' Field"
+          },
+          {
+            "CASE_NUMBER": "CS0295392",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Remove 'Worker Type Hiring Requirement'"
+          },
+          {
+            "CASE_NUMBER": "CS0296470",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Private Job Link"
+          },
+          {
+            "CASE_NUMBER": "CS0296982",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Need list of job fields in the job form that we have access to that are not turned on"
+          },
+          {
+            "CASE_NUMBER": "CS0301011",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "RIA feature not working"
+          },
+          {
+            "CASE_NUMBER": "CS0301314",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Job is closed but still on website"
+          },
+          {
+            "CASE_NUMBER": "CS0301545",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Job Radius For Candidates"
+          }
+        ]
+      },
+      {
+        "cluster_id": 16,
+        "size": 46,
+        "share_of_unclassified": 2.95,
+        "top_terms": [
+          "delete",
+          "notes",
+          "candidate",
+          "deleted",
+          "team",
+          "hi",
+          "hi team",
+          "data"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294859",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unable to delete attachment"
+          },
+          {
+            "CASE_NUMBER": "CS0295923",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Candidate wants their profile deleting"
+          },
+          {
+            "CASE_NUMBER": "CS0297359",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Candidate Notes say (0) but there are Notes"
+          },
+          {
+            "CASE_NUMBER": "CS0298545",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "I cannot delete this candidate"
+          },
+          {
+            "CASE_NUMBER": "CS0298954",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Delete Request - Needs to happen ASAP"
+          },
+          {
+            "CASE_NUMBER": "CS0299022",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Notes- is there a way to flag a note so it goes to the top"
+          },
+          {
+            "CASE_NUMBER": "CS0299415",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Note Types"
+          },
+          {
+            "CASE_NUMBER": "CS0301281",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Error when deleting attachment"
+          }
+        ]
+      },
+      {
+        "cluster_id": 8,
+        "size": 44,
+        "share_of_unclassified": 2.82,
+        "top_terms": [
+          "jobs",
+          "job",
+          "recruiters",
+          "able",
+          "candidates",
+          "assigned",
+          "page",
+          "visibility"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294164",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Candidates that are in mulitple jobs activity"
+          },
+          {
+            "CASE_NUMBER": "CS0294569",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "No Jobs visible"
+          },
+          {
+            "CASE_NUMBER": "CS0298219",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Recruiter, Shaq Leflore, does not have location as an option when trying to edit columns in the candidates tab of jobs."
+          },
+          {
+            "CASE_NUMBER": "CS0301039",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "How to restrict user access to only assigned jobs?"
+          },
+          {
+            "CASE_NUMBER": "CS0302964",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Need to restrict the jobs based on country"
+          },
+          {
+            "CASE_NUMBER": "CS0305222",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Visibility options in SuccessFactors"
+          },
+          {
+            "CASE_NUMBER": "CS0305511",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Leads"
+          },
+          {
+            "CASE_NUMBER": "CS0305634",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Sticky filters"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "size": 37,
+        "share_of_unclassified": 2.37,
+        "top_terms": [
+          "data",
+          "report",
+          "candidates",
+          "phenom",
+          "source",
+          "traffic",
+          "traffic source",
+          "need"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294712",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Profile Source Query"
+          },
+          {
+            "CASE_NUMBER": "CS0296855",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Surveys for Post Application and Post Hire"
+          },
+          {
+            "CASE_NUMBER": "CS0296862",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Hiring Statues Changes not working"
+          },
+          {
+            "CASE_NUMBER": "CS0296863",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Resumes are not parsing when uploaded"
+          },
+          {
+            "CASE_NUMBER": "CS0297066",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Source tracking"
+          },
+          {
+            "CASE_NUMBER": "CS0298564",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Hiring manager page not loading"
+          },
+          {
+            "CASE_NUMBER": "CS0299341",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Report fields/filters"
+          },
+          {
+            "CASE_NUMBER": "CS0299412",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Track candidates from Indeed"
+          }
+        ]
+      },
+      {
+        "cluster_id": 12,
+        "size": 35,
+        "share_of_unclassified": 2.25,
+        "top_terms": [
+          "automation",
+          "email",
+          "sent",
+          "need",
+          "set",
+          "candidate",
+          "candidates",
+          "run"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293516",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Indeed/Glassdoor Automation Test Not Working"
+          },
+          {
+            "CASE_NUMBER": "CS0297239",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "System Sending Erroneous emails"
+          },
+          {
+            "CASE_NUMBER": "CS0297892",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Automation Error_SH Sent"
+          },
+          {
+            "CASE_NUMBER": "CS0298856",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Automations heading in email"
+          },
+          {
+            "CASE_NUMBER": "CS0301954",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Automation \"Internal - Reject - After Application- TP 192\" is throwing error in Test system."
+          },
+          {
+            "CASE_NUMBER": "CS0302141",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Candidates Being Automatically Rejected Due to \u201cUnclean Criminal Record\u201d Automation"
+          },
+          {
+            "CASE_NUMBER": "CS0304613",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Adeva Glover Automation Access"
+          },
+          {
+            "CASE_NUMBER": "CS0306819",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "sending e-mails from staging CRM"
+          }
+        ]
+      },
+      {
+        "cluster_id": 10,
+        "size": 33,
+        "share_of_unclassified": 2.12,
+        "top_terms": [
+          "add",
+          "able add",
+          "unable",
+          "event",
+          "evaluation",
+          "able",
+          "unable add",
+          "offer"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293300",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Phone Screen Template"
+          },
+          {
+            "CASE_NUMBER": "CS0300545",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "query on 2026.01 relase - Conditional Logic in Evaluation Forms"
+          },
+          {
+            "CASE_NUMBER": "CS0300868",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add a new Event Type of Strategic Partnership"
+          },
+          {
+            "CASE_NUMBER": "CS0301404",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Hiring manager unable to access Phenom"
+          },
+          {
+            "CASE_NUMBER": "CS0301680",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Evaluation Request is not going through in Phenom."
+          },
+          {
+            "CASE_NUMBER": "CS0303962",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Can we mass import University Names to the \"University Name\" field in Early Talent Events?"
+          },
+          {
+            "CASE_NUMBER": "CS0305636",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Email signature"
+          },
+          {
+            "CASE_NUMBER": "CS0306348",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Recruiter was incorrectly able to add candidate to project"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "size": 29,
+        "share_of_unclassified": 1.86,
+        "top_terms": [
+          "inbox",
+          "emails",
+          "message",
+          "outlook",
+          "disposition",
+          "conversation",
+          "candidate",
+          "phenom"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0295520",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Events Default Image Sizes"
+          },
+          {
+            "CASE_NUMBER": "CS0298703",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Recruiter OOO Phenom Responses"
+          },
+          {
+            "CASE_NUMBER": "CS0298833",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "We sent an email to candidates using Phenom, but we stopped receiving their replies in our Outlook inbox."
+          },
+          {
+            "CASE_NUMBER": "CS0299790",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unwanted Emails"
+          },
+          {
+            "CASE_NUMBER": "CS0302233",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Inbox Errors"
+          },
+          {
+            "CASE_NUMBER": "CS0303707",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Inbox Conversation Limited"
+          },
+          {
+            "CASE_NUMBER": "CS0305290",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Users missing messages in the inbox"
+          },
+          {
+            "CASE_NUMBER": "CS0306304",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Multiple CRM Users Replying on one Candidate Message Thread"
+          }
+        ]
+      },
+      {
+        "cluster_id": 13,
+        "size": 28,
+        "share_of_unclassified": 1.8,
+        "top_terms": [
+          "upload",
+          "file",
+          "ideal",
+          "ideal candidate",
+          "candidate",
+          "resume",
+          "bulk",
+          "bulk upload"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0299796",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unable to upload Zip File"
+          },
+          {
+            "CASE_NUMBER": "CS0303777",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unable to Upload Updated Clinic List- Additional Fields"
+          },
+          {
+            "CASE_NUMBER": "CS0303969",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Ideal Candidate Upload - Error"
+          },
+          {
+            "CASE_NUMBER": "CS0304354",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Bulk Candidate Import CSV Issue"
+          },
+          {
+            "CASE_NUMBER": "CS0304761",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Please enable 'Bulk Upload' option for agency"
+          },
+          {
+            "CASE_NUMBER": "CS0306468",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "CV not uploading for Ideal Candidate Criteria"
+          },
+          {
+            "CASE_NUMBER": "CS0314615",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Bulk upload"
+          },
+          {
+            "CASE_NUMBER": "CS0320525",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "For FR-CA translation, are genders of words taken into account?"
+          }
+        ]
+      },
+      {
+        "cluster_id": 15,
+        "size": 27,
+        "share_of_unclassified": 1.73,
+        "top_terms": [
+          "missing",
+          "req",
+          "reopen",
+          "candidate",
+          "reopen req",
+          "applied",
+          "id",
+          "candidate applied"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293558",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Reopen req: P-113196"
+          },
+          {
+            "CASE_NUMBER": "CS0293767",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Issue in raising the fitment"
+          },
+          {
+            "CASE_NUMBER": "CS0300771",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "TRC Ionela cannot see candidates"
+          },
+          {
+            "CASE_NUMBER": "CS0301044",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Candidate missing on req"
+          },
+          {
+            "CASE_NUMBER": "CS0304718",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Please reopen req P-115056"
+          },
+          {
+            "CASE_NUMBER": "CS0304831",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Reprocess Candidates"
+          },
+          {
+            "CASE_NUMBER": "CS0305515",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Missing Candidate"
+          },
+          {
+            "CASE_NUMBER": "CS0306023",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Reopen form  to applicant - Atul Bhadange for editing in VAC ID - P-104647"
+          }
+        ]
+      },
+      {
+        "cluster_id": 11,
+        "size": 22,
+        "share_of_unclassified": 1.41,
+        "top_terms": [
+          "offer",
+          "offer template",
+          "template",
+          "score",
+          "fit",
+          "fit score",
+          "job",
+          "closed"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0299187",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "job feed information"
+          },
+          {
+            "CASE_NUMBER": "CS0316001",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Candidate Consent Not Reflected Correctly in Fit Score Display"
+          },
+          {
+            "CASE_NUMBER": "CS0317103",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Restrict Recruiter view on Job in CRM"
+          },
+          {
+            "CASE_NUMBER": "CS0319500",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Fit Score not matching Work Experience"
+          },
+          {
+            "CASE_NUMBER": "CS0319572",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "List All Departments on Offer Template"
+          },
+          {
+            "CASE_NUMBER": "CS0323974",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Restrict Offer Template Choice when Candidate Comes from Internal Marketplace"
+          },
+          {
+            "CASE_NUMBER": "CS0323978",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Restrict Candidate Type Choice when Candidate Comes Through Internal Marketplace"
+          },
+          {
+            "CASE_NUMBER": "CS0333465",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "New CRM Fields Needed in filter"
+          }
+        ]
+      },
+      {
+        "cluster_id": 20,
+        "size": 19,
+        "share_of_unclassified": 1.22,
+        "top_terms": [
+          "talent community",
+          "community",
+          "talent",
+          "widgets",
+          "email",
+          "subscribers",
+          "community email",
+          "data"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0297970",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Talent Community All Time Sign ups"
+          },
+          {
+            "CASE_NUMBER": "CS0298731",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Talent Community Email"
+          },
+          {
+            "CASE_NUMBER": "CS0301658",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Jobs from Talent Community email rendering in Google"
+          },
+          {
+            "CASE_NUMBER": "CS0303918",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Talent Community questions"
+          },
+          {
+            "CASE_NUMBER": "CS0306347",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Talent Community Sign-Up Email"
+          },
+          {
+            "CASE_NUMBER": "CS0317707",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Talent Community Dropoff"
+          },
+          {
+            "CASE_NUMBER": "CS0320130",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Talent Community | Signup Time"
+          },
+          {
+            "CASE_NUMBER": "CS0320780",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "CRM Talent Community Lists"
+          }
+        ]
+      },
+      {
+        "cluster_id": 21,
+        "size": 19,
+        "share_of_unclassified": 1.22,
+        "top_terms": [
+          "ec",
+          "ec trigger",
+          "trigger",
+          "job id",
+          "id",
+          "gmail com",
+          "gmail",
+          "job"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294576",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC trigger disabled"
+          },
+          {
+            "CASE_NUMBER": "CS0297029",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger"
+          },
+          {
+            "CASE_NUMBER": "CS0299667",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger Issue"
+          },
+          {
+            "CASE_NUMBER": "CS0299924",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger"
+          },
+          {
+            "CASE_NUMBER": "CS0300976",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger"
+          },
+          {
+            "CASE_NUMBER": "CS0301171",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger"
+          },
+          {
+            "CASE_NUMBER": "CS0302381",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger"
+          },
+          {
+            "CASE_NUMBER": "CS0302392",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "EC Trigger - P-103718"
+          }
+        ]
+      },
+      {
+        "cluster_id": 0,
+        "size": 17,
+        "share_of_unclassified": 1.09,
+        "top_terms": [
+          "integration",
+          "supervisor",
+          "production",
+          "supervisor list",
+          "employee",
+          "crm",
+          "reputation",
+          "sendgrid"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0295297",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Production is not working correctly"
+          },
+          {
+            "CASE_NUMBER": "CS0301068",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Interfor Integration - Jobs not transferred"
+          },
+          {
+            "CASE_NUMBER": "CS0306320",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Adding supervisor to our list"
+          },
+          {
+            "CASE_NUMBER": "CS0315278",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "review domain reputation within SendGrid"
+          },
+          {
+            "CASE_NUMBER": "CS0316940",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "CRM Connect Project Integration"
+          },
+          {
+            "CASE_NUMBER": "CS0319615",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Employee Data Feed Eligibility Criteria"
+          },
+          {
+            "CASE_NUMBER": "CS0322222",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Google Meet Integration"
+          },
+          {
+            "CASE_NUMBER": "CS0322282",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "HRTXM-1478 Missing Employee in CRM After Hire Date"
+          }
+        ]
+      },
+      {
+        "cluster_id": 14,
+        "size": 17,
+        "share_of_unclassified": 1.09,
+        "top_terms": [
+          "opt",
+          "changes",
+          "updated",
+          "timestamp",
+          "opt status",
+          "like",
+          "need",
+          "req"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0299292",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Profile sourced titled incorrectly"
+          },
+          {
+            "CASE_NUMBER": "CS0300871",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "reqs are not posting"
+          },
+          {
+            "CASE_NUMBER": "CS0302844",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Lag Issues Like CS0302842"
+          },
+          {
+            "CASE_NUMBER": "CS0305764",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Opt In Status Reverts to Opt Out"
+          },
+          {
+            "CASE_NUMBER": "CS0306874",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Question on Opt-Out feature"
+          },
+          {
+            "CASE_NUMBER": "CS0306934",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Opt in Report"
+          },
+          {
+            "CASE_NUMBER": "CS0332923",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "date and timestamp for consents"
+          },
+          {
+            "CASE_NUMBER": "CS0332934",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Job Req Main Locale not updated to English for several days"
+          }
+        ]
+      },
+      {
+        "cluster_id": 24,
+        "size": 17,
+        "share_of_unclassified": 1.09,
+        "top_terms": [
+          "pre",
+          "incomplete",
+          "pre onboarding",
+          "onboarding",
+          "incomplete apply",
+          "apply",
+          "reminder",
+          "apply reminder"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293884",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Incomplete Pre-Screen Questionnaire Emails Not Triggering in Ecolab Staging"
+          },
+          {
+            "CASE_NUMBER": "CS0299653",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Reinitiate Pre Onboarding"
+          },
+          {
+            "CASE_NUMBER": "CS0301985",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Mandatory section in Pre-Onboarding form \"Employee Family Insurance Detail\""
+          },
+          {
+            "CASE_NUMBER": "CS0305678",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Prachi Bhoyar-Pre-onboarding form error (Form not Getting Submitted)"
+          },
+          {
+            "CASE_NUMBER": "CS0306586",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Pre-onboarding failed"
+          },
+          {
+            "CASE_NUMBER": "CS0316112",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Enable product feature 'Incomplete Application Reminders'"
+          },
+          {
+            "CASE_NUMBER": "CS0319044",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "First source coming wrong."
+          },
+          {
+            "CASE_NUMBER": "CS0324808",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Set up Incomplete Apply Reminder"
+          }
+        ]
+      },
+      {
+        "cluster_id": 23,
+        "size": 16,
+        "share_of_unclassified": 1.03,
+        "top_terms": [
+          "open",
+          "open jobs",
+          "jobs",
+          "showing",
+          "closed",
+          "jobs showing",
+          "job",
+          "roles"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0294596",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "No Open Jobs showing"
+          },
+          {
+            "CASE_NUMBER": "CS0298902",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Customer Care defect - tickets in \"Solution offered - addressing follow up question\" left unanswered"
+          },
+          {
+            "CASE_NUMBER": "CS0301434",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Unable open Re-Closed ticket"
+          },
+          {
+            "CASE_NUMBER": "CS0304964",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Two recruiters Dashboard showing no roles"
+          },
+          {
+            "CASE_NUMBER": "CS0317547",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "HYPERCARE ISSUE - Jobs not showing on the dashboard"
+          },
+          {
+            "CASE_NUMBER": "CS0319375",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Business status SF and Job status"
+          },
+          {
+            "CASE_NUMBER": "CS0319830",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Open Positions per Job Indication"
+          },
+          {
+            "CASE_NUMBER": "CS0321205",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Open jobs are showing as closed in Phenom"
+          }
+        ]
+      },
+      {
+        "cluster_id": 19,
+        "size": 13,
+        "share_of_unclassified": 0.83,
+        "top_terms": [
+          "feature",
+          "enable",
+          "feature flag",
+          "flag",
+          "documents jobs",
+          "jobs",
+          "release",
+          "documents"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0299832",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Request to enable Phenom Calendar in my Service Hub Feature Flag"
+          },
+          {
+            "CASE_NUMBER": "CS0300519",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Request to enable 2026.01 feature Improved Candidate Phone Number Display in staging"
+          },
+          {
+            "CASE_NUMBER": "CS0306073",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Enable First Name Feature"
+          },
+          {
+            "CASE_NUMBER": "CS0312306",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Feature flag"
+          },
+          {
+            "CASE_NUMBER": "CS0318453",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Enable Improved Candidate Phone Number Display - Release notes 2026.01"
+          },
+          {
+            "CASE_NUMBER": "CS0328131",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Enable FF that Associates documents to jobs for candidates in STG"
+          },
+          {
+            "CASE_NUMBER": "CS0331011",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Disable the feature flag"
+          },
+          {
+            "CASE_NUMBER": "CS0338631",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Feature flag to enable CW recruiters to schedule meetings with themselves"
+          }
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "size": 11,
+        "share_of_unclassified": 0.71,
+        "top_terms": [
+          "channel partner",
+          "partner",
+          "channel",
+          "generac",
+          "partner id",
+          "power",
+          "partner channel",
+          "cid"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0293649",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "[External] ADD additional Channel Partner Name"
+          },
+          {
+            "CASE_NUMBER": "CS0313909",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add name"
+          },
+          {
+            "CASE_NUMBER": "CS0314603",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "[External] Please add Channel Partner Name and Channel Partner ID to additional job fields in production CRM"
+          },
+          {
+            "CASE_NUMBER": "CS0320555",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "[External] Urgent - Please add Channel Partner Name and Channel Partner ID to additional job fields in production CRM"
+          },
+          {
+            "CASE_NUMBER": "CS0326543",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "[External] Add new Channel Partner Name"
+          },
+          {
+            "CASE_NUMBER": "CS0326807",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Boostpoint"
+          },
+          {
+            "CASE_NUMBER": "CS0327346",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "[External] Urgent: Please add Channel Partner Name and Channel Partner ID to additional job fields in production CRM"
+          },
+          {
+            "CASE_NUMBER": "CS0331843",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "[External] Urgent: Please add Channel Partner Name and Channel Partner ID to additional job fields in production CRM"
+          }
+        ]
+      },
+      {
+        "cluster_id": 22,
+        "size": 11,
+        "share_of_unclassified": 0.71,
+        "top_terms": [
+          "bridgecare",
+          "add",
+          "field",
+          "additional",
+          "center",
+          "fields",
+          "add additional",
+          "additional field"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0313887",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add Name in Additional Field"
+          },
+          {
+            "CASE_NUMBER": "CS0314270",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add Additional Dropdowns to BridgeCare Fields"
+          },
+          {
+            "CASE_NUMBER": "CS0320039",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add Additional CRM Field"
+          },
+          {
+            "CASE_NUMBER": "CS0321054",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add Additional Dropdowns to BridgeCare Fields"
+          },
+          {
+            "CASE_NUMBER": "CS0329614",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Add Additional field for Workplace Arrangement"
+          },
+          {
+            "CASE_NUMBER": "CS0332208",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add Additional Dropdowns to BridgeCare Fields"
+          },
+          {
+            "CASE_NUMBER": "CS0333870",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add New Location Information to Dropdown BridgeCare Fields"
+          },
+          {
+            "CASE_NUMBER": "CS0340118",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Add New Sites to BridgeCare Dropdowns"
+          }
+        ]
+      },
+      {
+        "cluster_id": 7,
+        "size": 10,
+        "share_of_unclassified": 0.64,
+        "top_terms": [
+          "referrer",
+          "referral",
+          "referrals",
+          "referral policy",
+          "policy",
+          "view referral",
+          "application",
+          "candidate"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0297349",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "Verify Referrals Page"
+          },
+          {
+            "CASE_NUMBER": "CS0305163",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Email setting configuration"
+          },
+          {
+            "CASE_NUMBER": "CS0318796",
+            "JIRA_CREATED": "No",
+            "SHORT_DESCRIPTION": "GetReferral_PL_Disinforming message to the Referrer about candidate's application"
+          },
+          {
+            "CASE_NUMBER": "CS0320249",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Referral talent icon and job applied within the referral ownership period"
+          },
+          {
+            "CASE_NUMBER": "CS0322995",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Duplicate Referrer Showing for One Candidate"
+          },
+          {
+            "CASE_NUMBER": "CS0326058",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "CRM has not recorded the referral transaction"
+          },
+          {
+            "CASE_NUMBER": "CS0336998",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Referrer's name missing in referrals applications"
+          },
+          {
+            "CASE_NUMBER": "CS0342592",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Multiple Referrer - Assigned to the Same Candidate (Frank Cayro) Within Ownership Period"
+          }
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "size": 7,
+        "share_of_unclassified": 0.45,
+        "top_terms": [
+          "ensure",
+          "marketing",
+          "request",
+          "requests",
+          "visibility",
+          "marketing emails",
+          "marketing email",
+          "mahendra kamate"
+        ],
+        "examples": [
+          {
+            "CASE_NUMBER": "CS0321501",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Request for Full Historical Referral Data View / Migration"
+          },
+          {
+            "CASE_NUMBER": "CS0321501",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Request for Full Historical Referral Data View / Migration"
+          },
+          {
+            "CASE_NUMBER": "CS0324245",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Event leads to marketing emails - NJ conference"
+          },
+          {
+            "CASE_NUMBER": "CS0332195",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Marketing emails - VetGirl event"
+          },
+          {
+            "CASE_NUMBER": "CS0332207",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "marketing emails - event PacVet"
+          },
+          {
+            "CASE_NUMBER": "CS0333473",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "marketing emails - Moutain West Coeur D'Alene conference"
+          },
+          {
+            "CASE_NUMBER": "CS0333475",
+            "JIRA_CREATED": "Yes",
+            "SHORT_DESCRIPTION": "Marketing Emails - HiVE South 2026 list"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage_after_base_plus_cluster_v1": {
+    "n": 4379,
+    "by_source": {
+      "base": 2672,
+      "cluster_v1": 631,
+      "unclassified": 1076
+    },
+    "classified_pct": 75.43,
+    "unclassified_pct": 24.57,
+    "themes": [
+      [
+        "Unclassified / other",
+        1076
+      ],
+      [
+        "Candidate profile data / fields / tags / location / GDPR",
+        463
+      ],
+      [
+        "Screening / interview / scheduling / offer / notifications",
+        394
+      ],
+      [
+        "Campaigns / job alerts / subscriptions / spotlights",
+        370
+      ],
+      [
+        "Hiring status / pipeline / stages / lead status",
+        263
+      ],
+      [
+        "Email template content / hyperlinks / branding",
+        245
+      ],
+      [
+        "Jobs / requisitions / applications / posting",
+        242
+      ],
+      [
+        "Email not sending / not receiving / spam / bounce",
+        224
+      ],
+      [
+        "Forwarding / LinkedIn / ATS\u2194CRM sync",
+        180
+      ],
+      [
+        "SMS / WhatsApp",
+        178
+      ],
+      [
+        "Automation not triggering / failing / wrongly triggered",
+        170
+      ],
+      [
+        "Profile merge / unmerge / duplicates / disappeared",
+        141
+      ],
+      [
+        "Access / CRM not opening / permissions",
+        141
+      ],
+      [
+        "Events / university recruiting",
+        87
+      ],
+      [
+        "Activity / notes / UI display",
+        80
+      ],
+      [
+        "Search / lists / filters / export / AI Discovery",
+        75
+      ],
+      [
+        "How-to / configuration / enablement question",
+        50
+      ]
+    ],
+    "by_jira": {
+      "No": {
+        "n": 2430,
+        "themes": [
+          [
+            "Unclassified / other",
+            649
+          ],
+          [
+            "Candidate profile data / fields / tags / location / GDPR",
+            245
+          ],
+          [
+            "Screening / interview / scheduling / offer / notifications",
+            245
+          ],
+          [
+            "Campaigns / job alerts / subscriptions / spotlights",
+            205
+          ],
+          [
+            "Email template content / hyperlinks / branding",
+            152
+          ],
+          [
+            "Hiring status / pipeline / stages / lead status",
+            130
+          ],
+          [
+            "Jobs / requisitions / applications / posting",
+            126
+          ],
+          [
+            "Email not sending / not receiving / spam / bounce",
+            120
+          ],
+          [
+            "Forwarding / LinkedIn / ATS\u2194CRM sync",
+            101
+          ],
+          [
+            "Access / CRM not opening / permissions",
+            87
+          ],
+          [
+            "SMS / WhatsApp",
+            85
+          ],
+          [
+            "Automation not triggering / failing / wrongly triggered",
+            78
+          ],
+          [
+            "Profile merge / unmerge / duplicates / disappeared",
+            46
+          ],
+          [
+            "Activity / notes / UI display",
+            45
+          ],
+          [
+            "Events / university recruiting",
+            42
+          ],
+          [
+            "How-to / configuration / enablement question",
+            38
+          ],
+          [
+            "Search / lists / filters / export / AI Discovery",
+            36
+          ]
+        ]
+      },
+      "Yes": {
+        "n": 1949,
+        "themes": [
+          [
+            "Unclassified / other",
+            427
+          ],
+          [
+            "Candidate profile data / fields / tags / location / GDPR",
+            218
+          ],
+          [
+            "Campaigns / job alerts / subscriptions / spotlights",
+            165
+          ],
+          [
+            "Screening / interview / scheduling / offer / notifications",
+            149
+          ],
+          [
+            "Hiring status / pipeline / stages / lead status",
+            133
+          ],
+          [
+            "Jobs / requisitions / applications / posting",
+            116
+          ],
+          [
+            "Email not sending / not receiving / spam / bounce",
+            104
+          ],
+          [
+            "Profile merge / unmerge / duplicates / disappeared",
+            95
+          ],
+          [
+            "Email template content / hyperlinks / branding",
+            93
+          ],
+          [
+            "SMS / WhatsApp",
+            93
+          ],
+          [
+            "Automation not triggering / failing / wrongly triggered",
+            92
+          ],
+          [
+            "Forwarding / LinkedIn / ATS\u2194CRM sync",
+            79
+          ],
+          [
+            "Access / CRM not opening / permissions",
+            54
+          ],
+          [
+            "Events / university recruiting",
+            45
+          ],
+          [
+            "Search / lists / filters / export / AI Discovery",
+            39
+          ],
+          [
+            "Activity / notes / UI display",
+            35
+          ],
+          [
+            "How-to / configuration / enablement question",
+            12
+          ]
+        ]
+      }
+    },
+    "base_rule_count": 122,
+    "cluster_v1_rule_count": 79
+  },
+  "note_how_to_title_only": "How-to theme is title-only to avoid body boilerplate false positives."
+}

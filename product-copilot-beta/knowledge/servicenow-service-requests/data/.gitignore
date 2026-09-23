@@ -1,0 +1,4 @@
+# Keep directory; CSV exports stay local (often PII).
+*
+!.gitignore
+!README.md

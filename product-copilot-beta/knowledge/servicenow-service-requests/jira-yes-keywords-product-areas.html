@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RX themes — Jira Yes vs No (cluster_v1 high-confidence)</title>
+<style>
+:root{--bg:#f4f1ea;--ink:#1a1916;--muted:#5e594f;--card:#fffcf7;--line:#d9d2c4;--accent:#1f4d3a;--no:#7a3b2e}
+*{box-sizing:border-box}body{margin:0;font-family:"IBM Plex Sans",system-ui,sans-serif;color:var(--ink);
+background:radial-gradient(900px 500px at 0% 0%,#dde8e1,transparent 55%),var(--bg)}
+header{max-width:1140px;margin:0 auto;padding:2rem 1.5rem 1rem}
+h1{font-family:Georgia,serif;font-size:clamp(1.45rem,3vw,2rem);margin:0 0 .35rem}
+.sub{color:var(--muted);max-width:78ch}.stats{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.6rem .9rem}
+.stat b{display:block;font-size:1.2rem;color:var(--accent)}.stat.no b{color:var(--no)}
+.stat span{font-size:.75rem;color:var(--muted)}
+nav.tabs{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:.35rem;padding:.5rem 1.5rem;
+border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,white)}
+nav.tabs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.3rem .8rem;
+font:inherit;font-size:.85rem;cursor:pointer}
+nav.tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+nav.tabs button.no-tab.active{background:var(--no);border-color:var(--no)}
+main{max-width:1140px;margin:0 auto;padding:1.1rem 1.5rem 3rem}
+section.panel{display:none}section.panel.active{display:block}
+.note{background:#fff7e6;border:1px solid #e5d2a6;border-radius:10px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.9rem;color:#5a4824}
+.alert{background:#f8ebe7;border:1px solid #e0b8ad;border-radius:10px;padding:.75rem 1rem;margin-bottom:1rem;color:#5c2f26}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.84rem;margin-bottom:1rem}
+th,td{padding:.4rem .55rem;border-bottom:1px solid var(--line);text-align:left}th{background:#efe9df}
+td.num{white-space:nowrap}td.up{color:#1f4d3a}td.down{color:#7a3b2e}
+.bar{height:7px;background:#e8e2d7;border-radius:99px;margin-top:4px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--accent);border-radius:99px}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.65rem}
+.theme-grid.playbook{grid-template-columns:1fr;gap:.85rem}
+.theme-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.75rem .9rem}
+.playbook-card.priority{border-color:#8aab96;box-shadow:inset 3px 0 0 var(--accent)}
+.theme-head{display:flex;justify-content:space-between;gap:.5rem}.theme-nums{text-align:right}
+.theme-nums b{display:block;font-size:1.15rem;color:var(--accent)}.theme-nums span{font-size:.72rem;color:var(--muted)}
+.examples{margin:.5rem 0 0;padding-left:1rem;color:var(--muted);font-size:.76rem}
+.pack{font-size:.72rem;color:var(--muted);margin:.35rem 0 .15rem}
+.pb{margin:.55rem 0 0;display:grid;gap:.45rem}
+.pb dt{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--accent)}
+.pb dd{margin:0;font-size:.86rem;line-height:1.45;color:var(--ink)}
+.reduce-list{margin:.25rem 0 0;padding-left:1.15rem}
+.reduce-list li{margin:.28rem 0;line-height:1.45}
+.pill{display:inline-block;padding:.12rem .5rem;border-radius:999px;font-size:.72rem;font-weight:600;margin-left:.3rem}
+.pill-yes{background:#dceae3;color:#1f4d3a}.pill-no{background:#f0ddd7;color:#7a3b2e}
+.priority-list{margin:.5rem 0 1rem;padding-left:1.2rem;font-size:.9rem}
+.area-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+gap:.6rem;margin:0 0 .85rem}
+.area-nav{display:flex;flex-wrap:wrap;gap:.4rem}
+.area-nav a,.area-actions button{border:1px solid var(--line);background:var(--card);border-radius:999px;
+padding:.28rem .75rem;font:inherit;font-size:.8rem;color:var(--ink);text-decoration:none;cursor:pointer}
+.area-nav a:hover,.area-actions button:hover{border-color:var(--accent);color:var(--accent)}
+.area-actions{display:flex;gap:.35rem}
+.area-accordion{background:var(--card);border:1px solid var(--line);border-radius:12px;
+margin:0 0 .65rem;overflow:hidden}
+.area-summary{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:.75rem;
+padding:.85rem 1rem;cursor:pointer;list-style:none;user-select:none}
+.area-summary::-webkit-details-marker{display:none}
+.area-summary:hover{background:#f7f3eb}
+.area-title{font-size:1.05rem;font-weight:700;color:var(--accent)}
+.area-stats{font-size:.82rem;color:var(--muted);white-space:nowrap}
+.area-stats b{color:var(--ink)}
+.area-chevron{width:.55rem;height:.55rem;border-right:2px solid var(--muted);
+border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .15s ease;
+margin-right:.15rem}
+.area-accordion[open] .area-chevron{transform:rotate(225deg);margin-top:.2rem}
+.area-accordion[open] .area-summary{border-bottom:1px solid var(--line);background:#f7f3eb}
+.area-body{padding:.85rem 1rem 1.1rem}
+.area-blurb{margin:0 0 .75rem;font-size:.88rem;color:var(--muted);max-width:85ch}
+footer{max-width:1140px;margin:0 auto;padding:0 1.5rem 2rem;color:var(--muted);font-size:.75rem}
+h2{font-size:1.1rem}h3{font-size:.95rem;margin:0}
+</style></head><body>
+<header>
+  <h1>RX themes — high-confidence (base + cluster_v1)</h1>
+  <p class="sub">Method: phrase rules first; TF-IDF cluster residual unclassified; add high-confidence phrase rules from clusters.
+  Residual stays Unclassified. Sheet title+body only (no comments). See <code>theme-methodology.md</code> and
+  <code>theme-playbook.md</code> (phenom-knowledge grounded meaning + reduce-feedback actions).</p>
+  <div class="stats">
+    <div class="stat"><b>4,379</b><span>RX Yes+No</span></div>
+    <div class="stat"><b>1,949</b><span>Jira Yes · 78.1% classified</span></div>
+    <div class="stat no"><b>2,430</b><span>Jira No · 73.3% classified</span></div>
+    <div class="stat"><b>20</b><span>Linked key-not-found (excluded)</span></div>
+    <div class="stat"><b>631</b><span>Matched via cluster_v1 rules</span></div>
+  </div>
+</header>
+<nav class="tabs" id="tabs">
+  <button data-tab="playbook" class="active">Playbook · meaning &amp; reduce %</button>
+  <button data-tab="compare">Yes vs No</button>
+  <button data-tab="yes-themes">Yes · themes</button>
+  <button data-tab="yes-products">Yes · products</button>
+  <button data-tab="no-themes" class="no-tab">No · themes</button>
+  <button data-tab="no-products" class="no-tab">No · products</button>
+</nav>
+<main>
+<section class="panel active" id="playbook">
+  <div class="note">Each theme: <strong>what it is</strong> (SR demand signal) ·
+  <strong>phenom-knowledge</strong> grounding (Messaging / Automations / Screening — gaps called out) ·
+  <strong>what to do to reduce feedback %</strong>. Counts = Yes+No combined (n=4,379).
+  Actions are demand signals, not an approved roadmap. Source: <code>theme-playbook.md</code>.</div>
+  <h2>Priority lens (highest volume, excl. Unclassified)</h2>
+  <ol class="priority-list"><li><strong>Candidate profile data / fields / tags / location / GDPR</strong> — 463 (10.6%)</li><li><strong>Screening / interview / scheduling / offer / notifications</strong> — 394 (9.0%)</li><li><strong>Campaigns / job alerts / subscriptions / spotlights</strong> — 370 (8.4%)</li><li><strong>Hiring status / pipeline / stages / lead status</strong> — 263 (6.0%)</li><li><strong>Email template content / hyperlinks / branding</strong> — 245 (5.6%)</li><li><strong>Email not sending / not receiving / spam / bounce</strong> — 224 (5.1%)</li></ol>
+  <h2>Themes by product area</h2>
+  <div class="area-toolbar">
+    <nav class="area-nav" aria-label="Product areas">
+      <a href="#area-crm-core" data-area="area-crm-core">CRM Core</a>
+      <a href="#area-crm-profile" data-area="area-crm-profile">CRM Profile</a>
+      <a href="#area-crm-messaging" data-area="area-crm-messaging">CRM Messaging</a>
+      <a href="#area-crm-automations" data-area="area-crm-automations">CRM Automations</a>
+    </nav>
+    <div class="area-actions">
+      <button type="button" id="expand-areas">Expand all</button>
+      <button type="button" id="collapse-areas">Collapse all</button>
+    </div>
+  </div>
+  <div class="area-accordions" id="area-accordions">
+  <details class="area-accordion" id="area-crm-core" open>
+  <summary class="area-summary">
+    <span class="area-title">CRM Core</span>
+    <span class="area-stats"><b>2,039</b> SRs · 46.6% of RX
+    · 7 themes</span>
+    <span class="area-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="area-body">
+    <p class="area-blurb">Jobs, pipeline/status, access, events, ATS/LinkedIn sync, and residual/how-to tickets that sit on the CRM platform.</p>
+    <div class="theme-grid playbook"><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Unclassified / other</h3>
+          <div class="theme-nums"><b>1,076</b><span>24.6% of RX</span></div></div>
+          <div class="pack">Pack: —</div>
+          <div class="bar"><span style="width:100%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>SRs that did not match a high-confidence phrase rule — mixed issues, sparse titles, or residual cluster language. Not a product capability.</dd>
+            <dt>Phenom knowledge</dt><dd>Methodology residual (theme-methodology.md). No phenom-knowledge area.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Review the leftover tickets again and add clear phrase rules only where the wording is obvious — do not force a weak label.</li><li>Ask support to write clearer case titles for how-to questions so the next round classifies (and deflects) better.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card priority">
+          <div class="theme-head"><h3>Hiring status / pipeline / stages / lead status</h3>
+          <div class="theme-nums"><b>263</b><span>6.0% of RX</span></div></div>
+          <div class="pack">Pack: gap (pipeline) · automations adjacent</div>
+          <div class="bar"><span style="width:24.5%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Pipeline state machine and status vocabularies: stuck/wrong hiring or lead status, stage moves, disposition/reject reasons, ATS↔CRM mismatch.</dd>
+            <dt>Phenom knowledge</dt><dd>Not a dedicated phenom-knowledge pack. Automations often trigger on status/field changes (automation-search-service) and can set status via actions — exact CRM status APIs not grounded in current packs.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Show each customer which hiring/lead statuses they can use and which moves are allowed — cuts “what statuses exist?” and stuck-pipeline tickets.</li><li>When ATS and CRM disagree on status, show both values side by side so Support (and the customer) can see the gap immediately.</li><li>If an automation moved a candidate’s status, let the recruiter see that in the run history — unexplained status changes create SRs.</li><li>Stop silent auto-reject recipes: require confirmation or a clear warning before candidates are rejected automatically.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Jobs / requisitions / applications / posting</h3>
+          <div class="theme-nums"><b>242</b><span>5.5% of RX</span></div></div>
+          <div class="pack">Pack: gap (jobs / IX)</div>
+          <div class="bar"><span style="width:22.5%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Job ingest/posting and application capture: missing/duplicate jobs, stuck/incomplete applications, internal vs external posting, req IDs.</dd>
+            <dt>Phenom knowledge</dt><dd>Not in messaging/automations/screening packs. Capability-map points IX job sync (crm-storm-job-pull) and crm-jobs-service — not cloned under phenom-knowledge.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Show customers when job sync last succeeded or failed — “job is missing” tickets drop when sync health is visible.</li><li>Explain in the UI what makes an application incomplete, so recruiters fix it without opening a case.</li><li>Stop duplicate jobs/requisitions from being created on import.</li><li>Build a Jobs knowledge pack so deeper fixes are grounded in real code, not guesses.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Forwarding / LinkedIn / ATS↔CRM sync</h3>
+          <div class="theme-nums"><b>180</b><span>4.1% of RX</span></div></div>
+          <div class="pack">Pack: automations (+ IX gap)</div>
+          <div class="bar"><span style="width:16.7%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Integration edges: forward resume/candidate failures, LinkedIn export/import, ATS/Workday/SuccessFactors sync gaps.</dd>
+            <dt>Phenom knowledge</dt><dd>Automations: crm-workflows = LinkedIn CRM Connect; Temporal forward-to-HM in crm-automation-service. Full ATS job sync (IX) not in phenom-knowledge packs.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Show LinkedIn Connect errors in the product UI instead of a blank failure that becomes an SR.</li><li>When “forward to hiring manager” fails, say why (e.g. user not in the system) in plain language.</li><li>Show how fresh ATS↔CRM sync is, and when it last failed, so customers know if the gap is lag vs a real break.</li><li>Document the ATS sync path in a knowledge pack before promising deep engineering fixes.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Access / CRM not opening / permissions</h3>
+          <div class="theme-nums"><b>141</b><span>3.2% of RX</span></div></div>
+          <div class="pack">Pack: gap (identity / access)</div>
+          <div class="bar"><span style="width:13.1%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>AuthZ/authN and entitlements: cannot open CRM, role/permission missing, login/SSO, admin access to features (incl. templates).</dd>
+            <dt>Phenom knowledge</dt><dd>No dedicated pack. Capability-map: Recruiter Hub / identity — not grounded here. Messaging SRs mention template RBAC; auth service code is outside Messaging skill.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Show in-product which role unlocks which feature — so “I can’t open X” is self-diagnosable.</li><li>Let customers request access themselves, with a clear reason when access is denied.</li><li>Give Support a short SSO troubleshooting checklist for login failures.</li><li>Error messages should say whether a feature is turned off vs the user lacks permission — those are different fixes.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Events / university recruiting</h3>
+          <div class="theme-nums"><b>87</b><span>2.0% of RX</span></div></div>
+          <div class="pack">Pack: screening (partial) · Events gap</div>
+          <div class="bar"><span style="width:8.1%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Event entities + campus recruiting: registration, campus/university flows, event forms/images/invites.</dd>
+            <dt>Phenom knowledge</dt><dd>Screening ODVA can attach to Event entities (crm-video-assessment). Broader Events/UR CRM features not covered by Messaging/Automations packs.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Make event forms and field setup easier so campus/event teams configure without Support.</li><li>Show whether registrations synced successfully and when they last updated.</li><li>Build an Events product knowledge pack before committing to deep code fixes.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>How-to / configuration / enablement question</h3>
+          <div class="theme-nums"><b>50</b><span>1.1% of RX</span></div></div>
+          <div class="pack">Pack: cross-cutting</div>
+          <div class="bar"><span style="width:4.6%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Enablement gap more than defect — title-level how/what/can-we / enable-feature questions (title-only classifier).</dd>
+            <dt>Phenom knowledge</dt><dd>Cross-cutting; map each how-to to Messaging/Automations/Screening docs once the topic is known.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Add short guided setups in the product for the most common “how do I…?” questions.</li><li>Give CS ready-made answer macros mapped to these themes so how-to cases close without engineering.</li><li>Where it is safe, let customers turn features on themselves instead of waiting for a ticket to enable them.</li></ul></dd>
+          </dl></article></div>
+  </div>
+</details><details class="area-accordion" id="area-crm-profile">
+  <summary class="area-summary">
+    <span class="area-title">CRM Profile</span>
+    <span class="area-stats"><b>604</b> SRs · 13.8% of RX
+    · 2 themes</span>
+    <span class="area-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="area-body">
+    <p class="area-blurb">Candidate record integrity — fields, tags, location, GDPR/purge, merge/duplicates, and disappeared profiles.</p>
+    <div class="theme-grid playbook"><article class="theme-card playbook-card priority">
+          <div class="theme-head"><h3>Candidate profile data / fields / tags / location / GDPR</h3>
+          <div class="theme-nums"><b>463</b><span>10.6% of RX</span></div></div>
+          <div class="pack">Pack: gap (Profile)</div>
+          <div class="bar"><span style="width:43.0%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Integrity and configurability of the candidate record: wrong/missing fields, tags, location/phone/email, GDPR/purge/privacy, field add/rename failures.</dd>
+            <dt>Phenom knowledge</dt><dd>No dedicated CRM Profile pack. Closest: Messaging notes UI (crm-notes-ui; notes-api not cloned). Recruiter Hub/profile services appear on Engineering capability-map but are not in phenom-knowledge routing packs — do not assert internals.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Make sure phone, email, and location stay correct when a candidate applies or is imported — catch bad data before it lands on the profile.</li><li>Give admins a simpler way to add, rename, and manage custom fields and tags without opening a ticket.</li><li>Publish clear timelines for GDPR / data-purge requests, and let customers check status themselves instead of chasing Support.</li><li>Add short in-product help for “how do I change this field?” so those questions never become SRs.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Profile merge / unmerge / duplicates / disappeared</h3>
+          <div class="theme-nums"><b>141</b><span>3.2% of RX</span></div></div>
+          <div class="pack">Pack: gap (merge / identity)</div>
+          <div class="bar"><span style="width:13.1%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Identity resolution: duplicates, merge/unmerge, “candidate disappeared,” resume disappears.</dd>
+            <dt>Phenom knowledge</dt><dd>Not found in Messaging/Automations/Screening packs — CRM Core/Profile gap until a pack exists.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Show a clear merge preview and an easy undo — so merge mistakes do not become urgent tickets.</li><li>Keep an audit log of who merged or unmerged whom, and when.</li><li>When a profile is soft-deleted, keep it findable (with context) so candidates do not “disappear” with no explanation.</li><li>Deduplicate on import before creating a new profile.</li></ul></dd>
+          </dl></article></div>
+  </div>
+</details><details class="area-accordion" id="area-crm-messaging">
+  <summary class="area-summary">
+    <span class="area-title">CRM Messaging</span>
+    <span class="area-stats"><b>1,172</b> SRs · 26.8% of RX
+    · 6 themes</span>
+    <span class="area-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="area-body">
+    <p class="area-blurb">Outbound and channel messaging — campaigns, templates, email delivery, SMS/WhatsApp, notes/activity UI, and lists/search/export.</p>
+    <div class="theme-grid playbook"><article class="theme-card playbook-card priority">
+          <div class="theme-head"><h3>Campaigns / job alerts / subscriptions / spotlights</h3>
+          <div class="theme-nums"><b>370</b><span>8.4% of RX</span></div></div>
+          <div class="pack">Pack: messaging</div>
+          <div class="bar"><span style="width:34.4%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Audience + outbound campaign lifecycle: campaigns not sending/wrong audience, job alerts/subscriptions, spotlights/dynamic lists, talent-pool/nurture language.</dd>
+            <dt>Phenom knowledge</dt><dd>Messaging: crm-campaigns-ui (builder), storm-campaign (execution), crm-lists-ui / crm-candidate-lists (lists, opt-in/out), platform CampaignController / CampaignsController. Gateway /ecampaign/* → exact backend module unverified.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Before a campaign sends, show who will receive it and why it would fail — so recruiters catch wrong audiences and bad setups themselves.</li><li>Make spotlights and dynamic lists use the same filters as the list builder — mismatches drive a lot of “wrong people got this” tickets.</li><li>Let customers control job-alert subscriptions (internal vs external) and see a simple audit of why an alert went out.</li><li>Give CS and Product a live view of bounce and send failures so chronic delivery problems are fixed before they pile up as tickets.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card priority">
+          <div class="theme-head"><h3>Email template content / hyperlinks / branding</h3>
+          <div class="theme-nums"><b>245</b><span>5.6% of RX</span></div></div>
+          <div class="pack">Pack: messaging</div>
+          <div class="bar"><span style="width:22.8%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Template authoring &amp; rendering: broken links, footer/logo/branding, placeholders, edit/access, language/locale.</dd>
+            <dt>Phenom knowledge</dt><dd>Messaging: crm-templates-ui (template-page.component.ts), email-facade-service TemplateController, gateway TemplateAPIController. Campaigns pull templates before storm-campaign send.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>When someone saves a template, check links and merge fields and flag broken ones before they go live.</li><li>Preview how logo, footer, and brand styling will look so customers are not surprised after send.</li><li>Make it obvious who can edit company-default templates vs their own account templates — many tickets are access confusion, not bugs.</li><li>When cloning a template into another language, keep placeholders and layout intact so locale copies do not break.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card priority">
+          <div class="theme-head"><h3>Email not sending / not receiving / spam / bounce</h3>
+          <div class="theme-nums"><b>224</b><span>5.1% of RX</span></div></div>
+          <div class="pack">Pack: messaging</div>
+          <div class="bar"><span style="width:20.8%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Delivery path after compose/campaign: not delivered, bounce/spam, sender/from issues, whitelist, unsubscribe/opt-in email problems.</dd>
+            <dt>Phenom knowledge</dt><dd>Messaging: SendGrid/SES/MGW (SendEmailServices, AWSService); email-analytics-service SendgridWebhookController; SuppressionListController; one-click unsubscribe; txn-email-service.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Give Product and CS a simple deliverability view per customer (bounce and spam rates) so problems are fixed before tickets pile up.</li><li>Tell the recruiter clearly when a candidate is unsubscribed or suppressed — instead of a silent “email didn’t send.”</li><li>Equip Support with a short sender-authentication checklist (SPF / DKIM / DMARC) for “landing in spam” cases.</li><li>In triage, separate “automation never fired” from “email was sent but bounced” — those need different owners and fixes.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>SMS / WhatsApp</h3>
+          <div class="theme-nums"><b>178</b><span>4.1% of RX</span></div></div>
+          <div class="pack">Pack: messaging</div>
+          <div class="bar"><span style="width:16.5%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Text channels + opt-in: SMS/WhatsApp not sending/showing, opt-in, scheduling limits, column/status issues.</dd>
+            <dt>Phenom knowledge</dt><dd>Messaging: text-api-service SMSController / OptInController; WhatsApp via crm-inbox-fe whatsapp-management.service.ts + Gupshup/Twilio webhooks; campaign SMS in storm-campaign / sms-campaign-service.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Show opt-in status on the candidate profile and whether they are eligible for an SMS/WhatsApp campaign before send.</li><li>Surface provider error messages (why the text failed) for recruiters and CS — not just “send failed.”</li><li>Make WhatsApp template approval status obvious so customers know when a message can go out.</li><li>Offer a small test/preview send before a large SMS or WhatsApp blast.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Activity / notes / UI display</h3>
+          <div class="theme-nums"><b>80</b><span>1.8% of RX</span></div></div>
+          <div class="pack">Pack: messaging (+ analytics if dashboard)</div>
+          <div class="bar"><span style="width:7.4%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Front-end shell / notes / activity timeline: UI not displaying, blank buttons/tabs, notes/activity missing, logos.</dd>
+            <dt>Phenom knowledge</dt><dd>Messaging: crm-notes-ui → /notes-api/* (notes-api not cloned); crm-inbox-fe. Dashboard widgets: Analytics pack (crm-recruiter-dashboard, crm-dashboard-service) only if SR is dashboard-specific.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Ground the notes backend in knowledge packs so blank notes/activity screens can be fixed with confidence.</li><li>Replace blank screens with a clear message: “you don’t have permission” vs “this failed to load — try again.”</li><li>Show when the activity feed was last refreshed so recruiters know if data is stale.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Search / lists / filters / export / AI Discovery</h3>
+          <div class="theme-nums"><b>75</b><span>1.7% of RX</span></div></div>
+          <div class="pack">Pack: messaging (lists) · Discovery gap</div>
+          <div class="bar"><span style="width:7.0%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Candidate discovery + list membership + export: search/filter broken, lists empty, export issues, AI Discovery / sourcing from CRM.</dd>
+            <dt>Phenom knowledge</dt><dd>Messaging: lists crm-lists-ui / crm-candidate-lists (FilterService). AI Discovery / CRM search engines not found in cloned Messaging/Automations/Screening packs.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Keep list filters consistent everywhere, and explain why a search returned zero results instead of a blank list.</li><li>Show export progress/status and document which columns come out — “export broke / wrong columns” is a top ask.</li><li>Build a Search / AI Discovery knowledge pack before promising deeper product changes.</li></ul></dd>
+          </dl></article></div>
+  </div>
+</details><details class="area-accordion" id="area-crm-automations">
+  <summary class="area-summary">
+    <span class="area-title">CRM Automations</span>
+    <span class="area-stats"><b>564</b> SRs · 12.9% of RX
+    · 2 themes</span>
+    <span class="area-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="area-body">
+    <p class="area-blurb">Recipe reliability plus screening/interview/invite/notification flows that automations commonly drive.</p>
+    <div class="theme-grid playbook"><article class="theme-card playbook-card priority">
+          <div class="theme-head"><h3>Screening / interview / scheduling / offer / notifications</h3>
+          <div class="theme-nums"><b>394</b><span>9.0% of RX</span></div></div>
+          <div class="pack">Pack: screening + automations (+ scheduling blocked)</div>
+          <div class="bar"><span style="width:36.6%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Funnel friction across Screening (ODVA/questionnaire), interview/scheduling/calendar, offer letters, and missing recruiter notifications.</dd>
+            <dt>Phenom knowledge</dt><dd>Screening (partial): ODVA config/status/notify in crm-video-assessment (VideoAssessmentConfigController, VideoAssessmentStatusController, VANotifyService → Kafka cp_automation_notification). Video capture/AI scoring/X+/Fitscore/Questionnaires not in cloned Screening repos. Scheduling area blocked (no accessible repos). Automations Temporal activities: SEND_ODVA, INITIATE_SCREENING, INVITE_FOR_INTERVIEW. Notify path often lands in Messaging.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Fix the path so invites and status changes reliably notify the recruiter — many tickets are “I never got notified.”</li><li>Ship ready-made automation recipes for “invite to interview” and “send video assessment,” and show a clear history when a recipe fails.</li><li>Calendar and self-schedule bugs need Scheduling code access first — treat that as a prerequisite before promising product fixes.</li><li>For questionnaires and assessments, finish Screening knowledge packs before committing to deep engineering work.</li></ul></dd>
+          </dl></article><article class="theme-card playbook-card">
+          <div class="theme-head"><h3>Automation not triggering / failing / wrongly triggered</h3>
+          <div class="theme-nums"><b>170</b><span>3.9% of RX</span></div></div>
+          <div class="pack">Pack: automations</div>
+          <div class="bar"><span style="width:15.8%"></span></div>
+          <dl class="pb">
+            <dt>What the theme is</dt><dd>Recipe match + execute reliability: not firing, wrong fire, failures, screening/invite automations, run-history gaps.</dd>
+            <dt>Phenom knowledge</dt><dd>Automations: crm-automations-ui; AutomationController CRUD; automation-search-service match (KafkaConsumer, Lucene+ES, ValidatorService); execute via candidate-automation ActionFactory (24 actions) and/or Temporal activities in crm-automation-service. CRMAutomationUtils shared lib not cloned.</dd>
+            <dt>To reduce feedback %</dt>
+            <dd><ul class="reduce-list"><li>Let customers see a simple run history: what triggered, which recipe matched, and what the action did (or why it failed).</li><li>Let them preview and validate filters before turning a recipe on — fewer “it fired on the wrong people” tickets.</li><li>Alert when a recipe should have matched but quietly did not — silent misses create mystery SRs.</li><li>For Support, document which actions run on which engine so debugging is faster and handoffs are clearer.</li></ul></dd>
+          </dl></article></div>
+  </div>
+</details>
+  </div>
+</section>
+<section class="panel" id="compare">
+  <div class="note">Δ pp = No% − Yes%. Positive = more common when Jira was <em>not</em> created.
+  Sources: base / cluster_v1 / unclassified.</div>
+  <h2>Theme comparison</h2>
+  <table><thead><tr><th>Theme</th><th>Yes rows</th><th>% of Yes</th><th>No rows</th><th>% of No</th><th>Δ pp (No − Yes)</th></tr></thead><tbody><tr><td>Unclassified / other</td><td class="num">427</td><td class="num">21.9%<div class="bar"><span style="width:100%"></span></div></td><td class="num">649</td><td class="num">26.7%</td><td class="num up">+4.8 pp</td></tr><tr><td>Candidate profile data / fields / tags / location / GDPR</td><td class="num">218</td><td class="num">11.2%<div class="bar"><span style="width:51.1%"></span></div></td><td class="num">245</td><td class="num">10.1%</td><td class="num down">-1.1 pp</td></tr><tr><td>Campaigns / job alerts / subscriptions / spotlights</td><td class="num">165</td><td class="num">8.5%<div class="bar"><span style="width:38.7%"></span></div></td><td class="num">205</td><td class="num">8.4%</td><td class="num ">-0.0 pp</td></tr><tr><td>Screening / interview / scheduling / offer / notifications</td><td class="num">149</td><td class="num">7.6%<div class="bar"><span style="width:34.9%"></span></div></td><td class="num">245</td><td class="num">10.1%</td><td class="num up">+2.4 pp</td></tr><tr><td>Hiring status / pipeline / stages / lead status</td><td class="num">133</td><td class="num">6.8%<div class="bar"><span style="width:31.1%"></span></div></td><td class="num">130</td><td class="num">5.3%</td><td class="num down">-1.5 pp</td></tr><tr><td>Jobs / requisitions / applications / posting</td><td class="num">116</td><td class="num">6.0%<div class="bar"><span style="width:27.2%"></span></div></td><td class="num">126</td><td class="num">5.2%</td><td class="num down">-0.8 pp</td></tr><tr><td>Email not sending / not receiving / spam / bounce</td><td class="num">104</td><td class="num">5.3%<div class="bar"><span style="width:24.4%"></span></div></td><td class="num">120</td><td class="num">4.9%</td><td class="num down">-0.4 pp</td></tr><tr><td>Profile merge / unmerge / duplicates / disappeared</td><td class="num">95</td><td class="num">4.9%<div class="bar"><span style="width:22.2%"></span></div></td><td class="num">46</td><td class="num">1.9%</td><td class="num down">-3.0 pp</td></tr><tr><td>Email template content / hyperlinks / branding</td><td class="num">93</td><td class="num">4.8%<div class="bar"><span style="width:21.8%"></span></div></td><td class="num">152</td><td class="num">6.3%</td><td class="num up">+1.5 pp</td></tr><tr><td>SMS / WhatsApp</td><td class="num">93</td><td class="num">4.8%<div class="bar"><span style="width:21.8%"></span></div></td><td class="num">85</td><td class="num">3.5%</td><td class="num down">-1.3 pp</td></tr><tr><td>Automation not triggering / failing / wrongly triggered</td><td class="num">92</td><td class="num">4.7%<div class="bar"><span style="width:21.5%"></span></div></td><td class="num">78</td><td class="num">3.2%</td><td class="num down">-1.5 pp</td></tr><tr><td>Forwarding / LinkedIn / ATS↔CRM sync</td><td class="num">79</td><td class="num">4.0%<div class="bar"><span style="width:18.5%"></span></div></td><td class="num">101</td><td class="num">4.2%</td><td class="num up">+0.1 pp</td></tr><tr><td>Access / CRM not opening / permissions</td><td class="num">54</td><td class="num">2.8%<div class="bar"><span style="width:12.6%"></span></div></td><td class="num">87</td><td class="num">3.6%</td><td class="num up">+0.8 pp</td></tr><tr><td>Events / university recruiting</td><td class="num">45</td><td class="num">2.3%<div class="bar"><span style="width:10.5%"></span></div></td><td class="num">42</td><td class="num">1.7%</td><td class="num down">-0.6 pp</td></tr><tr><td>Search / lists / filters / export / AI Discovery</td><td class="num">39</td><td class="num">2.0%<div class="bar"><span style="width:9.1%"></span></div></td><td class="num">36</td><td class="num">1.5%</td><td class="num down">-0.5 pp</td></tr><tr><td>Activity / notes / UI display</td><td class="num">35</td><td class="num">1.8%<div class="bar"><span style="width:8.2%"></span></div></td><td class="num">45</td><td class="num">1.9%</td><td class="num up">+0.1 pp</td></tr><tr><td>How-to / configuration / enablement question</td><td class="num">12</td><td class="num">0.6%<div class="bar"><span style="width:2.8%"></span></div></td><td class="num">38</td><td class="num">1.6%</td><td class="num up">+0.9 pp</td></tr></tbody></table>
+  <h2>Match sources</h2>
+  <table><thead><tr><th>Cohort / source</th><th>Rows</th><th>% of cohort</th></tr></thead><tbody><tr><td>Jira Yes — base</td><td class="num">1,271</td><td class="num">65.2%<div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>Jira Yes — cluster_v1</td><td class="num">251</td><td class="num">12.9%<div class="bar"><span style="width:19.8%"></span></div></td></tr><tr><td>Jira Yes — unclassified</td><td class="num">427</td><td class="num">21.9%<div class="bar"><span style="width:33.6%"></span></div></td></tr><tr><td>Jira No — base</td><td class="num">1,401</td><td class="num">57.7%<div class="bar"><span style="width:88.5%"></span></div></td></tr><tr><td>Jira No — cluster_v1</td><td class="num">380</td><td class="num">15.6%<div class="bar"><span style="width:23.9%"></span></div></td></tr><tr><td>Jira No — unclassified</td><td class="num">649</td><td class="num">26.7%<div class="bar"><span style="width:41.0%"></span></div></td></tr></tbody></table>
+  <div class="alert">For Jira No, <code>PRODUCT_EXPERIENCE_PRODUCT</code> is blank on essentially all rows (product label comes from Jira in the sheet SQL).</div>
+</section>
+<section class="panel" id="yes-themes">
+  <h2>Key themes <span class="pill pill-yes">Jira Yes · n=1,949 · 78.1% classified</span></h2>
+  <div class="theme-grid"><article class="theme-card">
+          <div class="theme-head"><h3>Unclassified / other</h3>
+          <div class="theme-nums"><b>427</b><span>21.9%</span></div></div>
+          <div class="bar"><span style="width:100%"></span></div><ul class="examples"><li><code>CS0294052</code> · CRM - Google Chrome Extension · <em>unclassified</em> · MSA and Solution Design Docs for Chrome Extension</li><li><code>CS0295159</code> · CRM - Events and University Recruiting · <em>unclassified</em> · Events-page related questions</li><li><code>CS0295216</code> · DEC · <em>unclassified</em> · Extraction of Amwell candidate&#x27;s resumes</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Candidate profile data / fields / tags / location / GDPR</h3>
+          <div class="theme-nums"><b>218</b><span>11.2%</span></div></div>
+          <div class="bar"><span style="width:51.1%"></span></div><ul class="examples"><li><code>CS0293371</code> · CRM - Automation · <em>base</em> · Tag was not added to candidate</li><li><code>CS0293464</code> · CRM - Profile · <em>base</em> · Missing employee email</li><li><code>CS0293464</code> · CRM - Core · <em>base</em> · Missing employee email</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Campaigns / job alerts / subscriptions / spotlights</h3>
+          <div class="theme-nums"><b>165</b><span>8.5%</span></div></div>
+          <div class="bar"><span style="width:38.7%"></span></div><ul class="examples"><li><code>CS0293713</code> · MX - Hiring · <em>base</em> · Renea Fisher + Stacey Williams = No Notifications</li><li><code>CS0293871</code> · CRM - Core · <em>base</em> · Spotlight Automatically Adding a Filter of &quot;Job Assigned to:   &quot;</li><li><code>CS0294031</code> · Career Site – Platform Services · <em>base</em> · 1. Disable Candidate Notifications for Job Alerts, 2. Auto-Disposition Candidates When Job Requisiti</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Screening / interview / scheduling / offer / notifications</h3>
+          <div class="theme-nums"><b>149</b><span>7.6%</span></div></div>
+          <div class="bar"><span style="width:34.9%"></span></div><ul class="examples"><li><code>CS0293245</code> · (blank) · <em>base</em> · UAT Testing Urgent Issue</li><li><code>CS0293884</code> · CRM - Events and University Recruiting · <em>cluster_v1</em> · Incomplete Pre-Screen Questionnaire Emails Not Triggering in Ecolab Staging</li><li><code>CS0294355</code> · CRM - Core · <em>base</em> · Interview Take Action Link Error</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Hiring status / pipeline / stages / lead status</h3>
+          <div class="theme-nums"><b>133</b><span>6.8%</span></div></div>
+          <div class="bar"><span style="width:31.1%"></span></div><ul class="examples"><li><code>CS0293532</code> · CRM - Automation · <em>base</em> · Removing hiring pipeline from staging environment</li><li><code>CS0294645</code> · CRM - Profile · <em>base</em> · Hiring statuses are not consistent between ATS and CRM</li><li><code>CS0294682</code> · CRM - Core · <em>base</em> · I need a list from the system of all Lead Statuses, and the Transition Statuses allowed from the CRM</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Jobs / requisitions / applications / posting</h3>
+          <div class="theme-nums"><b>116</b><span>6.0%</span></div></div>
+          <div class="bar"><span style="width:27.2%"></span></div><ul class="examples"><li><code>CS0294308</code> · CRM - Profile · <em>base</em> · Applications Submitted Without Resume Across Multiple Job Requisitions</li><li><code>CS0294728</code> · CRM - Messaging and Campaigns · <em>base</em> · Automated Application Emails with No System Record</li><li><code>CS0294836</code> · (blank) · <em>base</em> · Bringing Application Questions to Phenom</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Email not sending / not receiving / spam / bounce</h3>
+          <div class="theme-nums"><b>104</b><span>5.3%</span></div></div>
+          <div class="bar"><span style="width:24.4%"></span></div><ul class="examples"><li><code>CS0293959</code> · CRM - Messaging and Campaigns · <em>base</em> · Candidate messaging within Phenom</li><li><code>CS0294049</code> · CRM - Messaging and Campaigns · <em>base</em> · Missing notifications not being sent out by the system</li><li><code>CS0294158</code> · CRM - Messaging and Campaigns · <em>base</em> · Job Alert Verification Emails Not Being Sent - Career Site and Chatbot</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Profile merge / unmerge / duplicates / disappeared</h3>
+          <div class="theme-nums"><b>95</b><span>4.9%</span></div></div>
+          <div class="bar"><span style="width:22.2%"></span></div><ul class="examples"><li><code>CS0293299</code> · CRM - Profile · <em>base</em> · Candidate Disappeared</li><li><code>CS0294171</code> · CRM - Profile · <em>base</em> · Need to have Amber Rose Stanfill (ATS ID 584245) unmerged from Margaret Ann Stanfill&#x27;s (ATS ID 10435</li><li><code>CS0294449</code> · CRM - Profile · <em>base</em> · Duplicate Candidate Feature Issue</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Email template content / hyperlinks / branding</h3>
+          <div class="theme-nums"><b>93</b><span>4.8%</span></div></div>
+          <div class="bar"><span style="width:21.8%"></span></div><ul class="examples"><li><code>CS0293611</code> · CRM - Messaging and Campaigns · <em>base</em> · Issue with Email Template Hyperlinks Not Working</li><li><code>CS0293942</code> · CRM - Events and University Recruiting · <em>base</em> · 25.11 New “Invite to Register” Template needed in tenant</li><li><code>CS0294179</code> · CRM - Messaging and Campaigns · <em>base</em> · Email Referral Template - Need Editing Access</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>SMS / WhatsApp</h3>
+          <div class="theme-nums"><b>93</b><span>4.8%</span></div></div>
+          <div class="bar"><span style="width:21.8%"></span></div><ul class="examples"><li><code>CS0293710</code> · CRM - Profile · <em>base</em> · SMS Opt In Status Not Showing up</li><li><code>CS0293844</code> · CRM - Messaging and Campaigns · <em>base</em> · SMS messages not showing as expected</li><li><code>CS0294517</code> · CRM - Messaging and Campaigns · <em>base</em> · SMS scheduling - has limitatonsd currently</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Automation not triggering / failing / wrongly triggered</h3>
+          <div class="theme-nums"><b>92</b><span>4.7%</span></div></div>
+          <div class="bar"><span style="width:21.5%"></span></div><ul class="examples"><li><code>CS0293974</code> · CRM - Automation · <em>base</em> · Few automations ae not getting triggered in production environment.</li><li><code>CS0294980</code> · CRM - Automation · <em>base</em> · Automation not triggering Screening questionnaire</li><li><code>CS0296508</code> · CRM - Messaging and Campaigns · <em>base</em> · External Emails are failing on Automations.</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Forwarding / LinkedIn / ATS↔CRM sync</h3>
+          <div class="theme-nums"><b>79</b><span>4.0%</span></div></div>
+          <div class="bar"><span style="width:18.5%"></span></div><ul class="examples"><li><code>CS0293716</code> · CRM - Core · <em>base</em> · Unable to Forward Candidate Resume – “User Not in the System” Error JR25111609</li><li><code>CS0294467</code> · CRM - Profile · <em>base</em> · Internal Candidate Stephen Myers (C0833460) applied through Workday to  JR25110863 on 12/16/2025 not</li><li><code>CS0297781</code> · CRM - Core · <em>base</em> · Phenom Integration with Linkedin</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Access / CRM not opening / permissions</h3>
+          <div class="theme-nums"><b>54</b><span>2.8%</span></div></div>
+          <div class="bar"><span style="width:12.6%"></span></div><ul class="examples"><li><code>CS0295594</code> · CRM - Events and University Recruiting · <em>base</em> · Delete Event - RubinBrown Pathways - St Louis -E-10051</li><li><code>CS0297174</code> · FS Integrations - Data Integration · <em>base</em> · CRM Data Migration via API</li><li><code>CS0297357</code> · CRM - Events and University Recruiting · <em>cluster_v1</em> · NORAM - Events assigning users under the wrong role</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Events / university recruiting</h3>
+          <div class="theme-nums"><b>45</b><span>2.3%</span></div></div>
+          <div class="bar"><span style="width:10.5%"></span></div><ul class="examples"><li><code>CS0293901</code> · CRM - Events and University Recruiting · <em>cluster_v1</em> · Automatic Event Communications</li><li><code>CS0294125</code> · CRM - Events and University Recruiting · <em>cluster_v1</em> · Unable to edit template</li><li><code>CS0294752</code> · CRM - Events and University Recruiting · <em>cluster_v1</em> · Event QR Code in Email Confirmation Not Working</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Search / lists / filters / export / AI Discovery</h3>
+          <div class="theme-nums"><b>39</b><span>2.0%</span></div></div>
+          <div class="bar"><span style="width:9.1%"></span></div><ul class="examples"><li><code>CS0293403</code> · CRM - Core · <em>base</em> · AI Discovery is unable source candidates from CRM database</li><li><code>CS0293623</code> · CRM - Automation · <em>base</em> · When exporting candidates from the CRM, no date in &#x27;Evaluation Score&#x27; column</li><li><code>CS0296125</code> · CRM - Profile · <em>base</em> · Export of Preferred Offices (CS0276689)</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Activity / notes / UI display</h3>
+          <div class="theme-nums"><b>35</b><span>1.8%</span></div></div>
+          <div class="bar"><span style="width:8.2%"></span></div><ul class="examples"><li><code>CS0294338</code> · CRM - Core · <em>base</em> · Front-End Not Displaying Back-End</li><li><code>CS0295448</code> · CRM - Profile · <em>base</em> · 2 Issues: DL App Button Not Available + DL App Info Blank on Applicant from 1/15</li><li><code>CS0297588</code> · CRM - Core · <em>base</em> · LXS Logo</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>How-to / configuration / enablement question</h3>
+          <div class="theme-nums"><b>12</b><span>0.6%</span></div></div>
+          <div class="bar"><span style="width:2.8%"></span></div><ul class="examples"><li><code>CS0299832</code> · CRM - Core · <em>cluster_v1</em> · Request to enable Phenom Calendar in my Service Hub Feature Flag</li><li><code>CS0304339</code> · CRM - Core · <em>cluster_v1</em> · Can we see if recruiters download data from a req or candidate search?</li><li><code>CS0304761</code> · CRM - Profile · <em>cluster_v1</em> · Please enable &#x27;Bulk Upload&#x27; option for agency</li></ul></article></div>
+</section>
+<section class="panel" id="yes-products">
+  <h2>PRODUCT_EXPERIENCE_PRODUCT <span class="pill pill-yes">Jira Yes</span></h2>
+  <table><thead><tr><th>PRODUCT_EXPERIENCE_PRODUCT</th><th>Rows</th><th>% of Yes</th></tr></thead><tbody><tr><td>CRM - Core</td><td class="num">500</td><td class="num">25.6%<div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>CRM - Messaging and Campaigns</td><td class="num">459</td><td class="num">23.6%<div class="bar"><span style="width:91.8%"></span></div></td></tr><tr><td>CRM - Profile</td><td class="num">455</td><td class="num">23.4%<div class="bar"><span style="width:91.0%"></span></div></td></tr><tr><td>CRM - Automation</td><td class="num">166</td><td class="num">8.5%<div class="bar"><span style="width:33.2%"></span></div></td></tr><tr><td>CRM - Events and University Recruiting</td><td class="num">132</td><td class="num">6.8%<div class="bar"><span style="width:26.4%"></span></div></td></tr><tr><td>(blank)</td><td class="num">53</td><td class="num">2.7%<div class="bar"><span style="width:10.6%"></span></div></td></tr><tr><td>Hiring Status</td><td class="num">25</td><td class="num">1.3%<div class="bar"><span style="width:5.0%"></span></div></td></tr><tr><td>FS Forms - Life Cycle Mgmt</td><td class="num">17</td><td class="num">0.9%<div class="bar"><span style="width:3.4%"></span></div></td></tr><tr><td>MX - Hiring</td><td class="num">14</td><td class="num">0.7%<div class="bar"><span style="width:2.8%"></span></div></td></tr><tr><td>Internal Mobility</td><td class="num">13</td><td class="num">0.7%<div class="bar"><span style="width:2.6%"></span></div></td></tr><tr><td>FSI - Job Synch</td><td class="num">12</td><td class="num">0.6%<div class="bar"><span style="width:2.4%"></span></div></td></tr><tr><td>Compliance</td><td class="num">9</td><td class="num">0.5%<div class="bar"><span style="width:1.8%"></span></div></td></tr><tr><td>Career Site – Platform Services</td><td class="num">8</td><td class="num">0.4%<div class="bar"><span style="width:1.6%"></span></div></td></tr><tr><td>Req &amp; Offer</td><td class="num">8</td><td class="num">0.4%<div class="bar"><span style="width:1.6%"></span></div></td></tr><tr><td>Direct Sourcing</td><td class="num">7</td><td class="num">0.4%<div class="bar"><span style="width:1.4%"></span></div></td></tr><tr><td>Recruiter Experience (RX)</td><td class="num">7</td><td class="num">0.4%<div class="bar"><span style="width:1.4%"></span></div></td></tr><tr><td>Default Configuration Scheme for Software Requirements</td><td class="num">6</td><td class="num">0.3%<div class="bar"><span style="width:1.2%"></span></div></td></tr><tr><td>RX - Search</td><td class="num">6</td><td class="num">0.3%<div class="bar"><span style="width:1.2%"></span></div></td></tr><tr><td>Search</td><td class="num">5</td><td class="num">0.3%<div class="bar"><span style="width:1.0%"></span></div></td></tr><tr><td>Career Site – Templates &amp; Views</td><td class="num">4</td><td class="num">0.2%<div class="bar"><span style="width:0.8%"></span></div></td></tr><tr><td>CRM - Mobile</td><td class="num">4</td><td class="num">0.2%<div class="bar"><span style="width:0.8%"></span></div></td></tr><tr><td>TDP</td><td class="num">4</td><td class="num">0.2%<div class="bar"><span style="width:0.8%"></span></div></td></tr><tr><td>CRM - Google Chrome Extension</td><td class="num">3</td><td class="num">0.1%<div class="bar"><span style="width:0.6%"></span></div></td></tr><tr><td>User Management</td><td class="num">3</td><td class="num">0.1%<div class="bar"><span style="width:0.6%"></span></div></td></tr><tr><td>FS Integrations - Data Integration</td><td class="num">3</td><td class="num">0.1%<div class="bar"><span style="width:0.6%"></span></div></td></tr><tr><td>OnboardingX - Core</td><td class="num">3</td><td class="num">0.1%<div class="bar"><span style="width:0.6%"></span></div></td></tr><tr><td>Customer Analytics</td><td class="num">2</td><td class="num">0.1%<div class="bar"><span style="width:0.4%"></span></div></td></tr><tr><td>Universal Graph</td><td class="num">2</td><td class="num">0.1%<div class="bar"><span style="width:0.4%"></span></div></td></tr><tr><td>Integration Experience (IX)</td><td class="num">2</td><td class="num">0.1%<div class="bar"><span style="width:0.4%"></span></div></td></tr><tr><td>EX Platform (Other)</td><td class="num">2</td><td class="num">0.1%<div class="bar"><span style="width:0.4%"></span></div></td></tr><tr><td>FS Integrations - App Integration</td><td class="num">2</td><td class="num">0.1%<div class="bar"><span style="width:0.4%"></span></div></td></tr><tr><td>DEC</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>FS Forms - Core Platform</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Resume Parser</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Manager Experience (MX)</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Employee Onboarding Experience</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Candidate Experience (CX)</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Learning</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>HVH - Assessments</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Alumni</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>FS Forms - Forms/Apps</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Mentoring</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Other Products</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr><tr><td>Chatbot</td><td class="num">1</td><td class="num">0.1%<div class="bar"><span style="width:0.2%"></span></div></td></tr></tbody></table>
+</section>
+<section class="panel" id="no-themes">
+  <h2>Key themes <span class="pill pill-no">Jira No · n=2,430 · 73.3% classified</span></h2>
+  <div class="theme-grid"><article class="theme-card">
+          <div class="theme-head"><h3>Unclassified / other</h3>
+          <div class="theme-nums"><b>649</b><span>26.7%</span></div></div>
+          <div class="bar"><span style="width:100%"></span></div><ul class="examples"><li><code>CS0293516</code> · (blank) · <em>unclassified</em> · Indeed/Glassdoor Automation Test Not Working</li><li><code>CS0293558</code> · (blank) · <em>unclassified</em> · Reopen req: P-113196</li><li><code>CS0293575</code> · (blank) · <em>unclassified</em> · Who created this req P-108886</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Candidate profile data / fields / tags / location / GDPR</h3>
+          <div class="theme-nums"><b>245</b><span>10.1%</span></div></div>
+          <div class="bar"><span style="width:37.7%"></span></div><ul class="examples"><li><code>CS0293200</code> · (blank) · <em>base</em> · Can  you please let us know why is the application of the candidate for this position showing as inc</li><li><code>CS0293221</code> · (blank) · <em>base</em> · Event location not appearing in emails</li><li><code>CS0293342</code> · (blank) · <em>base</em> · Candidate not able to submit the form-Mohammed Baba</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Screening / interview / scheduling / offer / notifications</h3>
+          <div class="theme-nums"><b>245</b><span>10.1%</span></div></div>
+          <div class="bar"><span style="width:37.7%"></span></div><ul class="examples"><li><code>CS0293509</code> · (blank) · <em>cluster_v1</em> · Customer Services as category missing in Questionnaire Builder</li><li><code>CS0293759</code> · (blank) · <em>base</em> · Request to Change the Current Company Details and Document(Offer Letter) &amp; (3 Months&#x27; Salary slips)</li><li><code>CS0293980</code> · (blank) · <em>base</em> · JD screening</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Campaigns / job alerts / subscriptions / spotlights</h3>
+          <div class="theme-nums"><b>205</b><span>8.4%</span></div></div>
+          <div class="bar"><span style="width:31.6%"></span></div><ul class="examples"><li><code>CS0293421</code> · (blank) · <em>base</em> · Down [[[FIRST_NAME]]] token in the subject line</li><li><code>CS0293490</code> · (blank) · <em>base</em> · Campaign status of &quot;over campaigning&quot;</li><li><code>CS0293592</code> · (blank) · <em>base</em> · Can I change email campaign consent to &quot;in&quot; at mass?</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Email template content / hyperlinks / branding</h3>
+          <div class="theme-nums"><b>152</b><span>6.3%</span></div></div>
+          <div class="bar"><span style="width:23.4%"></span></div><ul class="examples"><li><code>CS0293691</code> · (blank) · <em>base</em> · Default template management</li><li><code>CS0293877</code> · (blank) · <em>base</em> · Placeholders not working</li><li><code>CS0294264</code> · (blank) · <em>base</em> · UAT Germany E-Mail Translation</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Hiring status / pipeline / stages / lead status</h3>
+          <div class="theme-nums"><b>130</b><span>5.3%</span></div></div>
+          <div class="bar"><span style="width:20.0%"></span></div><ul class="examples"><li><code>CS0293358</code> · (blank) · <em>base</em> · CRM talent pipeline missing</li><li><code>CS0293730</code> · (blank) · <em>base</em> · Some candidates do not have a hiring status transition to select from the hiring status drop down</li><li><code>CS0294559</code> · (blank) · <em>base</em> · Preview Environment:  Forward Profile Enhancement</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Jobs / requisitions / applications / posting</h3>
+          <div class="theme-nums"><b>126</b><span>5.2%</span></div></div>
+          <div class="bar"><span style="width:19.4%"></span></div><ul class="examples"><li><code>CS0293296</code> · (blank) · <em>base</em> · Evergreen Requisition Questions</li><li><code>CS0293436</code> · (blank) · <em>base</em> · Application confirmation email is not activated</li><li><code>CS0293767</code> · (blank) · <em>cluster_v1</em> · Issue in raising the fitment</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Email not sending / not receiving / spam / bounce</h3>
+          <div class="theme-nums"><b>120</b><span>4.9%</span></div></div>
+          <div class="bar"><span style="width:18.5%"></span></div><ul class="examples"><li><code>CS0293938</code> · (blank) · <em>base</em> · Candidate Received Incomplete Application Email After Completing their Application</li><li><code>CS0294076</code> · (blank) · <em>base</em> · R- 265055 - Issue with candidate bounce email - dan pacheco valtierra</li><li><code>CS0294785</code> · (blank) · <em>base</em> · CVs are Missing in our ATS starting on January 10th</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Forwarding / LinkedIn / ATS↔CRM sync</h3>
+          <div class="theme-nums"><b>101</b><span>4.2%</span></div></div>
+          <div class="bar"><span style="width:15.6%"></span></div><ul class="examples"><li><code>CS0294712</code> · (blank) · <em>cluster_v1</em> · Profile Source Query</li><li><code>CS0294953</code> · (blank) · <em>base</em> · LinkedIn connector</li><li><code>CS0294973</code> · (blank) · <em>base</em> · [External] Accesses Talent Attraction</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Access / CRM not opening / permissions</h3>
+          <div class="theme-nums"><b>87</b><span>3.6%</span></div></div>
+          <div class="bar"><span style="width:13.4%"></span></div><ul class="examples"><li><code>CS0293752</code> · (blank) · <em>base</em> · Preventing confidentiality of the jobs</li><li><code>CS0293940</code> · (blank) · <em>cluster_v1</em> · Enable Real-Time CRM Chrome Extension</li><li><code>CS0294792</code> · (blank) · <em>cluster_v1</em> · Kelli Hermes Error at CRM login</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>SMS / WhatsApp</h3>
+          <div class="theme-nums"><b>85</b><span>3.5%</span></div></div>
+          <div class="bar"><span style="width:13.1%"></span></div><ul class="examples"><li><code>CS0293394</code> · (blank) · <em>base</em> · WhatsApp message not received to me while testing.</li><li><code>CS0293922</code> · (blank) · <em>base</em> · Activate SMS Messaging for two new users</li><li><code>CS0294866</code> · (blank) · <em>base</em> · Cannot delete Whatsapp Template set</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Automation not triggering / failing / wrongly triggered</h3>
+          <div class="theme-nums"><b>78</b><span>3.2%</span></div></div>
+          <div class="bar"><span style="width:12.0%"></span></div><ul class="examples"><li><code>CS0294174</code> · (blank) · <em>cluster_v1</em> · Automation Action: &#x27;Send email to recruiter for application withdrawal&#x27;</li><li><code>CS0294985</code> · (blank) · <em>base</em> · Automation Error UK</li><li><code>CS0295208</code> · (blank) · <em>cluster_v1</em> · Automated email throwing error</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Profile merge / unmerge / duplicates / disappeared</h3>
+          <div class="theme-nums"><b>46</b><span>1.9%</span></div></div>
+          <div class="bar"><span style="width:7.1%"></span></div><ul class="examples"><li><code>CS0298458</code> · (blank) · <em>base</em> · Phenom Issues - Duplicate profiles in CRM</li><li><code>CS0299241</code> · (blank) · <em>base</em> · Duplicate Profiles</li><li><code>CS0299919</code> · (blank) · <em>base</em> · No Duplicity Check</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Activity / notes / UI display</h3>
+          <div class="theme-nums"><b>45</b><span>1.9%</span></div></div>
+          <div class="bar"><span style="width:6.9%"></span></div><ul class="examples"><li><code>CS0293300</code> · (blank) · <em>cluster_v1</em> · Phone Screen Template</li><li><code>CS0293637</code> · (blank) · <em>cluster_v1</em> · Number of Registered Candidates in CRM Events Tab does not match Number in Candidates Tab</li><li><code>CS0294831</code> · (blank) · <em>cluster_v1</em> · Hiring Manager Configuration - Unable to click through from Service Hub</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Events / university recruiting</h3>
+          <div class="theme-nums"><b>42</b><span>1.7%</span></div></div>
+          <div class="bar"><span style="width:6.5%"></span></div><ul class="examples"><li><code>CS0293867</code> · (blank) · <em>cluster_v1</em> · Review of all templates linked to a system automation</li><li><code>CS0295339</code> · (blank) · <em>cluster_v1</em> · Event Registration Confirmation Emails</li><li><code>CS0299123</code> · (blank) · <em>cluster_v1</em> · Events Registration form</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>How-to / configuration / enablement question</h3>
+          <div class="theme-nums"><b>38</b><span>1.6%</span></div></div>
+          <div class="bar"><span style="width:5.8%"></span></div><ul class="examples"><li><code>CS0293241</code> · (blank) · <em>cluster_v1</em> · Can we please check if the resume parser for this account is updated to the latest version?</li><li><code>CS0296904</code> · (blank) · <em>cluster_v1</em> · Can we edit the privacy message in Events</li><li><code>CS0297428</code> · (blank) · <em>cluster_v1</em> · Can we change area codes for Costa Rica recruiters?</li></ul></article><article class="theme-card">
+          <div class="theme-head"><h3>Search / lists / filters / export / AI Discovery</h3>
+          <div class="theme-nums"><b>36</b><span>1.5%</span></div></div>
+          <div class="bar"><span style="width:5.5%"></span></div><ul class="examples"><li><code>CS0294000</code> · (blank) · <em>base</em> · Exporting Candidate list from the CRM is not working</li><li><code>CS0294657</code> · (blank) · <em>base</em> · Exporting Candidate list from the CRM is not working</li><li><code>CS0296940</code> · (blank) · <em>base</em> · Export of Templates in Prod CRM</li></ul></article></div>
+</section>
+<section class="panel" id="no-products">
+  <h2>PRODUCT_EXPERIENCE_PRODUCT <span class="pill pill-no">Jira No</span></h2>
+  <table><thead><tr><th>PRODUCT_EXPERIENCE_PRODUCT</th><th>Rows</th><th>% of No</th></tr></thead><tbody><tr><td>(blank)</td><td class="num">2,430</td><td class="num">100.0%<div class="bar"><span style="width:100%"></span></div></td></tr></tbody></table>
+</section>
+</main>
+<footer>
+Classifier: .cursor/skills/servicenow-service-requests/scripts/rx_theme_rules.py (base + cluster_v1).<br/>
+Playbook: theme-playbook.md + scripts/rx_theme_playbook.py (phenom-knowledge Messaging / Automations / Screening).<br/>
+Methodology: product-copilot-beta/knowledge/servicenow-service-requests/theme-methodology.md.
+Sheet-only. Residual clusters remain Unclassified by design.
+</footer>
+<script>
+document.querySelectorAll('#tabs button').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('section.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active'); document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+</script></body></html>
