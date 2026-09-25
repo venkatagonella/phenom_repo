@@ -102,7 +102,14 @@ python3 .cursor/skills/servicenow-service-requests/scripts/cluster_unclassified_
 ```bash
 python3 .cursor/skills/servicenow-service-requests/scripts/build_rx_themes_html.py \
   --csv product-copilot-beta/knowledge/servicenow-service-requests/data/all-service-requests.csv \
+  --ticket-class-snapshot product-copilot-beta/knowledge/servicenow-service-requests/snapshot-rx-ticket-classification.json \
   --out product-copilot-beta/knowledge/servicenow-service-requests/rx-jira-yes-themes.html
+```
+
+```bash
+python3 .cursor/skills/servicenow-service-requests/scripts/analyze_rx_ticket_classification.py \
+  --csv "/path/to/servicenow service requests with all fields.csv" \
+  --out product-copilot-beta/knowledge/servicenow-service-requests/snapshot-rx-ticket-classification.json
 ```
 
 ## Related context files
@@ -114,6 +121,8 @@ python3 .cursor/skills/servicenow-service-requests/scripts/build_rx_themes_html.
 | `…/analysis-rules.md` | Anti-hallucination + theme confidence rules |
 | `…/theme-methodology.md` | Cluster → high-confidence rules process |
 | `…/theme-playbook.md` | Per-theme meaning + phenom-knowledge grounding + reduce-feedback actions |
+| `…/snapshot-rx-ticket-classification.json` | Filtered all-fields → theme × ticket classification |
 | `…/SOURCE.md` | Provenance |
 | `scripts/rx_theme_rules.py` | Phrase rules (base + cluster_v1) |
-| `scripts/rx_theme_playbook.py` | Structured playbook embedded in HTML report |
+| `scripts/rx_theme_playbook.py` | Structured playbook reduce bullets |
+| `scripts/analyze_rx_ticket_classification.py` | Build ticket-class snapshot for Playbook tab |

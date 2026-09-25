@@ -56,8 +56,33 @@ When adding a new cluster round (`cluster_v2`, …): append new rule lists; do n
 | File | Contents |
 |------|----------|
 | `snapshot-rx-cluster-v1.json` | Cluster sizes, top terms, examples, coverage after cluster_v1 |
-| `rx-jira-yes-themes.html` | Interactive Yes vs No theme report + Playbook tab |
+| `snapshot-rx-ticket-classification.json` | Filtered all-fields CSV → theme × `U_TICKET_CLASSIFICATION` counts |
+| `rx-jira-yes-themes.html` | Playbook (ticket-class accordions) + Yes vs No tabs |
 | `theme-playbook.md` | Per-theme meaning, phenom-knowledge grounding, reduce-feedback actions |
+
+## Ticket-classification Playbook (option A)
+
+Population for the Playbook ticket-class view (all-fields CSV):
+
+1. `U_ISSUE_TYPE` ∈ {`Service Request`, `Defect`}
+2. `U_TICKET_CLASSIFICATION` in the 7 allowed values
+3. `U_PRODUCT_EXPERIENCE` contains `Recruiter Experience (RX)`
+4. `PRODUCT_EXPERIENCE_PRODUCT` exclusive allowlist: CRM - Core, CRM - Profile, CRM - Automation, CRM - Messaging and Campaigns
+
+Build:
+
+```bash
+python3 .cursor/skills/servicenow-service-requests/scripts/analyze_rx_ticket_classification.py \
+  --csv "/path/to/servicenow service requests with all fields.csv" \
+  --out product-copilot-beta/knowledge/servicenow-service-requests/snapshot-rx-ticket-classification.json
+
+python3 .cursor/skills/servicenow-service-requests/scripts/build_rx_themes_html.py \
+  --csv product-copilot-beta/knowledge/servicenow-service-requests/data/all-service-requests.csv \
+  --ticket-class-snapshot product-copilot-beta/knowledge/servicenow-service-requests/snapshot-rx-ticket-classification.json \
+  --out product-copilot-beta/knowledge/servicenow-service-requests/rx-jira-yes-themes.html
+```
+
+Four accordions (Product & Knowledge, Configuration, User Experience, Code): themes with ≥1 row in that class; reduce bullets from `rx_theme_playbook.py` only. Themes may appear in multiple sections.
 
 ## Theme playbook (meaning + reduce %)
 
