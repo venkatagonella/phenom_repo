@@ -4,19 +4,9 @@
 **Classifier:** high-confidence phrase rules (`rx_theme_rules.py` base + cluster_v1).  
 **%** = share of that RX population.
 
-**How to read “To reduce feedback %”:** plain-language actions that address the *kinds of tickets* in that theme — product reliability, clearer UX, enablement, or ops hygiene. These are **demand signals from SRs**, not an approved roadmap. Where Phenom Knowledge has cloned code, capabilities are cited; where not, that is stated explicitly.
+**How to read “To reduce feedback %”:** plain-language Phenom product fixes grounded in ticket SHORT_DESCRIPTION + DESCRIPTION. Unclassified is removed — every playbook theme is a named product area. Gaps in phenom-knowledge are called out in the knowledge row. These are demand signals, not an approved roadmap.
 
 **Phenom Knowledge packs used:** `phenom-knowledge/messaging/`, `automations/`, `screening/` (+ `INDEX.md`, Engineering `capability-map.md` for routing only).
-
----
-
-## Unclassified / other — 1,076 (24.6%)
-
-| | |
-|--|--|
-| **What it is** | SRs that did not match a high-confidence phrase rule. Includes mixed issues, sparse titles, and residual clusters (e.g. generic “candidate / email / team” language). |
-| **Phenom knowledge** | Not a product capability — methodology residual (`theme-methodology.md`). |
-| **To reduce feedback %** | • Review the leftover tickets again and add clear phrase rules only where the wording is obvious — do not force a weak label.<br>• Ask support to write clearer case titles for how-to questions so the next round classifies (and deflects) better. |
 
 ---
 
@@ -27,7 +17,7 @@
 | **What customers report** | Wrong/missing profile fields, tags, location/address/phone, purge/GDPR/privacy, field add/rename/update failures. |
 | **What the theme means in product terms** | Integrity and configurability of the **candidate record** in CRM (profile schema, tags, privacy/deletion). |
 | **Phenom knowledge** | No dedicated “CRM Profile” area pack is built yet. Closest: Messaging **notes** (`crm-notes-ui`; `notes-api` **not cloned**). Recruiter Hub / profile services are pointed from Engineering capability-map but **not** in phenom-knowledge routing packs — do not assert internals. |
-| **To reduce feedback %** | • Make sure phone, email, and location stay correct when a candidate applies or is imported — catch bad data before it lands on the profile.<br>• Give admins a simpler way to add, rename, and manage custom fields and tags without opening a ticket.<br>• Publish clear timelines for GDPR / data-purge requests, and let customers check status themselves instead of chasing Support.<br>• Add short in-product help for “how do I change this field?” so those questions never become SRs. |
+| **What to do in Phenom** | • Let admins manage sources, markets, tags, and custom fields in the product — not via ticket.<br>• Fix resume and attachment handling: blank parse, CVs that reappear, files missing versus ATS.<br>• Give customers a clear privacy / delete status they can check themselves.<br>• Correct employee versus external badges when someone is terminated — without Support.<br>• Stop phantom “follow” tags and other field changes with no recruiter action. |
 
 ---
 
@@ -37,8 +27,9 @@
 |--|--|
 | **What customers report** | Screening/questionnaire/assessment issues; interview/scheduling/calendar; offer letter; missing recruiter notifications. |
 | **What it means** | Cross-area funnel: **Screening (ODVA)** + **Scheduling** + offer workflows + notification delivery. |
+| **Problem** | Assessments overwrite, screening doesn’t send, interview booking is blocked, and notifies are missing. |
 | **Phenom knowledge** | **Screening (partial):** ODVA config/status/notifications in `crm-video-assessment` (`VideoAssessmentConfigController`, `VideoAssessmentStatusController`, `VANotifyService` → Kafka `cp_automation_notification`). Video capture/AI scoring/X+/Fitscore/Questionnaires **not in cloned Screening repos**. **Scheduling:** area **blocked** (no accessible repos). **Automations** call into both via Temporal activities (`SEND_ODVA`, `INITIATE_SCREENING`, `INVITE_FOR_INTERVIEW` — see `automations/skill.md`). Notifications often land in **Messaging**. |
-| **To reduce feedback %** | • Fix the path so invites and status changes reliably notify the recruiter — many tickets are “I never got notified.”<br>• Ship ready-made automation recipes for “invite to interview” and “send video assessment,” and show a clear history when a recipe fails.<br>• Calendar and self-schedule bugs need Scheduling code access first — treat that as a prerequisite before promising product fixes.<br>• For questionnaires and assessments, finish Screening knowledge packs before committing to deep engineering work. |
+| **What to do in Phenom** | • Notify recruiters when video assessment or interview status changes.<br>• Make auto-knockout / JSQ disposition reliable and show why it did or didn’t run.<br>• Don’t commit to deep calendar / self-schedule fixes until Scheduling is grounded in knowledge.<br>• Finish Screening knowledge (questionnaires/assessments) before promising deep product changes there. |
 
 ---
 
@@ -48,8 +39,9 @@
 |--|--|
 | **What customers report** | Campaigns not sending/wrong audience; job alerts/subscriptions; spotlights/dynamic lists; talent pool/nurture language. |
 | **What it means** | Audience + outbound **campaign** lifecycle (author → schedule → send → track). |
+| **Problem** | Campaigns “complete” with zero sent, wrong audiences, and broken spotlights or subscriptions. |
 | **Phenom knowledge** | **Messaging:** `crm-campaigns-ui` (builder), `storm-campaign` (execution), `crm-lists-ui` / `crm-candidate-lists` (lists, opt-in/out), platform campaign controllers (`CampaignController`, `CampaignsController`). Lifecycle documented in `messaging/skill.md`. Gateway prefixes `/ecampaign/*` → exact backend module **unverified**. |
-| **To reduce feedback %** | • Before a campaign sends, show who will receive it and why it would fail — so recruiters catch wrong audiences and bad setups themselves.<br>• Make spotlights and dynamic lists use the same filters as the list builder — mismatches drive a lot of “wrong people got this” tickets.<br>• Let customers control job-alert subscriptions (internal vs external) and see a simple audit of why an alert went out.<br>• Give CS and Product a live view of bounce and send failures so chronic delivery problems are fixed before they pile up as tickets. |
+| **What to do in Phenom** | • Before send, show who will receive it and why it would fail.<br>• Align spotlight and dynamic-list filters with the list builder.<br>• Fix Join-the-Community / talent forms so registrations create a findable CRM record.<br>• Let customers control job alerts and see why an alert was sent. |
 
 ---
 
@@ -59,8 +51,9 @@
 |--|--|
 | **What customers report** | Wrong/stuck hiring or lead status, pipeline/stage moves, disposition/reject reasons, ATS↔CRM status mismatch (also overlaps sync theme). |
 | **What it means** | Pipeline state machine and status vocabularies on the candidate×job (or lead) entity. |
+| **Problem** | Statuses get stuck, extra options appear, or candidates move with no explanation. |
 | **Phenom knowledge** | **Not found** as a dedicated phenom-knowledge area pack. Automations often **trigger on** status/field changes (`automation-search-service` matching) and can **set** status via actions — see Automations lifecycle. Exact CRM status APIs: not grounded in current packs. |
-| **To reduce feedback %** | • Show each customer which hiring/lead statuses they can use and which moves are allowed — cuts “what statuses exist?” and stuck-pipeline tickets.<br>• When ATS and CRM disagree on status, show both values side by side so Support (and the customer) can see the gap immediately.<br>• If an automation moved a candidate’s status, let the recruiter see that in the run history — unexplained status changes create SRs.<br>• Stop silent auto-reject recipes: require confirmation or a clear warning before candidates are rejected automatically. |
+| **What to do in Phenom** | • Show which status moves are allowed for each customer — stop “no further transitions” dead ends.<br>• When someone is auto-moved to Decline or Review, show the exact rule or form answer that caused it.<br>• If an automation changed status, show that on the candidate — unexplained moves become tickets.<br>• Let recruiters clear New Leads that aren’t tied to a job without calling Support. |
 
 ---
 
@@ -70,8 +63,9 @@
 |--|--|
 | **What customers report** | Broken links, footer/logo/branding, placeholders, edit/access to templates, language/locale issues. |
 | **What it means** | Template authoring & rendering for recruiter/system email (and related SMS templates). |
+| **Problem** | From-name, white-label, broken URLs, and locked default templates need tickets to fix. |
 | **Phenom knowledge** | **Messaging:** `crm-templates-ui` (`template-page.component.ts`), `email-facade-service` `TemplateController`, gateway `TemplateAPIController`. Cross-link: campaigns pull templates before `storm-campaign` send. |
-| **To reduce feedback %** | • When someone saves a template, check links and merge fields and flag broken ones before they go live.<br>• Preview how logo, footer, and brand styling will look so customers are not surprised after send.<br>• Make it obvious who can edit company-default templates vs their own account templates — many tickets are access confusion, not bugs.<br>• When cloning a template into another language, keep placeholders and layout intact so locale copies do not break. |
+| **What to do in Phenom** | • Let customers set From-name casing and white-label / event-share copy in the product.<br>• Validate links and merge fields on save before a template can be used.<br>• Show branding preview (logo, footer) before send.<br>• Clarify who can edit company-default versus personal templates. |
 
 ---
 
@@ -81,8 +75,9 @@
 |--|--|
 | **What customers report** | Jobs missing/duplicate/not posting; applications stuck/incomplete; internal vs external posting; req IDs. |
 | **What it means** | Job ingest/posting and application capture into CRM. |
+| **Problem** | Close, publish, unpublish, and apply flows fail or behave inconsistently. |
 | **Phenom knowledge** | **Not in** messaging/automations/screening packs. Engineering capability-map points IX job sync (`crm-storm-job-pull`) and `crm-jobs-service` — **not cloned under phenom-knowledge**; do not assert internals. |
-| **To reduce feedback %** | • Show customers when job sync last succeeded or failed — “job is missing” tickets drop when sync health is visible.<br>• Explain in the UI what makes an application incomplete, so recruiters fix it without opening a case.<br>• Stop duplicate jobs/requisitions from being created on import.<br>• Build a Jobs knowledge pack so deeper fixes are grounded in real code, not guesses. |
+| **What to do in Phenom** | • Make close / publish / unpublish work for the right role, and say why Publish is disabled.<br>• Stop spontaneous duplicate draft jobs; show who closed or cancelled a job.<br>• Confirm when a candidate is added to a job (or show the error) — not a silent “added.”<br>• Surface job sync health so “missing job / wrong posting” is visible before a ticket. |
 
 ---
 
@@ -92,8 +87,9 @@
 |--|--|
 | **What customers report** | Emails not delivered, bounce/spam, sender/from issues, whitelist, unsubscribe/opt-in email problems. |
 | **What it means** | **Delivery path** after compose/campaign — providers, suppression, analytics webhooks. |
+| **Problem** | Domains, whitelist, inbox, and blocked or dropped mail create delivery tickets. |
 | **Phenom knowledge** | **Messaging:** send via SendGrid / SES / MGW (`SendEmailServices`, `AWSService`); tracking `email-analytics-service` `SendgridWebhookController`; suppression `SuppressionListController`; one-click unsubscribe; transactional `txn-email-service`. |
-| **To reduce feedback %** | • Give Product and CS a simple deliverability view per customer (bounce and spam rates) so problems are fixed before tickets pile up.<br>• Tell the recruiter clearly when a candidate is unsubscribed or suppressed — instead of a silent “email didn’t send.”<br>• Equip Support with a short sender-authentication checklist (SPF / DKIM / DMARC) for “landing in spam” cases.<br>• In triage, separate “automation never fired” from “email was sent but bounced” — those need different owners and fixes. |
+| **What to do in Phenom** | • Self-serve sending domains, whitelist/blacklist, and suppression — with a real reason (not “NA”).<br>• Fix inbox so messages appear and stay in order; keep Outlook reply threads on the candidate.<br>• Tell recruiters when a message was blocked or a reminder was dropped — and why.<br>• Separate “never sent” from “sent but bounced” so the right team owns the fix. |
 
 ---
 
@@ -103,8 +99,9 @@
 |--|--|
 | **What customers report** | Forward resume/candidate failures; LinkedIn export/import; ATS/Workday/SuccessFactors sync gaps. |
 | **What it means** | Integration edges into CRM + LinkedIn CRM Connect. |
+| **Problem** | Forwarding fails, LinkedIn breaks, and ATS/HM data lags or never lands. |
 | **Phenom knowledge** | **Automations:** `crm-workflows` = LinkedIn CRM Connect (misnamed repo). Temporal activity **forward-to-HM** in `crm-automation-service`. Full ATS job sync: capability-map IX path — **not in phenom-knowledge packs**. |
-| **To reduce feedback %** | • Show LinkedIn Connect errors in the product UI instead of a blank failure that becomes an SR.<br>• When “forward to hiring manager” fails, say why (e.g. user not in the system) in plain language.<br>• Show how fresh ATS↔CRM sync is, and when it last failed, so customers know if the gap is lag vs a real break.<br>• Document the ATS sync path in a knowledge pack before promising deep engineering fixes. |
+| **What to do in Phenom** | • Show sync freshness and last failure for ATS↔CRM and recruiter lists.<br>• When forward-to-HM fails, say why in plain language (for example, user not in the system).<br>• Surface LinkedIn Connect errors in product instead of a blank failure.<br>• When Hiring Managers can’t see recruiter notes or docs, show the portal sync error — not an empty panel. |
 
 ---
 
@@ -114,8 +111,9 @@
 |--|--|
 | **What customers report** | SMS/WhatsApp not sending/showing; opt-in; scheduling limits; column/status issues. |
 | **What it means** | Text messaging channels + opt-in compliance. |
+| **Problem** | Opt-in looks wrong, blasts fail, and numbers or area codes are missing or incorrect. |
 | **Phenom knowledge** | **Messaging:** SMS `text-api-service` `SMSController` / `OptInController`; WhatsApp via `crm-inbox-fe` `whatsapp-management.service.ts` + Gupshup/Twilio webhooks; campaign SMS in `storm-campaign` / `sms-campaign-service`. |
-| **To reduce feedback %** | • Show opt-in status on the candidate profile and whether they are eligible for an SMS/WhatsApp campaign before send.<br>• Surface provider error messages (why the text failed) for recruiters and CS — not just “send failed.”<br>• Make WhatsApp template approval status obvious so customers know when a message can go out.<br>• Offer a small test/preview send before a large SMS or WhatsApp blast. |
+| **What to do in Phenom** | • Show opt-in and sendability on the profile before send.<br>• Show which countries have numbers; let admins assign recruiter numbers / area codes.<br>• Surface the real provider error when a text fails.<br>• Make WhatsApp template approval status obvious before a blast. |
 
 ---
 
@@ -125,8 +123,9 @@
 |--|--|
 | **What customers report** | Recipes not firing, wrong fire, failures, screening/invite automations, run history gaps. |
 | **What it means** | Recipe **match + execute** reliability (two engines: Storm + Temporal). |
+| **Problem** | Recipes don’t fire, fire wrong, or partially fail with no explanation. |
 | **Phenom knowledge** | **Automations:** UI `crm-automations-ui`; CRUD `AutomationController`; match `automation-search-service` (`KafkaConsumer`, Lucene + ES + `ValidatorService`); execute `candidate-automation` `ActionFactory` (24 actions) **and/or** Temporal activities in `crm-automation-service`. Shared lib `CRMAutomationUtils` **not cloned**. |
-| **To reduce feedback %** | • Let customers see a simple run history: what triggered, which recipe matched, and what the action did (or why it failed).<br>• Let them preview and validate filters before turning a recipe on — fewer “it fired on the wrong people” tickets.<br>• Alert when a recipe should have matched but quietly did not — silent misses create mystery SRs.<br>• For Support, document which actions run on which engine so debugging is faster and handoffs are clearer. |
+| **What to do in Phenom** | • Show a simple run history: what triggered → which recipe → what happened (or why it failed).<br>• Make Automation Center actions (for example Email Candidate) consistent between staging and production.<br>• Let customers preview filters before turning a recipe on.<br>• Alert when something should have matched but quietly did not. |
 
 ---
 
@@ -136,8 +135,9 @@
 |--|--|
 | **What customers report** | Duplicate profiles, merge/unmerge, “candidate disappeared,” resume disappears. |
 | **What it means** | Identity resolution / merge tooling on candidate records. |
+| **Problem** | Bad merges, duplicates, and IDs that don’t line up create urgent identity tickets. |
 | **Phenom knowledge** | **Not found** in cloned Messaging/Automations/Screening packs. Treat as CRM Core/Profile gap until a pack exists. |
-| **To reduce feedback %** | • Show a clear merge preview and an easy undo — so merge mistakes do not become urgent tickets.<br>• Keep an audit log of who merged or unmerged whom, and when.<br>• When a profile is soft-deleted, keep it findable (with context) so candidates do not “disappear” with no explanation.<br>• Deduplicate on import before creating a new profile. |
+| **What to do in Phenom** | • Show a merge preview and easy undo before profiles are combined.<br>• Merge when a referral email differs from the application email — don’t create two contacts.<br>• Let admins re-associate the correct CAND / ATS ID in the UI.<br>• Keep a log of who merged or unmerged whom, and when.<br>• Dedupe on import so duplicate profiles aren’t created in the first place. |
 
 ---
 
@@ -147,8 +147,9 @@
 |--|--|
 | **What customers report** | Cannot open CRM, role/permission missing, login/SSO, admin access to features (incl. templates). |
 | **What it means** | AuthZ/authN and feature entitlements for recruiter users. |
+| **Problem** | CRM won’t open, reqs vanish after an email change, and wrong people still appear in pickers. |
 | **Phenom knowledge** | **Not found** as a dedicated pack. Capability-map: Recruiter Hub / identity — not grounded here. Messaging notes RBAC pain for template edit in SRs but auth service code is outside Messaging skill. |
-| **To reduce feedback %** | • Show in-product which role unlocks which feature — so “I can’t open X” is self-diagnosable.<br>• Let customers request access themselves, with a clear reason when access is denied.<br>• Give Support a short SSO troubleshooting checklist for login failures.<br>• Error messages should say whether a feature is turned off vs the user lacks permission — those are different fixes. |
+| **What to do in Phenom** | • After a user email or name change, re-link their jobs automatically.<br>• Remove deactivated users from Hiring Team dropdowns.<br>• Say clearly whether Close / CRM access is blocked by role, license, or outage.<br>• Let customers see which role unlocks which action without opening a case. |
 
 ---
 
@@ -158,8 +159,9 @@
 |--|--|
 | **What customers report** | Event registration, campus/university recruiting, event forms/images/invites. |
 | **What it means** | Event entities + campus recruiting flows (often tied to CRM Events product label). |
+| **Problem** | Event leads and marketing-email flags still go through Support. |
 | **Phenom knowledge** | Screening ODVA can attach to **Event** entities (`crm-video-assessment`). Broader Events/UR CRM features **not** covered by Messaging/Automations packs. |
-| **To reduce feedback %** | • Make event forms and field setup easier so campus/event teams configure without Support.<br>• Show whether registrations synced successfully and when they last updated.<br>• Build an Events product knowledge pack before committing to deep code fixes. |
+| **What to do in Phenom** | • Let customers mark event leads as marketing-email eligible on the profile.<br>• Allow editing the default email when sharing an event.<br>• Show whether registrations synced successfully and when they last updated. |
 
 ---
 
@@ -169,8 +171,9 @@
 |--|--|
 | **What customers report** | UI not displaying, buttons/tabs blank, notes/activity not showing, logos. |
 | **What it means** | Front-end shell / notes / activity timeline reliability. |
+| **Problem** | Notes won’t delete, activity duplicates, and the UI goes blank or lags. |
 | **Phenom knowledge** | **Messaging:** notes UI `crm-notes-ui` → `/notes-api/*` (**notes-api not cloned**). Inbox UI `crm-inbox-fe`. Recruiter dashboard: **Analytics** pack (`crm-recruiter-dashboard`, `crm-dashboard-service`) for widget display — only if SR is dashboard-specific. |
-| **To reduce feedback %** | • Ground the notes backend in knowledge packs so blank notes/activity screens can be fixed with confidence.<br>• Replace blank screens with a clear message: “you don’t have permission” vs “this failed to load — try again.”<br>• Show when the activity feed was last refreshed so recruiters know if data is stale. |
+| **What to do in Phenom** | • Let admins delete notes they can see, or explain why delete is hidden.<br>• Stop duplicate outreach lines when the candidate was only emailed once.<br>• Replace blank or freezing screens with permission versus load-failure messages. |
 
 ---
 
@@ -180,8 +183,9 @@
 |--|--|
 | **What customers report** | Search/filter broken; lists empty; export issues; AI Discovery / sourcing from CRM. |
 | **What it means** | Candidate discovery + list membership + export. |
+| **Problem** | Exports show blank or Confidential fields; lists are hard to download; Discovery can’t source CRM. |
 | **Phenom knowledge** | **Messaging:** lists `crm-lists-ui` / `crm-candidate-lists` (FilterService). AI Discovery / CRM search engines: **not found** in cloned Messaging/Automations/Screening packs. |
-| **To reduce feedback %** | • Keep list filters consistent everywhere, and explain why a search returned zero results instead of a blank list.<br>• Show export progress/status and document which columns come out — “export broke / wrong columns” is a top ask.<br>• Build a Search / AI Discovery knowledge pack before promising deeper product changes. |
+| **What to do in Phenom** | • Explain why a report shows N/A or Confidential — permission versus data rule.<br>• Show export progress and columns before download.<br>• Keep filters consistent and explain zero-result searches. |
 
 ---
 
@@ -191,8 +195,9 @@
 |--|--|
 | **What customers report** | Title-level how/what/can-we / enable-feature questions (title-only classifier). |
 | **What it means** | Enablement gap more than defect — often deflectable. |
+| **Problem** | Feature flags and setup still need a ticket for common configuration asks. |
 | **Phenom knowledge** | Cross-cutting; map each how-to to Messaging/Automations/Screening docs once topic is known. |
-| **To reduce feedback %** | • Add short guided setups in the product for the most common “how do I…?” questions.<br>• Give CS ready-made answer macros mapped to these themes so how-to cases close without engineering.<br>• Where it is safe, let customers turn features on themselves instead of waiting for a ticket to enable them. |
+| **What to do in Phenom** | • Let customers turn safe features on themselves (for example, associate documents to jobs).<br>• Add short guided flows for common “how do I…?” questions.<br>• Publish plain impact notes for known platform changes so Support isn’t the only channel. |
 
 ---
 

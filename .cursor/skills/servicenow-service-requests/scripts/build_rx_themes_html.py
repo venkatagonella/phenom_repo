@@ -11,9 +11,12 @@ import argparse
 import csv
 import html
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+
+csv.field_size_limit(sys.maxsize)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rx_theme_playbook import (  # noqa: E402
@@ -27,9 +30,9 @@ from rx_theme_rules import UNCLASSIFIED, classify_theme_with_source  # noqa: E40
 
 CLASS_FOCUS = [
     "Product & Knowledge Issues",
-    "Code Issues",
     "Configuration Issues",
     "User Experience Issues",
+    "Code Issues",
 ]
 
 CLASS_SLUG = {
@@ -49,6 +52,15 @@ AREA_SLUG = {
 
 def g(r, k):
     return (r.get(k) or "").strip()
+
+
+def product_experience(r) -> str:
+    """All-fields export uses U_PRODUCT_EXPERIENCE; older sheet used PRODUCT_EXPERIENCE."""
+    return g(r, "PRODUCT_EXPERIENCE") or g(r, "U_PRODUCT_EXPERIENCE")
+
+
+def is_rx(r) -> bool:
+    return "Recruiter Experience (RX)" in product_experience(r)
 
 
 def esc(s):
@@ -136,18 +148,50 @@ def theme_cards(block):
     return "".join(cards)
 
 
-def _reduce_block(theme: str) -> str:
+def theme_slug(theme: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", theme.lower()).strip("-")
+    return s or "theme"
+
+
+def _reduce_block(theme: str, count: int = 0, slug: str = "") -> str:
     pb = THEME_PLAYBOOK.get(theme)
     if not pb:
         return "<p class='muted'>No reduce actions in playbook for this theme.</p>"
+    problem = (pb.get("problem") or "").strip()
     reduce_items = pb.get("reduce") or []
     if isinstance(reduce_items, str):
         reduce_items = [reduce_items]
-    reduce_html = "".join(f"<li>{esc(x)}</li>" for x in reduce_items)
-    return (
-        f"<dl class='pb'><dt>To reduce feedback %</dt>"
-        f"<dd><ul class='reduce-list'>{reduce_html}</ul></dd></dl>"
-    )
+    slug = slug or theme_slug(theme)
+    parts = []
+    if problem:
+        parts.append(
+            f"<p class='theme-problem'><span class='lbl'>Problem</span> {esc(problem)}</p>"
+        )
+    if reduce_items:
+        count_link = (
+            f'<a class="sr-count-link" href="#playbook-srs" data-theme-slug="{esc(slug)}" '
+            f'data-theme="{esc(theme)}" title="Open {count:,} Service Requests '
+            f'(Jira Yes + No) for this theme">'
+            f"{count:,} SRs</a>"
+            if count
+            else ""
+        )
+        lis = []
+        for x in reduce_items:
+            if count_link:
+                lis.append(
+                    f"<li><span class='reduce-text'>{esc(x)}</span> "
+                    f"<span class='sr-count'>{count_link}</span></li>"
+                )
+            else:
+                lis.append(f"<li>{esc(x)}</li>")
+        reduce_html = "".join(lis)
+        parts.append(
+            "<dl class='pb'><dt>What to do in Phenom "
+            f"{count_link}</dt>"
+            f"<dd><ul class='reduce-list'>{reduce_html}</ul></dd></dl>"
+        )
+    return "".join(parts) or "<p class='muted'>No actions listed.</p>"
 
 
 def reduce_only_card(
@@ -166,47 +210,120 @@ def reduce_only_card(
   <span>{pct_of_class:.1f}% of this class</span></div></div>
   <div class="pack">Theme total in filter: {theme_total:,} ·
   {pct_of_theme:.1f}% of this theme’s filtered rows are in this class</div>
-  {bar(pct_of_class, max_pct)}{_reduce_block(theme)}</article>"""
+  {bar(pct_of_class, max_pct)}{_reduce_block(theme, theme_total)}</article>"""
 
 
 def product_area_card(
-    theme: str, count: int, pct_of_filtered: float, max_pct: float
+    theme: str,
+    count: int,
+    pct_of_filtered: float,
+    jira_yes: int,
+    jira_no: int,
+    max_pct: float,
+    slug: str = "",
 ) -> str:
     """Theme card for CRM Core/Profile/Messaging/Automations grouping."""
     pri = " priority" if theme in PRIORITY_ORDER else ""
-    return f"""<article class="theme-card playbook-card{pri}">
+    slug = slug or theme_slug(theme)
+    return f"""<article class="theme-card playbook-card{pri}" id="theme-{esc(slug)}">
   <div class="theme-head"><h3>{esc(theme)}</h3>
   <div class="theme-nums"><b>{count:,}</b>
-  <span>{pct_of_filtered:.1f}% of filtered</span></div></div>
-  {bar(pct_of_filtered, max_pct)}{_reduce_block(theme)}</article>"""
+  <span>{pct_of_filtered:.1f}% of CRM-area SRs</span></div></div>
+  <div class="pack">Jira Yes {jira_yes:,} · Jira No {jira_no:,}
+  (Service Requests with / without a Jira update)</div>
+  {bar(pct_of_filtered, max_pct)}{_reduce_block(theme, count, slug)}</article>"""
 
 
 def playbook_by_product_area(snapshot: dict) -> str:
-    """CRM Core / Profile / Messaging / Automations — filtered theme totals."""
+    """CRM Core / Profile / Messaging / Automations — Jira Yes + No."""
     n = snapshot["n_filtered"]
+    # Prefer structured areas[] from analyze_rx_crm_areas_jira_yn.py
+    if snapshot.get("areas"):
+        sections = []
+        for i, area_row in enumerate(snapshot["areas"]):
+            area = area_row["area"]
+            rows = area_row.get("themes") or []
+            if not rows:
+                continue
+            area_n = area_row["count"]
+            area_pct = area_row.get("pct_of_filtered") or (
+                round(100 * area_n / n, 1) if n else 0.0
+            )
+            y = area_row.get("jira_yes", 0)
+            no = area_row.get("jira_no", 0)
+            max_pct = max((r["pct_of_filtered"] for r in rows), default=1)
+            cards = "".join(
+                product_area_card(
+                    r["theme"],
+                    r["count"],
+                    r["pct_of_filtered"],
+                    r.get("jira_yes", 0),
+                    r.get("jira_no", 0),
+                    max_pct,
+                    r.get("theme_slug") or theme_slug(r["theme"]),
+                )
+                for r in rows
+                if r["theme"] in THEME_PLAYBOOK
+            )
+            aid = AREA_SLUG[area]
+            open_attr = " open" if i == 0 else ""
+            blurb = AREA_BLURB.get(area, "")
+            sections.append(
+                f"""<details class="area-accordion" id="{esc(aid)}"{open_attr}>
+  <summary class="area-summary">
+    <span class="area-title">{esc(area)}</span>
+    <span class="area-stats"><b>{area_n:,}</b> SRs · {area_pct:.1f}% ·
+    Jira Yes {y:,} / No {no:,} · {len(rows)} theme{"s" if len(rows) != 1 else ""}</span>
+    <span class="area-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="area-body">
+    <p class="area-blurb">{esc(blurb)}</p>
+    <div class="theme-grid playbook">{cards}</div>
+  </div>
+</details>"""
+            )
+        return "".join(sections)
+
+    # Fallback: older theme_totals + THEME_AREA map
     by_area: dict[str, list] = {a: [] for a in AREA_ORDER}
-    unmapped = []
     for row in snapshot.get("theme_totals") or []:
         theme = row["theme"]
+        if theme == "Unclassified / other" or theme not in THEME_PLAYBOOK:
+            continue
         count = row["count"]
         pct = round(100 * count / n, 2) if n else 0.0
         area = THEME_AREA.get(theme)
-        item = (theme, count, pct)
         if area in by_area:
-            by_area[area].append(item)
-        else:
-            unmapped.append(item)
-
+            by_area[area].append(
+                {
+                    "theme": theme,
+                    "count": count,
+                    "pct": pct,
+                    "jira_yes": row.get("jira_yes", 0),
+                    "jira_no": row.get("jira_no", 0),
+                }
+            )
     sections = []
     for i, area in enumerate(AREA_ORDER):
         rows = by_area[area]
         if not rows:
             continue
-        area_n = sum(c for _, c, _ in rows)
+        area_n = sum(r["count"] for r in rows)
         area_pct = round(100 * area_n / n, 1) if n else 0.0
-        max_pct = max((p for _, _, p in rows), default=1)
+        y = sum(r["jira_yes"] for r in rows)
+        no = sum(r["jira_no"] for r in rows)
+        max_pct = max((r["pct"] for r in rows), default=1)
         cards = "".join(
-            product_area_card(t, c, p, max_pct) for t, c, p in rows
+            product_area_card(
+                r["theme"],
+                r["count"],
+                r["pct"],
+                r["jira_yes"],
+                r["jira_no"],
+                max_pct,
+                theme_slug(r["theme"]),
+            )
+            for r in rows
         )
         aid = AREA_SLUG[area]
         open_attr = " open" if i == 0 else ""
@@ -215,8 +332,8 @@ def playbook_by_product_area(snapshot: dict) -> str:
             f"""<details class="area-accordion" id="{esc(aid)}"{open_attr}>
   <summary class="area-summary">
     <span class="area-title">{esc(area)}</span>
-    <span class="area-stats"><b>{area_n:,}</b> SRs · {area_pct}% of filtered
-    · {len(rows)} theme{"s" if len(rows) != 1 else ""}</span>
+    <span class="area-stats"><b>{area_n:,}</b> SRs · {area_pct}% ·
+    Jira Yes {y:,} / No {no:,} · {len(rows)} theme{"s" if len(rows) != 1 else ""}</span>
     <span class="area-chevron" aria-hidden="true"></span>
   </summary>
   <div class="area-body">
@@ -225,151 +342,52 @@ def playbook_by_product_area(snapshot: dict) -> str:
   </div>
 </details>"""
         )
-    if unmapped:
-        max_pct = max((p for _, _, p in unmapped), default=1)
+    return "".join(sections)
+
+
+def playbook_by_classification(snapshot: dict) -> str:
+    """Four ticket-classification accordions (option A)."""
+    focus_meta = {x["classification"]: x for x in snapshot["classification_focus"]}
+    by_class = snapshot["themes_by_class"]
+    sections = []
+    for i, cls in enumerate(CLASS_FOCUS):
+        meta = focus_meta.get(cls, {"count": 0, "pct_of_filtered": 0.0})
+        rows = [
+            r
+            for r in (by_class.get(cls) or [])
+            if r["theme"] != "Unclassified / other" and r["theme"] in THEME_PLAYBOOK
+        ]
+        max_pct = max((r["pct_of_class"] for r in rows), default=1)
         cards = "".join(
-            product_area_card(t, c, p, max_pct) for t, c, p in unmapped
+            reduce_only_card(
+                r["theme"],
+                r["count_in_class"],
+                r["pct_of_class"],
+                r["theme_total"],
+                r["pct_of_theme"],
+                max_pct,
+            )
+            for r in rows
         )
+        aid = CLASS_SLUG[cls]
+        open_attr = " open" if i == 0 else ""
         sections.append(
-            f"""<details class="area-accordion" id="area-unmapped">
+            f"""<details class="area-accordion" id="{esc(aid)}"{open_attr}>
   <summary class="area-summary">
-    <span class="area-title">Unmapped</span>
+    <span class="area-title">{esc(cls)}</span>
+    <span class="area-stats"><b>{meta['count']:,}</b> SRs ·
+    {meta['pct_of_filtered']:.1f}% of filtered · {len(rows)} theme{"s" if len(rows) != 1 else ""}</span>
     <span class="area-chevron" aria-hidden="true"></span>
   </summary>
   <div class="area-body">
+    <p class="area-blurb">Themes with ≥1 filtered row in this classification.
+    Reduce bullets are from the existing playbook only — not invented for this cut.
+    A theme may also appear under other classifications.</p>
     <div class="theme-grid playbook">{cards}</div>
   </div>
 </details>"""
         )
     return "".join(sections)
-
-
-def area_class_theme_card(
-    theme: str,
-    count_in_area_class: int,
-    pct_of_area_class: float,
-    theme_total_filtered: int,
-    max_pct: float,
-) -> str:
-    pri = " priority" if theme in PRIORITY_ORDER else ""
-    return f"""<article class="theme-card playbook-card{pri}">
-  <div class="theme-head"><h3>{esc(theme)}</h3>
-  <div class="theme-nums"><b>{count_in_area_class:,}</b>
-  <span>{pct_of_area_class:.1f}% of this class in area</span></div></div>
-  <div class="pack">Theme total in full filter: {theme_total_filtered:,}</div>
-  {bar(pct_of_area_class, max_pct)}{_reduce_block(theme)}</article>"""
-
-
-def playbook_by_area_nested(snapshot: dict) -> str:
-    """CRM area accordion → classification % table → themes per class."""
-    sections = []
-    for i, area_block in enumerate(snapshot.get("by_area") or []):
-        area = area_block["area"]
-        area_n = area_block["count"]
-        area_pct = area_block["pct_of_filtered"]
-        aid = AREA_SLUG.get(area, "area-" + area.lower().replace(" ", "-"))
-        open_attr = " open" if i == 0 else ""
-
-        class_table_rows = [
-            (c["classification"], c["count"], c["pct_of_area"])
-            for c in area_block["classification_focus"]
-        ]
-        class_table = table_rows(
-            class_table_rows,
-            ["U_TICKET_CLASSIFICATION", "Rows", "% of area"],
-        )
-        other_bits = []
-        for o in area_block.get("classification_other") or []:
-            other_bits.append(
-                f"{o['classification']} {o['count']} ({o['pct_of_area']:.1f}%)"
-            )
-        other_html = (
-            f'<p class="area-blurb">Also in this area: {esc("; ".join(other_bits))}</p>'
-            if other_bits
-            else ""
-        )
-
-        nested = []
-        for cblock in area_block["classification_focus"]:
-            cls = cblock["classification"]
-            c_n = cblock["count"]
-            c_pct = cblock["pct_of_area"]
-            themes = cblock.get("themes") or []
-            if c_n == 0 and not themes:
-                nested.append(
-                    f"""<div class="nested-class empty">
-  <h3>{esc(cls)} <span class="pill">0 · 0%</span></h3>
-  <p class="muted">No filtered rows in this classification for {esc(area)}.</p>
-</div>"""
-                )
-                continue
-            max_pct = max((t["pct_of_area_class"] for t in themes), default=1)
-            cards = "".join(
-                area_class_theme_card(
-                    t["theme"],
-                    t["count_in_area_class"],
-                    t["pct_of_area_class"],
-                    t["theme_total_filtered"],
-                    max_pct,
-                )
-                for t in themes
-            )
-            nested.append(
-                f"""<div class="nested-class">
-  <h3>{esc(cls)} <span class="pill pill-yes">{c_n:,} · {c_pct:.1f}% of area</span></h3>
-  <div class="theme-grid playbook">{cards}</div>
-</div>"""
-            )
-
-        sections.append(
-            f"""<details class="area-accordion" id="{esc(aid)}"{open_attr}>
-  <summary class="area-summary">
-    <span class="area-title">{esc(area)}</span>
-    <span class="area-stats"><b>{area_n:,}</b> SRs · {area_pct:.1f}% of filtered</span>
-    <span class="area-chevron" aria-hidden="true"></span>
-  </summary>
-  <div class="area-body">
-    <h3 class="subhead">Feedback % by ticket classification — {esc(area)}</h3>
-    {class_table}
-    {other_html}
-    {"".join(nested)}
-  </div>
-</details>"""
-        )
-    return "".join(sections)
-
-
-def jira_yes_coverage_html(snapshot: dict) -> str:
-    cov = snapshot.get("jira_yes_coverage")
-    if not cov:
-        return ""
-    funnel = cov.get("funnel_unique_cases") or {}
-    yes_n = cov.get("sheet_rx_jira_yes_rows", 0)
-    uniq = cov.get("sheet_rx_jira_yes_unique_cases", 0)
-    in_filter = funnel.get("in_playbook_filter", 0)
-    found = funnel.get("found_in_all_fields", 0)
-    not_sr = funnel.get("not_sr_or_defect", 0)
-    pep_fail = funnel.get("pep_not_allowlist", 0)
-    class_fail = funnel.get("class_not_allowed", 0)
-    missing = funnel.get("missing_from_all_fields", 0)
-    sheet_pep = cov.get("sheet_yes_with_crm_pep_allowlist", 0)
-    sr_n = funnel.get("type_Service Request", 0)
-    def_n = funnel.get("type_Defect", 0)
-    pct_in = round(100 * in_filter / uniq, 1) if uniq else 0.0
-    return f"""
-  <div class="alert">
-    <strong>Jira Yes coverage check (sheet RX · JIRA_CREATED=Yes):</strong>
-    {yes_n:,} rows / {uniq:,} unique cases.
-    In Playbook filter (Service Request + Defect): <b>{in_filter:,}</b> ({pct_in}% of unique Yes).
-    Of those in filter: Service Request {sr_n:,}, Defect {def_n:,}.
-    Not covered: {uniq - in_filter:,}.
-    Breakdown of unique Yes: found in all-fields {found:,};
-    not SR/Defect {not_sr:,}; classification not in allowlist {class_fail:,};
-    PEP outside CRM Core/Profile/Automation/Messaging {pep_fail:,};
-    missing from all-fields {missing:,}.
-    Sheet Yes with CRM PEP allowlist alone (any issue type): {sheet_pep:,}.
-    {esc(cov.get("note") or "")}
-  </div>"""
 
 
 def classification_pct_table(snapshot: dict) -> str:
@@ -385,11 +403,11 @@ def classification_pct_table(snapshot: dict) -> str:
             for o in snapshot["classification_other"]
         ]
         other_note = (
-            f'<p class="area-blurb">Also in filter (no area sub-section): '
+            f'<p class="area-blurb">Also in filter (no accordion): '
             f'{esc("; ".join(bits))}. Ops Issues and Security-Related Issues: 0.</p>'
         )
     return (
-        f"<h2>Overall feedback % by ticket classification "
+        f"<h2>Feedback % by ticket classification "
         f"<span class='pill pill-yes'>n={n:,}</span></h2>"
         + table_rows(
             rows,
@@ -397,6 +415,96 @@ def classification_pct_table(snapshot: dict) -> str:
         )
         + other_note
     )
+
+
+def playbook_srs_panel(crm_snapshot: dict) -> str:
+    """New tab: all Service Requests used in the CRM-area playbook (Yes + No)."""
+    srs = crm_snapshot.get("service_requests") or []
+    n = len(srs)
+    y = sum(1 for s in srs if s.get("jira_created") == "Yes")
+    no = sum(1 for s in srs if s.get("jira_created") == "No")
+    # Themes per area (preserve AREA_ORDER; themes sorted by count desc then name)
+    theme_meta: dict[str, dict] = {}
+    for s in srs:
+        slug = s.get("theme_slug") or theme_slug(s["theme"])
+        if slug not in theme_meta:
+            theme_meta[slug] = {
+                "theme": s["theme"],
+                "slug": slug,
+                "area": s["area"],
+                "count": 0,
+            }
+        theme_meta[slug]["count"] += 1
+    themes_by_area: dict[str, list] = {a: [] for a in AREA_ORDER}
+    for meta in theme_meta.values():
+        if meta["area"] in themes_by_area:
+            themes_by_area[meta["area"]].append(meta)
+    for a in AREA_ORDER:
+        themes_by_area[a].sort(key=lambda x: (-x["count"], x["theme"]))
+
+    areas = [a for a in AREA_ORDER if themes_by_area.get(a)]
+    area_opts = "".join(f'<option value="{esc(a)}">{esc(a)}</option>' for a in areas)
+    # All theme options with data-area for client-side filtering
+    theme_opts_parts = []
+    for a in AREA_ORDER:
+        for meta in themes_by_area.get(a) or []:
+            theme_opts_parts.append(
+                f'<option value="{esc(meta["slug"])}" data-area="{esc(meta["area"])}">'
+                f'{esc(meta["theme"])} ({meta["count"]})</option>'
+            )
+    theme_opts = "".join(theme_opts_parts)
+    area_theme_map = {
+        a: [{"slug": m["slug"], "theme": m["theme"], "count": m["count"]} for m in themes_by_area[a]]
+        for a in AREA_ORDER
+        if themes_by_area.get(a)
+    }
+    area_theme_json = json.dumps(area_theme_map, ensure_ascii=False).replace(
+        "<", "\\u003c"
+    ).replace(">", "\\u003e")
+    payload = json.dumps(srs, ensure_ascii=False)
+    payload = payload.replace("<", "\\u003c").replace(">", "\\u003e")
+    return f"""
+  <div class="note">All Service Requests in the CRM-area Playbook
+  (Jira Yes <b>{y:,}</b> + Jira No <b>{no:,}</b> = <b>{n:,}</b>).
+  Choose an <b>Area</b> first — the Theme list shows only themes in that area.
+  Click an SR count on a “What to do in Phenom” bullet to jump here filtered to that theme.</div>
+  <div class="sr-toolbar">
+    <label>Area
+      <select id="sr-filter-area"><option value="">All areas</option>{area_opts}</select>
+    </label>
+    <label>Theme
+      <select id="sr-filter-theme"><option value="">All themes</option>{theme_opts}</select>
+    </label>
+    <label>Jira
+      <select id="sr-filter-jira">
+        <option value="">Yes + No</option>
+        <option value="Yes">Jira Yes only</option>
+        <option value="No">Jira No only</option>
+      </select>
+    </label>
+    <label class="sr-search">Search
+      <input id="sr-filter-q" type="search" placeholder="ID, title, or description…" />
+    </label>
+    <span class="sr-showing" id="sr-showing">Showing {n:,} of {n:,}</span>
+  </div>
+  <div class="sr-table-wrap">
+    <table class="sr-table" id="sr-table">
+      <thead>
+        <tr>
+          <th>SR ID</th>
+          <th>Jira</th>
+          <th>Area</th>
+          <th>Theme</th>
+          <th>Short description</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="sr-tbody"></tbody>
+    </table>
+  </div>
+  <script type="application/json" id="playbook-srs-data">{payload}</script>
+  <script type="application/json" id="playbook-area-themes">{area_theme_json}</script>
+"""
 
 
 def main():
@@ -412,7 +520,13 @@ def main():
         "--ticket-class-snapshot",
         type=Path,
         default=None,
-        help="JSON from analyze_rx_ticket_classification.py (Playbook tab)",
+        help="JSON from analyze_rx_ticket_classification.py (classification % table)",
+    )
+    ap.add_argument(
+        "--crm-areas-snapshot",
+        type=Path,
+        default=None,
+        help="JSON from analyze_rx_crm_areas_jira_yn.py (Playbook CRM areas, Yes+No)",
     )
     args = ap.parse_args()
 
@@ -421,14 +535,12 @@ def main():
     rx = [
         r
         for r in rows
-        if g(r, "PRODUCT_EXPERIENCE") == "Recruiter Experience (RX)"
-        and g(r, "JIRA_CREATED") in ("Yes", "No")
+        if is_rx(r) and g(r, "JIRA_CREATED") in ("Yes", "No")
     ]
     linked = sum(
         1
         for r in rows
-        if g(r, "PRODUCT_EXPERIENCE") == "Recruiter Experience (RX)"
-        and g(r, "JIRA_CREATED") == "Linked - key not found in JIRA"
+        if is_rx(r) and g(r, "JIRA_CREATED") == "Linked - key not found in JIRA"
     )
     yes = analyze([r for r in rx if g(r, "JIRA_CREATED") == "Yes"])
     no = analyze([r for r in rx if g(r, "JIRA_CREATED") == "No"])
@@ -447,23 +559,35 @@ def main():
         nc, np_ = nm.get(t, (0, 0.0))
         compare.append((t, yc, yp, nc, np_, round(np_ - yp, 1)))
 
-    snap_path = args.ticket_class_snapshot
-    if snap_path is None:
-        snap_path = args.out.parent / "snapshot-rx-ticket-classification.json"
-    if not snap_path.exists():
+    class_snap_path = args.ticket_class_snapshot
+    if class_snap_path is None:
+        class_snap_path = args.out.parent / "snapshot-rx-ticket-classification.json"
+    if not class_snap_path.exists():
         raise SystemExit(
-            f"Missing ticket-class snapshot: {snap_path}\n"
+            f"Missing ticket-class snapshot: {class_snap_path}\n"
             "Run analyze_rx_ticket_classification.py first."
         )
-    snapshot = json.loads(snap_path.read_text())
-    n_f = snapshot["n_filtered"]
+    class_snapshot = json.loads(class_snap_path.read_text())
+    class_pct_html = classification_pct_table(class_snapshot)
+
+    crm_snap_path = args.crm_areas_snapshot
+    if crm_snap_path is None:
+        crm_snap_path = args.out.parent / "snapshot-rx-crm-areas-jira-yn.json"
+    if not crm_snap_path.exists():
+        raise SystemExit(
+            f"Missing CRM-areas snapshot: {crm_snap_path}\n"
+            "Run analyze_rx_crm_areas_jira_yn.py first."
+        )
+    crm_snapshot = json.loads(crm_snap_path.read_text())
+    n_f = crm_snapshot["n_filtered"]
+    n_yes = crm_snapshot["funnel"].get("jira_Yes", 0)
+    n_no = crm_snapshot["funnel"].get("jira_No", 0)
+    product_accordions = playbook_by_product_area(crm_snapshot)
+    playbook_srs_html = playbook_srs_panel(crm_snapshot)
     product_nav = "".join(
         f'<a href="#{AREA_SLUG[a]}" data-area="{AREA_SLUG[a]}">{esc(a)}</a>'
         for a in AREA_ORDER
-        if any(b["area"] == a for b in snapshot.get("by_area") or [])
     )
-    class_pct_html = classification_pct_table(snapshot)
-    nested_accordions = playbook_by_area_nested(snapshot)
 
     doc = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
@@ -506,7 +630,24 @@ td.num{{white-space:nowrap}}td.up{{color:#1f4d3a}}td.down{{color:#7a3b2e}}
 .pb dt{{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--accent)}}
 .pb dd{{margin:0;font-size:.86rem;line-height:1.45;color:var(--ink)}}
 .reduce-list{{margin:.25rem 0 0;padding-left:1.15rem}}
-.reduce-list li{{margin:.28rem 0;line-height:1.45}}
+.reduce-list li{{margin:.28rem 0;line-height:1.45;display:flex;flex-wrap:wrap;align-items:baseline;gap:.45rem}}
+.reduce-list .reduce-text{{flex:1 1 18rem}}
+.sr-count{{flex:0 0 auto}}
+.sr-count-link{{display:inline-block;font-size:.78rem;font-weight:700;color:var(--accent);
+background:#dceae3;border-radius:999px;padding:.12rem .55rem;text-decoration:none;
+border:1px solid #b7d0c3;white-space:nowrap}}
+.sr-count-link:hover{{background:var(--accent);color:#fff;border-color:var(--accent)}}
+.pb dt .sr-count-link{{margin-left:.45rem;vertical-align:middle}}
+.sr-toolbar{{display:flex;flex-wrap:wrap;gap:.65rem;align-items:end;margin:0 0 .85rem}}
+.sr-toolbar label{{display:grid;gap:.2rem;font-size:.75rem;color:var(--muted);font-weight:600}}
+.sr-toolbar select,.sr-toolbar input{{font:inherit;font-size:.85rem;padding:.35rem .5rem;
+border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);min-width:10rem}}
+.sr-search{{flex:1 1 14rem}}.sr-search input{{width:100%}}
+.sr-showing{{font-size:.82rem;color:var(--muted);padding-bottom:.35rem}}
+.sr-table-wrap{{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:12px;background:var(--card)}}
+.sr-table{{margin:0;font-size:.8rem}}.sr-table th{{position:sticky;top:0;z-index:1}}
+.sr-table td.desc{{max-width:36rem;white-space:normal;line-height:1.4;color:var(--muted)}}
+.sr-table td.short{{max-width:18rem;white-space:normal}}
 .pill{{display:inline-block;padding:.12rem .5rem;border-radius:999px;font-size:.72rem;font-weight:600;margin-left:.3rem}}
 .pill-yes{{background:#dceae3;color:#1f4d3a}}.pill-no{{background:#f0ddd7;color:#7a3b2e}}
 .area-toolbar{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
@@ -531,23 +672,26 @@ margin-right:.15rem;flex-shrink:0}}
 .area-accordion[open] .area-chevron{{transform:rotate(225deg);margin-top:.2rem}}
 .area-accordion[open] .area-summary{{border-bottom:1px solid var(--line);background:#f7f3eb}}
 .area-body{{padding:.85rem 1rem 1.1rem}}
-.area-blurb{{margin:0 0 .75rem;font-size:.88rem;color:var(--muted);max-width:85ch}}
+.area-blurb{{margin:0 0 .75rem;font-size:.88rem;color:var(--ink);max-width:90ch;line-height:1.45}}
+.theme-problem{{margin:.55rem 0 0;font-size:.88rem;line-height:1.45;color:var(--ink)}}
+.theme-problem .lbl{{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;
+letter-spacing:.03em;color:var(--no);margin-right:.35rem}}
 .muted{{color:var(--muted);font-size:.86rem}}
-.subhead{{font-size:.95rem;margin:0 0 .5rem;color:var(--ink)}}
-.nested-class{{margin:1rem 0 1.25rem;padding-top:.5rem;border-top:1px solid var(--line)}}
-.nested-class.empty{{opacity:.85}}
-.nested-class h3{{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:0 0 .55rem}}
 footer{{max-width:1140px;margin:0 auto;padding:0 1.5rem 2rem;color:var(--muted);font-size:.75rem}}
 h2{{font-size:1.1rem}}h3{{font-size:.95rem;margin:0}}
 </style></head><body>
 <header>
   <h1>RX themes — ticket classification + Jira Yes/No</h1>
-  <p class="sub">Playbook tab: filtered all-fields CSV (Service Request + Defect · allowed ticket
-  classifications · RX · CRM Core/Profile/Automation/Messaging exclusive) → n={n_f:,}.
-  Themes via phrase rules; reduce bullets from existing playbook only.
-  Other tabs: sheet Yes/No split (n={len(rx):,}).</p>
+  <p class="sub">Playbook CRM areas: full all-fields CSV · Service Request · RX ·
+  <b>Jira Yes and Jira No</b> · themes classified into Core / Profile / Messaging /
+  Automations → n={n_f:,} (Yes {n_yes:,} / No {n_no:,}).
+  Each theme shows a Problem summary from SHORT_DESCRIPTION + DESCRIPTION and
+  clear What to do in Phenom actions. Other tabs: sheet Yes/No theme compare
+  (n={len(rx):,}).</p>
   <div class="stats">
-    <div class="stat"><b>{n_f:,}</b><span>Filtered (Playbook)</span></div>
+    <div class="stat"><b>{n_f:,}</b><span>CRM-area SRs (Yes+No)</span></div>
+    <div class="stat"><b>{n_yes:,}</b><span>Jira Yes (updated)</span></div>
+    <div class="stat no"><b>{n_no:,}</b><span>Jira No (not updated)</span></div>
     <div class="stat"><b>{len(rx):,}</b><span>RX Yes+No (other tabs)</span></div>
     <div class="stat"><b>{yes['n']:,}</b><span>Jira Yes · {yes['classified_pct']:.1f}% classified</span></div>
     <div class="stat no"><b>{no['n']:,}</b><span>Jira No · {no['classified_pct']:.1f}% classified</span></div>
@@ -555,7 +699,8 @@ h2{{font-size:1.1rem}}h3{{font-size:.95rem;margin:0}}
   </div>
 </header>
 <nav class="tabs" id="tabs">
-  <button data-tab="playbook" class="active">Playbook · ticket class</button>
+  <button data-tab="playbook" class="active">Playbook · product areas</button>
+  <button data-tab="playbook-srs">Playbook · Service Requests</button>
   <button data-tab="compare">Yes vs No</button>
   <button data-tab="yes-themes">Yes · themes</button>
   <button data-tab="yes-products">Yes · products</button>
@@ -564,15 +709,17 @@ h2{{font-size:1.1rem}}h3{{font-size:.95rem;margin:0}}
 </nav>
 <main>
 <section class="panel active" id="playbook">
-  <div class="note">Filters: <code>U_ISSUE_TYPE</code> ∈ {{Service Request, Defect}};
-  <code>U_TICKET_CLASSIFICATION</code> in the 7 allowed values;
+  <div class="note">CRM-area Playbook population: <code>U_ISSUE_TYPE</code> contains Service Request;
   <code>U_PRODUCT_EXPERIENCE</code> contains Recruiter Experience (RX);
-  <code>PRODUCT_EXPERIENCE_PRODUCT</code> exclusive allowlist
-  (CRM - Core, CRM - Profile, CRM - Automation, CRM - Messaging and Campaigns);
-  area = first PEP token. Snapshot: <code>snapshot-rx-ticket-classification.json</code>.
-  Reduce bullets from existing playbook only.</div>
+  <code>JIRA_CREATED</code> = <b>Yes</b> (Jira updated) or <b>No</b> (not updated);
+  theme matched by phrase rules into Core / Profile / Messaging / Automations
+  (Unclassified excluded from these four sections).
+  Each theme card shows volume, Jira Yes/No split, a plain-language <b>Problem</b>
+  from DESCRIPTION wording, and <b>What to do in Phenom</b>.
+  Snapshot: <code>snapshot-rx-crm-areas-jira-yn.json</code>.
+  Ticket-classification % table below still uses the narrower CRM PEP allowlist cut.</div>
   {class_pct_html}
-  <h2>CRM areas → ticket classification → reduce feedback %</h2>
+  <h2>All themes — elaborated by product area</h2>
   <div class="area-toolbar">
     <nav class="area-nav" aria-label="Product areas">{product_nav}</nav>
     <div class="area-actions">
@@ -581,8 +728,15 @@ h2{{font-size:1.1rem}}h3{{font-size:.95rem;margin:0}}
     </div>
   </div>
   <div class="area-accordions" id="area-accordions">
-  {nested_accordions}
+  {product_accordions}
   </div>
+</section>
+<section class="panel" id="playbook-srs">
+  <h2>Playbook Service Requests
+  <span class="pill pill-yes">n={n_f:,}</span>
+  <span class="pill pill-yes">Jira Yes</span>
+  <span class="pill pill-no">Jira No</span></h2>
+  {playbook_srs_html}
 </section>
 <section class="panel" id="compare">
   <div class="note">Δ pp = No% − Yes%. Positive = more common when Jira was <em>not</em> created.
@@ -643,6 +797,114 @@ document.querySelectorAll('.area-nav a[data-area]').forEach(a => a.addEventListe
   areaAccordions().forEach(d => {{ d.open = d === target; }});
   target.open = true;
   target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+}}));
+
+function activateTab(tabId) {{
+  document.querySelectorAll('#tabs button').forEach(b => {{
+    b.classList.toggle('active', b.dataset.tab === tabId);
+  }});
+  document.querySelectorAll('section.panel').forEach(p => {{
+    p.classList.toggle('active', p.id === tabId);
+  }});
+}}
+
+const srDataEl = document.getElementById('playbook-srs-data');
+const srAll = srDataEl ? JSON.parse(srDataEl.textContent) : [];
+const areaThemesEl = document.getElementById('playbook-area-themes');
+const areaThemes = areaThemesEl ? JSON.parse(areaThemesEl.textContent) : {{}};
+const srTbody = document.getElementById('sr-tbody');
+const srShowing = document.getElementById('sr-showing');
+const srArea = document.getElementById('sr-filter-area');
+const srTheme = document.getElementById('sr-filter-theme');
+const srJira = document.getElementById('sr-filter-jira');
+const srQ = document.getElementById('sr-filter-q');
+
+function escHtml(s) {{
+  return String(s ?? '').replace(/[&<>"']/g, c => ({{
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }})[c]);
+}}
+
+function rebuildThemeOptions(preferredSlug) {{
+  if (!srTheme) return;
+  const area = srArea?.value || '';
+  const prev = preferredSlug || srTheme.value || '';
+  let list = [];
+  if (area && areaThemes[area]) {{
+    list = areaThemes[area];
+  }} else {{
+    Object.values(areaThemes).forEach(arr => {{ list = list.concat(arr); }});
+  }}
+  const opts = ['<option value="">All themes in ' + (area || 'all areas') + '</option>']
+    .concat(list.map(t =>
+      `<option value="${{escHtml(t.slug)}}" data-area="${{escHtml(area || '')}}">${{escHtml(t.theme)}} (${{t.count}})</option>`
+    ));
+  srTheme.innerHTML = opts.join('');
+  if (prev && [...srTheme.options].some(o => o.value === prev)) {{
+    srTheme.value = prev;
+  }} else {{
+    srTheme.value = '';
+  }}
+}}
+
+function renderSrs(rows) {{
+  if (!srTbody) return;
+  const html = rows.map(r => `
+    <tr data-theme-slug="${{escHtml(r.theme_slug)}}" data-area="${{escHtml(r.area)}}" data-jira="${{escHtml(r.jira_created)}}">
+      <td><code>${{escHtml(r.number)}}</code></td>
+      <td>${{r.jira_created === 'Yes'
+        ? '<span class="pill pill-yes">Yes</span>'
+        : '<span class="pill pill-no">No</span>'}}</td>
+      <td>${{escHtml(r.area)}}</td>
+      <td>${{escHtml(r.theme)}}</td>
+      <td class="short">${{escHtml(r.short_description)}}</td>
+      <td class="desc">${{escHtml(r.description)}}</td>
+    </tr>`).join('');
+  srTbody.innerHTML = html || '<tr><td colspan="6" class="muted">No Service Requests match these filters.</td></tr>';
+  if (srShowing) srShowing.textContent = `Showing ${{rows.length.toLocaleString()}} of ${{srAll.length.toLocaleString()}}`;
+}}
+
+function filterSrs() {{
+  const area = srArea?.value || '';
+  const theme = srTheme?.value || '';
+  const jira = srJira?.value || '';
+  const q = (srQ?.value || '').trim().toLowerCase();
+  const rows = srAll.filter(r => {{
+    if (area && r.area !== area) return false;
+    if (theme && r.theme_slug !== theme) return false;
+    if (jira && r.jira_created !== jira) return false;
+    if (q) {{
+      const blob = `${{r.number}} ${{r.short_description}} ${{r.description}} ${{r.theme}}`.toLowerCase();
+      if (!blob.includes(q)) return false;
+    }}
+    return true;
+  }});
+  renderSrs(rows);
+}}
+
+srArea?.addEventListener('change', () => {{
+  rebuildThemeOptions('');
+  filterSrs();
+}});
+srTheme?.addEventListener('change', filterSrs);
+srJira?.addEventListener('change', filterSrs);
+srQ?.addEventListener('input', filterSrs);
+rebuildThemeOptions('');
+filterSrs();
+
+document.querySelectorAll('.sr-count-link').forEach(a => a.addEventListener('click', e => {{
+  e.preventDefault();
+  const slug = a.dataset.themeSlug || '';
+  const themeName = a.dataset.theme || '';
+  const match = srAll.find(r => r.theme_slug === slug || r.theme === themeName);
+  activateTab('playbook-srs');
+  if (srArea && match) srArea.value = match.area || '';
+  rebuildThemeOptions(slug);
+  if (srTheme) srTheme.value = slug;
+  if (srJira) srJira.value = '';
+  if (srQ) srQ.value = '';
+  filterSrs();
+  document.getElementById('playbook-srs')?.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
 }}));
 </script></body></html>"""
     args.out.parent.mkdir(parents=True, exist_ok=True)

@@ -1,7 +1,7 @@
 {
-  "source": "/Users/venkata.gonella/Library/CloudStorage/GoogleDrive-venkata.gonella@phenom.com/My Drive/CRM Core/LinkedIn /servicenow service requests with all fields.csv",
+  "source": "product-copilot-beta/knowledge/servicenow-service-requests/data/all-service-requests.csv",
   "filters": {
-    "U_ISSUE_TYPE": "exact match in ['Service Request', 'Defect']",
+    "U_ISSUE_TYPE": "contains 'Service Request'",
     "U_TICKET_CLASSIFICATION": [
       "Code Issues",
       "Configuration Issues",
@@ -12,72 +12,65 @@
       "User Experience Issues"
     ],
     "U_PRODUCT_EXPERIENCE": "contains 'Recruiter Experience (RX)'",
-    "PRODUCT_EXPERIENCE_PRODUCT": "exclusive allowlist (every ;-separated token in CRM - Automation, CRM - Core, CRM - Messaging and Campaigns, CRM - Profile); area = first token"
+    "PRODUCT_EXPERIENCE_PRODUCT": "exclusive allowlist (every ;-separated token in CRM - Automation, CRM - Core, CRM - Messaging and Campaigns, CRM - Profile)"
   },
   "funnel": {
     "all": 29310,
-    "issue_type": 13737,
-    "issue_type_Service Request": 7579,
-    "class_allow": 11341,
-    "rx": 2487,
-    "issue_type_Defect": 6158,
-    "pep_only": 1023,
-    "pep_only_Defect": 596,
-    "pep_only_Service Request": 427
+    "issue_type": 7579,
+    "class_allow": 6204,
+    "rx": 1226,
+    "pep_only": 427,
+    "classified": 427
   },
-  "n_filtered": 1023,
+  "n_filtered": 427,
   "classification_focus": [
     {
       "classification": "Product & Knowledge Issues",
-      "count": 606,
-      "pct_of_filtered": 59.24
-    },
-    {
-      "classification": "Code Issues",
-      "count": 207,
-      "pct_of_filtered": 20.23
+      "count": 247,
+      "pct_of_filtered": 57.85
     },
     {
       "classification": "Configuration Issues",
-      "count": 127,
-      "pct_of_filtered": 12.41
+      "count": 64,
+      "pct_of_filtered": 14.99
     },
     {
       "classification": "User Experience Issues",
-      "count": 71,
-      "pct_of_filtered": 6.94
+      "count": 29,
+      "pct_of_filtered": 6.79
+    },
+    {
+      "classification": "Code Issues",
+      "count": 81,
+      "pct_of_filtered": 18.97
     }
   ],
   "classification_other": [
     {
       "classification": "External Dependency Issues",
-      "count": 12,
-      "pct_of_filtered": 1.17
+      "count": 6,
+      "pct_of_filtered": 1.41
     }
   ],
   "pep_distribution": [
     {
-      "product": "CRM - Messaging and Campaigns",
-      "count": 309
-    },
-    {
       "product": "CRM - Profile",
-      "count": 308
+      "count": 147
     },
     {
       "product": "CRM - Core",
-      "count": 297
+      "count": 130
+    },
+    {
+      "product": "CRM - Messaging and Campaigns",
+      "count": 120
     },
     {
       "product": "CRM - Automation",
-      "count": 106
+      "count": 28
     },
     {
       "product": "CRM - Core; CRM - Profile",
-      "count": 1
-    },
-    {
-      "product": "CRM - Core; CRM - Messaging and Campaigns",
       "count": 1
     },
     {
@@ -88,1666 +81,490 @@
   "themes_by_class": {
     "Product & Knowledge Issues": [
       {
-        "theme": "Unclassified / other",
-        "count_in_class": 114,
-        "pct_of_class": 18.81,
-        "theme_total": 203,
-        "pct_of_theme": 56.16
-      },
-      {
         "theme": "Candidate profile data / fields / tags / location / GDPR",
-        "count_in_class": 70,
-        "pct_of_class": 11.55,
-        "theme_total": 114,
-        "pct_of_theme": 61.4
-      },
-      {
-        "theme": "Campaigns / job alerts / subscriptions / spotlights",
-        "count_in_class": 66,
-        "pct_of_class": 10.89,
-        "theme_total": 93,
-        "pct_of_theme": 70.97
+        "count_in_class": 48,
+        "pct_of_class": 19.43,
+        "theme_total": 86,
+        "pct_of_theme": 55.81
       },
       {
         "theme": "Email not sending / not receiving / spam / bounce",
-        "count_in_class": 52,
-        "pct_of_class": 8.58,
-        "theme_total": 69,
-        "pct_of_theme": 75.36
+        "count_in_class": 32,
+        "pct_of_class": 12.96,
+        "theme_total": 37,
+        "pct_of_theme": 86.49
       },
       {
-        "theme": "SMS / WhatsApp",
-        "count_in_class": 42,
-        "pct_of_class": 6.93,
-        "theme_total": 53,
-        "pct_of_theme": 79.25
-      },
-      {
-        "theme": "Screening / interview / scheduling / offer / notifications",
-        "count_in_class": 41,
-        "pct_of_class": 6.77,
-        "theme_total": 67,
-        "pct_of_theme": 61.19
-      },
-      {
-        "theme": "Hiring status / pipeline / stages / lead status",
-        "count_in_class": 39,
-        "pct_of_class": 6.44,
-        "theme_total": 67,
-        "pct_of_theme": 58.21
-      },
-      {
-        "theme": "Email template content / hyperlinks / branding",
-        "count_in_class": 34,
-        "pct_of_class": 5.61,
-        "theme_total": 48,
-        "pct_of_theme": 70.83
+        "theme": "Campaigns / job alerts / subscriptions / spotlights",
+        "count_in_class": 31,
+        "pct_of_class": 12.55,
+        "theme_total": 46,
+        "pct_of_theme": 67.39
       },
       {
         "theme": "Jobs / requisitions / applications / posting",
-        "count_in_class": 34,
-        "pct_of_class": 5.61,
-        "theme_total": 66,
-        "pct_of_theme": 51.52
+        "count_in_class": 19,
+        "pct_of_class": 7.69,
+        "theme_total": 33,
+        "pct_of_theme": 57.58
       },
       {
-        "theme": "Automation not triggering / failing / wrongly triggered",
-        "count_in_class": 30,
-        "pct_of_class": 4.95,
-        "theme_total": 60,
-        "pct_of_theme": 50.0
+        "theme": "Hiring status / pipeline / stages / lead status",
+        "count_in_class": 18,
+        "pct_of_class": 7.29,
+        "theme_total": 38,
+        "pct_of_theme": 47.37
       },
       {
         "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-        "count_in_class": 24,
-        "pct_of_class": 3.96,
-        "theme_total": 46,
-        "pct_of_theme": 52.17
+        "count_in_class": 17,
+        "pct_of_class": 6.88,
+        "theme_total": 27,
+        "pct_of_theme": 62.96
+      },
+      {
+        "theme": "Email template content / hyperlinks / branding",
+        "count_in_class": 15,
+        "pct_of_class": 6.07,
+        "theme_total": 19,
+        "pct_of_theme": 78.95
+      },
+      {
+        "theme": "SMS / WhatsApp",
+        "count_in_class": 14,
+        "pct_of_class": 5.67,
+        "theme_total": 19,
+        "pct_of_theme": 73.68
       },
       {
         "theme": "Profile merge / unmerge / duplicates / disappeared",
-        "count_in_class": 20,
-        "pct_of_class": 3.3,
-        "theme_total": 65,
-        "pct_of_theme": 30.77
+        "count_in_class": 10,
+        "pct_of_class": 4.05,
+        "theme_total": 38,
+        "pct_of_theme": 26.32
       },
       {
-        "theme": "Activity / notes / UI display",
-        "count_in_class": 13,
-        "pct_of_class": 2.15,
-        "theme_total": 20,
-        "pct_of_theme": 65.0
+        "theme": "Screening / interview / scheduling / offer / notifications",
+        "count_in_class": 10,
+        "pct_of_class": 4.05,
+        "theme_total": 22,
+        "pct_of_theme": 45.45
+      },
+      {
+        "theme": "Automation not triggering / failing / wrongly triggered",
+        "count_in_class": 8,
+        "pct_of_class": 3.24,
+        "theme_total": 13,
+        "pct_of_theme": 61.54
       },
       {
         "theme": "Search / lists / filters / export / AI Discovery",
-        "count_in_class": 13,
-        "pct_of_class": 2.15,
-        "theme_total": 23,
-        "pct_of_theme": 56.52
+        "count_in_class": 8,
+        "pct_of_class": 3.24,
+        "theme_total": 13,
+        "pct_of_theme": 61.54
+      },
+      {
+        "theme": "Activity / notes / UI display",
+        "count_in_class": 7,
+        "pct_of_class": 2.83,
+        "theme_total": 12,
+        "pct_of_theme": 58.33
+      },
+      {
+        "theme": "How-to / configuration / enablement question",
+        "count_in_class": 4,
+        "pct_of_class": 1.62,
+        "theme_total": 7,
+        "pct_of_theme": 57.14
       },
       {
         "theme": "Access / CRM not opening / permissions",
-        "count_in_class": 11,
-        "pct_of_class": 1.82,
-        "theme_total": 24,
-        "pct_of_theme": 45.83
+        "count_in_class": 3,
+        "pct_of_class": 1.21,
+        "theme_total": 14,
+        "pct_of_theme": 21.43
       },
       {
         "theme": "Events / university recruiting",
-        "count_in_class": 2,
-        "pct_of_class": 0.33,
-        "theme_total": 2,
-        "pct_of_theme": 100.0
-      },
-      {
-        "theme": "How-to / configuration / enablement question",
-        "count_in_class": 1,
-        "pct_of_class": 0.17,
-        "theme_total": 3,
-        "pct_of_theme": 33.33
-      }
-    ],
-    "Code Issues": [
-      {
-        "theme": "Unclassified / other",
-        "count_in_class": 40,
-        "pct_of_class": 19.32,
-        "theme_total": 203,
-        "pct_of_theme": 19.7
-      },
-      {
-        "theme": "Profile merge / unmerge / duplicates / disappeared",
-        "count_in_class": 36,
-        "pct_of_class": 17.39,
-        "theme_total": 65,
-        "pct_of_theme": 55.38
-      },
-      {
-        "theme": "Candidate profile data / fields / tags / location / GDPR",
-        "count_in_class": 21,
-        "pct_of_class": 10.14,
-        "theme_total": 114,
-        "pct_of_theme": 18.42
-      },
-      {
-        "theme": "Campaigns / job alerts / subscriptions / spotlights",
-        "count_in_class": 20,
-        "pct_of_class": 9.66,
-        "theme_total": 93,
-        "pct_of_theme": 21.51
-      },
-      {
-        "theme": "Screening / interview / scheduling / offer / notifications",
-        "count_in_class": 14,
-        "pct_of_class": 6.76,
-        "theme_total": 67,
-        "pct_of_theme": 20.9
-      },
-      {
-        "theme": "Automation not triggering / failing / wrongly triggered",
-        "count_in_class": 13,
-        "pct_of_class": 6.28,
-        "theme_total": 60,
-        "pct_of_theme": 21.67
-      },
-      {
-        "theme": "Jobs / requisitions / applications / posting",
-        "count_in_class": 13,
-        "pct_of_class": 6.28,
-        "theme_total": 66,
-        "pct_of_theme": 19.7
-      },
-      {
-        "theme": "Hiring status / pipeline / stages / lead status",
-        "count_in_class": 12,
-        "pct_of_class": 5.8,
-        "theme_total": 67,
-        "pct_of_theme": 17.91
-      },
-      {
-        "theme": "Email not sending / not receiving / spam / bounce",
-        "count_in_class": 10,
-        "pct_of_class": 4.83,
-        "theme_total": 69,
-        "pct_of_theme": 14.49
-      },
-      {
-        "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-        "count_in_class": 7,
-        "pct_of_class": 3.38,
-        "theme_total": 46,
-        "pct_of_theme": 15.22
-      },
-      {
-        "theme": "Access / CRM not opening / permissions",
-        "count_in_class": 6,
-        "pct_of_class": 2.9,
-        "theme_total": 24,
-        "pct_of_theme": 25.0
-      },
-      {
-        "theme": "Search / lists / filters / export / AI Discovery",
-        "count_in_class": 5,
-        "pct_of_class": 2.42,
-        "theme_total": 23,
-        "pct_of_theme": 21.74
-      },
-      {
-        "theme": "Email template content / hyperlinks / branding",
-        "count_in_class": 4,
-        "pct_of_class": 1.93,
-        "theme_total": 48,
-        "pct_of_theme": 8.33
-      },
-      {
-        "theme": "SMS / WhatsApp",
         "count_in_class": 3,
-        "pct_of_class": 1.45,
-        "theme_total": 53,
-        "pct_of_theme": 5.66
-      },
-      {
-        "theme": "Activity / notes / UI display",
-        "count_in_class": 2,
-        "pct_of_class": 0.97,
-        "theme_total": 20,
-        "pct_of_theme": 10.0
-      },
-      {
-        "theme": "How-to / configuration / enablement question",
-        "count_in_class": 1,
-        "pct_of_class": 0.48,
+        "pct_of_class": 1.21,
         "theme_total": 3,
-        "pct_of_theme": 33.33
+        "pct_of_theme": 100.0
       }
     ],
     "Configuration Issues": [
       {
-        "theme": "Unclassified / other",
-        "count_in_class": 27,
-        "pct_of_class": 21.26,
-        "theme_total": 203,
-        "pct_of_theme": 13.3
-      },
-      {
         "theme": "Candidate profile data / fields / tags / location / GDPR",
-        "count_in_class": 16,
-        "pct_of_class": 12.6,
-        "theme_total": 114,
-        "pct_of_theme": 14.04
-      },
-      {
-        "theme": "Automation not triggering / failing / wrongly triggered",
-        "count_in_class": 14,
-        "pct_of_class": 11.02,
-        "theme_total": 60,
-        "pct_of_theme": 23.33
-      },
-      {
-        "theme": "Jobs / requisitions / applications / posting",
-        "count_in_class": 12,
-        "pct_of_class": 9.45,
-        "theme_total": 66,
-        "pct_of_theme": 18.18
+        "count_in_class": 19,
+        "pct_of_class": 29.69,
+        "theme_total": 86,
+        "pct_of_theme": 22.09
       },
       {
         "theme": "Hiring status / pipeline / stages / lead status",
-        "count_in_class": 10,
-        "pct_of_class": 7.87,
-        "theme_total": 67,
-        "pct_of_theme": 14.93
+        "count_in_class": 9,
+        "pct_of_class": 14.06,
+        "theme_total": 38,
+        "pct_of_theme": 23.68
       },
       {
-        "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-        "count_in_class": 8,
-        "pct_of_class": 6.3,
-        "theme_total": 46,
-        "pct_of_theme": 17.39
-      },
-      {
-        "theme": "Profile merge / unmerge / duplicates / disappeared",
-        "count_in_class": 7,
-        "pct_of_class": 5.51,
-        "theme_total": 65,
-        "pct_of_theme": 10.77
-      },
-      {
-        "theme": "Campaigns / job alerts / subscriptions / spotlights",
+        "theme": "Jobs / requisitions / applications / posting",
         "count_in_class": 6,
-        "pct_of_class": 4.72,
-        "theme_total": 93,
-        "pct_of_theme": 6.45
-      },
-      {
-        "theme": "Email template content / hyperlinks / branding",
-        "count_in_class": 6,
-        "pct_of_class": 4.72,
-        "theme_total": 48,
-        "pct_of_theme": 12.5
+        "pct_of_class": 9.38,
+        "theme_total": 33,
+        "pct_of_theme": 18.18
       },
       {
         "theme": "Access / CRM not opening / permissions",
         "count_in_class": 5,
-        "pct_of_class": 3.94,
-        "theme_total": 24,
-        "pct_of_theme": 20.83
+        "pct_of_class": 7.81,
+        "theme_total": 14,
+        "pct_of_theme": 35.71
       },
       {
-        "theme": "Screening / interview / scheduling / offer / notifications",
+        "theme": "Profile merge / unmerge / duplicates / disappeared",
         "count_in_class": 5,
-        "pct_of_class": 3.94,
-        "theme_total": 67,
-        "pct_of_theme": 7.46
+        "pct_of_class": 7.81,
+        "theme_total": 38,
+        "pct_of_theme": 13.16
       },
       {
-        "theme": "Email not sending / not receiving / spam / bounce",
-        "count_in_class": 3,
-        "pct_of_class": 2.36,
-        "theme_total": 69,
-        "pct_of_theme": 4.35
-      },
-      {
-        "theme": "SMS / WhatsApp",
-        "count_in_class": 3,
-        "pct_of_class": 2.36,
-        "theme_total": 53,
-        "pct_of_theme": 5.66
+        "theme": "Automation not triggering / failing / wrongly triggered",
+        "count_in_class": 4,
+        "pct_of_class": 6.25,
+        "theme_total": 13,
+        "pct_of_theme": 30.77
       },
       {
         "theme": "Activity / notes / UI display",
-        "count_in_class": 2,
-        "pct_of_class": 1.57,
-        "theme_total": 20,
-        "pct_of_theme": 10.0
+        "count_in_class": 3,
+        "pct_of_class": 4.69,
+        "theme_total": 12,
+        "pct_of_theme": 25.0
       },
       {
-        "theme": "Search / lists / filters / export / AI Discovery",
+        "theme": "Campaigns / job alerts / subscriptions / spotlights",
+        "count_in_class": 3,
+        "pct_of_class": 4.69,
+        "theme_total": 46,
+        "pct_of_theme": 6.52
+      },
+      {
+        "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
+        "count_in_class": 3,
+        "pct_of_class": 4.69,
+        "theme_total": 27,
+        "pct_of_theme": 11.11
+      },
+      {
+        "theme": "Email template content / hyperlinks / branding",
         "count_in_class": 2,
-        "pct_of_class": 1.57,
-        "theme_total": 23,
-        "pct_of_theme": 8.7
+        "pct_of_class": 3.12,
+        "theme_total": 19,
+        "pct_of_theme": 10.53
+      },
+      {
+        "theme": "Email not sending / not receiving / spam / bounce",
+        "count_in_class": 1,
+        "pct_of_class": 1.56,
+        "theme_total": 37,
+        "pct_of_theme": 2.7
       },
       {
         "theme": "How-to / configuration / enablement question",
         "count_in_class": 1,
-        "pct_of_class": 0.79,
-        "theme_total": 3,
-        "pct_of_theme": 33.33
+        "pct_of_class": 1.56,
+        "theme_total": 7,
+        "pct_of_theme": 14.29
+      },
+      {
+        "theme": "SMS / WhatsApp",
+        "count_in_class": 1,
+        "pct_of_class": 1.56,
+        "theme_total": 19,
+        "pct_of_theme": 5.26
+      },
+      {
+        "theme": "Screening / interview / scheduling / offer / notifications",
+        "count_in_class": 1,
+        "pct_of_class": 1.56,
+        "theme_total": 22,
+        "pct_of_theme": 4.55
+      },
+      {
+        "theme": "Search / lists / filters / export / AI Discovery",
+        "count_in_class": 1,
+        "pct_of_class": 1.56,
+        "theme_total": 13,
+        "pct_of_theme": 7.69
       }
     ],
     "User Experience Issues": [
       {
-        "theme": "Unclassified / other",
-        "count_in_class": 20,
-        "pct_of_class": 28.17,
-        "theme_total": 203,
-        "pct_of_theme": 9.85
+        "theme": "Jobs / requisitions / applications / posting",
+        "count_in_class": 6,
+        "pct_of_class": 20.69,
+        "theme_total": 33,
+        "pct_of_theme": 18.18
       },
       {
         "theme": "Candidate profile data / fields / tags / location / GDPR",
-        "count_in_class": 7,
-        "pct_of_class": 9.86,
-        "theme_total": 114,
-        "pct_of_theme": 6.14
+        "count_in_class": 4,
+        "pct_of_class": 13.79,
+        "theme_total": 86,
+        "pct_of_theme": 4.65
       },
       {
         "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-        "count_in_class": 6,
-        "pct_of_class": 8.45,
-        "theme_total": 46,
-        "pct_of_theme": 13.04
+        "count_in_class": 3,
+        "pct_of_class": 10.34,
+        "theme_total": 27,
+        "pct_of_theme": 11.11
       },
       {
         "theme": "Hiring status / pipeline / stages / lead status",
-        "count_in_class": 6,
-        "pct_of_class": 8.45,
-        "theme_total": 67,
-        "pct_of_theme": 8.96
-      },
-      {
-        "theme": "Jobs / requisitions / applications / posting",
-        "count_in_class": 5,
-        "pct_of_class": 7.04,
-        "theme_total": 66,
-        "pct_of_theme": 7.58
-      },
-      {
-        "theme": "Screening / interview / scheduling / offer / notifications",
-        "count_in_class": 5,
-        "pct_of_class": 7.04,
-        "theme_total": 67,
-        "pct_of_theme": 7.46
-      },
-      {
-        "theme": "Email not sending / not receiving / spam / bounce",
-        "count_in_class": 4,
-        "pct_of_class": 5.63,
-        "theme_total": 69,
-        "pct_of_theme": 5.8
-      },
-      {
-        "theme": "Automation not triggering / failing / wrongly triggered",
         "count_in_class": 3,
-        "pct_of_class": 4.23,
-        "theme_total": 60,
-        "pct_of_theme": 5.0
-      },
-      {
-        "theme": "Email template content / hyperlinks / branding",
-        "count_in_class": 3,
-        "pct_of_class": 4.23,
-        "theme_total": 48,
-        "pct_of_theme": 6.25
-      },
-      {
-        "theme": "SMS / WhatsApp",
-        "count_in_class": 3,
-        "pct_of_class": 4.23,
-        "theme_total": 53,
-        "pct_of_theme": 5.66
-      },
-      {
-        "theme": "Search / lists / filters / export / AI Discovery",
-        "count_in_class": 3,
-        "pct_of_class": 4.23,
-        "theme_total": 23,
-        "pct_of_theme": 13.04
-      },
-      {
-        "theme": "Activity / notes / UI display",
-        "count_in_class": 2,
-        "pct_of_class": 2.82,
-        "theme_total": 20,
-        "pct_of_theme": 10.0
-      },
-      {
-        "theme": "Profile merge / unmerge / duplicates / disappeared",
-        "count_in_class": 2,
-        "pct_of_class": 2.82,
-        "theme_total": 65,
-        "pct_of_theme": 3.08
+        "pct_of_class": 10.34,
+        "theme_total": 38,
+        "pct_of_theme": 7.89
       },
       {
         "theme": "Access / CRM not opening / permissions",
+        "count_in_class": 2,
+        "pct_of_class": 6.9,
+        "theme_total": 14,
+        "pct_of_theme": 14.29
+      },
+      {
+        "theme": "Email template content / hyperlinks / branding",
+        "count_in_class": 2,
+        "pct_of_class": 6.9,
+        "theme_total": 19,
+        "pct_of_theme": 10.53
+      },
+      {
+        "theme": "Screening / interview / scheduling / offer / notifications",
+        "count_in_class": 2,
+        "pct_of_class": 6.9,
+        "theme_total": 22,
+        "pct_of_theme": 9.09
+      },
+      {
+        "theme": "Activity / notes / UI display",
         "count_in_class": 1,
-        "pct_of_class": 1.41,
-        "theme_total": 24,
-        "pct_of_theme": 4.17
+        "pct_of_class": 3.45,
+        "theme_total": 12,
+        "pct_of_theme": 8.33
       },
       {
         "theme": "Campaigns / job alerts / subscriptions / spotlights",
         "count_in_class": 1,
-        "pct_of_class": 1.41,
-        "theme_total": 93,
-        "pct_of_theme": 1.08
+        "pct_of_class": 3.45,
+        "theme_total": 46,
+        "pct_of_theme": 2.17
+      },
+      {
+        "theme": "Email not sending / not receiving / spam / bounce",
+        "count_in_class": 1,
+        "pct_of_class": 3.45,
+        "theme_total": 37,
+        "pct_of_theme": 2.7
+      },
+      {
+        "theme": "How-to / configuration / enablement question",
+        "count_in_class": 1,
+        "pct_of_class": 3.45,
+        "theme_total": 7,
+        "pct_of_theme": 14.29
+      },
+      {
+        "theme": "Profile merge / unmerge / duplicates / disappeared",
+        "count_in_class": 1,
+        "pct_of_class": 3.45,
+        "theme_total": 38,
+        "pct_of_theme": 2.63
+      },
+      {
+        "theme": "SMS / WhatsApp",
+        "count_in_class": 1,
+        "pct_of_class": 3.45,
+        "theme_total": 19,
+        "pct_of_theme": 5.26
+      },
+      {
+        "theme": "Search / lists / filters / export / AI Discovery",
+        "count_in_class": 1,
+        "pct_of_class": 3.45,
+        "theme_total": 13,
+        "pct_of_theme": 7.69
+      }
+    ],
+    "Code Issues": [
+      {
+        "theme": "Profile merge / unmerge / duplicates / disappeared",
+        "count_in_class": 22,
+        "pct_of_class": 27.16,
+        "theme_total": 38,
+        "pct_of_theme": 57.89
+      },
+      {
+        "theme": "Candidate profile data / fields / tags / location / GDPR",
+        "count_in_class": 15,
+        "pct_of_class": 18.52,
+        "theme_total": 86,
+        "pct_of_theme": 17.44
+      },
+      {
+        "theme": "Campaigns / job alerts / subscriptions / spotlights",
+        "count_in_class": 11,
+        "pct_of_class": 13.58,
+        "theme_total": 46,
+        "pct_of_theme": 23.91
+      },
+      {
+        "theme": "Hiring status / pipeline / stages / lead status",
+        "count_in_class": 8,
+        "pct_of_class": 9.88,
+        "theme_total": 38,
+        "pct_of_theme": 21.05
+      },
+      {
+        "theme": "Screening / interview / scheduling / offer / notifications",
+        "count_in_class": 7,
+        "pct_of_class": 8.64,
+        "theme_total": 22,
+        "pct_of_theme": 31.82
+      },
+      {
+        "theme": "Access / CRM not opening / permissions",
+        "count_in_class": 3,
+        "pct_of_class": 3.7,
+        "theme_total": 14,
+        "pct_of_theme": 21.43
+      },
+      {
+        "theme": "Email not sending / not receiving / spam / bounce",
+        "count_in_class": 3,
+        "pct_of_class": 3.7,
+        "theme_total": 37,
+        "pct_of_theme": 8.11
+      },
+      {
+        "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
+        "count_in_class": 3,
+        "pct_of_class": 3.7,
+        "theme_total": 27,
+        "pct_of_theme": 11.11
+      },
+      {
+        "theme": "Search / lists / filters / export / AI Discovery",
+        "count_in_class": 3,
+        "pct_of_class": 3.7,
+        "theme_total": 13,
+        "pct_of_theme": 23.08
+      },
+      {
+        "theme": "SMS / WhatsApp",
+        "count_in_class": 2,
+        "pct_of_class": 2.47,
+        "theme_total": 19,
+        "pct_of_theme": 10.53
+      },
+      {
+        "theme": "Activity / notes / UI display",
+        "count_in_class": 1,
+        "pct_of_class": 1.23,
+        "theme_total": 12,
+        "pct_of_theme": 8.33
+      },
+      {
+        "theme": "Automation not triggering / failing / wrongly triggered",
+        "count_in_class": 1,
+        "pct_of_class": 1.23,
+        "theme_total": 13,
+        "pct_of_theme": 7.69
+      },
+      {
+        "theme": "How-to / configuration / enablement question",
+        "count_in_class": 1,
+        "pct_of_class": 1.23,
+        "theme_total": 7,
+        "pct_of_theme": 14.29
+      },
+      {
+        "theme": "Jobs / requisitions / applications / posting",
+        "count_in_class": 1,
+        "pct_of_class": 1.23,
+        "theme_total": 33,
+        "pct_of_theme": 3.03
       }
     ]
   },
   "theme_totals": [
     {
-      "theme": "Unclassified / other",
-      "count": 203
-    },
-    {
       "theme": "Candidate profile data / fields / tags / location / GDPR",
-      "count": 114
+      "count": 86
     },
     {
       "theme": "Campaigns / job alerts / subscriptions / spotlights",
-      "count": 93
-    },
-    {
-      "theme": "Email not sending / not receiving / spam / bounce",
-      "count": 69
-    },
-    {
-      "theme": "Screening / interview / scheduling / offer / notifications",
-      "count": 67
-    },
-    {
-      "theme": "Hiring status / pipeline / stages / lead status",
-      "count": 67
-    },
-    {
-      "theme": "Jobs / requisitions / applications / posting",
-      "count": 66
-    },
-    {
-      "theme": "Profile merge / unmerge / duplicates / disappeared",
-      "count": 65
-    },
-    {
-      "theme": "Automation not triggering / failing / wrongly triggered",
-      "count": 60
-    },
-    {
-      "theme": "SMS / WhatsApp",
-      "count": 53
-    },
-    {
-      "theme": "Email template content / hyperlinks / branding",
-      "count": 48
-    },
-    {
-      "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
       "count": 46
     },
     {
+      "theme": "Profile merge / unmerge / duplicates / disappeared",
+      "count": 38
+    },
+    {
+      "theme": "Hiring status / pipeline / stages / lead status",
+      "count": 38
+    },
+    {
+      "theme": "Email not sending / not receiving / spam / bounce",
+      "count": 37
+    },
+    {
+      "theme": "Jobs / requisitions / applications / posting",
+      "count": 33
+    },
+    {
+      "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
+      "count": 27
+    },
+    {
+      "theme": "Screening / interview / scheduling / offer / notifications",
+      "count": 22
+    },
+    {
+      "theme": "SMS / WhatsApp",
+      "count": 19
+    },
+    {
+      "theme": "Email template content / hyperlinks / branding",
+      "count": 19
+    },
+    {
       "theme": "Access / CRM not opening / permissions",
-      "count": 24
+      "count": 14
     },
     {
       "theme": "Search / lists / filters / export / AI Discovery",
-      "count": 23
+      "count": 13
+    },
+    {
+      "theme": "Automation not triggering / failing / wrongly triggered",
+      "count": 13
     },
     {
       "theme": "Activity / notes / UI display",
-      "count": 20
+      "count": 12
     },
     {
       "theme": "How-to / configuration / enablement question",
-      "count": 3
+      "count": 7
     },
     {
       "theme": "Events / university recruiting",
-      "count": 2
+      "count": 3
     }
-  ],
-  "by_area": [
-    {
-      "area": "CRM Core",
-      "count": 299,
-      "pct_of_filtered": 29.23,
-      "classification_focus": [
-        {
-          "classification": "Product & Knowledge Issues",
-          "count": 153,
-          "pct_of_area": 51.17,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 38,
-              "pct_of_area_class": 24.84,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 26,
-              "pct_of_area_class": 16.99,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 20,
-              "pct_of_area_class": 13.07,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 17,
-              "pct_of_area_class": 11.11,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 13,
-              "pct_of_area_class": 8.5,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 8,
-              "pct_of_area_class": 5.23,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 4.58,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 4.58,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 5,
-              "pct_of_area_class": 3.27,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 5,
-              "pct_of_area_class": 3.27,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 1.31,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "How-to / configuration / enablement question",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.65,
-              "theme_total_filtered": 3
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.65,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.65,
-              "theme_total_filtered": 65
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.65,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.65,
-              "theme_total_filtered": 60
-            }
-          ]
-        },
-        {
-          "classification": "Code Issues",
-          "count": 57,
-          "pct_of_area": 19.06,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 16,
-              "pct_of_area_class": 28.07,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 12.28,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 10.53,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 10.53,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 10.53,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 5,
-              "pct_of_area_class": 8.77,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 7.02,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.51,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.51,
-              "theme_total_filtered": 65
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.75,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "How-to / configuration / enablement question",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.75,
-              "theme_total_filtered": 3
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.75,
-              "theme_total_filtered": 48
-            }
-          ]
-        },
-        {
-          "classification": "Configuration Issues",
-          "count": 53,
-          "pct_of_area": 17.73,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 13,
-              "pct_of_area_class": 24.53,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 11,
-              "pct_of_area_class": 20.75,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 13.21,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 5,
-              "pct_of_area_class": 9.43,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 7.55,
-              "theme_total_filtered": 60
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 5.66,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 5.66,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.77,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.77,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.77,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.89,
-              "theme_total_filtered": 69
-            }
-          ]
-        },
-        {
-          "classification": "User Experience Issues",
-          "count": 32,
-          "pct_of_area": 10.7,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 11,
-              "pct_of_area_class": 34.38,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 12.5,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 9.38,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 9.38,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 6.25,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 6.25,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 6.25,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 6.25,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 3.12,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 3.12,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 3.12,
-              "theme_total_filtered": 65
-            }
-          ]
-        }
-      ],
-      "classification_other": [
-        {
-          "classification": "External Dependency Issues",
-          "count": 4,
-          "pct_of_area": 1.34
-        }
-      ]
-    },
-    {
-      "area": "CRM Profile",
-      "count": 308,
-      "pct_of_filtered": 30.11,
-      "classification_focus": [
-        {
-          "classification": "Product & Knowledge Issues",
-          "count": 152,
-          "pct_of_area": 49.35,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 42,
-              "pct_of_area_class": 27.63,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 36,
-              "pct_of_area_class": 23.68,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 23,
-              "pct_of_area_class": 15.13,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 19,
-              "pct_of_area_class": 12.5,
-              "theme_total_filtered": 65
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 8,
-              "pct_of_area_class": 5.26,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 3.95,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 5,
-              "pct_of_area_class": 3.29,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 2.63,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 1.97,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 1.32,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 1.32,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.66,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.66,
-              "theme_total_filtered": 60
-            }
-          ]
-        },
-        {
-          "classification": "Code Issues",
-          "count": 93,
-          "pct_of_area": 30.19,
-          "themes": [
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 34,
-              "pct_of_area_class": 36.56,
-              "theme_total_filtered": 65
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 18,
-              "pct_of_area_class": 19.35,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 12,
-              "pct_of_area_class": 12.9,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 7.53,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 7.53,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 5,
-              "pct_of_area_class": 5.38,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 2.15,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 2.15,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 2.15,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 2.15,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.08,
-              "theme_total_filtered": 60
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.08,
-              "theme_total_filtered": 46
-            }
-          ]
-        },
-        {
-          "classification": "Configuration Issues",
-          "count": 37,
-          "pct_of_area": 12.01,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 9,
-              "pct_of_area_class": 24.32,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 8,
-              "pct_of_area_class": 21.62,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 18.92,
-              "theme_total_filtered": 65
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 16.22,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 5.41,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 5.41,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 2.7,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "How-to / configuration / enablement question",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 2.7,
-              "theme_total_filtered": 3
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 2.7,
-              "theme_total_filtered": 67
-            }
-          ]
-        },
-        {
-          "classification": "User Experience Issues",
-          "count": 23,
-          "pct_of_area": 7.47,
-          "themes": [
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 30.43,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 17.39,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 17.39,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 13.04,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 8.7,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Profile merge / unmerge / duplicates / disappeared",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.35,
-              "theme_total_filtered": 65
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.35,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.35,
-              "theme_total_filtered": 23
-            }
-          ]
-        }
-      ],
-      "classification_other": [
-        {
-          "classification": "External Dependency Issues",
-          "count": 3,
-          "pct_of_area": 0.97
-        }
-      ]
-    },
-    {
-      "area": "CRM Messaging",
-      "count": 309,
-      "pct_of_filtered": 30.21,
-      "classification_focus": [
-        {
-          "classification": "Product & Knowledge Issues",
-          "count": 236,
-          "pct_of_area": 76.38,
-          "themes": [
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 54,
-              "pct_of_area_class": 22.88,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 47,
-              "pct_of_area_class": 19.92,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 38,
-              "pct_of_area_class": 16.1,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 32,
-              "pct_of_area_class": 13.56,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 27,
-              "pct_of_area_class": 11.44,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 11,
-              "pct_of_area_class": 4.66,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 8,
-              "pct_of_area_class": 3.39,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 2.97,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 1.27,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 1.27,
-              "theme_total_filtered": 60
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 0.85,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.42,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.42,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.42,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Events / university recruiting",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 0.42,
-              "theme_total_filtered": 2
-            }
-          ]
-        },
-        {
-          "classification": "Code Issues",
-          "count": 35,
-          "pct_of_area": 11.33,
-          "themes": [
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 13,
-              "pct_of_area_class": 37.14,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 17.14,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 11.43,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 8.57,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 8.57,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 5.71,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 5.71,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 2.86,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 2.86,
-              "theme_total_filtered": 60
-            }
-          ]
-        },
-        {
-          "classification": "Configuration Issues",
-          "count": 20,
-          "pct_of_area": 6.47,
-          "themes": [
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 20.0,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 20.0,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 20.0,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 15.0,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 10.0,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.0,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.0,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.0,
-              "theme_total_filtered": 67
-            }
-          ]
-        },
-        {
-          "classification": "User Experience Issues",
-          "count": 13,
-          "pct_of_area": 4.21,
-          "themes": [
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 4,
-              "pct_of_area_class": 30.77,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 23.08,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 23.08,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 15.38,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 7.69,
-              "theme_total_filtered": 67
-            }
-          ]
-        }
-      ],
-      "classification_other": [
-        {
-          "classification": "External Dependency Issues",
-          "count": 5,
-          "pct_of_area": 1.62
-        }
-      ]
-    },
-    {
-      "area": "CRM Automations",
-      "count": 107,
-      "pct_of_filtered": 10.46,
-      "classification_focus": [
-        {
-          "classification": "Product & Knowledge Issues",
-          "count": 65,
-          "pct_of_area": 60.75,
-          "themes": [
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 25,
-              "pct_of_area_class": 38.46,
-              "theme_total_filtered": 60
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 9,
-              "pct_of_area_class": 13.85,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 7,
-              "pct_of_area_class": 10.77,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 9.23,
-              "theme_total_filtered": 114
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 6,
-              "pct_of_area_class": 9.23,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "SMS / WhatsApp",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.08,
-              "theme_total_filtered": 53
-            },
-            {
-              "theme": "Campaigns / job alerts / subscriptions / spotlights",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 3.08,
-              "theme_total_filtered": 93
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Access / CRM not opening / permissions",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 24
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "Activity / notes / UI display",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 20
-            },
-            {
-              "theme": "Events / university recruiting",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 2
-            },
-            {
-              "theme": "Email template content / hyperlinks / branding",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 48
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 1.54,
-              "theme_total_filtered": 46
-            }
-          ]
-        },
-        {
-          "classification": "Code Issues",
-          "count": 22,
-          "pct_of_area": 20.56,
-          "themes": [
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 11,
-              "pct_of_area_class": 50.0,
-              "theme_total_filtered": 60
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 13.64,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Email not sending / not receiving / spam / bounce",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 9.09,
-              "theme_total_filtered": 69
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 2,
-              "pct_of_area_class": 9.09,
-              "theme_total_filtered": 203
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.55,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Search / lists / filters / export / AI Discovery",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.55,
-              "theme_total_filtered": 23
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.55,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Candidate profile data / fields / tags / location / GDPR",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 4.55,
-              "theme_total_filtered": 114
-            }
-          ]
-        },
-        {
-          "classification": "Configuration Issues",
-          "count": 17,
-          "pct_of_area": 15.89,
-          "themes": [
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 10,
-              "pct_of_area_class": 58.82,
-              "theme_total_filtered": 60
-            },
-            {
-              "theme": "Forwarding / LinkedIn / ATS\u2194CRM sync",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 17.65,
-              "theme_total_filtered": 46
-            },
-            {
-              "theme": "Screening / interview / scheduling / offer / notifications",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.88,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Jobs / requisitions / applications / posting",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.88,
-              "theme_total_filtered": 66
-            },
-            {
-              "theme": "Hiring status / pipeline / stages / lead status",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.88,
-              "theme_total_filtered": 67
-            },
-            {
-              "theme": "Unclassified / other",
-              "count_in_area_class": 1,
-              "pct_of_area_class": 5.88,
-              "theme_total_filtered": 203
-            }
-          ]
-        },
-        {
-          "classification": "User Experience Issues",
-          "count": 3,
-          "pct_of_area": 2.8,
-          "themes": [
-            {
-              "theme": "Automation not triggering / failing / wrongly triggered",
-              "count_in_area_class": 3,
-              "pct_of_area_class": 100.0,
-              "theme_total_filtered": 60
-            }
-          ]
-        }
-      ],
-      "classification_other": []
-    }
-  ],
-  "jira_yes_coverage": {
-    "sheet_rx_jira_yes_rows": 1949,
-    "sheet_rx_jira_yes_unique_cases": 1933,
-    "sheet_yes_with_crm_pep_allowlist": 1580,
-    "funnel_unique_cases": {
-      "found_in_all_fields": 1932,
-      "sr_or_defect": 1331,
-      "type_Defect": 777,
-      "class_not_allowed": 134,
-      "class_ok": 1197,
-      "rx_ok": 1197,
-      "in_playbook_filter": 1020,
-      "type_Service Request": 554,
-      "not_sr_or_defect": 601,
-      "pep_not_allowlist": 177,
-      "missing_from_all_fields": 1
-    },
-    "note": "Playbook n_filtered includes U_ISSUE_TYPE in {Service Request, Defect} with allowed ticket classification, RX, and CRM PEP allowlist (Jira Yes and No). Other issue types (Issue/Question, Change Request, \u2026) remain outside this cut."
-  }
+  ]
 }

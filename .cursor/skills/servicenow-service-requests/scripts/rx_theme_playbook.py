@@ -1,381 +1,242 @@
-"""Phenom-knowledge-grounded RX theme elaborations (meaning + reduce-feedback actions).
+"""Phenom-knowledge-grounded RX theme elaborations.
 
-Counts/% live in the sheet classifier report — not here.
-Capabilities cite phenom-knowledge packs; gaps are explicit.
-`reduce` is a list of short, human-readable actions.
+`problem` = human summary from SHORT_DESCRIPTION + DESCRIPTION
+(Jira Yes and No Service Requests). `reduce` = what to do in Phenom.
 """
 
 from __future__ import annotations
 
-# Keys must match theme names in rx_theme_rules.py exactly.
+PRIORITY_ORDER = [
+    'Candidate profile data / fields / tags / location / GDPR',
+    'Email not sending / not receiving / spam / bounce',
+    'Jobs / requisitions / applications / posting',
+    'Hiring status / pipeline / stages / lead status',
+    'Automation not triggering / failing / wrongly triggered',
+    'Campaigns / job alerts / subscriptions / spotlights',
+]
+
 THEME_PLAYBOOK: dict[str, dict] = {
-    "Unclassified / other": {
-        "means": (
-            "SRs that did not match a high-confidence phrase rule — mixed issues, "
-            "sparse titles, or residual cluster language. Not a product capability."
-        ),
-        "knowledge": (
-            "Methodology residual (theme-methodology.md). No phenom-knowledge area."
-        ),
+    'Candidate profile data / fields / tags / location / GDPR': {
+        "means": ('Integrity and configurability of the candidate record: wrong/missing fields, tags, location/phone/email, GDPR/purge/privacy, field add/rename failures, sources, attachments/resumes.'),
+        "problem": 'Largest theme across Yes and No: wrong/missing fields and sources, internal badge missing, attachments auto-download or go missing, privacy delete without a CRM path, and profile edits that save in list view but not on the profile.',
+        "knowledge": ('No dedicated CRM Profile pack. Closest: Messaging notes UI (crm-notes-ui; notes-api not cloned). Recruiter Hub/profile services appear on Engineering capability-map but are not in phenom-knowledge routing packs — do not assert internals.'),
         "reduce": [
-            "Review the leftover tickets again and add clear phrase rules only where the wording is obvious — do not force a weak label.",
-            "Ask support to write clearer case titles for how-to questions so the next round classifies (and deflects) better.",
+            'Let admins manage sources, markets, tags, and field order in the product.',
+            'Fix resume/attachment open, parse, and ATS mismatches.',
+            'Give a clear privacy / delete path and status in CRM.',
+            'Make profile edits that work in list view also save on the profile.',
+            'Keep internal vs external badges accurate after hire/terminate.',
         ],
-        "pack": "—",
+        "pack": 'gap (Profile)',
     },
-    "Candidate profile data / fields / tags / location / GDPR": {
-        "means": (
-            "Integrity and configurability of the candidate record: wrong/missing "
-            "fields, tags, location/phone/email, GDPR/purge/privacy, field "
-            "add/rename failures."
-        ),
-        "knowledge": (
-            "No dedicated CRM Profile pack. Closest: Messaging notes UI "
-            "(crm-notes-ui; notes-api not cloned). Recruiter Hub/profile services "
-            "appear on Engineering capability-map but are not in phenom-knowledge "
-            "routing packs — do not assert internals."
-        ),
+    'Screening / interview / scheduling / offer / notifications': {
+        "means": ('Funnel friction across Screening (ODVA/questionnaire), interview/scheduling/calendar, offer letters, and missing recruiter notifications.'),
+        "problem": 'Tagged-note and screening notifies never fire; assessments overwrite or land on the wrong tab; interview override/busy-slot booking fails; invite-to-interview templates empty in Automation Center — Jira No volume is high.',
+        "knowledge": ('Screening (partial): ODVA config/status/notify in crm-video-assessment (VideoAssessmentConfigController, VideoAssessmentStatusController, VANotifyService → Kafka cp_automation_notification). Video capture/AI scoring/X+/Fitscore/Questionnaires not in cloned Screening repos. Scheduling area blocked (no accessible repos). Automations Temporal activities: SEND_ODVA, INITIATE_SCREENING, INVITE_FOR_INTERVIEW. Notify path often lands in Messaging.'),
         "reduce": [
-            "Make sure phone, email, and location stay correct when a candidate applies or is imported — catch bad data before it lands on the profile.",
-            "Give admins a simpler way to add, rename, and manage custom fields and tags without opening a ticket.",
-            "Publish clear timelines for GDPR / data-purge requests, and let customers check status themselves instead of chasing Support.",
-            "Add short in-product help for “how do I change this field?” so those questions never become SRs.",
+            'Notify when tagged notes, screening sends, or interview status change — and show failures.',
+            'Stop assessments overwriting valid results inside the retention window.',
+            'Fix interview override/busy-slot booking and empty invite templates in Automation Center.',
+            'Show why a candidate landed on the wrong screening/assessment tab.',
         ],
-        "pack": "gap (Profile)",
+        "pack": 'screening + automations (+ scheduling blocked)',
     },
-    "Screening / interview / scheduling / offer / notifications": {
-        "means": (
-            "Funnel friction across Screening (ODVA/questionnaire), interview/"
-            "scheduling/calendar, offer letters, and missing recruiter notifications."
-        ),
-        "knowledge": (
-            "Screening (partial): ODVA config/status/notify in crm-video-assessment "
-            "(VideoAssessmentConfigController, VideoAssessmentStatusController, "
-            "VANotifyService → Kafka cp_automation_notification). Video capture/"
-            "AI scoring/X+/Fitscore/Questionnaires not in cloned Screening repos. "
-            "Scheduling area blocked (no accessible repos). Automations Temporal "
-            "activities: SEND_ODVA, INITIATE_SCREENING, INVITE_FOR_INTERVIEW. "
-            "Notify path often lands in Messaging."
-        ),
+    'Campaigns / job alerts / subscriptions / spotlights': {
+        "means": ('Audience + outbound campaign lifecycle: campaigns not sending/wrong audience, job alerts/subscriptions, spotlights/dynamic lists, talent-pool/nurture language, join-the-community (JTC) forms.'),
+        "problem": 'Campaigns mark complete with 0 sent; subscription/job-alert templates and headers do not update; spotlights will not save; staging alerts leak into prod mailboxes — heavy on both Yes and No.',
+        "knowledge": ('Messaging: crm-campaigns-ui (builder), storm-campaign (execution), crm-lists-ui / crm-candidate-lists (lists, opt-in/out), platform CampaignController / CampaignsController. Gateway /ecampaign/* → exact backend module unverified.'),
         "reduce": [
-            "Fix the path so invites and status changes reliably notify the recruiter — many tickets are “I never got notified.”",
-            "Ship ready-made automation recipes for “invite to interview” and “send video assessment,” and show a clear history when a recipe fails.",
-            "Calendar and self-schedule bugs need Scheduling code access first — treat that as a prerequisite before promising product fixes.",
-            "For questionnaires and assessments, finish Screening knowledge packs before committing to deep engineering work.",
+            'Before send, show who will receive it and why a campaign would complete with 0 sent.',
+            'Keep subscription / job-alert template headers and bodies in sync after edits.',
+            'Fix spotlight save and remove staging alerts leaking into production inboxes.',
+            'Let customers create and update subscription campaigns without Phenom-admin-only blocks where safe.',
         ],
-        "pack": "screening + automations (+ scheduling blocked)",
+        "pack": 'messaging',
     },
-    "Campaigns / job alerts / subscriptions / spotlights": {
-        "means": (
-            "Audience + outbound campaign lifecycle: campaigns not sending/wrong "
-            "audience, job alerts/subscriptions, spotlights/dynamic lists, "
-            "talent-pool/nurture language."
-        ),
-        "knowledge": (
-            "Messaging: crm-campaigns-ui (builder), storm-campaign (execution), "
-            "crm-lists-ui / crm-candidate-lists (lists, opt-in/out), platform "
-            "CampaignController / CampaignsController. Gateway /ecampaign/* → "
-            "exact backend module unverified."
-        ),
+    'Hiring status / pipeline / stages / lead status': {
+        "means": ('Pipeline state machine and status vocabularies: stuck/wrong hiring or lead status, stage moves, disposition/reject reasons, ATS↔CRM mismatch.'),
+        "problem": 'Recruiters cannot change lead or hiring status (dropdown empty, “no further transitions”), pipeline does not update after HM forward, and allowed moves differ for similar candidates — on both Jira Yes and No tickets.',
+        "knowledge": ('Not a dedicated phenom-knowledge pack. Automations often trigger on status/field changes (automation-search-service) and can set status via actions — exact CRM status APIs not grounded in current packs.'),
         "reduce": [
-            "Before a campaign sends, show who will receive it and why it would fail — so recruiters catch wrong audiences and bad setups themselves.",
-            "Make spotlights and dynamic lists use the same filters as the list builder — mismatches drive a lot of “wrong people got this” tickets.",
-            "Let customers control job-alert subscriptions (internal vs external) and see a simple audit of why an alert went out.",
-            "Give CS and Product a live view of bounce and send failures so chronic delivery problems are fixed before they pile up as tickets.",
+            'Show which status moves are allowed for each customer — stop empty dropdowns and “no further transitions.”',
+            'When status should update after HM forward or automation, show it immediately or show why it did not.',
+            'If an automation changed status, show that on the candidate.',
+            'Let recruiters clear stuck leads without calling Support.',
         ],
-        "pack": "messaging",
+        "pack": 'gap (pipeline) · automations adjacent',
     },
-    "Hiring status / pipeline / stages / lead status": {
-        "means": (
-            "Pipeline state machine and status vocabularies: stuck/wrong hiring or "
-            "lead status, stage moves, disposition/reject reasons, ATS↔CRM mismatch."
-        ),
-        "knowledge": (
-            "Not a dedicated phenom-knowledge pack. Automations often trigger on "
-            "status/field changes (automation-search-service) and can set status "
-            "via actions — exact CRM status APIs not grounded in current packs."
-        ),
+    'Email template content / hyperlinks / branding': {
+        "means": ('Template authoring & rendering: broken links, footer/logo/branding, From-name casing, white-label copy, placeholders, locale.'),
+        "problem": 'Default templates locked or missing in prod; placeholders like first name / job category stay blank; From-name casing and white-label still need tickets; Jira No is mostly template enable/edit asks.',
+        "knowledge": ('Messaging: crm-templates-ui (template-page.component.ts), email-facade-service TemplateController, gateway TemplateAPIController. Campaigns pull templates before storm-campaign send.'),
         "reduce": [
-            "Show each customer which hiring/lead statuses they can use and which moves are allowed — cuts “what statuses exist?” and stuck-pipeline tickets.",
-            "When ATS and CRM disagree on status, show both values side by side so Support (and the customer) can see the gap immediately.",
-            "If an automation moved a candidate’s status, let the recruiter see that in the run history — unexplained status changes create SRs.",
-            "Stop silent auto-reject recipes: require confirmation or a clear warning before candidates are rejected automatically.",
+            'Let Master Admins manage default templates in prod the same way as staging.',
+            'Validate placeholders (name, job category, links) on save before send.',
+            'Allow From-name casing and white-label edits in product.',
+            'Export or list all templates so customers can audit without a ticket.',
         ],
-        "pack": "gap (pipeline) · automations adjacent",
+        "pack": 'messaging',
     },
-    "Email template content / hyperlinks / branding": {
-        "means": (
-            "Template authoring & rendering: broken links, footer/logo/branding, "
-            "placeholders, edit/access, language/locale."
-        ),
-        "knowledge": (
-            "Messaging: crm-templates-ui (template-page.component.ts), "
-            "email-facade-service TemplateController, gateway TemplateAPIController. "
-            "Campaigns pull templates before storm-campaign send."
-        ),
+    'Jobs / requisitions / applications / posting': {
+        "means": ('Job ingest/posting and application capture: close/publish/unpublish failures, duplicate draft jobs, internal vs external visibility, referral data, incomplete apply.'),
+        "problem": 'Close/publish/unpublish fails, pay rate and posting dates disagree with the careers site, candidates do not land on the right req, and HMs lose visibility when a job is unposted — common on both Jira-linked and non-Jira SRs.',
+        "knowledge": ('Not in messaging/automations/screening packs. Capability-map points IX job sync (crm-storm-job-pull) and crm-jobs-service — not cloned under phenom-knowledge.'),
         "reduce": [
-            "When someone saves a template, check links and merge fields and flag broken ones before they go live.",
-            "Preview how logo, footer, and brand styling will look so customers are not surprised after send.",
-            "Make it obvious who can edit company-default templates vs their own account templates — many tickets are access confusion, not bugs.",
-            "When cloning a template into another language, keep placeholders and layout intact so locale copies do not break.",
+            'Make close / publish / unpublish work for the assigned recruiter and say why the action is blocked.',
+            'Keep careers-site pay rate and post dates in sync with the job record.',
+            'Confirm candidates land on the right req (or show the transfer error).',
+            'Keep unposted jobs visible to HMs for review when customers need that.',
         ],
-        "pack": "messaging",
+        "pack": 'gap (jobs / IX)',
     },
-    "Jobs / requisitions / applications / posting": {
-        "means": (
-            "Job ingest/posting and application capture: missing/duplicate jobs, "
-            "stuck/incomplete applications, internal vs external posting, req IDs."
-        ),
-        "knowledge": (
-            "Not in messaging/automations/screening packs. Capability-map points "
-            "IX job sync (crm-storm-job-pull) and crm-jobs-service — not cloned "
-            "under phenom-knowledge."
-        ),
+    'Email not sending / not receiving / spam / bounce': {
+        "means": ('Delivery path after compose/campaign: not delivered, bounce/spam, domain registration, whitelist/blacklist/suppression, inbox gaps, referral and incomplete-apply reminder emails.'),
+        "problem": 'Inbox shows unread with nothing inside; domains need registering; whitelist/blacklist is ticket-only (especially Jira No UAT); tagged-note and incomplete-apply emails go missing or fire after the app is complete.',
+        "knowledge": ('Messaging: SendGrid/SES/MGW (SendEmailServices, AWSService); email-analytics-service SendgridWebhookController; SuppressionListController; one-click unsubscribe; txn-email-service.'),
         "reduce": [
-            "Show customers when job sync last succeeded or failed — “job is missing” tickets drop when sync health is visible.",
-            "Explain in the UI what makes an application incomplete, so recruiters fix it without opening a case.",
-            "Stop duplicate jobs/requisitions from being created on import.",
-            "Build a Jobs knowledge pack so deeper fixes are grounded in real code, not guesses.",
+            'Self-serve domain register, whitelist/blacklist, and suppression with a real reason (not “NA”).',
+            'Fix inbox so unread counts match visible messages and threads stay in order.',
+            'Stop incomplete-apply reminders after the application is already complete.',
+            'Tell recruiters when tagged-note or candidate mail was blocked — and why.',
         ],
-        "pack": "gap (jobs / IX)",
+        "pack": 'messaging',
     },
-    "Email not sending / not receiving / spam / bounce": {
-        "means": (
-            "Delivery path after compose/campaign: not delivered, bounce/spam, "
-            "sender/from issues, whitelist, unsubscribe/opt-in email problems."
-        ),
-        "knowledge": (
-            "Messaging: SendGrid/SES/MGW (SendEmailServices, AWSService); "
-            "email-analytics-service SendgridWebhookController; "
-            "SuppressionListController; one-click unsubscribe; txn-email-service."
-        ),
+    'Forwarding / LinkedIn / ATS↔CRM sync': {
+        "means": ('Integration edges: forward resume/candidate failures, LinkedIn export/import, ATS/Workday/SuccessFactors/HM-portal sync gaps, stale recruiter lists.'),
+        "problem": 'Forward-to-HM fails with “user not in the system,” Workday/ATS applies never appear on the Phenom req, LinkedIn CRM Connect export or Edge recommendations break, and recruiter/HM emails stay out of date.',
+        "knowledge": ('Automations: crm-workflows = LinkedIn CRM Connect; Temporal forward-to-HM in crm-automation-service. Full ATS job sync (IX) not in phenom-knowledge packs.'),
         "reduce": [
-            "Give Product and CS a simple deliverability view per customer (bounce and spam rates) so problems are fixed before tickets pile up.",
-            "Tell the recruiter clearly when a candidate is unsubscribed or suppressed — instead of a silent “email didn’t send.”",
-            "Equip Support with a short sender-authentication checklist (SPF / DKIM / DMARC) for “landing in spam” cases.",
-            "In triage, separate “automation never fired” from “email was sent but bounced” — those need different owners and fixes.",
+            'When forward-to-HM fails, say why in plain language (for example, user not in the system).',
+            'Show ATS/Workday sync freshness and push missing applies onto the Phenom req.',
+            'Fix LinkedIn CRM Connect export and Edge recommendations with visible errors.',
+            'Keep recruiter and HM email lists current after people changes.',
         ],
-        "pack": "messaging",
+        "pack": 'automations (+ IX gap)',
     },
-    "Forwarding / LinkedIn / ATS↔CRM sync": {
-        "means": (
-            "Integration edges: forward resume/candidate failures, LinkedIn "
-            "export/import, ATS/Workday/SuccessFactors sync gaps."
-        ),
-        "knowledge": (
-            "Automations: crm-workflows = LinkedIn CRM Connect; Temporal "
-            "forward-to-HM in crm-automation-service. Full ATS job sync (IX) "
-            "not in phenom-knowledge packs."
-        ),
+    'SMS / WhatsApp': {
+        "means": ('Text channels + opt-in: SMS/WhatsApp not sending/showing, opt-in, local numbers / area codes, “no numbers available.”'),
+        "problem": 'Opt-in wrong or missing on profile, blasts fail or lack AM slots/numbers (NZ/AU/area codes), WhatsApp templates reject, and STOP consent behavior is unclear — Yes and No alike.',
+        "knowledge": ('Messaging: text-api-service SMSController / OptInController; WhatsApp via crm-inbox-fe whatsapp-management.service.ts + Gupshup/Twilio webhooks; campaign SMS in storm-campaign / sms-campaign-service.'),
         "reduce": [
-            "Show LinkedIn Connect errors in the product UI instead of a blank failure that becomes an SR.",
-            "When “forward to hiring manager” fails, say why (e.g. user not in the system) in plain language.",
-            "Show how fresh ATS↔CRM sync is, and when it last failed, so customers know if the gap is lag vs a real break.",
-            "Document the ATS sync path in a knowledge pack before promising deep engineering fixes.",
+            'Show accurate SMS opt-in on the profile (including IQA/Workday sources).',
+            'Provide numbers for required countries/area codes and clearer “no number available” guidance.',
+            'Surface real send errors for blasts and WhatsApp template rejection reasons.',
+            'Document STOP behavior on 1:1 SMS so consent updates are predictable.',
         ],
-        "pack": "automations (+ IX gap)",
+        "pack": 'messaging',
     },
-    "SMS / WhatsApp": {
-        "means": (
-            "Text channels + opt-in: SMS/WhatsApp not sending/showing, opt-in, "
-            "scheduling limits, column/status issues."
-        ),
-        "knowledge": (
-            "Messaging: text-api-service SMSController / OptInController; "
-            "WhatsApp via crm-inbox-fe whatsapp-management.service.ts + "
-            "Gupshup/Twilio webhooks; campaign SMS in storm-campaign / "
-            "sms-campaign-service."
-        ),
+    'Automation not triggering / failing / wrongly triggered': {
+        "means": ('Recipe match + execute reliability: not firing, wrong fire, failures, missing Automation Center actions (e.g. Email Candidate), run-history gaps.'),
+        "problem": 'Recipes do not fire for matching candidates, fire too often, work in staging but fail in prod, or send rejection mail customers want paused — with no clear run history on either Jira Yes or No.',
+        "knowledge": ('Automations: crm-automations-ui; AutomationController CRUD; automation-search-service match (KafkaConsumer, Lucene+ES, ValidatorService); execute via candidate-automation ActionFactory (24 actions) and/or Temporal activities in crm-automation-service. CRMAutomationUtils shared lib not cloned.'),
         "reduce": [
-            "Show opt-in status on the candidate profile and whether they are eligible for an SMS/WhatsApp campaign before send.",
-            "Surface provider error messages (why the text failed) for recruiters and CS — not just “send failed.”",
-            "Make WhatsApp template approval status obvious so customers know when a message can go out.",
-            "Offer a small test/preview send before a large SMS or WhatsApp blast.",
+            'Show run history: trigger → recipe → result (or why it failed) for Yes and No cases.',
+            'Make staging and production recipe behavior match, or show the config gap.',
+            'Let customers pause or exclude candidates from a rejection automation quickly.',
+            'Alert when a candidate matches conditions but the recipe never fires.',
         ],
-        "pack": "messaging",
+        "pack": 'automations',
     },
-    "Automation not triggering / failing / wrongly triggered": {
-        "means": (
-            "Recipe match + execute reliability: not firing, wrong fire, failures, "
-            "screening/invite automations, run-history gaps."
-        ),
-        "knowledge": (
-            "Automations: crm-automations-ui; AutomationController CRUD; "
-            "automation-search-service match (KafkaConsumer, Lucene+ES, "
-            "ValidatorService); execute via candidate-automation ActionFactory "
-            "(24 actions) and/or Temporal activities in crm-automation-service. "
-            "CRMAutomationUtils shared lib not cloned."
-        ),
+    'Profile merge / unmerge / duplicates / disappeared': {
+        "means": ('Identity resolution: duplicates, merge/unmerge, CAND/ATS ID reassignment, referral email mismatches that create two contacts.'),
+        "problem": 'Wrong merges and unmerges dominate Jira Yes; Jira No adds duplicate profiles on re-apply/agency upload with no duplicate check, merge status customers cannot see, and profiles that disappear.',
+        "knowledge": ('Not found in Messaging/Automations/Screening packs — CRM Core/Profile gap until a pack exists.'),
         "reduce": [
-            "Let customers see a simple run history: what triggered, which recipe matched, and what the action did (or why it failed).",
-            "Let them preview and validate filters before turning a recipe on — fewer “it fired on the wrong people” tickets.",
-            "Alert when a recipe should have matched but quietly did not — silent misses create mystery SRs.",
-            "For Support, document which actions run on which engine so debugging is faster and handoffs are clearer.",
+            'Show merge preview and easy undo; block wrong merges that mix documents.',
+            'Run duplicate checks on apply and agency upload — not only on manual add.',
+            'Show merge status on the profile so customers do not have to ask Support.',
+            'Keep a findable trail when a profile is soft-deleted or “disappears.”',
         ],
-        "pack": "automations",
+        "pack": 'gap (merge / identity)',
     },
-    "Profile merge / unmerge / duplicates / disappeared": {
-        "means": (
-            "Identity resolution: duplicates, merge/unmerge, “candidate "
-            "disappeared,” resume disappears."
-        ),
-        "knowledge": (
-            "Not found in Messaging/Automations/Screening packs — CRM Core/"
-            "Profile gap until a pack exists."
-        ),
+    'Access / CRM not opening / permissions': {
+        "means": ('AuthZ/authN and entitlements: cannot open CRM, role/permission missing, email/name changes breaking req visibility, deactivated users still in hiring-team pickers.'),
+        "problem": 'CRM will not open or loads a 401, Apps dropdown is empty despite access, email changes drop req visibility, and feature flags (Chrome extension, Create Job, forms) still need a ticket to turn on.',
+        "knowledge": ('No dedicated pack. Capability-map: Recruiter Hub / identity — not grounded here. Messaging SRs mention template RBAC; auth service code is outside Messaging skill.'),
         "reduce": [
-            "Show a clear merge preview and an easy undo — so merge mistakes do not become urgent tickets.",
-            "Keep an audit log of who merged or unmerged whom, and when.",
-            "When a profile is soft-deleted, keep it findable (with context) so candidates do not “disappear” with no explanation.",
-            "Deduplicate on import before creating a new profile.",
+            'When CRM will not open, say whether it is role, license, or outage — not a blank spin or 401.',
+            'After email/name change, re-link jobs automatically.',
+            'Let admins turn safe feature flags on themselves (extension, Create Job limits, forms).',
+            'Remove deactivated users from Hiring Team and similar pickers.',
         ],
-        "pack": "gap (merge / identity)",
+        "pack": 'gap (identity / access)',
     },
-    "Access / CRM not opening / permissions": {
-        "means": (
-            "AuthZ/authN and entitlements: cannot open CRM, role/permission "
-            "missing, login/SSO, admin access to features (incl. templates)."
-        ),
-        "knowledge": (
-            "No dedicated pack. Capability-map: Recruiter Hub / identity — not "
-            "grounded here. Messaging SRs mention template RBAC; auth service "
-            "code is outside Messaging skill."
-        ),
+    'Events / university recruiting': {
+        "means": ('Event entities + campus recruiting: registration, marketing-email flags on event leads, event share email copy.'),
+        "problem": 'Event marketing-email flags and registration copy still go through Support; campus reps cannot log into the event app; invite-to-event and Early Talent access are unclear.',
+        "knowledge": ('Screening ODVA can attach to Event entities (crm-video-assessment). Broader Events/UR CRM features not covered by Messaging/Automations packs.'),
         "reduce": [
-            "Show in-product which role unlocks which feature — so “I can’t open X” is self-diagnosable.",
-            "Let customers request access themselves, with a clear reason when access is denied.",
-            "Give Support a short SSO troubleshooting checklist for login failures.",
-            "Error messages should say whether a feature is turned off vs the user lacks permission — those are different fixes.",
+            'Let customers mark event leads as marketing-email eligible without a spreadsheet ticket.',
+            'Allow editing event registration confirmation copy in product.',
+            'Make invite-to-event and Early Talent access self-explanatory for the right roles.',
         ],
-        "pack": "gap (identity / access)",
+        "pack": 'screening (partial) · Events gap',
     },
-    "Events / university recruiting": {
-        "means": (
-            "Event entities + campus recruiting: registration, campus/university "
-            "flows, event forms/images/invites."
-        ),
-        "knowledge": (
-            "Screening ODVA can attach to Event entities (crm-video-assessment). "
-            "Broader Events/UR CRM features not covered by Messaging/Automations packs."
-        ),
+    'Activity / notes / UI display': {
+        "means": ('Front-end shell / notes / activity timeline: notes delete, duplicate activity lines, lagging/freezing UI, inbox ordering.'),
+        "problem": 'Counts on screen disagree with buckets, notes cannot be deleted even as Master Admin, activity shows triple outreach, dashboards stay blank, and texting shows “Failed to fetch conversations.”',
+        "knowledge": ('Messaging: crm-notes-ui → /notes-api/* (notes-api not cloned); crm-inbox-fe. Dashboard widgets: Analytics pack (crm-recruiter-dashboard, crm-dashboard-service) only if SR is dashboard-specific.'),
         "reduce": [
-            "Make event forms and field setup easier so campus/event teams configure without Support.",
-            "Show whether registrations synced successfully and when they last updated.",
-            "Build an Events product knowledge pack before committing to deep code fixes.",
+            'Align bucket counts with what the UI shows.',
+            'Let Master Admins delete notes or explain why delete is hidden.',
+            'Stop duplicate outreach lines on the activity tab.',
+            'Replace blank dashboards and “Failed to fetch conversations” with a clear retry/error.',
         ],
-        "pack": "screening (partial) · Events gap",
+        "pack": 'messaging (+ analytics if dashboard)',
     },
-    "Activity / notes / UI display": {
-        "means": (
-            "Front-end shell / notes / activity timeline: UI not displaying, "
-            "blank buttons/tabs, notes/activity missing, logos."
-        ),
-        "knowledge": (
-            "Messaging: crm-notes-ui → /notes-api/* (notes-api not cloned); "
-            "crm-inbox-fe. Dashboard widgets: Analytics pack "
-            "(crm-recruiter-dashboard, crm-dashboard-service) only if SR is "
-            "dashboard-specific."
-        ),
+    'Search / lists / filters / export / AI Discovery': {
+        "means": ('Candidate discovery + list membership + export: search/filter broken, lists empty, report/export columns blank or confidential.'),
+        "problem": 'List build returns empty mid-filter; exports show N/A or Confidential; phone/preferred fields missing from export; AI Discovery cannot source CRM or external candidates.',
+        "knowledge": ('Messaging: lists crm-lists-ui / crm-candidate-lists (FilterService). AI Discovery / CRM search engines not found in cloned Messaging/Automations/Screening packs.'),
         "reduce": [
-            "Ground the notes backend in knowledge packs so blank notes/activity screens can be fixed with confidence.",
-            "Replace blank screens with a clear message: “you don’t have permission” vs “this failed to load — try again.”",
-            "Show when the activity feed was last refreshed so recruiters know if data is stale.",
+            'Keep list filters working through Apply & View Results — no empty mid-build.',
+            'Explain N/A / Confidential on exports and include phone when configured.',
+            'Fix AI Discovery sourcing from CRM and expected external candidates.',
         ],
-        "pack": "messaging (+ analytics if dashboard)",
+        "pack": 'messaging (lists) · Discovery gap',
     },
-    "Search / lists / filters / export / AI Discovery": {
-        "means": (
-            "Candidate discovery + list membership + export: search/filter broken, "
-            "lists empty, export issues, AI Discovery / sourcing from CRM."
-        ),
-        "knowledge": (
-            "Messaging: lists crm-lists-ui / crm-candidate-lists (FilterService). "
-            "AI Discovery / CRM search engines not found in cloned Messaging/"
-            "Automations/Screening packs."
-        ),
+    'How-to / configuration / enablement question': {
+        "means": ('Enablement gap more than defect — how/what/can-we, enable-feature, org/department rename, impact questions (e.g. timezone changes).'),
+        "problem": 'Admins ask Support to enable flags (calendar, docs-to-jobs, incomplete-apply reminders, preferred name), rename departments, change time zones/area codes, and recover deleted candidates.',
+        "knowledge": ('Cross-cutting; map each how-to to Messaging/Automations/Screening docs once the topic is known.'),
         "reduce": [
-            "Keep list filters consistent everywhere, and explain why a search returned zero results instead of a blank list.",
-            "Show export progress/status and document which columns come out — “export broke / wrong columns” is a top ask.",
-            "Build a Search / AI Discovery knowledge pack before promising deeper product changes.",
+            'Let customers enable common flags themselves (docs-to-jobs, incomplete-apply reminders, preferred name).',
+            'Short guided flows for department rename, time zone, and area-code changes.',
+            'Show how to recover a soft-deleted candidate without a ticket.',
         ],
-        "pack": "messaging (lists) · Discovery gap",
-    },
-    "How-to / configuration / enablement question": {
-        "means": (
-            "Enablement gap more than defect — title-level how/what/can-we / "
-            "enable-feature questions (title-only classifier)."
-        ),
-        "knowledge": (
-            "Cross-cutting; map each how-to to Messaging/Automations/Screening "
-            "docs once the topic is known."
-        ),
-        "reduce": [
-            "Add short guided setups in the product for the most common “how do I…?” questions.",
-            "Give CS ready-made answer macros mapped to these themes so how-to cases close without engineering.",
-            "Where it is safe, let customers turn features on themselves instead of waiting for a ticket to enable them.",
-        ],
-        "pack": "cross-cutting",
+        "pack": 'cross-cutting',
     },
 }
 
-
-PRIORITY_ORDER = [
-    "Candidate profile data / fields / tags / location / GDPR",
-    "Screening / interview / scheduling / offer / notifications",
-    "Campaigns / job alerts / subscriptions / spotlights",
-    "Hiring status / pipeline / stages / lead status",
-    "Email template content / hyperlinks / branding",
-    "Email not sending / not receiving / spam / bounce",
-]
-
-# Product-area buckets for the HTML Playbook tab (order preserved).
 AREA_ORDER = [
-    "CRM Core",
-    "CRM Profile",
-    "CRM Messaging",
-    "CRM Automations",
+    'CRM Core',
+    'CRM Profile',
+    'CRM Messaging',
+    'CRM Automations',
 ]
 
 THEME_AREA: dict[str, str] = {
-    # CRM Core — jobs, pipeline, access, events, residual/how-to
-    "Hiring status / pipeline / stages / lead status": "CRM Core",
-    "Jobs / requisitions / applications / posting": "CRM Core",
-    "Forwarding / LinkedIn / ATS↔CRM sync": "CRM Core",
-    "Access / CRM not opening / permissions": "CRM Core",
-    "Events / university recruiting": "CRM Core",
-    "How-to / configuration / enablement question": "CRM Core",
-    "Unclassified / other": "CRM Core",
-    # CRM Profile
-    "Candidate profile data / fields / tags / location / GDPR": "CRM Profile",
-    "Profile merge / unmerge / duplicates / disappeared": "CRM Profile",
-    # CRM Messaging
-    "Campaigns / job alerts / subscriptions / spotlights": "CRM Messaging",
-    "Email template content / hyperlinks / branding": "CRM Messaging",
-    "Email not sending / not receiving / spam / bounce": "CRM Messaging",
-    "SMS / WhatsApp": "CRM Messaging",
-    "Activity / notes / UI display": "CRM Messaging",
-    "Search / lists / filters / export / AI Discovery": "CRM Messaging",
-    # CRM Automations (+ screening/invite funnel often driven by recipes)
-    "Automation not triggering / failing / wrongly triggered": "CRM Automations",
-    "Screening / interview / scheduling / offer / notifications": "CRM Automations",
+    'Hiring status / pipeline / stages / lead status': 'CRM Core',
+    'Jobs / requisitions / applications / posting': 'CRM Core',
+    'Forwarding / LinkedIn / ATS↔CRM sync': 'CRM Core',
+    'Access / CRM not opening / permissions': 'CRM Core',
+    'Events / university recruiting': 'CRM Core',
+    'How-to / configuration / enablement question': 'CRM Core',
+    'Candidate profile data / fields / tags / location / GDPR': 'CRM Profile',
+    'Profile merge / unmerge / duplicates / disappeared': 'CRM Profile',
+    'Campaigns / job alerts / subscriptions / spotlights': 'CRM Messaging',
+    'Email template content / hyperlinks / branding': 'CRM Messaging',
+    'Email not sending / not receiving / spam / bounce': 'CRM Messaging',
+    'SMS / WhatsApp': 'CRM Messaging',
+    'Activity / notes / UI display': 'CRM Messaging',
+    'Search / lists / filters / export / AI Discovery': 'CRM Messaging',
+    'Automation not triggering / failing / wrongly triggered': 'CRM Automations',
+    'Screening / interview / scheduling / offer / notifications': 'CRM Automations',
 }
 
 AREA_BLURB: dict[str, str] = {
-    "CRM Core": (
-        "Jobs, pipeline/status, access, events, ATS/LinkedIn sync, "
-        "and residual/how-to tickets that sit on the CRM platform."
-    ),
-    "CRM Profile": (
-        "Candidate record integrity — fields, tags, location, GDPR/purge, "
-        "merge/duplicates, and disappeared profiles."
-    ),
-    "CRM Messaging": (
-        "Outbound and channel messaging — campaigns, templates, email delivery, "
-        "SMS/WhatsApp, notes/activity UI, and lists/search/export."
-    ),
-    "CRM Automations": (
-        "Recipe reliability plus screening/interview/invite/notification flows "
-        "that automations commonly drive."
-    ),
+    'CRM Core': ('Across Jira Yes and No Service Requests, Core pain is status moves that will not stick, jobs that will not close or post correctly, ATS/LinkedIn/forwarding breaks, and access that disappears after email or role changes. Recruiters cannot self-serve these — they open tickets.'),
+    'CRM Profile': ('Profile is the highest-volume area when Yes and No are combined. Tickets show field/source/privacy work still done by Support, resumes and attachments that misbehave, and merges/duplicates/disappeared profiles — especially wrong merges on Jira Yes and silent duplicates on Jira No.'),
+    'CRM Messaging': ('Messaging is the largest area overall (Yes + No). Campaigns complete with zero sends, job-alert/subscription templates drift, email delivery and whitelist stay ticket-driven, and SMS/WhatsApp opt-in and numbers fail. Template/placeholder edits dominate Jira No.'),
+    'CRM Automations': ('Smaller share but noisy: screening/interview notifies and calendar booking fail silently, and Automation Center recipes miss, double-fire, or differ between staging and production — on both Jira-updated and non-Jira Service Requests.'),
 }
-

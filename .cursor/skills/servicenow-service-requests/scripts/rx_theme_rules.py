@@ -369,6 +369,189 @@ CLUSTER_V1_THEME_RULES: list[tuple[str, list[str]]] = [
     ),
 ]
 
+# High-confidence rules from DESCRIPTION review of residual unclassified
+# (filtered RX + CRM PEP playbook population). Phrase matches only — no
+# force-label by similarity. Maps leftover tickets into existing themes.
+CLUSTER_V2_THEME_RULES: list[tuple[str, list[str]]] = [
+    (
+        "Email template content / hyperlinks / branding",
+        [
+            r'\b("?from"?\s+field|from\s+line)\b',
+            r"\b(capitalize|sentence case|punctuat)\b.{0,40}\b(from|notification|email)\b",
+            r"\b(white\s*label|white[- ]?labell?ing)\b",
+            r"\bemail\b.{0,40}\b(white\s*label|white[- ]?labell?ing)\b",
+            r"\bedit (the )?email copy\b",
+            r"\bsharing (an )?event via email\b",
+        ],
+    ),
+    (
+        "Email not sending / not receiving / spam / bounce",
+        [
+            r"\bwhite[- ]?list\w*\b",
+            r"\bblack[- ]?list\w*\b",
+            r"\b(suppression list|block(ed)? email domains?)\b",
+            r"\bregister(ing)? the domain\b",
+            r"\bdomain\b.{0,40}\b(register|registered|dns|send emails?|validated)\b",
+            r"\b(referral|incomplete apply|privacy notification)\s+emails?\b",
+            r"\bemails?\b.{0,40}\b(not triggered|dropped|didn'?t (get|receive)|did not (get|receive)|blocked|thread visibility)\b",
+            r"\b(candidate|cdd)\b.{0,40}\b(didn'?t get|did not get|didn'?t receive|blocked).{0,40}\b(email|message|response)\b",
+            r"\bincomplete apply reminders?\b",
+            r"\bphenom email (issue|thread)\b",
+            r"\binbox (errors?|not showing|feature)\b",
+            r"\bsubsequent email (response|reply)\b",
+        ],
+    ),
+    (
+        "SMS / WhatsApp",
+        [
+            r"\bno numbers? available\b",
+            r"\b(area code|phone numbers? assigned|recruiter.{0,20}phone)\b",
+        ],
+    ),
+    (
+        "Candidate profile data / fields / tags / location / GDPR",
+        [
+            r"\b(profile source|candidate source|traffic source|applicant traffic source)\b",
+            r"\b(vertical structure|hris mapping|org structure|nested job fields)\b",
+            r"\b(country of residence|country codes?|capital names|job family)\b",
+            r"\b(dropdown with search|source dropdown|hiring team dropdown)\b",
+            r"\b(tagged|tagging)\b.{0,30}\bfollow\b",
+            r"\b(privacy (process|requests?|list|notification|dashboard)|data removal|gdpr)\b",
+            r"\b(candidate not deleting|delete a candidate|removing test data|cv removal|resume parsing|bulk resume upload|malicious content.{0,20}resume)\b",
+            r"\b(attachments?|documents?)\b.{0,50}\b(missing|unable to see|automatic download|associate|associating|download)\b",
+            r"\b(automatic download|missing|unable to see).{0,40}\b(attachments?|documents?)\b",
+            r"\bmissing documents?\b",
+            r"\b(associate|associating) (documents?|docs?) (with|to) jobs?\b",
+            r"\b(test candidate|mctestface|testy\.mctestface|test data)\b",
+            r"\bjsq\b.{0,40}\b(fields?|answers?|pdf)\b",
+            r"\b(marketing emails?|event leads?).{0,40}\bprofiles?\b",
+            r"\b(former|terminated|internal) (employee|candidates?)\b",
+            r"\b(employee (data feed|records?|id)|profiles? converted to employee)\b",
+            r"\b(dataset ingestion|field creation|bulk field)\b",
+            r"\bupdate (to )?candidate source\b",
+            r"\badding a profile source\b",
+            r"\bopt[- ]?in (report|status)\b",
+        ],
+    ),
+    (
+        "Profile merge / unmerge / duplicates / disappeared",
+        [
+            r"\bnot merging (contacts|profiles|candidates)\b",
+            r"\bassociating cand(idate)? id\b",
+            r"\b(cand(idate)? id|ats id).{0,40}\b(profile|reassign|associated)\b",
+            r"\bduplicat(e|ing)\b.{0,30}\b(job|draft|profile|candidate)\b",
+        ],
+    ),
+    (
+        "Hiring status / pipeline / stages / lead status",
+        [
+            r"\b(change status|no further transitions|moved.{0,20}to (decline|reject)|auto[- ]?knockout|auto disposition)\b",
+            r"\b(new applicant|lead not showing|new leads)\b",
+            r"\b(status|stage).{0,40}\b(moved|change|transition|decline|review)\b",
+            r"\blead to application\b",
+        ],
+    ),
+    (
+        "Jobs / requisitions / applications / posting",
+        [
+            r"\b(unable to close|cannot close|can'?t close|close (the )?(job|project|phenom project)|unpublish|unable to publish|publish (tab|job))\b",
+            r"\bwho (closed|cancelled) (this |the )?job\b",
+            r"\b(visibility to jobs|see all jobs|limit.{0,20}jobs)\b",
+            r"\b(candidate not adding to job|add(ing)? a candidate.{0,20}to a job|internal application)\b",
+            r"\b(jobs? are duplicating|duplicating as draft)\b",
+            r"\b(apm apply|apply errors|re[- ]?applied|re applied)\b",
+            r"\b(showing as external|internally publish|career (site|website))\b",
+            r"\b(job duration|deactivated|internally published)\b",
+            r"\bemployee referral data\b",
+            r"\breferral link\b",
+        ],
+    ),
+    (
+        "Forwarding / LinkedIn / ATS↔CRM sync",
+        [
+            r"\b(user/recruiter sync|recruiter sync|resync|re-sync|out of date)\b",
+            r"\b(hm|hiring manager).{0,30}\b(crm|portal|sync)\b",
+            r"\b(missing employee|employee.{0,20}crm|hire date)\b",
+            r"\b(workday|taleo|successfactors|ats).{0,50}\b(phenom|crm|resume|eligibility)\b",
+            r"\bdata integrity\b.{0,40}\b(crm|apps?)\b",
+            r"\bforwarding candidates\b",
+        ],
+    ),
+    (
+        "Access / CRM not opening / permissions",
+        [
+            r"\bcrm not available\b",
+            r"\b(do not have access|does not have access|cannot close jobs|recruiters do not have access)\b",
+            r"\b(deactivated users|remove deactivated)\b",
+            r"\b(user name change|users? email was updated)\b",
+            r"\bonly (admins?|3 reqs)\b",
+        ],
+    ),
+    (
+        "Automation not triggering / failing / wrongly triggered",
+        [
+            r"\bautomation (request|center|is running|running to)\b",
+            r'\b"email candidate" action\b',
+            r"\bemail candidate.{0,20}automation\b",
+            r"\b(what automation|auto knockout|custom automation)\b",
+            r"\bautomation\b.{0,40}\b(not (being )?available|not available|partial apps?)\b",
+        ],
+    ),
+    (
+        "Events / university recruiting",
+        [
+            r"\bevent leads?\b",
+            r"\b(marketing emails?).{0,30}\bevent\b",
+            r"\bsharing (an )?event\b",
+            r"\bhiring event\b",
+        ],
+    ),
+    (
+        "Activity / notes / UI display",
+        [
+            r"\b(remove|delete|need to remove) (one )?note\b",
+            r"\bnote(s)? on candidate\b",
+            r"\binbox not showing messages in order\b",
+            r"\b(activity|emails?) tab\b",
+            r"\b(lagging|freezing|system error)\b",
+        ],
+    ),
+    (
+        "How-to / configuration / enablement question",
+        [
+            r"\b(raise the concern|raise and not them|product enhancement|suggestion)\b",
+            r"\b(what happened here|in reference to cs\d+)\b",
+            r"\b(daylight saving|timezone|time zone|impact due to)\b",
+            r"\b(enable|turn on|turning on).{0,40}\b(feature|associat)",
+            r"\bdepartment (repurposed|name)\b",
+            r"\bupdate org structure\b",
+        ],
+    ),
+    (
+        "Search / lists / filters / export / AI Discovery",
+        [
+            r"\b(extract(ing)? a report|report on phenom|requesting report)\b",
+            r"\b(fields? are showing as|n/a|confidential job)\b",
+        ],
+    ),
+    (
+        "Screening / interview / scheduling / offer / notifications",
+        [
+            r"\b(jsq|knockout|auto disposition)\b",
+            r"\bproactive notifications?\b",
+            r"\bstatuspage\b",
+        ],
+    ),
+    (
+        "Campaigns / job alerts / subscriptions / spotlights",
+        [
+            r"\bjtc\b",
+            r"\bjoin the community\b",
+            r"\bmarketing emails?\b.{0,40}\b(profiles?|within their profiles?)\b",
+        ],
+    ),
+]
+
 # Themes matched only against SHORT_DESCRIPTION (high-confidence title signal).
 TITLE_ONLY_THEMES = frozenset(
     {
@@ -381,8 +564,8 @@ UNCLASSIFIED = "Unclassified / other"
 
 def all_theme_rules() -> list[tuple[str, list[str]]]:
     # Cluster rules run after base rules so exact base phrases still win;
-    # cluster rules mainly catch previously unclassified residual language.
-    return BASE_THEME_RULES + CLUSTER_V1_THEME_RULES
+    # later cluster rounds catch residual DESCRIPTION language.
+    return BASE_THEME_RULES + CLUSTER_V1_THEME_RULES + CLUSTER_V2_THEME_RULES
 
 
 def _compile(rules: Iterable[tuple[str, list[str]]]):
@@ -397,6 +580,12 @@ def compiled_rules():
     if _COMPILED is None:
         _COMPILED = _compile(all_theme_rules())
     return _COMPILED
+
+
+def reset_compiled_rules():
+    """Clear cached compiled regexes after editing rule lists."""
+    global _COMPILED
+    _COMPILED = None
 
 
 def _match_rules(text: str, compiled, *, allow_title_only: bool) -> Optional[str]:
@@ -424,28 +613,39 @@ def classify_theme(short_description: str, description: str = "") -> str:
         hit = _match_rules(f"{short}\n{desc}", compiled, allow_title_only=False)
         if hit:
             return hit
+    # 3) Body-only pass (DESCRIPTION often has the real ask when title is a case ref)
+    if desc:
+        hit = _match_rules(desc, compiled, allow_title_only=False)
+        if hit:
+            return hit
     return UNCLASSIFIED
 
 
 def classify_theme_with_source(short_description: str, description: str = "") -> Tuple[str, str]:
-    """Return (theme, source) where source is base|cluster_v1|unclassified."""
+    """Return (theme, source) where source is base|cluster_v1|cluster_v2|unclassified."""
     short = short_description or ""
     desc = description or ""
-    base = _compile(BASE_THEME_RULES)
-    cluster = _compile(CLUSTER_V1_THEME_RULES)
+    layers = [
+        ("base", BASE_THEME_RULES),
+        ("cluster_v1", CLUSTER_V1_THEME_RULES),
+        ("cluster_v2", CLUSTER_V2_THEME_RULES),
+    ]
 
-    hit = _match_rules(short, base, allow_title_only=True)
-    if hit:
-        return hit, "base"
-    hit = _match_rules(short, cluster, allow_title_only=True)
-    if hit:
-        return hit, "cluster_v1"
+    for label, rules in layers:
+        compiled = _compile(rules)
+        hit = _match_rules(short, compiled, allow_title_only=True)
+        if hit:
+            return hit, label
     if desc:
         combined = f"{short}\n{desc}"
-        hit = _match_rules(combined, base, allow_title_only=False)
-        if hit:
-            return hit, "base"
-        hit = _match_rules(combined, cluster, allow_title_only=False)
-        if hit:
-            return hit, "cluster_v1"
+        for label, rules in layers:
+            compiled = _compile(rules)
+            hit = _match_rules(combined, compiled, allow_title_only=False)
+            if hit:
+                return hit, label
+        for label, rules in layers:
+            compiled = _compile(rules)
+            hit = _match_rules(desc, compiled, allow_title_only=False)
+            if hit:
+                return hit, label
     return UNCLASSIFIED, "unclassified"
