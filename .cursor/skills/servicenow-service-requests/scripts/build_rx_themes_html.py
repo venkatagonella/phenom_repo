@@ -580,8 +580,21 @@ def main():
         )
     crm_snapshot = json.loads(crm_snap_path.read_text())
     n_f = crm_snapshot["n_filtered"]
-    n_yes = crm_snapshot["funnel"].get("jira_Yes", 0)
-    n_no = crm_snapshot["funnel"].get("jira_No", 0)
+    # Header Jira split = the split *inside* the classified population, summed from
+    # areas[]. funnel.jira_Yes/No count every RX Yes/No SR before theme classification,
+    # so they do not add up to n_filtered and must not be shown as its split.
+    area_rows = crm_snapshot.get("areas") or []
+    n_yes = sum(a.get("jira_yes", 0) for a in area_rows)
+    n_no = sum(a.get("jira_no", 0) for a in area_rows)
+    if n_yes + n_no != n_f:
+        raise SystemExit(
+            f"Jira split from areas[] ({n_yes} Yes + {n_no} No = {n_yes + n_no}) "
+            f"does not match n_filtered={n_f} in {crm_snap_path}"
+        )
+    funnel = crm_snapshot.get("funnel") or {}
+    f_yes = funnel.get("jira_Yes", 0)
+    f_no = funnel.get("jira_No", 0)
+    f_yn = funnel.get("jira_yes_or_no", f_yes + f_no)
     product_accordions = playbook_by_product_area(crm_snapshot)
     playbook_srs_html = playbook_srs_panel(crm_snapshot)
     product_nav = "".join(
@@ -684,14 +697,18 @@ h2{{font-size:1.1rem}}h3{{font-size:.95rem;margin:0}}
   <h1>RX themes — ticket classification + Jira Yes/No</h1>
   <p class="sub">Playbook CRM areas: full all-fields CSV · Service Request · RX ·
   <b>Jira Yes and Jira No</b> · themes classified into Core / Profile / Messaging /
-  Automations → n={n_f:,} (Yes {n_yes:,} / No {n_no:,}).
+  Automations → n={n_f:,}, of which <b>{n_yes:,}</b> are Jira Yes and
+  <b>{n_no:,}</b> are Jira No. Before theme classification there were {f_yn:,}
+  RX Yes/No SRs ({f_yes:,} Yes / {f_no:,} No); {f_yn - n_f:,} stayed unclassified
+  and are not in the four areas below.
   Each theme shows a Problem summary from SHORT_DESCRIPTION + DESCRIPTION and
   clear What to do in Phenom actions. Other tabs: sheet Yes/No theme compare
   (n={len(rx):,}).</p>
   <div class="stats">
     <div class="stat"><b>{n_f:,}</b><span>CRM-area SRs (Yes+No)</span></div>
-    <div class="stat"><b>{n_yes:,}</b><span>Jira Yes (updated)</span></div>
-    <div class="stat no"><b>{n_no:,}</b><span>Jira No (not updated)</span></div>
+    <div class="stat"><b>{n_yes:,}</b><span>Jira Yes · of the {n_f:,} classified</span></div>
+    <div class="stat no"><b>{n_no:,}</b><span>Jira No · of the {n_f:,} classified</span></div>
+    <div class="stat"><b>{f_yn:,}</b><span>RX SRs before classification ({f_yes:,} Yes / {f_no:,} No)</span></div>
     <div class="stat"><b>{len(rx):,}</b><span>RX Yes+No (other tabs)</span></div>
     <div class="stat"><b>{yes['n']:,}</b><span>Jira Yes · {yes['classified_pct']:.1f}% classified</span></div>
     <div class="stat no"><b>{no['n']:,}</b><span>Jira No · {no['classified_pct']:.1f}% classified</span></div>
