@@ -31,14 +31,14 @@ Roll-ups:
 
 Estimate = open stories ÷ stories per month, reported as a range across the two windows.
 
-- All 218 open stories: 17.7–23.4 months.
+- All 199 open stories: 16.2–21.4 months.
 - Per area: team-months, meaning the time if the whole CRM Core team worked only on that area. Areas run in parallel, so the per-area values add up to the overall figure and are not separate finish dates.
 
 ## Limits
 
 State these limits whenever you quote a timeline:
 
-- **Low coverage.** Only 71 of 308 items (23%) have a future release. 196 are Backlog and 41 have slipped. So the plan-based "~3.3 months" covers a minority of the work.
+- **Low coverage.** Only 57 of 278 items (21%) have a future release. 182 are Backlog and 39 have slipped. So the plan-based "~3.3 months" covers a minority of the work.
 - **No sizing.** Only 71 items have story points and 4 have a due date, so the pace estimate counts stories without weighting them by size.
 - **Missing work.** Epics and initiatives with no open child stories in the filter add work that the story count does not include.
 - **Partial scope.** Items in In QA or PM Acceptance Queue are outside the filter, so near-done work is not counted.
@@ -46,4 +46,4 @@ State these limits whenever you quote a timeline:
 
 ## How to phrase an answer
 
-> As of 2026-10-23, CRM Core's planned releases run to 27.01, about 3.3 months away. That plan covers only 71 of the 308 open items: 196 are in Backlog and 41 have passed their release date. At the pace of the last year, 9–12 stories a month, the 218 open stories would take about 18–23 months.
+> As of 2026-10-23, CRM Core's planned releases run to 27.01, about 3.3 months away. That plan covers only 57 of the 278 open items analysed: 182 are in Backlog and 39 have passed their release date. At the pace of the last year, 9–12 stories a month, the 199 open stories would take about 16–21 months.

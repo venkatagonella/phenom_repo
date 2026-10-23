@@ -8,13 +8,11 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 
 ## Hiring status / pipeline / stages / lead status
 
-5 items (I 0 · E 1 · S 4). Planned 2 · slipped 0 · unplanned 3. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 0.3–0.4 team-months for 4 open stories.
+4 items (I 0 · E 1 · S 3). Planned 1 · slipped 0 · unplanned 3. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 0.2–0.3 team-months for 3 open stories.
 
 - **E** PHEM-2270995 Enhancement for Agency module · To Do — branch: latest OffCycle-2026 (~2.3 mo); 3 planned / 0 slipped / 0 unplanned _(counted under Not in the six areas)_
   - **S** PHEM-2271103 Lead & Applicant Counts by Agency · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-2136326 RX - Core - Translation Experience for Hiring Status · To Do · Backlog
-- **E** PHEM-1974353 PhenomHire Meta data service & DAAL integration · To Do — branch: latest OffCycle-2026 (~2.3 mo); 6 planned / 0 slipped / 0 unplanned _(counted under Not in the six areas)_
-  - **S** PHEM-2014764 Moving of hiring status update apis to DAAL · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-1237317 Customer Development · To Do — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **S** PHEM-1467013 Enforce Separate Spotlights for Leads and Applicants When Hiring Pipeline Is Enabled · To Do · Backlog
 - **E** PHEM-1126283 RX Exports and Imports · To Do — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
@@ -22,19 +20,15 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 
 ## Jobs / requisitions / applications / posting
 
-64 items (I 2 · E 20 · S 42). Planned 28 · slipped 8 · unplanned 28. Latest planned release: 27.01 (~3.3 mo). Pace estimate: 3.4–4.5 team-months for 42 open stories.
+55 items (I 2 · E 16 · S 37). Planned 23 · slipped 8 · unplanned 24. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 3–4 team-months for 37 open stories.
 
-- **I** PHEM-2506130 Audit Log Console · To Do — branch: latest 27.01 (~3.3 mo); 2 planned / 0 slipped / 0 unplanned _(counted under Not in the six areas)_
-  - **E** PHEM-2496650 Audit Trial of Job Entity · To Do · 27.01 (~3.3 mo)
 - **I** PHEM-2412940 Siemens Healthineers Requirements on product improvements for CRM Core · To Do — branch: latest 26.11 (~1.2 mo); 3 planned / 1 slipped / 0 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-2491710 Translations for 2 system job fields not available on career site · In Progress · 26.11 (~1.2 mo)
   - **E** PHEM-2435084 Translations for 4 additional job fields not available · To Do · 26.11 (~1.2 mo)
   - **E** PHEM-2199077 HIRE - Allow creation of private links for confidential jobs · In Progress · 26.09 slipped
-- **I** PHEM-2341558 Screening FY26 | Omnichannel Screening · In Progress — branch: no planned release; 0 planned / 0 slipped / 2 unplanned _(context: outside filter)_
+- **I** PHEM-2341558 Screening FY26 | Omnichannel Screening · In Progress — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **E** PHEM-2270129 PQS | CRM | Clear Questionnaire Selection on Job Create/Edit | [Disney, Sep 15] · Done — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
     - **S** PHEM-2270130 CRM – FE – Allow clearing questionnaire selection in Create/Edit Job form · To Do · Backlog
-  - **E** PHEM-2023199 PQS | Dropdown (Single & Multi) Screening Questions + Rubric Operators · Epic Ready — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
-    - **S** PHEM-2023201 CRM – Application Fields – True dropdown types vs select lists (single/multi, with search) for screening with Hiring Automations · To Do · Backlog
 - **I** PHEM-2252378 RX - Disney Enhancements - Phase 2 by Sept. 20 · To Do — branch: latest OffCycle-2026 (~2.3 mo); 7 planned / 0 slipped / 2 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-2260385 CRM – Bulk Edit Job Requisitions · To Do · 26.11 (~1.2 mo) — branch: latest OffCycle-2026 (~2.3 mo); 7 planned / 0 slipped / 0 unplanned
     - **S** PHEM-2383238 S6. RX – Show and standardize Job system fields in settings (for bulk edit) · Development · OffCycle-2026 (~2.3 mo)
@@ -43,15 +37,11 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
     - **S** PHEM-2314682 S3. RX – BE – Async batch processing and activities audit · Development · OffCycle-2026 (~2.3 mo)
     - **S** PHEM-2314673 S1. RX – FE – Bulk edit flow on Jobs · Development · OffCycle-2026 (~2.3 mo)
   - **E** PHEM-2252497 CRM - Application Search Index & Application-Centric List (Evaluation + App Fields) · To Do · Backlog
-- **I** PHEM-1987584 RedDot Integration · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 2 unplanned
-  - **E** PHEM-1987585 RedDot CRM MVP · To Do · Backlog — branch: no planned release; 0 planned / 0 slipped / 2 unplanned
-    - **S** PHEM-1987586 Embed RedDot Job Distribution iframe in CRM · Story Grooming · Backlog
+- **I** PHEM-1987584 RedDot Integration · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
+  - **E** PHEM-1987585 RedDot CRM MVP · To Do · Backlog
 - **I** PHEM-1987368 RX Views / Spotlights · To Do — branch: no planned release; 0 planned / 1 slipped / 1 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-1987497 Job-Attribute Spotlights MVP · To Do · Backlog
 - **I** PHEM-1970578 RX Core Job Activity View · To Do · 26.05 slipped
-- **I** PHEM-1965641 Job-Level Hiring Team Member Roles · To Do — branch: no planned release; 0 planned / 7 slipped / 20 unplanned _(counted under Access / CRM not opening / permissions)_
-  - **E** PHEM-2104070 4. Data Migration with Role Assignment Logic · To Do — branch: no planned release; 0 planned / 1 slipped / 2 unplanned _(counted under Access / CRM not opening / permissions)_
-    - **S** PHEM-2104071 4.1: Migrate Existing Job Hiring Team Data · To Do · Backlog
 - **I** PHEM-591477 CRM Personalisation · To Do — branch: latest OffCycle-2026 (~2.3 mo); 1 planned / 0 slipped / 0 unplanned _(context: outside filter)_
   - **E** PHEM-710076 RX Views / Spotlights · To Do — branch: latest OffCycle-2026 (~2.3 mo); 1 planned / 0 slipped / 0 unplanned _(context: outside filter)_
     - **S** PHEM-1549914 Display Contextual Job Variation Status in Grid when Filtering by Posting Status · To Do · OffCycle-2026 (~2.3 mo)
@@ -63,8 +53,6 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 - **E** PHEM-2396086 CRM – Insert assets from Asset Manager into job descriptions and email templates · To Do · OffCycle-2026 (~2.3 mo) — branch: latest OffCycle-2026 (~2.3 mo); 1 planned / 0 slipped / 1 unplanned
   - **S** PHEM-2522906 Core – FE – Align Asset Manager MFE with CMS design · To Do · Backlog
 - **E** PHEM-2391005 CRM – Custom job statuses (Phenom Hire + ATS) · To Do · Backlog
-- **E** PHEM-2340831 CRM – Deep-copy job attachments on job duplicate · To Do · OffCycle-2026 (~2.3 mo) — branch: latest OffCycle-2026 (~2.3 mo); 2 planned / 0 slipped / 0 unplanned
-  - **S** PHEM-2340832 S2. CRM Core – Integrate attachments clone API into job duplicate · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-2281914 RX Job Activity - Phase 2 · To Do · 26.09 slipped
 - **E** PHEM-2278020 IX and CRM: Job workflow optimisation · To Do — branch: latest OffCycle-2026 (~2.3 mo); 4 planned / 0 slipped / 0 unplanned _(counted under Forwarding / LinkedIn / ATS↔CRM sync)_
   - **S** PHEM-2280602 Disclaimer text handling with req templates apis · Development · OffCycle-2026 (~2.3 mo)
@@ -76,20 +64,20 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 - **E** PHEM-2184565 Notify recruiters and hiring managers when assigned to a job · To Do · Backlog
 - **E** PHEM-2180576 Document viewer for Job attachments · In Progress · 26.10 slipped — branch: latest OffCycle-2026 (~2.3 mo); 1 planned / 1 slipped / 0 unplanned
   - **S** PHEM-2358556 CRM – FE – Fix CSV, XLS, and XLSX rendering in Job document viewer · To Do · OffCycle-2026 (~2.3 mo)
-- **E** PHEM-2126461 CRM – Profile — IA redesign to split Profile & Application · To Do · Backlog
 - **E** PHEM-2117038 RX - Unpost Job based on Job expiry, Job Status, etc · In Progress — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **S** PHEM-2190578 CRM Core: Expiring job based on configured date and time in Job entity · UX/UI Validation · Backlog
+- **E** PHEM-2104070 4. Data Migration with Role Assignment Logic · To Do — branch: no planned release; 0 planned / 1 slipped / 2 unplanned _(counted under Access / CRM not opening / permissions)_
+  - **S** PHEM-2104071 4.1: Migrate Existing Job Hiring Team Data · To Do · Backlog
 - **E** PHEM-1974314 Addition of Scheduling Flow to Blank/Edit Job Screens · To Do · Backlog
 - **E** PHEM-1939858 [CRM] Streamline Move Application — application ID, confidentiality & post-move clarity · Epic Grooming — branch: latest OffCycle-2026 (~2.3 mo); 1 planned / 0 slipped / 0 unplanned _(context: outside filter)_
   - **S** PHEM-2137298 CRM Core — Validate impact for Move Application feature · Story Grooming · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-1902635 CRM – Job page — Overview tab · To Do · Backlog
-- **E** PHEM-1863370 CRM – Job page — IA redesign of Details, description & edit · To Do · Backlog
 - **E** PHEM-1354652 Availability Management · To Do — branch: latest OffCycle-2026 (~2.3 mo); 2 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **S** PHEM-1699793 creation of columns for job availability · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-1353262 RX Core Support Ticket Reduction · To Do — branch: latest 26.11 (~1.2 mo); 1 planned / 0 slipped / 11 unplanned _(context: outside filter)_
   - **S** PHEM-1701444 Copy Hiring Team when the Default job got changed · Story Ready · Backlog
   - **S** PHEM-1504031 Job field mapper config remover from UI · To Do · Backlog
-- **E** PHEM-791913 RX Jobs · To Do — branch: latest OffCycle-2026 (~2.3 mo); 3 planned / 0 slipped / 7 unplanned _(context: outside filter)_
+- **E** PHEM-791913 RX Jobs · To Do — branch: latest OffCycle-2026 (~2.3 mo); 2 planned / 0 slipped / 7 unplanned _(context: outside filter)_
   - **S** PHEM-1873657 Converting of jobdetails to jobpostings array · Development · Backlog
   - **S** PHEM-1873652 send only modified fields to backend in job edit flo · To Do · Backlog
   - **S** PHEM-1873651 Flink integration to listen to Business events and push to Doris in link services · To Do · Backlog
@@ -97,7 +85,6 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
   - **S** PHEM-1873649 Editing of a job phenomhire flow · Development · Backlog
   - **S** PHEM-1873648 Creating of private job in phenomhire flow · Development · Backlog
   - **S** PHEM-1873647 Create draft job/confidential jobs in phenomhire flow · Development · Backlog
-  - **S** PHEM-1546208 Implement GeoNames Translation Layer for Customer-Defined Locations · ON Hold · OffCycle-2026 (~2.3 mo)
   - **S** PHEM-1529975 API - Update Additional Job Fields · Development · OffCycle-2026 (~2.3 mo)
   - **S** PHEM-1529974 API - Unpublish Job · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-521185 Enhance Agency module in CRM · In Progress — branch: no planned release; 0 planned / 0 slipped / 2 unplanned _(context: outside filter)_
@@ -106,7 +93,6 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
   - **S** PHEM-1700207 Enabling field management in the existing Job field for disney · Development · OffCycle-2026 (~2.3 mo)
 - **S** PHEM-2396523 Implementing audit logs for candidate and application fields · To Do · 26.11 (~1.2 mo)
 - **S** PHEM-2259436 UUID should be generated and passed in the create/edit job payload · To Do · OffCycle-2026 (~2.3 mo)
-- **S** PHEM-2178093 Requisition metadata approval · To Do · OffCycle-2026 (~2.3 mo)
 - **S** PHEM-2122618 Intake Agent: Surface Existing CRM Job Description at Start of Intake Conversation · To Do · 26.07 slipped
 - **S** PHEM-1982214 My Jobs & Interview Visibility · To Do · Backlog
 - **S** PHEM-1979661 Internal posted description and Title not visible in CRM, only external title and content is shown · To Do · Backlog
@@ -114,20 +100,15 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 
 ## Forwarding / LinkedIn / ATS↔CRM sync
 
-22 items (I 2 · E 9 · S 11). Planned 7 · slipped 7 · unplanned 8. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 0.9–1.2 team-months for 11 open stories.
+21 items (I 2 · E 9 · S 10). Planned 7 · slipped 7 · unplanned 7. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 0.8–1.1 team-months for 10 open stories.
 
 - **I** PHEM-2341256 LinkedIn CRM Connectivity & Enhancements · To Do · 26.11 (~1.2 mo) — branch: latest 26.11 (~1.2 mo); 2 planned / 0 slipped / 0 unplanned
   - **E** PHEM-2341415 CRM and LinkedIn Broken Pipeline · To Do · 26.11 (~1.2 mo)
-- **I** PHEM-1965641 Job-Level Hiring Team Member Roles · To Do — branch: no planned release; 0 planned / 7 slipped / 20 unplanned _(counted under Access / CRM not opening / permissions)_
-  - **E** PHEM-2104059 3. ATS Integration — Role-Aware Job Pull · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 3 unplanned
-    - **S** PHEM-2104068 3.2: ATS Adapter Updates (SuccessFactors, Workday, Others) · To Do · Backlog
-    - **S** PHEM-2104061 3.1: Generic ATS-to-CRM Role Mapping Engine & Admin UI · To Do · Backlog
 - **I** PHEM-1957943 RX Projects · To Do — branch: no planned release; 0 planned / 3 slipped / 2 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-1957974 HRM <> CRM Projects 26.05 · To Do · 26.07 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
-- **I** PHEM-1957322 RX Core - LinkedIn CRM Connect · To Do · 26.05 slipped — branch: no planned release; 0 planned / 3 slipped / 1 unplanned
+- **I** PHEM-1957322 RX Core - LinkedIn CRM Connect · To Do · 26.05 slipped — branch: no planned release; 0 planned / 3 slipped / 0 unplanned
   - **E** PHEM-2014661 LinkedIn CRM Hardening 26.06 · To Do · 26.05 slipped
-  - **E** PHEM-1957323 LinkedIn CRM Hardening 26.05 · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
-    - **S** PHEM-1996882 [Aspen Dental] Semantic Relevance Override for Project Titles · Story Ready · Backlog
+  - **E** PHEM-1957323 LinkedIn CRM Hardening 26.05 · To Do · 26.05 slipped
 - **I** PHEM-937647 HRM <> CRM workflows · In Progress — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **E** PHEM-1346553 HRM EPIC: Project workflow - PHASE I · Done — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
     - **S** PHEM-2014648 HRM Projects Activities Sync · Story Grooming · Backlog
@@ -142,6 +123,9 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 - **E** PHEM-2267008 CRM to Workday Job Lifecycle Sync (Create / Publish / Unpublish) · In Progress · 26.10 slipped — branch: latest OffCycle-2026 (~2.3 mo); 1 planned / 1 slipped / 0 unplanned
 - **E** PHEM-2260823 CRM - LinkedIn CRM Connect - InMail Stub Profile · To Do — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **S** PHEM-2288791 CRM – FE/BE – InMail Stub Profile hydration · To Do · Backlog
+- **E** PHEM-2104059 3. ATS Integration — Role-Aware Job Pull · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 3 unplanned
+  - **S** PHEM-2104068 3.2: ATS Adapter Updates (SuccessFactors, Workday, Others) · To Do · Backlog
+  - **S** PHEM-2104061 3.1: Generic ATS-to-CRM Role Mapping Engine & Admin UI · To Do · Backlog
 - **E** PHEM-2007989 Indeed Integration — Migrate Phenom Hire to Job Sync API and Enable Native Apply Experience · To Do · Backlog
 - **E** PHEM-1916976 RX Localization · To Do — branch: no planned release; 0 planned / 0 slipped / 2 unplanned _(counted under Not in the six areas)_
   - **S** PHEM-1917001 Sync supported locales between HRM and CRM to ensure cross-product parity · To Do · Backlog
@@ -149,7 +133,7 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 
 ## Access / CRM not opening / permissions
 
-53 items (I 1 · E 10 · S 42). Planned 10 · slipped 6 · unplanned 37. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 3.4–4.5 team-months for 42 open stories.
+46 items (I 0 · E 8 · S 38). Planned 8 · slipped 5 · unplanned 33. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 3.1–4.1 team-months for 38 open stories.
 
 - **I** PHEM-2252378 RX - Disney Enhancements - Phase 2 by Sept. 20 · To Do — branch: latest OffCycle-2026 (~2.3 mo); 7 planned / 0 slipped / 2 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-2260385 CRM – Bulk Edit Job Requisitions · To Do — branch: latest OffCycle-2026 (~2.3 mo); 7 planned / 0 slipped / 0 unplanned _(counted under Jobs / requisitions / applications / posting)_
@@ -157,33 +141,9 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 - **I** PHEM-2018552 Schema-Driven UI (SDUI) for CRM · To Do — branch: no planned release; 0 planned / 0 slipped / 29 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-2024863 Page schema API (storage & delivery) · In Progress — branch: no planned release; 0 planned / 0 slipped / 9 unplanned _(counted under Not in the six areas)_
     - **S** PHEM-2024950 Tenant isolation and RBAC · To Do · Backlog
-- **I** PHEM-1987498 Notes · To Do — branch: no planned release; 0 planned / 1 slipped / 3 unplanned _(counted under Not in the six areas)_
-  - **E** PHEM-1987505 Note Associations · To Do — branch: no planned release; 0 planned / 0 slipped / 3 unplanned _(counted under Not in the six areas)_
+- **I** PHEM-1987498 Notes · To Do — branch: no planned release; 0 planned / 1 slipped / 2 unplanned _(counted under Not in the six areas)_
+  - **E** PHEM-1987505 Note Associations · To Do — branch: no planned release; 0 planned / 0 slipped / 2 unplanned _(counted under Not in the six areas)_
     - **S** PHEM-1987583 Departmentalization for Notes Association · To Do · Backlog
-- **I** PHEM-1965641 Job-Level Hiring Team Member Roles · To Do · Backlog — branch: no planned release; 0 planned / 7 slipped / 20 unplanned
-  - **E** PHEM-2109151 CRM Core: Phase 1 — Recruiter-Family Roles, IX Mapping, Notifications & Filters · Epic Grooming · Backlog — branch: no planned release; 0 planned / 0 slipped / 2 unplanned
-    - **S** PHEM-2014766 CRM Core - New Roles - Notifications & Messaging · Story Grooming · Backlog
-  - **E** PHEM-2104082 7. Role-Based UI Visibility & Filtering · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 5 unplanned
-    - **S** PHEM-2106057 7.5: Role-aware analytics ETL and role-filtered dashboards · To Do · Backlog
-    - **S** PHEM-2106044 7.4: Refactor HRM scheduling widget to use roleCategory for action gating · To Do · Backlog
-    - **S** PHEM-2106019 7.3: Add expanded hiring team roles to VX screening evaluation configuration · To Do · Backlog
-    - **S** PHEM-2106005 7.2: Role-aware HRM task assignment for expanded hiring team roles · To Do · Backlog
-    - **S** PHEM-2104083 7.1: "My Jobs" — Role-Aware Filtering & Default Views · To Do · Backlog
-  - **E** PHEM-2104079 6. Role-Aware Auto-Provisioning · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 2 unplanned
-    - **S** PHEM-2104081 6.2: [Deferred Post-MVP] Default Notification Profiles per Provisioning Source · To Do · Backlog
-    - **S** PHEM-2104080 6.1: Role-Differentiated Auto-Provisioning · To Do · Backlog
-  - **E** PHEM-2104076 5. Tenant-Level Notification Configuration · To Do — branch: no planned release; 0 planned / 1 slipped / 3 unplanned _(counted under How-to / configuration / enablement question)_
-    - **S** PHEM-2106102 5.3: Add role-specific email template tokens for expanded hiring team roles · To Do · Backlog
-    - **S** PHEM-2104078 5.2: Notification Dispatch Engine — Role-Aware Routing · To Do · Backlog
-    - **S** PHEM-2104077 5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping · To Do · Backlog
-  - **E** PHEM-2104070 4. Data Migration with Role Assignment Logic · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 2 unplanned
-    - **S** PHEM-2106084 4.2: Validate CBAC access integrity during and after role migration · To Do · Backlog
-  - **E** PHEM-2104064 1. Predefined Job-Level Role Definitions & Data Model · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
-    - **S** PHEM-2104065 1.1: Create Role Registry and Data Model · To Do · Backlog
-  - **E** PHEM-2104062 2. Role Display & Assignment UI · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
-    - **S** PHEM-2104063 2.1: Hiring Team Widget — Role Display & Assignment · To Do · Backlog
-  - **E** PHEM-2104059 3. ATS Integration — Role-Aware Job Pull · To Do — branch: no planned release; 0 planned / 1 slipped / 3 unplanned _(counted under Forwarding / LinkedIn / ATS↔CRM sync)_
-    - **S** PHEM-2104069 3.3: CRM-Native Job Creation — Role Assignment in Hiring Team Setup · To Do · Backlog
 - **I** PHEM-1957943 RX Projects · To Do — branch: no planned release; 0 planned / 3 slipped / 2 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-1957974 HRM <> CRM Projects 26.05 · To Do — branch: no planned release; 0 planned / 1 slipped / 1 unplanned _(counted under Forwarding / LinkedIn / ATS↔CRM sync)_
     - **S** PHEM-1957991 Maintain Team Member ID & Visualize User Access · ON Hold · Backlog
@@ -201,10 +161,26 @@ Legend: **I** Initiative, **E** Epic, **S** Story. After the status comes the it
 - **E** PHEM-2163324 ENBW - Restrict Independent Lead Visibility · To Do — branch: no planned release; 0 planned / 0 slipped / 2 unplanned _(context: outside filter)_
   - **S** PHEM-2163333 Platform Architecture - "NA" (Not Applicable) Scope Handling · To Do · Backlog
   - **S** PHEM-2163326 Interim Workaround - Default Project & CRM Automation (Immediate Unblock) · To Do · Backlog
+- **E** PHEM-2104082 7. Role-Based UI Visibility & Filtering · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 5 unplanned
+  - **S** PHEM-2106057 7.5: Role-aware analytics ETL and role-filtered dashboards · To Do · Backlog
+  - **S** PHEM-2106044 7.4: Refactor HRM scheduling widget to use roleCategory for action gating · To Do · Backlog
+  - **S** PHEM-2106019 7.3: Add expanded hiring team roles to VX screening evaluation configuration · To Do · Backlog
+  - **S** PHEM-2106005 7.2: Role-aware HRM task assignment for expanded hiring team roles · To Do · Backlog
+  - **S** PHEM-2104083 7.1: "My Jobs" — Role-Aware Filtering & Default Views · To Do · Backlog
+- **E** PHEM-2104079 6. Role-Aware Auto-Provisioning · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 2 unplanned
+  - **S** PHEM-2104081 6.2: [Deferred Post-MVP] Default Notification Profiles per Provisioning Source · To Do · Backlog
+  - **S** PHEM-2104080 6.1: Role-Differentiated Auto-Provisioning · To Do · Backlog
+- **E** PHEM-2104076 5. Tenant-Level Notification Configuration · To Do — branch: no planned release; 0 planned / 1 slipped / 3 unplanned _(counted under How-to / configuration / enablement question)_
+  - **S** PHEM-2106102 5.3: Add role-specific email template tokens for expanded hiring team roles · To Do · Backlog
+  - **S** PHEM-2104078 5.2: Notification Dispatch Engine — Role-Aware Routing · To Do · Backlog
+  - **S** PHEM-2104077 5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping · To Do · Backlog
+- **E** PHEM-2104070 4. Data Migration with Role Assignment Logic · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 2 unplanned
+  - **S** PHEM-2106084 4.2: Validate CBAC access integrity during and after role migration · To Do · Backlog
+- **E** PHEM-2104062 2. Role Display & Assignment UI · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
+  - **S** PHEM-2104063 2.1: Hiring Team Widget — Role Display & Assignment · To Do · Backlog
+- **E** PHEM-2104059 3. ATS Integration — Role-Aware Job Pull · To Do — branch: no planned release; 0 planned / 1 slipped / 3 unplanned _(counted under Forwarding / LinkedIn / ATS↔CRM sync)_
+  - **S** PHEM-2104069 3.3: CRM-Native Job Creation — Role Assignment in Hiring Team Setup · To Do · Backlog
 - **E** PHEM-2079228 Employee Detail Page Visibility - With Consent No in CRM · To Do · OffCycle-2026 (~2.3 mo)
-- **E** PHEM-1974353 PhenomHire Meta data service & DAAL integration · To Do — branch: latest OffCycle-2026 (~2.3 mo); 6 planned / 0 slipped / 0 unplanned _(counted under Not in the six areas)_
-  - **S** PHEM-2164332 Departmenatlization integration in jobs service · To Do · OffCycle-2026 (~2.3 mo)
-  - **S** PHEM-2014769 Departmenatlization support in metadata for requisition · Development · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-1353262 RX Core Support Ticket Reduction · To Do — branch: latest 26.11 (~1.2 mo); 1 planned / 0 slipped / 11 unplanned _(context: outside filter)_
   - **S** PHEM-2215042 Handle role assignment propagation · To Do · Backlog
   - **S** PHEM-1504053 Enhancement in Departmentalization Migration Script · To Do · Backlog
@@ -228,17 +204,16 @@ No items.
 
 ## How-to / configuration / enablement question
 
-18 items (I 1 · E 4 · S 13). Planned 7 · slipped 5 · unplanned 6. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 1.1–1.4 team-months for 13 open stories.
+17 items (I 1 · E 4 · S 12). Planned 6 · slipped 5 · unplanned 6. Latest planned release: OffCycle-2026 (~2.3 mo). Pace estimate: 1–1.3 team-months for 12 open stories.
 
 - **I** PHEM-1970553 RX Core Self-Servicing Errors · To Do · 26.05 slipped — branch: no planned release; 0 planned / 2 slipped / 0 unplanned
   - **E** PHEM-1970555 Specific Error Improvements 26.05 · To Do · 26.05 slipped
 - **I** PHEM-1970182 RX Special Customers · To Do — branch: no planned release; 0 planned / 1 slipped / 1 unplanned _(counted under Not in the six areas)_
   - **E** PHEM-1970183 Tenant Centralization - PwC and All 26.06 · To Do · Backlog
-- **I** PHEM-1965641 Job-Level Hiring Team Member Roles · To Do — branch: no planned release; 0 planned / 7 slipped / 20 unplanned _(counted under Access / CRM not opening / permissions)_
-  - **E** PHEM-2104076 5. Tenant-Level Notification Configuration · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 3 unplanned
 - **E** PHEM-2262596 Feature flag Revamp · To Do · OffCycle-2026 (~2.3 mo) — branch: latest OffCycle-2026 (~2.3 mo); 3 planned / 0 slipped / 0 unplanned
   - **S** PHEM-2396537 Settings nav revamp — group settings + search · To Do · OffCycle-2026 (~2.3 mo)
   - **S** PHEM-2262679 Jobs Feature Flag revamp · To Do · OffCycle-2026 (~2.3 mo)
+- **E** PHEM-2104076 5. Tenant-Level Notification Configuration · To Do · 26.05 slipped — branch: no planned release; 0 planned / 1 slipped / 3 unplanned
 - **E** PHEM-1856531 Enhance Survey forms product in CRM and flowstudio · To Do — branch: no planned release; 0 planned / 0 slipped / 3 unplanned _(counted under Not in the six areas)_
   - **S** PHEM-1856957 Add Surveys into CRM and make form creation self configuration · To Do · Backlog
 - **E** PHEM-1587500 Product bugs reduction · To Do — branch: no planned release; 0 planned / 2 slipped / 0 unplanned _(counted under Not in the six areas)_
@@ -255,17 +230,13 @@ No items.
 - **E** PHEM-55375 Field management in RX · Done — branch: latest OffCycle-2026 (~2.3 mo); 2 planned / 0 slipped / 2 unplanned _(context: outside filter)_
   - **S** PHEM-1873654 Filterable fields APIs from field management · Development · OffCycle-2026 (~2.3 mo)
   - **S** PHEM-1697297 Location field from backend in UI in field management · To Do · Backlog
-- **S** PHEM-1683004 Visibility of "Last Updated" Details in CRM Note Type Settings · Development · 26.11 (~1.2 mo)
 - **S** PHEM-1403720 Fit Score - Please turn feature flag on in staging environment for Saks · To Do · 21.11 slipped
 
 ## Not in the six areas
 
-146 items (I 12 · E 28 · S 106). Planned 17 · slipped 15 · unplanned 114. Latest planned release: 27.01 (~3.3 mo). Pace estimate: 8.6–11.4 team-months for 106 open stories.
+135 items (I 12 · E 24 · S 99). Planned 12 · slipped 14 · unplanned 109. Latest planned release: 27.01 (~3.3 mo). Pace estimate: 8–10.6 team-months for 99 open stories.
 
-- **I** PHEM-2516238 II | General Scorecard Updates · To Do — branch: latest 26.11 (~1.2 mo); 1 planned / 0 slipped / 0 unplanned _(context: outside filter)_
-  - **E** PHEM-2398227 II | Read-only CRM fields in Scorecards | [AZ/Disney, 26.10] · In Progress — branch: latest 26.11 (~1.2 mo); 1 planned / 0 slipped / 0 unplanned _(context: outside filter)_
-    - **S** PHEM-2398228 CRM – BE – Expose read-only attribute for CRM fields · Development · 26.11 (~1.2 mo)
-- **I** PHEM-2506130 Audit Log Console · To Do · 27.01 (~3.3 mo) — branch: latest 27.01 (~3.3 mo); 2 planned / 0 slipped / 0 unplanned
+- **I** PHEM-2506130 Audit Log Console · To Do · 27.01 (~3.3 mo)
 - **I** PHEM-2412940 Siemens Healthineers Requirements on product improvements for CRM Core · To Do · 26.11 (~1.2 mo) — branch: latest 26.11 (~1.2 mo); 3 planned / 1 slipped / 0 unplanned
 - **I** PHEM-2306172 Executive Recruiting · To Do · Backlog
 - **I** PHEM-2252378 RX - Disney Enhancements - Phase 2 by Sept. 20 · To Do · Backlog — branch: latest OffCycle-2026 (~2.3 mo); 7 planned / 0 slipped / 2 unplanned
@@ -301,9 +272,8 @@ No items.
   - **E** PHEM-1992235 Reconsent · To Do · Backlog
 - **I** PHEM-1991264 CRM Core Product Bugs · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
   - **E** PHEM-1991295 Offer Letter Fields · To Do · Backlog
-- **I** PHEM-1987498 Notes · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 3 unplanned
-  - **E** PHEM-1987505 Note Associations · To Do · Backlog — branch: no planned release; 0 planned / 0 slipped / 3 unplanned
-    - **S** PHEM-1987582 Associate Projects to Notes MVP · To Do · Backlog
+- **I** PHEM-1987498 Notes · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 2 unplanned
+  - **E** PHEM-1987505 Note Associations · To Do · Backlog — branch: no planned release; 0 planned / 0 slipped / 2 unplanned
 - **I** PHEM-1987368 RX Views / Spotlights · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
 - **I** PHEM-1970552 RX Core Ad Hoc Support Tickets and Defects · To Do · 26.05 slipped
 - **I** PHEM-1970182 RX Special Customers · To Do · 26.06 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
@@ -349,24 +319,16 @@ No items.
 - **E** PHEM-2391093 [Disney] Split Weekly Availability into per-field groups (enable + knockout per question) · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-2350122 Creation and Management of MBR and WBR Metrics - RX core and profile · To Do · 26.10 slipped — branch: no planned release; 0 planned / 1 slipped / 1 unplanned
   - **S** PHEM-2350340 Proposal of new metrics for MBR / WBR for RX core and profile · To Do · Backlog
-- **E** PHEM-2283717 CRM Core Metadata Projects · To Do · 26.09 slipped
-- **E** PHEM-2278269 CRM Core : Metadata Notes · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-2270995 Enhancement for Agency module · To Do · OffCycle-2026 (~2.3 mo) — branch: latest OffCycle-2026 (~2.3 mo); 3 planned / 0 slipped / 0 unplanned
   - **S** PHEM-2271120 Client-Level Field Visibility - Manage Columns · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-2247948 User Interface Improvements in CRM - New PDS system · To Do · 26.09 slipped — branch: latest 26.11 (~1.2 mo); 3 planned / 1 slipped / 0 unplanned
   - **S** PHEM-2278439 [PDS Refresh CRM Core] Left Hand Navigation Bar in CRM with flexibility for users to move icons per their need · To Do · 26.11 (~1.2 mo)
   - **S** PHEM-2262912 [PDS Refresh CRM Core] All Actions from List page / Details page · To Do · 26.11 (~1.2 mo)
   - **S** PHEM-2262903 [PDS Refresh CRM Core] Add Note from List page and Details page · To Do · 26.11 (~1.2 mo)
-- **E** PHEM-2219954 CRM - Filter against scorecard results in candidate list · To Do · Backlog — branch: no planned release; 0 planned / 0 slipped / 3 unplanned
-  - **S** PHEM-2219956 CRM - Add Eval Avg Rating field to candidate list · To Do · Backlog
-  - **S** PHEM-2219955 CRM - Filtering updates for scorecard results in candidate list · ON Hold · Backlog
 - **E** PHEM-2188780 Filter notes by Job ID in the notes section · To Do · Backlog
 - **E** PHEM-2178655 Handle localization across Phenom products using lokalise · To Do · Backlog — branch: no planned release; 0 planned / 0 slipped / 2 unplanned
   - **S** PHEM-2179428 Migrate localization to lokalise · Story Ready · Backlog
 - **E** PHEM-2172552 CRM Core adhoc issues · To Do · 26.07 slipped
-- **E** PHEM-1974353 PhenomHire Meta data service & DAAL integration · To Do · OffCycle-2026 (~2.3 mo) — branch: latest OffCycle-2026 (~2.3 mo); 6 planned / 0 slipped / 0 unplanned
-  - **S** PHEM-2015373 get departments apis · To Do · OffCycle-2026 (~2.3 mo)
-  - **S** PHEM-2014742 Migration metadata(Fields & Field Groups) of Disney to Metadata service · To Do · OffCycle-2026 (~2.3 mo)
 - **E** PHEM-1951222 Interview Agent · Epic Ready — branch: no planned release; 0 planned / 0 slipped / 2 unplanned _(context: outside filter)_
   - **S** PHEM-2006000 AI Interview Details - Column Management & Filtering · To Do · Backlog
   - **S** PHEM-2005934 AI Interview Agent Analytics/Reports · To Do · Backlog
@@ -377,7 +339,7 @@ No items.
   - **S** PHEM-1856979 Show analytics at the form level · To Do · Backlog
 - **E** PHEM-1587500 Product bugs reduction · To Do · 26.02 slipped — branch: no planned release; 0 planned / 2 slipped / 0 unplanned
 - **E** PHEM-1566327 Signals enhancements · To Do · 26.03 slipped
-- **E** PHEM-1483121 Candidate / Job Executive presentation materials · To Do — branch: no planned release; 0 planned / 0 slipped / 14 unplanned _(context: outside filter)_
+- **E** PHEM-1483121 Candidate / Job Executive presentation materials · To Do — branch: no planned release; 0 planned / 0 slipped / 13 unplanned _(context: outside filter)_
   - **S** PHEM-1513195 Capture Executive Feedback on Reports · To Do · Backlog
   - **S** PHEM-1513194 Share Report via Secure Web Link · To Do · Backlog
   - **S** PHEM-1513192 Generate Metrics as Snapshot with Timestamp · To Do · Backlog
@@ -391,7 +353,6 @@ No items.
   - **S** PHEM-1513178 Apply Business Unit Branding to Reports · To Do · Backlog
   - **S** PHEM-1513177 Configure Widgets and Custom Blocks · To Do · Backlog
   - **S** PHEM-1513110 Edit Existing Report Templates · To Do · Backlog
-  - **S** PHEM-1513106 Create Executive Report Templates · To Do · Backlog
 - **E** PHEM-1354652 Availability Management · To Do — branch: latest OffCycle-2026 (~2.3 mo); 2 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **S** PHEM-1479460 Candidate Availability MVP · To Do · Backlog
 - **E** PHEM-1353262 RX Core Support Ticket Reduction · To Do — branch: latest 26.11 (~1.2 mo); 1 planned / 0 slipped / 11 unplanned _(context: outside filter)_
@@ -408,12 +369,13 @@ No items.
   - **S** PHEM-1506795 Embed Form Studio into CRM UI · To Do · Backlog
 - **E** PHEM-395677 RX - Localization Framework · To Do — branch: no planned release; 0 planned / 0 slipped / 1 unplanned _(context: outside filter)_
   - **S** PHEM-1698115 Update incorrect translation for "Screening" · To Do · Backlog
-- **S** PHEM-2358555 Metadata CRM Core Bugs · To Do · Backlog
 - **S** PHEM-2318056 Allow decimals in salary grid for India and Srilanka Region · To Do · 26.06 slipped
 - **S** PHEM-2314766 Default Workflow for projects is not getting generated for the new tenants · To Do · 26.06 slipped
 - **S** PHEM-2288883 B2. RX – FE – Reuse HRM document viewer in CRM (view without download) · To Do · 26.11 (~1.2 mo)
 - **S** PHEM-2285654 Field audit logs · To Do · OffCycle-2026 (~2.3 mo)
 - **S** PHEM-2235741 Notes Schema Creation And validation · To Do · Backlog
+- **S** PHEM-2219956 CRM - Add Eval Avg Rating field to candidate list · To Do · Backlog
+- **S** PHEM-2219955 CRM - Filtering updates for scorecard results in candidate list · ON Hold · Backlog
 - **S** PHEM-2014705 Not consuming years of experience as expected · To Do · Backlog
 - **S** PHEM-2009286 Automation of dependency delta fields congestion into CRM · To Do · Backlog
 - **S** PHEM-1984552 Add validation for Brand and Identifier fields and improve email template selection logic based on Brand + Identifier combination. · To Do · Backlog
@@ -421,5 +383,4 @@ No items.
 - **S** PHEM-1982217 Interviewer Notification Controls · To Do · Backlog
 - **S** PHEM-1982213 Customizable Notification Preferences · Story Grooming · Backlog
 - **S** PHEM-1929736 Mongo DB sharding implementaiton · To Do · OffCycle-2026 (~2.3 mo)
-- **S** PHEM-1697375 CRM – FE – Show policy execution in candidate Activity tab · To Do · Backlog
 - **S** PHEM-1692609 Grouped Fields Not Updating Automatically · Story Ready · Backlog

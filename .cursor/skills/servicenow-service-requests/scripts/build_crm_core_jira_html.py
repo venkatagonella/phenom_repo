@@ -318,6 +318,24 @@ footer{max-width:1180px;margin:0 auto;padding:0 1.5rem 2rem;font-size:.78rem;col
 """
 
 
+def excluded_note(snap: dict) -> str:
+    ex = snap.get("excluded") or []
+    if not ex:
+        return ""
+    rows = "".join(
+        f'<li><span class="type t-{e["type"].lower()}">{esc(e["type"])}</span> '
+        f'<a class="key" href="{BROWSE}{esc(e["key"])}" target="_blank" rel="noopener">{esc(e["key"])}</a> '
+        f'{esc(e["summary"])} <span class="how">{esc(e["reason"])}</span></li>'
+        for e in ex
+    )
+    return (
+        f'<details class="note"><summary><b>{len(ex)} items removed</b> because their title or description '
+        "mentions metadata, plus the child stories of a removed metadata-titled item. They are left out of "
+        "every count, tree and timeline below. Children of an item removed only for its description stay in "
+        f'and attach to their nearest remaining parent.</summary><ul class="excluded">{rows}</ul></details>'
+    )
+
+
 def build(snap: dict) -> str:
     in_six = sum(snap["area_counts"][a]["total"] for a in snap["areas"])
     rest = snap["area_counts"][snap["not_in_six"]]["total"]
@@ -337,7 +355,9 @@ def build(snap: dict) -> str:
 <p class="sub">Open CRM Core initiatives, epics and stories created since 1 Jan 2026, grouped into six areas. Each area shows a three-point summary of what will improve, its planned timeline from Jira Fix Versions, and a foldable initiative → epic → story hierarchy. Jira was read only. Run date {esc(snap["run_date"])}.</p>
 <code>{esc(snap["jql"])}</code>
 <div class="stats">
-<div class="stat"><b>{snap["total"]}</b><span>Jira items in the filter</span></div>
+<div class="stat"><b>{snap.get("filter_total", snap["total"])}</b><span>Jira items in the filter</span></div>
+<div class="stat"><b>{len(snap.get("excluded", []))}</b><span>removed (metadata)</span></div>
+<div class="stat"><b>{snap["total"]}</b><span>items analysed</span></div>
 <div class="stat"><b>{in_six}</b><span>in the six areas</span></div>
 <div class="stat"><b>{rest}</b><span>not in the six areas</span></div>
 <div class="stat"><b>{t.get("Initiative", 0)}</b><span>initiatives</span></div>
@@ -345,6 +365,7 @@ def build(snap: dict) -> str:
 <div class="stat"><b>{t.get("Story", 0)}</b><span>stories</span></div>
 </div>
 <div class="note">How items were placed: each item gets exactly one area, matched on its <b>title</b>. Descriptions were not used because Jira story templates carry boilerplate (for example "Out of scope: Permissions") that causes false matches. {src.get("jira_v1", 0)} items matched an area phrase directly. {src.get("inherited", 0)} items had no area phrase and took their parent's area. {src.get("unmatched", 0)} items matched nothing and are listed under "Not in the six areas". Greyed rows in a tree are parents shown for context: they are outside the filter or counted in a different area.</div>
+{excluded_note(snap)}
 </header>
 <main>
 <h2>Summary by area</h2>

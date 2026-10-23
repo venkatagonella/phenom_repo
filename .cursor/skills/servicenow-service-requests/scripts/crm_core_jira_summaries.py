@@ -6,13 +6,13 @@ from crm_core_jira_areas_names import ACC, EVT, HOW, HS, JOB, SYNC
 
 AREA_SUMMARIES: dict[str, list[str]] = {
     HS: [
-        "Hiring statuses will show in each recruiter's language, and status updates move to the new data layer (DAAL).",
+        "Hiring statuses will show in each recruiter's language.",
         "With Hiring Pipeline on, leads and applicants get separate spotlights, so each tab only counts its own candidates.",
         "Recruiters can export a candidate's latest job stage and see lead and applicant counts for each agency.",
     ],
     JOB: [
         "Recruiters can bulk-edit job requisitions, schedule when a job publishes or expires, and share confidential jobs through private links.",
-        "The job page gets a cleaner overview and edit layout, an in-app document viewer, attachments that copy over when a job is duplicated, and a full activity and audit history.",
+        "The job page gets a new overview tab, an in-app viewer for job documents, and a job activity view.",
         "Jobs go out more completely: translated job fields reach the career site, jobs can be distributed through RedDot, custom job statuses are supported, and applications get their own searchable list.",
     ],
     SYNC: [

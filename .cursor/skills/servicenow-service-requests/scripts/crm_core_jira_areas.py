@@ -45,6 +45,10 @@ JQL = (
 )
 EXPECTED_TOTAL = 308
 
+# Items whose title or description mentions metadata are removed from the
+# analysis, together with every descendant of a title match.
+EXCLUDE_RX = re.compile(r"\bmeta[\s-]?data", re.I)
+
 from crm_core_jira_areas_names import (  # noqa: E402
     ACC,
     AREAS,
@@ -215,6 +219,7 @@ def load_items() -> tuple[dict, dict]:
                 "summary": " ".join(f["summary"].split()),
                 "created": (f.get("created") or "")[:10],
                 "parent": par.get("key"),
+                "_description": f.get("description") or "",
             }
     ctx_raw = json.loads((DATA / "context-parents.json").read_text())["issues"]
     context = {
@@ -230,6 +235,48 @@ def load_items() -> tuple[dict, dict]:
         if k not in items
     }
     return items, context
+
+
+def exclude_metadata(items: dict, context: dict) -> list[dict]:
+    """Drop metadata items from `items` in place; return what was removed.
+
+    Kept items whose parent was removed are re-attached to their nearest
+    remaining ancestor, so trees and area inheritance skip removed items.
+    """
+    reason: dict[str, str] = {}
+    for k, n in items.items():
+        if EXCLUDE_RX.search(n["summary"]):
+            reason[k] = "metadata in title"
+        elif EXCLUDE_RX.search(n["_description"]):
+            reason[k] = "metadata in description"
+
+    title_hits = {k for k, r in reason.items() if r == "metadata in title"}
+    changed = True
+    while changed:
+        changed = False
+        for k, n in items.items():
+            p = n.get("parent")
+            if k not in reason and p in reason and (p in title_hits or reason[p].startswith("under ")):
+                reason[k] = f"under {p}"
+                changed = True
+
+    nodes = {**context, **items}
+
+    def kept_ancestor(p):
+        while p in reason:
+            p = nodes[p].get("parent")
+        return p
+
+    removed = []
+    for k in list(items):
+        if k in reason:
+            n = items.pop(k)
+            removed.append({"key": k, "type": n["type"], "status": n["status"],
+                            "summary": n["summary"], "reason": reason[k]})
+    for n in items.values():
+        n["parent"] = kept_ancestor(n.get("parent"))
+        n.pop("_description", None)
+    return sorted(removed, key=lambda r: (r["reason"].startswith("under"), r["key"]))
 
 
 def classify_all(items: dict, context: dict) -> dict:
@@ -261,11 +308,14 @@ def classify_all(items: dict, context: dict) -> dict:
 
 def build_snapshot() -> dict:
     items, context = load_items()
+    if len(items) != EXPECTED_TOTAL:
+        raise SystemExit(f"Expected {EXPECTED_TOTAL} Jira items, loaded {len(items)}")
+    excluded = exclude_metadata(items, context)
     nodes = classify_all(items, context)
     counted = [nodes[k] for k in items]
     total = len(counted)
-    if total != EXPECTED_TOTAL:
-        raise SystemExit(f"Expected {EXPECTED_TOTAL} Jira items, loaded {total}")
+    if total + len(excluded) != EXPECTED_TOTAL:
+        raise SystemExit("Kept + excluded items do not add up to the filter total")
 
     by_area = {a: Counter() for a in AREAS + [NOT_IN_SIX]}
     for n in counted:
@@ -281,6 +331,8 @@ def build_snapshot() -> dict:
         "title": "CRM Core Jira items mapped to the six CRM Core areas",
         "jql": JQL,
         "run_date": date.today().isoformat(),
+        "filter_total": EXPECTED_TOTAL,
+        "excluded": excluded,
         "total": total,
         "type_totals": dict(Counter(n["type"] for n in counted)),
         "status_totals": dict(Counter(n["status"] for n in counted).most_common()),

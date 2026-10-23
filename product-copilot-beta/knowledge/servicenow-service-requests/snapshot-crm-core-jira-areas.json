@@ -2,22 +2,234 @@
  "title": "CRM Core Jira items mapped to the six CRM Core areas",
  "jql": "project = PHEM AND \"Product Experience: Product2[Dropdown]\" = \"Recruiter Experience (RX) - CRM - Core\" AND type IN (Epic, Initiative, Story) AND created >= 2026-01-01 AND status NOT IN (Done, Blocked, \"In QA\", \"PM Acceptance Queue\")",
  "run_date": "2026-10-23",
- "total": 308,
+ "filter_total": 308,
+ "excluded": [
+  {
+   "key": "PHEM-1513106",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Create Executive Report Templates",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1546208",
+   "type": "Story",
+   "status": "ON Hold",
+   "summary": "Implement GeoNames Translation Layer for Customer-Defined Locations",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1683004",
+   "type": "Story",
+   "status": "Development",
+   "summary": "Visibility of \"Last Updated\" Details in CRM Note Type Settings",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1697375",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "CRM – FE – Show policy execution in candidate Activity tab",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1863370",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "CRM – Job page — IA redesign of Details, description & edit",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1965641",
+   "type": "Initiative",
+   "status": "To Do",
+   "summary": "Job-Level Hiring Team Member Roles",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1974353",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "PhenomHire Meta data service & DAAL integration",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-1987582",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Associate Projects to Notes MVP",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1987586",
+   "type": "Story",
+   "status": "Story Grooming",
+   "summary": "Embed RedDot Job Distribution iframe in CRM",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-1996882",
+   "type": "Story",
+   "status": "Story Ready",
+   "summary": "[Aspen Dental] Semantic Relevance Override for Project Titles",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2014742",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Migration metadata(Fields & Field Groups) of Disney to Metadata service",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-2014766",
+   "type": "Story",
+   "status": "Story Grooming",
+   "summary": "CRM Core - New Roles - Notifications & Messaging",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2014769",
+   "type": "Story",
+   "status": "Development",
+   "summary": "Departmenatlization support in metadata for requisition",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-2023201",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "CRM – Application Fields – True dropdown types vs select lists (single/multi, with search) for screening with Hiring Automations",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2104064",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "1. Predefined Job-Level Role Definitions & Data Model",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2104065",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "1.1: Create Role Registry and Data Model",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2109151",
+   "type": "Epic",
+   "status": "Epic Grooming",
+   "summary": "CRM Core: Phase 1 — Recruiter-Family Roles, IX Mapping, Notifications & Filters",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2126461",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "CRM – Profile — IA redesign to split Profile & Application",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2178093",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Requisition metadata approval",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-2219954",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "CRM - Filter against scorecard results in candidate list",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2278269",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "CRM Core : Metadata Notes",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-2283717",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "CRM Core Metadata Projects",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-2340831",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "CRM – Deep-copy job attachments on job duplicate",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2340832",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "S2. CRM Core – Integrate attachments clone API into job duplicate",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2358555",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Metadata CRM Core Bugs",
+   "reason": "metadata in title"
+  },
+  {
+   "key": "PHEM-2398228",
+   "type": "Story",
+   "status": "Development",
+   "summary": "CRM – BE – Expose read-only attribute for CRM fields",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2496650",
+   "type": "Epic",
+   "status": "To Do",
+   "summary": "Audit Trial of Job Entity",
+   "reason": "metadata in description"
+  },
+  {
+   "key": "PHEM-2014764",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Moving of hiring status update apis to DAAL",
+   "reason": "under PHEM-1974353"
+  },
+  {
+   "key": "PHEM-2015373",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "get departments apis",
+   "reason": "under PHEM-1974353"
+  },
+  {
+   "key": "PHEM-2164332",
+   "type": "Story",
+   "status": "To Do",
+   "summary": "Departmenatlization integration in jobs service",
+   "reason": "under PHEM-1974353"
+  }
+ ],
+ "total": 278,
  "type_totals": {
-  "Story": 218,
-  "Initiative": 18,
-  "Epic": 72
+  "Story": 199,
+  "Initiative": 17,
+  "Epic": 62
  },
  "status_totals": {
-  "To Do": 256,
-  "Development": 20,
+  "To Do": 234,
+  "Development": 17,
   "In Progress": 9,
-  "Story Ready": 7,
-  "Story Grooming": 6,
-  "ON Hold": 4,
+  "Story Ready": 6,
+  "Story Grooming": 4,
+  "ON Hold": 3,
   "UX/UI Validation": 2,
   "Story Elaboration": 2,
-  "Epic Grooming": 1,
   "UX Queue": 1
  },
  "areas": [
@@ -31,28 +243,28 @@
  "not_in_six": "Not in the six areas",
  "area_counts": {
   "Hiring status / pipeline / stages / lead status": {
-   "total": 5,
+   "total": 4,
    "Initiative": 0,
    "Epic": 1,
-   "Story": 4
+   "Story": 3
   },
   "Jobs / requisitions / applications / posting": {
-   "total": 64,
+   "total": 55,
    "Initiative": 2,
-   "Epic": 20,
-   "Story": 42
+   "Epic": 16,
+   "Story": 37
   },
   "Forwarding / LinkedIn / ATS↔CRM sync": {
-   "total": 22,
+   "total": 21,
    "Initiative": 2,
    "Epic": 9,
-   "Story": 11
+   "Story": 10
   },
   "Access / CRM not opening / permissions": {
-   "total": 53,
-   "Initiative": 1,
-   "Epic": 10,
-   "Story": 42
+   "total": 46,
+   "Initiative": 0,
+   "Epic": 8,
+   "Story": 38
   },
   "Events / university recruiting": {
    "total": 0,
@@ -61,32 +273,32 @@
    "Story": 0
   },
   "How-to / configuration / enablement question": {
-   "total": 18,
+   "total": 17,
    "Initiative": 1,
    "Epic": 4,
-   "Story": 13
+   "Story": 12
   },
   "Not in the six areas": {
-   "total": 146,
+   "total": 135,
    "Initiative": 12,
-   "Epic": 28,
-   "Story": 106
+   "Epic": 24,
+   "Story": 99
   }
  },
  "source_counts": {
-  "inherited": 12,
-  "unmatched": 146,
-  "jira_v1": 150
+  "inherited": 10,
+  "unmatched": 135,
+  "jira_v1": 133
  },
  "summaries": {
   "Hiring status / pipeline / stages / lead status": [
-   "Hiring statuses will show in each recruiter's language, and status updates move to the new data layer (DAAL).",
+   "Hiring statuses will show in each recruiter's language.",
    "With Hiring Pipeline on, leads and applicants get separate spotlights, so each tab only counts its own candidates.",
    "Recruiters can export a candidate's latest job stage and see lead and applicant counts for each agency."
   ],
   "Jobs / requisitions / applications / posting": [
    "Recruiters can bulk-edit job requisitions, schedule when a job publishes or expires, and share confidential jobs through private links.",
-   "The job page gets a cleaner overview and edit layout, an in-app document viewer, attachments that copy over when a job is duplicated, and a full activity and audit history.",
+   "The job page gets a new overview tab, an in-app viewer for job documents, and a job activity view.",
    "Jobs go out more completely: translated job fields reach the career site, jobs can be distributed through RedDot, custom job statuses are supported, and applications get their own searchable list."
   ],
   "Forwarding / LinkedIn / ATS↔CRM sync": [
@@ -264,8 +476,8 @@
    "rollup": {
     "planned": 0,
     "slipped": 0,
-    "unplanned": 14,
-    "items": 14,
+    "unplanned": 13,
+    "items": 13,
     "latest_target": null,
     "latest_version": null,
     "months": null
@@ -380,16 +592,7 @@
    "context": true,
    "area": "Not in the six areas",
    "source": "unmatched",
-   "pattern": "",
-   "rollup": {
-    "planned": 0,
-    "slipped": 0,
-    "unplanned": 1,
-    "items": 1,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
-   }
+   "pattern": ""
   },
   "PHEM-2117038": {
    "key": "PHEM-2117038",
@@ -500,16 +703,7 @@
    "context": true,
    "area": "Not in the six areas",
    "source": "unmatched",
-   "pattern": "",
-   "rollup": {
-    "planned": 1,
-    "slipped": 0,
-    "unplanned": 0,
-    "items": 1,
-    "latest_target": "2026-11-30",
-    "latest_version": "26.11",
-    "months": 1.2
-   }
+   "pattern": ""
   },
   "PHEM-2412480": {
    "key": "PHEM-2412480",
@@ -682,10 +876,10 @@
    "source": "jira_v1",
    "pattern": "\\bjobs?\\b",
    "rollup": {
-    "planned": 3,
+    "planned": 2,
     "slipped": 0,
     "unplanned": 7,
-    "items": 10,
+    "items": 9,
     "latest_target": "2026-12-31",
     "latest_version": "OffCycle-2026",
     "months": 2.3
@@ -722,13 +916,13 @@
    "source": "unmatched",
    "pattern": "",
    "rollup": {
-    "planned": 1,
+    "planned": 0,
     "slipped": 0,
     "unplanned": 0,
-    "items": 1,
-    "latest_target": "2026-11-30",
-    "latest_version": "26.11",
-    "months": 1.2
+    "items": 0,
+    "latest_target": null,
+    "latest_version": null,
+    "months": null
    }
   },
   "PHEM-2341558": {
@@ -744,8 +938,8 @@
    "rollup": {
     "planned": 0,
     "slipped": 0,
-    "unplanned": 2,
-    "items": 2,
+    "unplanned": 1,
+    "items": 1,
     "latest_target": null,
     "latest_version": null,
     "months": null
@@ -897,15 +1091,6 @@
     "due": null,
     "story_points": null,
     "active_sprint": null
-   },
-   "rollup": {
-    "planned": 2,
-    "slipped": 0,
-    "unplanned": 0,
-    "items": 2,
-    "latest_target": "2027-01-31",
-    "latest_version": "27.01",
-    "months": 3.3
    }
   },
   "PHEM-2496711": {
@@ -1011,30 +1196,6 @@
     "latest_target": null,
     "latest_version": null,
     "months": null
-   }
-  },
-  "PHEM-2496650": {
-   "key": "PHEM-2496650",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "Audit Trial of Job Entity",
-   "created": "2026-10-14",
-   "parent": "PHEM-2506130",
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bjobs?\\b",
-   "plan": {
-    "versions": [
-     "27.01"
-    ],
-    "state": "planned",
-    "target": "2027-01-31",
-    "target_version": "27.01",
-    "basis": "end of release month",
-    "months": 3.3,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
    }
   },
   "PHEM-2492869": {
@@ -1268,30 +1429,6 @@
     "months": null,
     "due": null,
     "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2398228": {
-   "key": "PHEM-2398228",
-   "type": "Story",
-   "status": "Development",
-   "summary": "CRM – BE – Expose read-only attribute for CRM fields",
-   "created": "2026-09-24",
-   "parent": "PHEM-2398227",
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "26.11"
-    ],
-    "state": "planned",
-    "target": "2026-11-30",
-    "target_version": "26.11",
-    "basis": "release date",
-    "months": 1.2,
-    "due": null,
-    "story_points": 3,
     "active_sprint": null
    }
   },
@@ -1568,30 +1705,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-2358555": {
-   "key": "PHEM-2358555",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Metadata CRM Core Bugs",
-   "created": "2026-09-09",
-   "parent": null,
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-2350340": {
    "key": "PHEM-2350340",
    "type": "Story",
@@ -1704,63 +1817,6 @@
     "latest_target": "2026-11-30",
     "latest_version": "26.11",
     "months": 1.2
-   }
-  },
-  "PHEM-2340832": {
-   "key": "PHEM-2340832",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "S2. CRM Core – Integrate attachments clone API into job duplicate",
-   "created": "2026-09-02",
-   "parent": "PHEM-2340831",
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bjobs?\\b",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2340831": {
-   "key": "PHEM-2340831",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "CRM – Deep-copy job attachments on job duplicate",
-   "created": "2026-09-02",
-   "parent": null,
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bjobs?\\b",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   },
-   "rollup": {
-    "planned": 2,
-    "slipped": 0,
-    "unplanned": 0,
-    "items": 2,
-    "latest_target": "2026-12-31",
-    "latest_version": "OffCycle-2026",
-    "months": 2.3
    }
   },
   "PHEM-2318056": {
@@ -2099,30 +2155,6 @@
     "active_sprint": "Phenom Sprint Y26 - 22"
    }
   },
-  "PHEM-2283717": {
-   "key": "PHEM-2283717",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "CRM Core Metadata Projects",
-   "created": "2026-08-14",
-   "parent": null,
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "26.09"
-    ],
-    "state": "slipped",
-    "target": "2026-09-08",
-    "target_version": "26.09",
-    "basis": "release date",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-2281914": {
    "key": "PHEM-2281914",
    "type": "Epic",
@@ -2238,30 +2270,6 @@
     "target_version": "26.11",
     "basis": "release date",
     "months": 1.2,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2278269": {
-   "key": "PHEM-2278269",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "CRM Core : Metadata Notes",
-   "created": "2026-08-11",
-   "parent": null,
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
     "due": null,
     "story_points": null,
     "active_sprint": null
@@ -2882,7 +2890,7 @@
    "status": "To Do",
    "summary": "CRM - Add Eval Avg Rating field to candidate list",
    "created": "2026-07-23",
-   "parent": "PHEM-2219954",
+   "parent": null,
    "area": "Not in the six areas",
    "source": "unmatched",
    "pattern": "",
@@ -2906,30 +2914,6 @@
    "status": "ON Hold",
    "summary": "CRM - Filtering updates for scorecard results in candidate list",
    "created": "2026-07-23",
-   "parent": "PHEM-2219954",
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2219954": {
-   "key": "PHEM-2219954",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "CRM - Filter against scorecard results in candidate list",
-   "created": "2026-07-23",
    "parent": null,
    "area": "Not in the six areas",
    "source": "unmatched",
@@ -2946,15 +2930,6 @@
     "due": null,
     "story_points": null,
     "active_sprint": null
-   },
-   "rollup": {
-    "planned": 0,
-    "slipped": 0,
-    "unplanned": 3,
-    "items": 3,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
    }
   },
   "PHEM-2215062": {
@@ -3353,30 +3328,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-2178093": {
-   "key": "PHEM-2178093",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Requisition metadata approval",
-   "created": "2026-06-30",
-   "parent": null,
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\brequisitions?\\b",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-2174697": {
    "key": "PHEM-2174697",
    "type": "Story",
@@ -3447,30 +3398,6 @@
     "months": 2.3,
     "due": null,
     "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2164332": {
-   "key": "PHEM-2164332",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Departmenatlization integration in jobs service",
-   "created": "2026-06-25",
-   "parent": "PHEM-1974353",
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\bdep(a)?r(t)?(e)?m(e)?n(a)?t(a)?li[sz]ation\\b",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": 5,
     "active_sprint": null
    }
   },
@@ -3570,30 +3497,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-2126461": {
-   "key": "PHEM-2126461",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "CRM – Profile — IA redesign to split Profile & Application",
-   "created": "2026-06-11",
-   "parent": null,
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bapplications?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-2122618": {
    "key": "PHEM-2122618",
    "type": "Story",
@@ -3640,39 +3543,6 @@
     "due": null,
     "story_points": null,
     "active_sprint": null
-   }
-  },
-  "PHEM-2109151": {
-   "key": "PHEM-2109151",
-   "type": "Epic",
-   "status": "Epic Grooming",
-   "summary": "CRM Core: Phase 1 — Recruiter-Family Roles, IX Mapping, Notifications & Filters",
-   "created": "2026-06-01",
-   "parent": "PHEM-1965641",
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\broles?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   },
-   "rollup": {
-    "planned": 0,
-    "slipped": 0,
-    "unplanned": 2,
-    "items": 2,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
    }
   },
   "PHEM-2106102": {
@@ -3849,7 +3719,7 @@
    "status": "To Do",
    "summary": "7. Role-Based UI Visibility & Filtering",
    "created": "2026-05-30",
-   "parent": "PHEM-1965641",
+   "parent": null,
    "area": "Access / CRM not opening / permissions",
    "source": "jira_v1",
    "pattern": "\\broles?\\b",
@@ -3930,7 +3800,7 @@
    "status": "To Do",
    "summary": "6. Role-Aware Auto-Provisioning",
    "created": "2026-05-30",
-   "parent": "PHEM-1965641",
+   "parent": null,
    "area": "Access / CRM not opening / permissions",
    "source": "jira_v1",
    "pattern": "\\broles?\\b",
@@ -4011,7 +3881,7 @@
    "status": "To Do",
    "summary": "5. Tenant-Level Notification Configuration",
    "created": "2026-05-30",
-   "parent": "PHEM-1965641",
+   "parent": null,
    "area": "How-to / configuration / enablement question",
    "source": "jira_v1",
    "pattern": "\\bconfigur(e|ation|ations)\\b",
@@ -4068,7 +3938,7 @@
    "status": "To Do",
    "summary": "4. Data Migration with Role Assignment Logic",
    "created": "2026-05-30",
-   "parent": "PHEM-1965641",
+   "parent": null,
    "area": "Access / CRM not opening / permissions",
    "source": "jira_v1",
    "pattern": "\\broles?\\b",
@@ -4143,63 +4013,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-2104065": {
-   "key": "PHEM-2104065",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "1.1: Create Role Registry and Data Model",
-   "created": "2026-05-30",
-   "parent": "PHEM-2104064",
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\broles?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2104064": {
-   "key": "PHEM-2104064",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "1. Predefined Job-Level Role Definitions & Data Model",
-   "created": "2026-05-30",
-   "parent": "PHEM-1965641",
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\broles?\\b",
-   "plan": {
-    "versions": [
-     "26.05"
-    ],
-    "state": "slipped",
-    "target": "2026-06-01",
-    "target_version": "26.05",
-    "basis": "release date",
-    "months": null,
-    "due": null,
-    "story_points": 1,
-    "active_sprint": null
-   },
-   "rollup": {
-    "planned": 0,
-    "slipped": 1,
-    "unplanned": 1,
-    "items": 2,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
-   }
-  },
   "PHEM-2104063": {
    "key": "PHEM-2104063",
    "type": "Story",
@@ -4230,7 +4043,7 @@
    "status": "To Do",
    "summary": "2. Role Display & Assignment UI",
    "created": "2026-05-30",
-   "parent": "PHEM-1965641",
+   "parent": null,
    "area": "Access / CRM not opening / permissions",
    "source": "jira_v1",
    "pattern": "\\broles?\\b",
@@ -4287,7 +4100,7 @@
    "status": "To Do",
    "summary": "3. ATS Integration — Role-Aware Job Pull",
    "created": "2026-05-30",
-   "parent": "PHEM-1965641",
+   "parent": null,
    "area": "Forwarding / LinkedIn / ATS↔CRM sync",
    "source": "jira_v1",
    "pattern": "\\bats\\b",
@@ -5094,30 +4907,6 @@
     "months": null
    }
   },
-  "PHEM-2023201": {
-   "key": "PHEM-2023201",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "CRM – Application Fields – True dropdown types vs select lists (single/multi, with search) for screening with Hiring Automations",
-   "created": "2026-04-29",
-   "parent": "PHEM-2023199",
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bapplications?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-2020503": {
    "key": "PHEM-2020503",
    "type": "Story",
@@ -5173,126 +4962,6 @@
     "latest_target": null,
     "latest_version": null,
     "months": null
-   }
-  },
-  "PHEM-2015373": {
-   "key": "PHEM-2015373",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "get departments apis",
-   "created": "2026-04-26",
-   "parent": "PHEM-1974353",
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": 5,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2014769": {
-   "key": "PHEM-2014769",
-   "type": "Story",
-   "status": "Development",
-   "summary": "Departmenatlization support in metadata for requisition",
-   "created": "2026-04-24",
-   "parent": "PHEM-1974353",
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\bdep(a)?r(t)?(e)?m(e)?n(a)?t(a)?li[sz]ation\\b",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": 5,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2014766": {
-   "key": "PHEM-2014766",
-   "type": "Story",
-   "status": "Story Grooming",
-   "summary": "CRM Core - New Roles - Notifications & Messaging",
-   "created": "2026-04-24",
-   "parent": "PHEM-2109151",
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\broles?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2014764": {
-   "key": "PHEM-2014764",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Moving of hiring status update apis to DAAL",
-   "created": "2026-04-24",
-   "parent": "PHEM-1974353",
-   "area": "Hiring status / pipeline / stages / lead status",
-   "source": "jira_v1",
-   "pattern": "\\bhiring status",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": 2,
-    "active_sprint": null
-   }
-  },
-  "PHEM-2014742": {
-   "key": "PHEM-2014742",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Migration metadata(Fields & Field Groups) of Disney to Metadata service",
-   "created": "2026-04-24",
-   "parent": "PHEM-1974353",
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": 1,
-    "active_sprint": null
    }
   },
   "PHEM-2014705": {
@@ -5487,30 +5156,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-1996882": {
-   "key": "PHEM-1996882",
-   "type": "Story",
-   "status": "Story Ready",
-   "summary": "[Aspen Dental] Semantic Relevance Override for Project Titles",
-   "created": "2026-04-16",
-   "parent": "PHEM-1957323",
-   "area": "Forwarding / LinkedIn / ATS↔CRM sync",
-   "source": "inherited",
-   "pattern": "from PHEM-1957323",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": 2,
-    "active_sprint": null
-   }
-  },
   "PHEM-1992235": {
    "key": "PHEM-1992235",
    "type": "Epic",
@@ -5592,30 +5237,6 @@
     "months": null
    }
   },
-  "PHEM-1987586": {
-   "key": "PHEM-1987586",
-   "type": "Story",
-   "status": "Story Grooming",
-   "summary": "Embed RedDot Job Distribution iframe in CRM",
-   "created": "2026-04-13",
-   "parent": "PHEM-1987585",
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bjobs?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": 3,
-    "active_sprint": null
-   }
-  },
   "PHEM-1987585": {
    "key": "PHEM-1987585",
    "type": "Epic",
@@ -5638,15 +5259,6 @@
     "due": null,
     "story_points": null,
     "active_sprint": null
-   },
-   "rollup": {
-    "planned": 0,
-    "slipped": 0,
-    "unplanned": 2,
-    "items": 2,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
    }
   },
   "PHEM-1987584": {
@@ -5675,8 +5287,8 @@
    "rollup": {
     "planned": 0,
     "slipped": 1,
-    "unplanned": 2,
-    "items": 3,
+    "unplanned": 1,
+    "items": 2,
     "latest_target": null,
     "latest_version": null,
     "months": null
@@ -5692,30 +5304,6 @@
    "area": "Access / CRM not opening / permissions",
    "source": "jira_v1",
    "pattern": "\\bdep(a)?r(t)?(e)?m(e)?n(a)?t(a)?li[sz]ation\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-1987582": {
-   "key": "PHEM-1987582",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Associate Projects to Notes MVP",
-   "created": "2026-04-13",
-   "parent": "PHEM-1987505",
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
    "plan": {
     "versions": [
      "Backlog"
@@ -5756,8 +5344,8 @@
    "rollup": {
     "planned": 0,
     "slipped": 0,
-    "unplanned": 3,
-    "items": 3,
+    "unplanned": 2,
+    "items": 2,
     "latest_target": null,
     "latest_version": null,
     "months": null
@@ -5789,8 +5377,8 @@
    "rollup": {
     "planned": 0,
     "slipped": 1,
-    "unplanned": 3,
-    "items": 4,
+    "unplanned": 2,
+    "items": 3,
     "latest_target": null,
     "latest_version": null,
     "months": null
@@ -6093,39 +5681,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-1974353": {
-   "key": "PHEM-1974353",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "PhenomHire Meta data service & DAAL integration",
-   "created": "2026-04-06",
-   "parent": null,
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   },
-   "rollup": {
-    "planned": 6,
-    "slipped": 0,
-    "unplanned": 0,
-    "items": 6,
-    "latest_target": "2026-12-31",
-    "latest_version": "OffCycle-2026",
-    "months": 2.3
-   }
-  },
   "PHEM-1974314": {
    "key": "PHEM-1974314",
    "type": "Epic",
@@ -6337,39 +5892,6 @@
     "months": null
    }
   },
-  "PHEM-1965641": {
-   "key": "PHEM-1965641",
-   "type": "Initiative",
-   "status": "To Do",
-   "summary": "Job-Level Hiring Team Member Roles",
-   "created": "2026-04-01",
-   "parent": null,
-   "area": "Access / CRM not opening / permissions",
-   "source": "jira_v1",
-   "pattern": "\\broles?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   },
-   "rollup": {
-    "planned": 0,
-    "slipped": 7,
-    "unplanned": 20,
-    "items": 27,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
-   }
-  },
   "PHEM-1957994": {
    "key": "PHEM-1957994",
    "type": "Story",
@@ -6540,15 +6062,6 @@
     "due": null,
     "story_points": null,
     "active_sprint": null
-   },
-   "rollup": {
-    "planned": 0,
-    "slipped": 1,
-    "unplanned": 1,
-    "items": 2,
-    "latest_target": null,
-    "latest_version": null,
-    "months": null
    }
   },
   "PHEM-1957322": {
@@ -6578,8 +6091,8 @@
    "rollup": {
     "planned": 0,
     "slipped": 3,
-    "unplanned": 1,
-    "items": 4,
+    "unplanned": 0,
+    "items": 3,
     "latest_target": null,
     "latest_version": null,
     "months": null
@@ -6927,30 +6440,6 @@
     "months": null,
     "due": null,
     "story_points": 1,
-    "active_sprint": null
-   }
-  },
-  "PHEM-1863370": {
-   "key": "PHEM-1863370",
-   "type": "Epic",
-   "status": "To Do",
-   "summary": "CRM – Job page — IA redesign of Details, description & edit",
-   "created": "2026-03-19",
-   "parent": null,
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "jira_v1",
-   "pattern": "\\bjobs?\\b",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
     "active_sprint": null
    }
   },
@@ -7752,30 +7241,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-1697375": {
-   "key": "PHEM-1697375",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "CRM – FE – Show policy execution in candidate Activity tab",
-   "created": "2026-02-17",
-   "parent": null,
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-1697298": {
    "key": "PHEM-1697298",
    "type": "Story",
@@ -7944,30 +7409,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-1683004": {
-   "key": "PHEM-1683004",
-   "type": "Story",
-   "status": "Development",
-   "summary": "Visibility of \"Last Updated\" Details in CRM Note Type Settings",
-   "created": "2026-02-11",
-   "parent": null,
-   "area": "How-to / configuration / enablement question",
-   "source": "jira_v1",
-   "pattern": "\\bsettings?\\b",
-   "plan": {
-    "versions": [
-     "26.11"
-    ],
-    "state": "planned",
-    "target": "2026-11-30",
-    "target_version": "26.11",
-    "basis": "release date",
-    "months": 1.2,
-    "due": null,
-    "story_points": 1,
-    "active_sprint": null
-   }
-  },
   "PHEM-1587500": {
    "key": "PHEM-1587500",
    "type": "Epic",
@@ -8094,30 +7535,6 @@
     "months": 2.3,
     "due": null,
     "story_points": null,
-    "active_sprint": null
-   }
-  },
-  "PHEM-1546208": {
-   "key": "PHEM-1546208",
-   "type": "Story",
-   "status": "ON Hold",
-   "summary": "Implement GeoNames Translation Layer for Customer-Defined Locations",
-   "created": "2026-01-27",
-   "parent": "PHEM-791913",
-   "area": "Jobs / requisitions / applications / posting",
-   "source": "inherited",
-   "pattern": "from PHEM-791913",
-   "plan": {
-    "versions": [
-     "OffCycle-2026"
-    ],
-    "state": "planned",
-    "target": "2026-12-31",
-    "target_version": "OffCycle-2026",
-    "basis": "end of off-cycle year",
-    "months": 2.3,
-    "due": null,
-    "story_points": 3,
     "active_sprint": null
    }
   },
@@ -8505,30 +7922,6 @@
     "active_sprint": null
    }
   },
-  "PHEM-1513106": {
-   "key": "PHEM-1513106",
-   "type": "Story",
-   "status": "To Do",
-   "summary": "Create Executive Report Templates",
-   "created": "2026-01-20",
-   "parent": "PHEM-1483121",
-   "area": "Not in the six areas",
-   "source": "unmatched",
-   "pattern": "",
-   "plan": {
-    "versions": [
-     "Backlog"
-    ],
-    "state": "unplanned",
-    "target": null,
-    "target_version": "Backlog",
-    "basis": "backlog",
-    "months": null,
-    "due": null,
-    "story_points": null,
-    "active_sprint": null
-   }
-  },
   "PHEM-1507369": {
    "key": "PHEM-1507369",
    "type": "Story",
@@ -8777,7 +8170,6 @@
   "PHEM-2496710",
   "PHEM-2496709",
   "PHEM-2496708",
-  "PHEM-2496650",
   "PHEM-2492869",
   "PHEM-2492868",
   "PHEM-2492867",
@@ -8787,7 +8179,6 @@
   "PHEM-2435084",
   "PHEM-2412940",
   "PHEM-2398582",
-  "PHEM-2398228",
   "PHEM-2396537",
   "PHEM-2396523",
   "PHEM-2396086",
@@ -8799,13 +8190,10 @@
   "PHEM-2380351",
   "PHEM-2363294",
   "PHEM-2358556",
-  "PHEM-2358555",
   "PHEM-2350340",
   "PHEM-2350122",
   "PHEM-2341415",
   "PHEM-2341256",
-  "PHEM-2340832",
-  "PHEM-2340831",
   "PHEM-2318056",
   "PHEM-2314766",
   "PHEM-2314688",
@@ -8820,13 +8208,11 @@
   "PHEM-2288881",
   "PHEM-2288791",
   "PHEM-2285654",
-  "PHEM-2283717",
   "PHEM-2281914",
   "PHEM-2280606",
   "PHEM-2280605",
   "PHEM-2280602",
   "PHEM-2278439",
-  "PHEM-2278269",
   "PHEM-2278041",
   "PHEM-2278020",
   "PHEM-2271120",
@@ -8851,7 +8237,6 @@
   "PHEM-2235741",
   "PHEM-2219956",
   "PHEM-2219955",
-  "PHEM-2219954",
   "PHEM-2215062",
   "PHEM-2215042",
   "PHEM-2202537",
@@ -8867,19 +8252,15 @@
   "PHEM-2178655",
   "PHEM-2178519",
   "PHEM-2178515",
-  "PHEM-2178093",
   "PHEM-2174697",
   "PHEM-2172552",
   "PHEM-2165622",
-  "PHEM-2164332",
   "PHEM-2163333",
   "PHEM-2163326",
   "PHEM-2137298",
   "PHEM-2136326",
-  "PHEM-2126461",
   "PHEM-2122618",
   "PHEM-2121528",
-  "PHEM-2109151",
   "PHEM-2106102",
   "PHEM-2106084",
   "PHEM-2106057",
@@ -8898,8 +8279,6 @@
   "PHEM-2104070",
   "PHEM-2104069",
   "PHEM-2104068",
-  "PHEM-2104065",
-  "PHEM-2104064",
   "PHEM-2104063",
   "PHEM-2104062",
   "PHEM-2104061",
@@ -8935,14 +8314,8 @@
   "PHEM-2024947",
   "PHEM-2024946",
   "PHEM-2024863",
-  "PHEM-2023201",
   "PHEM-2020503",
   "PHEM-2018552",
-  "PHEM-2015373",
-  "PHEM-2014769",
-  "PHEM-2014766",
-  "PHEM-2014764",
-  "PHEM-2014742",
   "PHEM-2014705",
   "PHEM-2014661",
   "PHEM-2014648",
@@ -8951,15 +8324,12 @@
   "PHEM-2006000",
   "PHEM-2005934",
   "PHEM-2005892",
-  "PHEM-1996882",
   "PHEM-1992235",
   "PHEM-1991295",
   "PHEM-1991264",
-  "PHEM-1987586",
   "PHEM-1987585",
   "PHEM-1987584",
   "PHEM-1987583",
-  "PHEM-1987582",
   "PHEM-1987505",
   "PHEM-1987498",
   "PHEM-1987497",
@@ -8974,7 +8344,6 @@
   "PHEM-1982213",
   "PHEM-1982212",
   "PHEM-1979661",
-  "PHEM-1974353",
   "PHEM-1974314",
   "PHEM-1973954",
   "PHEM-1970578",
@@ -8983,7 +8352,6 @@
   "PHEM-1970552",
   "PHEM-1970183",
   "PHEM-1970182",
-  "PHEM-1965641",
   "PHEM-1957994",
   "PHEM-1957993",
   "PHEM-1957991",
@@ -9005,7 +8373,6 @@
   "PHEM-1873648",
   "PHEM-1873647",
   "PHEM-1870274",
-  "PHEM-1863370",
   "PHEM-1856979",
   "PHEM-1856957",
   "PHEM-1856531",
@@ -9037,7 +8404,6 @@
   "PHEM-1698277",
   "PHEM-1698115",
   "PHEM-1697756",
-  "PHEM-1697375",
   "PHEM-1697298",
   "PHEM-1697297",
   "PHEM-1695834",
@@ -9045,13 +8411,11 @@
   "PHEM-1694111",
   "PHEM-1693767",
   "PHEM-1692609",
-  "PHEM-1683004",
   "PHEM-1587500",
   "PHEM-1577362",
   "PHEM-1566523",
   "PHEM-1566327",
   "PHEM-1549914",
-  "PHEM-1546208",
   "PHEM-1546009",
   "PHEM-1529975",
   "PHEM-1529974",
@@ -9068,7 +8432,6 @@
   "PHEM-1513178",
   "PHEM-1513177",
   "PHEM-1513110",
-  "PHEM-1513106",
   "PHEM-1507369",
   "PHEM-1506795",
   "PHEM-1504053",
@@ -9109,63 +8472,63 @@
   },
   "areas": {
    "Hiring status / pipeline / stages / lead status": {
-    "planned": 2,
+    "planned": 1,
     "slipped": 0,
     "unplanned": 3,
-    "items": 5,
+    "items": 4,
     "latest_target": "2026-12-31",
     "latest_version": "OffCycle-2026",
     "months": 2.3,
-    "open_stories": 4,
+    "open_stories": 3,
     "unplanned_stories": 2,
     "pace_months": {
-     "low": 0.3,
-     "high": 0.4
+     "low": 0.2,
+     "high": 0.3
     }
    },
    "Jobs / requisitions / applications / posting": {
-    "planned": 28,
+    "planned": 23,
     "slipped": 8,
-    "unplanned": 28,
-    "items": 64,
-    "latest_target": "2027-01-31",
-    "latest_version": "27.01",
-    "months": 3.3,
-    "open_stories": 42,
-    "unplanned_stories": 19,
+    "unplanned": 24,
+    "items": 55,
+    "latest_target": "2026-12-31",
+    "latest_version": "OffCycle-2026",
+    "months": 2.3,
+    "open_stories": 37,
+    "unplanned_stories": 17,
     "pace_months": {
-     "low": 3.4,
-     "high": 4.5
+     "low": 3.0,
+     "high": 4.0
     }
    },
    "Forwarding / LinkedIn / ATS↔CRM sync": {
     "planned": 7,
     "slipped": 7,
-    "unplanned": 8,
-    "items": 22,
+    "unplanned": 7,
+    "items": 21,
     "latest_target": "2026-12-31",
     "latest_version": "OffCycle-2026",
     "months": 2.3,
-    "open_stories": 11,
-    "unplanned_stories": 6,
+    "open_stories": 10,
+    "unplanned_stories": 5,
     "pace_months": {
-     "low": 0.9,
-     "high": 1.2
+     "low": 0.8,
+     "high": 1.1
     }
    },
    "Access / CRM not opening / permissions": {
-    "planned": 10,
-    "slipped": 6,
-    "unplanned": 37,
-    "items": 53,
+    "planned": 8,
+    "slipped": 5,
+    "unplanned": 33,
+    "items": 46,
     "latest_target": "2026-12-31",
     "latest_version": "OffCycle-2026",
     "months": 2.3,
-    "open_stories": 42,
-    "unplanned_stories": 33,
+    "open_stories": 38,
+    "unplanned_stories": 31,
     "pace_months": {
-     "low": 3.4,
-     "high": 4.5
+     "low": 3.1,
+     "high": 4.1
     }
    },
    "Events / university recruiting": {
@@ -9184,60 +8547,60 @@
     }
    },
    "How-to / configuration / enablement question": {
-    "planned": 7,
+    "planned": 6,
     "slipped": 5,
     "unplanned": 6,
-    "items": 18,
+    "items": 17,
     "latest_target": "2026-12-31",
     "latest_version": "OffCycle-2026",
     "months": 2.3,
-    "open_stories": 13,
+    "open_stories": 12,
     "unplanned_stories": 5,
     "pace_months": {
-     "low": 1.1,
-     "high": 1.4
+     "low": 1.0,
+     "high": 1.3
     }
    },
    "Not in the six areas": {
-    "planned": 17,
-    "slipped": 15,
-    "unplanned": 114,
-    "items": 146,
+    "planned": 12,
+    "slipped": 14,
+    "unplanned": 109,
+    "items": 135,
     "latest_target": "2027-01-31",
     "latest_version": "27.01",
     "months": 3.3,
-    "open_stories": 106,
-    "unplanned_stories": 93,
+    "open_stories": 99,
+    "unplanned_stories": 89,
     "pace_months": {
-     "low": 8.6,
-     "high": 11.4
+     "low": 8.0,
+     "high": 10.6
     }
    }
   },
   "overall": {
-   "planned": 71,
-   "slipped": 41,
-   "unplanned": 196,
-   "items": 308,
+   "planned": 57,
+   "slipped": 39,
+   "unplanned": 182,
+   "items": 278,
    "latest_target": "2027-01-31",
    "latest_version": "27.01",
    "months": 3.3,
-   "open_stories": 218,
+   "open_stories": 199,
    "pace_months": {
-    "low": 17.7,
-    "high": 23.4
+    "low": 16.2,
+    "high": 21.4
    }
   },
   "target_version_counts": {
-   "Backlog": 196,
-   "OffCycle-2026": 47,
-   "26.11": 22,
-   "26.05": 16,
+   "Backlog": 182,
+   "OffCycle-2026": 36,
+   "26.11": 20,
+   "26.05": 15,
    "26.06": 8,
    "26.10": 6,
-   "26.09": 4,
+   "26.09": 3,
    "26.07": 3,
-   "27.01": 2,
+   "27.01": 1,
    "25.03": 1,
    "26.02": 1,
    "26.03": 1,
@@ -9245,6 +8608,6 @@
   },
   "with_due_date": 4,
   "in_active_sprint": 11,
-  "with_story_points": 71
+  "with_story_points": 60
  }
 }

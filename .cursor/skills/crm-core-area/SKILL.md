@@ -30,30 +30,29 @@ Each area is a theme from the RX ServiceNow analysis (see **servicenow-service-r
 
 | Area | What it covers | RX SRs | Open Jira (I/E/S) | Latest planned release |
 |------|----------------|-------:|------------------:|------------------------|
-| Hiring status / pipeline / stages / lead status | Candidate × job status, pipeline stages, lead vs applicant status | 263 (6.0%) | 5 (0/1/4) | OffCycle-2026 (~2.3 mo) |
-| Jobs / requisitions / applications / posting | Job record, req setup, publish/unpublish/expiry, career site, applications | 242 (5.5%) | 64 (2/20/42) | 27.01 (~3.3 mo) |
-| Forwarding / LinkedIn / ATS↔CRM sync | LinkedIn CRM Connect, Workday/SuccessFactors/ATS sync, HRM, Indeed, ADP | 180 (4.1%) | 22 (2/9/11) | OffCycle-2026 (~2.3 mo) |
-| Access / CRM not opening / permissions | Roles, RBAC, hiring-team roles, departmentalization, visibility, export restriction | 141 (3.2%) | 53 (1/10/42) | OffCycle-2026 (~2.3 mo) |
+| Hiring status / pipeline / stages / lead status | Candidate × job status, pipeline stages, lead vs applicant status | 263 (6.0%) | 4 (0/1/3) | OffCycle-2026 (~2.3 mo) |
+| Jobs / requisitions / applications / posting | Job record, req setup, publish/unpublish/expiry, career site, applications | 242 (5.5%) | 55 (2/16/37) | OffCycle-2026 (~2.3 mo) |
+| Forwarding / LinkedIn / ATS↔CRM sync | LinkedIn CRM Connect, Workday/SuccessFactors/ATS sync, HRM, Indeed, ADP | 180 (4.1%) | 21 (2/9/10) | OffCycle-2026 (~2.3 mo) |
+| Access / CRM not opening / permissions | Roles, RBAC, hiring-team roles, departmentalization, visibility, export restriction | 141 (3.2%) | 46 (0/8/38) | OffCycle-2026 (~2.3 mo) |
 | Events / university recruiting | Event registration, campus recruiting | 87 (2.0%) | 0 | none |
-| How-to / configuration / enablement question | Settings, feature flags, self-service errors, tenant setup | 50 (1.1%) | 18 (1/4/13) | OffCycle-2026 (~2.3 mo) |
-| Not in the six areas | SDUI, performance, notes, spotlights, projects, agency, executive recruiting, localization, bugs | — | 146 (12/28/106) | 27.01 (~3.3 mo) |
+| How-to / configuration / enablement question | Settings, feature flags, self-service errors, tenant setup | 50 (1.1%) | 17 (1/4/12) | OffCycle-2026 (~2.3 mo) |
+| Not in the six areas | SDUI, performance, notes, spotlights, projects, agency, executive recruiting, localization, bugs | — | 135 (12/24/99) | 27.01 (~3.3 mo) |
 
-The filter returned 308 items in total: 18 initiatives, 72 epics and 218 stories. Status: 256 To Do, 20 Development, 9 In Progress, 7 Story Ready, 6 Story Grooming, 4 ON Hold, 6 other.
+The filter returned 308 items. 30 were removed because they mention metadata (see "Metadata exclusion" below), leaving 278: 17 initiatives, 62 epics and 199 stories. Status: 234 To Do, 17 Development, 9 In Progress, 6 Story Ready, 4 Story Grooming, 3 ON Hold, 5 other.
 
 ## What each area will improve
 
 These summaries come from the item titles only.
 
-**Hiring status / pipeline.** Hiring statuses are translated per recruiter language and their update APIs move to DAAL. With Hiring Pipeline on, leads and applicants get separate spotlights. "Latest job stage" becomes exportable, and lead and applicant counts show per agency. Key epic: PHEM-2136326 Translation Experience for Hiring Status (Backlog).
+**Hiring status / pipeline.** Hiring statuses are translated per recruiter language. With Hiring Pipeline on, leads and applicants get separate spotlights. "Latest job stage" becomes exportable, and lead and applicant counts show per agency. Key epic: PHEM-2136326 Translation Experience for Hiring Status (Backlog).
 
 **Jobs / requisitions.** This area adds:
 - Bulk-edit requisitions (PHEM-2260385, 26.11).
 - Scheduled posting (PHEM-2186925).
 - Private links for confidential jobs (PHEM-2199077).
-- A job page redesign and overview tab (PHEM-1863370, PHEM-1902635).
+- A job page overview tab (PHEM-1902635).
 - A document viewer for attachments (PHEM-2180576).
-- Deep-copied attachments when a job is duplicated (PHEM-2340831).
-- Job activity and audit history (PHEM-1970578, PHEM-2281914, PHEM-2496650, 27.01).
+- A job activity view (PHEM-1970578, PHEM-2281914).
 - Translated job fields on the career site (PHEM-2491710, PHEM-2435084, 26.11).
 - RedDot distribution (PHEM-1987584).
 - Custom job statuses (PHEM-2391005).
@@ -61,12 +60,11 @@ These summaries come from the item titles only.
 
 **ATS / LinkedIn sync.** LinkedIn CRM Connect gets hardened and the broken pipeline fixed (PHEM-2341256, PHEM-2341415, 26.11; earlier PHEM-1957322 has slipped). Jobs follow their Workday lifecycle: create, publish and unpublish (PHEM-2267008), plus failure handling and manual retry (PHEM-2278041). The ATS job pull becomes role-aware (PHEM-2104059). The area also covers HRM <> CRM projects (PHEM-1957974), IX job workflow (PHEM-2278020), and Indeed native apply (PHEM-2007989).
 
-**Access / permissions.** Job-level hiring-team roles arrive under initiative PHEM-1965641, covering the data model, UI, migration, auto-provisioning and role-based visibility (PHEM-2104064, 2104062, 2104070, 2104079, 2104082, all slipped from 26.05). Other work in this area:
+**Access / permissions.** Job-level hiring-team roles cover the role UI, migration, auto-provisioning and role-based visibility (PHEM-2104062, 2104070, 2104079, 2104082). Their initiative and data-model epic were removed by the metadata exclusion, so these epics now sit at the top of the tree. Other work in this area:
 - RBAC to restrict download and export (PHEM-2267012).
 - Worker council lead access (PHEM-2492867).
 - Departmentalized connections (PHEM-2178519).
 - Hiding employee details when consent is No (PHEM-2079228).
-- Recruiter-family roles (PHEM-2109151).
 
 **Events / university.** No open 2026 CRM Core item is in this area. The one events-related story, which restricts event candidate and report export, is counted under Access.
 
@@ -78,14 +76,14 @@ For the full initiative → epic → story tree with every item's plan, see [ref
 
 | Measure | Value |
 |---------|-------|
-| Items with a future release | 71 of 308 (26.11: 22, OffCycle-2026: 47, 27.01: 2) |
-| Slipped: release date passed, still open | 41 (mostly 26.05–26.10) |
-| Unplanned (Fix Version = Backlog) | 196 |
+| Items with a future release | 57 of 278 (OffCycle-2026: 36, 26.11: 20, 27.01: 1) |
+| Slipped: release date passed, still open | 39 (mostly 26.05–26.10) |
+| Unplanned (Fix Version = Backlog) | 182 |
 | Latest planned release | 27.01 → about **3.3 months** |
 | Pace: stories resolved Done per month | 12.3 (last 6 months), 9.3 (prior 6 months) |
-| All 218 open stories at current pace | about **17.7–23.4 months** |
+| All 199 open stories at current pace | about **16.2–21.4 months** |
 
-Answer "how long" with both numbers. The plan covers about 3 months, but only 23% of items have a future release. At today's pace, finishing every open story takes about 1.5–2 years. Per-area pace figures are team-months: the area's share of that total, not a separate finish date. See [reference/timeline-method.md](reference/timeline-method.md) for the rules and their limits.
+Answer "how long" with both numbers. The plan covers about 3 months, but only 21% of items have a future release. At today's pace, finishing every open story takes about 1.5–2 years. Per-area pace figures are team-months: the area's share of that total, not a separate finish date. See [reference/timeline-method.md](reference/timeline-method.md) for the rules and their limits.
 
 ## Answering common questions
 
@@ -119,7 +117,11 @@ Each item gets exactly one area, matched on its **title** (`crm_core_jira_areas.
 3. `BLOCK_RULES` stop known false matches, such as "candidate purge" counting as a job.
 4. If nothing matches, the item takes its nearest classified parent's area. Otherwise it goes to "Not in the six areas".
 
-Descriptions are not used, because Jira story templates contain boilerplate that causes false matches. Result: 150 items matched directly, 12 inherited and 146 matched nothing.
+Descriptions are not used, because Jira story templates contain boilerplate that causes false matches. Result: 133 items matched directly, 10 inherited and 135 matched nothing.
+
+## Metadata exclusion
+
+Before placing items, `exclude_metadata` removes every item whose title or description matches `\bmeta[\s-]?data` (case-insensitive). It also removes the descendants of items with metadata in the **title**, such as the three stories under PHEM-1974353, the PhenomHire metadata service and DAAL epic. Children of an item removed only for its description stay in and attach to their nearest remaining ancestor. In the 2026-10-23 run, this removed 7 items for their title, 20 for their description and 3 as children, leaving 278 of 308. The snapshot lists them under `excluded`, and the HTML header shows them in a collapsible note.
 
 ## Files
 
