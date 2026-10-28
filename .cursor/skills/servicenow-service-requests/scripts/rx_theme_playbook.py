@@ -236,7 +236,7 @@ THEME_AREA: dict[str, str] = {
 
 AREA_BLURB: dict[str, str] = {
     'CRM Core': ('Across Jira Yes and No Service Requests, Core pain is status moves that will not stick, jobs that will not close or post correctly, ATS/LinkedIn/forwarding breaks, and access that disappears after email or role changes. Recruiters cannot self-serve these — they open tickets.'),
-    'CRM Profile': ('Profile is the highest-volume area when Yes and No are combined. Tickets show field/source/privacy work still done by Support, resumes and attachments that misbehave, and merges/duplicates/disappeared profiles — especially wrong merges on Jira Yes and silent duplicates on Jira No.'),
+    'CRM Profile': ('Profile holds the single largest theme in the data — candidate profile data — and it is the only area where Jira-created Service Requests outnumber non-Jira ones. Tickets show field/source/privacy work still done by Support, resumes and attachments that misbehave, and merges/duplicates/disappeared profiles — especially wrong merges on Jira Yes and silent duplicates on Jira No.'),
     'CRM Messaging': ('Messaging is the largest area overall (Yes + No). Campaigns complete with zero sends, job-alert/subscription templates drift, email delivery and whitelist stay ticket-driven, and SMS/WhatsApp opt-in and numbers fail. Template/placeholder edits dominate Jira No.'),
     'CRM Automations': ('Smaller share but noisy: screening/interview notifies and calendar booking fail silently, and Automation Center recipes miss, double-fire, or differ between staging and production — on both Jira-updated and non-Jira Service Requests.'),
 }
