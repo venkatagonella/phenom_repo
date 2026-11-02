@@ -1,0 +1,50 @@
+{
+  "_readme": "Where meetings land. Fill directs and leaders during `set me up`. Capture vendor lives in sources.json, not here.",
+  "directs": [
+    "Elizabeth Madar",
+    "Liz Madar",
+    "Mahendra Kamate",
+    "Mahendra Manohar Kamate",
+    "Nikhil Sharma"
+  ],
+  "direct_folders": {
+    "Elizabeth Madar": "Elizabeth Madar",
+    "Liz Madar": "Elizabeth Madar",
+    "Mahendra Kamate": "Mahendra Kamate",
+    "Mahendra Manohar Kamate": "Mahendra Kamate",
+    "Nikhil Sharma": "Nikhil Sharma"
+  },
+  "leaders": [
+    "Sebastian Niewöhner",
+    "Sebastian Niewoehner",
+    "Mohan Gunti"
+  ],
+  "leader_folders": {
+    "Sebastian Niewöhner": "Sebastian Niewoehner",
+    "Sebastian Niewoehner": "Sebastian Niewoehner",
+    "Mohan Gunti": "Mohan Gunti"
+  },
+  "leader_customer_inbox": {
+    "account_names": [],
+    "title_keywords": [
+      "alignment",
+      "account",
+      "customer",
+      "client",
+      "escalation"
+    ],
+    "one_on_one_title_keywords": ["1:1", "1o1", " - 1o1"],
+    "one_on_one_title_patterns": [" w. ", " w ", "alignment w.", "alignment w "]
+  },
+  "product_team": {
+    "title_keywords": ["WBR", "MBR", "weekly business review", "monthly business review", "Scrum", "Weekly", "standup", "stand-up", "product team", "team sync"]
+  },
+  "paths": {
+    "base": ".",
+    "people_directs": "05_Areas/People/Team",
+    "people_leaders": "05_Areas/People/Leaders",
+    "product_team": "05_Areas/Product Team/Meetings",
+    "inbox": "00_Inbox/Meetings",
+    "archive": "90_Archives/Meetings"
+  }
+}

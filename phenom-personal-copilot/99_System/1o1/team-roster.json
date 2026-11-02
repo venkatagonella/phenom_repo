@@ -1,0 +1,20 @@
+{
+  "_readme": "Filled by `set me up` or when you add a direct. Google Doc IDs stay in this file (gitignored if you prefer — this template tracks the empty roster).",
+  "directs": [
+    {
+      "name": "Elizabeth Madar",
+      "role": "Senior Design Engineer",
+      "google_doc_id": null
+    },
+    {
+      "name": "Mahendra Kamate",
+      "role": "Senior Product Manager",
+      "google_doc_id": null
+    },
+    {
+      "name": "Nikhil Sharma",
+      "role": "Principal Product Manager",
+      "google_doc_id": null
+    }
+  ]
+}
