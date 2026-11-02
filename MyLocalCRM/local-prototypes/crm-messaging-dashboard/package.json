@@ -1,0 +1,14 @@
+{
+  "name": "crm-messaging-dashboard",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Local Phenom-shaped Messaging Inbox MFE prototype (PDS HTML + Angular stubs grounded to crm-inbox-fe / messaging-gateway-service).",
+  "scripts": {
+    "prototype": "npx --yes serve prototypes -p 4310",
+    "prototype:open": "open prototypes/messaging-dashboard.html",
+    "start": "echo 'Angular MF serve not bootstrapped — open prototypes/messaging-dashboard.html or run npm run prototype. See README.md.'"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

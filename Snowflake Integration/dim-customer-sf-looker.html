@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DIM_CUSTOMER_INFO_SF_LOOKER — Snowflake results</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --text: #e8eaed;
+      --muted: #9aa0a6;
+      --line: #2a2f3a;
+      --accent: #5b8def;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 32px;
+      line-height: 1.45;
+    }
+    h1 { font-size: 22px; margin: 0 0 6px; font-weight: 600; }
+    .meta { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    h2 { font-size: 15px; margin: 0 0 12px; font-weight: 600; }
+    canvas { width: 100%; max-width: 960px; height: 280px; display: block; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 500; white-space: nowrap; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid var(--line);
+    }
+    .pill.active { color: #7dcea0; border-color: #2f5a43; }
+    .pill.prospect { color: #e0b35a; border-color: #5a4a2f; }
+    .pill.churned { color: #e07a7a; border-color: #5a2f2f; }
+  </style>
+</head>
+<body>
+  <h1>DIM_CUSTOMER_INFO_SF_LOOKER</h1>
+  <p class="meta">
+    Source: Snowflake · CID.RAW_SCHEMA · account phenompeople-wda28727 ·
+    warehouse ANALYTICS_BATCH · LIMIT 10
+  </p>
+
+  <div class="panel">
+    <h2>Enabled product features by customer</h2>
+    <canvas id="chart" width="960" height="280" aria-label="Line chart of enabled features by customer"></canvas>
+    <p class="meta" style="margin: 8px 0 0;">
+      X-axis: Customer · Y-axis: Enabled feature flags (count of Yes/true) · Avg shown as dashed line
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Query results</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>REFNUM</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Segment</th>
+          <th>Region</th>
+          <th>Go-live</th>
+          <th>Features</th>
+          <th>CSM</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const rows = [
+      { customer: "Panera Bread", refnum: "PABRGLOBAL", type: "Active", status: "Customer", segment: "Enterprise Plus", region: "United States", goLive: "2020-07-21", features: 10, csm: "AJ Arcaini" },
+      { customer: "Technology Innovation Institute", refnum: "TUYTIIGB", type: "Active", status: "Customer", segment: "Majors", region: "International", goLive: "—", features: 13, csm: "Sanjeev Maddu" },
+      { customer: "Hallmark", refnum: "HALLUS", type: "Prospect", status: "Prospect", segment: "N/A", region: "N/A", goLive: "2019-07-30", features: 5, csm: "N/A" },
+      { customer: "Fortive Careers", refnum: "FORTUS", type: "Churned", status: "Churned", segment: "Premier", region: "United States", goLive: "2018-12-28", features: 11, csm: "Jessica Brinker" },
+      { customer: "Freedom Mortgage", refnum: "FMJFMVUS", type: "Active", status: "Customer", segment: "Premier Plus", region: "United States", goLive: "2023-05-12", features: 9, csm: "Alexandra James" },
+      { customer: "Four Seasons Hotels Limited", refnum: "FSHFSHUS", type: "Active", status: "Customer", segment: "Enterprise", region: "United States", goLive: "2024-02-22", features: 8, csm: "David Cochran" },
+      { customer: "KinderCare Education", refnum: "KNOWA0054", type: "Active", status: "Customer", segment: "Premier Plus", region: "United States", goLive: "—", features: 11, csm: "Dean Muzina" },
+      { customer: "HairClub", refnum: "HAIHAIUS", type: "Active", status: "Customer", segment: "Majors", region: "United States", goLive: "—", features: 8, csm: "Julia Grady" },
+      { customer: "PF Chang's", refnum: "PFCHUS", type: "Active", status: "Customer", segment: "Premier Plus", region: "United States", goLive: "2022-03-10", features: 8, csm: "Sanjeev Maddu" },
+      { customer: "Dallas College", refnum: "DAJDCLUS", type: "Active", status: "Customer", segment: "Majors", region: "United States", goLive: "2024-04-04", features: 12, csm: "Austin Moyer" }
+    ];
+
+    const tbody = document.getElementById("tbody");
+    for (const r of rows) {
+      const cls = r.type.toLowerCase();
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${r.customer}</td>
+        <td>${r.refnum}</td>
+        <td><span class="pill ${cls}">${r.type}</span></td>
+        <td>${r.status}</td>
+        <td>${r.segment}</td>
+        <td>${r.region}</td>
+        <td>${r.goLive}</td>
+        <td class="num">${r.features}</td>
+        <td>${r.csm}</td>`;
+      tbody.appendChild(tr);
+    }
+
+    const canvas = document.getElementById("chart");
+    const ctx = canvas.getContext("2d");
+    const W = canvas.width, H = canvas.height;
+    const pad = { t: 24, r: 24, b: 56, l: 48 };
+    const plotW = W - pad.l - pad.r;
+    const plotH = H - pad.t - pad.b;
+    const values = rows.map(r => r.features);
+    const labels = rows.map(r => r.customer.length > 12 ? r.customer.slice(0, 11) + "…" : r.customer);
+    const maxY = Math.max(...values, 1);
+    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+
+    function xAt(i) { return pad.l + (values.length === 1 ? plotW / 2 : (i / (values.length - 1)) * plotW); }
+    function yAt(v) { return pad.t + plotH - (v / maxY) * plotH; }
+
+    ctx.fillStyle = "#171a21";
+    ctx.fillRect(0, 0, W, H);
+
+    // grid
+    ctx.strokeStyle = "#2a2f3a";
+    ctx.lineWidth = 1;
+    for (let g = 0; g <= 4; g++) {
+      const y = pad.t + (plotH * g) / 4;
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+      const val = Math.round(maxY * (1 - g / 4));
+      ctx.fillStyle = "#9aa0a6";
+      ctx.font = "11px IBM Plex Sans, sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(String(val), pad.l - 8, y + 4);
+    }
+
+    // avg line
+    const ay = yAt(avg);
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = "#9aa0a6";
+    ctx.beginPath(); ctx.moveTo(pad.l, ay); ctx.lineTo(W - pad.r, ay); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#9aa0a6";
+    ctx.textAlign = "left";
+    ctx.fillText("Avg " + avg.toFixed(1), pad.l + 4, ay - 6);
+
+    // line
+    ctx.strokeStyle = "#5b8def";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    values.forEach((v, i) => {
+      const x = xAt(i), y = yAt(v);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // points + labels
+    values.forEach((v, i) => {
+      const x = xAt(i), y = yAt(v);
+      ctx.fillStyle = "#5b8def";
+      ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#e8eaed";
+      ctx.font = "11px IBM Plex Sans, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(String(v), x, y - 10);
+      ctx.fillStyle = "#9aa0a6";
+      ctx.save();
+      ctx.translate(x, H - 12);
+      ctx.rotate(-0.55);
+      ctx.textAlign = "right";
+      ctx.fillText(labels[i], 0, 0);
+      ctx.restore();
+    });
+  </script>
+</body>
+</html>

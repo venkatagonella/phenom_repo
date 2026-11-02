@@ -1,0 +1,21 @@
+/* App-layer styles only — shell chrome lives in messaging-dashboard.css / PDS tokens */
+.inbox-page__header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.inbox-page__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inbox-page__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light, #e5e7eb);
+}

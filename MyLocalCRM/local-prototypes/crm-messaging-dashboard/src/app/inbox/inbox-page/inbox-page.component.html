@@ -1,0 +1,14 @@
+<!-- Structural mirror of crm-inbox-fe inbox list chrome; visual prototype is HTML -->
+<section class="inbox-page" *ngIf="!loading">
+  <header class="inbox-page__header">
+    <h1>Inbox</h1>
+    <p>{{ filterOption.totalCount }} conversations</p>
+  </header>
+  <ul class="inbox-page__list">
+    <li *ngFor="let c of candidateList">
+      <strong>{{ c.candidateName }}</strong>
+      <span>{{ c.channel }} · {{ c.lastMessage }}</span>
+    </li>
+  </ul>
+</section>
+<p *ngIf="loading">Loading conversations…</p>

@@ -1,0 +1,76 @@
+{
+  "namespace": "DEMO01",
+  "source": "mock — shaped like messaging-gateway-service v1.0/inbox/getConversations",
+  "conversations": [
+    {
+      "conversationId": "conv-10482",
+      "candidateName": "Priya Nair",
+      "userId": "cand-priya",
+      "phone": "+9198XXXX4120",
+      "channel": "sms",
+      "vendor": "twilio",
+      "lastMessage": "Thanks — I can interview Thursday afternoon.",
+      "unreadCount": 2,
+      "status": "unread",
+      "optInSms": true,
+      "optInWhatsApp": false,
+      "updatedAt": "2026-08-19T09:14:00Z"
+    },
+    {
+      "conversationId": "conv-10455",
+      "candidateName": "Marcus Lee",
+      "userId": "cand-marcus",
+      "phone": "+1415XXXX821",
+      "channel": "whatsapp",
+      "vendor": "gupshup",
+      "lastMessage": "Got the role details — sharing my resume.",
+      "unreadCount": 1,
+      "status": "unread",
+      "optInSms": true,
+      "optInWhatsApp": true,
+      "updatedAt": "2026-08-19T08:02:00Z"
+    },
+    {
+      "conversationId": "conv-10390",
+      "candidateName": "Aisha Khan",
+      "userId": "cand-aisha",
+      "email": "aisha.khan@example.com",
+      "channel": "email",
+      "vendor": "sendgrid",
+      "lastMessage": "Re: Frontend Engineer — availability next week",
+      "unreadCount": 0,
+      "status": "open",
+      "optInSms": false,
+      "optInWhatsApp": false,
+      "updatedAt": "2026-08-18T16:40:00Z"
+    },
+    {
+      "conversationId": "conv-10312",
+      "candidateName": "Diego Morales",
+      "userId": "cand-diego",
+      "phone": "+5255XXXX0199",
+      "channel": "sms",
+      "vendor": "twilio",
+      "lastMessage": "STOP",
+      "unreadCount": 0,
+      "status": "archived",
+      "optInSms": false,
+      "optInWhatsApp": false,
+      "updatedAt": "2026-08-10T11:22:00Z"
+    },
+    {
+      "conversationId": "conv-10288",
+      "candidateName": "Sofia Berg",
+      "userId": "cand-sofia",
+      "phone": "+4670XXXX510",
+      "channel": "whatsapp",
+      "vendor": "twilio",
+      "lastMessage": "Template delivered — waiting for reply window",
+      "unreadCount": 0,
+      "status": "open",
+      "optInSms": true,
+      "optInWhatsApp": true,
+      "updatedAt": "2026-08-17T14:05:00Z"
+    }
+  ]
+}
