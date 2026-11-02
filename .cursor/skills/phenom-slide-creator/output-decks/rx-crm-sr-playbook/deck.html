@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>RX CRM Service Request Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F2F0EA; --navy: #22224B; --kicker: #373775;
+    --mauve: #A67D8B; --muted: #6B6B6B;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--navy);
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--paper);
+    display: flex; flex-direction: column;
+  }
+  header {
+    display: flex; align-items: center; gap: 20px;
+    padding: 12px 22px; border-bottom: 1px solid rgba(242,240,234,.14);
+    flex: 0 0 auto;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, serif; font-weight: 600;
+    font-size: 17px; margin: 0; letter-spacing: .1px;
+  }
+  h1 em { color: var(--mauve); font-style: italic; }
+  .spacer { flex: 1; }
+  button {
+    font: inherit; font-size: 13px; color: var(--paper);
+    background: transparent; border: 1px solid rgba(242,240,234,.3);
+    border-radius: 999px; padding: 6px 14px; cursor: pointer;
+  }
+  button:hover { background: rgba(242,240,234,.1); }
+  button[aria-pressed="true"] { background: var(--paper); color: var(--navy); border-color: var(--paper); }
+  #counter { font-variant-numeric: tabular-nums; font-size: 13px; color: rgba(242,240,234,.72); }
+
+  main { flex: 1; display: grid; place-items: center; padding: 22px; min-height: 0; }
+  #stage { max-width: 100%; max-height: 100%; display: flex; flex-direction: column; gap: 14px; }
+  #slide {
+    max-width: 100%; max-height: 100%; width: auto; height: auto;
+    object-fit: contain; border-radius: 6px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    background: var(--paper);
+  }
+  #notes {
+    display: none; background: rgba(242,240,234,.07);
+    border-left: 3px solid var(--mauve); border-radius: 4px;
+    padding: 13px 16px; font-size: 14px; line-height: 1.55;
+    color: rgba(242,240,234,.9); max-width: 1100px;
+  }
+  body.notes #notes { display: block; }
+  #notes:empty::after { content: "No speaker notes on this slide."; color: var(--muted); }
+
+  nav {
+    flex: 0 0 auto; display: flex; gap: 8px; overflow-x: auto;
+    padding: 10px 16px; border-top: 1px solid rgba(242,240,234,.14);
+    scrollbar-width: thin;
+  }
+  nav img {
+    height: 62px; border-radius: 3px; cursor: pointer; flex: 0 0 auto;
+    opacity: .45; border: 2px solid transparent; background: var(--paper);
+    transition: opacity .12s;
+  }
+  nav img:hover { opacity: .85; }
+  nav img.on { opacity: 1; border-color: var(--mauve); }
+
+  body.grid main { align-items: start; overflow: auto; }
+  body.grid #stage { display: none; }
+  #grid { display: none; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; width: 100%; }
+  body.grid #grid { display: grid; }
+  body.grid nav { display: none; }
+  #grid figure { margin: 0; cursor: pointer; }
+  #grid img { width: 100%; border-radius: 4px; background: var(--paper); display: block; }
+  #grid figcaption { font-size: 12px; color: rgba(242,240,234,.66); padding-top: 6px; }
+</style>
+
+<header>
+  <h1>RX CRM Service Request Playbook <em>— as presented</em></h1>
+  <span id="counter"></span>
+  <span class="spacer"></span>
+  <button id="btn-notes" aria-pressed="false">Speaker notes</button>
+  <button id="btn-grid" aria-pressed="false">All slides</button>
+</header>
+
+<main>
+  <div id="stage">
+    <img id="slide" alt="">
+    <div id="notes"></div>
+  </div>
+  <div id="grid"></div>
+</main>
+
+<nav id="strip"></nav>
+
+<script>
+const SLIDES = [{"n": 1, "src": "qa-render-leadership/slide-01.png", "notes": "This deck is a direct read-out of the ServiceNow Service Request export for Recruiter Experience. 1,164 Service Requests were classified into 16 themes across four CRM areas. 522 have a Jira created against them and 642 do not. Nothing here is inferred: every count, problem statement and action comes from the same analysis that produces the RX themes HTML report.", "title": "What recruiters keep asking"}, {"n": 2, "src": "qa-render-leadership/slide-02.png", "notes": "Set expectations before any numbers land. The audience should know the filter, the one-ticket-one-theme rule, and that unclassified tickets were dropped rather than redistributed. The third card is the honesty card: no outside benchmarks appear anywhere in this deck.", "title": "METHOD | HOW TO READ THIS DECK"}, {"n": 3, "src": "qa-render-leadership/slide-03.png", "notes": "The funnel explains why 1,164 is the denominator for every percentage that follows. Each step is a filter on the previous one, not a new query. The 235 excluded tickets are named so nobody has to guess where the gap between 1,399 and 1,164 went.", "title": "THE DATA | THE FUNNEL"}, {"n": 4, "src": "qa-render-leadership/slide-04.png", "notes": "Four numbers to remember: Messaging 432, Core 334, Profile 260, Automations 138. The three cards underneath are arithmetic on those same counts, not interpretation of outside data. The shape matters more than any single number: outbound messaging and the candidate record are where recruiters hit Phenom hardest.", "title": "AT A GLANCE | WHERE THE 1,164 LAND"}, {"n": 5, "src": "qa-render-leadership/slide-05.png", "notes": "This is the correction slide. The funnel's 555 / 842 count every RX Service Request before theme classification and sum to 1,397, not 1,164. The true split inside the classified set is 522 Yes and 642 No, summed across areas, and the build asserts that those two add to 1,164. Say the 55.2% out loud — it is the reason this deck exists.", "title": "THE JIRA SPLIT | INSIDE THE 1,164"}, {"n": 6, "src": "qa-render-leadership/slide-06.png", "notes": "Act break. Everything before this slide was method and shape; everything after is the tickets' own wording. Two slides per group: what the tickets say, then what to do in Phenom.", "title": "01"}, {"n": 7, "src": "qa-render-leadership/slide-07.png", "notes": "CRM Core: 334 Service Requests, Jira Yes 155 and Jira No 179. Each card is one theme; the paragraph is the recurring wording in those tickets, not a summary written for this deck. Read the largest card aloud and let the others be reference.", "title": "CRM CORE | AREA 1 OF 4"}, {"n": 8, "src": "qa-render-leadership/slide-08.png", "notes": "CRM Core — actions for Hiring status / pipeline / stages / lead status, Jobs / requisitions / applications / posting, Forwarding / LinkedIn / ATS↔CRM sync. These 3 themes account for 240 of the area's 334 Service Requests. Every bullet is the product change the tickets in that theme are asking for; none of it is a roadmap commitment.", "title": "CRM CORE | WHAT TO DO"}, {"n": 9, "src": "qa-render-leadership/slide-09.png", "notes": "CRM Core: 334 Service Requests, Jira Yes 155 and Jira No 179. Each card is one theme; the paragraph is the recurring wording in those tickets, not a summary written for this deck. Read the largest card aloud and let the others be reference.", "title": "CRM CORE | AREA 1 OF 4"}, {"n": 10, "src": "qa-render-leadership/slide-10.png", "notes": "CRM Core — the long tail. Access / CRM not opening / permissions, Events / university recruiting, How-to / configuration / enablement question are 94 of the area's 334 Service Requests between them. The numbering continues the area's descending-volume order, so 04 is the fourth-largest theme. Skip quickly unless someone asks.", "title": "CRM CORE | WHAT TO DO"}, {"n": 11, "src": "qa-render-leadership/slide-11.png", "notes": "CRM Profile has only 2 themes, so both fit side by side with what each one covers and what the tickets say. Area totals: 260 Service Requests, Jira Yes 145 and Jira No 115. The navy column is the smaller theme, not the less important one.", "title": "CRM PROFILE | AREA 2 OF 4"}, {"n": 12, "src": "qa-render-leadership/slide-12.png", "notes": "CRM Profile — actions for Candidate profile data / fields / tags / location / GDPR, Profile merge / unmerge / duplicates / disappeared. These 2 themes account for 260 of the area's 260 Service Requests. Every bullet is the product change the tickets in that theme are asking for; none of it is a roadmap commitment.", "title": "CRM PROFILE | WHAT TO DO"}, {"n": 13, "src": "qa-render-leadership/slide-13.png", "notes": "CRM Messaging: 432 Service Requests, Jira Yes 174 and Jira No 258. Each card is one theme; the paragraph is the recurring wording in those tickets, not a summary written for this deck. Read the largest card aloud and let the others be reference.", "title": "CRM MESSAGING | AREA 3 OF 4"}, {"n": 14, "src": "qa-render-leadership/slide-14.png", "notes": "CRM Messaging — actions for Campaigns / job alerts / subscriptions / spotlights, Email not sending / not receiving / spam / bounce, Email template content / hyperlinks / branding. These 3 themes account for 330 of the area's 432 Service Requests. Every bullet is the product change the tickets in that theme are asking for; none of it is a roadmap commitment.", "title": "CRM MESSAGING | WHAT TO DO"}, {"n": 15, "src": "qa-render-leadership/slide-15.png", "notes": "CRM Messaging: 432 Service Requests, Jira Yes 174 and Jira No 258. Each card is one theme; the paragraph is the recurring wording in those tickets, not a summary written for this deck. Read the largest card aloud and let the others be reference.", "title": "CRM MESSAGING | AREA 3 OF 4"}, {"n": 16, "src": "qa-render-leadership/slide-16.png", "notes": "CRM Messaging — the long tail. SMS / WhatsApp, Search / lists / filters / export / AI Discovery, Activity / notes / UI display are 102 of the area's 432 Service Requests between them. The numbering continues the area's descending-volume order, so 04 is the fourth-largest theme. Skip quickly unless someone asks.", "title": "CRM MESSAGING | WHAT TO DO"}, {"n": 17, "src": "qa-render-leadership/slide-17.png", "notes": "CRM Automations has only 2 themes, so both fit side by side with what each one covers and what the tickets say. Area totals: 138 Service Requests, Jira Yes 48 and Jira No 90. The navy column is the smaller theme, not the less important one.", "title": "CRM AUTOMATIONS | AREA 4 OF 4"}, {"n": 18, "src": "qa-render-leadership/slide-18.png", "notes": "CRM Automations — actions for Screening / interview / scheduling / offer / notifications, Automation not triggering / failing / wrongly triggered. These 2 themes account for 138 of the area's 138 Service Requests. Every bullet is the product change the tickets in that theme are asking for; none of it is a roadmap commitment.", "title": "CRM AUTOMATIONS | WHAT TO DO"}, {"n": 19, "src": "qa-render-leadership/slide-19.png", "notes": "Second act break. The priority list is PRIORITY_ORDER from rx_theme_playbook.py — it is carried over, not derived from volume, which is why the next slide has to say what it is not.", "title": "02"}, {"n": 20, "src": "qa-render-leadership/slide-20.png", "notes": "These are the six priority themes carried over from the RX theme playbook, shown in descending ticket volume. They are deliberately not the six largest themes — Screening / interview / scheduling / offer / notifications (99) and Email template content / hyperlinks / branding (98) are larger but sit outside the priority list. Together the six cover 646 of the 1,164 Service Requests.", "title": "WHERE TO START | THE PRIORITY LIST"}, {"n": 21, "src": "qa-render-leadership/slide-21.png", "notes": "Close on the Jira No number. These 642 Service Requests were handled by Support without an engineering ticket, so the demand they represent does not appear in Jira. The priority-theme figure is the sum of the six themes on the previous slide. Nothing on this slide is new — it is the same arithmetic, said once more.", "title": "THE TAKEAWAY"}];
+let i = 0;
+
+const slide = document.getElementById('slide');
+const notes = document.getElementById('notes');
+const counter = document.getElementById('counter');
+const strip = document.getElementById('strip');
+const grid = document.getElementById('grid');
+
+SLIDES.forEach((s, k) => {
+  const t = document.createElement('img');
+  t.src = s.src; t.alt = 'Slide ' + s.n; t.loading = 'lazy';
+  t.addEventListener('click', () => show(k));
+  strip.appendChild(t);
+
+  const fig = document.createElement('figure');
+  const im = document.createElement('img');
+  im.src = s.src; im.alt = 'Slide ' + s.n; im.loading = 'lazy';
+  const cap = document.createElement('figcaption');
+  cap.textContent = s.n + '. ' + (s.title || '');
+  fig.append(im, cap);
+  fig.addEventListener('click', () => { setGrid(false); show(k); });
+  grid.appendChild(fig);
+});
+
+function show(k) {
+  i = Math.max(0, Math.min(SLIDES.length - 1, k));
+  const s = SLIDES[i];
+  slide.src = s.src;
+  slide.alt = 'Slide ' + s.n + (s.title ? ': ' + s.title : '');
+  notes.textContent = s.notes;
+  counter.textContent = s.n + ' / ' + SLIDES.length;
+  [...strip.children].forEach((el, j) => el.classList.toggle('on', j === i));
+  strip.children[i].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+}
+
+function setGrid(on) {
+  document.body.classList.toggle('grid', on);
+  document.getElementById('btn-grid').setAttribute('aria-pressed', on);
+}
+
+document.getElementById('btn-notes').addEventListener('click', e => {
+  const on = !document.body.classList.contains('notes');
+  document.body.classList.toggle('notes', on);
+  e.currentTarget.setAttribute('aria-pressed', on);
+});
+document.getElementById('btn-grid').addEventListener('click', () => {
+  setGrid(!document.body.classList.contains('grid'));
+});
+
+addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { show(i + 1); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(i - 1); e.preventDefault(); }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(SLIDES.length - 1);
+  else if (e.key === 'g') setGrid(!document.body.classList.contains('grid'));
+  else if (e.key === 'n') document.getElementById('btn-notes').click();
+  else if (e.key === 'Escape') setGrid(false);
+});
+slide.addEventListener('click', () => show(i + 1));
+
+show(0);
+</script>

@@ -1,0 +1,160 @@
+{
+  "Foundations": [
+    "Border Radius",
+    "Color Palette",
+    "Icons",
+    "Shadows",
+    "Typography",
+    "Width Presets"
+  ],
+  "Form Controls": [
+    "Form Controls/AutoComplete",
+    "Form Controls/Checkbox",
+    "Form Controls/ChipGroup",
+    "Form Controls/ColorPicker",
+    "Form Controls/DatePicker",
+    "Form Controls/Dropdown",
+    "Form Controls/Dropdown/Templates",
+    "Form Controls/File Upload",
+    "Form Controls/Helper",
+    "Form Controls/InputChip",
+    "Form Controls/InputField",
+    "Form Controls/InputNumber",
+    "Form Controls/Label",
+    "Form Controls/MultiSelect",
+    "Form Controls/RadioButton",
+    "Form Controls/RadioGroup",
+    "Form Controls/RadioPanels",
+    "Form Controls/Rating",
+    "Form Controls/RichTextEditor",
+    "Form Controls/Search",
+    "Form Controls/SearchWithCategory",
+    "Form Controls/Slider",
+    "Form Controls/Switch",
+    "Form Controls/TextArea",
+    "Form Controls/TristateCheckbox"
+  ],
+  "Actions": [
+    "Actions/Button",
+    "Actions/IconButton",
+    "Actions/LinkText",
+    "Actions/SplitButton",
+    "Actions/SwitchButton",
+    "Actions/TextButton"
+  ],
+  "Navigation": [
+    "Navigation/Breadcrumb",
+    "Navigation/SidebarNavigation",
+    "Navigation/SidebarNavigation/Examples/CRM",
+    "Navigation/SidebarNavigation/Examples/ERM",
+    "Navigation/SidebarNavigation/Examples/Nested Navigation",
+    "Navigation/SidebarNavigation/SidebarNavigationMenuItem",
+    "Navigation/Tab",
+    "Navigation/ViewSelector/View",
+    "Navigation/ViewSelector/ViewSelectorGroup"
+  ],
+  "Menus": [
+    "Menus/Menu",
+    "Menus/MenuItem",
+    "Menus/TieredMenu",
+    "Menus/WizardStepper",
+    "Menus/WizardStepper/Examples",
+    "Menus/WizardStepper/HorizontalStepper",
+    "Menus/WizardStepper/StepLinkHorizontal",
+    "Menus/WizardStepper/StepLinkVertical",
+    "Menus/WizardStepper/StepNumber",
+    "Menus/WizardStepper/VerticalStepper"
+  ],
+  "Containers": [
+    "Containers/Accordion",
+    "Containers/AccordionTab",
+    "Containers/Card",
+    "Containers/Card/Examples/Advanced Card",
+    "Containers/Card/Examples/Image Card",
+    "Containers/Card/Examples/Information Card",
+    "Containers/Card/Examples/Login Card",
+    "Containers/Divider"
+  ],
+  "Overlays": [
+    "Overlays/Blanket",
+    "Overlays/ConfirmModal",
+    "Overlays/Modal",
+    "Overlays/Popover",
+    "Overlays/Sidebar",
+    "Overlays/Sidebar/Footer",
+    "Overlays/Sidebar/Header with Actions",
+    "Overlays/Sidebar/Header with Pagination",
+    "Overlays/Tooltip"
+  ],
+  "Data Display": [
+    "Data Display/Pagination",
+    "Data Display/Pagination/GoToPage and SetFirst Demo",
+    "Data Display/Pagination/Table Integration",
+    "Data Display/Table/Cell Types/Actions Cell",
+    "Data Display/Table/Cell Types/Attachment Cell",
+    "Data Display/Table/Cell Types/Candidate Name Cell",
+    "Data Display/Table/Cell Types/Checkbox Cell",
+    "Data Display/Table/Cell Types/Chip Cell",
+    "Data Display/Table/Cell Types/Clickable Icon Cell",
+    "Data Display/Table/Cell Types/Clickable Text Cell",
+    "Data Display/Table/Cell Types/Collaborator Cell",
+    "Data Display/Table/Cell Types/Date Cell",
+    "Data Display/Table/Cell Types/Dropdown Cell",
+    "Data Display/Table/Cell Types/Fit Score Cell",
+    "Data Display/Table/Cell Types/Link Text Cell",
+    "Data Display/Table/Cell Types/Number Cell",
+    "Data Display/Table/Cell Types/Profile Card Cell",
+    "Data Display/Table/Cell Types/Radio Cell",
+    "Data Display/Table/Cell Types/Rating Cell",
+    "Data Display/Table/Cell Types/Score Cell",
+    "Data Display/Table/Cell Types/Status Cell",
+    "Data Display/Table/Cell Types/Switch Cell",
+    "Data Display/Table/Cell Types/Tag Cell",
+    "Data Display/Table/Cell Types/Talent Pool Cell",
+    "Data Display/Table/Cell Types/Text Cell",
+    "Data Display/Table/v1"
+  ],
+  "Feedback": [
+    "Feedback/ProgressBar",
+    "Feedback/ProgressSpinner",
+    "Feedback/Skeleton",
+    "Feedback/Snackbar",
+    "Feedback/Snackbar/Interactive Showcase",
+    "Feedback/Status",
+    "Feedback/SystemMessage"
+  ],
+  "Identity": [
+    "Identity/Avatar",
+    "Identity/AvatarGroup"
+  ],
+  "Indicators & Labels": [
+    "Indicators & Labels/CategoryChip",
+    "Indicators & Labels/CategoryChip/CategoryChipButton",
+    "Indicators & Labels/NotificationBadge",
+    "Indicators & Labels/NumberBadge",
+    "Indicators & Labels/Tag"
+  ],
+  "Phenom Specific": [
+    "Phenom Specific/FitScore",
+    "Phenom Specific/TalentSignal"
+  ],
+  "Layout": [
+    "Layout/Grid"
+  ],
+  "Miscellaneous": [
+    "Miscellaneous/Chips",
+    "Miscellaneous/Scroll"
+  ],
+  "In Dev": [
+    "In Dev/Chip - With Avatar",
+    "In Dev/Listbox",
+    "In Dev/PageHeader"
+  ],
+  "Shared": [
+    "Shared/Actions",
+    "Shared/Icon/Static",
+    "Shared/List Items/Category",
+    "Shared/List Items/Standalone",
+    "Shared/List Items/With Dropdown"
+  ]
+}

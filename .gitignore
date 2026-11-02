@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+# Dependencies & env
+**/node_modules/
+**/.env
+**/*.local
+
+# Nested repo metadata (DesignSystem also lives at venkatagonella/DesignSystem)
+DesignSystem/.git/
+DesignSystem/.git.bak/
+
+# OS / editor junk
+**/Icon?
+**/*.swp
+**/.cursor/debug-*.log

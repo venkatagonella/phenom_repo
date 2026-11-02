@@ -1,0 +1,39 @@
+---
+description: SDD Engineering Constitution — the non-negotiable principles for every change
+alwaysApply: true
+---
+
+<!-- Generated self-contained SDD bundle — do not edit here; regenerate from the SDD kit. -->
+
+# Spec-Driven Development is active in this repo
+
+Before any non-trivial code change, follow the Spec-Driven Development process. The full
+principles live in the SDD constitution (bundled with this plugin as an always-on rule) (read it if you haven't this session). The
+essentials, always in effect:
+
+1. **Spec before code.** Features, bugs, refactors, migrations begin with an approved
+ spec in `northstar/specs/`. No significant code without one. (Trivial changes — typos, dep
+ bumps, formatter runs — are exempt; don't force a spec on them.) **Fixed locations:** specs
+ live *only* in `northstar/specs/` and steering *only* in `northstar/steering/`. If the repo
+ already has specs/design/requirements in another directory (`docs/`, `specs/`, `.kiro/specs/`,
+ etc.), never adopt or write into it — treat it as material to migrate *from*, not the SDD home.
+2. **Understand before you change.** Do Phase-0 discovery first: read `northstar/steering/*`,
+   scan `northstar/specs/INDEX.md`, read existing specs whose `touches:` globs overlap, and inspect
+   the code. Never write a spec in a vacuum.
+3. **EARS requirements.** `WHEN/WHILE/IF/WHERE … THE SYSTEM SHALL …`, stable `REQ-IDs`,
+   testable, no vague words ("fast", "secure", "easy", "robust").
+4. **Two layers.** Living context (`northstar/steering/`) is updated in
+   place and always reflects today. Increment specs (`northstar/specs/NNN-slug/`) are immutable
+   records — never rewrite them; link later changes with `amends:` / `supersedes_reqs:`.
+5. **Approval gates.** Requirements → Design → Tasks → Implementation. A human approves
+   each gate. Don't implement a spec whose `approval_state` is `pending`.
+6. **Tests prove the spec.** Bugs need a regression test (fails before, passes after).
+   Refactors must preserve behavior (invariants stay green). Acceptance criteria → tests.
+7. **Specs never drift.** If a change alters behavior, update the living layer in the
+   same change.
+8. **You direct, I execute.** Surface ambiguity and get approval before writing code;
+   if the spec turns out wrong, stop and flag it rather than diverging silently.
+
+Not sure which flow to use? Start with **`/northstar`** — it classifies the change, matches the
+ceremony to the risk (§7), and routes you to the right flow. Or invoke a flow directly:
+`/ns-specify`, `/ns-steer`, `/ns-bug`, `/ns-refactor`, `/ns-implement`, `/ns-finish`.

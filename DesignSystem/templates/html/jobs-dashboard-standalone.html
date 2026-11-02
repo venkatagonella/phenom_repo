@@ -1,0 +1,1367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jobs — Real-time CRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <style>
+/* pds-tokens.css */
+/**
+ * Phenom Design System (PDS) — referrable CSS custom properties
+ * Extracted from published Angular Storybook styles: https://pds.phenom.com/angular/
+ *
+ * USE THIS FILE when building sample websites / prototypes in other workspaces.
+ * For production Phenom apps: install @phenom/design-tokens + framework DS packages
+ * (@phenom/angular-ds or @phenom/react-ds) via pie-nexus with VPN + .npmrc.
+ *
+ * Font: Poppins (body). Load via Google Fonts or package assets.
+ */
+:root {
+  /* Typography */
+  --font-family-body: Poppins, "Helvetica Neue", Arial, sans-serif;
+  --font-family: var(--font-family-body);
+  /* --- Color primitives --- */
+  --color-figma-only-border: #9747ff;
+  --color-talent-signal-diversity: #669f2a;
+  --color-talent-signal-recently-contacted: #f63d68;
+  --color-talent-signal-watchlisted-company: #dd2590;
+  --color-talent-signal-past-applicant: #4e5ba6;
+  --color-talent-signal-ready-to-move: #0e9384;
+  --color-talent-signal-frequent-job-change: #6172f3;
+  --color-talent-signal-referral: #7a5af8;
+  --color-talent-signal-loyal: #ca8504;
+  --color-talent-signal-employee-connections: #0086c9;
+  --color-talent-signal-alumni: #099250;
+  --color-talent-signal-engaged: #ef6820;
+  --color-talent-signal-highly-engaged: #ff4405;
+  --color-red-500: #c40f24;
+  --color-red-400: #ef233c;
+  --color-red-300: #f14458;
+  --color-red-200: #f36374;
+  --color-red-100: #f9b1b9;
+  --color-red-75: #fcd9dd;
+  --color-red-50: #ffe9eb;
+  --color-brown-500: #4a350f;
+  --color-brown-400: #956727;
+  --color-brown-300: #e09e3e;
+  --color-brown-200: #f8ba4b;
+  --color-brown-100: #facd78;
+  --color-brown-75: #f5ddab;
+  --color-brown-50: #fbedd5;
+  --color-kobe-500: #491f08;
+  --color-kobe-400: #913d1c;
+  --color-kobe-300: #da5c30;
+  --color-kobe-200: #f6814b;
+  --color-kobe-100: #eba47f;
+  --color-kobe-75: #f0c1a8;
+  --color-kobe-50: #f7e1d4;
+  --color-secondary-300-a20: rgba(41, 39, 178, 0.2);
+  --color-secondary-300-a10: rgba(41, 39, 178, 0.1);
+  --color-secondary-500-a30: rgba(12, 11, 59, 0.3);
+  --color-secondary-500-a10: rgba(12, 11, 59, 0.1);
+  --color-secondary-500: #0c0b3b;
+  --color-secondary-400: #1c1876;
+  --color-secondary-300: #2927b2;
+  --color-secondary-200: #4d3ee0;
+  --color-secondary-100: #7571e0;
+  --color-secondary-75: #a391f2;
+  --color-secondary-50: #cac1f2;
+  --color-secondary-40: #eae8fb;
+  --color-primary-500: #1d3734;
+  --color-primary-400: #3c6d68;
+  --color-primary-300: #5ca59b;
+  --color-primary-200: #58d7c9;
+  --color-primary-100: #91dfd5;
+  --color-primary-75: #c1e5e2;
+  --color-primary-50: #d8f4f2;
+  --color-neutrals-500-a20: rgba(53, 59, 70, 0.2);
+  --color-neutrals-500-a10: rgba(53, 59, 70, 0.1);
+  --color-neutrals-500: #353b46;
+  --color-neutrals-400: #464f5e;
+  --color-neutrals-300: #637085;
+  --color-neutrals-200: #8c95a8;
+  --color-neutrals-100: #aeb5c2;
+  --color-neutrals-75: #d1d5dc;
+  --color-neutrals-50: #e8eaee;
+  --color-neutrals-40: #f4f6fa;
+  --color-grays-500-a70: rgba(64, 64, 64, 0.7);
+  --color-grays-500: #404040;
+  --color-grays-400: #525252;
+  --color-grays-300: #a2a2a2;
+  --color-grays-200: #cccccc;
+  --color-grays-100: #ebebeb;
+  --color-grays-50: #f1f3f4;
+  --color-grays-25: #f8f9fb;
+  --color-green-500: #006644;
+  --color-green-400: #00875a;
+  --color-green-300: #36b37e;
+  --color-green-200: #85dbbe;
+  --color-green-100: #e6f9f3;
+  --color-yellow-500: #ba4800;
+  --color-yellow-400: #df6e38;
+  --color-yellow-300: #ff8b00;
+  --color-yellow-200: #ffcd92;
+  --color-yellow-100: #fffae6;
+  --color-core-white-a90: rgba(255, 255, 255, 0.9);
+  --color-core-white-a80: rgba(255, 255, 255, 0.8);
+  --color-core-white-a70: rgba(255, 255, 255, 0.7);
+  --color-core-white-a60: rgba(255, 255, 255, 0.6);
+  --color-core-white-a50: rgba(255, 255, 255, 0.5);
+  --color-core-white-a40: rgba(255, 255, 255, 0.4);
+  --color-core-white-a30: rgba(255, 255, 255, 0.3);
+  --color-core-white-a20: rgba(255, 255, 255, 0.2);
+  --color-core-white-a15: rgba(255, 255, 255, 0.15);
+  --color-core-white-a10: rgba(255, 255, 255, 0.1);
+  --color-core-white-a05: rgba(255, 255, 255, 0.05);
+  --color-core-black-a90: rgba(0, 0, 0, 0.9);
+  --color-core-black-a80: rgba(0, 0, 0, 0.8);
+  --color-core-black-a70: rgba(0, 0, 0, 0.7);
+  --color-core-black-a60: rgba(0, 0, 0, 0.6);
+  --color-core-black-a50: rgba(0, 0, 0, 0.5);
+  --color-core-black-a40: rgba(0, 0, 0, 0.4);
+  --color-core-black-a30: rgba(0, 0, 0, 0.3);
+  --color-core-black-a20: rgba(0, 0, 0, 0.2);
+  --color-core-black-a15: rgba(0, 0, 0, 0.15);
+  --color-core-black-a10: rgba(0, 0, 0, 0.1);
+  --color-core-black-a05: rgba(0, 0, 0, 0.05);
+  --color-core-black: #000000;
+  --color-core-white: #ffffff;
+  --color-status-info-background: var(--color-secondary-40);
+  --color-status-info-dark: var(--color-secondary-400);
+  --color-status-info-light: var(--color-secondary-200);
+  --color-status-info: var(--color-secondary-300);
+  --color-status-warning-background: var(--color-yellow-100);
+  --color-status-warning-dark: var(--color-yellow-500);
+  --color-status-warning-light: var(--color-yellow-200);
+  --color-status-warning: var(--color-yellow-300);
+  --color-status-error-background: var(--color-red-50);
+  --color-status-error-dark: var(--color-red-500);
+  --color-status-error-light: var(--color-red-300);
+  --color-status-error: var(--color-red-400);
+  --color-status-success-background: var(--color-green-100);
+  --color-status-success-dark: var(--color-green-500);
+  --color-status-success-light: var(--color-green-300);
+  --color-status-success: var(--color-green-400);
+  --color-brand-secondary-disabled: var(--color-secondary-50);
+  --color-brand-secondary-active: var(--color-secondary-400);
+  --color-brand-secondary-hover: var(--color-secondary-200);
+  --color-brand-secondary: var(--color-secondary-300);
+  --color-brand-primary-disabled: var(--color-primary-50);
+  --color-brand-primary-active: var(--color-primary-500);
+  --color-brand-primary-hover: var(--color-primary-300);
+  --color-brand-primary: var(--color-primary-400);
+  --color-text-default: var(--color-core-white);
+  --color-bg-default: var(--color-core-black);
+  --color-semantic-error-500: var(--color-red-500);
+  --color-semantic-error-400: var(--color-red-400);
+  --color-semantic-error-300: var(--color-red-300);
+  --color-semantic-error-200: var(--color-red-200);
+  --color-semantic-error-100: var(--color-red-100);
+  --color-semantic-error-75: var(--color-red-75);
+  --color-semantic-error-50: var(--color-red-50);
+  --color-semantic-success-500: var(--color-green-500);
+  --color-semantic-success-400: var(--color-green-400);
+  --color-semantic-success-300: var(--color-green-300);
+  --color-semantic-success-200: var(--color-green-200);
+  --color-semantic-success-100: var(--color-green-100);
+  --color-semantic-success-50: var(--color-green-100);
+  --color-semantic-warning-500: var(--color-yellow-500);
+  --color-semantic-warning-400: var(--color-yellow-400);
+  --color-semantic-warning-300: var(--color-yellow-300);
+  --color-semantic-warning-200: var(--color-yellow-200);
+  --color-semantic-warning-100: var(--color-yellow-100);
+  --color-semantic-warning-50: var(--color-yellow-100);
+  /* --- Background --- */
+  --bg-overlay-light-ultra-faint: var(--color-core-white-a10);
+  --bg-overlay-light-faint: var(--color-core-white-a20);
+  --bg-overlay-light-subtle: var(--color-core-white-a40);
+  --bg-overlay-light-medium: var(--color-core-white-a60);
+  --bg-overlay-light-strong: var(--color-core-white-a90);
+  --bg-overlay-neutral-subtle: var(--color-neutrals-500-a10);
+  --bg-overlay-neutral-medium: var(--color-neutrals-500-a20);
+  --bg-overlay-brand-subtle: var(--color-secondary-300-a10);
+  --bg-overlay-brand-medium: var(--color-secondary-300-a20);
+  --bg-overlay-brand-strong-subtle: var(--color-secondary-500-a10);
+  --bg-overlay-brand-strong: var(--color-secondary-500-a30);
+  --bg-overlay-dark: var(--color-core-black-a40);
+  --bg-overlay-blanket: var(--color-grays-500-a70);
+  --bg-brand-secondary-subtle: var(--color-secondary-40);
+  --bg-brand-secondary-subtle-alt: var(--color-secondary-50);
+  --bg-brand-secondary-light: var(--color-secondary-100);
+  --bg-brand-secondary-hover: var(--color-secondary-300);
+  --bg-brand-secondary-default: var(--color-secondary-200);
+  --bg-brand-secondary-active: var(--color-secondary-400);
+  --bg-brand-primary-subtle: var(--color-primary-50);
+  --bg-brand-primary-hover: var(--color-primary-300);
+  --bg-brand-primary-default: var(--color-primary-400);
+  --bg-brand-primary-active: var(--color-primary-500);
+  --bg-surface-base: var(--color-grays-25);
+  --bg-surface-raised: var(--color-grays-50);
+  --bg-surface-inverse: var(--color-grays-400);
+  --bg-neutral-minimal: var(--color-grays-25);
+  --bg-neutral-subtle: var(--color-neutrals-40);
+  --bg-neutral-soft-alt: var(--color-grays-50);
+  --bg-neutral-soft: var(--color-neutrals-50);
+  --bg-neutral-light: var(--color-neutrals-75);
+  --bg-neutral-medium: var(--color-neutrals-100);
+  --bg-neutral-default: var(--color-neutrals-200);
+  --bg-neutral-strong: var(--color-neutrals-300);
+  --bg-neutral-dark: var(--color-neutrals-400);
+  --bg-neutral-inverse: var(--color-neutrals-500);
+  --bg-focus: var(--color-secondary-40);
+  --bg-disabled: var(--color-neutrals-50);
+  --bg-default: var(--color-core-white);
+  /* --- Text --- */
+  --text-brand-secondary-faint: var(--color-secondary-50);
+  --text-brand-secondary-subtle-alt: var(--color-secondary-50);
+  --text-brand-secondary-subtle: var(--color-secondary-75);
+  --text-brand-secondary-medium: var(--color-secondary-100);
+  --text-brand-secondary-light: var(--color-secondary-200);
+  --text-brand-secondary-default: var(--color-secondary-300);
+  --text-brand-secondary-dark: var(--color-secondary-400);
+  --text-brand-primary-default: var(--color-primary-400);
+  --text-brand-primary-dark: var(--color-primary-500);
+  --text-inverse: var(--color-core-white);
+  --text-disabled: var(--color-neutrals-200);
+  --text-subtle: var(--color-neutrals-300);
+  --text-strong: var(--color-neutrals-500);
+  --text-default: var(--color-neutrals-400);
+  /* --- Border --- */
+  --border-radius-none: 0;
+  --border-brand-primary-default: var(--color-secondary-200);
+  --border-status-progressive: var(--color-secondary-40);
+  --border-status-warning: var(--color-brown-50);
+  --border-status-error: var(--color-red-75);
+  --border-status-inactive: var(--color-neutrals-50);
+  --border-status-active: var(--color-primary-50);
+  --border-input-error: var(--color-red-300);
+  --border-input-success: var(--color-green-400);
+  --border-input-disabled: var(--color-neutrals-75);
+  --border-input-focus: var(--color-secondary-200);
+  --border-input-hover: var(--color-secondary-200);
+  --border-input-default: var(--color-neutrals-200);
+  --border-focus-subtle: var(--color-secondary-40);
+  --border-focus-medium: var(--color-secondary-50);
+  --border-focus-default: var(--color-secondary-200);
+  --border-focus-dark: var(--color-secondary-300);
+  --border-focus-hover: var(--color-secondary-200);
+  --border-strong: var(--color-neutrals-300);
+  --border-inverse: var(--color-core-white);
+  --border-faint: var(--color-neutrals-50);
+  --border-subtle: var(--color-neutrals-100);
+  --border-light: var(--color-neutrals-75);
+  --border-default: var(--color-neutrals-200);
+  /* --- Icon --- */
+  --icon-brand-secondary-faint: var(--color-secondary-50);
+  --icon-brand-secondary-subtle-alt: var(--color-secondary-50);
+  --icon-brand-secondary-subtle: var(--color-secondary-75);
+  --icon-brand-secondary-medium: var(--color-secondary-100);
+  --icon-brand-secondary-light: var(--color-secondary-200);
+  --icon-brand-secondary-default: var(--color-secondary-300);
+  --icon-brand-secondary-dark: var(--color-secondary-400);
+  --icon-brand-primary-default: var(--color-primary-400);
+  --icon-brand-primary-dark: var(--color-primary-500);
+  --icon-inverse: var(--color-core-white);
+  --icon-disabled: var(--color-neutrals-200);
+  --icon-subtle: var(--color-neutrals-300);
+  --icon-strong: var(--color-neutrals-500);
+  --icon-default: var(--color-neutrals-400);
+  /* --- Feedback --- */
+  --feedback-info-icon-light: var(--color-neutrals-200);
+  --feedback-info-icon-subtle: var(--color-neutrals-300);
+  --feedback-info-icon-default: var(--color-neutrals-400);
+  --feedback-info-icon-strong: var(--color-neutrals-500);
+  --feedback-info-text-light: var(--color-neutrals-200);
+  --feedback-info-text-subtle: var(--color-neutrals-300);
+  --feedback-info-text-default: var(--color-neutrals-400);
+  --feedback-info-text-strong: var(--color-neutrals-500);
+  --feedback-info-bg-light: var(--color-grays-25);
+  --feedback-info-bg-subtle: var(--color-neutrals-40);
+  --feedback-info-bg-default: var(--color-neutrals-50);
+  --feedback-info-bg-strong: var(--color-neutrals-200);
+  --feedback-warning-icon-light: var(--color-kobe-100);
+  --feedback-warning-icon-subtle: var(--color-kobe-200);
+  --feedback-warning-icon-default: var(--color-kobe-300);
+  --feedback-warning-icon-strong: var(--color-kobe-400);
+  --feedback-warning-text-light: var(--color-kobe-100);
+  --feedback-warning-text-subtle: var(--color-kobe-300);
+  --feedback-warning-text-default: var(--color-kobe-400);
+  --feedback-warning-text-strong: var(--color-brown-500);
+  --feedback-warning-bg-light: var(--color-yellow-100);
+  --feedback-warning-bg-subtle: var(--color-brown-50);
+  --feedback-warning-bg-default: var(--color-yellow-400);
+  --feedback-warning-bg-strong: var(--color-yellow-500);
+  --feedback-error-icon-light: var(--color-red-100);
+  --feedback-error-icon-subtle: var(--color-red-200);
+  --feedback-error-icon-default: var(--color-red-400);
+  --feedback-error-icon-strong: var(--color-red-500);
+  --feedback-error-text-light: var(--color-red-100);
+  --feedback-error-text-subtle: var(--color-red-200);
+  --feedback-error-text-default: var(--color-red-400);
+  --feedback-error-text-strong: var(--color-red-500);
+  --feedback-error-bg-light: var(--color-red-50);
+  --feedback-error-bg-subtle: var(--color-red-75);
+  --feedback-error-bg-medium: var(--color-red-100);
+  --feedback-error-bg-default: var(--color-red-300);
+  --feedback-error-bg-strong: var(--color-red-500);
+  --feedback-success-icon-light: var(--color-green-200);
+  --feedback-success-icon-subtle: var(--color-green-300);
+  --feedback-success-icon-default: var(--color-green-400);
+  --feedback-success-icon-strong: var(--color-green-500);
+  --feedback-success-text-light: var(--color-green-200);
+  --feedback-success-text-subtle: var(--color-green-300);
+  --feedback-success-text-default: var(--color-green-400);
+  --feedback-success-text-strong: var(--color-green-500);
+  --feedback-success-bg-light: var(--color-green-100);
+  --feedback-success-bg-subtle: var(--color-green-200);
+  --feedback-success-bg-medium: var(--color-green-300);
+  --feedback-success-bg-default: var(--color-green-400);
+  --feedback-success-bg-strong: var(--color-green-500);
+  --feedback-progressive-icon-light: var(--icon-brand-secondary-subtle);
+  --feedback-progressive-icon-subtle: var(--icon-brand-secondary-medium);
+  --feedback-progressive-icon-default: var(--icon-brand-secondary-default);
+  --feedback-progressive-icon-strong: var(--icon-brand-secondary-dark);
+  --feedback-progressive-text-light: var(--text-brand-secondary-subtle);
+  --feedback-progressive-text-subtle: var(--text-brand-secondary-light);
+  --feedback-progressive-text-default: var(--text-brand-secondary-default);
+  --feedback-progressive-text-strong: var(--text-brand-secondary-dark);
+  --feedback-progressive-bg-light: var(--bg-brand-secondary-subtle);
+  --feedback-progressive-bg-subtle: var(--bg-brand-secondary-subtle-alt);
+  --feedback-progressive-bg-default: var(--bg-brand-secondary-default);
+  --feedback-progressive-bg-strong: var(--bg-brand-secondary-hover);
+  /* --- Spacing --- */
+  --spacing-none: 0;
+  --spacing-xs: calc(var(--font-size, 14px) / 14 * 2px);
+  --spacing-sm: calc(var(--font-size, 14px) / 14 * 4px);
+  --spacing-md: calc(var(--font-size, 14px) / 14 * 6px);
+  --spacing-lg: calc(var(--font-size, 14px) / 14 * 8px);
+  --spacing-xl: calc(var(--font-size, 14px) / 14 * 10px);
+  --spacing-2xl: calc(var(--font-size, 14px) / 14 * 12px);
+  --spacing-3xl: calc(var(--font-size, 14px) / 14 * 14px);
+  --spacing-4xl: calc(var(--font-size, 14px) / 14 * 16px);
+  --spacing-5xl: calc(var(--font-size, 14px) / 14 * 24px);
+  --spacing-6xl: calc(var(--font-size, 14px) / 14 * 32px);
+  --spacing-7xl: calc(var(--font-size, 14px) / 14 * 40px);
+  --spacing-8xl: calc(var(--font-size, 14px) / 14 * 48px);
+  --spacing-9xl: calc(var(--font-size, 14px) / 14 * 56px);
+  --spacing-10xl: calc(var(--font-size, 14px) / 14 * 64px);
+  --spacing-11xl: calc(var(--font-size, 14px) / 14 * 72px);
+  /* --- Radius --- */
+  --borderRadius-xs: calc(var(--font-size, 14px) / 14 * 2px);
+  --borderRadius-sm: calc(var(--font-size, 14px) / 14 * 4px);
+  --borderRadius-md: calc(var(--font-size, 14px) / 14 * 6px);
+  --borderRadius-lg: calc(var(--font-size, 14px) / 14 * 8px);
+  --borderRadius-xl: calc(var(--font-size, 14px) / 14 * 10px);
+  --borderRadius-2xl: calc(var(--font-size, 14px) / 14 * 12px);
+  --borderRadius-3xl: calc(var(--font-size, 14px) / 14 * 16px);
+  --borderRadius-4xl: calc(var(--font-size, 14px) / 14 * 24px);
+  --borderRadius-rounded: calc(var(--font-size, 14px) / 14 * 100px);
+  /* --- Shadow --- */
+  --shadows-elevation-05: 0px 2px 3px 0px rgba(53, 59, 70, 0.15);
+  --shadows-elevation-1: 0px 2px 14px 0px rgba(53, 59, 70, 0.15);
+  --shadows-elevation-2: 0px 2px 5px 0px rgba(12, 11, 59, 0.14);
+  --shadows-elevation-21: 0px 1px 10px 0px rgba(12, 11, 59, 0.12);
+  --shadows-elevation-22: 0px 2px 4px 0px rgba(12, 11, 59, 0.2);
+  --shadows-elevation-3: 0px 4px 12px 0px rgba(53, 59, 70, 0.4);
+  --shadows-elevation-4: 0 12px 25px 0 rgba(53, 59, 70, 0.4);
+  --shadows-elevation-41: 0 0 4px 0 rgba(53, 59, 70, 0.3);
+  --shadows-menu: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  /* --- Opacity --- */
+  --opacity-0: 0;
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+  --opacity-90: 0.9;
+  --opacity-100: 1;
+  /* --- Font tokens --- */
+  --font-size: 14;
+  --font-line-height-6xl: 144;
+  --font-line-height-5xl: 90;
+  --font-line-height-4xl: 72;
+  --font-line-height-3xl: 52;
+  --font-line-height-2xl: 36;
+  --font-line-height-xl: 30;
+  --font-line-height-lg: 24;
+  --font-line-height-md: 20;
+  --font-line-height-sm: 16;
+  --font-line-height-xs: 14;
+  --font-line-height-xxs: 12;
+  --font-size-7xl: 96;
+  --font-size-6xl: 60;
+  --font-size-5xl: 48;
+  --font-size-4xl: 34;
+  --font-size-3xl: 24;
+  --font-size-2xl: 20;
+  --font-size-xl: 18;
+  --font-size-lg: 16;
+  --font-size-base: 14;
+  --font-size-md: 13;
+  --font-size-sm: 12;
+  --font-size-xs: 10;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-family-title: Poppins;
+  --font-feature-settings: liga off, clig off;
+  --font-weight-light: 300;
+  /* --- Layout / width --- */
+  --layout-width-screen: calc(var(--font-size, 14px) / 14 * 1280px);
+  --px-width-preset-xxs: 4.2857142857rem;
+  --px-width-preset-xs: 8.5714285714rem;
+  --px-width-preset-s: 20rem;
+  --px-width-preset-m: 25.7142857143rem;
+  --px-width-preset-l: 34.2857142857rem;
+  --px-width-preset-xl: 42.8571428571rem;
+  --px-width-preset-full: 100%;
+}
+
+/* Convenience aliases for quick prototypes.
+ *
+ * Note: In current Storybook token CSS, --color-primary-* is teal and the
+ * indigo product CTA maps to --color-secondary-* / --bg-brand-secondary-*.
+ * --pds-brand therefore points at the indigo secondary brand for samples.
+ */
+:root {
+  --pds-brand: var(--bg-brand-secondary-default, #4d3ee0);
+  --pds-brand-hover: var(--bg-brand-secondary-hover, #2927b2);
+  --pds-brand-teal: var(--bg-brand-primary-default, #3c6d68);
+  --pds-text: var(--text-strong, #111827);
+  --pds-text-muted: var(--text-subtle, #4B5563);
+  --pds-surface: var(--bg-surface-base, #ffffff);
+  --pds-surface-muted: var(--bg-neutral-subtle, #f9fafb);
+  --pds-border: var(--border-default, #e5e7eb);
+  --pds-success: var(--feedback-success-text-default, #099250);
+  --pds-warning: var(--feedback-warning-text-default, #ca8504);
+  --pds-error: var(--feedback-error-text-default, #ef233c);
+  --pds-radius-md: var(--borderRadius-md, 8px);
+  --pds-shadow-sm: var(--shadows-elevation-1, 0 1px 2px rgba(0, 0, 0, 0.06));
+}
+
+html, body {
+  font-family: var(--font-family-body);
+  color: var(--pds-text);
+  background: var(--pds-surface-muted);
+}
+
+
+/* jobs-dashboard.css */
+/**
+ * Jobs dashboard sample — page-local styles (REQ-011).
+ * Sidebar approximates PDS px-sidebar-navigation (Storybook Expanded + CRM example).
+ * Jobs chrome approximates crm-jobs-ui JobsPageComponent.
+ */
+
+:root {
+  /* Map PDS component tokens used by SidebarNavigation */
+  --components-sidebar-navigation-bg-default: var(--bg-surface-base, #ffffff);
+  --components-sidebar-navigation-border-default: var(--border-light, #e5e7eb);
+  --components-sidebar-navigation-expand-border-top-default: var(--border-faint, #eef0f3);
+  --components-sidebar-navigation-expand-bg-default: var(--bg-surface-base, #ffffff);
+  --components-sidebar-navigation-expand-icon-default: var(--icon-default, #4b5563);
+  --components-sidebar-navigation-menu-item-bg-active: var(--bg-brand-secondary-subtle, #eeedf9);
+  --components-sidebar-navigation-menu-item-bg-hover: var(--bg-neutral-soft, #f3f4f6);
+  --components-sidebar-navigation-menu-item-text-active: var(--text-brand-secondary-default, #2927b2);
+  --components-sidebar-navigation-menu-item-text-default: var(--text-default, #1f2937);
+  --components-sidebar-navigation-menu-item-icon-active: var(--icon-brand-secondary-default, #2927b2);
+  --components-sidebar-navigation-menu-item-icon-default: var(--icon-default, #4b5563);
+
+  --jobs-topbar: var(--color-secondary-400, #1c1876);
+  --jobs-pp-blue: var(--color-secondary-300, #2927b2);
+  --jobs-n75: #d1d5dc;
+  --jobs-n40: #f4f6fa;
+  --jobs-border-radius-xl: 8px;
+  --font: var(--font-family-body, Poppins, "Helvetica Neue", Arial, sans-serif);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font);
+  color: var(--text-default, #1f2937);
+  background: #fff;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* —— Top app bar (CRM shell) —— */
+.jobs-topbar {
+  height: 48px;
+  background: var(--jobs-topbar);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.jobs-topbar__brand {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.jobs-topbar__crumb {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.jobs-shell {
+  display: flex;
+  min-height: calc(100vh - 48px);
+  background: #fff;
+}
+
+/* —— PDS SidebarNavigation (px-sidebar-navigation) —— */
+.px-sidebar-navigation-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 48px);
+  position: sticky;
+  top: 48px;
+  background-color: var(--components-sidebar-navigation-bg-default);
+  border-right: 1px solid var(--components-sidebar-navigation-border-default);
+  width: 56px;
+  transition: width 0.3s ease;
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.px-sidebar-navigation-wrapper.px-sidebar-navigation-expanded {
+  width: 256px;
+}
+
+.px-sidebar-navigation-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg, 8px) 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: var(--spacing-sm, 4px);
+  list-style: none;
+  margin: 0;
+}
+
+.px-sidebar-navigation-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.px-sidebar-navigation-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.px-sidebar-navigation-menu-item-wrapper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.px-sidebar-navigation-divider-wrapper {
+  padding: 8px var(--spacing-lg, 8px);
+}
+
+.px-sidebar-navigation-divider {
+  height: 1px;
+  background: var(--border-light, #e5e7eb);
+  border: 0;
+}
+
+/* Menu item */
+.px-sidebar-menu-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  text-decoration: none;
+  padding: 0 var(--spacing-lg, 8px);
+  color: inherit;
+  cursor: pointer;
+}
+
+.px-sidebar-menu-item:focus {
+  outline: none;
+}
+
+.px-sidebar-menu-item:focus-visible .px-sidebar-menu-item-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-secondary-200, #4d3ee0);
+  border-radius: var(--jobs-border-radius-xl);
+  pointer-events: none;
+}
+
+.px-sidebar-menu-item-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--spacing-lg, 8px);
+  padding: 8px;
+  border-radius: var(--jobs-border-radius-xl);
+  transition: background-color 0.2s ease;
+  min-height: 40px;
+}
+
+.px-sidebar-menu-item-content.level-main {
+  padding-left: var(--spacing-lg, 8px);
+}
+
+.px-sidebar-menu-item-content.collapsed {
+  justify-content: center;
+  padding: var(--spacing-lg, 8px);
+}
+
+.px-sidebar-menu-item-content.collapsed .px-sidebar-menu-item-label {
+  display: none;
+}
+
+.px-sidebar-menu-item:hover:not([aria-disabled="true"]) .px-sidebar-menu-item-content {
+  background-color: var(--components-sidebar-navigation-menu-item-bg-hover);
+}
+
+.px-sidebar-menu-item.is-active .px-sidebar-menu-item-content {
+  background-color: var(--components-sidebar-navigation-menu-item-bg-active);
+}
+
+.px-sidebar-menu-item.is-active .px-sidebar-menu-item-icon,
+.px-sidebar-menu-item.is-active .px-sidebar-menu-item-label {
+  color: var(--components-sidebar-navigation-menu-item-text-active);
+}
+
+.px-sidebar-menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--spacing-5xl, 20px);
+  height: var(--spacing-5xl, 20px);
+  color: var(--components-sidebar-navigation-menu-item-icon-default);
+}
+
+.px-sidebar-menu-item-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.px-sidebar-menu-item-label {
+  color: var(--components-sidebar-navigation-menu-item-text-default);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Expand / collapse control (bottom) — PDS px-sidebar-navigation-expand */
+.px-sidebar-navigation-expand-container {
+  border: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  height: var(--spacing-6xl, 32px);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--components-sidebar-navigation-expand-bg-default);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0 var(--spacing-lg, 8px);
+  border-top: 1px solid var(--components-sidebar-navigation-expand-border-top-default);
+}
+
+.px-sidebar-navigation-expand-container.px-sidebar-navigation-expand-state-expand {
+  justify-content: flex-end;
+  padding: 0 var(--spacing-xl, 10px);
+}
+
+.px-sidebar-navigation-expand-container:hover {
+  background-color: var(--color-neutrals-50, #f9fafb);
+  color: var(--color-secondary-300, #2927b2);
+}
+
+.px-sidebar-navigation-expand-container:focus {
+  outline: none;
+}
+
+.px-sidebar-navigation-expand-container:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-secondary-200, #4d3ee0);
+  border-top: none;
+}
+
+.px-sidebar-navigation-expand-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-4xl, 16px);
+  height: var(--spacing-4xl, 16px);
+  color: var(--components-sidebar-navigation-expand-icon-default);
+}
+
+.px-sidebar-navigation-expand-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.px-sidebar-navigation-expand-state-expand .px-sidebar-navigation-expand-icon {
+  transform: rotate(180deg);
+}
+
+.px-sidebar-navigation-expand-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* —— Jobs main (crm-jobs-ui) —— */
+.job-page {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.job-list-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px 12px;
+  background: #fff;
+  border-bottom: 1px solid transparent;
+}
+
+.page-title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pp-ds-action-bar-devider {
+  width: 1px;
+  height: 24px;
+  background: var(--jobs-n75);
+}
+
+.internal-search-div input {
+  width: 240px;
+  height: 32px;
+  border: 1px solid var(--jobs-n75);
+  border-radius: 6px;
+  padding: 0 12px 0 32px;
+  font-size: 13px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%236b7280' stroke-width='1.75'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath d='M9.5 9.5L12 12'/%3E%3C/svg%3E")
+    10px center no-repeat;
+}
+
+.internal-search-div input:focus {
+  outline: 2px solid color-mix(in srgb, var(--jobs-pp-blue) 35%, white);
+  border-color: var(--jobs-pp-blue);
+}
+
+.pp-ds-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.pp-ds-button:focus-visible {
+  outline: 2px solid var(--jobs-pp-blue);
+  outline-offset: 2px;
+}
+
+.pp-ds-button--secondary {
+  background: #fff;
+  border-color: var(--jobs-n75);
+  color: #1f2937;
+}
+
+.pp-ds-button--secondary:hover {
+  background: var(--jobs-n40);
+}
+
+.pp-ds-button--primary {
+  background: var(--jobs-pp-blue);
+  color: #fff;
+}
+
+.pp-ds-button--primary:hover {
+  background: var(--color-secondary-400, #1c1876);
+}
+
+.pp-ds-only-icon-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--jobs-n75);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  color: #4b5563;
+}
+
+.pp-ds-only-icon-button:focus-visible {
+  outline: 2px solid var(--jobs-pp-blue);
+  outline-offset: 2px;
+}
+
+/* Spotlights */
+.spotlight-nav {
+  padding: 0 24px;
+  border-bottom: 1px solid var(--jobs-n75);
+  background: #fff;
+}
+
+.spotlight-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.spotlight-chip {
+  border: 0;
+  background: transparent;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.spotlight-chip:hover {
+  background: var(--jobs-n40);
+}
+
+.spotlight-chip.is-active {
+  color: var(--jobs-pp-blue);
+  background: color-mix(in srgb, var(--jobs-pp-blue) 10%, white);
+  font-weight: 600;
+}
+
+.spotlight-chip:focus-visible {
+  outline: 2px solid var(--jobs-pp-blue);
+  outline-offset: 2px;
+}
+
+/* Table */
+.data-list-cntr {
+  padding: 0 24px 32px;
+  overflow: auto;
+}
+
+.data-header-cntr,
+.data-row {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 2.2fr)
+    minmax(120px, 1.2fr)
+    90px
+    100px
+    110px
+    70px
+    90px
+    120px
+    minmax(120px, 1fr)
+    100px;
+  gap: 8px;
+  align-items: center;
+  min-width: 1100px;
+}
+
+.data-header-cntr {
+  height: 44px;
+  border-bottom: 1px solid var(--jobs-n75);
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.data-row {
+  min-height: 64px;
+  border-bottom: 1px solid var(--jobs-n75);
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.data-row:hover {
+  background: var(--jobs-n40);
+}
+
+.job-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.job-title-block__name {
+  color: var(--jobs-pp-blue);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.job-title-block__meta {
+  color: #6b7280;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.setting-days {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.setting-days.green {
+  background: #ecfdf3;
+  color: #099250;
+}
+
+.setting-days.yellow {
+  background: #fffaeb;
+  color: #b54708;
+}
+
+.setting-days.red {
+  background: #fef3f2;
+  color: #b42318;
+}
+
+.job-status {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #eeedf9;
+  color: var(--jobs-pp-blue);
+}
+
+.job-status.is-draft {
+  background: #fffaeb;
+  color: #b54708;
+}
+
+.job-status.is-closed {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.jobs-row-hidden {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .job-list-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .internal-search-div input {
+    width: 180px;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header class="jobs-topbar">
+      <div class="jobs-topbar__brand">Phenom CRM</div>
+      <div class="jobs-topbar__crumb">Dashboard / Jobs</div>
+    </header>
+
+    <div class="jobs-shell">
+      <!--
+        PDS SidebarNavigation — Expanded (+ CRM example nav data)
+        https://pds.phenom.com/angular/index.html?path=/story/navigation-sidebarnavigation--expanded
+        https://pds.phenom.com/angular/index.html?path=/story/navigation-sidebarnavigation-examples-crm--expanded-crm
+        Widths: collapsed 56px / expanded 256px; expand control at bottom.
+      -->
+      <nav
+        class="px-sidebar-navigation-wrapper px-sidebar-navigation-expanded"
+        id="sidebar-nav"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <ul class="px-sidebar-navigation-menu" role="menu">
+          <!-- crmNavigationData.sections from CRM.stories.ts -->
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="dashboard" title="Dashboard overview and analytics">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5z"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Dashboard</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="ai-assistant" title="AI-powered assistant and recommendations">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+                <span class="px-sidebar-menu-item-label">AI assistant</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item is-active" href="#" role="menuitem" aria-current="page" data-nav-id="jobs" title="Job postings and requisitions">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Jobs</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="projects" title="Project management and tracking">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6h7M6 8.5v7M18 8.5v7M8.5 18h7"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Projects</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="candidates" title="Candidate database and profiles">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Candidates</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="employees" title="Employee directory and management">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.8-5 6-5s6 2 6 5"/><path d="M15.5 20c.3-1.6 1.7-2.8 3.5-2.8 1.1 0 2.1.4 2.8 1.1"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Employees</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="scheduling" title="Interview and meeting scheduling">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Scheduling</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="lists" title="Custom lists and segments">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Lists</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="campaigns" title="Marketing and recruitment campaigns">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11v2a2 2 0 0 0 2 2h1l4 4V5L6 9H5a2 2 0 0 0-2 2zM16 9a3 3 0 0 1 0 6M18.5 7a5.5 5.5 0 0 1 0 10"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Campaigns</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="inbox" title="Messages and communications">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 5 8-5"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Inbox</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="events" title="Events and career fairs">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Events</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="talent-community" title="Talent pool and community management">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M2.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M14.5 20c.4-1.8 2-3 3.8-3 1.3 0 2.4.5 3.2 1.3"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Talent Community</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-divider-wrapper" aria-hidden="true">
+            <hr class="px-sidebar-navigation-divider" />
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="automations" title="Workflow automation and rules">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Automations</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="privacy" title="Data privacy and compliance settings">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.2 7 9.5 4-1.3 7-5 7-9.5V6l-7-3z"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Privacy</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <button
+          type="button"
+          class="px-sidebar-navigation-expand-container px-sidebar-navigation-expand-state-expand"
+          id="sidebar-toggle"
+          aria-controls="sidebar-nav"
+          aria-expanded="true"
+          aria-label="Collapse Menu"
+        >
+          <div class="px-sidebar-navigation-expand-icon-container">
+            <span class="px-sidebar-navigation-expand-icon" aria-hidden="true">
+              <!-- faArrowRightToLine approximation -->
+              <svg viewBox="0 0 24 24"><path d="M4 4v16M10 12h10M16 8l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </button>
+      </nav>
+
+      <main class="job-page">
+        <div class="job-list-page-header">
+          <div class="page-title">Jobs</div>
+          <div class="actions-bar">
+            <div class="internal-search-div">
+              <input
+                type="search"
+                id="jobs-search"
+                placeholder="Search Jobs"
+                aria-label="Search Jobs"
+              />
+            </div>
+            <button class="pp-ds-button pp-ds-button--secondary" type="button">Filters</button>
+            <div class="pp-ds-action-bar-devider" aria-hidden="true"></div>
+            <button class="pp-ds-button pp-ds-button--primary" type="button">+ Create Job</button>
+            <button class="pp-ds-only-icon-button" type="button" title="More Actions" aria-label="More Actions">⋯</button>
+          </div>
+        </div>
+
+        <div class="spotlight-nav">
+          <div class="spotlight-list" role="tablist" aria-label="Job spotlights">
+            <button class="spotlight-chip is-active" type="button" data-spotlight="all">All Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="open">Open Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="my-open">My Open Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="my">My Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="recent">Recent Jobs</button>
+          </div>
+        </div>
+
+        <div class="data-list-cntr">
+          <div class="data-header-cntr" role="row">
+            <div>Job Title</div>
+            <div>Hiring Team</div>
+            <div>Days Open</div>
+            <div>Job Code</div>
+            <div>Job Status</div>
+            <div>Leads</div>
+            <div>Applicants</div>
+            <div>Created Date</div>
+            <div>Job Category</div>
+            <div>Job Id</div>
+          </div>
+
+          <div class="data-row" data-row data-name="senior software engineer" data-status="open" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Senior Software Engineer</span>
+              <span class="job-title-block__meta">Hyderabad, IN · JOB-10482</span>
+            </div>
+            <div>A. Sharma, R. Mehta</div>
+            <div><span class="setting-days green">12</span></div>
+            <div>ENG-SSE</div>
+            <div><span class="job-status">Open</span></div>
+            <div>48</div>
+            <div>19</div>
+            <div>2026-07-28</div>
+            <div>Engineering</div>
+            <div>JOB-10482</div>
+          </div>
+
+          <div class="data-row" data-row data-name="product designer" data-status="open" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Product Designer</span>
+              <span class="job-title-block__meta">Bengaluru, IN · JOB-10455</span>
+            </div>
+            <div>N. Patel</div>
+            <div><span class="setting-days yellow">28</span></div>
+            <div>DES-PD</div>
+            <div><span class="job-status">Open</span></div>
+            <div>33</div>
+            <div>11</div>
+            <div>2026-07-12</div>
+            <div>Design</div>
+            <div>JOB-10455</div>
+          </div>
+
+          <div class="data-row" data-row data-name="talent acquisition specialist" data-status="draft" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Talent Acquisition Specialist</span>
+              <span class="job-title-block__meta">Remote · JOB-10390</span>
+            </div>
+            <div>J. Chen</div>
+            <div>—</div>
+            <div>TA-SPEC</div>
+            <div><span class="job-status is-draft">Draft</span></div>
+            <div>0</div>
+            <div>0</div>
+            <div>2026-08-05</div>
+            <div>Human Resources</div>
+            <div>JOB-10390</div>
+          </div>
+
+          <div class="data-row" data-row data-name="frontend engineer" data-status="closed" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Frontend Engineer</span>
+              <span class="job-title-block__meta">Pune, IN · JOB-10312</span>
+            </div>
+            <div>K. Iyer, M. Das</div>
+            <div><span class="setting-days red">61</span></div>
+            <div>ENG-FE</div>
+            <div><span class="job-status is-closed">Closed</span></div>
+            <div>72</div>
+            <div>41</div>
+            <div>2026-05-20</div>
+            <div>Engineering</div>
+            <div>JOB-10312</div>
+          </div>
+
+          <div class="data-row" data-row data-name="customer success manager" data-status="open" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Customer Success Manager</span>
+              <span class="job-title-block__meta">Mumbai, IN · JOB-10288</span>
+            </div>
+            <div>S. Rao</div>
+            <div><span class="setting-days green">7</span></div>
+            <div>CS-CSM</div>
+            <div><span class="job-status">Open</span></div>
+            <div>21</div>
+            <div>8</div>
+            <div>2026-08-01</div>
+            <div>Customer Success</div>
+            <div>JOB-10288</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const sidebar = document.getElementById("sidebar-nav");
+        const toggle = document.getElementById("sidebar-toggle");
+        const search = document.getElementById("jobs-search");
+        const contents = () =>
+          sidebar.querySelectorAll(".px-sidebar-menu-item-content");
+
+        function setCollapsed(collapsed) {
+          sidebar.classList.toggle("px-sidebar-navigation-expanded", !collapsed);
+          sidebar.classList.toggle("px-sidebar-navigation-collapsed", collapsed);
+          toggle.classList.toggle("px-sidebar-navigation-expand-state-expand", !collapsed);
+          toggle.classList.toggle("px-sidebar-navigation-expand-state-collapse", collapsed);
+          toggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+          toggle.setAttribute("aria-label", collapsed ? "Expand Menu" : "Collapse Menu");
+          contents().forEach((el) => el.classList.toggle("collapsed", collapsed));
+        }
+
+        // Default expanded (PDS Expanded story)
+        setCollapsed(false);
+
+        toggle.addEventListener("click", () => {
+          const collapsed = !sidebar.classList.contains("px-sidebar-navigation-collapsed");
+          setCollapsed(collapsed);
+        });
+
+        search.addEventListener("input", () => {
+          const key = search.value.trim().toLowerCase();
+          document.querySelectorAll("[data-row]").forEach((row) => {
+            const name = row.dataset.name || "";
+            row.classList.toggle("jobs-row-hidden", key && !name.includes(key));
+          });
+        });
+
+        document.querySelectorAll(".spotlight-chip").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            document.querySelectorAll(".spotlight-chip").forEach((c) => c.classList.remove("is-active"));
+            chip.classList.add("is-active");
+            const filter = chip.dataset.spotlight;
+            document.querySelectorAll("[data-row]").forEach((row) => {
+              const status = row.dataset.status;
+              let show = true;
+              if (filter === "open" || filter === "my-open") show = status === "open";
+              if (filter === "recent") show = ["open", "draft"].includes(status);
+              row.classList.toggle("jobs-row-hidden", !show);
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

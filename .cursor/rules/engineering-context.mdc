@@ -1,0 +1,22 @@
+---
+description: Engineering code context — read-only local clones for feasibility questions, organized by jobs-to-be-done
+alwaysApply: false
+---
+
+# Phenom Engineering Context
+
+This repo (`Phenom - Engineering/`) is a **read-only local reference** of Phenom engineering repos, used to answer feasibility and "how does this work" questions without asking engineering first.
+
+## Hard rules
+
+- **Never edit, commit, or push anything under `repos/`.** Those are live engineering repos cloned for reading only. Treat any write request targeting `repos/` as out of scope — flag it instead of executing it.
+- Don't pull personal coaching content, 1:1 notes, or private context from `Personal - AI Product Leader/` into this repo.
+- Don't copy full source files out into other repos in this workspace — cite file paths and line numbers instead.
+
+## Where to start
+
+Always read `Phenom - Engineering/CLAUDE.md` first — it has the full workflow. In short: `Phenom - Engineering/index/taxonomy.md` → `index/capability-map.md` → the relevant domain file under `index/` → then the code under `Phenom - Engineering/repos/`.
+
+## Source of truth for team routing
+
+`product-copilot-beta/.cursor/policies/platform-routing.md` is the source of truth for which platform team owns a capability. `Phenom - Engineering/index/capability-map.md` maps the same capabilities to code locations — keep them consistent; don't invent a second routing table here.

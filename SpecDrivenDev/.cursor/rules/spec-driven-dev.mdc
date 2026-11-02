@@ -1,0 +1,36 @@
+---
+description: SpecDrivenDev — create new CRM Core FRDs/PRDs from Jira + Google Drive (read-only inputs)
+alwaysApply: true
+---
+
+# SpecDrivenDev — CRM Core PRDs
+
+Create **new** FRDs (PRD alias) for **Phenom CRM Core**. Start with **`create-prd`** skill.
+
+## Three steps
+
+1. **Jira context** — `spec-from-jira` (read-only, any issue type, comma-separated keys)
+2. **Problem breakdown** — `spec-inputs` (Google Drive, Confluence, meetings — read-only)
+3. **New FRD** — `prd-authoring` + `write-stories-from-problem` → `frd-google-drive` (new Google Doc)
+
+## Skills (`.cursor/skills/`)
+
+| Skill | Purpose |
+|-------|---------|
+| `create-prd` | Orchestrator — start here |
+| `read-only-inputs` | Never modify input Jira or source docs |
+| `spec-from-jira` | Step 1 — Jira fetch |
+| `spec-inputs` | Step 2 — Drive, Confluence, Granola |
+| `write-stories-from-problem` | Step 3 — stories from Part A breakdown |
+| `prd-authoring` | Step 3 — FRD structure (Parts A–D) |
+| `crm-core-product` | CRM Core scope and `Core` story prefix |
+| `frd-google-drive` | Publish new Google Doc |
+
+Full guide: `AGENTS.md` | Template: `templates/frd-template.md`
+
+## Hard rules
+
+- **Read-only inputs** — no create/edit on Jira, Confluence, or source Google Docs/Sheets provided as input
+- **Segregate** — Part A = customer issue; Part B = what should be done; Part C = story AC; Part D = wrap-up
+- **Output only** — new `specs/{slug}/frd.md` + new Google Doc
+- Do not publish to Confluence or create Jira unless user explicitly asks separately

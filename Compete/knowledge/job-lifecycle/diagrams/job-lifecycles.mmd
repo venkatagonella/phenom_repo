@@ -1,0 +1,141 @@
+# Phenom competitor job lifecycle sequence diagrams
+
+## Workday
+```mermaid
+sequenceDiagram
+    participant U as Recruiter
+    participant R as Requisition
+    participant P as Posting
+    U->>R: Create draft requisition
+    U->>R: Submit for approval
+    R-->>U: Approved / open
+    U->>P: Create internal or external posting
+    U->>P: Set posting start and end dates
+    P-->>U: Published / live
+    U->>P: Freeze, unpost, or resume
+    P-->>U: Unpublished or republished
+    U->>R: Fill openings or close requisition
+    R-->>P: Close removes eligibility for posting
+    R-->>U: Closed
+```
+
+## SAP SuccessFactors
+```mermaid
+sequenceDiagram
+    participant U as Recruiter
+    participant R as Requisition
+    participant P as Posting
+    U->>R: Create pre-approved requisition
+    U->>R: Route for approval
+    R-->>U: Approved / open
+    U->>P: Choose internal or external posting
+    U->>P: Set posting start and end dates
+    P-->>U: Posted / live
+    alt End date reached
+        P-->>U: Expired / removed
+    else User removes post
+        U->>P: Remove post
+        P-->>U: Unposted
+    end
+    U->>R: Fill openings or close
+    R-->>U: Closed or reopened
+```
+
+## Greenhouse
+```mermaid
+sequenceDiagram
+    participant U as Recruiter
+    participant J as Job
+    participant O as Opening
+    participant P as Job post
+    U->>J: Create draft job and openings
+    U->>J: Submit for approval
+    J-->>U: Open
+    U->>P: Create and configure job post
+    U->>P: Publish to channel
+    P-->>U: Live
+    U->>P: Edit or unpublish
+    P-->>U: Paused / unpublished
+    U->>O: Fill or close openings
+    U->>J: Close job
+    J-->>P: Unpublish active posts
+    J-->>U: Closed or reopened
+```
+
+## Ashby
+```mermaid
+sequenceDiagram
+    participant U as Recruiter
+    participant J as Job
+    participant O as Opening
+    participant P as Posting
+    U->>J: Create job draft and openings
+    U->>J: Complete approval if configured
+    J-->>U: Open
+    U->>P: Create posting
+    U->>P: Set visibility and deadline
+    U->>P: Publish
+    alt Listed
+        P-->>U: Discoverable and live
+    else Unlisted
+        P-->>U: Hidden from lists; direct link can apply
+    end
+    alt Deadline reached
+        P-->>U: Automatically unpublished / expired
+    else User unpublishes
+        U->>P: Unpublish
+        P-->>U: No new applications
+    end
+    U->>O: Fill openings
+    U->>J: Close job
+    J-->>P: Remove postings
+```
+
+## Workable
+```mermaid
+sequenceDiagram
+    participant U as Recruiter
+    participant R as Requisition
+    participant J as Job
+    participant C as Channel
+    U->>R: Create draft requisition
+    U->>R: Submit and obtain approval
+    R-->>U: Open
+    U->>J: Configure job visibility
+    U->>C: Distribute to career page or boards
+    C-->>U: In review or published
+    alt Hold or unpublish
+        U->>J: Set internal or on hold
+        J-->>C: Remove public visibility
+    else Channel promotion ends
+        C-->>U: Promotion/board expiry
+    end
+    U->>R: Reserve, fill, cancel, or archive
+    R-->>U: Archived / unarchive possible
+```
+
+## Personio
+```mermaid
+sequenceDiagram
+    participant U as Recruiter
+    participant J as Job
+    participant P as Promotion
+    participant C as Job board
+    U->>J: Create draft job
+    U->>J: Publish to career page
+    J-->>U: Published
+    U->>P: Select external channels
+    U->>P: Set start and end dates
+    P-->>C: Scheduled
+    C-->>P: Running / live
+    alt End date reached
+        C-->>P: Expired
+    else User stops promotion
+        U->>P: Cancel or remove promotion
+        P-->>C: Stopped / canceled
+    end
+    U->>J: Fill opening and archive
+    J-->>U: Archived
+    U->>J: Reopen
+    J-->>U: Draft
+```

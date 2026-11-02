@@ -1,0 +1,78 @@
+{
+  "_about": "Which product experiences and products the SR Prevention tool and the sr-triage agent surface. Names must match policies/jira-constants.md (Product Experience : Product) exactly - that file is the only source of product names. To show another product, set surfaced=true here; do not invent names.",
+  "updated": "2026-10-04",
+  "experiences": [
+    {
+      "name": "Recruiter Experience (RX)",
+      "short": "RX",
+      "products": [
+        {
+          "name": "CRM - Core",
+          "surfaced": true
+        },
+        {
+          "name": "CRM - Profile",
+          "surfaced": true
+        },
+        {
+          "name": "CRM - Messaging and Campaigns",
+          "surfaced": true
+        },
+        {
+          "name": "CRM - Automation",
+          "surfaced": true
+        },
+        {
+          "name": "CRM - Events and University Recruiting",
+          "surfaced": false,
+          "note": "Out of scope until its level 2 categories exist on the Product Taxonomy tab (decided 2026-10-04)."
+        },
+        {
+          "name": "Compliance",
+          "surfaced": true
+        },
+        {
+          "name": "CRM - Role & Access Management",
+          "surfaced": true,
+          "note": "Used by the SR triage agent and shown in the tool. Jira child ID not created yet - do not use it in Jira API calls until the ID exists."
+        },
+        {
+          "name": "CRM - Google Chrome Extension",
+          "surfaced": false
+        },
+        {
+          "name": "CRM - Mobile",
+          "surfaced": false
+        },
+        {
+          "name": "Direct Sourcing",
+          "surfaced": false
+        }
+      ]
+    },
+    {
+      "name": "Hiring Intelligence",
+      "short": "HI",
+      "products": [
+        {
+          "name": "Scheduling",
+          "surfaced": true
+        },
+        {
+          "name": "Interview Intelligence",
+          "surfaced": false,
+          "note": "Out of scope until its level 2 categories exist on the Product Taxonomy tab (decided 2026-10-04)."
+        },
+        {
+          "name": "X+ Screening",
+          "surfaced": true
+        },
+        {
+          "name": "Voice Agent Screening",
+          "surfaced": true
+        }
+      ]
+    }
+  ],
+  "out_of_scope_note": "Tickets the agent routes to any other experience (e.g. Hiring Automations - Assessments, Manager Experience (MX) / Req & Offer, Integration Experience (IX), Candidate Experience (CX)) keep their recommendation in the sheet but are not shown in the SR Prevention tool."
+}

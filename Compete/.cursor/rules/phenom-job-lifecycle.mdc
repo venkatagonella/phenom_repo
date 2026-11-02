@@ -1,0 +1,55 @@
+---
+description: Guides analysis and design of Phenom job creation, posting, publishing, expiry, unposting, and closure workflows.
+globs:
+  - "**/*job*"
+  - "**/*requisition*"
+  - "**/*posting*"
+  - "**/*lifecycle*"
+alwaysApply: false
+---
+
+# Phenom Job Lifecycle Rule
+
+When working on job creation or posting workflows, use the domain model and competitor benchmark in `knowledge/job-lifecycle/data/competitor-lifecycles.json`.
+
+## Model the layers separately
+
+* Job or requisition: internal hiring demand and approval lifecycle.
+* Opening: headcount slot attached to the job/requisition.
+* Posting: candidate-facing listing associated with the job.
+* Channel distribution: destination-specific delivery of the posting.
+
+## Do not conflate these concepts
+
+* Posting is not necessarily publishing.
+* Publishing is not the same as creation.
+* Expiry is not the same as manual unposting.
+* Unposting one listing does not close the underlying job.
+* Archiving or closing the job is stronger than removing one listing.
+* A hidden or unlisted posting may still accept direct-link applications; verify before treating it as unpublished.
+
+## Required lifecycle fields
+
+Prefer explicit fields such as:
+
+* `posting_start_date`
+* `published_at`
+* `application_deadline`
+* `posting_end_date`
+* `unpublished_at`
+* `expired_at`
+* `canceled_at`
+* `closed_at`
+* `reopened_at`
+* `unpublish_reason`
+* `expiry_reason`
+
+## Required analysis behavior
+
+* Identify the entity and actor for every transition.
+* Preserve independent state machines for job, posting, and channel.
+* Label configuration-dependent behavior.
+* Capture historical events instead of overwriting timestamps on repost.
+* Explain what happens to active postings when a job is closed.
+* Explain whether reopening restores the prior state or returns to Draft.
+* When comparing competitors, use the six vendors in the reference data: Workday, SAP SuccessFactors, Greenhouse, Ashby, Workable, and Personio.

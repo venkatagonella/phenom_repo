@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Allianz × Phenom — LinkedIn InMail</title>
+
+<!-- Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<!-- reveal.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+
+<!-- Phenom design system -->
+<link rel="stylesheet" href="phenom-tokens.css" />
+<link rel="stylesheet" href="phenom-deck.css" />
+
+<style>
+  /* reveal shell: center each fixed 1280×720 slide and scale to viewport. */
+  html, body { width: 100%; height: 100% !important; margin: 0 !important; }
+  .reveal { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .reveal .slides { text-align: left; }
+  .reveal .slides section { padding: 0; }
+
+  /* ---- Deck-specific components (token-driven, on-brand) ------------------ */
+  .lead-in {
+    font-size: var(--fs-subhead);
+    color: var(--ink-2);
+    line-height: 1.5;
+    max-width: 92%;
+    margin-bottom: 22px;
+  }
+
+  /* Query / finding cards: compact grid that fits 5 items in two rows */
+  .query-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    align-content: center;
+  }
+  .query-card {
+    position: relative;
+    background: var(--family-50);
+    border-radius: var(--radius-card);
+    padding: 22px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+  }
+  .query-card .ic {
+    width: 40px; height: 40px;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-pill);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .query-card .ttl {
+    font-size: 19px;
+    font-weight: var(--fw-bold);
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .query-card .desc {
+    font-size: var(--fs-body);
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .query-card .tag {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: var(--fs-footnote);
+    font-weight: var(--fw-bold);
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    color: var(--family-ink);
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1. COVER -->
+    <section>
+      <div class="slide slide--cover">
+        <div class="cover-title">Allianz &times; Phenom</div>
+        <div class="cover-sub">LinkedIn InMail &mdash; Query Review</div>
+        <svg class="thread" viewBox="0 0 1280 220" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="thread" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ff8045"/>
+              <stop offset="45%" stop-color="#6ad5ca"/>
+              <stop offset="100%" stop-color="#7172da"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,200 C260,120 380,40 620,110 C840,170 980,210 1060,150 C1130,100 1090,40 1150,40 C1210,40 1230,110 1180,150"
+                fill="none" stroke="url(#thread)" stroke-width="3"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2. CONTEXT — ALLIANZ QUERIES (query/finding cards) -->
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">Context</div>
+          <div class="s-title">Allianz queries</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="lead-in">Status of the open LinkedIn InMail questions raised by Allianz, with findings and recommended next steps for each.</div>
+        <div class="query-grid">
+          <div class="query-card" data-family="mint">
+            <span class="ic"><i class="ph ph-trash"></i></span>
+            <div class="ttl">Data deletion requests</div>
+            <div class="desc">Confirmed the record is not deleted.</div>
+            <div class="tag">Confirmed</div>
+          </div>
+          <div class="query-card" data-family="peach">
+            <span class="ic"><i class="ph ph-broadcast"></i></span>
+            <div class="ttl">LinkedIn results showing live data</div>
+            <div class="desc">Per LinkedIn&rsquo;s recommendation, validate and test using colleagues&rsquo; profiles.</div>
+            <div class="tag">Action needed</div>
+          </div>
+          <div class="query-card" data-family="honey">
+            <span class="ic"><i class="ph ph-user-focus"></i></span>
+            <div class="ttl">InMail stub profile</div>
+            <div class="desc">Posting options for the stub profile cannot be hidden.</div>
+            <div class="tag">Limitation</div>
+          </div>
+          <div class="query-card" data-family="lilac">
+            <span class="ic"><i class="ph ph-export"></i></span>
+            <div class="ttl">Restrict export options</div>
+            <div class="desc">Not possible to hide any posting options for Export or InMail stub profiles.</div>
+            <div class="tag">Limitation</div>
+          </div>
+          <div class="query-card" data-family="mint">
+            <span class="ic"><i class="ph ph-list-checks"></i></span>
+            <div class="ttl">Test cases</div>
+            <div class="desc">Scope and coverage still to be discussed.</div>
+            <div class="tag">Open</div>
+          </div>
+        </div>
+        <div class="pagenum">2</div>
+      </div>
+    </section>
+
+    <!-- 3. KEY TAKEAWAYS / NEXT STEPS -->
+    <section>
+      <div class="slide" data-family="lilac">
+        <div class="s-head">
+          <div class="s-kicker">In summary</div>
+          <div class="s-title">Findings &amp; next steps</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="takeaways">
+          <div class="takeaway">Data deletion requests confirmed as not deleted &mdash; align on expected behavior.</div>
+          <div class="takeaway">Validate live-data results using colleagues&rsquo; profiles, per LinkedIn&rsquo;s guidance.</div>
+          <div class="takeaway">Export and InMail stub posting options cannot be hidden &mdash; no configuration available.</div>
+          <div class="takeaway">Finalize the test-case scope with Allianz (to be discussed).</div>
+        </div>
+        <div class="pagenum">3</div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    controls: true,
+    progress: true,
+    hash: true,
+    transition: "slide",
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+---
+description: Phenom DS V2 — Figma MCP reference (tokens, component keys, pre-flight, binding rules). Canonical token source for both Figma and local prototypes. Loaded via phenom-designer or phenom-ds-figma.
+globs: []
+alwaysApply: false
+---
+
+# Phenom DS V2 — Figma MCP reference
+
+Visual output must match **Phenom Design System V2 in Figma**. Only use components, tokens, and styles that exist in the DS library. Never invent components, custom colors, or arbitrary spacing.
+
+---
+
+## Figma File Structure
+
+File: [Phenom Design System V2 — UI Shell — Master](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?m=dev)
+
+Each bullet is the **page name** in Figma (left sidebar) and its direct **page link**.
+
+- 💠 Components Overview — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=19388-87670&m=dev
+- ❖ Icon Library — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=3488-26255&m=dev
+- ❖ AutoComplete ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=16468-17517&m=dev
+- ❖ Checkbox ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=3816-9422&m=dev
+- ❖ CheckboxGroup ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=13009-3165&m=dev
+- ❖ Datepicker (Calendar) ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=8048-58290&m=dev
+- ❖ Dropdown ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=3824-203&m=dev
+- ❖ Input Chip ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4523-8321&m=dev
+- ❖ Input Field ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=2563-86460&m=dev
+- ❖ Input Number ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4964-710&m=dev
+- ❖ Link Text ✅ — https://www.figma.com/design//6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6395-137556&m=dev
+- ❖ MultiSelect ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=9363-439825&m=dev
+- ❖ Radio ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=3883-82704&m=dev
+- ❖ RadioGroup ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=11020-77711&m=dev
+- ❖ Rich Text Editor ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=9444-13393&m=dev
+- ❖ Rating ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=21057-54479&m=dev
+- ❖ Search ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4500-1107&m=dev
+- ❖ Slider ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4251-912&m=dev
+- ❖ Switch ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=3876-82241&m=dev
+- ❖ Switch Button ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5350-782&m=dev
+- ❖ Text Area ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5394-514&m=dev
+- ❖ Buttons ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=2523-12283&m=dev
+- ❖ Pagination ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=8046-58289&m=dev
+- ❖ Scroll ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4221-807&m=dev
+- ❖ Table ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6392-64730&m=dev
+- ❖ Accordion ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6361-9604&m=dev
+- ❖ Card ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=27039-129947&m=dev
+- ❖ Divider ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4200-1721&m=dev
+- ❖ Blanket ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4197-20742&m=dev
+- ❖ Modal ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6288-54386&m=dev
+- ❖ Popover (OverlayPanel) ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5399-2354&m=dev
+- ❖ Sidebar ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=9851-7510&m=dev
+- ❖ Tooltip ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4289-22669&m=dev
+- ❖ File Upload 🚧 — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=32737-164052&m=dev
+- ❖ Breadcrumbs ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5594-265919&m=dev
+- ❖ Category Chip ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5517-3418&m=dev
+- ❖ Menu ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=8650-15516&m=dev
+- ❖ Sidebar Navigation ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5594-265922&m=dev
+- ❖ Tab ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5427-45154&m=dev
+- ❖ TieredMenu ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=14309-86071&m=dev
+- ❖ Top Navigation ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5594-265921&m=dev
+- ❖ View Selector ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4119-10175&m=dev
+- ❖ Wizard Stepper ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=7984-53375&m=dev
+- ❖ Snackbar (Toast) ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5094-40159&m=dev
+- ❖ System Messages ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=20315-123335&m=dev
+- ❖ Avatar ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=8275-112811&m=dev
+- ❖ Progress Bar ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=32737-173801&m=dev
+- ❖ Progress Spinner ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4202-794&m=dev
+- ❖ Number Badge ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=5458-8430&m=dev
+- ❖ Notification Badge ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=36274-288495&m=dev
+- ❖ Tags ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4298-11206&m=dev
+- ❖ Talent Signals ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=27239-196638&m=dev
+- ❖ Status ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6133-64067&m=dev
+- ❖ Gallery 🚧 — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=28799-16615&m=dev
+- ❖ Image 🚧 — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=29108-186048&m=dev
+- ❖ RadioPanel ✅ — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=42517-41467&m=dev
+- 🧱 DS Supporting Components — https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=9593-129730&m=dev
+
+Never invent components. If unsure whether something exists, fetch the Figma page first.
+
+---
+
+## Design Tokens
+
+**Always use tokens. Never use raw hex, rgb(), or arbitrary px values.**
+
+All tokens below are expressed as both their **Figma variable name** (for Figma MCP binding) and their **CSS custom property** equivalent (for reference). Use the Figma variable name when binding in `use_figma`.
+
+### Typography
+
+| Figma variable | CSS custom property | Value |
+|---|---|---|
+| `family/body` | `--family-body` | Poppins — default for all text |
+| `family/title` | `--family-title` | Poppins — headings |
+| `weight/Regular` | `--weight-Regular` | 400 |
+| `weight/Medium` | `--weight-Medium` | 500 |
+| `weight/SemiBold` | `--weight-SemiBold` | 600 |
+| `weight/Bold` | `--weight-Bold` | 700 |
+| `size/font-size-xs` | `--size-font-size-xs` | 10px |
+| `size/font-size-sm` | `--size-font-size-sm` | 12px |
+| `size/font-size-md` | `--size-font-size-md` | 13px |
+| `size/font-size-base` | `--size-font-size-base` | 14px — default body |
+| `size/font-size-lg` | `--size-font-size-lg` | 16px |
+| `size/font-size-xl` | `--size-font-size-xl` | 18px |
+| `size/font-size-2xl` | `--size-font-size-2xl` | 20px |
+| `size/font-size-3xl` | `--size-font-size-3xl` | 24px |
+| `size/font-size-4xl` | `--size-font-size-4xl` | 34px |
+| `line-height/line-height-xxs` | — | 12px |
+| `line-height/line-height-xs` | `--line-height-line-height-xs` | 14px |
+| `line-height/line-height-sm` | `--line-height-line-height-sm` | 16px |
+| `line-height/line-height-md` | `--line-height-line-height-md` | 20px — default |
+| `line-height/line-height-lg` | `--line-height-line-height-lg` | 24px |
+| `line-height/line-height-xl` | `--line-height-line-height-xl` | 30px |
+| `line-height/line-height-2xl` | `--line-height-line-height-2xl` | 36px |
+
+**Pairing rule:** `font-size-lg` always pairs with `line-height-lg`, etc.  
+**Monospace:** Chivo Mono — no token, use directly. No other font families are permitted.
+
+### Spacing
+
+| Figma variable | CSS custom property | Value |
+|---|---|---|
+| `spacing/spacing-none` | `--spacing-spacing-none` | 0 |
+| `spacing/spacing-xs` | `--spacing-spacing-xs` | 2px |
+| `spacing/spacing-sm` | `--spacing-spacing-sm` | 4px |
+| `spacing/spacing-md` | `--spacing-spacing-md` | 6px |
+| `spacing/spacing-lg` | `--spacing-spacing-lg` | 8px |
+| `spacing/spacing-xl` | `--spacing-spacing-xl` | 10px |
+| `spacing/spacing-2xl` | `--spacing-spacing-2xl` | 12px |
+| `spacing/spacing-3xl` | `--spacing-spacing-3xl` | 14px |
+| `spacing/spacing-4xl` | `--spacing-spacing-4xl` | 16px |
+| `spacing/spacing-5xl` | `--spacing-spacing-5xl` | 24px |
+| `spacing/spacing-6xl` | `--spacing-spacing-6xl` | 32px |
+| `spacing/spacing-7xl` | `--spacing-spacing-7xl` | 40px |
+| `spacing/spacing-8xl` | `--spacing-spacing-8xl` | 48px |
+| `spacing/spacing-9xl` | `--spacing-spacing-9xl` | 56px |
+| `spacing/spacing-10xl` | `--spacing-spacing-10xl` | 64px |
+| `spacing/spacing-11xl` | — | 72px |
+
+### Border Radius
+
+| Figma variable | CSS custom property | Value |
+|---|---|---|
+| `border/border-radius-none` | `--border-border-radius-none` | 0 |
+| `border/border-radius-xs` | `--border-border-radius-xs` | 2px |
+| `border/border-radius-sm` | `--border-border-radius-sm` | 4px — default for most components |
+| `border/border-radius-md` | `--border-border-radius-md` | 6px |
+| `border/border-radius-lg` | `--border-border-radius-lg` | 8px |
+| `border/border-radius-xl` | `--border-border-radius-xl` | 10px |
+| `border/border-radius-2xl` | `--border-border-radius-2xl` | 12px |
+| `border/border-radius-3xl` | `--border-border-radius-3xl` | 16px |
+| `border/border-radius-4xl` | — | 24px |
+| `border/border-radius-rounded` | `--border-border-radius-rounded` | 100px — pill shape |
+
+### Stroke Width
+
+| Figma variable | CSS custom property | Value |
+|---|---|---|
+| `stroke/stroke-width-none` | `--stroke-stroke-width-none` | 0 |
+| `stroke/stroke-width-xs` | `--stroke-stroke-width-xs` | 1px |
+| `stroke/stroke-width-sm` | `--stroke-stroke-width-sm` | 2px |
+
+### Semantic Color Tokens
+
+Use these in components and wrapper frames. Never use the raw hex values below directly — they are for verification only.
+
+| Figma variable | CSS custom property | Hex (light mode) |
+|---|---|---|
+| `text/strong` | `--text-default` | `#353b46` |
+| `text/default` | `--text-default-canonical` | `#464f5e` |
+| `text/subtle` | `--text-subtle` | `#637085` |
+| `text/disabled` | `--text-disabled` | `#8c95a8` |
+| `text/inverse` | `--text-inverse` | `#ffffff` |
+| `text/brand-primary/default` | `--text-brand-primary-default` | `#3c6d68` |
+| `text/brand-secondary/default` | `--text-brand-secondary-default` | `#2927b2` |
+| `icon/strong` | `--icon-default` | `#353b46` |
+| `icon/default` | — | `#464f5e` |
+| `icon/subtle` | `--icon-subtle` | `#637085` |
+| `icon/disabled` | `--icon-disabled` | `#8c95a8` |
+| `icon/inverse` | — | `#ffffff` |
+| `icon/brand-primary/default` | — | `#3c6d68` |
+| `icon/brand-secondary/default` | — | `#2927b2` |
+| `bg/default` | `--bg-surface` | `#ffffff` |
+| `bg/focus` | `--bg-focus` | `#eae8fb` |
+| `bg/brand-secondary/default` | `--brand-primary` | `#4d3ee0` |
+| `bg/brand-secondary/hover` | `--brand-primary-hover` | `#2927b2` |
+| `bg/brand-secondary/subtle` | `--brand-primary-soft` | `#eae8fb` |
+| `bg/brand-secondary/light` | `--brand-secondary` | `#7571e0` |
+| `bg/brand-secondary/active` | `--bg-brand-secondary-active` | `#1c1876` |
+| `bg/neutral/dark` | `--bg-neutral-dark` | `#464f5e` |
+| `bg/neutral/strong` | `--bg-neutral-strong` | `#637085` |
+| `bg/neutral/soft` | `--bg-neutral-soft` | `#e8eaee` |
+| `bg/neutral/light` | `--bg-neutral-light` | `#d1d5dc` |
+| `bg/neutral/inverse` | `--bg-neutral-inverse` | `#353b46` |
+| `border/default` | `--border-strong` | `#8c95a8` |
+| `border/light` | `--border-default` | `#d1d5dc` |
+| `border/faint` | `--border-subtle` | `#e8eaee` |
+| `border/focus/default` | `--border-focus-default` | `#4d3ee0` |
+| `border/focus/medium` | `--border-focus-medium` | `#cac1f2` |
+| `border/focus/subtle` | `--border-focus-subtle` | `#eae8fb` |
+
+> Phenom V2 ships **purple as the brand-secondary family** and **green as brand-primary**. Product UIs typically use the purple as the primary visual accent — that's why `--brand-primary` aliases to `bg/brand-secondary/default` (#4d3ee0) and not the green.
+
+> The Color collection contains 155 variables total (including `feedback/*`, `bg/overlay/*`, `bg/brand-primary/*`, `border/input/*`, `bg/surface/*` etc.). When a needed token isn't in the table above, use the closest semantic neighbour and document the substitution.
+
+### Role-aware token mapping
+
+When choosing a token, **the role of the node decides which namespace** to draw from — never just the hex value:
+
+| Node type | Property | Token namespace |
+|---|---|---|
+| Text (Poppins / Chivo Mono) | fill | `text/*` |
+| Text (Font Awesome icon) | fill | `icon/*` |
+| Frame / Rectangle | fill | `bg/*` |
+| Frame / Rectangle | stroke | `border/*` |
+| Frame | radius | `border/border-radius-*` |
+| Frame | padding / gap | `spacing/spacing-*` |
+| Text | fontSize | `size/font-size-*` |
+| Text | lineHeight | `line-height/line-height-*` |
+| Text (non-icon) | fontFamily | `family/title` (bold ≥ 16px) or `family/body` |
+| Text (non-icon) | fontStyle | `weight/Regular` `Medium` `SemiBold` `Bold` |
+
+---
+
+## MANDATORY pre-flight before any Figma write
+
+Before calling `use_figma`, `create_new_file`, or any tool that creates or modifies nodes in Figma, you **MUST** run this sequence.
+
+### Step 1 — Probe the target file for DS connectivity
+
+Run this inside `use_figma` against the **target** file FIRST, before any geometry:
+
+```js
+const collections = await figma.teamLibrary
+  .getAvailableLibraryVariableCollectionsAsync();
+const phenomCollections = collections.filter(c =>
+  c.libraryName.includes("Phenom Design System V2"));
+
+let canImportComponent = false;
+let importError = null;
+try {
+  await figma.importComponentByKeyAsync("18dd5d83e97e1b1e1a9841ef828ad5fbcaf7a1d7"); // Button
+  canImportComponent = true;
+} catch (e) {
+  importError = String(e);
+}
+
+return {
+  hasPhenomVariables: phenomCollections.length > 0,
+  phenomCollectionNames: phenomCollections.map(c => c.libraryName),
+  canImportComponent,
+  importError,
+  allLibraries: collections.map(c => c.libraryName),
+};
+```
+
+### Step 2 — Decision tree
+
+- ✅ `hasPhenomVariables === true` AND `canImportComponent === true`
+  → DS is fully connected. Proceed with real instances + bound variables.
+
+- ⛔ **Anything else** (variables missing, components missing, or both)
+  → STOP. Do NOT call `createFrame`, `createRectangle`, `createText`, or any geometry primitive as a substitute. Output exactly:
+
+  > ⚠️ **Phenom Design System V2 is not fully connected to this Figma file.**
+  >
+  > Pre-flight: `hasPhenomVariables` = …, `canImportComponent` = …
+  > (`importError` if any)
+  >
+  > To proceed, open the target file → `Assets` panel (left sidebar) →
+  > `Libraries` icon → enable **Phenom Design System V2 — UI Shell — Master**
+  > (components **and** variable collections).
+  >
+  > Source file: `6Vd1BU48fnhA5F0eg8d57S`
+  >
+  > I will not generate disconnected geometry. Please enable the library and ask again.
+
+### Hard rules (no exceptions)
+
+- NEVER substitute `createFrame` / `createRectangle` / styled text nodes for missing DS components.
+- NEVER hardcode hex, rgb, px spacing, or radius numbers when DS variables are expected.
+- NEVER detach instances to "fix" a variant — if the variant doesn't exist in the DS, STOP and ask.
+- ALWAYS prefer `importComponentByKeyAsync` with a known key over search results, because keys are stable across library state changes.
+
+---
+
+## Screen frame container (MANDATORY)
+
+Every delivered screen or flow in Figma MUST live inside a top-level **FRAME**. Do not place DS instances, text, or layout groups as loose children of the page (`figma.currentPage`).
+
+### Rules
+
+1. **One root FRAME per screen** — e.g. `Screen / Create meeting modal`, `1440 — Job overview`. Name clearly; match target width (1440, 1280, 390…).
+2. **Everything goes inside** — Modal, Blanket, Sidebar, sections, and all nested instances are **children of that frame**, not siblings on the page root.
+3. **Modals** — Screen frame contains Blanket + Modal instance(s). Never leave Modal/Blanket orphaned on the page without a parent frame.
+4. **Sub-frames** — Use additional FRAMEs for regions (header, body, footer) with auto-layout when helpful; bind padding, gap, and fills to Phenom variables.
+5. **Allowed `createFrame`** — A root or layout frame is required and allowed; the ban on `createFrame` applies only to **substituting DS components** (fake buttons, fake modals), not to the screen container itself.
+
+### Minimal pattern
+
+```js
+const screen = figma.createFrame();
+screen.name = 'Screen / <screen-name>';
+screen.resize(1440, 900);
+figma.currentPage.appendChild(screen);
+
+// Append ALL nodes to screen — never directly to figma.currentPage
+```
+
+### Definition of done
+
+- [ ] A named root FRAME exists for the screen
+- [ ] No orphaned instances or text nodes on the page root
+- [ ] Screenshot taken of the frame for review
+
+---
+
+## Variant & component property reconciliation (MANDATORY)
+
+`importComponentByKeyAsync` places the **default variant**. That is **not** done. Every instance must match the **source design** before declaring complete.
+
+### Workflow
+
+1. **Inventory the design** — list every interactive/visual control with: component type, variant, size, state, label/copy, icons, disabled, selected.
+2. **For each instance on the canvas** — read available props:
+   ```js
+   const props = instance.componentProperties; // name → { type, value, ... }
+   ```
+3. **Set properties** (use exact property names from `componentProperties`):
+   ```js
+   instance.setProperties({
+     'Variant': 'Primary',   // names are case-sensitive
+     'Label': 'Save',
+     'Size': 'Medium',
+     'State': 'Default',
+   });
+   ```
+   If the needed variant is a **sibling** in the set, use `swapComponent` on the instance to the correct child component, then `setProperties` for text/icons.
+4. **Verify** — `get_design_context` or screenshot the instance; compare to source. Repeat until labels, variants, and states match.
+
+### Figma component quick-reference
+
+| Component | Figma page | Key |
+|---|---|---|
+| Button | [Buttons](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=2523-12283&m=dev) | `18dd5d83e97e1b1e1a9841ef828ad5fbcaf7a1d7` |
+| IconButton | [Buttons](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=2523-12283&m=dev) | `221224660947e704e54135ee31bd267365d69260` |
+| Tag | [Tags](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4298-11206&m=dev) | `bb06e90b493f8a2bdfa8faae4cc5f8348653ad31` |
+| Status | [Status](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6133-64067&m=dev) | `29bd6a46cdd81834403c543d19a623ac3d95d1f2` |
+| InputField | [Input Field](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=2563-86460&m=dev) | `d7992e3a5d20d66b08de0d28917d9fc682d5afa6` |
+| Dropdown | [Dropdown](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=3824-203&m=dev) | `5b197ca30b5b2f7a598c4f4b8f00dc726ddaf15a` |
+| Modal | [Modal](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=6288-54386&m=dev) | `0f9e4971743b34bf7c7c856b07eab5cce8811720` |
+| Blanket | [Blanket](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=4197-20742&m=dev) | `dce55211f12cfa1e5fa7b50669121bcc3ead96f0` |
+| Sidebar | [Sidebar](https://www.figma.com/design/6Vd1BU48fnhA5F0eg8d57S/Phenom-Design-System-V2--UI-Shell----Master?node-id=9851-7510&m=dev) | `304da27eb3b7fdbda78aa72d9ba50da513ba38bf` |
+
+### Anti-patterns (causes "connected but wrong")
+
+❌ Import Button → leave default → only bind wrapper colors → declare done.  
+✅ Import Button → `setProperties` to match design → bind wrappers → screenshot diff.
+
+❌ Import Modal at default size → empty or wrong content → declare done.  
+✅ Pick correct Modal variant → set title/footer props → fill **content slot** with DS field/button instances.
+
+❌ User asks to fix Modal size/layout → **delete** Modal instance → rebuild with `createFrame`.  
+✅ Keep the Modal instance → adjust `setProperties` / inner auto-layout / nested instances.
+
+---
+
+## Composite components — Modal, Sidebar, Blanket (MANDATORY)
+
+Overlays are **shell + content**. Importing only the shell at default variant is why modals look wrong in Figma.
+
+### Rules (no exceptions)
+
+1. **Keep the DS instance** — NEVER delete, detach, or replace Modal / Sidebar / Blanket with hand-drawn frames to "fix" size or content. That is always wrong.
+2. **Shell first** — `importComponentByKeyAsync` Modal (or Sidebar) → `swapComponent` / `setProperties` for the variant that matches the design (width, header type, footer).
+3. **Content second** — Inside the component's **content / body slot**, place **nested DS instances**: InputField, Dropdown, DatePicker, TextArea, Button, etc. — each with its own variant reconciliation. Do not use bare `createText` for labels that belong on InputField `Label` properties.
+4. **Size** — Prefer Modal **size variant** + inner auto-layout over scaling the instance uniformly. If the DS has no variant large enough, STOP and ask — do not stretch or redraw the shell.
+5. **Blanket** — When a modal uses an overlay, add a Blanket instance behind the modal (same viewport), not a custom dimmed rectangle.
+6. **Verify** — Screenshot the modal instance at 100%; compare title, field count, button labels, and width to the source design before binding sweep.
+
+### Form modal checklist
+
+- [ ] Modal instance present (not a custom frame group named "Modal")
+- [ ] Title / header copy matches source via `setProperties`
+- [ ] Footer primary + secondary buttons are Button instances with correct variants
+- [ ] Every form field in the body is a DS input instance (not styled rectangles)
+- [ ] Spacing between fields uses bound `spacing/*` on layout frames inside the slot
+- [ ] Instance was not detached at any step
+
+---
+
+## After every write — bind every property (MANDATORY)
+
+Importing DS instances + correct variants is **only the first half of the job**. Every custom wrapper frame, card, KPI cell, kanban column, sidebar surface, divider, icon disc, and individual text node you create around those instances must also have its colours, paddings, gaps, radii, and fonts **bound to Phenom DS variables**. If you finish a `use_figma` write without doing this, the file is half-built and you must continue.
+
+### Binding API cheat sheet
+
+```js
+// 1. Import a Phenom variable by key (or resolve by name → key first)
+const v = await figma.variables.importVariableByKeyAsync(KEY);
+
+// 2a. Color (paint) — fills, strokes, text fills
+//     setBoundVariableForPaint returns a NEW paint object — capture & reassign.
+const cloned = node.fills.map(p => ({ ...p }));
+cloned[0] = figma.variables.setBoundVariableForPaint(cloned[0], 'color', v);
+node.fills = cloned;     // re-assign whole array; do NOT mutate in place
+
+// 2b. Numeric — radius, padding, gap, fontSize, lineHeight
+node.setBoundVariable('topLeftRadius',     radiusVar);
+node.setBoundVariable('topRightRadius',    radiusVar);
+node.setBoundVariable('bottomLeftRadius',  radiusVar);
+node.setBoundVariable('bottomRightRadius', radiusVar);
+node.setBoundVariable('paddingLeft',  spacingVar);
+node.setBoundVariable('paddingRight', spacingVar);
+node.setBoundVariable('paddingTop',   spacingVar);
+node.setBoundVariable('paddingBottom',spacingVar);
+node.setBoundVariable('itemSpacing',  gapVar);
+textNode.setBoundVariable('fontSize',   sizeVar);
+textNode.setBoundVariable('lineHeight', lhVar);
+textNode.setBoundVariable('fontFamily', familyVar);
+textNode.setBoundVariable('fontStyle',  weightVar);
+```
+
+### Reusable binding-sweep snippet
+
+Run this **after** importing all DS instances and before declaring a write done. It walks every custom (non-instance) node on the current page and binds every fill, stroke, radius, padding, gap, fontSize, lineHeight, fontFamily, and fontStyle to the closest Phenom token.
+
+```js
+const REQUIRED_FONTS = [
+  { family: 'Poppins', style: 'Regular' }, { family: 'Poppins', style: 'Medium' },
+  { family: 'Poppins', style: 'SemiBold' }, { family: 'Poppins', style: 'Bold' },
+  { family: 'Chivo Mono', style: 'Regular' },
+  { family: 'Font Awesome 6 Free', style: 'Regular' },
+  { family: 'Font Awesome 6 Free', style: 'Solid' },
+  { family: 'Font Awesome 6 Brands', style: 'Regular' }
+];
+await Promise.all(REQUIRED_FONTS.map(f => figma.loadFontAsync(f)));
+
+// Build a name → variable cache for every Phenom V2 variable
+const phenom = (await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
+  .filter(c => c.libraryName.includes('Phenom Design System V2'));
+const nameToKey = {};
+for (const c of phenom) {
+  for (const v of await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key))
+    nameToKey[v.name] = v.key;
+}
+const cache = {};
+async function getVar(name) {
+  if (cache[name]) return cache[name];
+  if (!nameToKey[name]) return null;
+  try { cache[name] = await figma.variables.importVariableByKeyAsync(nameToKey[name]); }
+  catch { return null; }
+  return cache[name];
+}
+// → Walk figma.currentPage.findAll(...), skip nodes inside INSTANCE parents,
+//   and apply role-aware bindings using the token tables above.
+```
+
+### Final audit (run before declaring done)
+
+```js
+const audit = { fillBound: 0, fillUnbound: 0, strokeBound: 0, strokeUnbound: 0,
+                radiusBound: 0, radiusUnbound: 0, padBound: 0, padUnbound: 0,
+                gapBound: 0, gapUnbound: 0,
+                txFillBound: 0, txFillUnbound: 0,
+                sizeBound: 0, sizeUnbound: 0, lhBound: 0, lhUnbound: 0,
+                familyBound: 0, familyUnbound: 0, weightBound: 0, weightUnbound: 0 };
+// Walk page.findAll(...), skip instances, increment counters per property.
+return audit;
+// Acceptance: every *Unbound counter is 0
+// (documented exceptions: AUTO line-height, Chivo Mono fontFamily).
+```
+
+---
+
+## Component Keys — Phenom DS V2
+
+Use with `figma.importComponentByKeyAsync(key)`.  
+> ✅ Extracted from `6Vd1BU48fnhA5F0eg8d57S` on 2026-05-15. Re-run the extraction probe (bottom of this file) when the DS file changes.
+
+### Form
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| AutoComplete | ✅ | COMPONENT_SET | `f1fcf736f2c6abb1432f670d26adca0780491ec2` |
+| Checkbox | ✅ | COMPONENT_SET | `f943f5da5d5b30ce6b5b532a71932d075aa29472` |
+| CheckboxGroup | ✅ | COMPONENT_SET | `05a137f5404f466dbe32b692c2470e446f437670` |
+| ColorPicker | ✅ | COMPONENT_SET | `3fb7a91ea7d2b7bb15759de3109074492d0d9932` |
+| ColorPickerPanel | ✅ | COMPONENT_SET | `4176424e778dd68cf5b146f1ff43faed596c678a` |
+| DatePicker | ✅ | COMPONENT_SET | `87e7d48d82ff216605a8bb220f3d84a5b4cbeeb1` |
+| Dropdown | ✅ | COMPONENT_SET | `5b197ca30b5b2f7a598c4f4b8f00dc726ddaf15a` |
+| InputChip | ✅ | COMPONENT_SET | `ac3c793289416ae6235d210769a39e7da46ced07` |
+| InputField | ✅ | COMPONENT_SET | `d7992e3a5d20d66b08de0d28917d9fc682d5afa6` |
+| InputNumber | ✅ | COMPONENT_SET | `750940458417bff7513ef117e5be061da019587a` |
+| LinkText | ✅ | COMPONENT_SET | `7b2086619a8d81176a18f04533aee7db0431ee0b` |
+| MultiSelect | ✅ | COMPONENT_SET | `c979b3f3c3d8a7f39560eb7e43a017fce4c232f5` |
+| RadioButton | ✅ | COMPONENT_SET | `53f4e2d762499a764374e0f0582a659d394c5af5` |
+| RadioGroup | ✅ | COMPONENT_SET | `12af35063a871c07d777e7602bd3042c484eba68` |
+| Rating | ✅ | COMPONENT_SET | `d41deb39d98a16ae4a0a490ad03a652a8a1b2f2f` |
+| RichTextEditor | ✅ | COMPONENT_SET | `4d53fe63cfd4d9e3dbed44bbd4a37133a3953be5` |
+| Search | ✅ | COMPONENT_SET | `7cddd1e20c03d2f3f30cb22ee63ba0c78118c452` |
+| SearchWithCategory | ✅ | COMPONENT_SET | `01ab4209082ee0b831765bbcda0852395ddf219a` |
+| Slider | ✅ | COMPONENT_SET | `28fa808077d0d5393b5dcb03895258614be4df62` |
+| Switch | ✅ | COMPONENT_SET | `2e2f09d7ea0524817752bf799835a5155cbdbfa2` |
+| SwitchButton | ✅ | COMPONENT_SET | `59d3d2a8888bba7f5e4385e0ef5074f4583d2f22` |
+| TextArea | ✅ | COMPONENT_SET | `839b94f866226c965a4b8ef183e14e6238722f61` |
+
+### Button
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Button | ✅ | COMPONENT_SET | `18dd5d83e97e1b1e1a9841ef828ad5fbcaf7a1d7` |
+| IconButton | ✅ | COMPONENT_SET | `221224660947e704e54135ee31bd267365d69260` |
+| SplitButton | ✅ | COMPONENT_SET | `94629350eb17fd50aca98ac90126ba1a1aae69eb` |
+| TextButton | ✅ | COMPONENT_SET | `5020505c71e7e9c6ecc19d2bf5f3a98a4511916d` |
+
+### Data
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| BulkActionsBar | ✅ | COMPONENT_SET | `55fc432500ad6a96712be84648a7b7bd7dd7a2c8` |
+| Pagination | ✅ | COMPONENT_SET | `73a184511959567d44effc7c4451f0d39e51ecca` |
+| PaginationDots | ✅ | COMPONENT | `0c9a49a2e1e00d4333f66895e74b04bb3919e26b` |
+| PaginationMinimal | ✅ | COMPONENT | `dbf27489a526c7fe7da597af013e54260b4f0692` |
+| Scroll | ✅ | COMPONENT_SET | `aa044820b26aab24f083b5f35dd518a7359a25f5` |
+| ScrollTable | ✅ | COMPONENT_SET | `9ffd1fae46bb56440832824cf214e0f088c9ca5e` |
+| Table | ✅ | COMPONENT_SET | `67cb9a3a4e15936a7692c3583fdecc31c4a9ddb0` |
+
+### Panel
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Accordion | ✅ | COMPONENT_SET | `25e0adf7708ead02a3d1b17b907c4b5c8447eafc` |
+| Card | ✅ | COMPONENT_SET | `edff507f95fe74025d8870025be62e3b35856827` |
+| SelectableCard | ✅ | COMPONENT_SET | `2d0b4563e73b5818ad75b96846b932d77c3c30f2` |
+| DividerHorizontal | ✅ | COMPONENT | `b1629b8bb1157f5e1e98980f4575656136fa2be4` |
+| DividerVertical | ✅ | COMPONENT | `f17fd6b09938be4714d14f6d80a5ddecbb6e7ca4` |
+
+### Overlay
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Blanket | ✅ | COMPONENT_SET | `dce55211f12cfa1e5fa7b50669121bcc3ead96f0` |
+| Modal | ✅ | COMPONENT_SET | `0f9e4971743b34bf7c7c856b07eab5cce8811720` |
+| Popover (OverlayPanel) | ✅ | COMPONENT_SET | `a540c0e6d50cb5751c9515ea6c435730a2d79c75` |
+| Sidebar | ✅ | COMPONENT_SET | `304da27eb3b7fdbda78aa72d9ba50da513ba38bf` |
+| Tooltip | ✅ | COMPONENT | `802e944b306a25a2b015dc2ec9dee2a3e75e0a63` |
+
+### File
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| FileUploadBase | 🚧 | COMPONENT_SET | `4a5101ea2ece6e97389ea39ce9d0439b4ca75178` |
+| FileUploadItem | 🚧 | COMPONENT_SET | `7d3e990127aa6a77b81156d19bffdda15a5a8c87` |
+| FileUploadList | 🚧 | COMPONENT_SET | `a24bc1c82e5bc31e6430c9ba69f6a992c4abc023` |
+
+### Menu / Navigation
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Breadcrumb | ✅ | COMPONENT_SET | `fadc159454483f5c493bf9195ca8a3beb517927d` |
+| CategoryChipGroup | ✅ | COMPONENT_SET | `621d4c5b813b78f89c181415053bfaafca11ddd3` |
+| Menu | ✅ | COMPONENT_SET | `ee700a63a041eb608c66bb05f0d8dfd0670b8e3a` |
+| MenuAvatar | ✅ | COMPONENT_SET | `e3233e0513df85fd714b31e95ce14b9e0ac93792` |
+| MenuOverlay | ✅ | COMPONENT_SET | `2584c001d7830448d8e94092d566bf58af68d5ad` |
+| SidebarNavigation | ✅ | COMPONENT_SET | `e96c838bde5d443b1723e80a23962689623dc910` |
+| SubNavigation | ✅ | COMPONENT_SET | `84993beb623d59675996a3b3f220d9c4a9c2eb09` |
+| Tab | ✅ | COMPONENT_SET | `36857f6ce02015da23959d4cab138845b943ada0` |
+| TabsGroup | ✅ | COMPONENT_SET | `55b1b8131650f60985d720034c5b38e4ee88bf7d` |
+| TieredMenu | ✅ | COMPONENT_SET | `cc4a95e8d27cf8d0023011f0b1a17372bb04031a` |
+| TieredMenuPopup | ✅ | COMPONENT_SET | `daba4759697691dfacfd02213a20f46509678068` |
+| TopNavigation | ✅ | COMPONENT | `0ca18fb7339aaf0867acbcb70e4cf60345bc7504` |
+| ViewSelectorGroup | ✅ | COMPONENT_SET | `090100fb843c3fbb5dd42783d71328ed1ed05899` |
+| WizardStepper | ✅ | COMPONENT_SET | `c343145f953a08aede8d0d19ea3ffc181f709b64` |
+
+### Messages
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Snackbar (Toast) | ✅ | COMPONENT_SET | `b92aac1d095a13892ba19e83b5202b5b96eb30b5` |
+| SystemMessage | ✅ | COMPONENT_SET | `fe7ebbe45639699cc35b2662ff405f2ca94362f7` |
+
+### Misc / Indicators
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Avatar | ✅ | COMPONENT_SET | `1e32e02a574b5c9764538e37867875bc6d5d1676` |
+| AvatarGroup | ✅ | COMPONENT_SET | `3f06dcee06efe943169a25075aed87e46165f970` |
+| NotificationBadge | ✅ | COMPONENT_SET | `4ea7767f5badde89665f30ef624c1710447676c6` |
+| NumberBadge | ✅ | COMPONENT_SET | `86e6fb85d6654a40aebcc3b900ae7a4fbadc477d` |
+| ProgressBar | ✅ | COMPONENT_SET | `2798e678b2fc25e6d6e05bbeb70b7e6a0b4359a1` |
+| ProgressSpinner | ✅ | COMPONENT_SET | `5e8504e928f234db9688358fdfd751ad909b1897` |
+| Status | ✅ | COMPONENT_SET | `29bd6a46cdd81834403c543d19a623ac3d95d1f2` |
+| Tag | ✅ | COMPONENT_SET | `bb06e90b493f8a2bdfa8faae4cc5f8348653ad31` |
+| TalentSignal | ✅ | COMPONENT_SET | `41c6eb30bbf54c9f0153407c7fdd9f179135b538` |
+| FitScore | 🚧 | COMPONENT_SET | `4a4a953e25f04ec715661466c90746b3b60f5468` |
+| FitScorePopover | 🚧 | COMPONENT_SET | `b713e2e811aadcd0ebe0bcbcca84168b84174954` |
+
+### Media
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| Gallery | 🚧 | COMPONENT_SET | `de76d4b25d18aae42e07307e8291917ef7c8efaf` |
+| GalleryFullscreen | 🚧 | COMPONENT_SET | `c638156bfb49bef0935b38bd4bb051648e9604af` |
+| Image | 🚧 | COMPONENT_SET | `6c4212480d18e300413ca583a1b0b6785887f135` |
+
+### Drag and Drop
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| DragAndDrop | 🚧 | COMPONENT_SET | `3f4aa88afa0b0bf6ed2893abd43ea0f7a4d27764` |
+
+### DS Patterns
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| RadioPanel | ✅ | COMPONENT | `70d3e9a000d75784eb67361021342a51950e409c` |
+| RadioPanelItem | ✅ | COMPONENT_SET | `52ffc965f9a52208b0cbee329950b85e7dcbb42f` |
+| AdvancedFilterItem | 🚧 | COMPONENT_SET | `fdf73950f1c515416e3f9800789665495338844d` |
+| AdvancedFilterSectionHeader | 🚧 | COMPONENT_SET | `e8fd3e0120046867dac40dbafb48ca316f2f0a54` |
+
+### Icon Library
+
+| Component | Status | Type | Key |
+|---|---|---|---|
+| File Type Icon | ✅ | COMPONENT_SET | `eeeb6d5540c225f800881da16610776dcc0fdeac` |
+| X+ | ✅ | COMPONENT_SET | `cffac6e1a1feeca4ce3931552f84377bec1e73af` |
+| AgentAvatar | ✅ | COMPONENT_SET | `685e9a9c5978799e7f60070091c84fde7dc6731c` |
+| MessagingEverywhere | ✅ | COMPONENT_SET | `b8ee2809081fb16fd10bd1a560935a8d2f43ad1e` |
+
+> Experimental "Blue Buttons" (backlog) and "DS Supporting Components" (internal templates) are intentionally **excluded** — do not use them in production designs.
+
+---
+
+## Refresh — re-run component key extraction
+
+When the DS file changes, re-run this in `use_figma` against `6Vd1BU48fnhA5F0eg8d57S` and update the tables above:
+
+```js
+const results = [];
+for (const page of figma.root.children) {
+  await figma.setCurrentPageAsync(page);
+  for (const n of page.children) {
+    if (n.type === "COMPONENT_SET") {
+      results.push({ name: n.name, key: n.key, type: "COMPONENT_SET", page: page.name });
+    } else if (n.type === "COMPONENT") {
+      results.push({ name: n.name, key: n.key, type: "COMPONENT", page: page.name });
+    }
+  }
+}
+results.sort((a, b) => a.page.localeCompare(b.page) || a.name.localeCompare(b.name));
+return results;
+```
+
+For very large DS files, split into batches by slicing `figma.root.children` (e.g. `slice(0, 36)`, `slice(36, 72)`, etc.) to avoid timeouts.

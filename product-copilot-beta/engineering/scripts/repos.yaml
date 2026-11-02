@@ -1,0 +1,353 @@
+# Registry of engineering repos to clone into this workspace.
+#
+# Add one entry per repo. `path` is relative to `engineering/repos/`
+# and must match a folder from index/taxonomy.md.
+#
+# Fields:
+#   name    (required) — Bitbucket repo slug
+#   url     (required) — clone URL (SSH)
+#   path    (required) — target folder under repos/
+#   branch  (optional) — checkout this branch instead of the remote default.
+#                        Required whenever the default branch is a stub or
+#                        stale; see SETUP.md for the full list and why.
+#
+# After adding a repo here, run `./sync-repos.sh` to clone/pull it, then:
+#   1. Add a row to ../index/repo-catalog.md
+#   2. Add a short entry to the matching domain file in ../index/
+#
+# Example (uncomment and fill in real values):
+#
+# - name: crm-ui
+#   url: git@github.com:phenom/crm-ui.git
+#   path: recruiter-hub/crm-ui
+#   branch: develop
+
+repos:
+  - name: campaign-execution-service
+    url: git@bitbucket.org:phenompeople/campaign-execution-service.git
+    path: product-experiences/candidate-engagement/campaign-execution-service
+
+  - name: video-hub
+    url: git@bitbucket.org:phenompeople/video-hub.git
+    path: product-experiences/screening/video-hub
+
+  - name: assessment-management-service
+    url: git@bitbucket.org:phenompeople/assessment-management-service.git
+    path: product-experiences/screening/assessment-management-service
+
+  - name: video-assessment-ats
+    url: git@bitbucket.org:phenompeople/video-assessment-ats.git
+    path: product-experiences/screening/video-assessment-ats
+
+  - name: assessment-streaming-service
+    url: git@bitbucket.org:phenompeople/assessment-streaming-service.git
+    path: product-experiences/screening/assessment-streaming-service
+
+  - name: odva-transcription-app
+    url: git@bitbucket.org:phenompeople/odva-transcription-app.git
+    path: product-experiences/screening/odva-transcription-app
+
+  - name: video-assessment-gdpr
+    url: git@bitbucket.org:phenompeople/video-assessment-gdpr.git
+    path: product-experiences/screening/video-assessment-gdpr
+
+  # Recruiter Hub — RX platform (sub-folders by domain)
+  - name: cp_ui_app_2.0
+    url: git@bitbucket.org:phenompeople/cp_ui_app_2.0.git
+    path: recruiter-hub/shell/cp_ui_app_2.0
+
+  - name: crm-config-service
+    url: git@bitbucket.org:phenompeople/crm-config-service.git
+    path: recruiter-hub/config/crm-config-service
+
+  - name: crm-recruiter-dashboard
+    url: git@bitbucket.org:phenompeople/crm-recruiter-dashboard.git
+    path: recruiter-hub/dashboard/crm-recruiter-dashboard
+
+  - name: crm-candidate-lists
+    url: git@bitbucket.org:phenompeople/crm-candidate-lists.git
+    path: recruiter-hub/candidates/crm-candidate-lists
+
+  # Recruiter Hub — Tier A (core candidate + job domain)
+  - name: crm-candidates-ui
+    url: git@bitbucket.org:phenompeople/crm-candidates-ui.git
+    path: recruiter-hub/candidates/crm-candidates-ui
+
+  - name: candidates-api
+    url: git@bitbucket.org:phenompeople/candidates-api.git
+    path: recruiter-hub/candidates/candidates-api
+
+  - name: candidates-microservice
+    url: git@bitbucket.org:phenompeople/candidates-microservice.git
+    path: recruiter-hub/candidates/candidates-microservice
+
+  - name: hrm-profile-api
+    url: git@bitbucket.org:phenompeople/hrm-profile-api.git
+    path: recruiter-hub/hrm/hrm-profile-api
+
+  # Recruiter Hub — HRM (hiring-manager experience; emails to HMs live here)
+  - name: hrm-jobs-api
+    url: git@bitbucket.org:phenompeople/hrm-jobs-api.git
+    path: recruiter-hub/hrm/hrm-jobs-api
+
+  - name: hrm-jobs-service
+    url: git@bitbucket.org:phenompeople/hrm-jobs-service.git
+    path: recruiter-hub/hrm/hrm-jobs-service
+
+  - name: hrm-profile-service
+    url: git@bitbucket.org:phenompeople/hrm-profile-service.git
+    path: recruiter-hub/hrm/hrm-profile-service
+
+  - name: hrm-accounts-api
+    url: git@bitbucket.org:phenompeople/hrm-accounts-api.git
+    path: recruiter-hub/hrm/hrm-accounts-api
+
+  - name: hrm-gigs-api
+    url: git@bitbucket.org:phenompeople/hrm-gigs-api.git
+    path: recruiter-hub/hrm/hrm-gigs-api
+
+  - name: crm-jobs-ui
+    url: git@bitbucket.org:phenompeople/crm-jobs-ui.git
+    path: recruiter-hub/jobs/crm-jobs-ui
+
+  - name: crm-jobs-service
+    url: git@bitbucket.org:phenompeople/crm-jobs-service.git
+    path: recruiter-hub/jobs/crm-jobs-service
+    branch: pre-develop
+
+  # Campaigns (Candidate Engagement) batch
+  - name: candidates-email-campaign
+    url: git@bitbucket.org:phenompeople/candidates-email-campaign.git
+    path: product-experiences/candidate-engagement/candidates-email-campaign
+
+  - name: storm-campaign
+    url: git@bitbucket.org:phenompeople/storm-campaign.git
+    path: product-experiences/candidate-engagement/storm-campaign
+
+  - name: storm-campaign-conf
+    url: git@bitbucket.org:phenompeople/storm-campaign-conf.git
+    path: product-experiences/candidate-engagement/storm-campaign-conf
+    branch: DEV
+
+  - name: storm-sms-campaign-conf
+    url: git@bitbucket.org:phenompeople/storm-sms-campaign-conf.git
+    path: product-experiences/candidate-engagement/storm-sms-campaign-conf
+
+  - name: storm-hob-campaign
+    url: git@bitbucket.org:phenompeople/storm-hob-campaign.git
+    path: product-experiences/candidate-engagement/storm-hob-campaign
+
+  - name: storm-hob-campaign-conf
+    url: git@bitbucket.org:phenompeople/storm-hob-campaign-conf.git
+    path: product-experiences/candidate-engagement/storm-hob-campaign-conf
+
+  - name: crm-campaigns-v2
+    url: git@bitbucket.org:phenompeople/crm-campaigns-v2.git
+    path: product-experiences/candidate-engagement/crm-campaigns-v2
+
+  - name: crm-storm-transactions
+    url: git@bitbucket.org:phenompeople/crm-storm-transactions.git
+    path: product-experiences/candidate-engagement/crm-storm-transactions
+
+  - name: crm-storm-transactions-conf
+    url: git@bitbucket.org:phenompeople/crm-storm-transactions-conf.git
+    path: product-experiences/candidate-engagement/crm-storm-transactions-conf
+    branch: DEV
+
+  # CRM Storm libraries — candidate processing (Karthik / ServiceList + Storm Libraries)
+  - name: storm-candidates
+    url: git@bitbucket.org:phenompeople/storm-candidates.git
+    path: recruiter-hub/storm/storm-candidates
+
+  - name: storm-candidates-conf
+    url: git@bitbucket.org:phenompeople/storm-candidates-conf.git
+    path: recruiter-hub/storm/storm-candidates-conf
+    branch: DEV
+
+  - name: storm-candsignals-conf
+    url: git@bitbucket.org:phenompeople/storm-candsignals-conf.git
+    path: recruiter-hub/storm/storm-candsignals-conf
+    branch: DEV
+
+  - name: storm-candauto-conf
+    url: git@bitbucket.org:phenompeople/storm-candauto-conf.git
+    path: recruiter-hub/storm/storm-candauto-conf
+    branch: DEV
+
+  - name: storm-candidatescore-conf
+    url: git@bitbucket.org:phenompeople/storm-candidatescore-conf.git
+    path: recruiter-hub/storm/storm-candidatescore-conf
+    branch: DEV
+
+  - name: storm-integrations
+    url: git@bitbucket.org:phenompeople/storm-integrations.git
+    path: recruiter-hub/storm/storm-integrations
+
+  # CRM Storm — IX → CRM job ingest (Karthik: processes jobs coming from IX)
+  - name: crm-storm-job-pull
+    url: git@bitbucket.org:phenompeople/crm-storm-job-pull.git
+    path: recruiter-hub/jobs/crm-storm-job-pull
+    branch: release_25_02
+
+  - name: crm-storm-job-pull-conf
+    url: git@bitbucket.org:phenompeople/crm-storm-job-pull-conf.git
+    path: recruiter-hub/jobs/crm-storm-job-pull-conf
+    branch: DEV
+
+  # Messaging (Platform) batch
+  - name: candidates_email_microservice
+    url: git@bitbucket.org:phenompeople/candidates_email_microservice.git
+    path: platform/messaging/candidates_email_microservice
+
+  - name: candidates-sms-services
+    url: git@bitbucket.org:phenompeople/candidates-sms-services.git
+    path: platform/messaging/candidates-sms-services
+
+  - name: crm-messaging-platform
+    url: git@bitbucket.org:phenompeople/crm-messaging-platform.git
+    path: platform/messaging/crm-messaging-platform
+
+  - name: candidates-notifications
+    url: git@bitbucket.org:phenompeople/candidates-notifications.git
+    path: platform/messaging/candidates-notifications
+
+  # Automation Engine — Workflow (Platform) batch
+  - name: automation-ui-2
+    url: git@bitbucket.org:phenompeople/automation-ui-2.git
+    path: platform/automations/workflow/automation-ui-2
+
+  - name: automation-service-2
+    url: git@bitbucket.org:phenompeople/automation-service-2.git
+    path: platform/automations/workflow/automation-service-2
+
+  - name: automation-engine-mfes
+    url: git@bitbucket.org:phenompeople/automation-engine-mfes.git
+    path: platform/automations/workflow/automation-engine-mfes
+
+  - name: action-centre
+    url: git@bitbucket.org:phenompeople/action-centre.git
+    path: platform/automations/workflow/action-centre
+
+  - name: ae_statesmith
+    url: git@bitbucket.org:phenompeople/ae_statesmith.git
+    path: platform/automations/workflow/ae_statesmith
+
+  # CRM Automations (Platform) batch
+  - name: crm-automation
+    url: git@bitbucket.org:phenompeople/crm-automation.git
+    path: platform/automations/crm-automations/crm-automation
+
+  - name: crm-workflows
+    url: git@bitbucket.org:phenompeople/crm-workflows.git
+    path: platform/automations/crm-automations/crm-workflows
+
+  - name: crm-automations-ui
+    url: git@bitbucket.org:phenompeople/crm-automations-ui.git
+    path: platform/automations/crm-automations/crm-automations-ui
+
+  - name: crm-automation-service
+    url: git@bitbucket.org:phenompeople/crm-automation-service.git
+    path: platform/automations/crm-automations/crm-automation-service
+
+  - name: automation-search-service
+    url: git@bitbucket.org:phenompeople/automation-search-service.git
+    path: platform/automations/crm-automations/automation-search-service
+
+  # Interview Management — Scheduling (SCHEDULING project)
+  - name: scheduling-main-app
+    url: git@bitbucket.org:phenompeople/scheduling-main-app.git
+    path: product-experiences/interview-management/scheduling-main-app
+
+  - name: phenom-internal-calendar
+    url: git@bitbucket.org:phenompeople/phenom-internal-calendar.git
+    path: product-experiences/interview-management/phenom-internal-calendar
+
+  - name: scheduling-messaging-service
+    url: git@bitbucket.org:phenompeople/scheduling-messaging-service.git
+    path: product-experiences/interview-management/scheduling-messaging-service
+
+  - name: scheduling-meeting-links
+    url: git@bitbucket.org:phenompeople/scheduling-meeting-links.git
+    path: product-experiences/interview-management/scheduling-meeting-links
+
+  - name: scheduling-orchestration
+    url: git@bitbucket.org:phenompeople/scheduling-orchestration.git
+    path: product-experiences/interview-management/scheduling-orchestration
+
+  - name: scheduling-rule-parser
+    url: git@bitbucket.org:phenompeople/scheduling-rule-parser.git
+    path: product-experiences/interview-management/scheduling-rule-parser
+
+  # Interview Management — Structured interview & Interview Intelligence (II project)
+  - name: evaluation-service
+    url: git@bitbucket.org:phenompeople/evaluation-service.git
+    path: product-experiences/interview-management/evaluation-service
+
+  - name: interview-management-service
+    url: git@bitbucket.org:phenompeople/interview-management-service.git
+    path: product-experiences/interview-management/interview-management-service
+
+  - name: meeting-bot-orchestrator
+    url: git@bitbucket.org:phenompeople/meeting-bot-orchestrator.git
+    path: product-experiences/interview-management/meeting-bot-orchestrator
+
+  - name: ii-phone-recordings-service
+    url: git@bitbucket.org:phenompeople/ii-phone-recordings-service.git
+    path: product-experiences/interview-management/ii-phone-recordings-service
+
+  - name: speaker-identification
+    url: git@bitbucket.org:phenompeople/speaker-identification.git
+    path: product-experiences/interview-management/speaker-identification
+
+  - name: interview-management-ui
+    url: git@bitbucket.org:phenompeople/interview-management-ui.git
+    path: product-experiences/interview-management/interview-management-ui
+
+  # Recruiter Hub — Tier B (RX platform coverage)
+  - name: crm-hiring-status-service
+    url: git@bitbucket.org:phenompeople/crm-hiring-status-service.git
+    path: recruiter-hub/pipeline/crm-hiring-status-service
+
+  - name: crm-profile-search-service
+    url: git@bitbucket.org:phenompeople/crm-profile-search-service.git
+    path: recruiter-hub/search/crm-profile-search-service
+
+  - name: crm-domain-search-service
+    url: git@bitbucket.org:phenompeople/crm-domain-search-service.git
+    path: recruiter-hub/search/crm-domain-search-service
+
+  - name: crm-filters-ui
+    url: git@bitbucket.org:phenompeople/crm-filters-ui.git
+    path: recruiter-hub/search/crm-filters-ui
+
+  - name: cp-facet-2.0
+    url: git@bitbucket.org:phenompeople/cp-facet-2.0.git
+    path: recruiter-hub/search/cp-facet-2.0
+    branch: release-patch
+
+  - name: crm-lists-ui
+    url: git@bitbucket.org:phenompeople/crm-lists-ui.git
+    path: recruiter-hub/candidates/crm-lists-ui
+
+  - name: crm-settings-service
+    url: git@bitbucket.org:phenompeople/crm-settings-service.git
+    path: recruiter-hub/config/crm-settings-service
+
+  - name: notes-service
+    url: git@bitbucket.org:phenompeople/notes-service.git
+    path: recruiter-hub/candidates/notes-service
+
+  - name: tags-service
+    url: git@bitbucket.org:phenompeople/tags-service.git
+    path: recruiter-hub/candidates/tags-service
+    branch: master
+
+  - name: crm-projects-ui
+    url: git@bitbucket.org:phenompeople/crm-projects-ui.git
+    path: recruiter-hub/projects/crm-projects-ui
+
+  # Recruiter Hub — shared libraries
+  - name: crm-commons
+    url: git@bitbucket.org:phenompeople/crm-commons.git
+    path: recruiter-hub/shared/crm-commons
+    branch: release

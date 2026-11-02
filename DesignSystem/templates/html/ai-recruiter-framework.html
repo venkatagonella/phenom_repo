@@ -1,0 +1,2163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Recruiter — Tasks Framework &amp; Jobs + X+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/pds-tokens.css" />
+    <link rel="stylesheet" href="../../styles/pds-utilities.css" />
+    <link rel="stylesheet" href="../../styles/jobs-dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+      /* —— App tabs —— */
+      .app-tabs {
+        display: flex;
+        gap: 4px;
+        padding: 8px 16px;
+        background: var(--color-secondary-500, #0c0b3b);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .app-tab {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .app-tab:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .app-tab.is-active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.16);
+        font-weight: 600;
+      }
+
+      .app-tab:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+      }
+
+      .app-view[hidden] {
+        display: none !important;
+      }
+
+      /* Framework view */
+      .air-page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      .air-kicker {
+        display: inline-block;
+        margin: 0 0 0.75rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: var(--pds-radius-sm, 4px);
+        background: var(--bg-brand-primary-subtle, #eeedf9);
+        color: var(--pds-brand, #4d3ee0);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .air-definition {
+        margin: 0 0 2rem;
+        padding: 1.25rem 1.35rem;
+        border-left: 4px solid var(--bg-brand-primary-default, #4d3ee0);
+        background: var(--pds-surface, #fff);
+        border-radius: 0 8px 8px 0;
+        box-shadow: var(--pds-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.06));
+      }
+
+      .air-definition p {
+        margin: 0;
+        font-size: 1.0625rem;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .air-section {
+        margin-bottom: 2.25rem;
+      }
+
+      .air-section h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .air-section .air-sub {
+        margin: 0 0 1.1rem;
+        color: var(--pds-text-muted, #637085);
+        font-size: 0.9375rem;
+      }
+
+      .air-flow {
+        display: grid;
+        gap: 0.65rem;
+        counter-reset: air-step;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .air-step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.9rem;
+        padding: 1rem 1.15rem;
+        background: #fff;
+        border: 1px solid var(--pds-border, #e8eaee);
+        border-radius: 8px;
+      }
+
+      .air-step-num {
+        counter-increment: air-step;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--bg-brand-primary-default, #4d3ee0);
+        color: #fff;
+        font-size: 0.8125rem;
+        font-weight: 600;
+      }
+
+      .air-step-num::before {
+        content: counter(air-step);
+      }
+
+      .air-step h3 {
+        margin: 0 0 0.25rem;
+        font-size: 0.9375rem;
+      }
+
+      .air-step p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--pds-text-muted, #637085);
+      }
+
+      .air-step ul {
+        margin: 0.55rem 0 0;
+        padding: 0 0 0 1.1rem;
+        font-size: 0.875rem;
+      }
+
+      .air-skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .air-skill {
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid var(--pds-border, #e8eaee);
+        border-radius: 8px;
+      }
+
+      .air-skill h3 {
+        margin: 0 0 0.35rem;
+        font-size: 0.875rem;
+        color: var(--pds-brand, #4d3ee0);
+      }
+
+      .air-skill p {
+        margin: 0;
+        font-size: 0.8125rem;
+        color: var(--pds-text-muted, #637085);
+      }
+
+      .air-split {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+        background: #fff;
+        border: 1px solid var(--pds-border, #e8eaee);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .air-split th,
+      .air-split td {
+        padding: 0.85rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--pds-border, #e8eaee);
+        vertical-align: top;
+      }
+
+      .air-split th {
+        background: #f4f6fa;
+        font-size: 0.8125rem;
+      }
+
+      .air-tag {
+        display: inline-block;
+        padding: 0.15rem 0.45rem;
+        border-radius: 4px;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .air-tag-ai {
+        background: #eeedf9;
+        color: #4d3ee0;
+      }
+
+      .air-tag-human {
+        background: #e6f9f3;
+        color: #006644;
+      }
+
+      .air-guard {
+        display: grid;
+        gap: 0.65rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .air-guard li {
+        padding: 0.85rem 1rem;
+        background: #fff;
+        border: 1px solid var(--pds-border, #e8eaee);
+        border-radius: 8px;
+        font-size: 0.875rem;
+      }
+
+      .air-sources {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--pds-border, #e8eaee);
+        font-size: 0.75rem;
+        color: var(--pds-text-muted, #637085);
+      }
+
+      /* —— CRM shell overrides for X+ —— */
+      #view-crm {
+        min-height: calc(100vh - 44px);
+        background: #fff;
+      }
+
+      #view-crm .jobs-topbar {
+        top: 44px;
+      }
+
+      #view-crm .px-sidebar-navigation-wrapper {
+        top: 92px;
+        height: calc(100vh - 92px);
+      }
+
+      .jobs-shell {
+        position: relative;
+      }
+
+      .jobs-workspace {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        min-height: calc(100vh - 92px);
+      }
+
+      .jobs-workspace__main {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        transition: flex-basis 0.25s ease, max-width 0.25s ease;
+      }
+
+      .jobs-shell.xplus-open .jobs-workspace__main {
+        flex: 0 0 70%;
+        max-width: 70%;
+      }
+
+      .crm-panel[hidden] {
+        display: none !important;
+      }
+
+      /* Dashboards main view — pipeline / analytics style */
+      .dash-page {
+        flex: 1;
+        min-width: 0;
+        padding: 16px 24px 32px;
+        overflow: auto;
+        background: #f4f6fa;
+      }
+
+      .dash-page__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .dash-page__title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        color: #1f2937;
+      }
+
+      .dash-page__sub {
+        margin: 4px 0 0;
+        font-size: 13px;
+        color: #637085;
+      }
+
+      .dash-page__prompt-tag {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #eeedf9;
+        color: #2927b2;
+        font-size: 12px;
+        font-weight: 500;
+        max-width: 520px;
+      }
+
+      .dash-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .dash-date-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 32px;
+        padding: 0 12px;
+        border: 1px solid #d1d5dc;
+        border-radius: 6px;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        color: #1f2937;
+      }
+
+      .dash-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .dash-metric {
+        padding: 14px 16px;
+        border: 1px solid #e8eaee;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 1px 2px rgba(12, 11, 59, 0.04);
+      }
+
+      .dash-metric__label {
+        font-size: 12px;
+        color: #637085;
+        font-weight: 500;
+      }
+
+      .dash-metric__value {
+        margin-top: 4px;
+        font-size: 22px;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .dash-metric__hint {
+        margin-top: 2px;
+        font-size: 12px;
+        color: #00875a;
+        font-weight: 500;
+      }
+
+      .dash-metric__hint.is-down {
+        color: #c40f24;
+      }
+
+      .dash-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      @media (max-width: 1100px) {
+        .dash-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .dash-chart-card {
+        border: 1px solid #e8eaee;
+        border-radius: 8px;
+        padding: 16px 16px 12px;
+        background: #fff;
+        box-shadow: 0 1px 2px rgba(12, 11, 59, 0.04);
+      }
+
+      .dash-chart-card__head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .dash-chart-card__title {
+        margin: 0 0 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .dash-chart-card__sub {
+        margin: 0;
+        font-size: 12px;
+        color: #637085;
+      }
+
+      .dash-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 11px;
+        color: #637085;
+        margin-top: 4px;
+      }
+
+      .dash-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .dash-legend i {
+        width: 16px;
+        height: 3px;
+        border-radius: 2px;
+        display: inline-block;
+      }
+
+      .dash-legend i.jobs {
+        background: #2927b2;
+      }
+
+      .dash-legend i.trend {
+        background: #ef6820;
+        background-image: repeating-linear-gradient(
+          90deg,
+          #ef6820 0 4px,
+          transparent 4px 8px
+        );
+      }
+
+      .dash-chart-wrap {
+        position: relative;
+        height: 320px;
+        background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+        border-radius: 6px;
+        padding: 8px 4px 0;
+      }
+
+      .dash-chart-wrap--sm {
+        height: 240px;
+      }
+
+      .dash-empty {
+        padding: 48px 24px;
+        text-align: center;
+        border: 1px dashed #d1d5dc;
+        border-radius: 8px;
+        color: #637085;
+        font-size: 14px;
+        background: #fff;
+      }
+
+      .dash-empty strong {
+        display: block;
+        color: #1f2937;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+
+      .dash-content[hidden],
+      .dash-empty[hidden] {
+        display: none !important;
+      }
+
+      /* X+ floating prompt */
+      .xplus-fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 45;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 44px;
+        padding: 0 16px 0 12px;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #2927b2, #4d3ee0);
+        color: #fff;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(41, 39, 178, 0.35);
+      }
+
+      .xplus-fab[hidden],
+      .jobs-shell.xplus-open ~ .xplus-fab,
+      body:has(.jobs-shell.xplus-open) .xplus-fab {
+        display: none;
+      }
+
+      .xplus-fab__mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .jobs-topbar__xplus {
+        margin-left: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 28px;
+        padding: 0 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .jobs-topbar__xplus:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* X+ right panel — 30% */
+      .xplus-panel {
+        flex: 0 0 0;
+        width: 0;
+        max-width: 0;
+        overflow: hidden;
+        opacity: 0;
+        border-left: 0;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        transition: flex-basis 0.25s ease, width 0.25s ease, max-width 0.25s ease,
+          opacity 0.2s ease;
+      }
+
+      .jobs-shell.xplus-open .xplus-panel {
+        flex: 0 0 30%;
+        width: 30%;
+        max-width: 30%;
+        opacity: 1;
+        border-left: 1px solid #e8eaee;
+      }
+
+      .xplus-panel__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 12px 14px;
+        border-bottom: 1px solid #e8eaee;
+        flex-shrink: 0;
+      }
+
+      .xplus-panel__brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .xplus-panel__logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #2927b2, #4d3ee0);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .xplus-panel__close {
+        width: 28px;
+        height: 28px;
+        border: 1px solid #d1d5dc;
+        border-radius: 6px;
+        background: #fff;
+        cursor: pointer;
+        color: #4b5563;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .xplus-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 10px 12px;
+        border-bottom: 1px solid #e8eaee;
+        background: #f8f9fb;
+        flex-shrink: 0;
+      }
+
+      .xplus-action {
+        appearance: none;
+        border: 1px solid #d1d5dc;
+        background: #fff;
+        color: #1f2937;
+        font: inherit;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 5px 8px;
+        border-radius: 999px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .xplus-action:hover,
+      .xplus-action.is-active {
+        border-color: #4d3ee0;
+        color: #2927b2;
+        background: #eeedf9;
+      }
+
+      .xplus-demos {
+        padding: 10px 12px 12px;
+        border-bottom: 1px solid #e8eaee;
+        background: #fff;
+        flex-shrink: 0;
+        max-height: 42vh;
+        overflow: auto;
+      }
+
+      .xplus-demos__label {
+        margin: 0 0 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #637085;
+      }
+
+      .xplus-daypart {
+        margin-bottom: 10px;
+      }
+
+      .xplus-daypart:last-child {
+        margin-bottom: 0;
+      }
+
+      .xplus-daypart__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 0 0 6px;
+      }
+
+      .xplus-daypart__title {
+        font-size: 11px;
+        font-weight: 700;
+        color: #2927b2;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .xplus-daypart__hint {
+        font-size: 10px;
+        color: #8c95a8;
+      }
+
+      .xplus-demo-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .xplus-demo {
+        appearance: none;
+        width: 100%;
+        text-align: left;
+        border: 1px solid #e8eaee;
+        border-radius: 8px;
+        background: #fafbfc;
+        padding: 10px 12px;
+        cursor: pointer;
+        font: inherit;
+        transition: border-color 0.15s ease, background 0.15s ease;
+      }
+
+      .xplus-demo:hover,
+      .xplus-demo.is-active {
+        border-color: #4d3ee0;
+        background: #eeedf9;
+      }
+
+      .xplus-demo__title {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 2px;
+      }
+
+      .xplus-demo__prompt {
+        display: block;
+        font-size: 11px;
+        color: #637085;
+        line-height: 1.35;
+      }
+
+      .xplus-demo__tasks {
+        display: block;
+        margin-top: 6px;
+        font-size: 10px;
+        color: #8c95a8;
+        line-height: 1.4;
+      }
+
+      .dash-tasks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 16px;
+      }
+
+      .dash-task-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid #e8eaee;
+        font-size: 12px;
+        font-weight: 500;
+        color: #1f2937;
+      }
+
+      .dash-task-chip__n {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #eeedf9;
+        color: #2927b2;
+        font-size: 10px;
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+      }
+
+      .xplus-messages {
+        flex: 1;
+        overflow: auto;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: #fafbfc;
+      }
+
+      .xplus-msg {
+        max-width: 95%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .xplus-msg--bot {
+        align-self: flex-start;
+        background: #fff;
+        border: 1px solid #e8eaee;
+        color: #1f2937;
+      }
+
+      .xplus-msg--user {
+        align-self: flex-end;
+        background: #2927b2;
+        color: #fff;
+      }
+
+      .xplus-msg__meta {
+        display: block;
+        font-size: 11px;
+        opacity: 0.7;
+        margin-bottom: 4px;
+        font-weight: 500;
+      }
+
+      .xplus-msg canvas {
+        display: block;
+        width: 100% !important;
+        max-height: 160px;
+        margin-top: 8px;
+      }
+
+      .xplus-composer {
+        display: flex;
+        gap: 8px;
+        padding: 12px;
+        border-top: 1px solid #e8eaee;
+        background: #fff;
+        flex-shrink: 0;
+      }
+
+      .xplus-composer input {
+        flex: 1;
+        height: 36px;
+        border: 1px solid #d1d5dc;
+        border-radius: 8px;
+        padding: 0 12px;
+        font: inherit;
+        font-size: 13px;
+      }
+
+      .xplus-composer input:focus {
+        outline: 2px solid color-mix(in srgb, #2927b2 35%, white);
+        border-color: #2927b2;
+      }
+
+      .xplus-composer button {
+        height: 36px;
+        padding: 0 14px;
+        border: 0;
+        border-radius: 8px;
+        background: #2927b2;
+        color: #fff;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      @media (max-width: 960px) {
+        .jobs-shell.xplus-open .jobs-workspace__main {
+          flex: 0 0 55%;
+          max-width: 55%;
+        }
+        .jobs-shell.xplus-open .xplus-panel {
+          flex: 0 0 45%;
+          width: 45%;
+          max-width: 45%;
+        }
+      }
+    </style>
+  </head>
+  <body class="pds-page">
+    <!-- App-level tabs -->
+    <div class="app-tabs" role="tablist" aria-label="Page views">
+      <button
+        type="button"
+        class="app-tab is-active"
+        role="tab"
+        id="tab-framework"
+        aria-selected="true"
+        aria-controls="view-framework"
+        data-app-tab="framework"
+      >
+        AI Recruiter tasks framework
+      </button>
+      <button
+        type="button"
+        class="app-tab"
+        role="tab"
+        id="tab-crm"
+        aria-selected="false"
+        aria-controls="view-crm"
+        data-app-tab="crm"
+      >
+        Jobs + X+
+      </button>
+    </div>
+
+    <!-- ========== TAB 1: Framework ========== -->
+    <div
+      class="app-view"
+      id="view-framework"
+      role="tabpanel"
+      aria-labelledby="tab-framework"
+    >
+      <main class="air-page">
+        <p class="air-kicker">AI Recruiter tasks framework</p>
+        <h1 class="pds-h1">AI Recruiter — skills &amp; key tasks</h1>
+        <p class="pds-lead">
+          A plain-English map of what an AI Recruiter does, how the work is
+          organized, and what humans still own.
+        </p>
+
+        <div class="air-definition" role="note">
+          <p>
+            An AI Recruiter is a digital teammate that finds people, reaches out,
+            screens them, books interviews, and keeps the pipeline moving — so
+            human recruiters can focus on relationships, advice, and final
+            decisions.
+          </p>
+        </div>
+
+        <section class="air-section" id="framework" aria-labelledby="framework-title">
+          <h2 id="framework-title">Key task framework</h2>
+          <p class="air-sub">Eight jobs, in hiring order.</p>
+          <ol class="air-flow">
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Understand the job</h3>
+                <p>Turn a hiring need into a clear, usable job brief.</p>
+                <ul>
+                  <li>Help write or improve the job description</li>
+                  <li>Pull out must-have skills and nice-to-haves</li>
+                  <li>Suggest search criteria from plain-language needs</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Find the right people</h3>
+                <p>Search large talent pools quickly and accurately.</p>
+                <ul>
+                  <li>Match candidates to the role</li>
+                  <li>Suggest new talent pools</li>
+                  <li>Rank who looks most relevant first</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Reach out and engage</h3>
+                <p>Start conversations at scale without sounding generic.</p>
+                <ul>
+                  <li>Draft personalized messages</li>
+                  <li>Contact people most likely to reply first</li>
+                  <li>Re-engage past applicants</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Screen applications</h3>
+                <p>Review resumes faster than a human alone.</p>
+                <ul>
+                  <li>Score fit against requirements</li>
+                  <li>Flag strong and weak matches</li>
+                  <li>Summarize each candidate</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Book interviews</h3>
+                <p>Handle calendar back-and-forth.</p>
+                <ul>
+                  <li>Find times that work</li>
+                  <li>Send invites and reminders</li>
+                  <li>Reschedule when plans change</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Keep the pipeline healthy</h3>
+                <p>Never forget a follow-up.</p>
+                <ul>
+                  <li>Prioritize who needs attention today</li>
+                  <li>Surface high-intent candidates</li>
+                  <li>Warn when a role is stuck</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Support decisions with clear summaries</h3>
+                <p>Give humans the facts to decide faster.</p>
+                <ul>
+                  <li>Write short summaries for hiring managers</li>
+                  <li>Highlight strengths, gaps, and open questions</li>
+                  <li>Track simple hiring metrics</li>
+                </ul>
+              </div>
+            </li>
+            <li class="air-step">
+              <span class="air-step-num" aria-hidden="true"></span>
+              <div>
+                <h3>Stay fair, clear, and compliant</h3>
+                <p>Work at scale without losing trust.</p>
+                <ul>
+                  <li>Standardize screening on skills</li>
+                  <li>Keep decisions explainable</li>
+                  <li>Respect privacy and local hiring laws</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="air-section" id="skills">
+          <h2>Core skills of an AI Recruiter</h2>
+          <p class="air-sub">Abilities that make the tasks above possible.</p>
+          <div class="air-skills">
+            <article class="air-skill"><h3>Search &amp; match</h3><p>Turn a job need into a ranked list of people.</p></article>
+            <article class="air-skill"><h3>Writing &amp; messaging</h3><p>Draft job posts and outreach at speed.</p></article>
+            <article class="air-skill"><h3>Screening assist</h3><p>Compare people to requirements and flag fits.</p></article>
+            <article class="air-skill"><h3>Conversation</h3><p>Chat with candidates and answer FAQs.</p></article>
+            <article class="air-skill"><h3>Scheduling</h3><p>Coordinate times across calendars.</p></article>
+            <article class="air-skill"><h3>Prioritization</h3><p>Decide who to contact or advance next.</p></article>
+            <article class="air-skill"><h3>Summarization</h3><p>Compress profiles into short briefs.</p></article>
+            <article class="air-skill"><h3>Always-on follow-through</h3><p>Run outreach beyond office hours.</p></article>
+          </div>
+        </section>
+
+        <section class="air-section" id="split">
+          <h2>Who does what</h2>
+          <p class="air-sub">AI handles volume. Humans handle trust and the final call.</p>
+          <table class="air-split">
+            <thead>
+              <tr>
+                <th>Work</th>
+                <th><span class="air-tag air-tag-ai">AI Recruiter</span></th>
+                <th><span class="air-tag air-tag-human">Human recruiter</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Finding candidates</td><td>Search, match, rank</td><td>Set strategy; judge rare talent</td></tr>
+              <tr><td>Outreach</td><td>Personalized messages at scale</td><td>Build relationships</td></tr>
+              <tr><td>Screening</td><td>First-pass review and scores</td><td>Final shortlist</td></tr>
+              <tr><td>Scheduling</td><td>Book, remind, reschedule</td><td>Unblock messy calendars</td></tr>
+              <tr><td>Hiring manager support</td><td>Summaries and next steps</td><td>Advise and close</td></tr>
+              <tr><td>Fairness</td><td>Apply consistent rules</td><td>Own ethics and accountability</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="air-section" id="rules">
+          <h2>Simple rules</h2>
+          <ul class="air-guard">
+            <li><strong>Automate busy work</strong> — don’t replace judgment on who gets hired.</li>
+            <li><strong>Keep a human in the loop</strong> for screening, offers, and fairness.</li>
+            <li><strong>Prefer skills and requirements</strong> over old biased patterns.</li>
+            <li><strong>Make it explainable</strong> so a person can check why.</li>
+            <li><strong>Embed AI in the real workflow</strong>, not as a side tool.</li>
+          </ul>
+        </section>
+
+        <p class="air-sources">
+          Framework from LinkedIn AI recruiting guidance, Gartner TA Suites direction,
+          Sense “digital recruiter”, and Deel AI in HR for global organizations.
+        </p>
+      </main>
+    </div>
+
+    <!-- ========== TAB 2: Jobs + X+ CRM ========== -->
+    <div
+      class="app-view"
+      id="view-crm"
+      role="tabpanel"
+      aria-labelledby="tab-crm"
+      hidden
+    >
+      <header class="jobs-topbar">
+        <div class="jobs-topbar__brand">Phenom CRM</div>
+        <div class="jobs-topbar__crumb" id="crm-crumb">Dashboard / Jobs</div>
+        <button type="button" class="jobs-topbar__xplus" id="xplus-open-top" aria-controls="xplus-panel">
+          X+ Ask AI Recruiter
+        </button>
+      </header>
+
+      <div class="jobs-shell" id="jobs-shell">
+        <nav
+          class="px-sidebar-navigation-wrapper px-sidebar-navigation-expanded"
+          id="sidebar-nav"
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          <ul class="px-sidebar-navigation-menu" role="menu">
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="dashboard" title="Dashboard overview">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5z"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Home</span>
+                </div>
+              </a>
+            </li>
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="dashboards" title="Hiring insights and dashboards">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16V10M12 16V7M16 16v-4"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Dashboards</span>
+                </div>
+              </a>
+            </li>
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item is-active" href="#" role="menuitem" aria-current="page" data-nav-id="jobs" title="Job postings">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Jobs</span>
+                </div>
+              </a>
+            </li>
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="candidates" title="Candidates">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Candidates</span>
+                </div>
+              </a>
+            </li>
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="inbox" title="Inbox">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 5 8-5"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Inbox</span>
+                </div>
+              </a>
+            </li>
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="scheduling" title="Scheduling">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Scheduling</span>
+                </div>
+              </a>
+            </li>
+            <li class="px-sidebar-navigation-divider-wrapper" aria-hidden="true">
+              <hr class="px-sidebar-navigation-divider" />
+            </li>
+            <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+              <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="automations" title="Automations">
+                <div class="px-sidebar-menu-item-content level-main">
+                  <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1"/></svg></div>
+                  <span class="px-sidebar-menu-item-label">Automations</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+
+          <button
+            type="button"
+            class="px-sidebar-navigation-expand-container px-sidebar-navigation-expand-state-expand"
+            id="sidebar-toggle"
+            aria-controls="sidebar-nav"
+            aria-expanded="true"
+            aria-label="Collapse Menu"
+          >
+            <div class="px-sidebar-navigation-expand-icon-container">
+              <span class="px-sidebar-navigation-expand-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4v16M10 12h10M16 8l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </button>
+        </nav>
+
+        <div class="jobs-workspace">
+          <div class="jobs-workspace__main">
+            <!-- Jobs list panel -->
+            <main class="job-page crm-panel" id="panel-jobs">
+              <div class="job-list-page-header">
+                <div class="page-title">Jobs</div>
+                <div class="actions-bar">
+                  <div class="internal-search-div">
+                    <input type="search" id="jobs-search" placeholder="Search Jobs" aria-label="Search Jobs" />
+                  </div>
+                  <button class="pp-ds-button pp-ds-button--secondary" type="button">Filters</button>
+                  <div class="pp-ds-action-bar-devider" aria-hidden="true"></div>
+                  <button class="pp-ds-button pp-ds-button--primary" type="button">+ Create Job</button>
+                  <button class="pp-ds-only-icon-button" type="button" title="More Actions" aria-label="More Actions">⋯</button>
+                </div>
+              </div>
+
+              <div class="spotlight-nav">
+                <div class="spotlight-list" role="tablist" aria-label="Job spotlights">
+                  <button class="spotlight-chip is-active" type="button" data-spotlight="all">All Jobs</button>
+                  <button class="spotlight-chip" type="button" data-spotlight="open">Open Jobs</button>
+                  <button class="spotlight-chip" type="button" data-spotlight="my-open">My Open Jobs</button>
+                  <button class="spotlight-chip" type="button" data-spotlight="my">My Jobs</button>
+                  <button class="spotlight-chip" type="button" data-spotlight="recent">Recent Jobs</button>
+                </div>
+              </div>
+
+              <div class="data-list-cntr">
+                <div class="data-header-cntr" role="row">
+                  <div>Job Title</div>
+                  <div>Hiring Team</div>
+                  <div>Days Open</div>
+                  <div>Job Code</div>
+                  <div>Job Status</div>
+                  <div>Leads</div>
+                  <div>Applicants</div>
+                  <div>Created Date</div>
+                  <div>Job Category</div>
+                  <div>Job Id</div>
+                </div>
+
+                <div class="data-row" data-row data-name="senior software engineer" data-status="open" role="row">
+                  <div class="job-title-block">
+                    <span class="job-title-block__name">Senior Software Engineer</span>
+                    <span class="job-title-block__meta">Hyderabad, IN · JOB-10482</span>
+                  </div>
+                  <div>A. Sharma, R. Mehta</div>
+                  <div><span class="setting-days green">12</span></div>
+                  <div>ENG-SSE</div>
+                  <div><span class="job-status">Open</span></div>
+                  <div>48</div>
+                  <div>19</div>
+                  <div>2026-07-28</div>
+                  <div>Engineering</div>
+                  <div>JOB-10482</div>
+                </div>
+
+                <div class="data-row" data-row data-name="product designer" data-status="open" role="row">
+                  <div class="job-title-block">
+                    <span class="job-title-block__name">Product Designer</span>
+                    <span class="job-title-block__meta">Bengaluru, IN · JOB-10455</span>
+                  </div>
+                  <div>N. Patel</div>
+                  <div><span class="setting-days yellow">28</span></div>
+                  <div>DES-PD</div>
+                  <div><span class="job-status">Open</span></div>
+                  <div>33</div>
+                  <div>11</div>
+                  <div>2026-07-12</div>
+                  <div>Design</div>
+                  <div>JOB-10455</div>
+                </div>
+
+                <div class="data-row" data-row data-name="talent acquisition specialist" data-status="draft" role="row">
+                  <div class="job-title-block">
+                    <span class="job-title-block__name">Talent Acquisition Specialist</span>
+                    <span class="job-title-block__meta">Remote · JOB-10390</span>
+                  </div>
+                  <div>J. Chen</div>
+                  <div>—</div>
+                  <div>TA-SPEC</div>
+                  <div><span class="job-status is-draft">Draft</span></div>
+                  <div>0</div>
+                  <div>0</div>
+                  <div>2026-08-05</div>
+                  <div>Human Resources</div>
+                  <div>JOB-10390</div>
+                </div>
+
+                <div class="data-row" data-row data-name="frontend engineer" data-status="closed" role="row">
+                  <div class="job-title-block">
+                    <span class="job-title-block__name">Frontend Engineer</span>
+                    <span class="job-title-block__meta">Pune, IN · JOB-10312</span>
+                  </div>
+                  <div>K. Iyer, M. Das</div>
+                  <div><span class="setting-days red">61</span></div>
+                  <div>ENG-FE</div>
+                  <div><span class="job-status is-closed">Closed</span></div>
+                  <div>72</div>
+                  <div>41</div>
+                  <div>2026-05-20</div>
+                  <div>Engineering</div>
+                  <div>JOB-10312</div>
+                </div>
+
+                <div class="data-row" data-row data-name="customer success manager" data-status="open" role="row">
+                  <div class="job-title-block">
+                    <span class="job-title-block__name">Customer Success Manager</span>
+                    <span class="job-title-block__meta">Mumbai, IN · JOB-10288</span>
+                  </div>
+                  <div>S. Rao</div>
+                  <div><span class="setting-days green">7</span></div>
+                  <div>CS-CSM</div>
+                  <div><span class="job-status">Open</span></div>
+                  <div>21</div>
+                  <div>8</div>
+                  <div>2026-08-01</div>
+                  <div>Customer Success</div>
+                  <div>JOB-10288</div>
+                </div>
+              </div>
+            </main>
+
+            <!-- Dashboards panel — created from X+ prompt -->
+            <section class="dash-page crm-panel" id="panel-dashboards" hidden>
+              <div class="dash-page__header">
+                <div>
+                  <div class="dash-page__title" id="dash-title">Dashboards</div>
+                  <p class="dash-page__sub" id="dash-subtitle">
+                    Ask X+ an insight question — a chart dashboard will build here on the left.
+                  </p>
+                  <span class="dash-page__prompt-tag" id="dash-prompt-tag" hidden></span>
+                </div>
+                <div class="dash-toolbar">
+                  <span class="dash-date-pill" id="dash-date-pill" hidden>📅 Last 30 days</span>
+                  <button class="pp-ds-button pp-ds-button--secondary" type="button" id="dash-load-sample">
+                    Load jobs last 1 month
+                  </button>
+                </div>
+              </div>
+
+              <div class="dash-empty" id="dash-empty">
+                <strong>No dashboard yet</strong>
+                Open X+ and pick a demo insight — or ask “How many jobs have been created in the last 1 month?”
+              </div>
+
+              <div class="dash-content" id="dash-content" hidden>
+                <div class="dash-tasks" id="dash-tasks" aria-label="Top recruiter tasks for this day part"></div>
+
+                <div class="dash-metrics" id="dash-metrics">
+                  <div class="dash-metric">
+                    <div class="dash-metric__label" id="m1-label">Jobs created (30 days)</div>
+                    <div class="dash-metric__value" id="metric-total">—</div>
+                    <div class="dash-metric__hint" id="metric-trend">—</div>
+                  </div>
+                  <div class="dash-metric">
+                    <div class="dash-metric__label" id="m2-label">Weekly average</div>
+                    <div class="dash-metric__value" id="metric-avg">—</div>
+                    <div class="dash-metric__hint" id="m2-hint">Across the period</div>
+                  </div>
+                  <div class="dash-metric">
+                    <div class="dash-metric__label" id="m3-label">Peak day</div>
+                    <div class="dash-metric__value" id="metric-peak">—</div>
+                    <div class="dash-metric__hint" id="metric-peak-label">—</div>
+                  </div>
+                  <div class="dash-metric">
+                    <div class="dash-metric__label" id="m4-label">Your trendline</div>
+                    <div class="dash-metric__value" id="metric-slope">—</div>
+                    <div class="dash-metric__hint">For this recruiter</div>
+                  </div>
+                </div>
+
+                <div class="dash-grid">
+                  <div class="dash-chart-card" id="dash-chart-card">
+                    <div class="dash-chart-card__head">
+                      <div>
+                        <h3 class="dash-chart-card__title" id="dash-chart-title">Jobs created over time</h3>
+                        <p class="dash-chart-card__sub" id="dash-chart-sub">
+                          Timeline on X · Count on Y · Trendline for asking recruiter
+                        </p>
+                      </div>
+                      <div class="dash-legend" aria-hidden="true">
+                        <span><i class="jobs"></i> Jobs created</span>
+                        <span><i class="trend"></i> Your trendline</span>
+                      </div>
+                    </div>
+                    <div class="dash-chart-wrap">
+                      <canvas id="dash-main-chart" aria-label="Jobs created timeline chart"></canvas>
+                    </div>
+                  </div>
+
+                  <div class="dash-chart-card" id="dash-side-card">
+                    <div class="dash-chart-card__head">
+                      <div>
+                        <h3 class="dash-chart-card__title" id="dash-side-title">Jobs by category</h3>
+                        <p class="dash-chart-card__sub" id="dash-side-sub">Same period · breakdown</p>
+                      </div>
+                    </div>
+                    <div class="dash-chart-wrap dash-chart-wrap--sm">
+                      <canvas id="dash-side-chart" aria-label="Jobs by category chart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- X+ chat panel (30%) -->
+          <aside class="xplus-panel" id="xplus-panel" aria-label="X+ AI Recruiter chat" aria-hidden="true">
+            <div class="xplus-panel__header">
+              <div class="xplus-panel__brand">
+                <span class="xplus-panel__logo">X+</span>
+                <span>AI Recruiter</span>
+              </div>
+              <button type="button" class="xplus-panel__close" id="xplus-close" aria-label="Close X+">×</button>
+            </div>
+
+            <div class="xplus-actions" role="toolbar" aria-label="Top actions from AI Recruiter tasks">
+              <button type="button" class="xplus-action" data-action="understand">Understand job</button>
+              <button type="button" class="xplus-action" data-action="find">Find people</button>
+              <button type="button" class="xplus-action" data-action="reach">Reach out</button>
+              <button type="button" class="xplus-action" data-action="screen">Screen</button>
+              <button type="button" class="xplus-action" data-action="book">Book interviews</button>
+              <button type="button" class="xplus-action" data-action="pipeline">Pipeline health</button>
+              <button type="button" class="xplus-action" data-action="summarize">Summarize</button>
+              <button type="button" class="xplus-action" data-action="fairness">Fairness</button>
+            </div>
+
+            <div class="xplus-demos" aria-label="Day-part demo dashboards">
+              <p class="xplus-demos__label">Day-part demos → builds left dashboard</p>
+
+              <div class="xplus-daypart">
+                <div class="xplus-daypart__head">
+                  <span class="xplus-daypart__title">Morning · first half</span>
+                  <span class="xplus-daypart__hint">~8–12</span>
+                </div>
+                <div class="xplus-demo-list">
+                  <button type="button" class="xplus-demo" data-demo="morning">
+                    <span class="xplus-demo__title">Morning triage dashboard</span>
+                    <span class="xplus-demo__prompt">What should I focus on this morning?</span>
+                    <span class="xplus-demo__tasks">Overnight apps · Inbox replies · Stuck pipeline · Jobs needing attention</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="xplus-daypart">
+                <div class="xplus-daypart__head">
+                  <span class="xplus-daypart__title">Midday · deep work</span>
+                  <span class="xplus-daypart__hint">~12–4</span>
+                </div>
+                <div class="xplus-demo-list">
+                  <button type="button" class="xplus-demo" data-demo="midday">
+                    <span class="xplus-demo__title">Midday execution dashboard</span>
+                    <span class="xplus-demo__prompt">Show my midday recruiting workload.</span>
+                    <span class="xplus-demo__tasks">Screen apps · Outreach · Schedule interviews · HM reviews</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="xplus-daypart">
+                <div class="xplus-daypart__head">
+                  <span class="xplus-daypart__title">Evening · wrap-up</span>
+                  <span class="xplus-daypart__hint">~4–7</span>
+                </div>
+                <div class="xplus-demo-list">
+                  <button type="button" class="xplus-demo" data-demo="evening">
+                    <span class="xplus-demo__title">Evening close-out dashboard</span>
+                    <span class="xplus-demo__prompt">Help me wrap my recruiting day.</span>
+                    <span class="xplus-demo__tasks">Follow-ups · Status updates · HM summaries · Tomorrow plan</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="xplus-daypart">
+                <div class="xplus-daypart__head">
+                  <span class="xplus-daypart__title">Also available</span>
+                </div>
+                <div class="xplus-demo-list">
+                  <button type="button" class="xplus-demo" data-demo="jobs-month">
+                    <span class="xplus-demo__title">Jobs created · last 1 month</span>
+                    <span class="xplus-demo__prompt">How many jobs have been created in the last 1 month?</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="xplus-messages" id="xplus-messages" aria-live="polite">
+              <div class="xplus-msg xplus-msg--bot">
+                <span class="xplus-msg__meta">X+</span>
+                Hi — pick a <strong>Morning</strong>, <strong>Midday</strong>, or <strong>Evening</strong> demo
+                to build a day-part dashboard on the left (top tasks + charts).
+              </div>
+            </div>
+
+            <form class="xplus-composer" id="xplus-form">
+              <input
+                type="text"
+                id="xplus-input"
+                placeholder="Ask X+ anything about hiring…"
+                autocomplete="off"
+                aria-label="Message to X+"
+              />
+              <button type="submit">Send</button>
+            </form>
+          </aside>
+        </div>
+      </div>
+
+      <button type="button" class="xplus-fab" id="xplus-fab" aria-controls="xplus-panel">
+        <span class="xplus-fab__mark">X+</span>
+        Ask AI Recruiter
+      </button>
+    </div>
+
+    <script>
+      (function () {
+        const RECRUITER = "You (recruiter)";
+
+        /* —— Day-part + insight demos (prompt → left dashboard) —— */
+        const DEMOS = {
+          morning: {
+            id: "morning",
+            dayPart: "Morning · first half of day",
+            title: "Morning triage dashboard",
+            prompt: "What should I focus on this morning?",
+            period: "Today · overnight → noon",
+            seriesLabel: "Items needing action",
+            yTitle: "Count",
+            chartTitle: "Morning workload by hour",
+            chartSub: "X = time · Y = items to clear · dashed = your pace trendline",
+            sideTitle: "Where work is waiting",
+            sideSub: "By task type · morning focus",
+            m1: "Overnight applications",
+            m2: "Unread replies",
+            m3: "Stuck in pipeline",
+            m4: "Jobs needing attention",
+            tasks: [
+              "Review overnight applications",
+              "Clear inbox / candidate replies",
+              "Unblock stuck pipeline stages",
+              "Prioritize jobs needing attention today"
+            ],
+            labels: ["8am", "9am", "10am", "11am", "12pm", "1pm"],
+            values: [18, 14, 11, 9, 7, 5],
+            categories: {
+              labels: ["New apps", "Inbox", "Stuck", "Job alerts"],
+              values: [22, 14, 9, 6]
+            },
+            replyPrefix: "action items in your morning queue",
+            metricMode: "snapshot"
+          },
+          midday: {
+            id: "midday",
+            dayPart: "Midday · deep work",
+            title: "Midday execution dashboard",
+            prompt: "Show my midday recruiting workload.",
+            period: "Today · noon → late afternoon",
+            seriesLabel: "Actions completed",
+            yTitle: "Actions",
+            chartTitle: "Midday execution pace",
+            chartSub: "X = time · Y = screens / outreach / schedules · dashed = your pace trendline",
+            sideTitle: "Midday mix",
+            sideSub: "Where time is going",
+            m1: "Apps screened",
+            m2: "Outreach sent",
+            m3: "Interviews booked",
+            m4: "HM reviews chased",
+            tasks: [
+              "Screen applications & advance / reject",
+              "Run personalized outreach / sourcing",
+              "Book and confirm interviews",
+              "Drive hiring-manager reviews & feedback"
+            ],
+            labels: ["12pm", "1pm", "2pm", "3pm", "4pm", "5pm"],
+            values: [6, 9, 12, 14, 11, 8],
+            categories: {
+              labels: ["Screen", "Outreach", "Schedule", "HM chase"],
+              values: [28, 19, 12, 8]
+            },
+            replyPrefix: "midday actions across screen / outreach / schedule",
+            metricMode: "totals"
+          },
+          evening: {
+            id: "evening",
+            dayPart: "Evening · wrap-up",
+            title: "Evening close-out dashboard",
+            prompt: "Help me wrap my recruiting day.",
+            period: "Today · late afternoon → log-off",
+            seriesLabel: "Close-out items",
+            yTitle: "Count",
+            chartTitle: "Evening wrap-up progress",
+            chartSub: "X = time · Y = follow-ups & updates · dashed = your finish-line trend",
+            sideTitle: "Still open before log-off",
+            sideSub: "Close-out checklist",
+            m1: "Follow-ups due",
+            m2: "Status updates left",
+            m3: "HM summaries to send",
+            m4: "Tomorrow prep items",
+            tasks: [
+              "Send follow-ups & reminders",
+              "Update hiring statuses / dispositions",
+              "Share HM summaries / next-step notes",
+              "Plan tomorrow’s priority jobs & candidates"
+            ],
+            labels: ["4pm", "5pm", "6pm", "7pm", "8pm", "9pm"],
+            values: [16, 12, 9, 6, 3, 1],
+            categories: {
+              labels: ["Follow-up", "Status", "HM notes", "Tomorrow"],
+              values: [11, 8, 5, 7]
+            },
+            replyPrefix: "close-out items cleared toward end of day",
+            metricMode: "snapshot"
+          },
+          "jobs-month": {
+            id: "jobs-month",
+            dayPart: "Insight",
+            title: "Jobs created · last 1 month",
+            prompt: "How many jobs have been created in the last 1 month?",
+            period: "Last 30 days",
+            seriesLabel: "Jobs created",
+            yTitle: "Jobs created",
+            chartTitle: "Jobs created over time",
+            chartSub: "Pipeline-style timeline · X = date · Y = jobs · dashed = your trendline",
+            sideTitle: "Jobs by category",
+            sideSub: "Same 30-day window",
+            m1: "Jobs created (30 days)",
+            m2: "Weekly average",
+            m3: "Peak day",
+            m4: "Your trendline",
+            tasks: [
+              "Track demand created this month",
+              "Spot peak creation days",
+              "Compare categories needing coverage"
+            ],
+            labels: [
+              "Aug 28", "Aug 31", "Sep 3", "Sep 6", "Sep 9", "Sep 12",
+              "Sep 15", "Sep 18", "Sep 21", "Sep 24", "Sep 27", "Sep 28"
+            ],
+            values: [2, 4, 3, 6, 5, 7, 4, 8, 6, 9, 7, 5],
+            categories: {
+              labels: ["Engineering", "Design", "Sales", "CS", "HR"],
+              values: [22, 9, 14, 11, 8]
+            },
+            replyPrefix: "jobs were created",
+            metricMode: "totals"
+          }
+        };
+
+        function linearTrend(values) {
+          const n = values.length;
+          let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+          for (let i = 0; i < n; i++) {
+            sumX += i;
+            sumY += values[i];
+            sumXY += i * values[i];
+            sumXX += i * i;
+          }
+          const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX || 1);
+          const intercept = (sumY - slope * sumX) / n;
+          return values.map((_, i) => +(intercept + slope * i).toFixed(2));
+        }
+
+        function seriesStats(values, labels) {
+          const total = values.reduce((a, b) => a + b, 0);
+          const weeklyAvg = +(total / Math.max(1, values.length / 3)).toFixed(1);
+          let peakIdx = 0;
+          values.forEach((v, i) => { if (v > values[peakIdx]) peakIdx = i; });
+          const mid = Math.floor(values.length / 2);
+          const firstHalf = values.slice(0, mid).reduce((a, b) => a + b, 0) || 1;
+          const secondHalf = values.slice(mid).reduce((a, b) => a + b, 0);
+          const pct = Math.round(((secondHalf - firstHalf) / firstHalf) * 100);
+          return {
+            total,
+            weeklyAvg,
+            peak: values[peakIdx],
+            peakLabel: labels[peakIdx],
+            pct,
+            up: pct >= 0
+          };
+        }
+
+        let mainChart = null;
+        let sideChart = null;
+        let miniChart = null;
+
+        function destroyCharts() {
+          if (mainChart) { mainChart.destroy(); mainChart = null; }
+          if (sideChart) { sideChart.destroy(); sideChart = null; }
+          if (miniChart) { miniChart.destroy(); miniChart = null; }
+        }
+
+        function lineChartConfig(demo, trend, compact) {
+          return {
+            type: "line",
+            data: {
+              labels: demo.labels,
+              datasets: [
+                {
+                  label: demo.seriesLabel,
+                  data: demo.values,
+                  borderColor: "#2927b2",
+                  backgroundColor: (ctx) => {
+                    const chart = ctx.chart;
+                    const { ctx: c, chartArea } = chart;
+                    if (!chartArea) return "rgba(41, 39, 178, 0.12)";
+                    const g = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                    g.addColorStop(0, "rgba(41, 39, 178, 0.28)");
+                    g.addColorStop(1, "rgba(41, 39, 178, 0.02)");
+                    return g;
+                  },
+                  fill: true,
+                  tension: 0.35,
+                  pointRadius: compact ? 2 : 4,
+                  pointHoverRadius: 6,
+                  pointBackgroundColor: "#fff",
+                  pointBorderColor: "#2927b2",
+                  pointBorderWidth: 2,
+                  borderWidth: 2.5
+                },
+                {
+                  label: "Your trendline",
+                  data: trend,
+                  borderColor: "#ef6820",
+                  borderDash: [6, 4],
+                  fill: false,
+                  tension: 0,
+                  pointRadius: 0,
+                  borderWidth: 2
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              interaction: { mode: "index", intersect: false },
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  backgroundColor: "#0c0b3b",
+                  titleFont: { family: "Poppins", size: 12 },
+                  bodyFont: { family: "Poppins", size: 11 },
+                  padding: 10,
+                  cornerRadius: 6
+                }
+              },
+              scales: {
+                x: {
+                  grid: { color: "rgba(209, 213, 220, 0.5)", drawBorder: false },
+                  title: {
+                    display: !compact,
+                    text: "Timeline",
+                    color: "#637085",
+                    font: { family: "Poppins", size: 11, weight: "500" }
+                  },
+                  ticks: { font: { family: "Poppins", size: 10 }, color: "#637085", maxRotation: 45 }
+                },
+                y: {
+                  beginAtZero: true,
+                  grid: { color: "rgba(209, 213, 220, 0.65)", drawBorder: false },
+                  title: {
+                    display: !compact,
+                    text: demo.yTitle,
+                    color: "#637085",
+                    font: { family: "Poppins", size: 11, weight: "500" }
+                  },
+                  ticks: { font: { family: "Poppins", size: 10 }, color: "#637085" }
+                }
+              }
+            }
+          };
+        }
+
+        function barChartConfig(demo) {
+          return {
+            type: "bar",
+            data: {
+              labels: demo.categories.labels,
+              datasets: [
+                {
+                  label: demo.seriesLabel,
+                  data: demo.categories.values,
+                  backgroundColor: [
+                    "rgba(41, 39, 178, 0.85)",
+                    "rgba(77, 62, 224, 0.75)",
+                    "rgba(117, 113, 224, 0.7)",
+                    "rgba(163, 145, 242, 0.75)",
+                    "rgba(202, 193, 242, 0.9)"
+                  ],
+                  borderRadius: 6,
+                  maxBarThickness: 36
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  backgroundColor: "#0c0b3b",
+                  titleFont: { family: "Poppins", size: 12 },
+                  bodyFont: { family: "Poppins", size: 11 }
+                }
+              },
+              scales: {
+                x: {
+                  grid: { display: false },
+                  ticks: { font: { family: "Poppins", size: 10 }, color: "#637085" }
+                },
+                y: {
+                  beginAtZero: true,
+                  grid: { color: "rgba(209, 213, 220, 0.65)", drawBorder: false },
+                  ticks: { font: { family: "Poppins", size: 10 }, color: "#637085" }
+                }
+              }
+            }
+          };
+        }
+
+        function renderDashboard(demo) {
+          const trend = linearTrend(demo.values);
+          const stats = seriesStats(demo.values, demo.labels);
+          const cats = demo.categories.values;
+
+          document.getElementById("dash-empty").hidden = true;
+          document.getElementById("dash-content").hidden = false;
+          document.getElementById("dash-date-pill").hidden = false;
+          document.getElementById("dash-date-pill").textContent = "📅 " + demo.period;
+
+          document.getElementById("dash-title").textContent = demo.title;
+          document.getElementById("dash-subtitle").textContent =
+            (demo.dayPart ? demo.dayPart + " · " : "") +
+            "Built from your X+ prompt · " + RECRUITER;
+          const tag = document.getElementById("dash-prompt-tag");
+          tag.hidden = false;
+          tag.textContent = "Prompt: “" + demo.prompt + "”";
+
+          const tasksEl = document.getElementById("dash-tasks");
+          tasksEl.innerHTML = "";
+          (demo.tasks || []).forEach((task, i) => {
+            const chip = document.createElement("span");
+            chip.className = "dash-task-chip";
+            chip.innerHTML =
+              '<span class="dash-task-chip__n">' +
+              (i + 1) +
+              "</span>" +
+              task;
+            tasksEl.appendChild(chip);
+          });
+
+          document.getElementById("m1-label").textContent = demo.m1;
+          document.getElementById("m2-label").textContent = demo.m2;
+          document.getElementById("m3-label").textContent = demo.m3;
+          document.getElementById("m4-label").textContent = demo.m4;
+
+          if (demo.metricMode === "snapshot" && cats.length >= 4) {
+            document.getElementById("metric-total").textContent = String(cats[0]);
+            document.getElementById("metric-avg").textContent = String(cats[1]);
+            document.getElementById("metric-peak").textContent = String(cats[2]);
+            document.getElementById("metric-slope").textContent = String(cats[3]);
+            document.getElementById("metric-peak-label").textContent = demo.categories.labels[2] || "";
+            document.getElementById("m2-hint").textContent = demo.categories.labels[1] || "";
+          } else {
+            document.getElementById("metric-total").textContent = String(stats.total);
+            document.getElementById("metric-avg").textContent = String(stats.weeklyAvg);
+            document.getElementById("metric-peak").textContent = String(stats.peak);
+            document.getElementById("metric-peak-label").textContent = "On " + stats.peakLabel;
+            document.getElementById("metric-slope").textContent = stats.up ? "Rising" : "Cooling";
+            document.getElementById("m2-hint").textContent = "Across the period";
+          }
+
+          const trendEl = document.getElementById("metric-trend");
+          trendEl.textContent =
+            (stats.up ? "↑ " : "↓ ") + Math.abs(stats.pct) + "% vs first half";
+          trendEl.classList.toggle("is-down", !stats.up);
+
+          document.getElementById("dash-chart-title").textContent = demo.chartTitle;
+          document.getElementById("dash-chart-sub").textContent = demo.chartSub;
+          document.getElementById("dash-side-title").textContent = demo.sideTitle;
+          document.getElementById("dash-side-sub").textContent = demo.sideSub;
+
+          destroyCharts();
+          mainChart = new Chart(
+            document.getElementById("dash-main-chart"),
+            lineChartConfig(demo, trend, false)
+          );
+          sideChart = new Chart(
+            document.getElementById("dash-side-chart"),
+            barChartConfig(demo)
+          );
+        }
+
+        function appendMiniChart(container, demo) {
+          const wrap = document.createElement("div");
+          wrap.style.height = "150px";
+          wrap.style.marginTop = "8px";
+          const canvas = document.createElement("canvas");
+          wrap.appendChild(canvas);
+          container.appendChild(wrap);
+          const trend = linearTrend(demo.values);
+          if (miniChart) miniChart.destroy();
+          miniChart = new Chart(canvas, lineChartConfig(demo, trend, true));
+        }
+
+        function matchDemoFromText(text) {
+          const t = text.toLowerCase();
+          if (
+            t.includes("morning") ||
+            t.includes("first half") ||
+            t.includes("start of day") ||
+            t.includes("focus on this morning") ||
+            t.includes("overnight")
+          ) {
+            return DEMOS.morning;
+          }
+          if (
+            t.includes("midday") ||
+            t.includes("mid-day") ||
+            t.includes("mid day") ||
+            t.includes("afternoon") ||
+            t.includes("midday recruiting")
+          ) {
+            return DEMOS.midday;
+          }
+          if (
+            t.includes("evening") ||
+            t.includes("wrap") ||
+            t.includes("end of day") ||
+            t.includes("close out") ||
+            t.includes("close-out") ||
+            t.includes("log off")
+          ) {
+            return DEMOS.evening;
+          }
+          if (
+            (t.includes("job") && (t.includes("created") || t.includes("create")) &&
+              (t.includes("month") || t.includes("30"))) ||
+            t.includes("jobs last 1 month") ||
+            t.includes("jobs created")
+          ) {
+            return DEMOS["jobs-month"];
+          }
+          return null;
+        }
+
+        /* —— App tabs —— */
+        const tabButtons = document.querySelectorAll("[data-app-tab]");
+        const viewFramework = document.getElementById("view-framework");
+        const viewCrm = document.getElementById("view-crm");
+
+        function switchAppTab(name) {
+          tabButtons.forEach((btn) => {
+            const on = btn.dataset.appTab === name;
+            btn.classList.toggle("is-active", on);
+            btn.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          viewFramework.hidden = name !== "framework";
+          viewCrm.hidden = name !== "crm";
+          document.body.classList.toggle("pds-page", name === "framework");
+        }
+
+        tabButtons.forEach((btn) => {
+          btn.addEventListener("click", () => switchAppTab(btn.dataset.appTab));
+        });
+
+        /* —— Sidebar collapse —— */
+        const sidebar = document.getElementById("sidebar-nav");
+        const toggle = document.getElementById("sidebar-toggle");
+
+        function setCollapsed(collapsed) {
+          sidebar.classList.toggle("px-sidebar-navigation-expanded", !collapsed);
+          sidebar.classList.toggle("px-sidebar-navigation-collapsed", collapsed);
+          toggle.classList.toggle("px-sidebar-navigation-expand-state-expand", !collapsed);
+          toggle.classList.toggle("px-sidebar-navigation-expand-state-collapse", collapsed);
+          toggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+          toggle.setAttribute("aria-label", collapsed ? "Expand Menu" : "Collapse Menu");
+          sidebar.querySelectorAll(".px-sidebar-menu-item-content").forEach((el) => {
+            el.classList.toggle("collapsed", collapsed);
+          });
+        }
+        setCollapsed(false);
+        toggle.addEventListener("click", () => {
+          setCollapsed(!sidebar.classList.contains("px-sidebar-navigation-collapsed"));
+        });
+
+        /* —— CRM nav: Jobs vs Dashboards —— */
+        const panelJobs = document.getElementById("panel-jobs");
+        const panelDash = document.getElementById("panel-dashboards");
+        const crumb = document.getElementById("crm-crumb");
+
+        function showCrmPanel(id) {
+          const isDash = id === "dashboards";
+          panelJobs.hidden = isDash;
+          panelDash.hidden = !isDash;
+          crumb.textContent = isDash ? "Dashboard / Dashboards" : "Dashboard / Jobs";
+          document.querySelectorAll("#sidebar-nav .px-sidebar-menu-item").forEach((a) => {
+            const active = a.dataset.navId === (isDash ? "dashboards" : "jobs");
+            a.classList.toggle("is-active", active);
+            if (active) a.setAttribute("aria-current", "page");
+            else a.removeAttribute("aria-current");
+          });
+        }
+
+        document.querySelectorAll("#sidebar-nav .px-sidebar-menu-item").forEach((a) => {
+          a.addEventListener("click", (e) => {
+            e.preventDefault();
+            const id = a.dataset.navId;
+            if (id === "dashboards" || id === "jobs") showCrmPanel(id);
+          });
+        });
+
+        /* —— Jobs search / spotlight —— */
+        const search = document.getElementById("jobs-search");
+        search.addEventListener("input", () => {
+          const key = search.value.trim().toLowerCase();
+          document.querySelectorAll("#panel-jobs [data-row]").forEach((row) => {
+            const name = row.dataset.name || "";
+            row.classList.toggle("jobs-row-hidden", key && !name.includes(key));
+          });
+        });
+        document.querySelectorAll(".spotlight-chip").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            document.querySelectorAll(".spotlight-chip").forEach((c) => c.classList.remove("is-active"));
+            chip.classList.add("is-active");
+            const filter = chip.dataset.spotlight;
+            document.querySelectorAll("#panel-jobs [data-row]").forEach((row) => {
+              const status = row.dataset.status;
+              let show = true;
+              if (filter === "open" || filter === "my-open") show = status === "open";
+              if (filter === "recent") show = ["open", "draft"].includes(status);
+              row.classList.toggle("jobs-row-hidden", !show);
+            });
+          });
+        });
+
+        /* —— X+ panel —— */
+        const shell = document.getElementById("jobs-shell");
+        const fab = document.getElementById("xplus-fab");
+        const panel = document.getElementById("xplus-panel");
+        const messages = document.getElementById("xplus-messages");
+
+        function setXplusOpen(open) {
+          shell.classList.toggle("xplus-open", open);
+          panel.setAttribute("aria-hidden", open ? "false" : "true");
+          fab.hidden = open;
+        }
+
+        document.getElementById("xplus-open-top").addEventListener("click", () => setXplusOpen(true));
+        fab.addEventListener("click", () => setXplusOpen(true));
+        document.getElementById("xplus-close").addEventListener("click", () => setXplusOpen(false));
+
+        const ACTION_PROMPTS = {
+          understand: "Help me understand this job and improve the job brief.",
+          find: "Find the right people for my open roles.",
+          reach: "Draft personalized outreach for top matches.",
+          screen: "Screen new applications and flag strong fits.",
+          book: "Book interviews for shortlisted candidates.",
+          pipeline: "Show pipeline health and who needs attention today.",
+          summarize: "Summarize candidates for the hiring manager.",
+          fairness: "Check screening for fairness and explainability."
+        };
+
+        function addMsg(text, who) {
+          const div = document.createElement("div");
+          div.className = "xplus-msg xplus-msg--" + who;
+          const meta = document.createElement("span");
+          meta.className = "xplus-msg__meta";
+          meta.textContent = who === "bot" ? "X+" : "You";
+          div.appendChild(meta);
+          const body = document.createElement("div");
+          body.textContent = text;
+          div.appendChild(body);
+          messages.appendChild(div);
+          messages.scrollTop = messages.scrollHeight;
+          return div;
+        }
+
+        function runInsightDemo(demo) {
+          showCrmPanel("dashboards");
+          renderDashboard(demo);
+          const stats = seriesStats(demo.values, demo.labels);
+          const taskLine = (demo.tasks || []).slice(0, 3).join("; ");
+          const bot = addMsg(
+            (demo.dayPart ? demo.dayPart + ". " : "") +
+              "Top tasks: " +
+              taskLine +
+              ". Dashboard is open on the left with metrics, timeline chart, and breakdown for “" +
+              demo.prompt +
+              "”. Trend vs first half: " +
+              (stats.up ? "up" : "down") +
+              " " +
+              Math.abs(stats.pct) +
+              "%.",
+            "bot"
+          );
+          appendMiniChart(bot, demo);
+        }
+
+        function handleUserText(text) {
+          const trimmed = text.trim();
+          if (!trimmed) return;
+          addMsg(trimmed, "user");
+          const demo = matchDemoFromText(trimmed);
+          if (demo) {
+            runInsightDemo(demo);
+            document.querySelectorAll(".xplus-demo").forEach((b) => {
+              b.classList.toggle("is-active", b.dataset.demo === demo.id);
+            });
+            return;
+          }
+          addMsg(
+            "Got it. Pick Morning, Midday, or Evening above to build a day-part dashboard — or ask about jobs created in the last 1 month.",
+            "bot"
+          );
+        }
+
+        document.querySelectorAll(".xplus-action").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".xplus-action").forEach((b) => b.classList.remove("is-active"));
+            btn.classList.add("is-active");
+            const prompt = ACTION_PROMPTS[btn.dataset.action];
+            if (prompt) handleUserText(prompt);
+          });
+        });
+
+        document.querySelectorAll(".xplus-demo").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".xplus-demo").forEach((b) => b.classList.remove("is-active"));
+            btn.classList.add("is-active");
+            const demo = DEMOS[btn.dataset.demo];
+            if (!demo) return;
+            setXplusOpen(true);
+            addMsg(demo.prompt, "user");
+            runInsightDemo(demo);
+          });
+        });
+
+        document.getElementById("xplus-form").addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = document.getElementById("xplus-input");
+          const val = input.value;
+          input.value = "";
+          handleUserText(val);
+        });
+
+        document.getElementById("dash-load-sample").addEventListener("click", () => {
+          renderDashboard(DEMOS["jobs-month"]);
+        });
+
+        if (
+          new URLSearchParams(location.search).get("tab") === "crm" ||
+          location.hash === "#crm"
+        ) {
+          switchAppTab("crm");
+        }
+      })();
+    </script>
+  </body>
+</html>

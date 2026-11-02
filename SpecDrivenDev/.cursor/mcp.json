@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "copilot": {
+      "command": "node",
+      "args": ["../product-copilot-beta/mcp/bin/copilot-mcp.js"],
+      "env": {
+        "COPILOT_CONFIG_DIR": "${workspaceFolder}/../product-copilot-beta"
+      }
+    }
+  }
+}

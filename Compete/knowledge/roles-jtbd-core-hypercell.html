@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Core &amp; Hypercell JTBD — Sourcer · Recruiter · Recruitment Lead</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../DesignSystem/styles/pds-tokens.css" />
+    <link rel="stylesheet" href="../../DesignSystem/styles/pds-utilities.css" />
+    <style>
+      .jtbd-section {
+        scroll-margin-top: 1.25rem;
+      }
+      .jtbd-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0 0 1rem;
+      }
+      .jtbd-job {
+        margin: 0 0 1.25rem;
+        padding: 0.9rem 1rem;
+        border-left: 3px solid var(--pds-brand);
+        background: var(--bg-brand-primary-subtle, #eeedf9);
+        border-radius: 0 var(--pds-radius-md) var(--pds-radius-md) 0;
+        font-size: 0.9375rem;
+        max-width: 52rem;
+      }
+      .jtbd-job strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--pds-brand);
+      }
+      .table-caption {
+        margin: 0 0 0.5rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--pds-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .pds-table th:first-child,
+      .pds-table td:first-child {
+        white-space: nowrap;
+        width: 3rem;
+        color: var(--pds-text-muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .pds-table td.muted {
+        color: var(--pds-text-muted);
+        font-style: italic;
+      }
+      .sources {
+        font-size: 0.8125rem;
+        color: var(--pds-text-muted);
+        max-width: 48rem;
+      }
+      .sources a {
+        color: var(--pds-brand);
+      }
+      .vendor-strip {
+        margin: 0 0 1.5rem;
+        font-size: 0.8125rem;
+        color: var(--pds-text-muted);
+      }
+      h2.pds-h1 {
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+      }
+      h3.pds-card-title {
+        margin-top: 1.25rem;
+      }
+      .pds-card + .jtbd-section,
+      .jtbd-section + .jtbd-section {
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body class="pds-page">
+    <div class="pds-shell">
+      <aside class="pds-sidebar">
+        <p class="pds-brand">Phenom</p>
+        <nav class="pds-nav" aria-label="Roles">
+          <a href="#overview">Overview</a>
+          <a href="#sourcer">Sourcer</a>
+          <a href="#recruiter">Recruiter</a>
+          <a href="#lead">Recruitment Lead</a>
+          <a href="#sources">Sources</a>
+        </nav>
+      </aside>
+
+      <main class="pds-main">
+        <h1 class="pds-h1">Most important JTBD by role</h1>
+        <p class="pds-lead">
+          Synthesized from Workday, SAP SuccessFactors, Greenhouse, Ashby, Workable,
+          and Personio hiring-team patterns, then aligned to Phenom CRM Core /
+          phenom-knowledge surfaces and the Hypercell matrix
+          (Industry × Function × Role × Workflow × Geography).
+        </p>
+
+        <section id="overview" class="pds-card jtbd-section">
+          <h2 class="pds-card-title">How to read this page</h2>
+          <p class="vendor-strip">
+            Each role has two tables: <strong>Core JTBD</strong> (platform-agnostic hiring
+            job the person is hired to do) and <strong>Hypercell JTBD</strong> (same job
+            made precise for a hiring cell — dimensions, constraints, ontology, Crawl /
+            Walk / Run). Recruiter runs one req end-to-end; Sourcer fills the top of funnel
+            and hands off; Recruitment Lead keeps a portfolio of jobs and recruiters healthy.
+          </p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>One-line job</th>
+                  <th>Phenom access (today)</th>
+                  <th>Vendor pattern</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sourcer</td>
+                  <td>Find and warm people so recruiters have a pipeline</td>
+                  <td>CRM Sourcer — Candidates, Lists, Campaigns, Inbox; Jobs view / spotlight</td>
+                  <td>First-class on WD, SF, GH, Ashby; folded into Recruiter on Workable / Personio</td>
+                </tr>
+                <tr>
+                  <td>Recruiter</td>
+                  <td>Fill one approved job on time with a fair process</td>
+                  <td>CRM Recruiter / Primary Recruiter — full job lifecycle, screen, offer, close</td>
+                  <td>Primary Recruiter / R / Recruiter across all six</td>
+                </tr>
+                <tr>
+                  <td>Recruitment Lead</td>
+                  <td>Keep hiring healthy across many jobs and recruiters</td>
+                  <td>Analytics Recruiter Manager + Jobs portfolio; CRM Recruiter only if they rebalance</td>
+                  <td>Site/Org Admin, Recruiting Admin, lead recruiter — not one shared hiring-team seat</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================== SOURCER ===================== -->
+        <section id="sourcer" class="pds-card jtbd-section">
+          <h2 class="pds-h1">1. Sourcer</h2>
+          <div class="jtbd-meta">
+            <span class="pds-tag">Pipeline</span>
+            <span class="pds-tag">Prospects</span>
+            <span class="pds-tag">Handoff</span>
+          </div>
+          <p class="jtbd-job">
+            <strong>Job statement</strong>
+            When we will need talent (sometimes before a requisition exists), I want to find
+            and engage people, so recruiters have a pipeline ready — without owning posting,
+            offer, or close.
+          </p>
+
+          <h3 class="pds-card-title">Core JTBD</h3>
+          <p class="table-caption">Compete synthesis · Phenom CRM Core wording</p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>JTBD</th>
+                  <th>Entities</th>
+                  <th>Phenom surfaces</th>
+                  <th>Must not</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>S1</td>
+                  <td>Search and reach out (often before a job exists)</td>
+                  <td>Prospect / lead</td>
+                  <td>Candidates discovery, Global Search, Projects / Intelligent Sourcing</td>
+                  <td class="muted">Create / publish job</td>
+                </tr>
+                <tr>
+                  <td>S2</td>
+                  <td>Add prospects, not only applicants</td>
+                  <td>Candidate / prospect</td>
+                  <td>Candidates import / add; Lists; talent communities</td>
+                  <td class="muted">Change hiring status</td>
+                </tr>
+                <tr>
+                  <td>S3</td>
+                  <td>Tag source and keep people warm</td>
+                  <td>Source tag, CRM activity</td>
+                  <td>Tags, Notes, Campaigns, Inbox (email / SMS / WhatsApp)</td>
+                  <td class="muted">Template admin</td>
+                </tr>
+                <tr>
+                  <td>S4</td>
+                  <td>Pass ready people to the recruiter when the job opens</td>
+                  <td>Job, candidate → recruiter</td>
+                  <td>Assign / forward to job; handoff notes; Sourcer Jobs spotlight</td>
+                  <td class="muted">Screening config, scheduling, offers</td>
+                </tr>
+                <tr>
+                  <td>S5</td>
+                  <td>Stop when the job is filled or paused</td>
+                  <td>Job status, opening</td>
+                  <td>Jobs view (status); pool / nurture lists</td>
+                  <td class="muted">Fill / unpost / close</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="pds-card-title">Hypercell JTBD</h3>
+          <p class="table-caption">
+            Example cell: Healthcare · Pharmacy · Pharmacy Technician · High-volume sourcing · United States
+            — hard filters: state registration / PTCB, commute radius, prior pharmacy talent in CRM
+          </p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Atomic unit (persona verb)</th>
+                  <th>What the cell changes</th>
+                  <th>Outcome / KR</th>
+                  <th>Crawl → Walk → Run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SH1</td>
+                  <td>Calibrate intake into a searchable persona for <em>this</em> role + geo</td>
+                  <td>Ontology: certs, skills, location, schedule, job type</td>
+                  <td>Time to first shortlist</td>
+                  <td>Manual brief → assisted search brief → Intake Agent drafts brief</td>
+                </tr>
+                <tr>
+                  <td>SH2</td>
+                  <td>Discover matches under cell hard filters (CRM-first, then external)</td>
+                  <td>Workflow volume + geo compliance knockouts</td>
+                  <td>Prospect volume; Fit under filters</td>
+                  <td>Saved search → ranked X+ matches → Sourcing Agent builds list</td>
+                </tr>
+                <tr>
+                  <td>SH3</td>
+                  <td>Outreach in the channel this labor market answers</td>
+                  <td>Geography + workflow (SMS vs email vs sequence)</td>
+                  <td>Reply rate; time to first contact</td>
+                  <td>One-off send → sequenced campaign → Agent outreach with approval</td>
+                </tr>
+                <tr>
+                  <td>SH4</td>
+                  <td>Micro-screen / qualify against cell constraints before handoff</td>
+                  <td>Constraints (e.g. PTCB, commute) — legal nuance by geo</td>
+                  <td>Prospect → applicant; handoff acceptance</td>
+                  <td>Notes checklist → knockout assist → Agent packages handoff</td>
+                </tr>
+                <tr>
+                  <td>SH5</td>
+                  <td>Keep pools clean and stop when opening is filled / paused</td>
+                  <td>Same cell identity; maturity only changes automation depth</td>
+                  <td>List health; sourcing ROI; attribution</td>
+                  <td>Manual pause → status-aware nurture → auto-stop + re-source signal</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================== RECRUITER ===================== -->
+        <section id="recruiter" class="pds-card jtbd-section">
+          <h2 class="pds-h1">2. Recruiter</h2>
+          <div class="jtbd-meta">
+            <span class="pds-tag">Req → hire</span>
+            <span class="pds-tag">Posting</span>
+            <span class="pds-tag">Offer</span>
+          </div>
+          <p class="jtbd-job">
+            <strong>Job statement</strong>
+            When a job is approved, I want to run intake through hire, so a qualified
+            candidate is hired on time without breaking process. Hiring Manager owns the
+            final yes/no; I own the process.
+          </p>
+
+          <h3 class="pds-card-title">Core JTBD</h3>
+          <p class="table-caption">Compete synthesis · Phenom CRM Core / RX Strategy wording</p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>JTBD</th>
+                  <th>Entities</th>
+                  <th>Phenom surfaces</th>
+                  <th>Must not</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>R1</td>
+                  <td>Take ownership of the approved job (create / own job entity)</td>
+                  <td>Job / requisition</td>
+                  <td>Jobs create/edit; My Jobs; hiring-team Primary Recruiter</td>
+                  <td class="muted">Master / Feature Management</td>
+                </tr>
+                <tr>
+                  <td>R2</td>
+                  <td>Set hiring team, interview plan, and scorecards</td>
+                  <td>Hiring team, interview plan, scorecard</td>
+                  <td>Job details hiring team; evaluation / feedback</td>
+                  <td class="muted">Org-wide admin config</td>
+                </tr>
+                <tr>
+                  <td>R3</td>
+                  <td>Create the posting and publish to channels</td>
+                  <td>Posting, channel</td>
+                  <td>Phenom Hire / CRM job lifecycle publish</td>
+                  <td class="muted">— (Lead unblocks ownership, does not day-to-day publish)</td>
+                </tr>
+                <tr>
+                  <td>R4</td>
+                  <td>Screen applications; advance or reject</td>
+                  <td>Application, candidate</td>
+                  <td>Candidates status; Screening / ODVA; Automations handoff</td>
+                  <td class="muted">Sourcer-only discovery without process ownership</td>
+                </tr>
+                <tr>
+                  <td>R5</td>
+                  <td>Drive hiring-manager review and interviewer feedback</td>
+                  <td>Application, scorecard, interview</td>
+                  <td>Get Feedback; Scheduling (stacked); Inbox chase</td>
+                  <td class="muted">Final hire decision (HM)</td>
+                </tr>
+                <tr>
+                  <td>R6</td>
+                  <td>Draft the offer and route approval</td>
+                  <td>Offer, approval</td>
+                  <td>Offers (Send Offer / Offer Admin)</td>
+                  <td class="muted">Budget policy ownership (Approver / HR)</td>
+                </tr>
+                <tr>
+                  <td>R7</td>
+                  <td>Fill openings; unpost; close or reopen the job</td>
+                  <td>Opening, posting, job</td>
+                  <td>Jobs close / reopen; unpost (posting ≠ job close)</td>
+                  <td class="muted">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="pds-card-title">Hypercell JTBD</h3>
+          <p class="table-caption">
+            Same five axes as FitScore hypercell config. Example: Manufacturing in Healthcare ·
+            Quality Assurance · Quality Engineer · Professional moderate volume · USA — atomic
+            units: source certified → screen before interview → follow up on offers
+          </p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Atomic unit (persona verb)</th>
+                  <th>What the cell changes</th>
+                  <th>Outcome / KR</th>
+                  <th>Crawl → Walk → Run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>RH1</td>
+                  <td>Create / complete the job with cell ontology prefilled</td>
+                  <td>Industry × Function × Role × Workflow × Geo field packs</td>
+                  <td>Job-setup time; completeness; CSAT</td>
+                  <td>Manual form → assisted JD / team → Intake Agent job create</td>
+                </tr>
+                <tr>
+                  <td>RH2</td>
+                  <td>Publish with geo-correct posting rules</td>
+                  <td>Geography (e.g. CA pay transparency) + channel mix</td>
+                  <td>Publish latency; CRM job coverage</td>
+                  <td>Manual publish → checklist → Agent publish with gates</td>
+                </tr>
+                <tr>
+                  <td>RH3</td>
+                  <td>Screen before interview using cell knockouts</td>
+                  <td>Constraints + ontology weights (certs, skills, schedule)</td>
+                  <td>Time-to-screen; funnel conversion</td>
+                  <td>Basic knockout → Voice / ODVA + HITL → Screening Agent</td>
+                </tr>
+                <tr>
+                  <td>RH4</td>
+                  <td>Chase next-best-action queue for this cell’s aging pattern</td>
+                  <td>Workflow (volume vs professional) sets SLA aging</td>
+                  <td>Workflow velocity; feedback chase</td>
+                  <td>Manual reminders → NBA Insight → Agent chase feedback</td>
+                </tr>
+                <tr>
+                  <td>RH5</td>
+                  <td>Offer follow-up to raise acceptance for this role market</td>
+                  <td>Role + geo labor market; offer-ratio outcomes</td>
+                  <td>Offer cycle; offer accept; hire rate Hired/Offered</td>
+                  <td>Manual follow-up → prompts → Offer / Pre-Hire Agent</td>
+                </tr>
+                <tr>
+                  <td>RH6</td>
+                  <td>Close the loop: fill, unpost, close / reopen</td>
+                  <td>Opening vs posting vs job kept distinct</td>
+                  <td>Time to hire; on-time fill; Primary fill credit</td>
+                  <td>Manual close → suggested close → Agent suggest fill/unpost/close</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================== RECRUITMENT LEAD ===================== -->
+        <section id="lead" class="pds-card jtbd-section">
+          <h2 class="pds-h1">3. Recruitment Lead</h2>
+          <div class="jtbd-meta">
+            <span class="pds-tag">Portfolio</span>
+            <span class="pds-tag">Capacity</span>
+            <span class="pds-tag">Aging</span>
+          </div>
+          <p class="jtbd-job">
+            <strong>Job statement</strong>
+            When my team owns many open jobs, I want capacity, aging, and process aligned
+            across cells, so hiring stays on track without me running one requisition
+            end-to-end like a recruiter.
+          </p>
+
+          <h3 class="pds-card-title">Core JTBD</h3>
+          <p class="table-caption">Compete synthesis · Phenom Analytics Recruiter Manager + CRM portfolio</p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>JTBD</th>
+                  <th>Entities</th>
+                  <th>Phenom surfaces</th>
+                  <th>Must not</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>L1</td>
+                  <td>See the full slate of open jobs for my team / org slice</td>
+                  <td>Job portfolio</td>
+                  <td>Jobs list / detail; Spotlights; Recruiter Dashboard (Insights)</td>
+                  <td class="muted">Day-to-day Inbox / Campaigns as primary work</td>
+                </tr>
+                <tr>
+                  <td>L2</td>
+                  <td>Assign recruiters and rebalance capacity</td>
+                  <td>Job, hiring team</td>
+                  <td>Jobs assign (needs CRM Recruiter); workload / ownership clarity</td>
+                  <td class="muted">Sourcer-only license for assign</td>
+                </tr>
+                <tr>
+                  <td>L3</td>
+                  <td>Spot slow or stuck jobs (aging / funnel risk)</td>
+                  <td>Job, application, report</td>
+                  <td>Analytics RX (Hiring Funnel, Jobs Report, Time to Hire); metric → job drill-down</td>
+                  <td class="muted">Personal outreach ownership</td>
+                </tr>
+                <tr>
+                  <td>L4</td>
+                  <td>Unblock stuck reqs and handoffs</td>
+                  <td>Job, opening, hiring team</td>
+                  <td>Ownership change; team unblock playbooks (not personal schedule/SMS ops)</td>
+                  <td class="muted">Day-to-day publish / offer on every req</td>
+                </tr>
+                <tr>
+                  <td>L5</td>
+                  <td>Align SLAs and process across jobs</td>
+                  <td>Job template, stage plan</td>
+                  <td>Process standards; Automations Admin (stack) if they own recipes</td>
+                  <td class="muted">Master / Feature / Traffic Config</td>
+                </tr>
+                <tr>
+                  <td>L6</td>
+                  <td>Report hiring results to HR and the business</td>
+                  <td>Openings filled, offers, closed jobs</td>
+                  <td>Recruiter Profiles; leadership brief / export; Report Builder (separate roles)</td>
+                  <td class="muted">Running one req like Primary Recruiter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="pds-card-title">Hypercell JTBD</h3>
+          <p class="table-caption">
+            Lead operates <em>across</em> many cells — capacity, aging, and process alignment —
+            while each cell keeps its own Industry × Function × Role × Workflow × Geography identity
+          </p>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Atomic unit (persona verb)</th>
+                  <th>What the cell changes</th>
+                  <th>Outcome / KR</th>
+                  <th>Crawl → Walk → Run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>LH1</td>
+                  <td>Portfolio triage scoped to my recruiters / region / BU</td>
+                  <td>Geo + org slice filters; multi-cell comparison</td>
+                  <td>Portfolio aging; team TTF / funnel</td>
+                  <td>Saved org views → risk radar Insight → auto-ranked team risk</td>
+                </tr>
+                <tr>
+                  <td>LH2</td>
+                  <td>Rebalance Primary / Sourcer load by cell volume pattern</td>
+                  <td>Workflow (high volume vs professional) sets fair load</td>
+                  <td>Workload capacity; ownership clarity; rebalance speed</td>
+                  <td>Manual assign → recommend rebalance → Agent propose moves</td>
+                </tr>
+                <tr>
+                  <td>LH3</td>
+                  <td>Unblock cell-specific stuck work (approvals, feedback, thin pool)</td>
+                  <td>Pain points + constraints differ per cell</td>
+                  <td>Unblock speed; backup coverage</td>
+                  <td>Spotlights → drill-down playbooks → team unblock Agent</td>
+                </tr>
+                <tr>
+                  <td>LH4</td>
+                  <td>Align process / SLA templates per cell family</td>
+                  <td>Ontology + stage plans reused across similar cells</td>
+                  <td>Process alignment; on-time fill (team)</td>
+                  <td>Shared templates → cell playbooks → Crawl|Walk|Run maturity by cell</td>
+                </tr>
+                <tr>
+                  <td>LH5</td>
+                  <td>Coach with evidence; brief leadership</td>
+                  <td>Outcomes/metrics per cell (not one global scorecard)</td>
+                  <td>Team engagement; leadership reporting</td>
+                  <td>Notes workaround → coaching signals → weekly leadership brief Agent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="sources" class="pds-card jtbd-section">
+          <h2 class="pds-card-title">Sources</h2>
+          <div class="sources">
+            <p>
+              <strong>Compete:</strong>
+              <a href="./personas-jtbd.md">personas-jtbd.md</a>
+              (Workday, SAP SuccessFactors, Greenhouse, Ashby, Workable, Personio).
+            </p>
+            <p>
+              <strong>Phenom product JTBD wording:</strong>
+              RX Product Strategy — Aug2026 (Sourcer / Recruiter / Recruitment Lead Core +
+              Hypercell JTBD); Recruiter Jobs-to-Be-Done deck.
+            </p>
+            <p>
+              <strong>phenom-knowledge surfaces:</strong>
+              Messaging (Campaigns, Inbox, Lists), Screening (ODVA), Analytics (Recruiter
+              Dashboard / Job Analytics), Automations (recipes) — see
+              <code>phenom-knowledge/*/skill.md</code>.
+            </p>
+            <p>
+              <strong>Hypercell:</strong>
+              <code>.cursor/skills/hypercell/</code> — five dimensions, atomic units,
+              constraints, ontology, Crawl / Walk / Run, persona overlay.
+            </p>
+            <p>
+              Vendor and tenant configuration can differ; treat compete rows as a shared
+              benchmark. Posting can expire or unpublish while the job stays open — close is
+              stronger than unpost.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Current Problems Recruiters Face Today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+<link rel="stylesheet" href="phenom-tokens.css" />
+<link rel="stylesheet" href="phenom-deck.css" />
+<style>
+  html, body { width: 100%; height: 100% !important; margin: 0 !important; }
+  .reveal { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .reveal .slides { text-align: left; }
+  .reveal .slides section { padding: 0; }
+
+  .problem-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    align-content: stretch;
+    margin-top: 8px;
+  }
+  .problem-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .p-card {
+    background: var(--family-50);
+    border-radius: var(--radius-card);
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    position: relative;
+  }
+  .p-card .num {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 34px; height: 34px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: var(--ink);
+  }
+  .p-card .ttl {
+    font-size: 18px; font-weight: 700; color: var(--ink);
+    line-height: 1.15; margin: 8px 0 12px; max-width: 85%;
+  }
+  .p-card .desc {
+    font-size: 13px; color: var(--ink-2); line-height: 1.4;
+  }
+  .hero-claim {
+    background: var(--family-50);
+    border-radius: var(--radius-card);
+    padding: 36px 40px;
+    font-size: 24px; font-weight: 700; color: var(--ink);
+    line-height: 1.35; margin-bottom: 22px;
+  }
+  .tri-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; flex: 1;
+  }
+  .tri-card {
+    background: var(--family-50);
+    border-radius: var(--radius-card);
+    padding: 28px 26px;
+  }
+  .tri-card h3 { font-size: 22px; font-weight: 700; color: var(--ink); margin: 0 0 12px; }
+  .tri-card p { font-size: 15px; color: var(--ink-2); line-height: 1.35; margin: 0; }
+  .dim-row {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 18px 0 20px;
+  }
+  .dim-card {
+    background: var(--family-50);
+    border-radius: var(--radius-card);
+    padding: 22px 18px;
+  }
+  .dim-card h4 { font-size: 17px; font-weight: 700; color: var(--ink); margin: 0 0 10px; }
+  .dim-card p { font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.35; }
+  .callout {
+    background: var(--tile);
+    border-radius: var(--radius-card);
+    padding: 22px 28px;
+    font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.4;
+  }
+  .detail-split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; margin-top: 8px;
+  }
+  .detail-panel {
+    background: var(--family-50);
+    border-radius: var(--radius-card);
+    padding: 28px 28px 24px;
+  }
+  .detail-panel h3 {
+    font-size: 20px; font-weight: 700; color: var(--ink); margin: 0 0 16px;
+  }
+  .detail-panel ul {
+    margin: 0; padding: 0; list-style: none;
+  }
+  .detail-panel li {
+    font-size: 14px; color: var(--ink-2); line-height: 1.35;
+    padding: 0 0 12px 16px; position: relative;
+  }
+  .detail-panel li::before {
+    content: "•"; position: absolute; left: 0; color: var(--ink);
+    font-weight: 700;
+  }
+  .tri-detail {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- 1 Cover -->
+  <section>
+    <div class="slide slide--cover">
+      <p class="cover-eyebrow">RECRUITER EXPERIENCE</p>
+      <h1 class="cover-title">Current problems<br/>recruiters face today</h1>
+      <p class="cover-sub">Nine pressure points from approved job → hire — grouped for product &amp; strategy conversations.</p>
+      <p class="cover-meta">Phenom  ·  Internal  ·  2026</p>
+    </div>
+  </section>
+
+  <!-- 2 Core problem -->
+  <section>
+    <div class="slide" data-family="mint">
+      <div class="s-head">
+        <p class="s-kicker">The core problem</p>
+        <h2 class="s-title">Process owners — stuck in noise</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="hero-claim">
+        Recruiters own approved job → hire, but spend most of their day on notifications, sync gaps, chase, and duplicates — not on screening quality and closing offers.
+      </div>
+      <div class="tri-row">
+        <div class="tri-card" data-family="peach" style="background:var(--peach-50)">
+          <h3>Noise</h3>
+          <p>Alerts, cluttered My Jobs, unclear ownership</p>
+        </div>
+        <div class="tri-card" data-family="honey" style="background:var(--honey-50)">
+          <h3>Friction</h3>
+          <p>Slow setup, HM chase, stuck stages</p>
+        </div>
+        <div class="tri-card" data-family="lilac" style="background:var(--lilac-50)">
+          <h3>Mismatch</h3>
+          <p>One playbook for every role cell &amp; geo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Map 1-5 -->
+  <section>
+    <div class="slide" data-family="mint">
+      <div class="s-head">
+        <p class="s-kicker">Problem map  ·  1 of 2</p>
+        <h2 class="s-title">Where recruiters feel the pressure</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="problem-grid">
+        <div class="p-card" style="background:var(--mint-50)"><span class="num">01</span><div class="ttl">Workload &amp; portfolio</div><div class="desc">Unclear ownership; My Jobs noise; no clear “act today” queue</div></div>
+        <div class="p-card" style="background:var(--peach-50)"><span class="num">02</span><div class="ttl">Job setup &amp; publish</div><div class="desc">Slow create; sync gaps; geo/compliance rules easy to miss</div></div>
+        <div class="p-card" style="background:var(--honey-50)"><span class="num">03</span><div class="ttl">Sourcing &amp; discovery</div><div class="desc">Weak CRM search; thin handoffs; channel mismatch</div></div>
+        <div class="p-card" style="background:var(--lilac-50)"><span class="num">04</span><div class="ttl">Screening velocity</div><div class="desc">Manual piles; incomplete apps; ATS↔CRM status fights</div></div>
+        <div class="p-card" style="background:var(--mint-50)"><span class="num">05</span><div class="ttl">HM &amp; interview chase</div><div class="desc">Slow feedback; fragile scheduling; recruiter as reminder bot</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Map 6-9 -->
+  <section>
+    <div class="slide" data-family="peach">
+      <div class="s-head">
+        <p class="s-kicker">Problem map  ·  2 of 2</p>
+        <h2 class="s-title">Close, data &amp; context gaps</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="problem-grid problem-grid--4">
+        <div class="p-card" style="background:var(--peach-50)"><span class="num">06</span><div class="ttl">Offer &amp; fill risk</div><div class="desc">Slow approvals; acceptance drop; unpost vs close confusion</div></div>
+        <div class="p-card" style="background:var(--honey-50)"><span class="num">07</span><div class="ttl">Data &amp; identity</div><div class="desc">Duplicates, bad merges, stale profiles break Fit trust</div></div>
+        <div class="p-card" style="background:var(--lilac-50)"><span class="num">08</span><div class="ttl">Measurement blind spots</div><div class="desc">Aging causes hidden; weak source→hire attribution</div></div>
+        <div class="p-card" style="background:var(--mint-50)"><span class="num">09</span><div class="ttl">Hypercell mismatch</div><div class="desc">Volume ≠ professional; geo changes rules; agents ignore cells</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Ops -->
+  <section>
+    <div class="slide" data-family="peach">
+      <div class="s-head">
+        <p class="s-kicker">Operations</p>
+        <h2 class="s-title">Workload, setup &amp; publishing</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="detail-split">
+        <div class="detail-panel" style="background:var(--peach-50)">
+          <h3>01  Workload &amp; portfolio chaos</h3>
+          <ul>
+            <li>Too many open reqs; Primary / Secondary / Sourcer / Coordinator blurred</li>
+            <li>Everyone treated as full Recruiter → notification fatigue</li>
+            <li>Hard to separate “act now” vs quietly aging jobs</li>
+            <li>Admin time crowds out hiring decisions</li>
+          </ul>
+        </div>
+        <div class="detail-panel" style="background:var(--honey-50)">
+          <h3>02  Job setup &amp; publishing</h3>
+          <ul>
+            <li>Job/req create is slow and incomplete</li>
+            <li>One global playbook fails across industry, role, geo, volume</li>
+            <li>Publish / compliance rules differ by market</li>
+            <li>Jobs missing or duplicated across ATS ↔ CRM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Pipeline -->
+  <section>
+    <div class="slide" data-family="mint">
+      <div class="s-head">
+        <p class="s-kicker">Pipeline</p>
+        <h2 class="s-title">Source → screen → chase</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="tri-detail">
+        <div class="detail-panel" style="background:var(--mint-50)">
+          <h3>03  Sourcing gaps</h3>
+          <ul>
+            <li>Hard filters hard to apply in CRM</li>
+            <li>Sourcer ↔ recruiter handoffs weak</li>
+            <li>Outreach channel mismatch</li>
+            <li>Volume drown / scarce stall</li>
+          </ul>
+        </div>
+        <div class="detail-panel" style="background:var(--peach-50)">
+          <h3>04  Screening velocity</h3>
+          <ul>
+            <li>Manual screen of large piles</li>
+            <li>Incomplete apps stall unclearly</li>
+            <li>Status maps confuse moves</li>
+            <li>Silent automations surprise teams</li>
+          </ul>
+        </div>
+        <div class="detail-panel" style="background:var(--lilac-50)">
+          <h3>05  HM &amp; interviews</h3>
+          <ul>
+            <li>Slow feedback kills velocity</li>
+            <li>Stacked scheduling is fragile</li>
+            <li>Recruiters become reminder bots</li>
+            <li>Hard to know stuck vs waiting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 Close & trust -->
+  <section>
+    <div class="slide" data-family="honey">
+      <div class="s-head">
+        <p class="s-kicker">Close &amp; trust</p>
+        <h2 class="s-title">Offers, identity &amp; visibility</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="tri-detail">
+        <div class="detail-panel" style="background:var(--honey-50)">
+          <h3>06  Offer &amp; fill risk</h3>
+          <ul>
+            <li>Draft / approval drag cycle time</li>
+            <li>Acceptance drops without chase</li>
+            <li>Unpost vs close vs reopen confusion</li>
+            <li>Fill credit unclear multi-touch</li>
+          </ul>
+        </div>
+        <div class="detail-panel" style="background:var(--lilac-50)">
+          <h3>07  Data &amp; identity</h3>
+          <ul>
+            <li>Duplicates / bad merges break trust</li>
+            <li>Stale profiles waste screen time</li>
+            <li>Import sync creates cleanup</li>
+            <li>“Disappeared” candidates = tickets</li>
+          </ul>
+        </div>
+        <div class="detail-panel" style="background:var(--mint-50)">
+          <h3>08  Measurement gaps</h3>
+          <ul>
+            <li>Aging cause not stage-visible</li>
+            <li>Leads lack ownership / load views</li>
+            <li>Late escalations, uneven load</li>
+            <li>Source→hire stays anecdotal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 Hypercell -->
+  <section>
+    <div class="slide" data-family="lilac">
+      <div class="s-head">
+        <p class="s-kicker">Context</p>
+        <h2 class="s-title">09  Why one playbook fails</h2>
+        <div class="s-rule"></div>
+      </div>
+      <p class="lead-in" style="font-size:17px;color:var(--ink-2);margin:0 0 4px;line-height:1.4">
+        Hiring automation must differ by Industry × Function × Role × Workflow × Geography.
+      </p>
+      <div class="dim-row">
+        <div class="dim-card" style="background:var(--mint-50)"><h4>Industry</h4><p>Regulated vs retail vs logistics</p></div>
+        <div class="dim-card" style="background:var(--peach-50)"><h4>Function</h4><p>QA, ops, R&amp;D, campus…</p></div>
+        <div class="dim-card" style="background:var(--honey-50)"><h4>Role</h4><p>Job family cluster being hired</p></div>
+        <div class="dim-card" style="background:var(--lilac-50)"><h4>Workflow</h4><p>Volume/speed vs precision</p></div>
+        <div class="dim-card" style="background:var(--mint-50)"><h4>Geography</h4><p>Compliance, language, channels</p></div>
+      </div>
+      <div class="callout">
+        Agents and automations that ignore the cell create more cleanup than lift — frontline high-volume ≠ professional precision hiring.
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 Takeaways -->
+  <section>
+    <div class="slide" data-family="mint">
+      <div class="s-head">
+        <p class="s-kicker">Summary</p>
+        <h2 class="s-title">What this means for product</h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="problem-grid problem-grid--4" style="margin-top:12px">
+        <div class="p-card" style="background:var(--mint-50);min-height:340px">
+          <span class="num">01</span>
+          <div class="ttl">Cut noise first</div>
+          <div class="desc">Role-aware ownership, My Jobs, and one notification per event</div>
+        </div>
+        <div class="p-card" style="background:var(--peach-50);min-height:340px">
+          <span class="num">02</span>
+          <div class="ttl">Make context explicit</div>
+          <div class="desc">Hypercell-aware setup, knockouts, publish, and chase SLAs</div>
+        </div>
+        <div class="p-card" style="background:var(--honey-50);min-height:340px">
+          <span class="num">03</span>
+          <div class="ttl">Unstick the funnel</div>
+          <div class="desc">Surface incomplete apps, status truth, and HM feedback aging</div>
+        </div>
+        <div class="p-card" style="background:var(--lilac-50);min-height:340px">
+          <span class="num">04</span>
+          <div class="ttl">Protect trust</div>
+          <div class="desc">Sync health, identity/merge clarity, source→hire attribution</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 Close -->
+  <section>
+    <div class="slide slide--cover">
+      <h1 class="cover-title" style="font-size:40px;line-height:1.2">Recruiters don’t need more work.<br/>They need less noise and the right playbook.</h1>
+      <p class="cover-sub">Nine problems. One through-line: ownership clarity × cell context × funnel truth.</p>
+      <p class="cover-meta">Phenom  ·  Recruiter Experience</p>
+    </div>
+  </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    hash: true,
+    transition: "fade",
+    center: false,
+  });
+</script>
+</body>
+</html>

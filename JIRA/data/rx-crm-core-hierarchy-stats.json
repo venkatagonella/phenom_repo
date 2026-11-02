@@ -1,0 +1,101 @@
+{
+  "fetched": 1569,
+  "isLast": true,
+  "pagesFetched": 16,
+  "countsByType": {
+    "Story": 1248,
+    "Epic": 276,
+    "Initiative": 45
+  },
+  "countsByStatus": {
+    "To Do": 1104,
+    "Story Grooming": 120,
+    "Story Ready": 56,
+    "In Progress": 48,
+    "Story Elaboration": 48,
+    "PM Acceptance Queue": 47,
+    "ON Hold": 35,
+    "Development": 32,
+    "In QA": 28,
+    "UX Queue": 19,
+    "Epic Grooming": 11,
+    "BLOCKED": 9,
+    "UX/UI Validation": 4,
+    "Done": 4,
+    "Reopened": 3,
+    "Epic Ready": 1
+  },
+  "withParent": 1263,
+  "parentKeysOutsideMainSet": 118,
+  "parentsFileCount": 138,
+  "grandparentsFetched": 25,
+  "unresolvedParentKeys": [
+    "PRS-401",
+    "PRS-549",
+    "PHEM-21074",
+    "PHEM-314793",
+    "PHEM-398520"
+  ],
+  "linkRelationCountsTop15": [
+    {
+      "relation": "clones",
+      "count": 306
+    },
+    {
+      "relation": "is cloned by",
+      "count": 269
+    },
+    {
+      "relation": "relates to",
+      "count": 161
+    },
+    {
+      "relation": "is blocked by",
+      "count": 84
+    },
+    {
+      "relation": "related to",
+      "count": 72
+    },
+    {
+      "relation": "blocks",
+      "count": 44
+    },
+    {
+      "relation": "Defects",
+      "count": 18
+    },
+    {
+      "relation": "implements",
+      "count": 18
+    },
+    {
+      "relation": "is implemented by",
+      "count": 18
+    },
+    {
+      "relation": "resolves",
+      "count": 18
+    },
+    {
+      "relation": "has to be done after",
+      "count": 14
+    },
+    {
+      "relation": "is resolved by",
+      "count": 14
+    },
+    {
+      "relation": "has to be finished together with",
+      "count": 13
+    },
+    {
+      "relation": "has to be done before",
+      "count": 12
+    },
+    {
+      "relation": "implements to",
+      "count": 12
+    }
+  ]
+}

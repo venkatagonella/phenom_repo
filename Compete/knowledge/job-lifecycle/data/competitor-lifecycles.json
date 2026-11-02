@@ -1,0 +1,214 @@
+{
+  "research_name": "Phenom job creation workflow competitor benchmark",
+  "competitors": [
+    {
+      "name": "Workday",
+      "primary_entity": "requisition",
+      "entities": [
+        "requisition",
+        "posting",
+        "opening",
+        "channel_distribution"
+      ],
+      "sequence": [
+        "draft_requisition",
+        "approval",
+        "open",
+        "post",
+        "freeze_or_unpost",
+        "fill_or_close",
+        "closed"
+      ],
+      "posting": "Separate internal or external posting associated with a requisition.",
+      "publishing": "Usually represented by posting an eligible requisition.",
+      "expiry": "Posting end date; behavior can depend on configuration.",
+      "unposting": "Remove or end an individual posting while the requisition can remain active.",
+      "dates": [
+        "posting_start_date",
+        "posting_end_date",
+        "closed_at"
+      ],
+      "reopen_behavior": "Treat closed requisition as terminal for this benchmark; verify tenant configuration.",
+      "confidence": "medium"
+    },
+    {
+      "name": "SAP SuccessFactors",
+      "primary_entity": "requisition",
+      "entities": [
+        "requisition",
+        "posting_type",
+        "opening",
+        "channel_distribution"
+      ],
+      "sequence": [
+        "pre_approved",
+        "approved",
+        "open",
+        "post",
+        "unpost_or_expire",
+        "fill_openings",
+        "closed_or_reopened"
+      ],
+      "posting": "Posting-type record, often internal or external, with start and end dates.",
+      "publishing": "Effectively represented by Post Job.",
+      "expiry": "Posting end date removes the posting when configured.",
+      "unposting": "Remove Post; date changes may require remove and repost.",
+      "dates": [
+        "posting_start_date",
+        "posting_end_date",
+        "post_removed_at",
+        "closed_at",
+        "reopened_at"
+      ],
+      "reopen_behavior": "Can return to a prior state depending on configuration.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Greenhouse",
+      "primary_entity": "job",
+      "entities": [
+        "job",
+        "opening",
+        "job_post",
+        "channel_distribution"
+      ],
+      "sequence": [
+        "create_job",
+        "draft_or_approval",
+        "open",
+        "publish_job_post",
+        "edit_or_unpublish",
+        "close_openings",
+        "close_job_or_reopen"
+      ],
+      "posting": "Separate job post; a job can have multiple posts and openings.",
+      "publishing": "Activates the job post on a configured channel.",
+      "expiry": "Often represented by scheduled unpublish or an application deadline.",
+      "unposting": "Unpublish the post while preserving the job and recruiting data.",
+      "dates": [
+        "opened_at",
+        "first_published_at",
+        "application_deadline",
+        "closed_at",
+        "post_unpublished_at"
+      ],
+      "reopen_behavior": "Job can be reopened according to workflow configuration.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Ashby",
+      "primary_entity": "job",
+      "entities": [
+        "job",
+        "opening",
+        "posting",
+        "channel_distribution"
+      ],
+      "sequence": [
+        "job_draft",
+        "approval_if_configured",
+        "job_open",
+        "publish_posting",
+        "unpublish_or_deadline",
+        "fill_openings",
+        "close_job"
+      ],
+      "posting": "Distinct listing attached to an Open job.",
+      "publishing": "Makes the posting live; visibility can be Listed or Unlisted.",
+      "expiry": "Application deadline can automatically unpublish the posting.",
+      "unposting": "Unpublish prevents new applications; Unlisted is hidden from normal lists but direct-link applications remain possible.",
+      "dates": [
+        "published_at",
+        "unpublished_at",
+        "application_deadline",
+        "opening_closed_at",
+        "job_closed_at"
+      ],
+      "reopen_behavior": "Verify whether reopening returns the job to draft or open in the configured workflow.",
+      "confidence": "high"
+    },
+    {
+      "name": "Workable",
+      "primary_entity": "requisition_and_job_visibility",
+      "entities": [
+        "requisition",
+        "job",
+        "channel_distribution",
+        "promotion"
+      ],
+      "sequence": [
+        "draft",
+        "pending",
+        "approved",
+        "open",
+        "publish",
+        "internal_or_on_hold",
+        "reserved_filled_or_canceled",
+        "archived"
+      ],
+      "posting": "Channel distribution to career page, free boards, premium boards, or feeds.",
+      "publishing": "Job visibility transition; may include an in-review step.",
+      "expiry": "Channel or promotion-dependent; no single universal job expiry.",
+      "unposting": "Remove public visibility; archiving is stronger.",
+      "dates": [
+        "published_at",
+        "promotion_end_at",
+        "on_hold_at",
+        "archived_at",
+        "unarchived_at"
+      ],
+      "reopen_behavior": "Unarchive can restore visibility; verify exact status transition.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Personio",
+      "primary_entity": "job",
+      "entities": [
+        "job",
+        "opening",
+        "promotion",
+        "external_posting",
+        "channel_distribution"
+      ],
+      "sequence": [
+        "draft",
+        "publish_job",
+        "schedule_posting",
+        "running",
+        "stopped_or_expired",
+        "opening_filled",
+        "archive_or_reopen"
+      ],
+      "posting": "External promotion of a published job through selected boards.",
+      "publishing": "Makes the job visible on the career page; promotion distributes it externally.",
+      "expiry": "External posting end date produces Expired status.",
+      "unposting": "Cancel or remove a promotion before its end date; may be irreversible for an individual posting.",
+      "dates": [
+        "posting_start_date",
+        "posting_end_date",
+        "canceled_at",
+        "expired_at",
+        "archived_at",
+        "reopened_at"
+      ],
+      "reopen_behavior": "Reopening returns the job to Draft in the benchmarked behavior.",
+      "confidence": "medium"
+    }
+  ],
+  "recommended_phenom_layers": [
+    "job_or_requisition",
+    "posting",
+    "channel_distribution"
+  ],
+  "recommended_events": [
+    "posting_created",
+    "posting_scheduled",
+    "posting_published",
+    "posting_unpublished",
+    "posting_expired",
+    "posting_canceled",
+    "job_closed",
+    "job_reopened"
+  ],
+  "caveat": "Vendor workflows are configurable and should be verified against current product documentation before external publication."
+}

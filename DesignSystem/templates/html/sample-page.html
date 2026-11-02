@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Phenom DS — Sample Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Relative imports work when opened from this repo.
+         From another workspace, point these at the DesignSystem absolute path
+         or a copied/symlinked styles/ folder. -->
+    <link rel="stylesheet" href="../../styles/pds-tokens.css" />
+    <link rel="stylesheet" href="../../styles/pds-utilities.css" />
+  </head>
+  <body class="pds-page">
+    <div class="pds-shell">
+      <aside class="pds-sidebar">
+        <p class="pds-brand">Phenom</p>
+        <nav class="pds-nav" aria-label="Primary">
+          <a href="#" aria-current="page">Candidates</a>
+          <a href="#">Jobs</a>
+          <a href="#">Settings</a>
+        </nav>
+      </aside>
+
+      <main class="pds-main">
+        <h1 class="pds-h1">Candidates</h1>
+        <p class="pds-lead">
+          Sample surface styled with referrable PDS tokens from this DesignSystem
+          workspace. For production Angular apps, prefer
+          <code>@phenom/angular-ds</code> components (<code>px-*</code>).
+        </p>
+
+        <div class="pds-toolbar">
+          <button class="pds-btn pds-btn-primary" type="button">Primary Action</button>
+          <button class="pds-btn pds-btn-secondary" type="button">Secondary Action</button>
+        </div>
+
+        <div class="pds-grid-2">
+          <section class="pds-card">
+            <h2 class="pds-card-title">Filters</h2>
+            <label class="pds-field">
+              <span class="pds-label">Name</span>
+              <input class="pds-input" type="text" placeholder="Search candidates" />
+              <span class="pds-help">Uses tokenized field styles.</span>
+            </label>
+            <label class="pds-field">
+              <span class="pds-label">Email</span>
+              <input class="pds-input is-error" type="email" value="bad@" />
+              <span class="pds-error-text">Enter a valid email.</span>
+            </label>
+            <button class="pds-btn pds-btn-primary" type="button">Apply</button>
+          </section>
+
+          <section class="pds-card">
+            <h2 class="pds-card-title">Status</h2>
+            <p>
+              <span class="pds-tag">Active</span>
+              <span class="pds-tag pds-tag-success">Hired</span>
+              <span class="pds-tag pds-tag-warning">Pending</span>
+            </p>
+            <div class="pds-empty">
+              <strong style="color: var(--pds-text)">No items found</strong>
+              <p>Get started by creating your first item.</p>
+              <button class="pds-btn pds-btn-primary" type="button">Create Item</button>
+            </div>
+          </section>
+        </div>
+
+        <section class="pds-card" style="margin-top: 1rem">
+          <h2 class="pds-card-title">Pipeline</h2>
+          <div class="pds-table-wrap">
+            <table class="pds-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Deployments</th>
+                  <th>Last Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Production</td>
+                  <td><span class="pds-tag pds-tag-success">Active</span></td>
+                  <td class="num">1,234</td>
+                  <td>2024-01-15</td>
+                </tr>
+                <tr>
+                  <td>Staging</td>
+                  <td><span class="pds-tag">Active</span></td>
+                  <td class="num">567</td>
+                  <td>2024-01-14</td>
+                </tr>
+                <tr>
+                  <td>Development</td>
+                  <td><span class="pds-tag pds-tag-warning">Pending</span></td>
+                  <td class="num">89</td>
+                  <td>2024-01-13</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

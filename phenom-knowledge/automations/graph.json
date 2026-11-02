@@ -1,0 +1,126 @@
+{
+  "$schema": "phenom-knowledge/graph/v1",
+  "area": "automations",
+  "generated": "2026-07-13",
+  "clone_root": "/Users/venkata.gonella/phenom_repo/MyLocalCRM/repos",
+  "legend": {
+    "node.kind": ["repo", "engine", "component", "endpoint_group", "event_topic", "datastore", "external_service", "shared_lib"],
+    "edge.type": ["produces", "consumes", "calls_http", "persists", "reads", "executes", "dispatches", "matches", "subscribes", "exposes_mfe"],
+    "grounded": "true = backed by code read this session; false = referenced but source not cloned"
+  },
+
+  "nodes": [
+    {"id": "repo:crm-automations-ui", "kind": "repo", "lang": "angular16", "role": "recipe builder UI (MFE remote crmAutomations)", "at": "crm-automations-ui/webpack.config.js:3", "grounded": true},
+    {"id": "repo:crm-automation-service", "kind": "repo", "lang": "java-spring", "role": "recipe CRUD + templates + analytics + metadata + jobs + temporal actions", "at": "crm-automation-service/src/main/java/com/phenom", "grounded": true},
+    {"id": "repo:automation-search-service", "kind": "repo", "lang": "java-spring", "role": "trigger->recipe matching (lucene+ES+validate)", "at": "automation-search-service/src/main/java/com/phenom/AutomationSearchService.java:23", "grounded": true},
+    {"id": "repo:candidate-automation", "kind": "repo", "lang": "java-storm", "role": "action execution engine (24 actions)", "at": "candidate-automation/src/main/java/com/phenompeople/topology/CPAutomationTopology.java", "grounded": true},
+    {"id": "repo:crm-workflows", "kind": "repo", "lang": "java-spring", "role": "LinkedIn CRM Connect integration (not general automations)", "at": "crm-workflows/src/main/java/com/phenom/crmworkflows/CrmWorkflowsApplication.java:41", "grounded": true},
+    {"id": "repo:crm-automation", "kind": "repo", "lang": "python/robot/playwright", "role": "QA test automation (NOT product)", "product_code": false, "at": "crm-automation/README.md:1", "grounded": true},
+
+    {"id": "engine:storm", "kind": "engine", "in": "repo:candidate-automation", "role": "Storm topology Trigger->Filter->Action bolts", "at": "candidate-automation/src/main/java/com/phenompeople/bolt", "grounded": true},
+    {"id": "engine:temporal", "kind": "engine", "in": "repo:crm-automation-service", "role": "Temporal worker + action activities", "at": "crm-automation-service/src/main/java/com/phenom/temporal/TemporalWorker.java:65", "grounded": true},
+
+    {"id": "comp:ui.recipe-builder", "kind": "component", "in": "repo:crm-automations-ui", "at": "crm-automations-ui/src/app/modules/automation-create/edit-automation/edit-automation.component.ts:1", "grounded": true},
+    {"id": "comp:ui.automations-service", "kind": "component", "in": "repo:crm-automations-ui", "at": "crm-automations-ui/src/app/services/automations.service.ts:14", "grounded": true},
+    {"id": "comp:ui.analytics", "kind": "component", "in": "repo:crm-automations-ui", "at": "crm-automations-ui/src/app/modules/analytics/automation-analytics/automation-analytics.component.ts:29", "grounded": true},
+    {"id": "comp:ui.template-gallery", "kind": "component", "in": "repo:crm-automations-ui", "at": "crm-automations-ui/src/app/modules/automations/automation-template-gallery/automation-template-gallery.component.ts:46", "grounded": true},
+
+    {"id": "eg:svc.AutomationController", "kind": "endpoint_group", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/controllers/AutomationController.java", "endpoints": ["/recipe/create:104", "/recipe/update:264", "/recipe/preview:135", "/recipe/setAction:224", "/recipeDetail:312", "/searchRecipesByCriteria:356", "/searchRecipeHistory:324", "/validateRecipeTitle:451", "/i/systemRecipe:484", "/trigger-frequency/{recipeId}:647"], "grounded": true},
+    {"id": "eg:svc.TemplateController", "kind": "endpoint_group", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/controllers/TemplateController.java", "endpoints": ["/template/list:45", "/template/favourite:75", "/template/{refNum}/{locale}/{templateId}:108", "/template/{refNum}/category:139", "/active-template/{refNum}/{templateId}:167"], "grounded": true},
+    {"id": "eg:svc.AnalyticsController", "kind": "endpoint_group", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/controllers/AnalyticsController.java", "endpoints": ["/analytics:34", "/setHourlyRate:39", "/getHourlyRate/{refNum}:44"], "grounded": true},
+    {"id": "eg:svc.MetadataController", "kind": "endpoint_group", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/controllers/MetadataController.java", "endpoints": ["/i/v2/metadata:41", "/i/get-action-config:52", "/i/get-trigger-config:62", "/create-update-metadata-config:68"], "grounded": true},
+    {"id": "eg:svc.AutomationJobController", "kind": "endpoint_group", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/controllers/AutomationJobController.java", "endpoints": ["/i/CandidateAutomationJob:53", "/i/AutomationDelayJob:86", "/i/removeExpiredRecipe:137", "/i/triggerInviteRecommendations:148"], "grounded": true},
+    {"id": "eg:search.AdminController", "kind": "endpoint_group", "in": "repo:automation-search-service", "at": "automation-search-service/src/main/java/com/phenom/controller/AdminController.java", "endpoints": ["/i/validate-filter:65", "/i/getFilterStatus:84", "/i/getLuceneData:105"], "grounded": true},
+
+    {"id": "comp:search.KafkaConsumer", "kind": "component", "in": "repo:automation-search-service", "at": "automation-search-service/src/main/java/com/phenom/kafka/KafkaConsumer.java:58", "grounded": true},
+    {"id": "comp:search.ValidatorService", "kind": "component", "in": "repo:automation-search-service", "at": "automation-search-service/src/main/java/com/phenom/service/ValidatorService.java:67", "grounded": true},
+    {"id": "comp:search.DataProviderService", "kind": "component", "in": "repo:automation-search-service", "at": "automation-search-service/src/main/java/com/phenom/service/DataProviderService.java:78", "grounded": true},
+    {"id": "comp:search.Lucene", "kind": "component", "in": "repo:automation-search-service", "at": "automation-search-service/src/main/java/com/phenom/lucene/LuceneService.java:72", "grounded": true},
+    {"id": "comp:search.PupSubListener", "kind": "component", "in": "repo:automation-search-service", "at": "automation-search-service/src/main/java/com/phenom/redis/PupSubListener.java:33", "grounded": true},
+
+    {"id": "comp:storm.ActionFactory", "kind": "component", "in": "repo:candidate-automation", "at": "candidate-automation/src/main/java/com/phenompeople/action/factory/ActionFactory.java:24", "grounded": true},
+    {"id": "comp:storm.ActionExecutorBolt", "kind": "component", "in": "repo:candidate-automation", "at": "candidate-automation/src/main/java/com/phenompeople/bolt/AutomationActionExecutorBolt.java", "grounded": true},
+    {"id": "comp:svc.AutomationKafkaConsumer", "kind": "component", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/kafka/AutomationKafkaConsumer.java:61", "grounded": true},
+    {"id": "comp:wf.LKConsumer", "kind": "component", "in": "repo:crm-workflows", "at": "crm-workflows/src/main/java/com/phenom/crmworkflows/linkedin/LKConsumer.java:31", "grounded": true},
+    {"id": "comp:wf.UploadResumeActivity", "kind": "component", "in": "repo:crm-workflows", "at": "crm-workflows/src/main/java/com/phenom/crmworkflows/linkedin/resumesync/activity/UploadResumeActivity.java:45", "grounded": true},
+
+    {"id": "topic:cp_automation_online_trigger", "kind": "event_topic", "at": "candidate-automation/src/main/java/com/phenompeople/constant/KafkaConstant.java", "grounded": true},
+    {"id": "topic:cp_automation_trigger", "kind": "event_topic", "at": "candidate-automation/src/main/java/com/phenompeople/constant/KafkaConstant.java", "grounded": true},
+    {"id": "topic:cp_automation_action", "kind": "event_topic", "at": "candidate-automation/src/main/java/com/phenompeople/constant/KafkaConstant.java", "grounded": true},
+    {"id": "topic:cp_automation_notification", "kind": "event_topic", "at": "candidate-automation/src/main/java/com/phenompeople/constant/KafkaConstant.java", "grounded": true},
+    {"id": "topic:cp_audit_log", "kind": "event_topic", "at": "candidate-automation/src/main/java/com/phenompeople/constant/KafkaConstant.java", "grounded": true},
+    {"id": "topic:cp_temporal_automation_online_trigger", "kind": "event_topic", "at": "automation-search-service/src/main/java/com/phenom/constant/AppConstant.java:40", "grounded": true},
+    {"id": "topic:cp_temporal_automation_trigger", "kind": "event_topic", "at": "automation-search-service/src/main/java/com/phenom/constant/AppConstant.java:41", "grounded": true},
+    {"id": "topic:cp_automation_external_trigger", "kind": "event_topic", "at": "crm-automation-service/src/main/java/com/phenom/helpers/AppConstants.java:265", "grounded": true},
+    {"id": "topic:invite_recommendation_trigger", "kind": "event_topic", "at": "crm-automation-service/src/main/java/com/phenom/helpers/AppConstants.java:252", "grounded": true},
+    {"id": "topic:recipe_delta_changes", "kind": "event_topic", "transport": "redis-pubsub", "at": "automation-search-service/src/main/java/com/phenom/beans/Beans.java:65", "grounded": true},
+
+    {"id": "store:mongo.AutomationsDB", "kind": "datastore", "tech": "mongodb", "collections": ["RecipeList", "MergedFilters", "filterConfig"], "grounded": true},
+    {"id": "store:postgres.metrics", "kind": "datastore", "tech": "postgres-jpa", "in": "repo:crm-automation-service", "at": "crm-automation-service/src/main/java/com/phenom/dao/jpa/metrics_model", "grounded": true},
+    {"id": "store:redis", "kind": "datastore", "tech": "redis", "grounded": true},
+    {"id": "store:lucene", "kind": "datastore", "tech": "lucene-fs", "path": "/tmp/crm-automation-projected-filter-index", "grounded": true},
+    {"id": "store:elasticsearch", "kind": "datastore", "tech": "elasticsearch", "via": "EsHttpClientWrapper", "grounded": true},
+
+    {"id": "ext:ecampaign", "kind": "external_service", "role": "email/SMS/WhatsApp send + templates", "note": "Messaging area", "grounded": true},
+    {"id": "ext:screening", "kind": "external_service", "role": "initiate screening / ODVA", "note": "Screening area", "grounded": true},
+    {"id": "ext:scheduling", "kind": "external_service", "role": "invite for interview", "note": "Scheduling area", "grounded": true},
+    {"id": "ext:linkedin", "kind": "external_service", "role": "LinkedIn API (resume/interactions sync)", "grounded": true},
+
+    {"id": "lib:phenompeople-crm-common", "kind": "shared_lib", "provides": ["CRMAutomationUtils.raiseAutomationEvent", "TaskQueueConstants", "TemporalClient", "MongoDbUtils"], "grounded": false, "note": "NOT cloned; do not assert internals"}
+  ],
+
+  "edges": [
+    {"from": "repo:crm-automations-ui", "type": "exposes_mfe", "to": "engine:temporal", "note": "remote crmAutomations -> ./automations", "grounded": true},
+    {"from": "comp:ui.recipe-builder", "type": "calls_http", "to": "comp:ui.automations-service", "grounded": true},
+    {"from": "comp:ui.automations-service", "type": "calls_http", "to": "eg:svc.AutomationController", "note": "createRecipe/saveRecipe/search/etc.", "grounded": true},
+    {"from": "comp:ui.template-gallery", "type": "calls_http", "to": "eg:svc.TemplateController", "grounded": true},
+    {"from": "comp:ui.analytics", "type": "calls_http", "to": "eg:svc.AnalyticsController", "grounded": true},
+
+    {"from": "eg:svc.AutomationController", "type": "persists", "to": "store:mongo.AutomationsDB", "note": "RecipeList + MergedFilters", "grounded": true},
+    {"from": "eg:svc.AnalyticsController", "type": "reads", "to": "store:postgres.metrics", "grounded": true},
+
+    {"from": "topic:cp_temporal_automation_online_trigger", "type": "consumes", "to": "comp:search.KafkaConsumer", "grounded": true},
+    {"from": "topic:cp_temporal_automation_trigger", "type": "consumes", "to": "comp:search.KafkaConsumer", "grounded": true},
+    {"from": "comp:search.KafkaConsumer", "type": "calls_http", "to": "comp:search.DataProviderService", "grounded": true},
+    {"from": "comp:search.DataProviderService", "type": "reads", "to": "store:elasticsearch", "grounded": true},
+    {"from": "comp:search.DataProviderService", "type": "reads", "to": "comp:search.Lucene", "note": "projected fields", "grounded": true},
+    {"from": "comp:search.KafkaConsumer", "type": "matches", "to": "comp:search.ValidatorService", "grounded": true},
+    {"from": "comp:search.ValidatorService", "type": "reads", "to": "store:mongo.AutomationsDB", "note": "RecipeList", "grounded": true},
+    {"from": "comp:search.ValidatorService", "type": "persists", "to": "store:redis", "note": "filter result buckets", "grounded": true},
+    {"from": "comp:search.Lucene", "type": "reads", "to": "store:mongo.AutomationsDB", "note": "MergedFilters at build", "grounded": true},
+    {"from": "topic:recipe_delta_changes", "type": "subscribes", "to": "comp:search.PupSubListener", "grounded": true},
+    {"from": "comp:search.PupSubListener", "type": "executes", "to": "comp:search.Lucene", "note": "incremental index update", "grounded": true},
+
+    {"from": "topic:cp_automation_online_trigger", "type": "consumes", "to": "engine:storm", "grounded": true},
+    {"from": "topic:cp_automation_trigger", "type": "consumes", "to": "engine:storm", "grounded": true},
+    {"from": "engine:storm", "type": "produces", "to": "topic:cp_automation_action", "grounded": true},
+    {"from": "topic:cp_automation_action", "type": "consumes", "to": "comp:storm.ActionExecutorBolt", "grounded": true},
+    {"from": "comp:storm.ActionExecutorBolt", "type": "dispatches", "to": "comp:storm.ActionFactory", "grounded": true},
+    {"from": "comp:storm.ActionFactory", "type": "executes", "to": "ext:ecampaign", "note": "SEND_EMAIL/SEND_SMS/CONTACT_CANDIDATE/ADD_TO_CAMPAIGN", "grounded": true},
+    {"from": "comp:storm.ActionFactory", "type": "executes", "to": "ext:screening", "note": "INITIATE_SCREENING/SEND_ODVA", "grounded": true},
+    {"from": "comp:storm.ActionExecutorBolt", "type": "produces", "to": "topic:cp_audit_log", "note": "separate batch cluster", "grounded": true},
+
+    {"from": "topic:cp_automation_external_trigger", "type": "consumes", "to": "comp:svc.AutomationKafkaConsumer", "grounded": true},
+    {"from": "topic:invite_recommendation_trigger", "type": "consumes", "to": "comp:svc.AutomationKafkaConsumer", "grounded": true},
+    {"from": "comp:svc.AutomationKafkaConsumer", "type": "executes", "to": "engine:temporal", "grounded": true},
+    {"from": "engine:temporal", "type": "executes", "to": "ext:screening", "note": "InitiateScreening/SendODVA activities", "grounded": true},
+    {"from": "engine:temporal", "type": "executes", "to": "ext:scheduling", "note": "InviteForInterview activity", "grounded": true},
+
+    {"from": "engine:temporal", "type": "calls_http", "to": "lib:phenompeople-crm-common", "note": "TemporalClient/TaskQueueConstants", "grounded": false},
+    {"from": "comp:search.KafkaConsumer", "type": "calls_http", "to": "lib:phenompeople-crm-common", "note": "MongoDbUtils.getParentRefNum/feature flags", "grounded": false},
+
+    {"from": "topic:cp_automation_notification", "type": "produces", "to": "engine:storm", "note": "notification topic emitted by automation flow", "grounded": true},
+
+    {"from": "repo:crm-workflows", "type": "consumes", "to": "comp:wf.LKConsumer", "note": "crm.projects.actions / crm.candidates.updates / resumes.updates / conversation.actions", "grounded": true},
+    {"from": "comp:wf.LKConsumer", "type": "executes", "to": "comp:wf.UploadResumeActivity", "grounded": true},
+    {"from": "comp:wf.UploadResumeActivity", "type": "calls_http", "to": "ext:linkedin", "grounded": true}
+  ],
+
+  "cross_area_pointers": {
+    "note": "Automation ACTIONS reach into other Phenom areas via downstream calls. Owning logic lives in that area's repos (see ../INDEX.md).",
+    "messaging": ["SEND_EMAIL", "SEND_SMS", "SEND_WHATSAPP", "ADD_TO_CAMPAIGN", "CAMPAIGN_OPT_OUT"],
+    "screening": ["INITIATE_SCREENING", "SEND_ODVA", "FORWARD_VIDEO_ASSESSMENT_TO_HIRING_MANAGER"],
+    "scheduling": ["INVITE_FOR_INTERVIEW"],
+    "analytics": ["AnalyticsController /analytics", "time-saved metrics"]
+  }
+}

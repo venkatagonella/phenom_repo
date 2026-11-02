@@ -1,0 +1,770 @@
+/**
+ * CRM Job Fields settings page styles
+ * Mirrored from cp_ui_app_2.0 job-fields + additional-field-list + settings shell.
+ * Uses DesignSystem PDS tokens where possible.
+ */
+
+:root {
+  --crm-n400: #1f2937;
+  --crm-n300: #4b5563;
+  --crm-n75: #e5e7eb;
+  --crm-gr25: #f7f8fa;
+  --crm-gr50: #f3f4f6;
+  --crm-gr100: #d1d5db;
+  --crm-gr300: #6b7280;
+  --crm-p75: #eeedf9;
+  --crm-p400: #4d3ee0;
+  --crm-p500: #2927b2;
+  --crm-g400: #099250;
+  --crm-white: #ffffff;
+  --crm-topbar: #1c1876;
+  --font: Poppins, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font);
+  color: var(--crm-n400);
+  background: var(--crm-white);
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* Top app bar */
+.crm-topbar {
+  height: 48px;
+  background: var(--crm-topbar);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.crm-topbar .brand {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+.crm-topbar .crumb {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* Settings shell */
+.setting-page-blog {
+  display: flex;
+  min-height: calc(100vh - 48px);
+  background: var(--crm-white);
+}
+
+.setting-menu {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--crm-gr25);
+  border-right: 1px solid var(--crm-n75);
+  overflow-y: auto;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  padding: 10px 0 24px;
+}
+
+.setting-menu-list {
+  padding-left: 30px;
+  padding-right: 12px;
+}
+
+.menu-item-label {
+  margin: 12px 0;
+}
+
+.menu-item-link {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--crm-gr300);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-item-link:hover {
+  color: var(--crm-n400);
+}
+
+.menu-item-link.nav-active-link {
+  color: var(--crm-p400) !important;
+  font-weight: 600;
+}
+
+.setting-data {
+  flex: 1;
+  min-width: 0;
+  background: var(--crm-white);
+}
+
+/* Job fields page */
+#job-fields {
+  background: var(--crm-white);
+  padding-bottom: 80px;
+}
+
+.job-fields-page {
+  min-height: calc(100vh - 112px);
+  padding: 32px 0 0 32px;
+}
+
+.display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-right: 32px;
+}
+
+.display-header .title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--crm-n400);
+}
+
+.list-container {
+  padding-right: 32px;
+  max-width: 1100px;
+}
+
+/* Field list cards */
+.field-list {
+  border-radius: 10px;
+  border: 1px solid var(--crm-n75);
+  background: var(--crm-white);
+  margin-bottom: 32px;
+}
+
+.header-section {
+  padding: 16px 24px;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-lt .header-title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--crm-n400);
+}
+
+.header-lt .header-sub-title {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--crm-n300);
+}
+
+.header-rt {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-field {
+  position: relative;
+}
+
+.search-field input {
+  width: 200px;
+  height: 32px;
+  border: 1px solid var(--crm-n75);
+  border-radius: 6px;
+  padding: 0 12px 0 32px;
+  font-size: 13px;
+  color: var(--crm-n400);
+  background: var(--crm-white);
+}
+
+.search-field input:focus {
+  outline: 2px solid color-mix(in srgb, var(--crm-p400) 35%, white);
+  border-color: var(--crm-p400);
+}
+
+.search-field::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--crm-gr300);
+  border-radius: 50%;
+}
+
+.search-field::after {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 20px;
+  width: 6px;
+  height: 1.5px;
+  background: var(--crm-gr300);
+  transform: rotate(45deg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  height: 36px;
+  padding: 0 14px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-secondary {
+  border-color: var(--crm-n75);
+  color: var(--crm-n400);
+  background: var(--crm-white);
+}
+
+.btn-secondary:hover {
+  background: var(--crm-gr50);
+}
+
+.btn-primary {
+  background: var(--crm-p400);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--crm-p500);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-naked {
+  border: 0;
+  background: transparent;
+  color: var(--crm-p400);
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-naked:hover {
+  color: var(--crm-p500);
+}
+
+.saperator {
+  border-top: 1px solid var(--crm-gr100);
+}
+
+/* Table */
+.data-section .t_row {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  border-bottom: 1px solid var(--crm-n75);
+  padding-left: 24px;
+}
+
+.data-section .t_row:last-child {
+  border-bottom: none;
+}
+
+.data-section .t_row:not(.t_head):not(.view-size-toggle):hover {
+  background: var(--crm-gr50);
+}
+
+.data-section .t_row:not(.t_head):not(.view-size-toggle):hover .field_edit_wrapper {
+  opacity: 1;
+}
+
+.data-section .t_row.t_head {
+  height: 48px;
+}
+
+.data-section .t_head .field_label,
+.data-section .t_head .field_type,
+.data-section .t_head .show_on_filter_label {
+  border-right: 1px solid var(--crm-n75);
+}
+
+.field_label_text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--crm-n400);
+}
+
+.t_head,
+.t_data {
+  display: flex;
+  align-items: center;
+}
+
+.t_head.field_label,
+.t_data.field_label {
+  flex: 6;
+  min-width: 0;
+  margin-right: 24px;
+}
+
+.t_head.field_type,
+.t_data.field_type {
+  flex: 4;
+  margin-right: 24px;
+}
+
+.t_head.show_on_filter_label,
+.t_data.show_on_filter {
+  width: 160px;
+  justify-content: center;
+  margin-right: 56px;
+  text-align: center;
+}
+
+.t_head.field_status,
+.t_data.field_status_value {
+  width: 96px;
+  margin-right: 24px;
+}
+
+.t_data.field_edit,
+.t_head.field_edit {
+  width: 72px;
+  justify-content: flex-end;
+  margin-right: 16px;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--crm-n300);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-type {
+  font-size: 14px;
+  color: var(--crm-n400);
+  text-transform: capitalize;
+}
+
+.visibility {
+  color: var(--crm-g400);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.field_edit_wrapper {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--crm-n300);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  background: transparent;
+  color: var(--crm-n400);
+}
+
+/* Toggle */
+.toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  display: inline-block;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle .slider {
+  position: absolute;
+  inset: 0;
+  background: #c5c7d0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle .slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  top: 2px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.toggle input:checked + .slider {
+  background: var(--crm-p400);
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.toggle input:disabled + .slider {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.view-size-toggle {
+  height: 64px !important;
+  padding: 16px 0 24px 24px !important;
+}
+
+/* Highlight newly added scheduler fields */
+.t_row.is-new {
+  background: color-mix(in srgb, var(--crm-p75) 65%, white);
+}
+
+.t_row.is-new .item-name {
+  color: var(--crm-p500);
+  font-weight: 600;
+}
+
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--crm-p75);
+  color: var(--crm-p400);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Footer */
+footer.crm-footer {
+  height: 64px;
+  position: fixed;
+  left: 260px;
+  right: 0;
+  bottom: 0;
+  background: var(--crm-white);
+  box-shadow: 0 -4px 16px rgba(17, 24, 39, 0.08);
+  z-index: 15;
+}
+
+footer.crm-footer .action-bar {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 32px;
+}
+
+.row-hidden {
+  display: none !important;
+}
+
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--crm-gr300);
+  font-size: 14px;
+}
+
+@media (max-width: 1100px) {
+  .setting-menu {
+    width: 220px;
+  }
+
+  footer.crm-footer {
+    left: 220px;
+  }
+}
+
+/* ——— Edit System Field modal ——— */
+body.sf-modal-open {
+  overflow: hidden;
+}
+
+.sf-modal[hidden] {
+  display: none !important;
+}
+
+.sf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.sf-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.45);
+}
+
+.sf-modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: min(640px, calc(100vh - 48px));
+  background: var(--crm-white);
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(17, 24, 39, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sf-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--crm-n75);
+  flex-shrink: 0;
+}
+
+.sf-modal__title {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--crm-n400);
+}
+
+.sf-modal__close {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--crm-gr300);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sf-modal__close:hover {
+  color: var(--crm-n400);
+  background: var(--crm-gr50);
+}
+
+.sf-modal__body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.sf-field {
+  margin-bottom: 18px;
+}
+
+.sf-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--crm-n400);
+  margin-bottom: 8px;
+}
+
+.sf-required {
+  color: #e11d48;
+  margin-left: 2px;
+}
+
+.sf-control {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--crm-n75);
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: var(--crm-n400);
+  background: var(--crm-white);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sf-control:focus {
+  outline: 2px solid color-mix(in srgb, var(--crm-p400) 35%, white);
+  border-color: var(--crm-p400);
+}
+
+.sf-control--readonly,
+.sf-control:disabled {
+  background: var(--crm-gr50);
+  color: var(--crm-n300);
+  cursor: default;
+}
+
+.sf-select-wrap {
+  position: relative;
+}
+
+.sf-select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--crm-gr300);
+  border-bottom: 1.5px solid var(--crm-gr300);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.sf-select-wrap .sf-control {
+  padding-right: 36px;
+}
+
+.sf-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+  padding-bottom: 8px;
+}
+
+.sf-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--crm-n400);
+  cursor: pointer;
+  user-select: none;
+}
+
+.sf-check input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--crm-gr100);
+  border-radius: 3px;
+  background: var(--crm-white);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.sf-check input:checked {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.sf-check input:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.sf-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--crm-n75);
+  flex-shrink: 0;
+}
+
+.sf-modal__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sf-link-btn,
+.sf-text-btn {
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--crm-n400);
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.sf-link-btn:hover,
+.sf-text-btn:hover {
+  background: var(--crm-gr50);
+}
+
+.sf-primary-btn {
+  border: 0;
+  background: #0f766e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.sf-primary-btn:hover {
+  background: #0d6861;
+}
+

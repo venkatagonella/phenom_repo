@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support Recruiter — Phenom role requirements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../DesignSystem/styles/pds-tokens.css" />
+    <link rel="stylesheet" href="../DesignSystem/styles/pds-utilities.css" />
+    <style>
+      .pds-shell {
+        grid-template-columns: 220px 1fr;
+      }
+
+      .pds-sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: auto;
+      }
+
+      .pds-main {
+        max-width: 1180px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0 0 1.25rem;
+      }
+
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .kpi {
+        background: var(--pds-surface);
+        border: 1px solid var(--pds-border);
+        border-radius: var(--pds-radius-md);
+        padding: 0.9rem 1rem;
+      }
+
+      .kpi strong {
+        display: block;
+        font-size: 1.35rem;
+        letter-spacing: -0.02em;
+        color: var(--pds-brand);
+      }
+
+      .kpi span {
+        color: var(--pds-text-muted);
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      .section-h {
+        margin: 2rem 0 0.35rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .section-lead {
+        margin: 0 0 1rem;
+        color: var(--pds-text-muted);
+        font-size: 0.875rem;
+        max-width: 52rem;
+      }
+
+      .role-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .role-card h3 {
+        margin: 0.55rem 0 0.35rem;
+        font-size: 1rem;
+      }
+
+      .role-card p {
+        margin: 0;
+        color: var(--pds-text-muted);
+        font-size: 0.875rem;
+      }
+
+      .role-card ul {
+        margin: 0.65rem 0 0;
+        padding-left: 1.1rem;
+        font-size: 0.8125rem;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .chip {
+        border: 1px solid var(--pds-border);
+        background: var(--pds-surface);
+        color: var(--pds-text);
+        border-radius: 999px;
+        font: inherit;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.35rem 0.7rem;
+        cursor: pointer;
+      }
+
+      .chip[aria-pressed="true"] {
+        background: var(--bg-brand-primary-subtle, #eeedf9);
+        color: var(--pds-brand);
+        border-color: transparent;
+      }
+
+      .req {
+        background: var(--pds-surface);
+        border: 1px solid var(--pds-border);
+        border-radius: var(--pds-radius-md);
+        padding: 0.9rem 1rem 1rem;
+        margin-bottom: 0.65rem;
+      }
+
+      .req-top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        align-items: center;
+        margin-bottom: 0.45rem;
+      }
+
+      .req-id {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--pds-brand);
+      }
+
+      .req h3 {
+        margin: 0 0 0.35rem;
+        font-size: 0.95rem;
+      }
+
+      .req p {
+        margin: 0;
+        font-size: 0.875rem;
+      }
+
+      .accept {
+        margin-top: 0.55rem;
+        font-size: 0.8125rem;
+        color: var(--pds-text-muted);
+      }
+
+      .tag-new {
+        background: color-mix(in srgb, var(--pds-success) 16%, white);
+        color: var(--pds-success);
+      }
+
+      .tag-existing {
+        background: var(--pds-surface-muted);
+        color: var(--pds-text-muted);
+      }
+
+      .tag-surface {
+        background: color-mix(in srgb, var(--pds-warning) 16%, white);
+        color: #92400e;
+      }
+
+      .callout {
+        border-left: 3px solid var(--pds-brand);
+        background: var(--pds-surface);
+        border-radius: 0 var(--pds-radius-md) var(--pds-radius-md) 0;
+        padding: 0.85rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+      }
+
+      .build {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 0.75rem 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--pds-border);
+      }
+
+      .build:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .build h3 {
+        margin: 0.35rem 0 0.25rem;
+        font-size: 0.95rem;
+      }
+
+      .build p,
+      .build li {
+        font-size: 0.875rem;
+      }
+
+      .build ul {
+        margin: 0.35rem 0 0;
+        padding-left: 1.1rem;
+      }
+
+      .muted {
+        color: var(--pds-text-muted);
+        font-size: 0.75rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .kpis,
+        .role-grid,
+        .build {
+          grid-template-columns: 1fr;
+        }
+
+        .pds-sidebar {
+          position: static;
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="pds-page">
+    <div class="pds-shell">
+      <aside class="pds-sidebar">
+        <p class="pds-brand">Phenom</p>
+        <nav class="pds-nav" aria-label="On this page">
+          <a href="#overview" aria-current="page">Overview</a>
+          <a href="#roles">Roles</a>
+          <a href="#requirements">What each role can do</a>
+          <a href="#build">Product areas to build</a>
+          <a href="#rules">One rule for everyone</a>
+        </nav>
+      </aside>
+
+      <main class="pds-main">
+        <p class="muted">From the 25 Mar 2026 solution design · CUSP-391 · ASRM-1477 · ASRM-1570</p>
+        <h1 class="pds-h1">Support Recruiter role</h1>
+        <p class="pds-lead">
+          A Support Recruiter steps in for the Main Recruiter on short notice, or works the same job with them.
+          They can do the same work on that job and its candidates. Their home screen and their messages stay their own.
+        </p>
+
+        <div class="meta-row">
+          <span class="pds-tag tag-new">Create: Support Recruiter</span>
+          <span class="pds-tag tag-existing">Keep distinct: Main Recruiter</span>
+          <span class="pds-tag tag-existing">Keep distinct: Interviewer</span>
+          <span class="pds-tag tag-existing">Keep distinct: Hiring Manager</span>
+        </div>
+
+        <section id="overview">
+          <div class="kpis">
+            <div class="kpi"><strong>1</strong><span>New role to create</span></div>
+            <div class="kpi"><strong>3</strong><span>Existing roles that must stay separate</span></div>
+            <div class="kpi"><strong>18</strong><span>Role requirements</span></div>
+            <div class="kpi"><strong>8</strong><span>Product areas to change</span></div>
+          </div>
+          <div class="callout">
+            <strong>In short.</strong>
+            Same access to the job and the candidates. Different default view. Different messages.
+            Jobs they only support stay off their home screen until they open the support tab or turn on a filter.
+          </div>
+        </section>
+
+        <h2 class="section-h" id="roles">Roles</h2>
+        <p class="section-lead">
+          Phenom creates one new role. The other three already exist. They have to stay separate, or support jobs will show up in the wrong lists.
+        </p>
+        <div class="role-grid">
+          <article class="pds-card role-card">
+            <span class="pds-tag tag-new">New role</span>
+            <h3>Support Recruiter</h3>
+            <p>Added on a job to cover for the Main Recruiter, or to work that job with them.</p>
+            <ul>
+              <li>Can do the same tasks on that job and its candidates.</li>
+              <li>Chooses their own messages for those jobs.</li>
+              <li>Those jobs stay off My Jobs, My open jobs, campaigns, leads, and the default meeting list until they ask to see them.</li>
+            </ul>
+          </article>
+          <article class="pds-card role-card">
+            <span class="pds-tag tag-existing">Already exists</span>
+            <h3>Main Recruiter</h3>
+            <p>The recruiter who owns the job. Today this is the person assigned to the job. Phenom needs to store it as its own role name.</p>
+            <ul>
+              <li>Home screen, My open jobs, and meetings they set up stay tied to this role.</li>
+              <li>Their message settings stay separate from their support-job settings.</li>
+            </ul>
+          </article>
+          <article class="pds-card role-card">
+            <span class="pds-tag tag-existing">Already exists</span>
+            <h3>Interviewer</h3>
+            <p>Someone on a meeting. This is not a job role. Sitting on an interview does not make them a Support Recruiter.</p>
+            <ul>
+              <li>They still see meetings where they are the interviewer.</li>
+              <li>That job does not land in My open jobs or in their support jobs.</li>
+            </ul>
+          </article>
+          <article class="pds-card role-card">
+            <span class="pds-tag tag-existing">Already exists</span>
+            <h3>Hiring Manager</h3>
+            <p>Sends screening feedback. They stay a Hiring Manager. They do not become a recruiter.</p>
+            <ul>
+              <li>When they submit a screening evaluation, the Support Recruiter can choose to be told.</li>
+              <li>Their feedback sits on the job, where both recruiters can read it without tagging anyone.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h2 class="section-h" id="requirements">What each role can do</h2>
+        <p class="section-lead">
+          Use the buttons to read one role at a time.
+        </p>
+        <div class="filters" role="toolbar" aria-label="Filter requirements by role">
+          <button class="chip" type="button" aria-pressed="true" data-filter="all">All roles</button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="support">Support Recruiter</button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="main">Main Recruiter</button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="interviewer">Interviewer</button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="hm">Hiring Manager</button>
+        </div>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-01</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Hiring team</span>
+          </div>
+          <h3>Put the role on the job</h3>
+          <p>A job can have a Main Recruiter and one or more Support Recruiters. The same person can be Main Recruiter on one job and Support Recruiter on another. Interviewer and Hiring Manager stay different roles.</p>
+          <p class="accept">Jobs, search, messages, and meetings can all tell which role the person has on that job.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-02</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Job and candidate tasks</span>
+          </div>
+          <h3>Do the same work on the jobs they support</h3>
+          <p>On a job where they are Support Recruiter, they can do every task the Main Recruiter can do, for the job and its candidates. This covers a short-notice cover and working the job together.</p>
+          <p class="accept">They cannot do those tasks on jobs where they are neither role.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-03</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Notifications</span>
+          </div>
+          <h3>Choose messages for support jobs separately</h3>
+          <p>In Notifications, they get a second set of choices for jobs where they are the Support Recruiter. This sits next to the choices for their Main Recruiter jobs. Each message can be turned on for the CRM bell, for email (Outlook), or for both.</p>
+          <p class="accept">Changing support-job choices does not change main-job choices. A support job only sends the messages they turned on.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-04</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Notifications</span>
+          </div>
+          <h3>Every message can be switched on, including screening feedback</h3>
+          <p>The support list includes every message type, including ones that today only exist for the person assigned to the job. When a Hiring Manager submits a screening evaluation, that message is one of them.</p>
+          <p class="accept">They can turn this on even if they are not the job assignee. The same applies in Notifications, Following Triggers, and Scheduling Notifications.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-05</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Dashboard</span>
+          </div>
+          <h3>The home screen starts with their own work</h3>
+          <p>Overview, My Jobs, Discover new leads, My Email Campaigns, and My SMS campaigns show work where they are the Main Recruiter, or items they created. Jobs they only support are left out.</p>
+          <p class="accept">Counts such as My Open Jobs, My Leads, and My Applicants do not go up because of a support job.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-06</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Dashboard</span>
+          </div>
+          <h3>They can choose to see a colleague’s work</h3>
+          <p>They can filter Overview, My Jobs, Discover new leads, and the campaign widgets to include colleagues on the same jobs.</p>
+          <p class="accept">The filter starts off. Turning it on does not change what they see the next time they sign in.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-07</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Meetings</span>
+          </div>
+          <h3>My meetings stays small</h3>
+          <p>My meetings shows meetings they set up as Main Recruiter, and meetings where they are an Interviewer. Meetings on a job they only support stay off this list.</p>
+          <p class="accept">Those support-job meetings also stay out of My pending, My upcoming, and My completed.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-08</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Meetings</span>
+          </div>
+          <h3>A second tab for support-job meetings</h3>
+          <p>A second tab lists meetings for jobs where they are the Support Recruiter.</p>
+          <p class="accept">Pending, upcoming, and completed still work inside that tab. The two tabs stay separate.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-09</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Spotlight</span>
+          </div>
+          <h3>Find support jobs by the Main Recruiter’s email</h3>
+          <p>In Spotlight, they can pick one or more Main Recruiter email addresses. Phenom shows jobs where those people are the Main Recruiter and they are the Support Recruiter.</p>
+          <p class="accept">Clearing the filter brings back their own default list.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-10</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Jobs</span>
+          </div>
+          <h3>Two job lists</h3>
+          <p>My open jobs shows only jobs where they are the Main Recruiter. A second tab shows jobs where they are the Support Recruiter.</p>
+          <p class="accept">A job is never in both tabs for the same person. Open Jobs, All Jobs, and My Requisitions stay as they are.</p>
+        </article>
+
+        <article class="req" data-role="support">
+          <div class="req-top">
+            <span class="req-id">SR-11</span>
+            <span class="pds-tag tag-new">Support Recruiter</span>
+            <span class="pds-tag tag-surface">Job notes</span>
+          </div>
+          <h3>Read job notes without being tagged</h3>
+          <p>On a job they support, they see the job notes, including Hiring Manager feedback and notes from the Main Recruiter. Nobody has to tag them.</p>
+          <p class="accept">A new Support Recruiter sees the notes already on the job. Those notes do not appear on the candidate profile.</p>
+        </article>
+
+        <article class="req" data-role="main">
+          <div class="req-top">
+            <span class="req-id">MR-01</span>
+            <span class="pds-tag">Main Recruiter</span>
+            <span class="pds-tag tag-surface">Dashboard and jobs</span>
+          </div>
+          <h3>Their home screen stays their own jobs</h3>
+          <p>Overview, My Jobs, Discover new leads, both campaign widgets, and My open jobs show jobs they own or items they created. Jobs where they are only the Support Recruiter stay out.</p>
+          <p class="accept">Helping on a colleague’s job does not increase My open jobs or the home-screen counts.</p>
+        </article>
+
+        <article class="req" data-role="main">
+          <div class="req-top">
+            <span class="req-id">MR-02</span>
+            <span class="pds-tag">Main Recruiter</span>
+            <span class="pds-tag tag-surface">Notifications</span>
+          </div>
+          <h3>Their message settings stay separate</h3>
+          <p>Choices for jobs they own do not change when they change choices for jobs they support.</p>
+          <p class="accept">Turning a support message off still sends that message for a job they own, if that switch is on.</p>
+        </article>
+
+        <article class="req" data-role="main">
+          <div class="req-top">
+            <span class="req-id">MR-03</span>
+            <span class="pds-tag">Main Recruiter</span>
+            <span class="pds-tag tag-surface">Meetings</span>
+          </div>
+          <h3>Meetings they set up stay in My meetings</h3>
+          <p>If they booked the meeting as Main Recruiter, it stays on My meetings. Meetings where they are an Interviewer stay there too.</p>
+          <p class="accept">Adding the support meetings tab does not move these meetings.</p>
+        </article>
+
+        <article class="req" data-role="main">
+          <div class="req-top">
+            <span class="req-id">MR-04</span>
+            <span class="pds-tag">Main Recruiter</span>
+            <span class="pds-tag tag-surface">Job notes</span>
+          </div>
+          <h3>Share feedback on the job</h3>
+          <p>Notes they write in the job notes are visible to every Main Recruiter and Support Recruiter on that job. They do not need to tag anyone. The notes stay off the candidate profile.</p>
+          <p class="accept">Someone who is not a Main or Support Recruiter on that job cannot read them.</p>
+        </article>
+
+        <article class="req" data-role="interviewer">
+          <div class="req-top">
+            <span class="req-id">INT-01</span>
+            <span class="pds-tag">Interviewer</span>
+            <span class="pds-tag tag-surface">Meetings</span>
+          </div>
+          <h3>They still see their own interviews</h3>
+          <p>If they are an interviewer on a meeting, that meeting shows in My meetings. This is true even when they are not the Main or Support Recruiter on the job.</p>
+          <p class="accept">They see that one meeting. They do not see the other meetings on that job.</p>
+        </article>
+
+        <article class="req" data-role="interviewer">
+          <div class="req-top">
+            <span class="req-id">INT-02</span>
+            <span class="pds-tag">Interviewer</span>
+            <span class="pds-tag tag-surface">Access</span>
+          </div>
+          <h3>An interview is not a job assignment</h3>
+          <p>Being an interviewer does not add the job to My open jobs or the support jobs tab. It does not turn on support messages, and it does not give them the recruiter’s tasks on that job.</p>
+          <p class="accept">They can join their interview. They cannot run the job.</p>
+        </article>
+
+        <article class="req" data-role="hm">
+          <div class="req-top">
+            <span class="req-id">HM-01</span>
+            <span class="pds-tag">Hiring Manager</span>
+            <span class="pds-tag tag-surface">Notifications</span>
+          </div>
+          <h3>Their screening evaluation can alert the Support Recruiter</h3>
+          <p>When they submit a screening evaluation, the Main Recruiter can be told, and each Support Recruiter can be told separately, in the CRM and by email.</p>
+          <p class="accept">A Support Recruiter who turned the message off does not get it, even if they can open the job.</p>
+        </article>
+
+        <article class="req" data-role="hm">
+          <div class="req-top">
+            <span class="req-id">HM-02</span>
+            <span class="pds-tag">Hiring Manager</span>
+            <span class="pds-tag tag-surface">Job notes</span>
+          </div>
+          <h3>Their feedback stays on the job</h3>
+          <p>Feedback they give is stored in the job notes. Every Main Recruiter and Support Recruiter on that job can read it. Nobody has to be tagged.</p>
+          <p class="accept">The same feedback does not show in the candidate’s general notes.</p>
+        </article>
+
+        <article class="req" data-role="hm">
+          <div class="req-top">
+            <span class="req-id">HM-03</span>
+            <span class="pds-tag">Hiring Manager</span>
+            <span class="pds-tag tag-surface">Access</span>
+          </div>
+          <h3>They stay a Hiring Manager</h3>
+          <p>Being the Hiring Manager does not make them a Main Recruiter or a Support Recruiter. Their screens stay the hiring-manager screens.</p>
+          <p class="accept">They do not get the recruiter job tabs, the recruiter home screen, or the support message settings.</p>
+        </article>
+
+        <h2 class="section-h" id="build">Product areas to build</h2>
+        <p class="section-lead">
+          Eight product areas need development. Today, anyone on the hiring team can be treated as “on the job.”
+          That is not enough. Phenom has to know who is the Main Recruiter and who is the Support Recruiter, and use that in each area below.
+        </p>
+
+        <div class="pds-table-wrap">
+          <table class="pds-table">
+            <thead>
+              <tr>
+                <th>Product area</th>
+                <th>What to develop</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Access and roles</td>
+                <td>A Support Recruiter role on the job, stored separately from Main Recruiter, Interviewer, and Hiring Manager.</td>
+              </tr>
+              <tr>
+                <td>Jobs</td>
+                <td>The same job and candidate tasks for the Support Recruiter. My open jobs for main jobs only. A new tab for support jobs.</td>
+              </tr>
+              <tr>
+                <td>Recruiter dashboard</td>
+                <td>Overview, My Jobs, and Discover new leads start with the user’s own main-recruiter work. A filter can add colleagues on the same jobs.</td>
+              </tr>
+              <tr>
+                <td>Campaigns</td>
+                <td>My Email Campaigns and My SMS Campaigns show campaigns the user created. Support jobs do not add campaigns unless the filter is on.</td>
+              </tr>
+              <tr>
+                <td>Notifications</td>
+                <td>A second set of CRM and email choices for support jobs, including every message type and Hiring Manager screening evaluations.</td>
+              </tr>
+              <tr>
+                <td>Meetings</td>
+                <td>My meetings for meetings they set up and interviews they sit on. A second tab for support-job meetings. Show only candidates they are allowed to see.</td>
+              </tr>
+              <tr>
+                <td>Spotlight</td>
+                <td>A filter to pick Main Recruiter emails and see the jobs where the user is the Support Recruiter.</td>
+              </tr>
+              <tr>
+                <td>Notes</td>
+                <td>Notes that belong to the job. Main and Support Recruiters can read and write them, including Hiring Manager feedback, without tagging. They stay off the candidate profile.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <section class="pds-card" style="margin-top: 1rem">
+          <article class="build">
+            <div>
+              <span class="req-id">1</span>
+              <h3>Access and roles</h3>
+              <p class="muted">Who is on the job</p>
+            </div>
+            <div>
+              <p>Add Support Recruiter as a role on the hiring team. Keep Main Recruiter as its own role, not just “assigned to the job.” Leave Interviewer on the meeting and Hiring Manager as they are.</p>
+              <ul>
+                <li>A person can hold different roles on different jobs.</li>
+                <li>“My” lists use Main Recruiter. Support lists use Support Recruiter.</li>
+                <li>Being an Interviewer or a Hiring Manager does not fill either list.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">2</span>
+              <h3>Jobs</h3>
+              <p class="muted">Job list and job work</p>
+            </div>
+            <div>
+              <p>On a support job, the Support Recruiter can do the same work as the Main Recruiter. The job list itself stays split.</p>
+              <ul>
+                <li>My open jobs = jobs where I am the Main Recruiter.</li>
+                <li>New tab = jobs where I am the Support Recruiter.</li>
+                <li>Open Jobs, All Jobs, and My Requisitions stay as they are.</li>
+                <li>The My open jobs count matches the home screen.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">3</span>
+              <h3>Recruiter dashboard</h3>
+              <p class="muted">Home screen</p>
+            </div>
+            <div>
+              <p>Overview, My Jobs, and Discover new leads open on work the user owns as Main Recruiter. Add a filter for colleagues who work the same jobs. The filter starts off.</p>
+              <ul>
+                <li>Covers the Overview cards, including My Open Jobs, My Leads, and My Applicants.</li>
+                <li>A support-only job does not change those numbers until the filter is turned on.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">4</span>
+              <h3>Campaigns</h3>
+              <p class="muted">Email and SMS</p>
+            </div>
+            <div>
+              <p>My Email Campaigns and My SMS Campaigns show campaigns the user created. Campaigns on a job they only support stay hidden until they use the same colleague filter as the dashboard.</p>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">5</span>
+              <h3>Notifications</h3>
+              <p class="muted">CRM alerts and Outlook email</p>
+            </div>
+            <div>
+              <p>Next to today’s message settings, add a second set for jobs where the user is the Support Recruiter. Each message can be on or off for the CRM and for email.</p>
+              <ul>
+                <li>Cover Notifications, Following Triggers, and Scheduling Notifications.</li>
+                <li>Include messages that today only go to the job assignee.</li>
+                <li>Include “screening evaluation submitted” when a Hiring Manager sends it. Screening has to raise that event for the Support Recruiter, not only for the assignee.</li>
+                <li>Main-job choices and support-job choices save separately.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">6</span>
+              <h3>Meetings</h3>
+              <p class="muted">Interview schedule</p>
+            </div>
+            <div>
+              <p>Keep My meetings for meetings the user set up as Main Recruiter, plus meetings where they are an Interviewer. Add a second tab for meetings on support jobs. Pending, upcoming, and completed stay inside each tab.</p>
+              <ul>
+                <li>Do not put every meeting in one list.</li>
+                <li>In both tabs, show a candidate only if that person is allowed to see them.</li>
+                <li>Fix the open bug where meetings ignore candidate visibility. Do this before the support tab goes live.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">7</span>
+              <h3>Spotlight</h3>
+              <p class="muted">Saved views</p>
+            </div>
+            <div>
+              <p>On customize view, add a multi-select of Main Recruiter email addresses. The result is jobs where those people are the Main Recruiter and the signed-in user is the Support Recruiter.</p>
+            </div>
+          </article>
+          <article class="build">
+            <div>
+              <span class="req-id">8</span>
+              <h3>Notes</h3>
+              <p class="muted">Feedback on the job</p>
+            </div>
+            <div>
+              <p>Add a notes type that belongs to the job. Main Recruiters and Support Recruiters on that job can read and write it, including Hiring Manager feedback. They do not tag each other.</p>
+              <ul>
+                <li>A new Support Recruiter sees notes that are already there.</li>
+                <li>Someone removed from the job loses access.</li>
+                <li>These notes do not show on the candidate profile.</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <h2 class="section-h" id="rules">One rule for everyone</h2>
+        <div class="pds-card">
+          <h3 class="pds-card-title">People only see what they need</h3>
+          <p>
+            Example. Alex is Main Recruiter on job A, Support Recruiter on job B, and Interviewer on one meeting for job C.
+          </p>
+          <ul>
+            <li>Job A is in My open jobs.</li>
+            <li>Job B is only on the support jobs tab.</li>
+            <li>My meetings shows meetings Alex set up, plus the one interview on job C.</li>
+            <li>The rest of job B’s meetings are only on the support meetings tab.</li>
+            <li>Job C does not become Alex’s job.</li>
+          </ul>
+        </div>
+
+        <p class="muted" style="margin-top: 1.25rem">
+          Source: 2026_03_25 Solution Design Requirements_Support Recruiter Role. Product areas are the CRM screens in that document: Access and roles, Jobs, Recruiter dashboard, Campaigns, Notifications, Meetings, Spotlight, and Notes. Screening is included under Notifications, because the Hiring Manager evaluation has to be a message the Support Recruiter can turn on.
+        </p>
+      </main>
+    </div>
+    <script>
+      const chips = document.querySelectorAll(".chip");
+      const reqs = document.querySelectorAll(".req");
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          chips.forEach((c) => c.setAttribute("aria-pressed", "false"));
+          chip.setAttribute("aria-pressed", "true");
+          const filter = chip.dataset.filter;
+          reqs.forEach((req) => {
+            const show = filter === "all" || req.dataset.role === filter;
+            req.classList.toggle("hidden", !show);
+          });
+        });
+      });
+
+      const links = document.querySelectorAll(".pds-nav a");
+      const sections = [...links].map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+      const mark = () => {
+        let current = sections[0];
+        sections.forEach((section) => {
+          if (section.getBoundingClientRect().top < 120) current = section;
+        });
+        links.forEach((a) => {
+          a.removeAttribute("aria-current");
+          if (current && a.getAttribute("href") === "#" + current.id) a.setAttribute("aria-current", "page");
+        });
+      };
+      document.addEventListener("scroll", mark, { passive: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jobs — Real-time CRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/pds-tokens.css" />
+    <link rel="stylesheet" href="../../styles/jobs-dashboard.css" />
+  </head>
+  <body>
+    <header class="jobs-topbar">
+      <div class="jobs-topbar__brand">Phenom CRM</div>
+      <div class="jobs-topbar__crumb">Dashboard / Jobs</div>
+    </header>
+
+    <div class="jobs-shell">
+      <!--
+        PDS SidebarNavigation — Expanded (+ CRM example nav data)
+        https://pds.phenom.com/angular/index.html?path=/story/navigation-sidebarnavigation--expanded
+        https://pds.phenom.com/angular/index.html?path=/story/navigation-sidebarnavigation-examples-crm--expanded-crm
+        Widths: collapsed 56px / expanded 256px; expand control at bottom.
+      -->
+      <nav
+        class="px-sidebar-navigation-wrapper px-sidebar-navigation-expanded"
+        id="sidebar-nav"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <ul class="px-sidebar-navigation-menu" role="menu">
+          <!-- crmNavigationData.sections from CRM.stories.ts -->
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="dashboard" title="Dashboard overview and analytics">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5z"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Dashboard</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="ai-assistant" title="AI-powered assistant and recommendations">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+                <span class="px-sidebar-menu-item-label">AI assistant</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item is-active" href="#" role="menuitem" aria-current="page" data-nav-id="jobs" title="Job postings and requisitions">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Jobs</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="projects" title="Project management and tracking">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6h7M6 8.5v7M18 8.5v7M8.5 18h7"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Projects</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="candidates" title="Candidate database and profiles">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Candidates</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="employees" title="Employee directory and management">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.8-5 6-5s6 2 6 5"/><path d="M15.5 20c.3-1.6 1.7-2.8 3.5-2.8 1.1 0 2.1.4 2.8 1.1"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Employees</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="scheduling" title="Interview and meeting scheduling">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Scheduling</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="lists" title="Custom lists and segments">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Lists</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="campaigns" title="Marketing and recruitment campaigns">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11v2a2 2 0 0 0 2 2h1l4 4V5L6 9H5a2 2 0 0 0-2 2zM16 9a3 3 0 0 1 0 6M18.5 7a5.5 5.5 0 0 1 0 10"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Campaigns</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="inbox" title="Messages and communications">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 5 8-5"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Inbox</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="events" title="Events and career fairs">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Events</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="talent-community" title="Talent pool and community management">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M2.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M14.5 20c.4-1.8 2-3 3.8-3 1.3 0 2.4.5 3.2 1.3"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Talent Community</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-divider-wrapper" aria-hidden="true">
+            <hr class="px-sidebar-navigation-divider" />
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="automations" title="Workflow automation and rules">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Automations</span>
+              </div>
+            </a>
+          </li>
+          <li class="px-sidebar-navigation-menu-item-wrapper" role="none">
+            <a class="px-sidebar-menu-item" href="#" role="menuitem" data-nav-id="privacy" title="Data privacy and compliance settings">
+              <div class="px-sidebar-menu-item-content level-main">
+                <div class="px-sidebar-menu-item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.2 7 9.5 4-1.3 7-5 7-9.5V6l-7-3z"/></svg></div>
+                <span class="px-sidebar-menu-item-label">Privacy</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <button
+          type="button"
+          class="px-sidebar-navigation-expand-container px-sidebar-navigation-expand-state-expand"
+          id="sidebar-toggle"
+          aria-controls="sidebar-nav"
+          aria-expanded="true"
+          aria-label="Collapse Menu"
+        >
+          <div class="px-sidebar-navigation-expand-icon-container">
+            <span class="px-sidebar-navigation-expand-icon" aria-hidden="true">
+              <!-- faArrowRightToLine approximation -->
+              <svg viewBox="0 0 24 24"><path d="M4 4v16M10 12h10M16 8l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </button>
+      </nav>
+
+      <main class="job-page">
+        <div class="job-list-page-header">
+          <div class="page-title">Jobs</div>
+          <div class="actions-bar">
+            <div class="internal-search-div">
+              <input
+                type="search"
+                id="jobs-search"
+                placeholder="Search Jobs"
+                aria-label="Search Jobs"
+              />
+            </div>
+            <button class="pp-ds-button pp-ds-button--secondary" type="button">Filters</button>
+            <div class="pp-ds-action-bar-devider" aria-hidden="true"></div>
+            <button class="pp-ds-button pp-ds-button--primary" type="button">+ Create Job</button>
+            <button class="pp-ds-only-icon-button" type="button" title="More Actions" aria-label="More Actions">⋯</button>
+          </div>
+        </div>
+
+        <div class="spotlight-nav">
+          <div class="spotlight-list" role="tablist" aria-label="Job spotlights">
+            <button class="spotlight-chip is-active" type="button" data-spotlight="all">All Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="open">Open Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="my-open">My Open Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="my">My Jobs</button>
+            <button class="spotlight-chip" type="button" data-spotlight="recent">Recent Jobs</button>
+          </div>
+        </div>
+
+        <div class="data-list-cntr">
+          <div class="data-header-cntr" role="row">
+            <div>Job Title</div>
+            <div>Hiring Team</div>
+            <div>Days Open</div>
+            <div>Job Code</div>
+            <div>Job Status</div>
+            <div>Leads</div>
+            <div>Applicants</div>
+            <div>Created Date</div>
+            <div>Job Category</div>
+            <div>Job Id</div>
+          </div>
+
+          <div class="data-row" data-row data-name="senior software engineer" data-status="open" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Senior Software Engineer</span>
+              <span class="job-title-block__meta">Hyderabad, IN · JOB-10482</span>
+            </div>
+            <div>A. Sharma, R. Mehta</div>
+            <div><span class="setting-days green">12</span></div>
+            <div>ENG-SSE</div>
+            <div><span class="job-status">Open</span></div>
+            <div>48</div>
+            <div>19</div>
+            <div>2026-07-28</div>
+            <div>Engineering</div>
+            <div>JOB-10482</div>
+          </div>
+
+          <div class="data-row" data-row data-name="product designer" data-status="open" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Product Designer</span>
+              <span class="job-title-block__meta">Bengaluru, IN · JOB-10455</span>
+            </div>
+            <div>N. Patel</div>
+            <div><span class="setting-days yellow">28</span></div>
+            <div>DES-PD</div>
+            <div><span class="job-status">Open</span></div>
+            <div>33</div>
+            <div>11</div>
+            <div>2026-07-12</div>
+            <div>Design</div>
+            <div>JOB-10455</div>
+          </div>
+
+          <div class="data-row" data-row data-name="talent acquisition specialist" data-status="draft" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Talent Acquisition Specialist</span>
+              <span class="job-title-block__meta">Remote · JOB-10390</span>
+            </div>
+            <div>J. Chen</div>
+            <div>—</div>
+            <div>TA-SPEC</div>
+            <div><span class="job-status is-draft">Draft</span></div>
+            <div>0</div>
+            <div>0</div>
+            <div>2026-08-05</div>
+            <div>Human Resources</div>
+            <div>JOB-10390</div>
+          </div>
+
+          <div class="data-row" data-row data-name="frontend engineer" data-status="closed" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Frontend Engineer</span>
+              <span class="job-title-block__meta">Pune, IN · JOB-10312</span>
+            </div>
+            <div>K. Iyer, M. Das</div>
+            <div><span class="setting-days red">61</span></div>
+            <div>ENG-FE</div>
+            <div><span class="job-status is-closed">Closed</span></div>
+            <div>72</div>
+            <div>41</div>
+            <div>2026-05-20</div>
+            <div>Engineering</div>
+            <div>JOB-10312</div>
+          </div>
+
+          <div class="data-row" data-row data-name="customer success manager" data-status="open" role="row">
+            <div class="job-title-block">
+              <span class="job-title-block__name">Customer Success Manager</span>
+              <span class="job-title-block__meta">Mumbai, IN · JOB-10288</span>
+            </div>
+            <div>S. Rao</div>
+            <div><span class="setting-days green">7</span></div>
+            <div>CS-CSM</div>
+            <div><span class="job-status">Open</span></div>
+            <div>21</div>
+            <div>8</div>
+            <div>2026-08-01</div>
+            <div>Customer Success</div>
+            <div>JOB-10288</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const sidebar = document.getElementById("sidebar-nav");
+        const toggle = document.getElementById("sidebar-toggle");
+        const search = document.getElementById("jobs-search");
+        const contents = () =>
+          sidebar.querySelectorAll(".px-sidebar-menu-item-content");
+
+        function setCollapsed(collapsed) {
+          sidebar.classList.toggle("px-sidebar-navigation-expanded", !collapsed);
+          sidebar.classList.toggle("px-sidebar-navigation-collapsed", collapsed);
+          toggle.classList.toggle("px-sidebar-navigation-expand-state-expand", !collapsed);
+          toggle.classList.toggle("px-sidebar-navigation-expand-state-collapse", collapsed);
+          toggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+          toggle.setAttribute("aria-label", collapsed ? "Expand Menu" : "Collapse Menu");
+          contents().forEach((el) => el.classList.toggle("collapsed", collapsed));
+        }
+
+        // Default expanded (PDS Expanded story)
+        setCollapsed(false);
+
+        toggle.addEventListener("click", () => {
+          const collapsed = !sidebar.classList.contains("px-sidebar-navigation-collapsed");
+          setCollapsed(collapsed);
+        });
+
+        search.addEventListener("input", () => {
+          const key = search.value.trim().toLowerCase();
+          document.querySelectorAll("[data-row]").forEach((row) => {
+            const name = row.dataset.name || "";
+            row.classList.toggle("jobs-row-hidden", key && !name.includes(key));
+          });
+        });
+
+        document.querySelectorAll(".spotlight-chip").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            document.querySelectorAll(".spotlight-chip").forEach((c) => c.classList.remove("is-active"));
+            chip.classList.add("is-active");
+            const filter = chip.dataset.spotlight;
+            document.querySelectorAll("[data-row]").forEach((row) => {
+              const status = row.dataset.status;
+              let show = true;
+              if (filter === "open" || filter === "my-open") show = status === "open";
+              if (filter === "recent") show = ["open", "draft"].includes(status);
+              row.classList.toggle("jobs-row-hidden", !show);
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

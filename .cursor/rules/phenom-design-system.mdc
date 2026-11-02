@@ -1,0 +1,16 @@
+---
+description: Use Phenom Design System tokens and px-* components for UI work in this workspace
+globs:
+  - "**/*.{html,css,scss,ts,tsx,jsx,md}"
+alwaysApply: true
+---
+
+# Phenom Design System
+
+When creating or editing UI:
+
+1. Follow `.cursor/skills/phenom-design-system/SKILL.md`.
+2. Prefer Storybook as source of truth: https://pds.phenom.com/angular/index.html
+3. Use referrable styles from `styles/pds-tokens.css` and `styles/pds-utilities.css`.
+4. Angular selectors use the `px-` prefix (`px-button`, `px-inputtext`, …).
+5. Do not invent custom brand colors; use CSS variables / design tokens.

@@ -1,0 +1,25 @@
+---
+description: Compete agent knowledge — competitor research packs to load before answering competitive-intelligence questions.
+alwaysApply: true
+---
+
+# Compete knowledge
+
+This workspace is Phenom competitive-intelligence context. Before answering compete, vendor, ATS, or job-lifecycle questions, read `knowledge/INDEX.md` and load the matching pack.
+
+## Current packs
+
+- **Roles across competitors (skills + cheat sheet):** `knowledge/ROLES-COMPETE-INDEX.md`
+- Job lifecycle (Workday, SAP SuccessFactors, Greenhouse, Ashby, Workable, Personio): `knowledge/job-lifecycle/`
+  - Structured data: `knowledge/job-lifecycle/data/competitor-lifecycles.json`
+  - Skill: `.cursor/skills/competitor-job-lifecycle/SKILL.md` (also under phenom-master-copilot `.cursor/skills/`)
+- Hiring personas and jobs to be done: `knowledge/personas-jtbd.md`
+- Core + Hypercell JTBD (Sourcer / Recruiter / Lead): `knowledge/roles-jtbd-core-hypercell.html`
+- Hypercell skill: `.cursor/skills/hypercell/` (persona overlay on hiring cells)
+
+## Grounding
+
+- Prefer pack files over memory. Cite the file you used.
+- Keep job/requisition, opening, posting, publishing, expiry, unposting, and close as separate concepts.
+- Mark configuration-dependent vendor behavior and confidence.
+- Do not make external-facing claims without current vendor documentation.

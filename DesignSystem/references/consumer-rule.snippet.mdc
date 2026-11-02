@@ -1,0 +1,17 @@
+---
+description: Use Phenom Design System pack from DesignSystem workspace
+alwaysApply: true
+---
+
+# Phenom Design System (external pack)
+
+When building UI, sample websites, or product screens:
+
+1. Read and follow:
+   `/Users/venkata.gonella/phenom_repo/DesignSystem/.cursor/skills/phenom-design-system/SKILL.md`
+2. Use referrable styles:
+   `/Users/venkata.gonella/phenom_repo/DesignSystem/styles/pds-tokens.css`
+   `/Users/venkata.gonella/phenom_repo/DesignSystem/styles/pds-utilities.css`
+3. Prefer Angular `px-*` / `@phenom/angular-ds` or React `@phenom/react-ds` when packages are installed.
+4. Storybook source of truth:
+   https://pds.phenom.com/angular/index.html

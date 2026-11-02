@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Local setup and skills dashboard for Phenom Product Copilot">
+  <title>Phenom Product Copilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    :root {
+      --family-body: "Poppins", Helvetica, Arial, sans-serif;
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --size-xs: 10px;
+      --size-sm: 12px;
+      --size-md: 13px;
+      --size-base: 14px;
+      --size-lg: 16px;
+      --size-xl: 18px;
+      --size-2xl: 20px;
+      --size-3xl: 24px;
+      --line-xs: 14px;
+      --line-sm: 16px;
+      --line-md: 20px;
+      --line-lg: 24px;
+      --line-xl: 30px;
+      --space-none: 0;
+      --space-xs: 2px;
+      --space-sm: 4px;
+      --space-md: 6px;
+      --space-lg: 8px;
+      --space-xl: 10px;
+      --space-2xl: 12px;
+      --space-3xl: 14px;
+      --space-4xl: 16px;
+      --space-5xl: 24px;
+      --space-6xl: 32px;
+      --space-7xl: 40px;
+      --space-8xl: 48px;
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+      --radius-xl: 10px;
+      --radius-2xl: 12px;
+      --radius-3xl: 16px;
+      --radius-pill: 100px;
+      --stroke-xs: 1px;
+      --stroke-sm: 2px;
+      --text-strong: #353b46;
+      --text-default: #464f5e;
+      --text-subtle: #637085;
+      --text-disabled: #8c95a8;
+      --text-inverse: #ffffff;
+      --text-brand: #2927b2;
+      --icon-strong: #353b46;
+      --icon-default: #464f5e;
+      --icon-subtle: #637085;
+      --icon-disabled: #8c95a8;
+      --bg-default: #ffffff;
+      --bg-app: #f4f6fa;
+      --bg-focus: #eae8fb;
+      --bg-brand: #4d3ee0;
+      --bg-brand-hover: #2927b2;
+      --bg-brand-soft: #eae8fb;
+      --bg-brand-active: #1c1876;
+      --bg-neutral-soft: #e8eaee;
+      --bg-neutral-light: #d1d5dc;
+      --border-default: #d1d5dc;
+      --border-faint: #e8eaee;
+      --border-focus: #4d3ee0;
+      --success-text: #246645;
+      --success-bg: #e7f5ec;
+      --warning-text: #835813;
+      --warning-bg: #fff4d6;
+      --error-text: #a23333;
+      --error-bg: #fbeaea;
+      --shadow-rest: 0 1px 3px rgba(53, 59, 70, 0.08);
+      --shadow-hover: 0 6px 18px rgba(53, 59, 70, 0.11);
+      --sidebar-width: 224px;
+      --topbar-height: 64px;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg-app); color: var(--text-strong); font-family: var(--family-body); }
+    body { margin: var(--space-none); min-width: 320px; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--text-brand); }
+    :focus-visible { outline: var(--stroke-sm) solid var(--border-focus); outline-offset: var(--space-xs); }
+
+    .app {
+      display: grid;
+      grid-template-rows: var(--topbar-height) calc(100vh - var(--topbar-height));
+      min-height: 100vh;
+    }
+
+    .topbar {
+      align-items: center;
+      background: var(--bg-default);
+      border-bottom: var(--stroke-xs) solid var(--border-faint);
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-none) var(--space-5xl);
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand { align-items: center; display: flex; gap: var(--space-2xl); }
+    .brand-mark {
+      align-items: center;
+      background: var(--bg-brand);
+      border-radius: var(--radius-lg);
+      color: var(--text-inverse);
+      display: flex;
+      font-size: var(--size-base);
+      height: var(--space-6xl);
+      justify-content: center;
+      width: var(--space-6xl);
+    }
+    .brand-copy { display: flex; flex-direction: column; }
+    .brand-copy strong { font-size: var(--size-base); font-weight: var(--weight-semibold); line-height: var(--line-md); }
+    .brand-copy span { color: var(--text-subtle); font-size: var(--size-xs); line-height: var(--line-xs); }
+
+    .privacy {
+      align-items: center;
+      color: var(--text-subtle);
+      display: flex;
+      font-size: var(--size-sm);
+      gap: var(--space-lg);
+    }
+
+    .body { display: grid; grid-template-columns: var(--sidebar-width) minmax(0, 1fr); min-height: 0; }
+    .sidebar {
+      background: var(--bg-default);
+      border-right: var(--stroke-xs) solid var(--border-faint);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--space-5xl) var(--space-2xl);
+    }
+
+    .nav-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .nav-button {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      display: flex;
+      font-size: var(--size-md);
+      font-weight: var(--weight-medium);
+      gap: var(--space-2xl);
+      min-height: var(--space-7xl);
+      padding: var(--space-lg) var(--space-2xl);
+      text-align: left;
+      transition: background-color 150ms ease, color 150ms ease;
+      width: 100%;
+    }
+    .nav-button:hover { background: var(--bg-app); }
+    .nav-button.active { background: var(--bg-brand-soft); color: var(--text-brand); }
+    .nav-button i { text-align: center; width: var(--space-4xl); }
+
+    .sidebar-note {
+      background: var(--bg-app);
+      border-radius: var(--radius-2xl);
+      color: var(--text-subtle);
+      font-size: var(--size-sm);
+      line-height: var(--line-sm);
+      padding: var(--space-4xl);
+    }
+    .sidebar-note i { color: var(--icon-subtle); margin-bottom: var(--space-lg); }
+    .sidebar-note strong { color: var(--text-strong); display: block; font-weight: var(--weight-semibold); margin-bottom: var(--space-sm); }
+
+    main {
+      min-width: 0;
+      overflow-y: auto;
+      padding: var(--space-6xl) var(--space-7xl) var(--space-8xl);
+    }
+    .page { display: none; margin: 0 auto; max-width: 1180px; }
+    .page.active { display: block; }
+
+    .page-header {
+      align-items: flex-end;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--space-6xl);
+    }
+    .eyebrow {
+      color: var(--text-brand);
+      font-size: var(--size-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: 0.08em;
+      margin: 0 0 var(--space-lg);
+      text-transform: uppercase;
+    }
+    h1 { font-size: var(--size-3xl); font-weight: var(--weight-semibold); line-height: var(--line-xl); margin: 0; }
+    h2 { font-size: var(--size-lg); font-weight: var(--weight-semibold); line-height: var(--line-lg); margin: 0; }
+    h3 { font-size: var(--size-base); font-weight: var(--weight-semibold); line-height: var(--line-md); margin: 0; }
+    p { margin: 0; }
+    .subtitle { color: var(--text-subtle); font-size: var(--size-base); line-height: var(--line-md); margin-top: var(--space-md); }
+
+    .button {
+      align-items: center;
+      background: var(--bg-default);
+      border: var(--stroke-xs) solid var(--border-default);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      display: inline-flex;
+      font-size: var(--size-md);
+      font-weight: var(--weight-medium);
+      gap: var(--space-lg);
+      justify-content: center;
+      min-height: var(--space-7xl);
+      padding: var(--space-lg) var(--space-4xl);
+      transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    }
+    .button:hover { background: var(--bg-app); border-color: var(--text-disabled); }
+    .button.primary { background: var(--bg-brand); border-color: var(--bg-brand); color: var(--text-inverse); }
+    .button.primary:hover { background: var(--bg-brand-hover); border-color: var(--bg-brand-hover); }
+    .button.small { min-height: var(--space-6xl); padding: var(--space-md) var(--space-2xl); }
+    .icon-button { min-width: var(--space-7xl); padding: var(--space-lg); }
+
+    .hero-grid { display: grid; gap: var(--space-5xl); grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr); }
+    .card {
+      background: var(--bg-default);
+      border: var(--stroke-xs) solid var(--border-faint);
+      border-radius: var(--radius-3xl);
+      box-shadow: var(--shadow-rest);
+    }
+    .readiness {
+      align-items: center;
+      display: grid;
+      gap: var(--space-6xl);
+      grid-template-columns: auto minmax(0, 1fr);
+      min-height: 210px;
+      padding: var(--space-6xl);
+    }
+    .ring {
+      align-items: center;
+      background: conic-gradient(var(--bg-brand) var(--progress), var(--bg-neutral-soft) var(--progress));
+      border-radius: var(--radius-pill);
+      display: flex;
+      height: 132px;
+      justify-content: center;
+      position: relative;
+      width: 132px;
+    }
+    .ring::after {
+      background: var(--bg-default);
+      border-radius: var(--radius-pill);
+      content: "";
+      height: 102px;
+      position: absolute;
+      width: 102px;
+    }
+    .ring-value { font-size: var(--size-2xl); font-weight: var(--weight-semibold); position: relative; z-index: 1; }
+    .readiness-copy { display: flex; flex-direction: column; gap: var(--space-2xl); }
+    .readiness-copy p { color: var(--text-subtle); font-size: var(--size-md); line-height: var(--line-md); }
+    .status-line { align-items: center; display: flex; flex-wrap: wrap; gap: var(--space-lg); }
+
+    .status {
+      align-items: center;
+      border-radius: var(--radius-lg);
+      display: inline-flex;
+      font-size: var(--size-xs);
+      font-weight: var(--weight-semibold);
+      gap: var(--space-md);
+      line-height: var(--line-xs);
+      padding: var(--space-sm) var(--space-lg);
+    }
+    .status::before { background: currentColor; border-radius: var(--radius-pill); content: ""; height: var(--space-md); width: var(--space-md); }
+    .status.ready { background: var(--success-bg); color: var(--success-text); }
+    .status.missing { background: var(--error-bg); color: var(--error-text); }
+    .status.attention { background: var(--warning-bg); color: var(--warning-text); }
+    .status.optional { background: var(--bg-neutral-soft); color: var(--text-subtle); }
+
+    .next-step {
+      background: var(--text-strong);
+      color: var(--text-inverse);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 210px;
+      padding: var(--space-6xl);
+    }
+    .next-step .kicker { color: var(--bg-neutral-light); font-size: var(--size-xs); font-weight: var(--weight-semibold); letter-spacing: 0.08em; text-transform: uppercase; }
+    .next-step h2 { margin: var(--space-lg) 0; }
+    .next-step p { color: var(--bg-neutral-light); font-size: var(--size-md); line-height: var(--line-md); }
+    .next-step .button { align-self: flex-start; margin-top: var(--space-5xl); }
+
+    .section { margin-top: var(--space-6xl); }
+    .section-header { align-items: center; display: flex; justify-content: space-between; margin-bottom: var(--space-4xl); }
+    .section-meta { color: var(--text-subtle); font-size: var(--size-sm); }
+    .check-grid { display: grid; gap: var(--space-2xl); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .check-row {
+      align-items: center;
+      background: var(--bg-default);
+      border: var(--stroke-xs) solid var(--border-faint);
+      border-radius: var(--radius-2xl);
+      display: grid;
+      gap: var(--space-2xl);
+      grid-template-columns: var(--space-7xl) minmax(0, 1fr) auto;
+      min-height: 76px;
+      padding: var(--space-4xl);
+    }
+    .check-icon {
+      align-items: center;
+      background: var(--bg-app);
+      border-radius: var(--radius-xl);
+      color: var(--icon-subtle);
+      display: flex;
+      height: var(--space-7xl);
+      justify-content: center;
+      width: var(--space-7xl);
+    }
+    .check-row[data-state="ready"] .check-icon { background: var(--success-bg); color: var(--success-text); }
+    .check-row[data-state="missing"] .check-icon { background: var(--error-bg); color: var(--error-text); }
+    .check-copy { min-width: 0; }
+    .check-copy p { color: var(--text-subtle); font-size: var(--size-sm); line-height: var(--line-sm); margin-top: var(--space-sm); }
+
+    .toolbar { align-items: center; display: flex; gap: var(--space-2xl); margin-bottom: var(--space-5xl); }
+    .search-wrap { flex: 1; position: relative; }
+    .search-wrap i { color: var(--icon-subtle); left: var(--space-4xl); position: absolute; top: 50%; transform: translateY(-50%); }
+    .search {
+      background: var(--bg-default);
+      border: var(--stroke-xs) solid var(--border-default);
+      border-radius: var(--radius-xl);
+      color: var(--text-strong);
+      min-height: var(--space-7xl);
+      padding: var(--space-lg) var(--space-4xl) var(--space-lg) var(--space-7xl);
+      width: 100%;
+    }
+    .search::placeholder { color: var(--text-disabled); }
+    .filter-row { display: flex; flex-wrap: wrap; gap: var(--space-lg); margin-bottom: var(--space-5xl); }
+    .filter {
+      background: var(--bg-default);
+      border: var(--stroke-xs) solid var(--border-default);
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      font-size: var(--size-sm);
+      font-weight: var(--weight-medium);
+      padding: var(--space-md) var(--space-2xl);
+    }
+    .filter:hover { background: var(--bg-app); }
+    .filter.active { background: var(--bg-brand-soft); border-color: var(--bg-brand-soft); color: var(--text-brand); }
+
+    .skill-grid { display: grid; gap: var(--space-4xl); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .skill-card {
+      background: var(--bg-default);
+      border: var(--stroke-xs) solid var(--border-faint);
+      border-radius: var(--radius-3xl);
+      display: flex;
+      flex-direction: column;
+      min-height: 206px;
+      padding: var(--space-5xl);
+      transition: box-shadow 150ms ease, transform 150ms ease;
+    }
+    .skill-card:hover { box-shadow: var(--shadow-hover); transform: translateY(calc(var(--space-xs) * -1)); }
+    .skill-top { align-items: flex-start; display: flex; justify-content: space-between; margin-bottom: var(--space-4xl); }
+    .skill-icon {
+      align-items: center;
+      background: var(--bg-brand-soft);
+      border-radius: var(--radius-xl);
+      color: var(--text-brand);
+      display: flex;
+      height: var(--space-7xl);
+      justify-content: center;
+      width: var(--space-7xl);
+    }
+    .skill-category { background: var(--bg-app); border-radius: var(--radius-lg); color: var(--text-subtle); font-size: var(--size-xs); padding: var(--space-sm) var(--space-lg); }
+    .skill-card p { color: var(--text-subtle); flex: 1; font-size: var(--size-sm); line-height: var(--line-md); margin: var(--space-lg) 0 var(--space-4xl); }
+    .skill-footer { align-items: center; border-top: var(--stroke-xs) solid var(--border-faint); display: flex; justify-content: space-between; padding-top: var(--space-2xl); }
+    .skill-path { color: var(--text-disabled); font-family: "Chivo Mono", monospace; font-size: var(--size-xs); max-width: 62%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .text-action { background: transparent; border: 0; color: var(--text-brand); cursor: pointer; font-size: var(--size-sm); font-weight: var(--weight-medium); padding: var(--space-sm); }
+
+    .guide-grid { display: grid; gap: var(--space-5xl); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .guide-card { padding: var(--space-5xl); }
+    .guide-number { color: var(--text-brand); font-size: var(--size-xs); font-weight: var(--weight-semibold); margin-bottom: var(--space-2xl); }
+    .guide-card p { color: var(--text-subtle); font-size: var(--size-sm); line-height: var(--line-md); margin-top: var(--space-lg); }
+    .code {
+      background: var(--text-strong);
+      border-radius: var(--radius-xl);
+      color: var(--text-inverse);
+      font-family: "Chivo Mono", monospace;
+      font-size: var(--size-sm);
+      line-height: var(--line-md);
+      margin-top: var(--space-4xl);
+      overflow-x: auto;
+      padding: var(--space-4xl);
+    }
+
+    .toast {
+      align-items: center;
+      background: var(--text-strong);
+      border-radius: var(--radius-xl);
+      bottom: var(--space-5xl);
+      color: var(--text-inverse);
+      display: flex;
+      font-size: var(--size-sm);
+      gap: var(--space-lg);
+      left: 50%;
+      opacity: 0;
+      padding: var(--space-2xl) var(--space-4xl);
+      pointer-events: none;
+      position: fixed;
+      transform: translate(-50%, var(--space-4xl));
+      transition: opacity 160ms ease, transform 160ms ease;
+      z-index: 10;
+    }
+    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
+    .loading { animation: spin 900ms linear infinite; }
+    .empty { color: var(--text-subtle); font-size: var(--size-base); grid-column: 1 / -1; padding: var(--space-8xl); text-align: center; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 980px) {
+      :root { --sidebar-width: 76px; }
+      .nav-button span, .sidebar-note { display: none; }
+      .nav-button { justify-content: center; }
+      .hero-grid, .guide-grid { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      :root { --topbar-height: 56px; }
+      .body { display: block; }
+      .sidebar { border-bottom: var(--stroke-xs) solid var(--border-faint); border-right: 0; flex-direction: row; padding: var(--space-lg); }
+      .nav-list { flex-direction: row; width: 100%; }
+      .nav-button { flex: 1; }
+      main { padding: var(--space-5xl) var(--space-4xl) var(--space-7xl); }
+      .privacy span { display: none; }
+      .page-header { align-items: flex-start; flex-direction: column; gap: var(--space-4xl); }
+      .readiness { grid-template-columns: 1fr; }
+      .ring { height: 112px; width: 112px; }
+      .ring::after { height: 84px; width: 84px; }
+      .check-grid, .skill-grid { grid-template-columns: 1fr; }
+      .check-row { grid-template-columns: var(--space-7xl) minmax(0, 1fr); }
+      .check-row .button { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="brand-copy">
+          <strong>Product Copilot</strong>
+          <span>PM workspace</span>
+        </div>
+      </div>
+      <div class="privacy">
+        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+        <span>Local setup data stays on this computer</span>
+      </div>
+    </header>
+
+    <div class="body">
+      <aside class="sidebar" aria-label="Main navigation">
+        <nav class="nav-list">
+          <button class="nav-button active" data-page="dashboard"><i class="fa-solid fa-table-cells"></i><span>Setup</span></button>
+          <button class="nav-button" data-page="skills"><i class="fa-solid fa-layer-group"></i><span>Skills</span></button>
+          <button class="nav-button" data-page="help"><i class="fa-regular fa-circle-question"></i><span>How it works</span></button>
+        </nav>
+        <div class="sidebar-note">
+          <i class="fa-solid fa-rotate"></i>
+          <strong>One shared Copilot</strong>
+          Pull once to receive the latest team skills, policies, and engineering index.
+        </div>
+      </aside>
+
+      <main>
+        <section class="page active" id="dashboard-page">
+          <div class="page-header">
+            <div>
+              <p class="eyebrow">Workspace setup</p>
+              <h1 id="greeting">Your Copilot readiness</h1>
+              <p class="subtitle">Everything needed to do useful PM work from Cursor, in one place.</p>
+            </div>
+            <button class="button" id="refresh-button"><i class="fa-solid fa-rotate"></i> Refresh checks</button>
+          </div>
+
+          <div class="hero-grid">
+            <article class="card readiness">
+              <div class="ring" id="readiness-ring" style="--progress: 0%">
+                <span class="ring-value" id="readiness-value">—</span>
+              </div>
+              <div class="readiness-copy">
+                <div>
+                  <p class="eyebrow">Overall readiness</p>
+                  <h2 id="readiness-title">Checking your workspace…</h2>
+                </div>
+                <p id="readiness-detail">The dashboard is reading local configuration without sending it anywhere.</p>
+                <div class="status-line">
+                  <span class="status optional" id="required-count">Checking</span>
+                  <span class="section-meta" id="last-checked"></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card next-step">
+              <div>
+                <p class="kicker">Recommended next</p>
+                <h2 id="next-title">Run the setup check</h2>
+                <p id="next-detail">Fix only the first missing item. You do not need every optional integration on day one.</p>
+              </div>
+              <button class="button primary" id="next-action"><i class="fa-regular fa-copy"></i> Copy command</button>
+            </article>
+          </div>
+
+          <section class="section">
+            <div class="section-header">
+              <h2>Your setup</h2>
+              <span class="section-meta">Required first, optional context last</span>
+            </div>
+            <div class="check-grid" id="check-grid">
+              <div class="empty"><i class="fa-solid fa-circle-notch loading"></i> Reading local setup…</div>
+            </div>
+          </section>
+        </section>
+
+        <section class="page" id="skills-page">
+          <div class="page-header">
+            <div>
+              <p class="eyebrow">Shared capabilities</p>
+              <h1>Skills for product work</h1>
+              <p class="subtitle">Skills come directly from this Git repository. Update once; everyone gets the same playbook.</p>
+            </div>
+            <button class="button" data-copy="/update-product-os"><i class="fa-solid fa-code-pull-request"></i> Copy update command</button>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-wrap">
+              <span class="sr-only"></span>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input class="search" id="skill-search" type="search" placeholder="Find a skill by job or topic…" aria-label="Search skills">
+            </label>
+          </div>
+          <div class="filter-row" id="skill-filters"></div>
+          <div class="skill-grid" id="skill-grid">
+            <div class="empty"><i class="fa-solid fa-circle-notch loading"></i> Loading skills…</div>
+          </div>
+        </section>
+
+        <section class="page" id="help-page">
+          <div class="page-header">
+            <div>
+              <p class="eyebrow">One front door</p>
+              <h1>How the Copilot works</h1>
+              <p class="subtitle">PM Studio guides you here. Git keeps the team current. Cursor executes the work.</p>
+            </div>
+          </div>
+          <div class="guide-grid">
+            <article class="card guide-card">
+              <p class="guide-number">01 · Open</p>
+              <h3>Work from this repository</h3>
+              <p>Open Phenom - Product Copilot as the Cursor workspace so rules and tools load automatically.</p>
+              <div class="code">cursor .</div>
+            </article>
+            <article class="card guide-card">
+              <p class="guide-number">02 · Ask</p>
+              <h3>Start with a real outcome</h3>
+              <p>Use a skill for a live epic, customer request, design, or report. The catalog provides starter prompts.</p>
+              <div class="code">Use the Jira workflow skill to…</div>
+            </article>
+            <article class="card guide-card">
+              <p class="guide-number">03 · Update</p>
+              <h3>Pull shared improvements</h3>
+              <p>New skills and policies arrive through Git. Engineering source remains a separate local cache.</p>
+              <div class="code">/update-product-os</div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><i class="fa-solid fa-check"></i><span>Copied</span></div>
+
+  <script>
+    const state = { data: null, category: "All", query: "" };
+    const icons = {
+      repo: "fa-code-branch",
+      profile: "fa-user",
+      node: "fa-cube",
+      "mcp-deps": "fa-plug",
+      "mcp-config": "fa-sliders",
+      google: "fa-brands fa-google",
+      snowflake: "fa-snowflake",
+      vanilla: "fa-book-open",
+      engineering: "fa-code",
+      updates: "fa-rotate"
+    };
+    const categoryIcons = {
+      Engineering: "fa-code",
+      Design: "fa-pen-ruler",
+      Jira: "fa-list-check",
+      Knowledge: "fa-book-open",
+      Feedback: "fa-comments",
+      Product: "fa-compass"
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[char]);
+    }
+
+    function titleCase(value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.querySelector("span").textContent = message;
+      toast.classList.add("visible");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("visible"), 1800);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      showToast("Command copied");
+    }
+
+    function renderChecks(checks) {
+      const grid = document.getElementById("check-grid");
+      grid.innerHTML = checks.map(item => {
+        const icon = icons[item.key] || "fa-check";
+        const action = item.command
+          ? `<button class="button small icon-button" data-copy="${escapeHtml(item.command)}" aria-label="Copy command for ${escapeHtml(item.label)}" title="Copy command"><i class="fa-regular fa-copy"></i></button>`
+          : "";
+        return `
+          <article class="check-row" data-state="${escapeHtml(item.state)}">
+            <div class="check-icon"><i class="${icon.startsWith("fa-brands") ? icon : `fa-solid ${icon}`}"></i></div>
+            <div class="check-copy">
+              <h3>${escapeHtml(item.label)}</h3>
+              <p>${escapeHtml(item.detail)}</p>
+            </div>
+            <div class="status-line">
+              <span class="status ${escapeHtml(item.state)}">${titleCase(escapeHtml(item.state))}</span>
+              ${action}
+            </div>
+          </article>`;
+      }).join("");
+    }
+
+    function renderSummary(data) {
+      const { percent, ready, total } = data.summary;
+      document.getElementById("readiness-ring").style.setProperty("--progress", `${percent}%`);
+      document.getElementById("readiness-value").textContent = `${percent}%`;
+      document.getElementById("required-count").textContent = `${ready} of ${total} required checks`;
+      document.getElementById("last-checked").textContent =
+        `Checked ${new Date(data.generatedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+
+      const missing = data.checks.find(item => !item.optional && item.state !== "ready");
+      document.getElementById("readiness-title").textContent =
+        missing ? "A few steps remain" : "Ready for product work";
+      document.getElementById("readiness-detail").textContent =
+        missing
+          ? "Complete the required setup, then start with one real PM task."
+          : "Your required local tools and context are available. Optional checks do not block you.";
+
+      const next = missing || data.checks.find(item => item.state === "attention") || {
+        label: "Try a skill",
+        detail: "Pick a real outcome from the shared skills catalog.",
+        command: "Open the Skills tab"
+      };
+      document.getElementById("next-title").textContent = next.label;
+      document.getElementById("next-detail").textContent = next.detail;
+      const action = document.getElementById("next-action");
+      action.dataset.copy = next.command || "";
+      action.innerHTML = next.command === "Open the Skills tab"
+        ? '<i class="fa-solid fa-arrow-right"></i> Browse skills'
+        : '<i class="fa-regular fa-copy"></i> Copy command';
+    }
+
+    function renderFilters(skills) {
+      const filters = ["All", ...new Set(skills.map(skill => skill.category))];
+      document.getElementById("skill-filters").innerHTML = filters.map(category =>
+        `<button class="filter ${state.category === category ? "active" : ""}" data-category="${escapeHtml(category)}">${escapeHtml(category)}</button>`
+      ).join("");
+    }
+
+    function renderSkills() {
+      if (!state.data) return;
+      const query = state.query.toLowerCase();
+      const matches = state.data.skills.filter(skill =>
+        (state.category === "All" || skill.category === state.category) &&
+        `${skill.name} ${skill.description} ${skill.category}`.toLowerCase().includes(query)
+      );
+      const grid = document.getElementById("skill-grid");
+      grid.innerHTML = matches.length ? matches.map(skill => `
+        <article class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon"><i class="fa-solid ${categoryIcons[skill.category] || categoryIcons.Product}"></i></div>
+            <span class="skill-category">${escapeHtml(skill.category)}</span>
+          </div>
+          <h3>${escapeHtml(skill.name)}</h3>
+          <p>${escapeHtml(skill.description)}</p>
+          <div class="skill-footer">
+            <span class="skill-path" title="${escapeHtml(skill.path)}">${escapeHtml(skill.path)}</span>
+            <button class="text-action" data-copy="${escapeHtml(skill.prompt)}">Try prompt</button>
+          </div>
+        </article>
+      `).join("") : '<div class="empty">No skills match this search.</div>';
+    }
+
+    async function loadDashboard() {
+      const refresh = document.getElementById("refresh-button");
+      refresh.querySelector("i").classList.add("loading");
+      try {
+        const response = await fetch("/api/status", { cache: "no-store" });
+        if (!response.ok) throw new Error("Setup check failed");
+        state.data = await response.json();
+        renderSummary(state.data);
+        renderChecks(state.data.checks);
+        renderFilters(state.data.skills);
+        renderSkills();
+      } catch (error) {
+        document.getElementById("check-grid").innerHTML =
+          `<div class="empty">Could not read setup status. Start the dashboard with <strong>./onboarding/open.sh</strong>.</div>`;
+        showToast(error.message);
+      } finally {
+        refresh.querySelector("i").classList.remove("loading");
+      }
+    }
+
+    document.addEventListener("click", event => {
+      const nav = event.target.closest("[data-page]");
+      if (nav) {
+        document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button === nav));
+        document.querySelectorAll(".page").forEach(page => page.classList.toggle("active", page.id === `${nav.dataset.page}-page`));
+      }
+
+      const copy = event.target.closest("[data-copy]");
+      if (copy?.dataset.copy === "Open the Skills tab") {
+        document.querySelector('[data-page="skills"]').click();
+      } else if (copy?.dataset.copy) {
+        copyText(copy.dataset.copy);
+      }
+
+      const filter = event.target.closest("[data-category]");
+      if (filter) {
+        state.category = filter.dataset.category;
+        renderFilters(state.data.skills);
+        renderSkills();
+      }
+    });
+
+    document.getElementById("skill-search").addEventListener("input", event => {
+      state.query = event.target.value;
+      renderSkills();
+    });
+    document.getElementById("refresh-button").addEventListener("click", loadDashboard);
+    loadDashboard();
+  </script>
+</body>
+</html>
