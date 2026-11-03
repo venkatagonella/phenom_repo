@@ -1,0 +1,835 @@
+[
+  {
+    "hash": "4d2be85",
+    "date": "2026-10-21",
+    "author": "Sebastian Niewoehner",
+    "title": "Update Product OS, third-party skills, SR triage and onboarding updates",
+    "changes": [
+      {
+        "area": "knowledge",
+        "slug": "service-request-analysis",
+        "name": "Service request analysis",
+        "change": "updated"
+      },
+      {
+        "area": "onboarding",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "caveman",
+        "name": "Caveman",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "design-taste-frontend",
+        "name": "Design taste frontend",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "graphify",
+        "name": "Graphify",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "humanizer",
+        "name": "Humanizer",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "sr-triage",
+        "name": "SR triage",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "update-product-os",
+        "name": "Update Product OS",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "f986d42",
+    "date": "2026-10-21",
+    "author": "Sebastian Niewoehner",
+    "title": "Phenom Slide Creator: style library and Claude Slides artifact route",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "phenom-slide-creator",
+        "name": "Phenom slide creator",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "d3aae9e",
+    "date": "2026-10-21",
+    "author": "Sebastian Niewoehner",
+    "title": "Add Snowflake browser SSO to the copilot MCP",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "68a30df",
+    "date": "2026-10-19",
+    "author": "Gonella Venkata Rama Krishna",
+    "title": "Add job and candidate activity audit trail prototype.",
+    "changes": []
+  },
+  {
+    "hash": "0156222",
+    "date": "2026-10-09",
+    "author": "Sebastian Niewoehner",
+    "title": "Product Story template: add Product decision section; all work moves to PHEM after approval",
+    "changes": [
+      {
+        "area": "policy",
+        "slug": "jira-story-rules",
+        "name": "Jira story rules",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "product-story-analyzer",
+        "name": "Product story analyzer",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "d8f1e3f",
+    "date": "2026-10-09",
+    "author": "Sebastian Niewoehner",
+    "title": "Add Product Story Analyzer skill and SA Product Story template",
+    "changes": [
+      {
+        "area": "policy",
+        "slug": "jira-story-rules",
+        "name": "Jira story rules",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "product-story-analyzer",
+        "name": "Product story analyzer",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "f6d9536",
+    "date": "2026-10-07",
+    "author": "Sebastian Niewoehner",
+    "title": "Sync Jira metadata and consolidate Service Request triage (#6)",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "issue-clustering",
+        "name": "Issue clustering",
+        "change": "updated"
+      },
+      {
+        "area": "agent",
+        "slug": "support-ticket-analyst",
+        "name": "Support ticket analyst",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "automations",
+        "name": "Automations",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "service-request-analysis",
+        "name": "Service request analysis",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-constants",
+        "name": "Jira constants",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-story-rules",
+        "name": "Jira story rules",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "rx-sr-triage-rubric",
+        "name": "RX SR triage rubric",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "jira-api",
+        "name": "Jira API",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "jira-workflow",
+        "name": "Jira workflow",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "prd",
+        "name": "PRD",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "service-request-analysis",
+        "name": "Service request analysis",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "sr-triage",
+        "name": "SR triage",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "a99018d",
+    "date": "2026-09-18",
+    "author": "Sebastian Niewoehner",
+    "title": "Add publishable Service Request analysis skill (SN→Jira layers A–D).",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "service-request-analysis",
+        "name": "Service request analysis",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "20126b0",
+    "date": "2026-09-14",
+    "author": "Sebastian Niewoehner",
+    "title": "Point PMs at the optional personal OS GitHub template.",
+    "changes": []
+  },
+  {
+    "hash": "268ab9f",
+    "date": "2026-09-14",
+    "author": "Sebastian Niewoehner",
+    "title": "Rewrite PM onboarding to match the real clone URL and Cloud Run setup.",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "2f93308",
+    "date": "2026-09-14",
+    "author": "Sebastian Niewoehner",
+    "title": "Add local onboarding dashboard and related Copilot knowledge.",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "automations",
+        "name": "Automations",
+        "change": "updated"
+      },
+      {
+        "area": "onboarding",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "rx-sr-triage-rubric",
+        "name": "RX SR triage rubric",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "product-context",
+        "name": "Product context",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "17ba480",
+    "date": "2026-09-13",
+    "author": "Sebastian Niewoehner",
+    "title": "Add nested engineering context and related Copilot updates.",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "updated"
+      },
+      {
+        "area": "engineering",
+        "slug": "engineering index",
+        "name": "Engineering index",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "design-system",
+        "name": "Design system",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "engineering-context",
+        "name": "Engineering context",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-epic-rules",
+        "name": "Jira epic rules",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-story-rules",
+        "name": "Jira story rules",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "platform-routing",
+        "name": "Platform routing",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "design-system",
+        "name": "Design system",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "engineering-feasibility",
+        "name": "Engineering feasibility",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "jira-workflow",
+        "name": "Jira workflow",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "phenom-designer",
+        "name": "Phenom designer",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "phenom-ds-figma",
+        "name": "Phenom DS for Figma",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "phenom-knowledge-base-creator",
+        "name": "Phenom knowledge base creator",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "phenom-slide-creator",
+        "name": "Phenom slide creator",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "product-feedback",
+        "name": "Product feedback",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "9338e92",
+    "date": "2026-07-27",
+    "author": "nikhilsharma-phenom",
+    "title": "new skill added to reduce token usage",
+    "changes": [
+      {
+        "area": "policy",
+        "slug": "repo-structure",
+        "name": "Repo structure",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "token-guard",
+        "name": "Token guard",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "f496019",
+    "date": "2026-07-27",
+    "author": "nikhilsharma-phenom",
+    "title": "Update to mcp connectivity check for Jira",
+    "changes": [
+      {
+        "area": "policy",
+        "slug": "mcp-connectivity",
+        "name": "MCP connectivity",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "cd8ff56",
+    "date": "2026-07-08",
+    "author": "nikhilsharma-phenom",
+    "title": "Refactor granola-sync error handling and documentation for improved clarity and consistency. Updated sync method instructions and corrected references to the MCP server name.",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "granola-sync",
+        "name": "Granola sync",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "inbox-meetings",
+        "name": "Inbox meetings",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "5f2ddbb",
+    "date": "2026-07-08",
+    "author": "nikhilsharma-phenom",
+    "title": "Update granola-sync documentation to reflect the correct MCP server name as `user-granola sync` throughout the file, ensuring clarity in sync method instructions and error handling.",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "granola-sync",
+        "name": "Granola sync",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "ae62203",
+    "date": "2026-07-08",
+    "author": "nikhilsharma-phenom",
+    "title": "routing path update for granola sync",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "granola-sync",
+        "name": "Granola sync",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "abe3f14",
+    "date": "2026-07-08",
+    "author": "nikhilsharma-phenom",
+    "title": "update to granola sync to resolve circular dependency",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "granola-sync",
+        "name": "Granola sync",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "49576e5",
+    "date": "2026-07-08",
+    "author": "nikhilsharma-phenom",
+    "title": "update paths on granola-sync",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "granola-sync",
+        "name": "Granola sync",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "0895cd0",
+    "date": "2026-07-08",
+    "author": "nikhilsharma-phenom",
+    "title": "Add granola-sync.md to sync meeting notes",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "granola-sync",
+        "name": "Granola sync",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "7c888d5",
+    "date": "2026-06-15",
+    "author": "nikhilsharma-phenom",
+    "title": "Ignore local MCP config and Cursor debug logs.",
+    "changes": []
+  },
+  {
+    "hash": "7eec353",
+    "date": "2026-06-15",
+    "author": "nikhilsharma-phenom",
+    "title": "Add repo health check script and update setup process",
+    "changes": [
+      {
+        "area": "policy",
+        "slug": "repo-structure",
+        "name": "Repo structure",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "dd06160",
+    "date": "2026-05-18",
+    "author": "Sebastian Niewoehner",
+    "title": "Auto-sync: 2026-05-18",
+    "changes": [
+      {
+        "area": "knowledge",
+        "slug": "platform",
+        "name": "Platform",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "db15adc",
+    "date": "2026-05-11",
+    "author": "Sebastian Niewoehner",
+    "title": "WIP: Jira policy refresh, MCP/agents updates, docs",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "community-answer-analyzer",
+        "name": "Community answer analyzer",
+        "change": "added"
+      },
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-constants",
+        "name": "Jira constants",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-epic-format",
+        "name": "Jira epic format",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-epic-rules",
+        "name": "Jira epic rules",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-story-format",
+        "name": "Jira story format",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-story-rules",
+        "name": "Jira story rules",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "platform-routing",
+        "name": "Platform routing",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "jira-api",
+        "name": "Jira API",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "jira-workflow",
+        "name": "Jira workflow",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "prd",
+        "name": "PRD",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "4069d0a",
+    "date": "2026-05-11",
+    "author": "Tim",
+    "title": "add symlink to onboarding agent",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "dec1870",
+    "date": "2026-05-06",
+    "author": "Tim",
+    "title": "added daily task skill",
+    "changes": [
+      {
+        "area": "skill",
+        "slug": "fire-tasks",
+        "name": "FIRE tasks",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "fa555dc",
+    "date": "2026-04-28",
+    "author": "Tim",
+    "title": "new skills - competitive research and adoptions",
+    "changes": []
+  },
+  {
+    "hash": "648e06a",
+    "date": "2026-04-28",
+    "author": "Tim",
+    "title": "adoption report and competitor research skills",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "comptetitor-research",
+        "name": "Competitor research",
+        "change": "added"
+      },
+      {
+        "area": "agent",
+        "slug": "customer-adoption-report",
+        "name": "Customer adoption report",
+        "change": "updated"
+      }
+    ]
+  },
+  {
+    "hash": "4168371",
+    "date": "2026-04-17",
+    "author": "Tim",
+    "title": "fixed the mcp token refresh issue",
+    "changes": [
+      {
+        "area": "policy",
+        "slug": "llm-token-efficiency",
+        "name": "LLM token efficiency",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "aef61c7",
+    "date": "2026-03-20",
+    "author": "Tim",
+    "title": "added design system",
+    "changes": [
+      {
+        "area": "knowledge",
+        "slug": "design-system",
+        "name": "Design system",
+        "change": "updated"
+      },
+      {
+        "area": "skill",
+        "slug": "design-system",
+        "name": "Design system",
+        "change": "added"
+      }
+    ]
+  },
+  {
+    "hash": "468554b",
+    "date": "2026-03-20",
+    "author": "Tim",
+    "title": "Rename hi-copilot-config references to product-copilot-beta",
+    "changes": []
+  },
+  {
+    "hash": "921df12",
+    "date": "2026-03-20",
+    "author": "Tim",
+    "title": "Initial commit: Phenom Product Copilot shared configuration",
+    "changes": [
+      {
+        "area": "agent",
+        "slug": "customer-adoption-report",
+        "name": "Customer adoption report",
+        "change": "added"
+      },
+      {
+        "area": "agent",
+        "slug": "issue-clustering",
+        "name": "Issue clustering",
+        "change": "added"
+      },
+      {
+        "area": "agent",
+        "slug": "onboarding",
+        "name": "Onboarding",
+        "change": "added"
+      },
+      {
+        "area": "agent",
+        "slug": "support-ticket-analyst",
+        "name": "Support ticket analyst",
+        "change": "added"
+      },
+      {
+        "area": "knowledge",
+        "slug": "interview-management",
+        "name": "Interview management",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "platform",
+        "name": "Platform",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "recruiter-hub",
+        "name": "Recruiter hub",
+        "change": "updated"
+      },
+      {
+        "area": "knowledge",
+        "slug": "screening",
+        "name": "Screening",
+        "change": "updated"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-constants",
+        "name": "Jira constants",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-epic-format",
+        "name": "Jira epic format",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "jira-story-format",
+        "name": "Jira story format",
+        "change": "added"
+      },
+      {
+        "area": "policy",
+        "slug": "planning",
+        "name": "Planning",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "google",
+        "name": "Google",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "jira-api",
+        "name": "Jira API",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "prd",
+        "name": "PRD",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "product-context",
+        "name": "Product context",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "release-calendar",
+        "name": "Release calendar",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "snowflake-data-context",
+        "name": "Snowflake data context",
+        "change": "added"
+      },
+      {
+        "area": "skill",
+        "slug": "vanilla-kb",
+        "name": "Vanilla KB",
+        "change": "added"
+      }
+    ]
+  }
+]
