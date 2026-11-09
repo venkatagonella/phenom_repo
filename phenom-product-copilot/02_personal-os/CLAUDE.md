@@ -1,0 +1,3 @@
+# Personal vault
+
+@AGENTS.md

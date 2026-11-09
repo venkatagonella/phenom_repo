@@ -1,0 +1,46 @@
+name: Feedback on a skill, agent or policy
+description: Tell the owner what worked, what broke, or what you need. It shows up on the item's page in the PM OS catalog.
+title: "[feedback] "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The owner of the item answers within five working days. From Claude Code you can also run `/skill-feedback <skill> <what happened>`.
+  - type: input
+    id: item
+    attributes:
+      label: Skill or agent
+      description: The catalog id, shown on the item's page. Examples `skill:prd`, `agent:onboarding`, `policy:jira-story-rules`.
+      placeholder: skill:prd
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feedback?
+      options:
+        - It worked well
+        - Something broke or was wrong
+        - Missing capability
+        - Unclear instructions
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened
+      description: What you asked, and what came back. Paste the relevant part of the answer.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Before you submit
+      options:
+        - label: I removed customer names, candidate data, ticket contents and anything said in confidence.
+          required: true

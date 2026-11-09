@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phenom Deck</title>
+
+<!-- Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<!-- reveal.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+
+<!-- Phenom design system -->
+<link rel="stylesheet" href="phenom-tokens.css" />
+<link rel="stylesheet" href="phenom-deck.css" />
+
+<style>
+  /* reveal shell: center each fixed 1280×720 slide and scale to viewport.
+     The html/body/.reveal rules make reveal fill the window so slides scale
+     UP to fit. Inline + !important so they always win over reveal.css
+     regardless of CDN load order or caching — without them reveal can size
+     to the slide (1280×720) and render the deck in a small top-left box. */
+  html, body { width: 100%; height: 100% !important; margin: 0 !important; }
+  .reveal { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .reveal .slides { text-align: left; }
+  .reveal .slides section { padding: 0; }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1. COVER -->
+    <section>
+      <div class="slide slide--cover">
+        <div class="cover-title">Phenom Slide Templates</div>
+        <div class="cover-sub">Cursor &amp; Claude Skills</div>
+        <svg class="thread" viewBox="0 0 1280 220" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="thread" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ff8045"/>
+              <stop offset="45%" stop-color="#6ad5ca"/>
+              <stop offset="100%" stop-color="#7172da"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,200 C260,120 380,40 620,110 C840,170 980,210 1060,150 C1130,100 1090,40 1150,40 C1210,40 1230,110 1180,150"
+                fill="none" stroke="url(#thread)" stroke-width="3"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2. PURPOSE -->
+    <section>
+      <div class="slide slide--purpose">
+        <div class="hero-label">Our Purpose</div>
+        <div class="hero-text">Helping a billion people find the right work.</div>
+      </div>
+    </section>
+
+    <!-- 3. SECTION DIVIDER (family rotates per section) -->
+    <section>
+      <div class="slide slide--divider" data-family="mint">
+        <div class="blob"></div>
+        <div class="rail">Phenom Deck</div>
+        <div class="divider-title">Product Innovation</div>
+      </div>
+    </section>
+
+    <!-- 12. METRICS (3-up; gray tiles) -->
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">Product Innovation</div>
+          <div class="s-title">Impact at a glance</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-tile"><div class="num">4,123</div><div class="lbl">Interviews scheduled</div><div class="desc">Automated end-to-end across all regions.</div></div>
+          <div class="metric-tile"><div class="num">$4M</div><div class="lbl">Cost saved</div><div class="desc">Annualized savings from reduced manual effort.</div></div>
+          <div class="metric-tile"><div class="num">150%</div><div class="lbl">Productivity gain</div><div class="desc">Recruiter throughput vs. prior year.</div></div>
+        </div>
+        <div class="pagenum">4</div>
+      </div>
+    </section>
+
+    <!-- 22. CARDS WITH ICONS (each card a different family) -->
+    <section>
+      <div class="slide">
+        <div class="s-head">
+          <div class="s-kicker">Capabilities</div>
+          <div class="s-title">What the platform does</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="cards-row">
+          <div class="icon-card" data-family="honey"><span class="ic"><i class="ph ph-star"></i></span><div class="ttl">Personalize</div><div class="desc">Tailored experiences for every candidate.</div></div>
+          <div class="icon-card" data-family="peach"><span class="ic"><i class="ph ph-heart"></i></span><div class="ttl">Engage</div><div class="desc">Proactive outreach that builds pipeline.</div></div>
+          <div class="icon-card" data-family="lilac"><span class="ic"><i class="ph ph-crown"></i></span><div class="ttl">Decide</div><div class="desc">Consistent, data-backed evaluations.</div></div>
+          <div class="icon-card" data-family="mint"><span class="ic"><i class="ph ph-gear"></i></span><div class="ttl">Automate</div><div class="desc">Remove the mundane, keep the human.</div></div>
+        </div>
+        <div class="pagenum">5</div>
+      </div>
+    </section>
+
+    <!-- 26. LOOP DIAGRAM -->
+    <section>
+      <div class="slide">
+        <div class="s-head">
+          <div class="s-kicker">How it works</div>
+          <div class="s-title">The hiring loop</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="diagram-split">
+          <div class="about">
+            <div class="lead">About this loop</div>
+            <p>A continuous cycle: attract the right talent, engage them with relevance, and decide with confidence — then feed learnings back in.</p>
+          </div>
+          <div style="position:relative;">
+            <div class="loop"></div>
+            <div class="loop" style="position:absolute; inset:0; background:none; -webkit-mask:none; mask:none;">
+              <div class="center">Hiring Loop</div>
+            </div>
+            <div class="loop-label" style="top:24%; left:18%;">Attract</div>
+            <div class="loop-label" style="top:42%; right:8%;">Engage</div>
+            <div class="loop-label" style="bottom:10%; left:38%;">Decide</div>
+          </div>
+        </div>
+        <div class="pagenum">6</div>
+      </div>
+    </section>
+
+    <!-- 33. TIMELINE HORIZONTAL -->
+    <section>
+      <div class="slide">
+        <div class="s-head">
+          <div class="s-kicker">Roadmap</div>
+          <div class="s-title">Where we're headed</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="timeline">
+          <div class="axis"></div>
+          <div class="stops">
+            <div class="tl-stop down" data-family="honey"><span class="year">2022</span><div class="evt"><span class="et">Foundation</span>Core platform launched.</div></div>
+            <div class="tl-stop up" data-family="peach"><span class="year">2023</span><div class="evt"><span class="et">Scale</span>Expanded to all regions.</div></div>
+            <div class="tl-stop down" data-family="lilac"><span class="year">2024</span><div class="evt"><span class="et">Intelligence</span>AI-driven matching.</div></div>
+            <div class="tl-stop up" data-family="mint"><span class="year">2025</span><div class="evt"><span class="et">Autonomy</span>Agentic workflows.</div></div>
+          </div>
+        </div>
+        <div class="pagenum">7</div>
+      </div>
+    </section>
+
+    <!-- 9. QUOTE -->
+    <section>
+      <div class="slide">
+        <div class="s-head">
+          <div class="s-kicker">Voice of the customer</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="quote">
+          <blockquote>"This is the first tool our recruiters actually ask to use. It gave us back our time."</blockquote>
+          <div class="attr">— VP Talent Acquisition, Global Retailer</div>
+        </div>
+        <div class="pagenum">8</div>
+      </div>
+    </section>
+
+    <!-- 18. KEY TAKEAWAYS -->
+    <section>
+      <div class="slide">
+        <div class="s-head">
+          <div class="s-kicker">In summary</div>
+          <div class="s-title">Key takeaways</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="takeaways">
+          <div class="takeaway">Personalization drives measurable engagement lift.</div>
+          <div class="takeaway">Automation removes the mundane without removing the human.</div>
+          <div class="takeaway">Consistent evaluations reduce bias and speed decisions.</div>
+          <div class="takeaway">One platform beats a patchwork of integrations.</div>
+        </div>
+        <div class="pagenum">9</div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    controls: true,
+    progress: true,
+    hash: true,
+    transition: "slide",
+  });
+</script>
+</body>
+</html>

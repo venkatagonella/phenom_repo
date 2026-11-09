@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM — Job details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --family-body: "Poppins", sans-serif;
+      --size-font-size-sm: 12px;
+      --size-font-size-base: 14px;
+      --size-font-size-lg: 16px;
+      --size-font-size-3xl: 24px;
+      --line-height-line-height-md: 20px;
+      --line-height-line-height-xl: 30px;
+      --text-default: #353b46;
+      --text-subtle: #637085;
+      --text-brand-secondary-default: #2927b2;
+      --bg-surface: #ffffff;
+      --brand-primary: #4d3ee0;
+      --brand-primary-soft: #eae8fb;
+      --bg-app: #f1f5f9;
+      --bg-widget: #f4f6fa;
+      --border-default: #d1d5dc;
+      --border-subtle: #e8eaee;
+      --feedback-success-bg: #e6f6ee;
+      --feedback-success-text: #1b7a45;
+      --shadow-card: 0 2px 8px rgba(53, 59, 70, 0.08);
+      --header-height: 64px;
+      --sidebar-width: 68px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg-app);
+      color: var(--text-default);
+      font-family: var(--family-body);
+      font-size: var(--size-font-size-base);
+      line-height: var(--line-height-line-height-md);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--text-brand-secondary-default); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .shell { display: flex; min-height: 100vh; }
+    .sidebar {
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      flex: 0 0 var(--sidebar-width);
+      padding: 16px 0;
+    }
+    .nav-dot {
+      background: var(--brand-primary-soft);
+      border-radius: 10px;
+      color: var(--brand-primary);
+      display: grid;
+      height: 40px;
+      margin: 0 auto 12px;
+      place-items: center;
+      width: 40px;
+    }
+    .main { flex: 1; min-width: 0; padding: 32px 40px 48px; }
+    .page { margin: 0 auto; max-width: 960px; }
+    .breadcrumbs {
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-sm);
+      margin-bottom: 16px;
+    }
+    .breadcrumbs a { color: var(--text-subtle); }
+    h1 {
+      font-size: var(--size-font-size-3xl);
+      font-weight: 500;
+      line-height: var(--line-height-line-height-xl);
+      margin: 0 0 8px;
+    }
+    .subtitle { color: var(--text-subtle); margin: 0 0 24px; }
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pill {
+      background: var(--bg-widget);
+      border-radius: 999px;
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-sm);
+      padding: 6px 12px;
+    }
+    .pill.status {
+      background: var(--feedback-success-bg);
+      color: var(--feedback-success-text);
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .field-label {
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-sm);
+      margin-bottom: 4px;
+    }
+    .field-value { color: var(--text-default); }
+    .actions { margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="App navigation">
+      <div class="nav-dot" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
+      <div class="nav-dot" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
+      <div class="nav-dot" aria-hidden="true"><i class="fa-solid fa-chart-simple"></i></div>
+    </aside>
+    <main class="main">
+      <div class="page">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Jobs</a> /
+          <span id="crumbJob">Job</span> /
+          <span>Details</span>
+        </nav>
+        <h1 id="jobTitle">Job details</h1>
+        <p class="subtitle">Prototype stub opened from the audit trail Job ID link.</p>
+        <div class="card">
+          <div class="meta-row">
+            <span class="pill" id="jobIdPill">Job ID —</span>
+            <span class="pill">Locale en_US</span>
+            <span class="pill">External</span>
+            <span class="pill status">Open</span>
+          </div>
+          <div class="grid">
+            <div>
+              <div class="field-label">Job title</div>
+              <div class="field-value" id="titleValue">Retail Associate — Seasonal</div>
+            </div>
+            <div>
+              <div class="field-label">Job ID</div>
+              <div class="field-value" id="idValue">—</div>
+            </div>
+            <div>
+              <div class="field-label">Location</div>
+              <div class="field-value">Lake Buena Vista, FL, United States</div>
+            </div>
+            <div>
+              <div class="field-label">Job type</div>
+              <div class="field-value">Full Time</div>
+            </div>
+          </div>
+          <div class="actions">
+            <a href="index.html">← Back to audit trail</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const jobId = params.get("jobId") || "R-30991";
+    document.title = `CRM — Job ${jobId}`;
+    document.getElementById("crumbJob").textContent = jobId;
+    document.getElementById("jobTitle").textContent = `Job ${jobId}`;
+    document.getElementById("jobIdPill").textContent = `Job ID ${jobId}`;
+    document.getElementById("idValue").textContent = jobId;
+  </script>
+</body>
+</html>

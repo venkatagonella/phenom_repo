@@ -1,0 +1,498 @@
+{
+ "title": "Deck Studio sample",
+ "style": "leadership-editorial",
+ "rail": false,
+ "logo": {
+  "dark": "/_blob/LOGO_DARK_ID",
+  "light": "/_blob/LOGO_LIGHT_ID"
+ },
+ "slides": [
+  {
+   "id": "cover",
+   "layout": "cover",
+   "kicker": "Leadership meeting · October 2026",
+   "title": "Applied AI 2.0: operating *our moats.*",
+   "sub": "Reasoning and evals for every team at Phenom",
+   "image": "/_blob/ROCKET_COVER_FULL_ID",
+   "scrim": false,
+   "centered": true,
+   "size": 88
+  },
+  {
+   "id": "div-boat",
+   "layout": "divider",
+   "image": "/_blob/BOAT_ID",
+   "image_side": "right",
+   "image_left": 1000,
+   "number": "01",
+   "title": "Share",
+   "sub": "How each function runs RAG today",
+   "notes": "Section divider with the boat image on the right, text-free crop from Theme 2."
+  },
+  {
+   "id": "cards",
+   "layout": "cards",
+   "kicker": "Applied AI moats | Where we are",
+   "title": "We verticalized well. *Operations is the gap.*",
+   "sub": "Our self-assessment of the three moats.",
+   "items": [
+    {
+     "tag": "01 | The plumbing",
+     "title": "Infrastructure",
+     "body": "Data, ontologies, orchestration, human in the loop.",
+     "foot": "Built only from a product point of view"
+    },
+    {
+     "tag": "02 | The context",
+     "title": "Verticalization",
+     "body": "Domain, customer, function, org structure, workflows.",
+     "foot": "We did decent here"
+    },
+    {
+     "tag": "03 | The execution",
+     "title": "Operations",
+     "body": "AI and automation at scale, shorter time to value.",
+     "foot": "Not strong yet",
+     "navy": true
+    }
+   ],
+   "callout": {
+    "label": "This year",
+    "text": "Reasoning and evals are how every department closes the operations gap."
+   },
+   "notes": "Three moats, one gap."
+  },
+  {
+   "id": "statement",
+   "layout": "statement",
+   "kicker": "A rule spreading across Silicon Valley",
+   "parts": [
+    {
+     "big": "20",
+     "label": "HUMAN",
+     "caption": "How work is done"
+    },
+    {
+     "big": "60",
+     "label": "AI",
+     "caption": "Does the work",
+     "accent": true,
+     "flex": 3
+    },
+    {
+     "big": "20",
+     "label": "HUMAN",
+     "caption": "Is the output acceptable"
+    }
+   ]
+  },
+  {
+   "id": "div-whale",
+   "layout": "divider",
+   "image": "/_blob/WHALE_FULL_ID",
+   "kicker": "The concepts",
+   "title": "Reasoning and evals, *without the jargon*",
+   "sub": "One example all the way through: a new assistant books your trip to the offsite."
+  },
+  {
+   "id": "div-clouds",
+   "layout": "divider",
+   "kicker": "Part 2 | Our own work",
+   "title": "The Exercise",
+   "sub": "Red to Green protects revenue. AM upsell grows it. Both run 20-60-20.",
+   "image": "/_blob/CLOUDS_BLACK_FULL_ID"
+  },
+  {
+   "id": "tiles",
+   "layout": "tiles",
+   "kicker": "The operating model",
+   "title": "AI does the middle. *People own the edges.*",
+   "sub": "Approach by AI-native companies",
+   "items": [
+    {
+     "big": "20%",
+     "label": "HUMAN",
+     "title": "Design the reasoning"
+    },
+    {
+     "big": "60%",
+     "label": "AI",
+     "title": "Execute at scale"
+    },
+    {
+     "big": "20%",
+     "label": "HUMAN",
+     "title": "Design the evals"
+    }
+   ]
+  },
+  {
+   "id": "steps",
+   "layout": "steps",
+   "kicker": "Evals | 3 of 3",
+   "title": "Every bad trip makes *the next one better.*",
+   "sub": "Failed checks become new rules in the brief and new checks on the list.",
+   "items": [
+    {
+     "title": "Write the brief",
+     "body": "Goal, context, method, rules"
+    },
+    {
+     "title": "Book the trip",
+     "body": "The assistant plans and weighs trade-offs"
+    },
+    {
+     "title": "Check",
+     "body": "Seat 34E. Fail."
+    },
+    {
+     "title": "Update",
+     "body": "New rule: aisle or exit row only."
+    }
+   ],
+   "callout": {
+    "label": "The point",
+    "text": "Reasoning does the work. Evals make it better every cycle."
+   }
+  },
+  {
+   "id": "triptych",
+   "layout": "triptych",
+   "kicker": "How leaders do it | Sells AI | Legal",
+   "title": "Harvey: lawyers design the agents *and the grading.*",
+   "sub": "Lawyers in the loop, from how the agent works to the final rating.",
+   "company": {
+    "name": "Harvey",
+    "tag": "SELLS AI",
+    "stat": "25,000+",
+    "stat_label": "custom agents that legal teams have built on their own processes."
+   },
+   "columns": [
+    {
+     "pct": "20%",
+     "who": "Lawyers",
+     "title": "Reasoning",
+     "bullets": [
+      "Built by lawyers who have done the work",
+      "Firms encode their own processes"
+     ]
+    },
+    {
+     "pct": "60%",
+     "who": "AI",
+     "title": "The work",
+     "bullets": [
+      "Drafting, research and review for large law firms",
+      "Multi-step pipelines: rewrite, retrieve, answer, cite"
+     ]
+    },
+    {
+     "pct": "20%",
+     "who": "Lawyers",
+     "title": "Evals",
+     "bullets": [
+      "Lawyers write grading criteria",
+      "Side-by-side 7-point ratings",
+      "BigLaw Bench rubric applied by an AI judge"
+     ]
+    }
+   ],
+   "callout": {
+    "label": "Steal this",
+    "text": "Lawyers write the agent and the rubric. An AI judge applies the rubric at scale."
+   },
+   "source": "Source: Harvey, \"Built by lawyers, tailored by you\"; ZenML LLMOps database."
+  },
+  {
+   "id": "table",
+   "layout": "table",
+   "kicker": "The pattern | Eight companies",
+   "title": "Experts didn't go away. *They became the authors.*",
+   "columns": [
+    "Company",
+    "Designs the reasoning",
+    "Writes the evals",
+    "How they grade"
+   ],
+   "widths": [
+    18,
+    34,
+    22,
+    26
+   ],
+   "rows": [
+    [
+     "Harvey",
+     "Lawyers who did the work",
+     "Lawyers",
+     "7-point side-by-side, AI judge"
+    ],
+    [
+     "Rogo",
+     "Ex-banker deployment team",
+     "Former bankers",
+     "36K-point rubric"
+    ],
+    [
+     "Intercom (Fin)",
+     "Support ops write Procedures",
+     "Support ops",
+     {
+      "text": "Human approves every diff",
+      "status": "green"
+     }
+    ]
+   ],
+   "callout": {
+    "label": "For Phenom",
+    "text": "Our experts are AMs, CVMs, implementers and support leads."
+   }
+  },
+  {
+   "id": "div-sunset",
+   "layout": "divider",
+   "image": "/_blob/SUNSET_BAND_FULL_ID",
+   "text": "band",
+   "number": "03",
+   "title": "Propose & defend",
+   "sub": "One artifact any team can open, fill and own",
+   "notes": "Divider on the sunset image; the dark band is part of the image, the text sits inside it."
+  },
+  {
+   "id": "compare",
+   "layout": "compare",
+   "kicker": "Exercise 3 | Two tracks",
+   "title": "One method, *two tracks.*",
+   "columns": [
+    {
+     "tag": "Track A · Protect",
+     "title": "Red to Green",
+     "rows": [
+      [
+       "Process",
+       "Detect, Diagnose, Plan, Execute, Close"
+      ],
+      [
+       "Outcome",
+       "Gross revenue retention and time to green"
+      ]
+     ]
+    },
+    {
+     "tag": "Track B · Grow",
+     "title": "White Space to Pipeline",
+     "rows": [
+      [
+       "Process",
+       "Build intelligence, identify white space, validate value"
+      ],
+      [
+       "Outcome",
+       "Qualified pipeline per AM"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rows",
+   "layout": "rows",
+   "kicker": "Exercise 3 | The worksheet",
+   "title": "One worksheet, *every step.*",
+   "items": [
+    {
+     "label": "A. Today",
+     "body": "The tasks in this step, who does them, the systems they open."
+    },
+    {
+     "label": "B. Split",
+     "body": "Mark each task: Agent, Agent drafts and a human decides, or Human only."
+    },
+    {
+     "label": "C. Reasoning brief",
+     "body": "Goal, context, method, return format, guardrails, human checkpoint."
+    },
+    {
+     "label": "D. Evals",
+     "body": "3 to 5 pass/fail checks, each with a grader."
+    },
+    {
+     "label": "E. Test",
+     "body": "Run the brief on real data. What passed, what failed, what you changed."
+    }
+   ]
+  },
+  {
+   "id": "stats",
+   "layout": "stats",
+   "kicker": "Red to Green | Why it matters",
+   "title": "Most churn is *stakeholder-driven,* not product-driven.",
+   "tiles": [
+    {
+     "label": "FY26 churn",
+     "big": "$16M",
+     "sub": "plus $3.3M downsell"
+    },
+    {
+     "label": "FY26 GRR",
+     "big": "70%",
+     "sub": "best in class is 85–90%"
+    },
+    {
+     "label": "Addressable",
+     "big": "~60%",
+     "sub": "of churn, via stakeholder work"
+    },
+    {
+     "label": "FY27 target",
+     "big": "85%+",
+     "sub": "GRR, then 115%+ NRR"
+    }
+   ],
+   "cards": [
+    {
+     "title": "Single-threaded",
+     "body": "We stay with one comfortable persona and miss HRIT, finance and execs."
+    },
+    {
+     "title": "Drift",
+     "body": "Ambers go unmanaged until an escalation."
+    },
+    {
+     "title": "Scattered evidence",
+     "body": "The signals live in 12+ systems."
+    }
+   ],
+   "source": "Source: RAG Battle Planning deck; Leadership Offsite System Inventory (Nov 2025)."
+  },
+  {
+   "id": "numbers",
+   "layout": "numbers",
+   "kicker": "The gap",
+   "title": "Disney found the gap *before we did.*",
+   "items": [
+    {
+     "big": "200",
+     "body": "pages we committed to deliver for the launch"
+    },
+    {
+     "big": "176",
+     "body": "pages published. What our work queue showed."
+    },
+    {
+     "big": "24",
+     "body": "pages sitting in draft, never published. Nobody at Phenom knew until Disney asked."
+    }
+   ],
+   "closing": "We knew the target was 200. We never checked what had actually reached the customer."
+  },
+  {
+   "id": "chain",
+   "layout": "chain",
+   "kicker": "The chain",
+   "title": "Outcomes come from *a chain of five links.*",
+   "items": [
+    {
+     "title": "Define",
+     "body": "The Hypercell sets the outcome"
+    },
+    {
+     "title": "Prepare",
+     "body": "Everyone knows it before engaging"
+    },
+    {
+     "title": "Monitor",
+     "body": "Progress tracked, not recalled"
+    },
+    {
+     "title": "Follow up",
+     "body": "Act before the customer asks"
+    },
+    {
+     "title": "Trust",
+     "body": "Results without escalation"
+    }
+   ],
+   "closing": "Escalation is what happens when any link breaks."
+  },
+  {
+   "id": "bars",
+   "layout": "bars",
+   "kicker": "The readiness gate",
+   "title": "Before a line of configuration is touched, *we assess readiness.*",
+   "items": [
+    {
+     "label": "Culture",
+     "value": 80
+    },
+    {
+     "label": "Data foundation",
+     "value": 40,
+     "low": true
+    },
+    {
+     "label": "Leadership sponsorship",
+     "value": 80
+    },
+    {
+     "label": "IT security",
+     "value": 60
+    },
+    {
+     "label": "Content availability",
+     "value": 80
+    },
+    {
+     "label": "Team bandwidth",
+     "value": 40,
+     "low": true
+    },
+    {
+     "label": "Change management",
+     "value": 60
+    }
+   ],
+   "source": "This gate prevents pro-innovation bias: deploying before the organisation can absorb change."
+  },
+  {
+   "id": "bignum",
+   "layout": "bignum",
+   "dark": true,
+   "kicker": "New work",
+   "big": "60%",
+   "line": "of today's U.S. jobs didn't exist in 1940.",
+   "source": "Source: Autor, Chin, Salomons & Seegmiller, QJE (2024)"
+  },
+  {
+   "id": "takeaway",
+   "layout": "takeaway",
+   "kicker": "The takeaway",
+   "title": "Write the note. *Check the house.* Make it better.",
+   "items": [
+    {
+     "title": "Design the reasoning",
+     "body": "Teach the AI how our best people think"
+    },
+    {
+     "title": "Let AI do the 60%",
+     "body": "Every account, every week, with sources"
+    },
+    {
+     "title": "Design the evals",
+     "body": "Teach it how we judge, and keep score"
+    }
+   ],
+   "closing": "From behavior to mindset to transformation, one process at a time."
+  },
+  {
+   "id": "closing",
+   "text": "top",
+   "layout": "divider",
+   "image": "/_blob/ASTRONAUTS_FULL_ID",
+   "kicker": "The exercise",
+   "title": "Now you build it",
+   "sub": "Six teams. Two processes. One real account each.",
+   "notes": "Closing slide on the astronauts image."
+  }
+ ]
+}
