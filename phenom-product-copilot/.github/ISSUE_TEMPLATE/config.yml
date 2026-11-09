@@ -1,5 +1,0 @@
-blank_issues_enabled: true
-contact_links:
-  - name: How skills are owned, reviewed and promoted
-    url: https://github.com/officiallybasti/phenom-product-copilot/blob/main/.github/CONTRIBUTING.md
-    about: Ownership, the sandbox → beta → stable lifecycle, and how to propose a change.
