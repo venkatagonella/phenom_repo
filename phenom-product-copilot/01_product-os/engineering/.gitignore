@@ -1,0 +1,18 @@
+# Cloned engineering repos are a local, re-creatable cache (see scripts/repos.yaml
+# + scripts/sync-repos.sh). Never version-control them here — each has its own
+# repo and history upstream.
+#
+# Leading slash is required: an unanchored `repos/` also matches `index/repos/`,
+# which would hide all ~77 per-repo manifests from git AND from ripgrep/Grep
+# (ripgrep honours .gitignore), silently breaking index lookups.
+/repos/
+
+# Common build/dependency artifacts, in case any indexing or tooling touches them
+node_modules/
+dist/
+build/
+target/
+.DS_Store
+
+# Local secrets (API tokens, credentials) — never commit
+.env

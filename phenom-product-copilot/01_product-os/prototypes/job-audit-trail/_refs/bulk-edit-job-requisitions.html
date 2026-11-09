@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM — Bulk edit job requisitions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --family-body: "Poppins", sans-serif;
+      --weight-Regular: 400;
+      --weight-Medium: 500;
+      --weight-SemiBold: 600;
+      --weight-Bold: 700;
+      --size-font-size-xs: 10px;
+      --size-font-size-sm: 12px;
+      --size-font-size-md: 13px;
+      --size-font-size-base: 14px;
+      --size-font-size-lg: 16px;
+      --size-font-size-xl: 18px;
+      --size-font-size-2xl: 20px;
+      --size-font-size-3xl: 24px;
+      --line-height-line-height-xs: 14px;
+      --line-height-line-height-sm: 16px;
+      --line-height-line-height-md: 20px;
+      --line-height-line-height-lg: 24px;
+      --line-height-line-height-xl: 30px;
+      --spacing-spacing-none: 0;
+      --spacing-spacing-xs: 2px;
+      --spacing-spacing-sm: 4px;
+      --spacing-spacing-md: 6px;
+      --spacing-spacing-lg: 8px;
+      --spacing-spacing-xl: 10px;
+      --spacing-spacing-2xl: 12px;
+      --spacing-spacing-3xl: 14px;
+      --spacing-spacing-4xl: 16px;
+      --spacing-spacing-5xl: 24px;
+      --spacing-spacing-6xl: 32px;
+      --spacing-spacing-7xl: 40px;
+      --spacing-spacing-8xl: 48px;
+      --spacing-spacing-10xl: 64px;
+      --border-border-radius-sm: 4px;
+      --border-border-radius-md: 6px;
+      --border-border-radius-lg: 8px;
+      --border-border-radius-xl: 10px;
+      --border-border-radius-2xl: 12px;
+      --border-border-radius-3xl: 16px;
+      --border-border-radius-rounded: 100px;
+      --stroke-stroke-width-xs: 1px;
+      --stroke-stroke-width-sm: 2px;
+      --text-default: #353b46;
+      --text-default-canonical: #464f5e;
+      --text-subtle: #637085;
+      --text-disabled: #8c95a8;
+      --text-inverse: #ffffff;
+      --text-brand-secondary-default: #2927b2;
+      --icon-default: #353b46;
+      --icon-subtle: #637085;
+      --icon-disabled: #8c95a8;
+      --bg-surface: #ffffff;
+      --bg-focus: #eae8fb;
+      --brand-primary: #4d3ee0;
+      --brand-primary-hover: #2927b2;
+      --brand-primary-soft: #eae8fb;
+      --bg-brand-secondary-active: #1c1876;
+      --bg-neutral-dark: #464f5e;
+      --bg-neutral-strong: #637085;
+      --bg-neutral-soft: #e8eaee;
+      --bg-neutral-light: #d1d5dc;
+      --bg-neutral-inverse: #353b46;
+      --bg-app: #f1f5f9;
+      --bg-widget: #f4f6fa;
+      --border-strong: #8c95a8;
+      --border-default: #d1d5dc;
+      --border-subtle: #e8eaee;
+      --border-focus-default: #4d3ee0;
+      --border-focus-medium: #cac1f2;
+      --feedback-success-bg: #e6f6ee;
+      --feedback-success-text: #1b7a45;
+      --feedback-warning-bg: #fff4e5;
+      --feedback-warning-text: #9a5b00;
+      --feedback-error-bg: #fde8e8;
+      --feedback-error-text: #b42318;
+      --feedback-info-bg: #e8f3fb;
+      --feedback-info-text: #156b96;
+      --overlay: rgba(53, 59, 70, 0.48);
+      --shadow-card: 0 2px 8px rgba(53, 59, 70, 0.08);
+      --shadow-overlay: 0 16px 40px rgba(53, 59, 70, 0.2);
+      --control-height: 40px;
+      --header-height: 64px;
+      --sidebar-width: 68px;
+      --drawer-width: 560px;
+      --page-min-width: 1040px;
+      --transition-fast: 150ms ease;
+      --transition-drawer: 220ms ease;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-width: var(--page-min-width); min-height: 100%; }
+    body {
+      margin: var(--spacing-spacing-none);
+      background: var(--bg-app);
+      color: var(--text-default);
+      font-family: var(--family-body);
+      font-size: var(--size-font-size-base);
+      line-height: var(--line-height-line-height-md);
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+      outline: var(--stroke-stroke-width-sm) solid var(--border-focus-default);
+      outline-offset: var(--spacing-spacing-xs);
+    }
+    [hidden] { display: none !important; }
+    .sr-only {
+      position: absolute;
+      width: var(--stroke-stroke-width-xs);
+      height: var(--stroke-stroke-width-xs);
+      padding: var(--spacing-spacing-none);
+      margin: calc(var(--stroke-stroke-width-xs) * -1);
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: var(--spacing-spacing-none);
+    }
+
+    .topbar {
+      align-items: center;
+      background: var(--bg-surface);
+      border-bottom: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      display: flex;
+      height: var(--header-height);
+      justify-content: space-between;
+      padding: var(--spacing-spacing-none) var(--spacing-spacing-5xl);
+      position: sticky;
+      top: var(--spacing-spacing-none);
+      z-index: 10;
+    }
+    .brand, .top-actions, .top-search, .page-heading, .toolbar, .toolbar-group,
+    .bulk-bar, .bulk-actions, .drawer-header, .field-label-row, .preview-strip,
+    .modal-heading, .result-summary, .result-count, .prototype-note {
+      align-items: center;
+      display: flex;
+    }
+    .brand { gap: var(--spacing-spacing-2xl); font-weight: var(--weight-SemiBold); }
+    .brand-mark {
+      align-items: center;
+      background: var(--brand-primary);
+      border-radius: var(--border-border-radius-lg);
+      color: var(--text-inverse);
+      display: flex;
+      font-size: var(--size-font-size-lg);
+      height: var(--spacing-spacing-7xl);
+      justify-content: center;
+      width: var(--spacing-spacing-7xl);
+    }
+    .product-name { color: var(--text-subtle); font-size: var(--size-font-size-sm); font-weight: var(--weight-Medium); }
+    .top-search {
+      background: var(--bg-widget);
+      border: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      border-radius: var(--border-border-radius-xl);
+      color: var(--text-subtle);
+      gap: var(--spacing-spacing-lg);
+      height: var(--control-height);
+      padding: var(--spacing-spacing-none) var(--spacing-spacing-4xl);
+      width: calc(var(--spacing-spacing-10xl) * 5);
+    }
+    .top-search input {
+      background: transparent;
+      border: var(--spacing-spacing-none);
+      color: var(--text-default);
+      min-width: var(--spacing-spacing-none);
+      outline: none;
+      width: 100%;
+    }
+    .top-actions { gap: var(--spacing-spacing-sm); }
+    .icon-button {
+      align-items: center;
+      background: transparent;
+      border: var(--stroke-stroke-width-xs) solid transparent;
+      border-radius: var(--border-border-radius-xl);
+      color: var(--icon-default);
+      display: inline-flex;
+      height: var(--control-height);
+      justify-content: center;
+      transition: background var(--transition-fast), color var(--transition-fast);
+      width: var(--control-height);
+    }
+    .icon-button:hover { background: var(--bg-neutral-soft); color: var(--brand-primary); }
+    .avatar {
+      align-items: center;
+      background: var(--brand-primary-soft);
+      border-radius: var(--border-border-radius-rounded);
+      color: var(--text-brand-secondary-default);
+      display: flex;
+      font-size: var(--size-font-size-sm);
+      font-weight: var(--weight-SemiBold);
+      height: var(--spacing-spacing-6xl);
+      justify-content: center;
+      width: var(--spacing-spacing-6xl);
+    }
+
+    .shell { display: flex; min-height: calc(100vh - var(--header-height)); }
+    .sidebar {
+      background: var(--bg-surface);
+      border-right: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      flex: var(--spacing-spacing-none) var(--spacing-spacing-none) var(--sidebar-width);
+      padding: var(--spacing-spacing-4xl) var(--spacing-spacing-3xl);
+    }
+    .side-button {
+      align-items: center;
+      background: transparent;
+      border: var(--stroke-stroke-width-xs) solid transparent;
+      border-radius: var(--border-border-radius-xl);
+      color: var(--icon-subtle);
+      display: flex;
+      height: var(--control-height);
+      justify-content: center;
+      margin-bottom: var(--spacing-spacing-lg);
+      width: var(--control-height);
+    }
+    .side-button:hover, .side-button.active { background: var(--bg-neutral-soft); color: var(--brand-primary); }
+    .main { flex: 1; min-width: var(--spacing-spacing-none); padding: var(--spacing-spacing-6xl) var(--spacing-spacing-7xl) var(--spacing-spacing-8xl); }
+    .page { margin: var(--spacing-spacing-none) auto; max-width: calc(var(--spacing-spacing-10xl) * 22); }
+    .breadcrumbs { color: var(--text-subtle); font-size: var(--size-font-size-sm); margin-bottom: var(--spacing-spacing-4xl); }
+    .breadcrumbs span { color: var(--text-brand-secondary-default); }
+    .page-heading { justify-content: space-between; margin-bottom: var(--spacing-spacing-5xl); }
+    .page-heading h1 {
+      font-size: var(--size-font-size-3xl);
+      line-height: var(--line-height-line-height-xl);
+      margin: var(--spacing-spacing-none) var(--spacing-spacing-none) var(--spacing-spacing-sm);
+    }
+    .page-heading p { color: var(--text-subtle); margin: var(--spacing-spacing-none); }
+    .button {
+      align-items: center;
+      border: var(--stroke-stroke-width-xs) solid transparent;
+      border-radius: var(--border-border-radius-xl);
+      display: inline-flex;
+      font-weight: var(--weight-Medium);
+      gap: var(--spacing-spacing-lg);
+      height: var(--control-height);
+      justify-content: center;
+      padding: var(--spacing-spacing-none) var(--spacing-spacing-4xl);
+      transition: background var(--transition-fast), border var(--transition-fast), color var(--transition-fast);
+    }
+    .button.primary { background: var(--brand-primary); color: var(--text-inverse); }
+    .button.primary:hover { background: var(--brand-primary-hover); }
+    .button.primary:active { background: var(--bg-brand-secondary-active); }
+    .button.secondary { background: var(--bg-surface); border-color: var(--border-default); color: var(--text-default); }
+    .button.secondary:hover { background: var(--bg-neutral-soft); }
+    .button.ghost { background: transparent; color: var(--text-brand-secondary-default); }
+    .button.ghost:hover { background: var(--brand-primary-soft); }
+    .button:disabled { background: var(--bg-neutral-soft); border-color: var(--border-subtle); color: var(--text-disabled); cursor: not-allowed; }
+    .existing-label {
+      background: var(--bg-neutral-soft);
+      border-radius: var(--border-border-radius-rounded);
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-xs);
+      padding: var(--spacing-spacing-xs) var(--spacing-spacing-lg);
+    }
+
+    .content-card {
+      background: var(--bg-surface);
+      border: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      border-radius: var(--border-border-radius-2xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .toolbar {
+      border-bottom: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: var(--spacing-spacing-2xl);
+      justify-content: space-between;
+      padding: var(--spacing-spacing-4xl);
+    }
+    .toolbar-group { gap: var(--spacing-spacing-lg); }
+    .search-control, .filter-select {
+      align-items: center;
+      background: var(--bg-surface);
+      border: var(--stroke-stroke-width-xs) solid var(--border-default);
+      border-radius: var(--border-border-radius-xl);
+      color: var(--text-subtle);
+      display: flex;
+      gap: var(--spacing-spacing-lg);
+      height: var(--control-height);
+      padding: var(--spacing-spacing-none) var(--spacing-spacing-3xl);
+    }
+    .search-control { min-width: calc(var(--spacing-spacing-10xl) * 4); }
+    .search-control input {
+      border: var(--spacing-spacing-none);
+      color: var(--text-default);
+      outline: none;
+      width: 100%;
+    }
+    .filter-select { color: var(--text-default); min-width: calc(var(--spacing-spacing-10xl) * 2.5); }
+    .filter-select select { background: transparent; border: var(--spacing-spacing-none); color: inherit; outline: none; width: 100%; }
+    .result-meta { color: var(--text-subtle); font-size: var(--size-font-size-sm); }
+
+    .bulk-bar {
+      background: var(--bg-neutral-inverse);
+      color: var(--text-inverse);
+      justify-content: space-between;
+      min-height: var(--spacing-spacing-10xl);
+      padding: var(--spacing-spacing-2xl) var(--spacing-spacing-4xl);
+      position: sticky;
+      top: var(--header-height);
+      z-index: 8;
+    }
+    .bulk-count { font-weight: var(--weight-SemiBold); }
+    .bulk-subtext { color: var(--bg-neutral-light); font-size: var(--size-font-size-sm); margin-left: var(--spacing-spacing-lg); }
+    .bulk-actions { gap: var(--spacing-spacing-lg); }
+    .bulk-bar .button.secondary { border-color: var(--bg-neutral-strong); }
+    .bulk-bar .button.ghost { color: var(--text-inverse); }
+    .bulk-bar .button.ghost:hover { background: var(--bg-neutral-dark); }
+
+    .selection-scope {
+      align-items: center;
+      background: var(--brand-primary-soft);
+      color: var(--text-default-canonical);
+      display: flex;
+      font-size: var(--size-font-size-sm);
+      justify-content: center;
+      min-height: var(--spacing-spacing-7xl);
+      padding: var(--spacing-spacing-lg) var(--spacing-spacing-4xl);
+    }
+    .selection-scope button {
+      background: transparent;
+      border: var(--spacing-spacing-none);
+      color: var(--text-brand-secondary-default);
+      font-weight: var(--weight-SemiBold);
+      margin-left: var(--spacing-spacing-sm);
+      padding: var(--spacing-spacing-sm);
+    }
+    table { border-collapse: collapse; width: 100%; }
+    th, td {
+      border-bottom: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      padding: var(--spacing-spacing-3xl) var(--spacing-spacing-4xl);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      background: var(--bg-widget);
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-sm);
+      font-weight: var(--weight-SemiBold);
+      white-space: nowrap;
+    }
+    tbody tr { transition: background var(--transition-fast); }
+    tbody tr:hover { background: var(--bg-widget); }
+    tbody tr.selected { background: var(--brand-primary-soft); }
+    tbody tr.locked { color: var(--text-disabled); }
+    .check-cell { text-align: center; width: var(--spacing-spacing-8xl); }
+    input[type="checkbox"] { accent-color: var(--brand-primary); height: var(--spacing-spacing-4xl); width: var(--spacing-spacing-4xl); }
+    .job-title { color: var(--text-default); font-weight: var(--weight-SemiBold); }
+    .job-id { color: var(--text-subtle); font-size: var(--size-font-size-sm); margin-top: var(--spacing-spacing-xs); }
+    .locked .job-title { color: var(--text-disabled); }
+    .status {
+      align-items: center;
+      border-radius: var(--border-border-radius-lg);
+      display: inline-flex;
+      font-size: var(--size-font-size-xs);
+      font-weight: var(--weight-SemiBold);
+      gap: var(--spacing-spacing-md);
+      padding: var(--spacing-spacing-sm) var(--spacing-spacing-xl);
+      white-space: nowrap;
+    }
+    .status::before {
+      background: currentColor;
+      border-radius: var(--border-border-radius-rounded);
+      content: "";
+      height: var(--spacing-spacing-md);
+      width: var(--spacing-spacing-md);
+    }
+    .status.open { background: var(--feedback-success-bg); color: var(--feedback-success-text); }
+    .status.hold { background: var(--feedback-warning-bg); color: var(--feedback-warning-text); }
+    .status.draft { background: var(--bg-neutral-soft); color: var(--text-default-canonical); }
+    .lock-icon { color: var(--icon-disabled); margin-left: var(--spacing-spacing-lg); }
+    .pagination {
+      align-items: center;
+      color: var(--text-subtle);
+      display: flex;
+      font-size: var(--size-font-size-sm);
+      justify-content: space-between;
+      padding: var(--spacing-spacing-3xl) var(--spacing-spacing-4xl);
+    }
+    .page-controls { display: flex; gap: var(--spacing-spacing-sm); }
+    .page-button {
+      align-items: center;
+      background: var(--bg-surface);
+      border: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      border-radius: var(--border-border-radius-lg);
+      color: var(--text-default);
+      display: flex;
+      height: var(--spacing-spacing-6xl);
+      justify-content: center;
+      width: var(--spacing-spacing-6xl);
+    }
+    .page-button.active { background: var(--brand-primary-soft); border-color: var(--border-focus-medium); color: var(--text-brand-secondary-default); }
+    .prototype-note {
+      background: var(--bg-surface);
+      border: var(--stroke-stroke-width-xs) dashed var(--border-strong);
+      border-radius: var(--border-border-radius-2xl);
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-sm);
+      gap: var(--spacing-spacing-2xl);
+      margin-top: var(--spacing-spacing-5xl);
+      padding: var(--spacing-spacing-4xl);
+    }
+    .prototype-note i { color: var(--icon-subtle); }
+    .toast {
+      align-items: center;
+      background: var(--bg-neutral-inverse);
+      border-radius: var(--border-border-radius-xl);
+      bottom: var(--spacing-spacing-5xl);
+      box-shadow: var(--shadow-overlay);
+      color: var(--text-inverse);
+      display: flex;
+      gap: var(--spacing-spacing-xl);
+      left: 50%;
+      opacity: 0;
+      padding: var(--spacing-spacing-3xl) var(--spacing-spacing-4xl);
+      pointer-events: none;
+      position: fixed;
+      transform: translate(-50%, var(--spacing-spacing-4xl));
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+      z-index: 30;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, var(--spacing-spacing-none)); }
+
+    .blanket {
+      background: var(--overlay);
+      inset: var(--spacing-spacing-none);
+      opacity: 0;
+      position: fixed;
+      transition: opacity var(--transition-drawer);
+      visibility: hidden;
+      z-index: 20;
+    }
+    .blanket.show { opacity: 1; visibility: visible; }
+    .drawer {
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-overlay);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: 100%;
+      position: absolute;
+      right: var(--spacing-spacing-none);
+      top: var(--spacing-spacing-none);
+      transform: translateX(100%);
+      transition: transform var(--transition-drawer);
+      width: var(--drawer-width);
+    }
+    .blanket.show .drawer { transform: translateX(0); }
+    .drawer-header {
+      border-bottom: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      justify-content: space-between;
+      min-height: var(--header-height);
+      padding: var(--spacing-spacing-2xl) var(--spacing-spacing-5xl);
+    }
+    .drawer-header h2 { font-size: var(--size-font-size-xl); margin: var(--spacing-spacing-none); }
+    .drawer-header p { color: var(--text-subtle); font-size: var(--size-font-size-sm); margin: var(--spacing-spacing-xs) var(--spacing-spacing-none) var(--spacing-spacing-none); }
+    .drawer-body { flex: 1; overflow-y: auto; padding: var(--spacing-spacing-5xl); }
+    .step-section + .step-section {
+      border-top: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      margin-top: var(--spacing-spacing-5xl);
+      padding-top: var(--spacing-spacing-5xl);
+    }
+    .step-kicker {
+      color: var(--text-brand-secondary-default);
+      font-size: var(--size-font-size-xs);
+      font-weight: var(--weight-Bold);
+      letter-spacing: var(--spacing-spacing-xs);
+      margin-bottom: var(--spacing-spacing-sm);
+      text-transform: uppercase;
+    }
+    .step-section h3 { font-size: var(--size-font-size-lg); margin: var(--spacing-spacing-none); }
+    .step-helper { color: var(--text-subtle); font-size: var(--size-font-size-sm); margin: var(--spacing-spacing-sm) var(--spacing-spacing-none) var(--spacing-spacing-4xl); }
+    .field-search { margin-bottom: var(--spacing-spacing-2xl); min-width: 100%; }
+    .field-list {
+      border: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      border-radius: var(--border-border-radius-xl);
+      max-height: calc(var(--spacing-spacing-10xl) * 4);
+      overflow-y: auto;
+    }
+    .field-option {
+      align-items: flex-start;
+      border-bottom: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      display: flex;
+      gap: var(--spacing-spacing-2xl);
+      padding: var(--spacing-spacing-3xl);
+    }
+    .field-option:last-child { border-bottom: var(--spacing-spacing-none); }
+    .field-option:hover { background: var(--bg-widget); }
+    .field-option.disabled { background: var(--bg-widget); color: var(--text-disabled); }
+    .field-option label { cursor: pointer; flex: 1; }
+    .field-option.disabled label { cursor: not-allowed; }
+    .field-label-row { gap: var(--spacing-spacing-lg); }
+    .field-name { color: var(--text-default); font-weight: var(--weight-Medium); }
+    .disabled .field-name { color: var(--text-disabled); }
+    .field-type {
+      background: var(--bg-neutral-soft);
+      border-radius: var(--border-border-radius-rounded);
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-xs);
+      padding: var(--spacing-spacing-xs) var(--spacing-spacing-lg);
+    }
+    .field-detail { color: var(--text-subtle); font-size: var(--size-font-size-sm); margin-top: var(--spacing-spacing-xs); }
+    .value-empty {
+      background: var(--bg-widget);
+      border: var(--stroke-stroke-width-xs) dashed var(--border-default);
+      border-radius: var(--border-border-radius-xl);
+      color: var(--text-subtle);
+      font-size: var(--size-font-size-sm);
+      padding: var(--spacing-spacing-4xl);
+      text-align: center;
+    }
+    .value-card {
+      background: var(--bg-widget);
+      border: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      border-radius: var(--border-border-radius-xl);
+      margin-bottom: var(--spacing-spacing-2xl);
+      padding: var(--spacing-spacing-3xl);
+    }
+    .value-card label {
+      display: block;
+      font-size: var(--size-font-size-sm);
+      font-weight: var(--weight-SemiBold);
+      margin-bottom: var(--spacing-spacing-lg);
+    }
+    .value-card select, .value-card input {
+      background: var(--bg-surface);
+      border: var(--stroke-stroke-width-xs) solid var(--border-default);
+      border-radius: var(--border-border-radius-xl);
+      color: var(--text-default);
+      height: var(--control-height);
+      padding: var(--spacing-spacing-none) var(--spacing-spacing-3xl);
+      width: 100%;
+    }
+    .value-card select.unchanged, .value-card input.unchanged { color: var(--text-subtle); }
+    .value-hint { color: var(--text-subtle); font-size: var(--size-font-size-xs); margin-top: var(--spacing-spacing-md); }
+    .preview-strip {
+      background: var(--brand-primary-soft);
+      border: var(--stroke-stroke-width-xs) solid var(--border-focus-medium);
+      border-radius: var(--border-border-radius-xl);
+      color: var(--text-default-canonical);
+      gap: var(--spacing-spacing-xl);
+      margin-top: var(--spacing-spacing-4xl);
+      padding: var(--spacing-spacing-3xl);
+    }
+    .preview-strip i { color: var(--brand-primary); }
+    .preview-strip strong { color: var(--text-default); }
+    .drawer-footer {
+      align-items: center;
+      background: var(--bg-surface);
+      border-top: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      display: flex;
+      gap: var(--spacing-spacing-lg);
+      justify-content: flex-end;
+      padding: var(--spacing-spacing-4xl) var(--spacing-spacing-5xl);
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border-radius: var(--border-border-radius-3xl);
+      box-shadow: var(--shadow-overlay);
+      left: 50%;
+      max-width: calc(var(--spacing-spacing-10xl) * 7);
+      opacity: 0;
+      padding: var(--spacing-spacing-5xl);
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -48%);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+      width: calc(100% - var(--spacing-spacing-8xl));
+    }
+    .blanket.show .modal-card { opacity: 1; transform: translate(-50%, -50%); }
+    .modal-heading { align-items: flex-start; gap: var(--spacing-spacing-3xl); }
+    .modal-icon {
+      align-items: center;
+      background: var(--feedback-warning-bg);
+      border-radius: var(--border-border-radius-rounded);
+      color: var(--feedback-warning-text);
+      display: flex;
+      flex: var(--spacing-spacing-none) var(--spacing-spacing-none) var(--spacing-spacing-7xl);
+      height: var(--spacing-spacing-7xl);
+      justify-content: center;
+    }
+    .modal-heading h2 { font-size: var(--size-font-size-xl); margin: var(--spacing-spacing-none); }
+    .modal-heading p { color: var(--text-subtle); margin: var(--spacing-spacing-sm) var(--spacing-spacing-none) var(--spacing-spacing-none); }
+    .confirm-box {
+      background: var(--bg-widget);
+      border-radius: var(--border-border-radius-xl);
+      margin: var(--spacing-spacing-4xl) var(--spacing-spacing-none);
+      padding: var(--spacing-spacing-4xl);
+    }
+    .confirm-box strong { display: block; margin-bottom: var(--spacing-spacing-lg); }
+    .confirm-fields { display: flex; flex-wrap: wrap; gap: var(--spacing-spacing-lg); }
+    .confirm-chip {
+      background: var(--bg-surface);
+      border: var(--stroke-stroke-width-xs) solid var(--border-default);
+      border-radius: var(--border-border-radius-rounded);
+      font-size: var(--size-font-size-sm);
+      padding: var(--spacing-spacing-sm) var(--spacing-spacing-xl);
+    }
+    .warning-copy { color: var(--feedback-warning-text); font-size: var(--size-font-size-sm); }
+    .modal-actions { display: flex; gap: var(--spacing-spacing-lg); justify-content: flex-end; margin-top: var(--spacing-spacing-5xl); }
+
+    .results-content h2 { font-size: var(--size-font-size-xl); margin: var(--spacing-spacing-none); }
+    .results-content > p { color: var(--text-subtle); margin: var(--spacing-spacing-sm) var(--spacing-spacing-none) var(--spacing-spacing-5xl); }
+    .result-summary { gap: var(--spacing-spacing-2xl); margin-bottom: var(--spacing-spacing-5xl); }
+    .result-count {
+      border-radius: var(--border-border-radius-xl);
+      flex: 1;
+      gap: var(--spacing-spacing-3xl);
+      padding: var(--spacing-spacing-4xl);
+    }
+    .result-count.success { background: var(--feedback-success-bg); color: var(--feedback-success-text); }
+    .result-count.failure { background: var(--feedback-error-bg); color: var(--feedback-error-text); }
+    .result-number { font-size: var(--size-font-size-2xl); font-weight: var(--weight-Bold); line-height: var(--line-height-line-height-xl); }
+    .result-label { font-size: var(--size-font-size-sm); }
+    .failure-list { border: var(--stroke-stroke-width-xs) solid var(--border-subtle); border-radius: var(--border-border-radius-xl); overflow: hidden; }
+    .failure-list h3 { background: var(--bg-widget); font-size: var(--size-font-size-base); margin: var(--spacing-spacing-none); padding: var(--spacing-spacing-3xl) var(--spacing-spacing-4xl); }
+    .failure-row {
+      border-top: var(--stroke-stroke-width-xs) solid var(--border-subtle);
+      display: flex;
+      gap: var(--spacing-spacing-3xl);
+      justify-content: space-between;
+      padding: var(--spacing-spacing-3xl) var(--spacing-spacing-4xl);
+    }
+    .failure-job { font-weight: var(--weight-Medium); }
+    .failure-reason { color: var(--feedback-error-text); font-size: var(--size-font-size-sm); text-align: right; }
+
+    @media (max-width: 1180px) {
+      .main { padding-left: var(--spacing-spacing-5xl); padding-right: var(--spacing-spacing-5xl); }
+      .department-column, .owner-column { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"><i class="fa-solid fa-sparkles"></i></div>
+      <div>
+        <div>Phenom</div>
+        <div class="product-name">Customer Relationship Management</div>
+      </div>
+    </div>
+    <label class="top-search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <span class="sr-only">Global search</span>
+      <input type="search" placeholder="Search people, jobs, campaigns…">
+    </label>
+    <div class="top-actions">
+      <button class="icon-button" aria-label="Help"><i class="fa-regular fa-circle-question"></i></button>
+      <button class="icon-button" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+      <div class="avatar" aria-label="Sebastian Niewoehner">SN</div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <button class="side-button" aria-label="Home"><i class="fa-solid fa-house"></i></button>
+      <button class="side-button" aria-label="Candidates"><i class="fa-solid fa-user-group"></i></button>
+      <button class="side-button active" aria-label="Jobs"><i class="fa-solid fa-briefcase"></i></button>
+      <button class="side-button" aria-label="Campaigns"><i class="fa-solid fa-bullhorn"></i></button>
+      <button class="side-button" aria-label="Reports"><i class="fa-solid fa-chart-column"></i></button>
+      <button class="side-button" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+    </aside>
+
+    <main class="main">
+      <div class="page">
+        <div class="breadcrumbs"><span>CRM</span> &nbsp;/&nbsp; Jobs</div>
+        <div class="page-heading">
+          <div>
+            <h1>Jobs</h1>
+            <p>Manage job requisitions, teams, and recruiting activity.</p>
+          </div>
+          <button class="button primary"><i class="fa-solid fa-plus"></i> Create job</button>
+        </div>
+
+        <section class="content-card" aria-label="Jobs list">
+          <div class="toolbar">
+            <div class="toolbar-group">
+              <label class="search-control">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <span class="sr-only">Search jobs</span>
+                <input id="job-search" type="search" placeholder="Search jobs or requisition ID">
+              </label>
+              <label class="filter-select">
+                <span class="sr-only">Filter by status</span>
+                <select id="status-filter">
+                  <option value="all">All statuses</option>
+                  <option value="open">Open</option>
+                  <option value="hold">On hold</option>
+                  <option value="draft">Draft</option>
+                </select>
+              </label>
+              <label class="filter-select">
+                <span class="sr-only">Filter by department</span>
+                <select id="department-filter">
+                  <option value="all">All departments</option>
+                  <option value="parks">Parks &amp; Experiences</option>
+                  <option value="casting">Casting</option>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="technology">Technology</option>
+                </select>
+              </label>
+            </div>
+            <div class="result-meta"><strong id="visible-count">9</strong> of 142 jobs</div>
+          </div>
+
+          <div class="bulk-bar" id="bulk-bar" hidden>
+            <div>
+              <span class="bulk-count"><span id="selected-count">0</span> jobs selected</span>
+              <span class="bulk-subtext">Only jobs you can edit are included</span>
+            </div>
+            <div class="bulk-actions">
+              <button class="button primary" id="open-editor"><i class="fa-solid fa-pen-to-square"></i> Edit fields</button>
+              <button class="button secondary" id="assign-recruiter"><i class="fa-solid fa-user-plus"></i> Assign recruiter <span class="existing-label">Existing</span></button>
+              <button class="button ghost" id="clear-selection">Clear selection</button>
+            </div>
+          </div>
+
+          <div class="selection-scope" id="selection-scope" hidden>
+            All 8 editable jobs on this page are selected.
+            <button id="select-matching">Select all 140 editable jobs matching these filters</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="check-cell"><input id="select-all" type="checkbox" aria-label="Select all editable jobs on this page"></th>
+                  <th>Job</th>
+                  <th>Status</th>
+                  <th>Recruitment status</th>
+                  <th class="department-column">Department</th>
+                  <th class="owner-column">Recruiter</th>
+                  <th>Updated</th>
+                </tr>
+              </thead>
+              <tbody id="job-rows">
+                <tr data-status="open" data-department="parks">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Attractions Host"></td>
+                  <td><div class="job-title">Attractions Host — Magic Kingdom</div><div class="job-id">REQ-104821 · Lake Buena Vista, FL</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>Actively recruiting</td>
+                  <td class="department-column">Parks &amp; Experiences</td>
+                  <td class="owner-column">Alex Morgan</td>
+                  <td>Today</td>
+                </tr>
+                <tr data-status="open" data-department="casting">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Character Performer"></td>
+                  <td><div class="job-title">Character Performer — Seasonal Casting</div><div class="job-id">REQ-104817 · Orlando, FL</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>High-volume intake</td>
+                  <td class="department-column">Casting</td>
+                  <td class="owner-column">Jordan Lee</td>
+                  <td>Today</td>
+                </tr>
+                <tr data-status="open" data-department="parks">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Food and Beverage Host"></td>
+                  <td><div class="job-title">Food &amp; Beverage Host — EPCOT</div><div class="job-id">REQ-104799 · Lake Buena Vista, FL</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>Actively recruiting</td>
+                  <td class="department-column">Parks &amp; Experiences</td>
+                  <td class="owner-column">Alex Morgan</td>
+                  <td>Yesterday</td>
+                </tr>
+                <tr data-status="hold" data-department="entertainment">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Entertainment Technician"></td>
+                  <td><div class="job-title">Entertainment Technician — Live Shows</div><div class="job-id">REQ-104775 · Anaheim, CA</div></td>
+                  <td><span class="status hold">On hold</span></td>
+                  <td>Pipeline paused</td>
+                  <td class="department-column">Entertainment</td>
+                  <td class="owner-column">Taylor Kim</td>
+                  <td>Jul 31</td>
+                </tr>
+                <tr data-status="draft" data-department="parks">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Custodial Cast Member"></td>
+                  <td><div class="job-title">Custodial Cast Member — Resort Operations</div><div class="job-id">REQ-104752 · Lake Buena Vista, FL</div></td>
+                  <td><span class="status draft">Draft</span></td>
+                  <td>Planning</td>
+                  <td class="department-column">Parks &amp; Experiences</td>
+                  <td class="owner-column">Morgan Patel</td>
+                  <td>Jul 30</td>
+                </tr>
+                <tr data-status="open" data-department="technology">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Guest Experience Systems Analyst"></td>
+                  <td><div class="job-title">Guest Experience Systems Analyst</div><div class="job-id">REQ-104731 · Celebration, FL</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>Interviewing</td>
+                  <td class="department-column">Technology</td>
+                  <td class="owner-column">Sam Rivera</td>
+                  <td>Jul 29</td>
+                </tr>
+                <tr data-status="open" data-department="casting">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Disney College Program"></td>
+                  <td><div class="job-title">Disney College Program — Spring Cohort</div><div class="job-id">REQ-104704 · Orlando, FL</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>High-volume intake</td>
+                  <td class="department-column">Casting</td>
+                  <td class="owner-column">Jordan Lee</td>
+                  <td>Jul 28</td>
+                </tr>
+                <tr data-status="open" data-department="entertainment" class="locked" title="No edit access">
+                  <td class="check-cell"><input class="job-check" type="checkbox" disabled aria-label="Fantasmic Production Assistant — No edit access" title="No edit access"></td>
+                  <td><div class="job-title">Fantasmic! Production Assistant <i class="fa-solid fa-lock lock-icon" title="No edit access" aria-label="No edit access"></i></div><div class="job-id">REQ-104689 · Anaheim, CA</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>Actively recruiting</td>
+                  <td class="department-column">Entertainment</td>
+                  <td class="owner-column">Restricted team</td>
+                  <td>Jul 27</td>
+                </tr>
+                <tr data-status="open" data-department="parks">
+                  <td class="check-cell"><input class="job-check" type="checkbox" aria-label="Select Lifeguard"></td>
+                  <td><div class="job-title">Lifeguard — Resort Recreation</div><div class="job-id">REQ-104664 · Lake Buena Vista, FL</div></td>
+                  <td><span class="status open">Open</span></td>
+                  <td>Actively recruiting</td>
+                  <td class="department-column">Parks &amp; Experiences</td>
+                  <td class="owner-column">Morgan Patel</td>
+                  <td>Jul 26</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span>Showing 1–9 of 142 jobs</span>
+            <div class="page-controls" aria-label="Pagination">
+              <button class="page-button" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="page-button active">1</button>
+              <button class="page-button">2</button>
+              <button class="page-button">3</button>
+              <button class="page-button" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="prototype-note">
+          <i class="fa-solid fa-flask" aria-hidden="true"></i>
+          <span><strong>Prototype note:</strong> Teamtailor informed the selection action bar; Greenhouse informed a contained workspace for complex configuration; Relativity/WooCommerce informed leave-unchanged defaults. Ashby-style CSV remains an out-of-scope power-user path.</span>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="existing-action-toast" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+    Existing Assign recruiter flow remains a separate action.
+  </div>
+
+  <div class="blanket" id="drawer-blanket" aria-hidden="true">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="drawer-header">
+        <div>
+          <h2 id="drawer-title">Edit fields for <span class="drawer-count">0</span> jobs</h2>
+          <p>Choose only the fields that should change across this selection.</p>
+        </div>
+        <button class="icon-button close-drawer" aria-label="Close bulk edit"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="drawer-body">
+        <section class="step-section">
+          <div class="step-kicker">Step A</div>
+          <h3>Choose fields to update</h3>
+          <p class="step-helper">Available fields respect edit-after-create rules, permissions, departmentalization, and confidentiality.</p>
+          <label class="search-control field-search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <span class="sr-only">Search fields</span>
+            <input id="field-search" type="search" placeholder="Search standard and additional fields">
+          </label>
+          <div class="field-list" id="field-list">
+            <div class="field-option" data-field-name="Job Status">
+              <input class="field-check" id="field-job-status" type="checkbox" data-field="job-status" data-label="Job Status">
+              <label for="field-job-status"><span class="field-label-row"><span class="field-name">Job Status</span><span class="field-type">Standard</span></span><span class="field-detail">Open, on hold, closed, or draft</span></label>
+            </div>
+            <div class="field-option" data-field-name="Recruitment Status">
+              <input class="field-check" id="field-recruitment-status" type="checkbox" data-field="recruitment-status" data-label="Recruitment Status">
+              <label for="field-recruitment-status"><span class="field-label-row"><span class="field-name">Recruitment Status</span><span class="field-type">Additional</span></span><span class="field-detail">Current recruitment workflow status</span></label>
+            </div>
+            <div class="field-option" data-field-name="Recruitment Status Date">
+              <input class="field-check" id="field-recruitment-date" type="checkbox" data-field="recruitment-date" data-label="Recruitment Status Date">
+              <label for="field-recruitment-date"><span class="field-label-row"><span class="field-name">Recruitment Status Date</span><span class="field-type">Additional</span></span><span class="field-detail">Effective date for recruitment status</span></label>
+            </div>
+            <div class="field-option" data-field-name="Recruiter">
+              <input class="field-check" id="field-recruiter" type="checkbox" data-field="recruiter" data-label="Recruiter">
+              <label for="field-recruiter"><span class="field-label-row"><span class="field-name">Recruiter</span><span class="field-type">Standard</span></span><span class="field-detail">Also available as the existing Assign recruiter action</span></label>
+            </div>
+            <div class="field-option" data-field-name="Process Team">
+              <input class="field-check" id="field-process-team" type="checkbox" data-field="process-team" data-label="Process Team">
+              <label for="field-process-team"><span class="field-label-row"><span class="field-name">Process Team</span><span class="field-type">Additional</span></span><span class="field-detail">Department-aware process ownership</span></label>
+            </div>
+            <div class="field-option" data-field-name="Source Type Recruiting Instructions">
+              <input class="field-check" id="field-source-type" type="checkbox" data-field="source-type" data-label="Source Type">
+              <label for="field-source-type"><span class="field-label-row"><span class="field-name">Source Type / Recruiting Instructions</span><span class="field-type">Additional</span></span><span class="field-detail">Sourcing channel and handling guidance</span></label>
+            </div>
+            <div class="field-option" data-field-name="Worker Type">
+              <input class="field-check" id="field-worker-type" type="checkbox" data-field="worker-type" data-label="Worker Type">
+              <label for="field-worker-type"><span class="field-label-row"><span class="field-name">Worker Type</span><span class="field-type">Standard</span></span><span class="field-detail">Regular, seasonal, intern, or contract</span></label>
+            </div>
+            <div class="field-option disabled" data-field-name="Business Unit">
+              <input id="field-business-unit" type="checkbox" disabled>
+              <label for="field-business-unit"><span class="field-label-row"><span class="field-name">Business Unit</span><span class="field-type">Standard</span></span><span class="field-detail"><i class="fa-solid fa-lock"></i> Not editable after create</span></label>
+            </div>
+            <div class="field-option disabled" data-field-name="Requisition ID">
+              <input id="field-requisition-id" type="checkbox" disabled>
+              <label for="field-requisition-id"><span class="field-label-row"><span class="field-name">Requisition ID</span><span class="field-type">Standard</span></span><span class="field-detail"><i class="fa-solid fa-lock"></i> Not editable after create</span></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-section">
+          <div class="step-kicker">Step B</div>
+          <h3>Set values</h3>
+          <p class="step-helper"><strong>Only fields you change will be updated.</strong> Every field starts as Leave unchanged.</p>
+          <div id="value-fields">
+            <div class="value-empty">Choose one or more eligible fields above to set values.</div>
+          </div>
+          <div class="preview-strip" id="preview-strip">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <span id="preview-text"><strong>No changes set.</strong> Choose a value to continue.</span>
+          </div>
+        </section>
+      </div>
+      <div class="drawer-footer">
+        <button class="button secondary close-drawer">Cancel</button>
+        <button class="button primary" id="review-apply" disabled>Review &amp; apply</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="blanket" id="confirm-blanket" aria-hidden="true">
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <div class="modal-heading">
+        <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div>
+          <h2 id="confirm-title">Apply changes to <span class="modal-count">0</span> jobs?</h2>
+          <p>Review the scope before updating these requisitions.</p>
+        </div>
+      </div>
+      <div class="confirm-box">
+        <strong>Fields that will be overwritten</strong>
+        <div class="confirm-fields" id="confirm-fields"></div>
+      </div>
+      <div class="warning-copy"><i class="fa-solid fa-circle-info"></i> Existing values for these fields will be replaced. Fields left unchanged will not be touched.</div>
+      <div class="modal-actions">
+        <button class="button secondary" id="back-to-edit">Back</button>
+        <button class="button primary" id="confirm-apply">Apply changes</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="blanket" id="results-blanket" aria-hidden="true">
+    <section class="modal-card results-content" role="dialog" aria-modal="true" aria-labelledby="results-title">
+      <h2 id="results-title">Bulk edit complete</h2>
+      <p>Most jobs were updated. Review the exceptions below.</p>
+      <div class="result-summary">
+        <div class="result-count success">
+          <i class="fa-solid fa-circle-check"></i>
+          <div><div class="result-number" id="success-count">22</div><div class="result-label">Updated successfully</div></div>
+        </div>
+        <div class="result-count failure">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <div><div class="result-number" id="failure-count">2</div><div class="result-label">Not updated</div></div>
+        </div>
+      </div>
+      <div class="failure-list">
+        <h3>Jobs requiring attention</h3>
+        <div class="failure-row" id="failure-row-1">
+          <div><div class="failure-job">Character Performer — Seasonal Casting</div><div class="job-id">REQ-104817</div></div>
+          <div class="failure-reason">Process Team locked after create</div>
+        </div>
+        <div class="failure-row" id="failure-row-2">
+          <div><div class="failure-job">Entertainment Technician — Live Shows</div><div class="job-id">REQ-104775</div></div>
+          <div class="failure-reason">No edit access for this field</div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="button secondary" id="download-results"><i class="fa-solid fa-download"></i> Download results</button>
+        <button class="button primary" id="close-results">Done</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const jobChecks = Array.from(document.querySelectorAll('.job-check:not(:disabled)'));
+    const selectAll = document.getElementById('select-all');
+    const bulkBar = document.getElementById('bulk-bar');
+    const selectedCount = document.getElementById('selected-count');
+    const selectionScope = document.getElementById('selection-scope');
+    const selectMatching = document.getElementById('select-matching');
+    let matchingSelection = false;
+
+    const visibleJobChecks = () => jobChecks.filter((check) => !check.closest('tr').hidden);
+    const currentSelectionCount = () => matchingSelection ? 140 : jobChecks.filter((check) => check.checked).length;
+
+    function updateSelection() {
+      const count = currentSelectionCount();
+      const visibleChecks = visibleJobChecks();
+      const visibleSelected = visibleChecks.filter((check) => check.checked).length;
+      selectedCount.textContent = count;
+      document.querySelectorAll('.drawer-count, .modal-count').forEach((node) => { node.textContent = count; });
+      bulkBar.hidden = count === 0;
+      selectionScope.hidden = !(visibleChecks.length > 0 && visibleSelected === visibleChecks.length && !matchingSelection);
+      selectAll.checked = visibleChecks.length > 0 && visibleSelected === visibleChecks.length;
+      selectAll.indeterminate = visibleSelected > 0 && visibleSelected < visibleChecks.length;
+      jobChecks.forEach((check) => check.closest('tr').classList.toggle('selected', check.checked));
+    }
+
+    jobChecks.forEach((check) => check.addEventListener('change', () => {
+      matchingSelection = false;
+      updateSelection();
+    }));
+
+    selectAll.addEventListener('change', () => {
+      matchingSelection = false;
+      visibleJobChecks().forEach((check) => { check.checked = selectAll.checked; });
+      updateSelection();
+    });
+
+    document.getElementById('clear-selection').addEventListener('click', () => {
+      matchingSelection = false;
+      jobChecks.forEach((check) => { check.checked = false; });
+      updateSelection();
+    });
+
+    selectMatching.addEventListener('click', () => {
+      matchingSelection = true;
+      selectionScope.hidden = true;
+      updateSelection();
+    });
+
+    const jobSearch = document.getElementById('job-search');
+    const statusFilter = document.getElementById('status-filter');
+    const departmentFilter = document.getElementById('department-filter');
+    const rows = Array.from(document.querySelectorAll('#job-rows tr'));
+
+    function filterJobs() {
+      const query = jobSearch.value.trim().toLowerCase();
+      let visible = 0;
+      matchingSelection = false;
+      rows.forEach((row) => {
+        const matchesSearch = row.textContent.toLowerCase().includes(query);
+        const matchesStatus = statusFilter.value === 'all' || row.dataset.status === statusFilter.value;
+        const matchesDepartment = departmentFilter.value === 'all' || row.dataset.department === departmentFilter.value;
+        row.hidden = !(matchesSearch && matchesStatus && matchesDepartment);
+        if (!row.hidden) visible += 1;
+      });
+      document.getElementById('visible-count').textContent = visible;
+      updateSelection();
+    }
+
+    [jobSearch, statusFilter, departmentFilter].forEach((control) => control.addEventListener('input', filterJobs));
+
+    const drawerBlanket = document.getElementById('drawer-blanket');
+    const confirmBlanket = document.getElementById('confirm-blanket');
+    const resultsBlanket = document.getElementById('results-blanket');
+    const fieldChecks = Array.from(document.querySelectorAll('.field-check'));
+    const valueFields = document.getElementById('value-fields');
+    const reviewApply = document.getElementById('review-apply');
+    const previewText = document.getElementById('preview-text');
+
+    const fieldConfig = {
+      'job-status': { label: 'Job Status', type: 'select', options: ['Open', 'On hold', 'Closed', 'Draft'] },
+      'recruitment-status': { label: 'Recruitment Status', type: 'select', options: ['Actively recruiting', 'High-volume intake', 'Interviewing', 'Pipeline paused'] },
+      'recruitment-date': { label: 'Recruitment Status Date', type: 'date' },
+      'recruiter': { label: 'Recruiter', type: 'select', options: ['Alex Morgan', 'Jordan Lee', 'Morgan Patel', 'Sam Rivera', 'Taylor Kim'] },
+      'process-team': { label: 'Process Team', type: 'select', options: ['Parks High-Volume Recruiting', 'Casting Operations', 'Entertainment Talent', 'Corporate Recruiting'] },
+      'source-type': { label: 'Source Type / Recruiting Instructions', type: 'select', options: ['Internal mobility', 'High-volume campaign', 'Seasonal casting', 'External agency'] },
+      'worker-type': { label: 'Worker Type', type: 'select', options: ['Regular', 'Seasonal', 'Intern', 'Contract'] }
+    };
+
+    function openBlanket(blanket) {
+      blanket.classList.add('show');
+      blanket.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBlanket(blanket) {
+      blanket.classList.remove('show');
+      blanket.setAttribute('aria-hidden', 'true');
+      if (![drawerBlanket, confirmBlanket, resultsBlanket].some((item) => item.classList.contains('show'))) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.getElementById('open-editor').addEventListener('click', () => openBlanket(drawerBlanket));
+    document.querySelectorAll('.close-drawer').forEach((button) => button.addEventListener('click', () => closeBlanket(drawerBlanket)));
+
+    function renderValueFields() {
+      const selected = fieldChecks.filter((check) => check.checked);
+      if (!selected.length) {
+        valueFields.innerHTML = '<div class="value-empty">Choose one or more eligible fields above to set values.</div>';
+        updatePreview();
+        return;
+      }
+      valueFields.innerHTML = selected.map((check) => {
+        const key = check.dataset.field;
+        const config = fieldConfig[key];
+        if (config.type === 'date') {
+          return `<div class="value-card">
+            <label for="value-${key}">${config.label}</label>
+            <input class="value-control unchanged" id="value-${key}" type="date" data-label="${config.label}" data-field="${key}">
+            <div class="value-hint">Leave empty to keep the current value.</div>
+          </div>`;
+        }
+        return `<div class="value-card">
+          <label for="value-${key}">${config.label}</label>
+          <select class="value-control unchanged" id="value-${key}" data-label="${config.label}" data-field="${key}">
+            <option value="">Leave unchanged</option>
+            ${config.options.map((option) => `<option value="${option}">${option}</option>`).join('')}
+          </select>
+          <div class="value-hint">Current values may differ across selected jobs.</div>
+        </div>`;
+      }).join('');
+      document.querySelectorAll('.value-control').forEach((control) => {
+        control.addEventListener('change', () => {
+          control.classList.toggle('unchanged', !control.value);
+          updatePreview();
+        });
+      });
+      updatePreview();
+    }
+
+    function changedControls() {
+      return Array.from(document.querySelectorAll('.value-control')).filter((control) => control.value);
+    }
+
+    function updatePreview() {
+      const changed = changedControls();
+      const count = currentSelectionCount();
+      reviewApply.disabled = changed.length === 0;
+      if (!changed.length) {
+        previewText.innerHTML = '<strong>No changes set.</strong> Choose a value to continue.';
+        return;
+      }
+      const labels = changed.map((control) => control.dataset.label);
+      previewText.innerHTML = `<strong>Will update:</strong> ${labels.join(', ')} on ${count} jobs`;
+    }
+
+    fieldChecks.forEach((check) => check.addEventListener('change', renderValueFields));
+
+    document.getElementById('field-search').addEventListener('input', (event) => {
+      const query = event.target.value.trim().toLowerCase();
+      document.querySelectorAll('.field-option').forEach((option) => {
+        option.hidden = !option.dataset.fieldName.toLowerCase().includes(query);
+      });
+    });
+
+    reviewApply.addEventListener('click', () => {
+      const changed = changedControls();
+      document.getElementById('confirm-fields').innerHTML = changed.map((control) =>
+        `<span class="confirm-chip">${control.dataset.label}: <strong>${control.value}</strong></span>`
+      ).join('');
+      closeBlanket(drawerBlanket);
+      openBlanket(confirmBlanket);
+    });
+
+    document.getElementById('back-to-edit').addEventListener('click', () => {
+      closeBlanket(confirmBlanket);
+      openBlanket(drawerBlanket);
+    });
+
+    document.getElementById('confirm-apply').addEventListener('click', () => {
+      const total = currentSelectionCount();
+      const failures = Math.min(2, total);
+      document.getElementById('success-count').textContent = Math.max(0, total - failures);
+      document.getElementById('failure-count').textContent = failures;
+      document.getElementById('failure-row-1').hidden = failures < 1;
+      document.getElementById('failure-row-2').hidden = failures < 2;
+      closeBlanket(confirmBlanket);
+      openBlanket(resultsBlanket);
+    });
+
+    document.getElementById('close-results').addEventListener('click', () => {
+      closeBlanket(resultsBlanket);
+      matchingSelection = false;
+      jobChecks.forEach((check) => { check.checked = false; });
+      fieldChecks.forEach((check) => { check.checked = false; });
+      renderValueFields();
+      updateSelection();
+    });
+
+    document.getElementById('download-results').addEventListener('click', () => {
+      const csv = 'Requisition ID,Job,Result,Reason\nREQ-104817,Character Performer - Seasonal Casting,Failed,Process Team locked after create\nREQ-104775,Entertainment Technician - Live Shows,Failed,No edit access for this field';
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      link.download = 'bulk-edit-results.csv';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+
+    document.getElementById('assign-recruiter').addEventListener('click', () => {
+      const toast = document.getElementById('existing-action-toast');
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2400);
+    });
+
+    [drawerBlanket, confirmBlanket, resultsBlanket].forEach((blanket) => {
+      blanket.addEventListener('click', (event) => {
+        if (event.target === blanket) closeBlanket(blanket);
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      [resultsBlanket, confirmBlanket, drawerBlanket].forEach((blanket) => {
+        if (blanket.classList.contains('show')) closeBlanket(blanket);
+      });
+    });
+
+    updateSelection();
+  </script>
+</body>
+</html>

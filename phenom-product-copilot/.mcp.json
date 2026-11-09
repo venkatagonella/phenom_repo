@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "copilot": {
+      "command": "node",
+      "args": ["01_product-os/mcp/bin/copilot-mcp.js"],
+      "env": {
+        "COPILOT_PROVIDERS": "snowflake,vanilla"
+      }
+    },
+    "glean_default": {
+      "type": "http",
+      "url": "https://c5b7250f-be.glean.com/mcp/default"
+    },
+    "phenom-ds-storybook": {
+      "type": "http",
+      "url": "https://ds-storybook-intqa.phenompro.com/mcp"
+    }
+  }
+}

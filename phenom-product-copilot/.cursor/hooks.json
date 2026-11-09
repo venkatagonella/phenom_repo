@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [{ "command": "node 01_product-os/onboarding/usage/log-usage.mjs cursor >/dev/null 2>&1; exit 0", "timeout": 5 }],
+    "beforeSubmitPrompt": [{ "command": "node 01_product-os/onboarding/usage/log-usage.mjs cursor >/dev/null 2>&1; echo '{\"continue\":true}'", "timeout": 5 }],
+    "subagentStart": [{ "command": "node 01_product-os/onboarding/usage/log-usage.mjs cursor >/dev/null 2>&1; echo '{\"permission\":\"allow\"}'", "timeout": 5 }],
+    "postToolUse": [{ "command": "node 01_product-os/onboarding/usage/log-usage.mjs cursor >/dev/null 2>&1; exit 0", "timeout": 5 }]
+  }
+}

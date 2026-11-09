@@ -1,0 +1,18 @@
+{
+  "enabledPlugins": {
+    "atlassian@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "slack@claude-plugins-official": true
+  },
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/01_product-os/onboarding/usage/log-usage.mjs\" claude-code", "timeout": 5 }] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/01_product-os/onboarding/usage/log-usage.mjs\" claude-code", "timeout": 5 }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Skill|Agent|Task", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/01_product-os/onboarding/usage/log-usage.mjs\" claude-code", "timeout": 5 }] }
+    ]
+  }
+}
