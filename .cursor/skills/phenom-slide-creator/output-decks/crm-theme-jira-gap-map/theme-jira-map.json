@@ -1,0 +1,2657 @@
+{
+  "CRM-Core": {
+    "name": "CRM Core",
+    "themes": [
+      {
+        "theme": "Job fields, dropdowns, locations & translations",
+        "cases": 123,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 10 Epics \u00b7 29 Stories",
+          "ni": 0,
+          "ne": 10,
+          "ns": 29,
+          "exemplars": [
+            "PHEM-2252378",
+            "PHEM-2412940",
+            "PHEM-2260385"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2412940",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1957943",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1991264",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2260385",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2252497",
+              "title": "CRM - Application Search Index & Application-Centric List (Evaluation + App Fiel"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2435084",
+              "title": "Translations for 4 additional job fields not available"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2491710",
+              "title": "Translations for 2 system job fields not available on career site"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1957993",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2314676",
+              "title": "S2. RX \u2013 Permissions and field eligibility for bulk edit"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2383238",
+              "title": "S6. RX \u2013 Show and standardize Job system fields in settings (for bulk edit)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1957994",
+              "title": "Inline Dropdown Editing for Ratings and Tags"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1917001",
+              "title": "Sync supported locales between HRM and CRM to ensure cross-product parity"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2179428",
+              "title": "Migrate localization to lokalise"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Interview scheduling, calendars, evaluations & scorecards",
+        "cases": 111,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 9 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 9,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2252378",
+            "PHEM-2104082"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104082",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2252497",
+              "title": "CRM - Application Search Index & Application-Centric List (Evaluation + App Fiel"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1974314",
+              "title": "Addition of Scheduling Flow to Blank/Edit Job Screens"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2267012",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1951222",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2106019",
+              "title": "7.3: Add expanded hiring team roles to VX screening evaluation configuration"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2536578",
+              "title": "E3. Scheduling \u2013 FE/BE \u2013 Restrict meeting-list export and recording download (CR"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1577362",
+              "title": "New Associate Interviewer Role"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1982214",
+              "title": "My Jobs & Interview Visibility"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1982217",
+              "title": "Interviewer Notification Controls"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Access, roles, permissions & login",
+        "cases": 102,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 8 Epics \u00b7 33 Stories",
+          "ni": 0,
+          "ne": 8,
+          "ns": 33,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-1957943",
+            "PHEM-2104082 7. Role-Based UI Visibility & Filtering"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1957943",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1987498",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104082",
+              "title": "7. Role-Based UI Visibility & Filtering"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104059",
+              "title": "3. ATS Integration \u2014 Role-Aware Job Pull"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104062",
+              "title": "2. Role Display & Assignment UI"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104070",
+              "title": "4. Data Migration with Role Assignment Logic"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104083",
+              "title": "7.1: \"My Jobs\" \u2014 Role-Aware Filtering & Default Views"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106005",
+              "title": "7.2: Role-aware HRM task assignment for expanded hiring team roles"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106019",
+              "title": "7.3: Add expanded hiring team roles to VX screening evaluation configuration"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106057",
+              "title": "7.5: Role-aware analytics ETL and role-filtered dashboards"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104077",
+              "title": "5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Job posting, publishing, closing & career-site visibility",
+        "cases": 100,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 4 Epics \u00b7 14 Stories",
+          "ni": 0,
+          "ne": 4,
+          "ns": 14,
+          "exemplars": [
+            "PHEM-2412940",
+            "PHEM-2018552",
+            "PHEM-2199077 HIRE - Allow creation of private links for confidential jobs"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-2412940",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2018552",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2199077",
+              "title": "HIRE - Allow creation of private links for confidential jobs"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2491710",
+              "title": "Translations for 2 system job fields not available on career site"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2024953",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2186925",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2267008",
+              "title": "CRM to Workday Job Lifecycle Sync (Create / Publish / Unpublish)"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2199453",
+              "title": "Enable Confidential job to have a Private Link in Job Creation UI"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2024959",
+              "title": "Publish flow"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2024960",
+              "title": "Diff vs last published (optional)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2201265",
+              "title": "CRM Core: Publishing Job in CRM based on configured date and time"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2221509",
+              "title": "CRM Core \u2013 Settings \u2013 New \"Job & Requisition\" section: add Requisition Configura"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "LinkedIn integration (CRM Connect, Recommendations, sharing)",
+        "cases": 89,
+        "gap": false,
+        "mapping": {
+          "counts": "2 Initiatives \u00b7 3 Epics \u00b7 1 Story",
+          "ni": 2,
+          "ne": 3,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-1957322 RX Core - LinkedIn CRM Connect",
+            "PHEM-2341256 LinkedIn CRM Connectivity & Enhancements",
+            "PHEM-1957323 LinkedIn CRM Hardening 26.05"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1957322",
+              "title": "RX Core - LinkedIn CRM Connect"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2341256",
+              "title": "LinkedIn CRM Connectivity & Enhancements"
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1957323",
+              "title": "LinkedIn CRM Hardening 26.05"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2014661",
+              "title": "LinkedIn CRM Hardening 26.06"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2341415",
+              "title": "CRM and LinkedIn Broken Pipeline"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2260823",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2288791",
+              "title": "CRM \u2013 FE/BE \u2013 InMail Stub Profile hydration"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Bulk upload, import, export, documents & reports",
+        "cases": 83,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 3 Epics \u00b7 21 Stories",
+          "ni": 0,
+          "ne": 3,
+          "ns": 21,
+          "exemplars": [
+            "PHEM-2252378",
+            "PHEM-2260385 CRM \u2013 Bulk Edit Job Requisitions",
+            "PHEM-1483121"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2260385",
+              "title": "CRM \u2013 Bulk Edit Job Requisitions"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1483121",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1951222",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2267012",
+              "title": "RX \u2013 RBAC to Restrict Recruiter Download / Export in CRM"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2180576",
+              "title": "Document viewer for Job attachments"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2314673",
+              "title": "S1. RX \u2013 FE \u2013 Bulk edit flow on Jobs"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2314676",
+              "title": "S2. RX \u2013 Permissions and field eligibility for bulk edit"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2383155",
+              "title": "S5. RX \u2013 FE/BE \u2013 Bulk edit results panel (history APIs + UI)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2383238",
+              "title": "S6. RX \u2013 Show and standardize Job system fields in settings (for bulk edit)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1513110",
+              "title": "Edit Existing Report Templates"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Performance, outages & UI errors",
+        "cases": 79,
+        "gap": false,
+        "mapping": {
+          "counts": "2 Initiatives \u00b7 3 Epics \u00b7 12 Stories",
+          "ni": 2,
+          "ne": 3,
+          "ns": 12,
+          "exemplars": [
+            "PHEM-1698278 RX - Performance Optimizations",
+            "PHEM-1970553 RX Core Self-Servicing Errors",
+            "PHEM-1699646 Change Detection & Template Performance"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1698278",
+              "title": "RX - Performance Optimizations"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1970553",
+              "title": "RX Core Self-Servicing Errors"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2018552",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1699646",
+              "title": "Change Detection & Template Performance"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1698277",
+              "title": "Bundle Size Optimization - Lazy Load Heavy Dependencies"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1970555",
+              "title": "Specific Error Improvements 26.05"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2024961",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1699648",
+              "title": "Implement OnPush in Simple Components"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1699649",
+              "title": "Implement OnPush in Components with Subscriptions"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1699651",
+              "title": "Implement OnPush in Complex Components"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1699694",
+              "title": "Remove Function Calls from Templates"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1699695",
+              "title": "Add trackBy to All *ngFor Loops"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Job & requisition access, assignment and hiring team",
+        "cases": 66,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 3 Epics \u00b7 11 Stories",
+          "ni": 0,
+          "ne": 3,
+          "ns": 11,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2104082",
+            "PHEM-2104059 3. ATS Integration \u2014 Role-Aware Job Pull"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104082",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104059",
+              "title": "3. ATS Integration \u2014 Role-Aware Job Pull"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104062",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104070",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104083",
+              "title": "7.1: \"My Jobs\" \u2014 Role-Aware Filtering & Default Views"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106005",
+              "title": "7.2: Role-aware HRM task assignment for expanded hiring team roles"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106019",
+              "title": "7.3: Add expanded hiring team roles to VX screening evaluation configuration"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106057",
+              "title": "7.5: Role-aware analytics ETL and role-filtered dashboards"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104069",
+              "title": "3.3: CRM-Native Job Creation \u2014 Role Assignment in Hiring Team Setup"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Spotlights, filters, search & lists",
+        "cases": 64,
+        "gap": false,
+        "mapping": {
+          "counts": "1 Initiative \u00b7 5 Epics \u00b7 17 Stories",
+          "ni": 1,
+          "ne": 5,
+          "ns": 17,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-1987368 RX Views / Spotlights",
+            "PHEM-2104082 7. Role-Based UI Visibility & Filtering"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1987368",
+              "title": "RX Views / Spotlights"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2018552",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104082",
+              "title": "7. Role-Based UI Visibility & Filtering"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1987497",
+              "title": "Job-Attribute Spotlights MVP"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2024953",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2252497",
+              "title": "CRM - Application Search Index & Application-Centric List (Evaluation + App Fiel"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2188780",
+              "title": "Filter notes by Job ID in the notes section"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104083",
+              "title": "7.1: \"My Jobs\" \u2014 Role-Aware Filtering & Default Views"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106057",
+              "title": "7.5: Role-aware analytics ETL and role-filtered dashboards"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2024954",
+              "title": "Schema list view"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2268624",
+              "title": "A2. RX \u2013 FE \u2013 Job sync status display + filter + manual retrigger CTA"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2271120",
+              "title": "Client-Level Field Visibility - Manage Columns"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Email, notifications & Talent Community (logged under CRM Core)",
+        "cases": 61,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 3 Epics \u00b7 9 Stories",
+          "ni": 0,
+          "ne": 3,
+          "ns": 9,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2252378",
+            "PHEM-2104076 5. Tenant-Level Notification Configuration"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": "5. Tenant-Level Notification Configuration"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104079",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2260385",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2184565",
+              "title": "Notify recruiters and hiring managers when assigned to a job"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2396086",
+              "title": "CRM \u2013 Insert assets from Asset Manager into job descriptions and email templates"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104077",
+              "title": "5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104078",
+              "title": "5.2: Notification Dispatch Engine \u2014 Role-Aware Routing"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106102",
+              "title": "5.3: Add role-specific email template tokens for expanded hiring team roles"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104081",
+              "title": "6.2: [Deferred Post-MVP] Default Notification Profiles per Provisioning Source"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2314688",
+              "title": "S4. RX + Notifications \u2013 Review results via Jobs panel deep link"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Hiring status, lead/applicant pipeline & workflow",
+        "cases": 47,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 3 Epics \u00b7 3 Stories",
+          "ni": 0,
+          "ne": 3,
+          "ns": 3,
+          "exemplars": [
+            "PHEM-2341256",
+            "PHEM-2341415 CRM and LinkedIn Broken Pipeline",
+            "PHEM-2278020 IX and CRM: Job workflow optimisation"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-2341256",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2341415",
+              "title": "CRM and LinkedIn Broken Pipeline"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2278020",
+              "title": "IX and CRM: Job workflow optimisation"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2136326",
+              "title": "RX - Core - Translation Experience for Hiring Status"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2280603",
+              "title": "Flink app integration"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2280606",
+              "title": "Hosting of offline service"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1700218",
+              "title": "Enable \"Latest Job Stage\" as an Exportable Field"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Job & requisition records (missing, creation, editing, discrepancies)",
+        "cases": 46,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 7 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 7,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2412940",
+            "PHEM-2104059"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2412940",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104059",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2199077",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2260385",
+              "title": "CRM \u2013 Bulk Edit Job Requisitions"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1902635",
+              "title": "CRM \u2013 Job page \u2014 Overview tab"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2202537",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104069",
+              "title": "3.3: CRM-Native Job Creation \u2014 Role Assignment in Hiring Team Setup"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2199453",
+              "title": "Enable Confidential job to have a Private Link in Job Creation UI"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2202538",
+              "title": "Display Primary Job Title under the posting title on the job detail page"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2221509",
+              "title": "CRM Core \u2013 Settings \u2013 New \"Job & Requisition\" section: add Requisition Configura"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2280602",
+              "title": "Disclaimer text handling with req templates apis"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Tags & notes",
+        "cases": 45,
+        "gap": false,
+        "mapping": {
+          "counts": "1 Initiative \u00b7 2 Epics \u00b7 7 Stories",
+          "ni": 1,
+          "ne": 2,
+          "ns": 7,
+          "exemplars": [
+            "PHEM-1987498 Notes",
+            "PHEM-1957943",
+            "PHEM-1987505 Note Associations"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1987498",
+              "title": "Notes"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1957943",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1987505",
+              "title": "Note Associations"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1957993",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2188780",
+              "title": "Filter notes by Job ID in the notes section"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1987583",
+              "title": "Departmentalization for Notes Association"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1957994",
+              "title": "Inline Dropdown Editing for Ratings and Tags"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1566523",
+              "title": "Notes issues as support ticket reduction"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1694111",
+              "title": "Get Feature Notes query to get case insensetive on entity"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2267654",
+              "title": "RX \u2013 FE \u2013 Clarify create-new-tag affordance in Tags UI"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "ATS / HRIS sync & integrations (Workday, SF, UKG, API, Chrome extension)",
+        "cases": 45,
+        "gap": false,
+        "mapping": {
+          "counts": "1 Initiative \u00b7 9 Epics \u00b7 14 Stories",
+          "ni": 1,
+          "ne": 9,
+          "ns": 14,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-1987584 RedDot Integration",
+            "PHEM-2104059 3. ATS Integration \u2014 Role-Aware Job Pull"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1987584",
+              "title": "RedDot Integration"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1957943",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104059",
+              "title": "3. ATS Integration \u2014 Role-Aware Job Pull"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104082",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1987585",
+              "title": "RedDot CRM MVP"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1957974",
+              "title": "HRM <> CRM Projects 26.05"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2278020",
+              "title": "IX and CRM: Job workflow optimisation"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104061",
+              "title": "3.1: Generic ATS-to-CRM Role Mapping Engine & Admin UI"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104068",
+              "title": "3.2: ATS Adapter Updates (SuccessFactors, Workday, Others)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106005",
+              "title": "7.2: Role-aware HRM task assignment for expanded hiring team roles"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2280605",
+              "title": "Api for creating ats jobs in job service"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2280603",
+              "title": "Flink app integration"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Offer letters & pre-onboarding",
+        "cases": 39,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 Story: TBD",
+          "ni": 0,
+          "ne": 1,
+          "ns": 0,
+          "exemplars": [
+            "PHEM-1991264",
+            "PHEM-1991295 Offer Letter Fields"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1991264",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1991295",
+              "title": "Offer Letter Fields"
+            }
+          ],
+          "stories": []
+        }
+      },
+      {
+        "theme": "Fit Score & AI features (AI Discovery, X+, Voice Agent, Intelligent Sourcing)",
+        "cases": 37,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 6 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 6,
+          "exemplars": [
+            "PHEM-1951222",
+            "PHEM-1403720 Fit Score - Please turn feature flag on in staging environment for Saks",
+            "PHEM-2005892 AI Agent Settings to CRM & Implement Admin Access with Media Preview"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1951222",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1403720",
+              "title": "Fit Score - Please turn feature flag on in staging environment for Saks"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2005892",
+              "title": "AI Agent Settings to CRM & Implement Admin Access with Media Preview"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2533814",
+              "title": "Move PWC Germany from fitscore Gen3 back to Gen1"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2533815",
+              "title": "Move PWC CCE from fitscore Gen3 back to Gen1"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2005934",
+              "title": "AI Interview Agent Analytics/Reports"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Candidate profile & data (logged under CRM Core)",
+        "cases": 35,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 3 Epics \u00b7 5 Stories",
+          "ni": 0,
+          "ne": 3,
+          "ns": 5,
+          "exemplars": [
+            "PHEM-1992228",
+            "PHEM-1965641",
+            "PHEM-1992235 Reconsent"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1992228",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1992235",
+              "title": "Reconsent"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104079",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2178519",
+              "title": "Deparmentalization support for Employee/Candidate connections"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2079228",
+              "title": "Employee Detail Page Visibility - With Consent No in CRM"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2394800",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104081",
+              "title": "6.2: [Deferred Post-MVP] Default Notification Profiles per Provisioning Source"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2178515",
+              "title": "Support departmentalization framework for Employee/Candidate connections feature"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2394844",
+              "title": "CRM \u2014 Remap Candidate Profiles and Referral References"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2398582",
+              "title": "Scheduling \u2014 Remap Employee Interview Schedule and History"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2288791",
+              "title": "CRM \u2013 FE/BE \u2013 InMail Stub Profile hydration"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Projects",
+        "cases": 29,
+        "gap": false,
+        "mapping": {
+          "counts": "1 Initiative \u00b7 2 Epics \u00b7 8 Stories",
+          "ni": 1,
+          "ne": 2,
+          "ns": 8,
+          "exemplars": [
+            "PHEM-1957943 RX Projects",
+            "PHEM-1957974 HRM <> CRM Projects 26.05",
+            "PHEM-1957993 Project Enhancements for High-Volume Sourcing"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1957943",
+              "title": "RX Projects"
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1957974",
+              "title": "HRM <> CRM Projects 26.05"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1957993",
+              "title": "Project Enhancements for High-Volume Sourcing"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1346553",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1856881",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2163324",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2014646",
+              "title": "HRM Projects Team Assignment Based on Access"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2014648",
+              "title": "HRM Projects Activities Sync"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2121528",
+              "title": "Core \u2013 BE \u2013 Remove anonymized candidate from projects, Spotlights, Recent Search"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2163326",
+              "title": "Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1693767",
+              "title": "Increase Column Limit in Projects Module"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Feature enablement & feature-flag requests",
+        "cases": 28,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 4 Stories",
+          "ni": 0,
+          "ne": 1,
+          "ns": 4,
+          "exemplars": [
+            "PHEM-2018552",
+            "PHEM-2024961",
+            "PHEM-2262596 Feature flag Revamp"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-2018552",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2024961",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2262596",
+              "title": "Feature flag Revamp"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2024963",
+              "title": "Feature flag: remote-first"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2262679",
+              "title": "Jobs Feature Flag revamp"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1403720",
+              "title": "Fit Score - Please turn feature flag on in staging environment for Saks"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1697298",
+              "title": "feature flag based & permissions fields handling in field management"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Assessments & video screening",
+        "cases": 22,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 3 Stories",
+          "ni": 0,
+          "ne": 1,
+          "ns": 3,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2104082",
+            "PHEM-2270129"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104082",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2270129",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2391093",
+              "title": "[Disney] Split Weekly Availability into per-field groups (enable + knockout per "
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2106019",
+              "title": "7.3: Add expanded hiring team roles to VX screening evaluation configuration"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1698115",
+              "title": "Update incorrect translation for \"Screening\""
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2270130",
+              "title": "CRM \u2013 FE \u2013 Allow clearing questionnaire selection in Create/Edit Job form"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Security, compliance & data-privacy requests",
+        "cases": 19,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 1 Story",
+          "ni": 0,
+          "ne": 0,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-1483121",
+            "PHEM-1513194 Share Report via Secure Web Link"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1483121",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1513194",
+              "title": "Share Report via Secure Web Link"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Duplicate & merged profiles (logged under CRM Core)",
+        "cases": 19,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Audit trail & 'who changed it' questions",
+        "cases": 16,
+        "gap": false,
+        "mapping": {
+          "counts": "2 Initiatives \u00b7 1 Epic \u00b7 4 Stories",
+          "ni": 2,
+          "ne": 1,
+          "ns": 4,
+          "exemplars": [
+            "PHEM-1698278",
+            "PHEM-1970578 RX Core Job Activity View",
+            "PHEM-1699646"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1698278",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1970578",
+              "title": "RX Core Job Activity View"
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2506130",
+              "title": "Audit Log Console"
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1699646",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2260385",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2281914",
+              "title": "RX Job Activity - Phase 2"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1699647",
+              "title": "Audit Current Change Detection Strategy"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2314682",
+              "title": "S3. RX \u2013 BE \u2013 Async batch processing and activities audit"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2285654",
+              "title": "Field audit logs"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2396523",
+              "title": "Implementing audit logs for candidate and application fields"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "EC Trigger issues",
+        "cases": 15,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Invite to Apply & Recruiter Initiated Apply",
+        "cases": 12,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Agency portal",
+        "cases": 8,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 6 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 6,
+          "exemplars": [
+            "PHEM-2496708 Epic: Agency Candidate Ownership Enhancement",
+            "PHEM-2270995 Enhancement for Agency module",
+            "PHEM-2496709 Story 3 - Agency Archives \u2013 read-only view of past submissions"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2496708",
+              "title": "Epic: Agency Candidate Ownership Enhancement"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2270995",
+              "title": "Enhancement for Agency module"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2496709",
+              "title": "Story 3 - Agency Archives \u2013 read-only view of past submissions"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2496710",
+              "title": "Story 2 - \"Agency Ownership Validity\" column with filters"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2496711",
+              "title": "Story 1 - Ownership model \u2013 per-agency ownership window"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2271103",
+              "title": "Lead & Applicant Counts by Agency"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2056461",
+              "title": "Bulk Upload configurations for Agency Recruiter"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Automation items (logged under CRM Core)",
+        "cases": 7,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-2163324",
+            "PHEM-2009286 Automation of dependency delta fields congestion into CRM",
+            "PHEM-2163326 Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2163324",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2009286",
+              "title": "Automation of dependency delta fields congestion into CRM"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2163326",
+              "title": "Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Events & university recruiting",
+        "cases": 7,
+        "gap": true,
+        "mapping": "TBD"
+      }
+    ],
+    "mapped": 24,
+    "tbd": 4,
+    "cases": 1354
+  },
+  "Profile": {
+    "name": "Profile",
+    "themes": [
+      {
+        "theme": "Candidate profile data, fields & contact details",
+        "cases": 162,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-2260823",
+            "PHEM-2394800",
+            "PHEM-2288791 CRM \u2013 FE/BE \u2013 InMail Stub Profile hydration"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2260823",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2394800",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2288791",
+              "title": "CRM \u2013 FE/BE \u2013 InMail Stub Profile hydration"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2394844",
+              "title": "CRM \u2014 Remap Candidate Profiles and Referral References"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Hiring status changes & mismatches",
+        "cases": 142,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 Story: TBD",
+          "ni": 0,
+          "ne": 1,
+          "ns": 0,
+          "exemplars": [
+            "PHEM-2136326 RX - Core - Translation Experience for Hiring Status"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2136326",
+              "title": "RX - Core - Translation Experience for Hiring Status"
+            }
+          ],
+          "stories": []
+        }
+      },
+      {
+        "theme": "Profile merge, unmerge & duplicate profiles",
+        "cases": 130,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Privacy, GDPR, deletion, purge & consent",
+        "cases": 110,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-1992228",
+            "PHEM-1992235 Reconsent",
+            "PHEM-2079228 Employee Detail Page Visibility - With Consent No in CRM"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1992228",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-1992235",
+              "title": "Reconsent"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2079228",
+              "title": "Employee Detail Page Visibility - With Consent No in CRM"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1856881",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1982216",
+              "title": "Privacy Segmentation"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2121528",
+              "title": "Core \u2013 BE \u2013 Remove anonymized candidate from projects, Spotlights, Recent Search"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Resumes, documents & resume parsing",
+        "cases": 100,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 4 Stories",
+          "ni": 0,
+          "ne": 1,
+          "ns": 4,
+          "exemplars": [
+            "PHEM-2180576 Document viewer for Job attachments",
+            "PHEM-1483121",
+            "PHEM-2358556 CRM \u2013 FE \u2013 Fix CSV, XLS, and XLSX rendering in Job document viewer"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2180576",
+              "title": "Document viewer for Job attachments"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1483121",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2358556",
+              "title": "CRM \u2013 FE \u2013 Fix CSV, XLS, and XLSX rendering in Job document viewer"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2288883",
+              "title": "B2. RX \u2013 FE \u2013 Reuse HRM document viewer in CRM (view without download)"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1513189",
+              "title": "Control Resume Inclusion in Reports"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2215062",
+              "title": "Update error messages for documents handling on projects"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Candidates, applications or data missing / not syncing with ATS",
+        "cases": 90,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Employee vs. candidate classification (internal, alumni, terminated)",
+        "cases": 59,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-2178519 Deparmentalization support for Employee/Candidate connections",
+            "PHEM-2079228 Employee Detail Page Visibility - With Consent No in CRM",
+            "PHEM-2178515 Support departmentalization framework for Employee/Candidate connections feature"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2178519",
+              "title": "Deparmentalization support for Employee/Candidate connections"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2079228",
+              "title": "Employee Detail Page Visibility - With Consent No in CRM"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2394800",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2178515",
+              "title": "Support departmentalization framework for Employee/Candidate connections feature"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2398582",
+              "title": "Scheduling \u2014 Remap Employee Interview Schedule and History"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Profile / traffic source & referral attribution",
+        "cases": 56,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 1 Story",
+          "ni": 0,
+          "ne": 0,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-2394800",
+            "PHEM-2394844 CRM \u2014 Remap Candidate Profiles and Referral References"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2394800",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2394844",
+              "title": "CRM \u2014 Remap Candidate Profiles and Referral References"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Applications & candidate-to-job association",
+        "cases": 41,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 1 Story",
+          "ni": 0,
+          "ne": 1,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-2252378",
+            "PHEM-2252497 CRM - Application Search Index & Application-Centric List (Evaluation + App Fiel",
+            "PHEM-1939858"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2252497",
+              "title": "CRM - Application Search Index & Application-Centric List (Evaluation + App Fiel"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1939858",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2137298",
+              "title": "CRM Core \u2014 Validate impact for Move Application feature"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Interview, screening & offer details on profile",
+        "cases": 36,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Search, filters & lists",
+        "cases": 11,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 3 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 3,
+          "exemplars": [
+            "PHEM-2219954",
+            "PHEM-1856881",
+            "PHEM-2219955 CRM - Filtering updates for scorecard results in candidate list"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2219954",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1856881",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2219955",
+              "title": "CRM - Filtering updates for scorecard results in candidate list"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2219956",
+              "title": "CRM - Add Eval Avg Rating field to candidate list"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2121528",
+              "title": "Core \u2013 BE \u2013 Remove anonymized candidate from projects, Spotlights, Recent Search"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Access, login & user accounts",
+        "cases": 11,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 6 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 6,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-1957943",
+            "PHEM-2104079 6. Role-Aware Auto-Provisioning"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-1957943",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104079",
+              "title": "6. Role-Aware Auto-Provisioning"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1957974",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2492867",
+              "title": "Worker council users cannot access leads"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104080",
+              "title": "6.1: Role-Differentiated Auto-Provisioning"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104081",
+              "title": "6.2: [Deferred Post-MVP] Default Notification Profiles per Provisioning Source"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1957991",
+              "title": "Maintain Team Member ID & Visualize User Access"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2492869",
+              "title": "Core \u2013 BE \u2013 Block worker council lead access for departmentalized jobs"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2492868",
+              "title": "Core \u2013 FE \u2013 Hide the lead tab in a job from the worker council role"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Forwarding candidates & hiring-manager view",
+        "cases": 8,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Automation & Talent Community items (logged under Profile)",
+        "cases": 7,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-2163324",
+            "PHEM-2009286 Automation of dependency delta fields congestion into CRM",
+            "PHEM-2163326 Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2163324",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2009286",
+              "title": "Automation of dependency delta fields congestion into CRM"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2163326",
+              "title": "Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Activity log & profile audit history",
+        "cases": 3,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 1 Story",
+          "ni": 0,
+          "ne": 0,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-2396523 Implementing audit logs for candidate and application fields"
+          ],
+          "inits": [],
+          "epics": [],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2396523",
+              "title": "Implementing audit logs for candidate and application fields"
+            }
+          ]
+        }
+      }
+    ],
+    "mapped": 11,
+    "tbd": 4,
+    "cases": 966
+  },
+  "Messaging": {
+    "name": "Messaging",
+    "themes": [
+      {
+        "theme": "Email templates: branding, footer, links, editing & default templates",
+        "cases": 157,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 1 Epic \u00b7 3 Stories",
+          "ni": 0,
+          "ne": 1,
+          "ns": 3,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2104076",
+            "PHEM-2396086 CRM \u2013 Insert assets from Asset Manager into job descriptions and email templates"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2396086",
+              "title": "CRM \u2013 Insert assets from Asset Manager into job descriptions and email templates"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1388855",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2106102",
+              "title": "5.3: Add role-specific email template tokens for expanded hiring team roles"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1984552",
+              "title": "Add validation for Brand and Identifier fields and improve email template select"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1382251",
+              "title": "Core - Define entities & placeholders for Messaging templates"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Job alerts, subscriptions, Talent Community & incomplete-apply reminders",
+        "cases": 126,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Email campaigns & drip / always-on campaigns",
+        "cases": 122,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "SMS: sending, numbers, inbox & opt-in",
+        "cases": 116,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Email deliverability: not received, bounced, spam, blocked, suppressed",
+        "cases": 96,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Staging / UAT: email whitelisting & test-environment messaging",
+        "cases": 78,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Recruiter / hiring-manager system notifications",
+        "cases": 71,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 2 Epics \u00b7 7 Stories",
+          "ni": 0,
+          "ne": 2,
+          "ns": 7,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2252378",
+            "PHEM-2104076 5. Tenant-Level Notification Configuration"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            },
+            {
+              "lvl": "I",
+              "key": "PHEM-2252378",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": "5. Tenant-Level Notification Configuration"
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2104079",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2260385",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-2184565",
+              "title": "Notify recruiters and hiring managers when assigned to a job"
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104077",
+              "title": "5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104078",
+              "title": "5.2: Notification Dispatch Engine \u2014 Role-Aware Routing"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104081",
+              "title": "6.2: [Deferred Post-MVP] Default Notification Profiles per Provisioning Source"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2314688",
+              "title": "S4. RX + Notifications \u2013 Review results via Jobs panel deep link"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1982213",
+              "title": "Customizable Notification Preferences"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Template placeholders & tokens not resolving",
+        "cases": 57,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2104076",
+            "PHEM-1388855"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": ""
+            },
+            {
+              "lvl": "E",
+              "key": "PHEM-1388855",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2106102",
+              "title": "5.3: Add role-specific email template tokens for expanded hiring team roles"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-1382251",
+              "title": "Core - Define entities & placeholders for Messaging templates"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Recruiter inbox & candidate replies (Phenom / Outlook)",
+        "cases": 46,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Candidate system emails not sending or wrong (apply thank-you, confirmation, rejection, referral)",
+        "cases": 45,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Screening & interview invitation emails",
+        "cases": 42,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "1:1 email sending & email activity visibility",
+        "cases": 38,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 1 Story",
+          "ni": 0,
+          "ne": 0,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-1873650 send emails to recruiters & CP events integration"
+          ],
+          "inits": [],
+          "epics": [],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1873650",
+              "title": "send emails to recruiters & CP events integration"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "WhatsApp messaging",
+        "cases": 31,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Lists (static & dynamic)",
+        "cases": 17,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Messaging automations not triggering",
+        "cases": 12,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Opt-in, opt-out & consent",
+        "cases": 12,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Access, roles & permissions",
+        "cases": 9,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 3 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 3,
+          "exemplars": [
+            "PHEM-1965641",
+            "PHEM-2104076",
+            "PHEM-2104077 5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping"
+          ],
+          "inits": [
+            {
+              "lvl": "I",
+              "key": "PHEM-1965641",
+              "title": ""
+            }
+          ],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2104076",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2104077",
+              "title": "5.1: [Deferred Post-MVP] Admin UI Role-to-Notification Trigger Mapping"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2104078",
+              "title": "5.2: Notification Dispatch Engine \u2014 Role-Aware Routing"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2106102",
+              "title": "5.3: Add role-specific email template tokens for expanded hiring team roles"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Event communications",
+        "cases": 8,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 1 Story",
+          "ni": 0,
+          "ne": 0,
+          "ns": 1,
+          "exemplars": [
+            "PHEM-1873650 send emails to recruiters & CP events integration"
+          ],
+          "inits": [],
+          "epics": [],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-1873650",
+              "title": "send emails to recruiters & CP events integration"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Messaging reporting & analytics",
+        "cases": 7,
+        "gap": true,
+        "mapping": "TBD"
+      }
+    ],
+    "mapped": 6,
+    "tbd": 13,
+    "cases": 1090
+  },
+  "Automations": {
+    "name": "Automations",
+    "themes": [
+      {
+        "theme": "Automation not triggering / failing",
+        "cases": 111,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Automation setup, configuration questions & feature requests",
+        "cases": 73,
+        "gap": false,
+        "mapping": {
+          "counts": "Initiative: TBD \u00b7 Epic: TBD \u00b7 2 Stories",
+          "ni": 0,
+          "ne": 0,
+          "ns": 2,
+          "exemplars": [
+            "PHEM-2163324",
+            "PHEM-2009286 Automation of dependency delta fields congestion into CRM",
+            "PHEM-2163326 Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+          ],
+          "inits": [],
+          "epics": [
+            {
+              "lvl": "E",
+              "key": "PHEM-2163324",
+              "title": ""
+            }
+          ],
+          "stories": [
+            {
+              "lvl": "S",
+              "key": "PHEM-2009286",
+              "title": "Automation of dependency delta fields congestion into CRM"
+            },
+            {
+              "lvl": "S",
+              "key": "PHEM-2163326",
+              "title": "Interim Workaround - Default Project & CRM Automation (Immediate Unblock)"
+            }
+          ]
+        }
+      },
+      {
+        "theme": "Screening, interview & Voice Agent automations",
+        "cases": 32,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Wrong, duplicate or unexpected automation actions",
+        "cases": 31,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Export, bulk upload & candidate data",
+        "cases": 26,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Run history, audit log & trigger-count visibility",
+        "cases": 21,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Automated email / template content",
+        "cases": 20,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Access, environments & ATS/HRM sync",
+        "cases": 15,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Jobs, offers, events & other records (logged under Automations)",
+        "cases": 15,
+        "gap": true,
+        "mapping": "TBD"
+      },
+      {
+        "theme": "Hiring status & stage movement",
+        "cases": 12,
+        "gap": true,
+        "mapping": "TBD"
+      }
+    ],
+    "mapped": 1,
+    "tbd": 9,
+    "cases": 356
+  }
+}

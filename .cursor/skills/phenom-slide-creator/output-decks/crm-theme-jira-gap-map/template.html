@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CRM Themes → Jira Gap Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+<link rel="stylesheet" href="phenom-tokens.css" />
+<link rel="stylesheet" href="phenom-deck.css" />
+<style>
+  html, body { width: 100%; height: 100% !important; margin: 0 !important; }
+  .reveal { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+  .reveal .slides { text-align: left; }
+  .reveal .slides section { padding: 0; }
+
+  /* Map table — Level 2 layout from existing tokens */
+  .slide--map { padding-bottom: 36px; }
+  .map-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 1.35;
+    flex: 1;
+  }
+  .map-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-2);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 0 12px 8px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .map-table td {
+    vertical-align: top;
+    padding: 8px 14px 8px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+  }
+  .map-table tr:last-child td { border-bottom: none; }
+  .map-table .c-theme { width: 42%; }
+  .map-table .c-map { width: 58%; }
+  .map-table-3 .c-area { width: 16%; }
+  .map-table-3 .c-theme { width: 48%; }
+  .map-table-3 .c-map { width: 36%; }
+  .tn { font-weight: 600; color: var(--ink); font-size: 13px; }
+  .tn.gap { color: var(--honey-900); }
+  .muted { color: var(--ink-3); font-size: 11px; margin-top: 2px; }
+  .row-tbd { background: color-mix(in srgb, var(--honey-50) 70%, transparent); }
+  .row-tbd td { border-bottom-color: color-mix(in srgb, var(--honey-500) 35%, transparent); }
+  .tbd {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--honey-900);
+    background: var(--honey-50);
+    border: 1px solid var(--honey-500);
+    border-radius: 4px;
+    padding: 2px 8px;
+    letter-spacing: .04em;
+  }
+  .hint { font-size: 11px; color: var(--ink-2); margin-top: 4px; }
+  .chip {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 2px 7px;
+    margin: 0 4px 4px 0;
+  }
+  .chip-i { background: var(--lilac-50); color: var(--navy-deep); }
+  .chip-e { background: var(--mint-50); color: var(--mint-900); }
+  .chip-s { background: var(--peach-50); color: var(--peach-900); }
+  .chip-tbd { background: var(--honey-50); color: var(--honey-900); border: 1px dashed var(--honey-500); }
+  .ex { font-size: 11px; color: var(--ink-2); margin-top: 2px; }
+  .partial { font-size: 11px; font-weight: 600; color: var(--honey-900); margin-top: 3px; }
+  .pill {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 3px 8px; border-radius: 4px; background: var(--mint-50); color: var(--ink);
+  }
+  .pill[data-family="peach"] { background: var(--peach-50); }
+  .pill[data-family="honey"] { background: var(--honey-50); }
+  .pill[data-family="lilac"] { background: var(--lilac-50); }
+
+  .legend-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px;
+  }
+  .legend-card {
+    background: var(--mint-50);
+    border-radius: 10px; padding: 18px 20px; min-height: 120px;
+  }
+  .legend-card[data-family="peach"] { background: var(--peach-50); }
+  .legend-card[data-family="honey"] { background: var(--honey-50); }
+  .legend-card[data-family="lilac"] { background: var(--lilac-50); }
+  .lg-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; color: var(--ink); }
+  .lg-body { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+
+  .metrics-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  .tbd-metric .num { color: var(--honey-900); }
+  .area-gap-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px;
+  }
+  .area-gap {
+    background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px;
+  }
+  .ag-name { font-weight: 700; font-size: 13px; }
+  .ag-stat { font-size: 12px; color: var(--ink-2); margin: 4px 0 8px; }
+  .tbd-n { color: var(--honey-900); }
+  .ag-bar { height: 6px; background: var(--tile); border-radius: 3px; overflow: hidden; }
+  .ag-bar span { display: block; height: 100%; background: var(--mint-500); border-radius: 3px; }
+  .area-gap[data-family="peach"] .ag-bar span { background: var(--peach-500); }
+  .area-gap[data-family="honey"] .ag-bar span { background: var(--honey-500); }
+  .area-gap[data-family="lilac"] .ag-bar span { background: var(--lilac-300); }
+
+  .slide--divider .divider-sub {
+    position: absolute; left: 120px; bottom: 72px;
+    font-size: 16px; color: var(--ink-2); font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <div class="slide slide--cover">
+        <div class="cover-title">CRM themes vs Jira backlog</div>
+        <div class="cover-sub">Where Initiatives, Epics and Stories exist — and where they are TBD</div>
+        <svg class="thread" viewBox="0 0 1280 220" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="thread" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ff8045"/>
+              <stop offset="45%" stop-color="#6ad5ca"/>
+              <stop offset="100%" stop-color="#7172da"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,200 C260,120 380,40 620,110 C840,170 980,210 1060,150 C1130,100 1090,40 1150,40 C1210,40 1230,110 1180,150"
+                fill="none" stroke="url(#thread)" stroke-width="3"/>
+        </svg>
+      </div>
+    </section>
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">How to read this deck</div>
+          <div class="s-title">One table, two columns, clear gaps</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="legend-grid">
+          <div class="legend-card" data-family="mint">
+            <div class="lg-title">Column 1 — SR theme</div>
+            <div class="lg-body">Every classified service-request theme across the four CRM areas (Core, Profile, Messaging, Automations). Volume is Jan–Aug 2026 cases.</div>
+          </div>
+          <div class="legend-card" data-family="peach">
+            <div class="lg-title">Column 2 — Open Jira</div>
+            <div class="lg-body">Matching open Initiative, Epic and Story counts on board 1091 only (CRM Core board used in the source HTML). Example keys shown when present. A level with zero matches is marked TBD.</div>
+          </div>
+          <div class="legend-card" data-family="honey">
+            <div class="lg-title">Full TBD row</div>
+            <div class="lg-body">Highlighted rows with <b>TBD</b> have no open Initiative, Epic or Story. These themes need new backlog items.</div>
+          </div>
+          <div class="legend-card" data-family="lilac">
+            <div class="lg-title">Partial TBD</div>
+            <div class="lg-body">Some themes have Stories or Epics but no parent Initiative (or the reverse). The row says which level is still TBD.</div>
+          </div>
+        </div>
+        <div class="pagenum">2</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">Gap at a glance</div>
+          <div class="s-title">Coverage across all four CRM areas</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="metrics-grid metrics-4">
+          <div class="metric-tile"><div class="num">72</div><div class="lbl">Themes total</div><div class="desc">All classified SR themes in the four CRM areas.</div></div>
+          <div class="metric-tile"><div class="num">42</div><div class="lbl">Have Jira coverage</div><div class="desc">At least one open Initiative, Epic or Story.</div></div>
+          <div class="metric-tile tbd-metric"><div class="num">30</div><div class="lbl">Full TBD</div><div class="desc">No open Initiative, Epic or Story — new backlog needed.</div></div>
+          <div class="metric-tile"><div class="num">4</div><div class="lbl">CRM areas</div><div class="desc">Core · Profile · Messaging · Automations.</div></div>
+        </div>
+        <div class="area-gap-row">
+<div class="area-gap" data-family="mint"><div class="ag-name">CRM Core</div><div class="ag-stat"><b>24</b> mapped · <b class="tbd-n">4</b> TBD</div><div class="ag-bar"><span style="width:86%"></span></div></div>
+<div class="area-gap" data-family="peach"><div class="ag-name">Profile</div><div class="ag-stat"><b>11</b> mapped · <b class="tbd-n">4</b> TBD</div><div class="ag-bar"><span style="width:73%"></span></div></div>
+<div class="area-gap" data-family="honey"><div class="ag-name">Messaging</div><div class="ag-stat"><b>6</b> mapped · <b class="tbd-n">13</b> TBD</div><div class="ag-bar"><span style="width:32%"></span></div></div>
+<div class="area-gap" data-family="lilac"><div class="ag-name">Automations</div><div class="ag-stat"><b>1</b> mapped · <b class="tbd-n">9</b> TBD</div><div class="ag-bar"><span style="width:10%"></span></div></div>
+        </div>
+        <div class="pagenum">3</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--divider" data-family="mint">
+        <div class="blob"></div>
+        <div class="rail">CRM areas</div>
+        <div class="divider-title">CRM Core</div>
+        <div class="divider-sub">24 mapped · 4 TBD · 1,354 SRs</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">CRM Core · 1 of 4</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Job fields, dropdowns, locations &amp; translations</div><div class="muted">123 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">10 Epics</span><span class="chip chip-s">29 Stories</span><div class="ex">PHEM-2252378 · PHEM-2412940</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Interview scheduling, calendars, evaluations &amp; scorecards</div><div class="muted">111 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">9 Stories</span><div class="ex">PHEM-1965641 · PHEM-2252378</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Access, roles, permissions &amp; login</div><div class="muted">102 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">8 Epics</span><span class="chip chip-s">33 Stories</span><div class="ex">PHEM-1965641 · PHEM-1957943</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Job posting, publishing, closing &amp; career-site visibility</div><div class="muted">100 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">4 Epics</span><span class="chip chip-s">14 Stories</span><div class="ex">PHEM-2412940 · PHEM-2018552</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">LinkedIn integration (CRM Connect, Recommendations, sharing)</div><div class="muted">89 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">2 Initiatives</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-1957322 RX Core - LinkedIn CRM Connect · PHEM-2341256 LinkedIn CRM Connectivity &amp; Enhancements</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Bulk upload, import, export, documents &amp; reports</div><div class="muted">83 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">21 Stories</span><div class="ex">PHEM-2252378 · PHEM-2260385 CRM – Bulk Edit Job Requisitions</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Performance, outages &amp; UI errors</div><div class="muted">79 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">2 Initiatives</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">12 Stories</span><div class="ex">PHEM-1698278 RX - Performance Optimizations · PHEM-1970553 RX Core Self-Servicing Errors</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">5</div>
+        <aside class="speaker-notes" style="display:none">CRM Core theme-to-backlog map. 7 themes have open Jira coverage; 0 show TBD. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">CRM Core · 2 of 4</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Job &amp; requisition access, assignment and hiring team</div><div class="muted">66 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">11 Stories</span><div class="ex">PHEM-1965641 · PHEM-2104082</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Spotlights, filters, search &amp; lists</div><div class="muted">64 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">1 Initiative</span><span class="chip chip-e">5 Epics</span><span class="chip chip-s">17 Stories</span><div class="ex">PHEM-1965641 · PHEM-1987368 RX Views / Spotlights</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Email, notifications &amp; Talent Community (logged under CRM Core)</div><div class="muted">61 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">9 Stories</span><div class="ex">PHEM-1965641 · PHEM-2252378</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Hiring status, lead/applicant pipeline &amp; workflow</div><div class="muted">47 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">3 Stories</span><div class="ex">PHEM-2341256 · PHEM-2341415 CRM and LinkedIn Broken Pipeline</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Job &amp; requisition records (missing, creation, editing, discrepancies)</div><div class="muted">46 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">7 Stories</span><div class="ex">PHEM-1965641 · PHEM-2412940</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Tags &amp; notes</div><div class="muted">45 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">1 Initiative</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">7 Stories</span><div class="ex">PHEM-1987498 Notes · PHEM-1957943</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">ATS / HRIS sync &amp; integrations (Workday, SF, UKG, API, Chrome extension)</div><div class="muted">45 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">1 Initiative</span><span class="chip chip-e">9 Epics</span><span class="chip chip-s">14 Stories</span><div class="ex">PHEM-1965641 · PHEM-1987584 RedDot Integration</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">6</div>
+        <aside class="speaker-notes" style="display:none">CRM Core theme-to-backlog map. 7 themes have open Jira coverage; 0 show TBD. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">CRM Core · 3 of 4</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Offer letters &amp; pre-onboarding</div><div class="muted">39 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-tbd">Story: TBD</span><div class="ex">PHEM-1991264 · PHEM-1991295 Offer Letter Fields</div><div class="partial">Still needs: Initiative, Story</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Fit Score &amp; AI features (AI Discovery, X+, Voice Agent, Intelligent Sourcing)</div><div class="muted">37 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">6 Stories</span><div class="ex">PHEM-1951222 · PHEM-1403720 Fit Score - Please turn feature flag on in staging environment for Saks</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Candidate profile &amp; data (logged under CRM Core)</div><div class="muted">35 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">3 Epics</span><span class="chip chip-s">5 Stories</span><div class="ex">PHEM-1992228 · PHEM-1965641</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Projects</div><div class="muted">29 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">1 Initiative</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">8 Stories</span><div class="ex">PHEM-1957943 RX Projects · PHEM-1957974 HRM &lt;&gt; CRM Projects 26.05</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Feature enablement &amp; feature-flag requests</div><div class="muted">28 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-s">4 Stories</span><div class="ex">PHEM-2018552 · PHEM-2024961</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Assessments &amp; video screening</div><div class="muted">22 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-s">3 Stories</span><div class="ex">PHEM-1965641 · PHEM-2104082</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Security, compliance &amp; data-privacy requests</div><div class="muted">19 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-1483121 · PHEM-1513194 Share Report via Secure Web Link</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">7</div>
+        <aside class="speaker-notes" style="display:none">CRM Core theme-to-backlog map. 7 themes have open Jira coverage; 0 show TBD. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">CRM Core · 4 of 4</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Duplicate &amp; merged profiles (logged under CRM Core)</div><div class="muted">19 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Audit trail &amp; &#x27;who changed it&#x27; questions</div><div class="muted">16 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-i">2 Initiatives</span><span class="chip chip-e">1 Epic</span><span class="chip chip-s">4 Stories</span><div class="ex">PHEM-1698278 · PHEM-1970578 RX Core Job Activity View</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">EC Trigger issues</div><div class="muted">15 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Invite to Apply &amp; Recruiter Initiated Apply</div><div class="muted">12 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Agency portal</div><div class="muted">8 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">6 Stories</span><div class="ex">PHEM-2496708 Epic: Agency Candidate Ownership Enhancement · PHEM-2270995 Enhancement for Agency module</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Automation items (logged under CRM Core)</div><div class="muted">7 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-2163324 · PHEM-2009286 Automation of dependency delta fields congestion into CRM</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Events &amp; university recruiting</div><div class="muted">7 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">8</div>
+        <aside class="speaker-notes" style="display:none">CRM Core theme-to-backlog map. 3 themes have open Jira coverage; 4 show TBD. TBD on this slide: Duplicate &amp; merged profiles (logged under CRM Core); EC Trigger issues; Invite to Apply &amp; Recruiter Initiated Apply; Events &amp; university recruiting. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--divider" data-family="peach">
+        <div class="blob"></div>
+        <div class="rail">CRM areas</div>
+        <div class="divider-title">Profile</div>
+        <div class="divider-sub">11 mapped · 4 TBD · 966 SRs</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="peach">
+        <div class="s-head">
+          <div class="s-kicker">Profile · 1 of 3</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Candidate profile data, fields &amp; contact details</div><div class="muted">162 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-2260823 · PHEM-2394800</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Hiring status changes &amp; mismatches</div><div class="muted">142 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-tbd">Story: TBD</span><div class="ex">PHEM-2136326 RX - Core - Translation Experience for Hiring Status</div><div class="partial">Still needs: Initiative, Story</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Profile merge, unmerge &amp; duplicate profiles</div><div class="muted">130 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Privacy, GDPR, deletion, purge &amp; consent</div><div class="muted">110 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-1992228 · PHEM-1992235 Reconsent</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Resumes, documents &amp; resume parsing</div><div class="muted">100 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-s">4 Stories</span><div class="ex">PHEM-2180576 Document viewer for Job attachments · PHEM-1483121</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Candidates, applications or data missing / not syncing with ATS</div><div class="muted">90 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Employee vs. candidate classification (internal, alumni, terminated)</div><div class="muted">59 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-2178519 Deparmentalization support for Employee/Candidate connections · PHEM-2079228 Employee Detail Page Visibility - With Consent No in CRM</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">10</div>
+        <aside class="speaker-notes" style="display:none">Profile theme-to-backlog map. 5 themes have open Jira coverage; 2 show TBD. TBD on this slide: Profile merge, unmerge &amp; duplicate profiles; Candidates, applications or data missing / not syncing with ATS. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="peach">
+        <div class="s-head">
+          <div class="s-kicker">Profile · 2 of 3</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Profile / traffic source &amp; referral attribution</div><div class="muted">56 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-2394800 · PHEM-2394844 CRM — Remap Candidate Profiles and Referral References</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Applications &amp; candidate-to-job association</div><div class="muted">41 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-2252378 · PHEM-2252497 CRM - Application Search Index &amp; Application-Centric List (Evaluation + App Fiel</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Interview, screening &amp; offer details on profile</div><div class="muted">36 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Search, filters &amp; lists</div><div class="muted">11 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">3 Stories</span><div class="ex">PHEM-2219954 · PHEM-1856881</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Access, login &amp; user accounts</div><div class="muted">11 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">6 Stories</span><div class="ex">PHEM-1965641 · PHEM-1957943</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Forwarding candidates &amp; hiring-manager view</div><div class="muted">8 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Automation &amp; Talent Community items (logged under Profile)</div><div class="muted">7 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-2163324 · PHEM-2009286 Automation of dependency delta fields congestion into CRM</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">11</div>
+        <aside class="speaker-notes" style="display:none">Profile theme-to-backlog map. 5 themes have open Jira coverage; 2 show TBD. TBD on this slide: Interview, screening &amp; offer details on profile; Forwarding candidates &amp; hiring-manager view. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="peach">
+        <div class="s-head">
+          <div class="s-kicker">Profile · 3 of 3</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Activity log &amp; profile audit history</div><div class="muted">3 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-2396523 Implementing audit logs for candidate and application fields</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">12</div>
+        <aside class="speaker-notes" style="display:none">Profile theme-to-backlog map. 1 themes have open Jira coverage; 0 show TBD. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--divider" data-family="honey">
+        <div class="blob"></div>
+        <div class="rail">CRM areas</div>
+        <div class="divider-title">Messaging</div>
+        <div class="divider-sub">6 mapped · 13 TBD · 1,090 SRs</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="honey">
+        <div class="s-head">
+          <div class="s-kicker">Messaging · 1 of 3</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Email templates: branding, footer, links, editing &amp; default templates</div><div class="muted">157 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">1 Epic</span><span class="chip chip-s">3 Stories</span><div class="ex">PHEM-1965641 · PHEM-2104076</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Job alerts, subscriptions, Talent Community &amp; incomplete-apply reminders</div><div class="muted">126 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Email campaigns &amp; drip / always-on campaigns</div><div class="muted">122 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">SMS: sending, numbers, inbox &amp; opt-in</div><div class="muted">116 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Email deliverability: not received, bounced, spam, blocked, suppressed</div><div class="muted">96 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Staging / UAT: email whitelisting &amp; test-environment messaging</div><div class="muted">78 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Recruiter / hiring-manager system notifications</div><div class="muted">71 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-e">2 Epics</span><span class="chip chip-s">7 Stories</span><div class="ex">PHEM-1965641 · PHEM-2252378</div><div class="partial">Still needs: Initiative</div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">14</div>
+        <aside class="speaker-notes" style="display:none">Messaging theme-to-backlog map. 2 themes have open Jira coverage; 5 show TBD. TBD on this slide: Job alerts, subscriptions, Talent Community &amp; incomplete-apply reminders; Email campaigns &amp; drip / always-on campaigns; SMS: sending, numbers, inbox &amp; opt-in; Email deliverability: not received, bounced, spam, blocked, suppressed; Staging / UAT: email whitelisting &amp; test-environment messaging. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="honey">
+        <div class="s-head">
+          <div class="s-kicker">Messaging · 2 of 3</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr><td class="c-theme"><div class="tn">Template placeholders &amp; tokens not resolving</div><div class="muted">57 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-1965641 · PHEM-2104076</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Recruiter inbox &amp; candidate replies (Phenom / Outlook)</div><div class="muted">46 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Candidate system emails not sending or wrong (apply thank-you, confirmation, rejection, referral)</div><div class="muted">45 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Screening &amp; interview invitation emails</div><div class="muted">42 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">1:1 email sending &amp; email activity visibility</div><div class="muted">38 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-1873650 send emails to recruiters &amp; CP events integration</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">WhatsApp messaging</div><div class="muted">31 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Lists (static &amp; dynamic)</div><div class="muted">17 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">15</div>
+        <aside class="speaker-notes" style="display:none">Messaging theme-to-backlog map. 2 themes have open Jira coverage; 5 show TBD. TBD on this slide: Recruiter inbox &amp; candidate replies (Phenom / Outlook); Candidate system emails not sending or wrong (apply thank-you, confirmation, rejection, referral); Screening &amp; interview invitation emails; WhatsApp messaging; Lists (static &amp; dynamic). Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="honey">
+        <div class="s-head">
+          <div class="s-kicker">Messaging · 3 of 3</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Messaging automations not triggering</div><div class="muted">12 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Opt-in, opt-out &amp; consent</div><div class="muted">12 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Access, roles &amp; permissions</div><div class="muted">9 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">3 Stories</span><div class="ex">PHEM-1965641 · PHEM-2104076</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr><td class="c-theme"><div class="tn">Event communications</div><div class="muted">8 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">1 Story</span><div class="ex">PHEM-1873650 send emails to recruiters &amp; CP events integration</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Messaging reporting &amp; analytics</div><div class="muted">7 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">16</div>
+        <aside class="speaker-notes" style="display:none">Messaging theme-to-backlog map. 2 themes have open Jira coverage; 3 show TBD. TBD on this slide: Messaging automations not triggering; Opt-in, opt-out &amp; consent; Messaging reporting &amp; analytics. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--divider" data-family="lilac">
+        <div class="blob"></div>
+        <div class="rail">CRM areas</div>
+        <div class="divider-title">Automations</div>
+        <div class="divider-sub">1 mapped · 9 TBD · 356 SRs</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="lilac">
+        <div class="s-head">
+          <div class="s-kicker">Automations · 1 of 2</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Automation not triggering / failing</div><div class="muted">111 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr><td class="c-theme"><div class="tn">Automation setup, configuration questions &amp; feature requests</div><div class="muted">73 service requests</div></td><td class="c-map"><div class="map"><span class="chip chip-tbd">Initiative: TBD</span><span class="chip chip-tbd">Epic: TBD</span><span class="chip chip-s">2 Stories</span><div class="ex">PHEM-2163324 · PHEM-2009286 Automation of dependency delta fields congestion into CRM</div><div class="partial">Still needs: Initiative, Epic</div></div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Screening, interview &amp; Voice Agent automations</div><div class="muted">32 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Wrong, duplicate or unexpected automation actions</div><div class="muted">31 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Export, bulk upload &amp; candidate data</div><div class="muted">26 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Run history, audit log &amp; trigger-count visibility</div><div class="muted">21 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Automated email / template content</div><div class="muted">20 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">18</div>
+        <aside class="speaker-notes" style="display:none">Automations theme-to-backlog map. 1 themes have open Jira coverage; 6 show TBD. TBD on this slide: Automation not triggering / failing; Screening, interview &amp; Voice Agent automations; Wrong, duplicate or unexpected automation actions; Export, bulk upload &amp; candidate data; Run history, audit log &amp; trigger-count visibility; Automated email / template content. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--map" data-family="lilac">
+        <div class="s-head">
+          <div class="s-kicker">Automations · 2 of 2</div>
+          <div class="s-title">Theme → Initiative / Epic / Story</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table">
+          <thead>
+            <tr><th class="c-theme">SR theme</th><th class="c-map">Open Jira coverage (board 1091)</th></tr>
+          </thead>
+          <tbody>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Access, environments &amp; ATS/HRM sync</div><div class="muted">15 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Jobs, offers, events &amp; other records (logged under Automations)</div><div class="muted">15 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+<tr class="row-tbd"><td class="c-theme"><div class="tn gap">Hiring status &amp; stage movement</div><div class="muted">12 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Needs new Initiative, Epic, and Story</div></td></tr>
+          </tbody>
+        </table>
+        <div class="pagenum">19</div>
+        <aside class="speaker-notes" style="display:none">Automations theme-to-backlog map. 0 themes have open Jira coverage; 3 show TBD. TBD on this slide: Access, environments &amp; ATS/HRM sync; Jobs, offers, events &amp; other records (logged under Automations); Hiring status &amp; stage movement. Counts are open Initiative / Epic / Story matches on board 1091 from the Jan–Aug 2026 SR themes HTML.</aside>
+      </div>
+    </section>
+    <section>
+      <div class="slide" data-family="honey">
+        <div class="s-head">
+          <div class="s-kicker">Where to act first</div>
+          <div class="s-title">Top 8 themes with no open Jira</div>
+          <div class="s-rule"></div>
+        </div>
+        <table class="map-table map-table-3">
+          <thead>
+            <tr><th class="c-area">Area</th><th class="c-theme">SR theme</th><th class="c-map">Backlog action</th></tr>
+          </thead>
+          <tbody><tr class="row-tbd"><td class="c-area"><span class="pill" data-family="peach">Profile</span></td><td class="c-theme"><div class="tn gap">Profile merge, unmerge &amp; duplicate profiles</div><div class="muted">130 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="honey">Messaging</span></td><td class="c-theme"><div class="tn gap">Job alerts, subscriptions, Talent Community &amp; incomplete-apply reminders</div><div class="muted">126 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="honey">Messaging</span></td><td class="c-theme"><div class="tn gap">Email campaigns &amp; drip / always-on campaigns</div><div class="muted">122 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="honey">Messaging</span></td><td class="c-theme"><div class="tn gap">SMS: sending, numbers, inbox &amp; opt-in</div><div class="muted">116 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="lilac">Automations</span></td><td class="c-theme"><div class="tn gap">Automation not triggering / failing</div><div class="muted">111 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="honey">Messaging</span></td><td class="c-theme"><div class="tn gap">Email deliverability: not received, bounced, spam, blocked, suppressed</div><div class="muted">96 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="peach">Profile</span></td><td class="c-theme"><div class="tn gap">Candidates, applications or data missing / not syncing with ATS</div><div class="muted">90 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr>
+<tr class="row-tbd"><td class="c-area"><span class="pill" data-family="honey">Messaging</span></td><td class="c-theme"><div class="tn gap">Staging / UAT: email whitelisting &amp; test-environment messaging</div><div class="muted">78 service requests</div></td><td class="c-map"><span class="tbd">TBD</span><div class="hint">Create Initiative → Epic → Story</div></td></tr></tbody>
+        </table>
+        <div class="pagenum">20</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide" data-family="mint">
+        <div class="s-head">
+          <div class="s-kicker">In summary</div>
+          <div class="s-title">What needs new backlog work</div>
+          <div class="s-rule"></div>
+        </div>
+        <div class="takeaways">
+          <div class="takeaway"><b>Automations</b> is the largest gap: 9 of 10 themes are TBD, including “Automation not triggering / failing” (111 SRs).</div>
+          <div class="takeaway"><b>Messaging</b> has 13 TBD themes — campaigns, SMS, deliverability, job alerts and WhatsApp have no open Initiative / Epic / Story.</div>
+          <div class="takeaway"><b>Profile</b> gaps include merge/duplicates (130 SRs) and ATS sync / missing data.</div>
+          <div class="takeaway"><b>CRM Core</b> is mostly covered; remaining TBD: duplicates, EC Trigger, Invite to Apply / RIA, and Events.</div>
+        </div>
+        <div class="pagenum">21</div>
+      </div>
+    </section>
+    <section>
+      <div class="slide slide--cover">
+        <div class="cover-title">TBD means create the work</div>
+        <div class="cover-sub">Initiative → Epic → Story for every highlighted theme</div>
+        <svg class="thread" viewBox="0 0 1280 220" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="thread2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ff8045"/>
+              <stop offset="45%" stop-color="#6ad5ca"/>
+              <stop offset="100%" stop-color="#7172da"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,200 C260,120 380,40 620,110 C840,170 980,210 1060,150 C1130,100 1090,40 1150,40 C1210,40 1230,110 1180,150"
+                fill="none" stroke="url(#thread2)" stroke-width="3"/>
+        </svg>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    controls: true,
+    progress: true,
+    slideNumber: false,
+    hash: true,
+  });
+</script>
+</body>
+</html>
