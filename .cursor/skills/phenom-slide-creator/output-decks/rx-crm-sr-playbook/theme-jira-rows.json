@@ -1,0 +1,470 @@
+{
+  "areas": [
+    {
+      "area": "CRM Core",
+      "label": "CRM Core",
+      "mapped": 24,
+      "total": 28,
+      "rows": [
+        {
+          "theme": "LinkedIn integration (CRM Connect, Recommendations, sharing)",
+          "jira": "Init PHEM-1957322, PHEM-2341256 \u00b7 Epic PHEM-1957323, PHEM-2014661, PHEM-2341415 \u00b7 Story PHEM-2288791",
+          "mapped": true,
+          "n": 6
+        },
+        {
+          "theme": "EC Trigger issues",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Security, compliance & data-privacy requests",
+          "jira": "Story PHEM-1513194",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Audit trail & 'who changed it' questions",
+          "jira": "Init PHEM-1970578, PHEM-2506130 \u00b7 Epic PHEM-2281914 \u00b7 Story PHEM-1699647, PHEM-2285654, PHEM-2314682, PHEM-2396523",
+          "mapped": true,
+          "n": 7
+        },
+        {
+          "theme": "Feature enablement & feature-flag requests",
+          "jira": "Epic PHEM-2262596 \u00b7 Story PHEM-1403720, PHEM-1697298, PHEM-2024963, PHEM-2262679",
+          "mapped": true,
+          "n": 5
+        },
+        {
+          "theme": "Performance, outages & UI errors",
+          "jira": "Init PHEM-1698278, PHEM-1970553 \u00b7 Epic PHEM-1698277, PHEM-1699646, PHEM-1970555 \u00b7 Story PHEM-1698282, PHEM-1698284, PHEM-1699648, PHEM-1699649, PHEM-1699651 +7",
+          "mapped": true,
+          "n": 17
+        },
+        {
+          "theme": "Access, roles, permissions & login",
+          "jira": "Epic PHEM-2104059, PHEM-2104062, PHEM-2104070, PHEM-2104079 +4 \u00b7 Story PHEM-1546009, PHEM-1577362, PHEM-1697298, PHEM-1957991, PHEM-1982212 +28",
+          "mapped": true,
+          "n": 41
+        },
+        {
+          "theme": "Interview scheduling, calendars, evaluations & scorecards",
+          "jira": "Epic PHEM-1974314, PHEM-2252497 \u00b7 Story PHEM-1577362, PHEM-1982214, PHEM-1982217, PHEM-2005934, PHEM-2006000 +4",
+          "mapped": true,
+          "n": 11
+        },
+        {
+          "theme": "Assessments & video screening",
+          "jira": "Epic PHEM-2391093 \u00b7 Story PHEM-1698115, PHEM-2106019, PHEM-2270130",
+          "mapped": true,
+          "n": 4
+        },
+        {
+          "theme": "Invite to Apply & Recruiter Initiated Apply",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Offer letters & pre-onboarding",
+          "jira": "Epic PHEM-1991295",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Fit Score & AI features (AI Discovery, X+, Voice Agent, Intelligent Sourcing)",
+          "jira": "Story PHEM-1403720, PHEM-2005892, PHEM-2005934, PHEM-2006000, PHEM-2533814 +1",
+          "mapped": true,
+          "n": 6
+        },
+        {
+          "theme": "Agency portal",
+          "jira": "Epic PHEM-2270995, PHEM-2496708 \u00b7 Story PHEM-2056461, PHEM-2182747, PHEM-2271103, PHEM-2496709, PHEM-2496710 +1",
+          "mapped": true,
+          "n": 8
+        },
+        {
+          "theme": "Projects",
+          "jira": "Init PHEM-1957943 \u00b7 Epic PHEM-1957974, PHEM-1957993 \u00b7 Story PHEM-1693767, PHEM-1873655, PHEM-2014646, PHEM-2014648, PHEM-2121528 +3",
+          "mapped": true,
+          "n": 11
+        },
+        {
+          "theme": "Bulk upload, import, export, documents & reports",
+          "jira": "Epic PHEM-2180576, PHEM-2260385, PHEM-2267012 \u00b7 Story PHEM-1513110, PHEM-1513178, PHEM-1513181, PHEM-1513183, PHEM-1513184 +16",
+          "mapped": true,
+          "n": 24
+        },
+        {
+          "theme": "Duplicate & merged profiles (logged under CRM Core)",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Email, notifications & Talent Community (logged under CRM Core)",
+          "jira": "Epic PHEM-2104076, PHEM-2184565, PHEM-2396086 \u00b7 Story PHEM-1873650, PHEM-1982213, PHEM-1982217, PHEM-1984552, PHEM-2104077 +4",
+          "mapped": true,
+          "n": 12
+        },
+        {
+          "theme": "Automation items (logged under CRM Core)",
+          "jira": "Story PHEM-2009286, PHEM-2163326",
+          "mapped": true,
+          "n": 2
+        },
+        {
+          "theme": "Events & university recruiting",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Spotlights, filters, search & lists",
+          "jira": "Init PHEM-1987368 \u00b7 Epic PHEM-1987497, PHEM-2104082, PHEM-2188780, PHEM-2202537 +1 \u00b7 Story PHEM-1549914, PHEM-1699793, PHEM-1873654, PHEM-2006000, PHEM-2024954 +12",
+          "mapped": true,
+          "n": 23
+        },
+        {
+          "theme": "Tags & notes",
+          "jira": "Init PHEM-1987498 \u00b7 Epic PHEM-1987505, PHEM-2188780 \u00b7 Story PHEM-1566523, PHEM-1694111, PHEM-1957994, PHEM-1987583, PHEM-2165622 +2",
+          "mapped": true,
+          "n": 10
+        },
+        {
+          "theme": "Job posting, publishing, closing & career-site visibility",
+          "jira": "Epic PHEM-2199077, PHEM-2267008, PHEM-2391005, PHEM-2491710 \u00b7 Story PHEM-1529972, PHEM-1529974, PHEM-1873647, PHEM-1873657, PHEM-1979661 +9",
+          "mapped": true,
+          "n": 18
+        },
+        {
+          "theme": "Job & requisition access, assignment and hiring team",
+          "jira": "Epic PHEM-2104059, PHEM-2104079, PHEM-2184565 \u00b7 Story PHEM-1701444, PHEM-2020503, PHEM-2104063, PHEM-2104069, PHEM-2104071 +6",
+          "mapped": true,
+          "n": 14
+        },
+        {
+          "theme": "Job fields, dropdowns, locations & translations",
+          "jira": "Epic PHEM-1916976, PHEM-1991295, PHEM-2136326, PHEM-2178655 +6 \u00b7 Story PHEM-1504031, PHEM-1513181, PHEM-1529975, PHEM-1565805, PHEM-1692609 +24",
+          "mapped": true,
+          "n": 39
+        },
+        {
+          "theme": "Hiring status, lead/applicant pipeline & workflow",
+          "jira": "Epic PHEM-2136326, PHEM-2278020, PHEM-2341415 \u00b7 Story PHEM-1700218, PHEM-2280603, PHEM-2280606",
+          "mapped": true,
+          "n": 6
+        },
+        {
+          "theme": "ATS / HRIS sync & integrations (Workday, SF, UKG, API, Chrome extension)",
+          "jira": "Init PHEM-1987584 \u00b7 Epic PHEM-1957974, PHEM-1987585, PHEM-2007989, PHEM-2104059 +5 \u00b7 Story PHEM-1697756, PHEM-1917001, PHEM-2014646, PHEM-2014648, PHEM-2104061 +9",
+          "mapped": true,
+          "n": 24
+        },
+        {
+          "theme": "Job & requisition records (missing, creation, editing, discrepancies)",
+          "jira": "Epic PHEM-1902635, PHEM-2260385 \u00b7 Story PHEM-1873652, PHEM-2104069, PHEM-2190578, PHEM-2199453, PHEM-2202538 +2",
+          "mapped": true,
+          "n": 9
+        },
+        {
+          "theme": "Candidate profile & data (logged under CRM Core)",
+          "jira": "Epic PHEM-1992235, PHEM-2079228, PHEM-2178519 \u00b7 Story PHEM-2104081, PHEM-2178515, PHEM-2288791, PHEM-2394844, PHEM-2398582",
+          "mapped": true,
+          "n": 8
+        }
+      ]
+    },
+    {
+      "area": "Profile",
+      "label": "CRM Profile",
+      "mapped": 11,
+      "total": 15,
+      "rows": [
+        {
+          "theme": "Profile merge, unmerge & duplicate profiles",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Privacy, GDPR, deletion, purge & consent",
+          "jira": "Epic PHEM-1992235, PHEM-2079228 \u00b7 Story PHEM-1982216, PHEM-2121528",
+          "mapped": true,
+          "n": 4
+        },
+        {
+          "theme": "Profile / traffic source & referral attribution",
+          "jira": "Story PHEM-2394844",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Resumes, documents & resume parsing",
+          "jira": "Epic PHEM-2180576 \u00b7 Story PHEM-1513189, PHEM-2215062, PHEM-2288883, PHEM-2358556",
+          "mapped": true,
+          "n": 5
+        },
+        {
+          "theme": "Hiring status changes & mismatches",
+          "jira": "Epic PHEM-2136326",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Employee vs. candidate classification (internal, alumni, terminated)",
+          "jira": "Epic PHEM-2079228, PHEM-2178519 \u00b7 Story PHEM-2178515, PHEM-2398582",
+          "mapped": true,
+          "n": 4
+        },
+        {
+          "theme": "Candidates, applications or data missing / not syncing with ATS",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Candidate profile data, fields & contact details",
+          "jira": "Story PHEM-2288791, PHEM-2394844",
+          "mapped": true,
+          "n": 2
+        },
+        {
+          "theme": "Applications & candidate-to-job association",
+          "jira": "Epic PHEM-2252497 \u00b7 Story PHEM-2137298",
+          "mapped": true,
+          "n": 2
+        },
+        {
+          "theme": "Interview, screening & offer details on profile",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Forwarding candidates & hiring-manager view",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Activity log & profile audit history",
+          "jira": "Story PHEM-2396523",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Search, filters & lists",
+          "jira": "Story PHEM-2121528, PHEM-2219955, PHEM-2219956",
+          "mapped": true,
+          "n": 3
+        },
+        {
+          "theme": "Access, login & user accounts",
+          "jira": "Epic PHEM-2104079, PHEM-2492867 \u00b7 Story PHEM-1546009, PHEM-1957991, PHEM-2104080, PHEM-2104081, PHEM-2492868 +1",
+          "mapped": true,
+          "n": 8
+        },
+        {
+          "theme": "Automation & Talent Community items (logged under Profile)",
+          "jira": "Story PHEM-2009286, PHEM-2163326",
+          "mapped": true,
+          "n": 2
+        }
+      ]
+    },
+    {
+      "area": "Messaging",
+      "label": "CRM Messaging",
+      "mapped": 6,
+      "total": 19,
+      "rows": [
+        {
+          "theme": "Staging / UAT: email whitelisting & test-environment messaging",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "WhatsApp messaging",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "SMS: sending, numbers, inbox & opt-in",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Template placeholders & tokens not resolving",
+          "jira": "Story PHEM-1382251, PHEM-2106102",
+          "mapped": true,
+          "n": 2
+        },
+        {
+          "theme": "Job alerts, subscriptions, Talent Community & incomplete-apply reminders",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Email campaigns & drip / always-on campaigns",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Recruiter / hiring-manager system notifications",
+          "jira": "Epic PHEM-2104076, PHEM-2184565 \u00b7 Story PHEM-1507369, PHEM-1982213, PHEM-1982217, PHEM-2104077, PHEM-2104078 +2",
+          "mapped": true,
+          "n": 9
+        },
+        {
+          "theme": "Recruiter inbox & candidate replies (Phenom / Outlook)",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Email deliverability: not received, bounced, spam, blocked, suppressed",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Candidate system emails not sending or wrong (apply thank-you, confirmation, rejection, referral)",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Screening & interview invitation emails",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Email templates: branding, footer, links, editing & default templates",
+          "jira": "Epic PHEM-2396086 \u00b7 Story PHEM-1382251, PHEM-1984552, PHEM-2106102",
+          "mapped": true,
+          "n": 4
+        },
+        {
+          "theme": "Messaging automations not triggering",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Opt-in, opt-out & consent",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "1:1 email sending & email activity visibility",
+          "jira": "Story PHEM-1873650",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Access, roles & permissions",
+          "jira": "Story PHEM-2104077, PHEM-2104078, PHEM-2106102",
+          "mapped": true,
+          "n": 3
+        },
+        {
+          "theme": "Lists (static & dynamic)",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Event communications",
+          "jira": "Story PHEM-1873650",
+          "mapped": true,
+          "n": 1
+        },
+        {
+          "theme": "Messaging reporting & analytics",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        }
+      ]
+    },
+    {
+      "area": "Automations",
+      "label": "CRM Automations",
+      "mapped": 1,
+      "total": 10,
+      "rows": [
+        {
+          "theme": "Run history, audit log & trigger-count visibility",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Export, bulk upload & candidate data",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Wrong, duplicate or unexpected automation actions",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Automation not triggering / failing",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Screening, interview & Voice Agent automations",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Automation setup, configuration questions & feature requests",
+          "jira": "Story PHEM-2009286, PHEM-2163326",
+          "mapped": true,
+          "n": 2
+        },
+        {
+          "theme": "Hiring status & stage movement",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Automated email / template content",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Access, environments & ATS/HRM sync",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        },
+        {
+          "theme": "Jobs, offers, events & other records (logged under Automations)",
+          "jira": "TBD",
+          "mapped": false,
+          "n": 0
+        }
+      ]
+    }
+  ],
+  "source": "board-1091 open items created >= 2026-01-01, Done/Blocked removed",
+  "kept": 327
+}

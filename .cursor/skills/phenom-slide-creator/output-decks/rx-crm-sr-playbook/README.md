@@ -1,83 +1,48 @@
 # RX CRM Service Request Playbook — deck
 
-`RX-CRM-Service-Request-Playbook.pptx` (21 slides, 16:9) is built in the
-**`leadership-editorial`** style — Fraunces titles with an italic phrase, DM Sans body,
-warm paper `#F2F0EA`, navy callout bars, surreal photography on the cover and dividers.
-Creativity level 1: catalog layouts only.
+`RX-CRM-Service-Request-Playbook.pptx` is a **simplified, clean** 16:9 deck.
+Every content slide uses the same two-column table:
 
-Two builds target the same filename, so run the one whose look you want:
-
-```bash
-python3 build_pptx_leadership.py   # leadership-editorial (current file)
-    10|python3 build_pptx.py              # corporate-template (Poppins, Mint/Peach/Honey/Lilac)
-```
-
-## QA
-
-```bash
-python3 render_qa_leadership.py    # 1:1 PNGs + contact sheet in qa-render-leadership/
-python3 qa_fit_leadership.py       # fonts, 24px floor, tokens, contrast, notes, repeats
-```
-
-    20|`render_qa_leadership.py` fetches the Fraunces / DM Sans variable TTFs into `qa-fonts/`
-on first run, so overflow is measured with real metrics. Render 1:1 — at any other scale
-the font size rounds and the wrap points shift, which invents overflow that is not there.
-`gen_font_metrics.py` regenerates `font-metrics.json`, the per-character advance widths
-the build script wraps with; that is what makes the layout exact and deterministic
-without the fonts installed.
-
-**Fonts are not installed on this machine.** PowerPoint will substitute until Fraunces
-and DM Sans are added from Google Fonts (or from `qa-fonts/`). The file names them
-correctly, so it renders as designed once they are present.
-    30|
-## Where the content comes from
-
-Neither build script authors content. Every number and sentence is read at build time from:
-
-| Source | Supplies |
+| SR theme | Initiative / Epic / Story |
 |---|---|
-| `product-copilot-beta/knowledge/servicenow-service-requests/snapshot-rx-crm-areas-jira-yn.json` | funnel counts, area and theme counts, Jira Yes/No splits, percentages |
-| `.cursor/skills/servicenow-service-requests/scripts/rx_theme_playbook.py` | area blurbs, per-theme `means` / `problem` / `reduce` text, `PRIORITY_ORDER` |
+| theme name (normal weight) | open PHEM IDs, or **TBD** |
 
-These are the same two inputs behind `rx-jira-yes-themes.html`, so the deck and the HTML
-    40|report cannot disagree.
+## Build
 
-## One correction vs the HTML header
+```bash
+# 1) Refresh theme → Jira rows from board-1091 local JSON (optional if rows JSON is current)
+python3 - <<'PY'
+# see export block in prior session, or re-run the probe that writes theme-jira-rows.json
+PY
 
-The snapshot's `funnel.jira_Yes` (555) and `funnel.jira_No` (842) count every RX Service
-Request *before* theme classification, and sum to 1,397 — not 1,164. The deck therefore
-derives the split inside the classified population by summing the per-area figures:
-**522 Jira Yes / 642 Jira No**, asserted equal to `n_filtered` at build time. Slide 5
-shows both and labels the funnel pair as pre-classification.
+# 2) Build the clean PPTX
+python3 build_pptx_simple.py
+```
 
-Slide 20 is worded "the six priority themes, by Service Request volume" — not "the six
-    50|largest". Screening / interview / scheduling / offer / notifications (99) and Email
-template content / hyperlinks / branding (98) are bigger but sit outside `PRIORITY_ORDER`.
+Legacy builders (`build_pptx_leadership.py`, `build_pptx.py`) remain for the older
+editorial / corporate variants but are **not** the current published file.
 
-## Slide arc → catalog layout
+## Content source
 
-| # | Layout | Slide |
-|---|---|---|
-| 1 | `cover` | What recruiters keep asking Phenom to fix in CRM (`rocket-cover-full.jpg`) |
-| 2 | `cards` | Method: scope, theme assignment, wording |
-| 3 | `numbers` | Funnel, 29,310 → 1,164 |
-    60|| 4 | `stats` | At a glance: four area tiles + three explainer cards |
-| 5 | `compare` | The Jira split inside the 1,164: 522 Yes vs 642 No |
-| 6 | `divider` | 01 · What the Service Requests actually say (`clouds-black-full.jpg`) |
-| 7–10 | `cards` · `rows` · `cards` · `chain` | CRM Core, six themes |
-| 11–12 | `compare` · `rows` | CRM Profile, two themes |
-| 13–16 | `cards` · `rows` · `cards` · `chain` | CRM Messaging, six themes |
-| 17–18 | `compare` · `rows` | CRM Automations, two themes |
-| 19 | `divider` | 02 · Where to start (`sunset-band-full.jpg`, text in the baked-in band) |
-| 20 | `table` | The six priority themes |
-| 21 | `takeaway` | More than half never becomes a Jira ticket |
-    70|
-Every slide carries 2–4 sentences of speaker notes. Each area's "what the tickets say"
-slide shows every theme with its SR count and Jira Yes/No split; the matching "what to do
-in Phenom" slide shows that theme's `reduce` bullets verbatim.
+| File | Role |
+|---|---|
+| `theme-jira-rows.json` | Per-area theme list + Jira ID cell (or TBD) |
+| Board slices under `product-copilot-beta/knowledge/servicenow-service-requests/data/crm-board-1091/` | Open 2026+ Initiative / Epic / Story items |
+| `theme_jira_map.py` `JIRA_RULES` | Same title-match rules as the SR themes HTML report |
+
+Done and Blocked items are excluded. Themes with no open mapped item show **TBD**.
+
+## Slide arc
+
+1. Cover  
+2. How to read  
+3. Coverage at a glance  
+4–8. CRM Core (section + tables)  
+9–11. CRM Profile  
+12–15. CRM Messaging  
+16–18. CRM Automations  
+19. Close — replace every TBD  
 
 ## Also published to
 
 - `product-copilot-beta/knowledge/servicenow-service-requests/RX-CRM-Service-Request-Playbook.pptx`
-- Google Drive, My Drive root, file id `1ehuyEOJBeapr89kX8rYSwyxCsD-J5w2L`
-  (`~/.local/bin/rclone copy <pptx> gdrive: -P` — stays a real `.pptx`, never converted)
